@@ -22,7 +22,7 @@
                 <!--change to offline or busy as needed-->
               </div>
               <div class="nav-profile-text d-flex ms-0 mb-3 flex-column">
-                <span class="fw-semibold mb-1 mt-2 text-center">Edwin Carbonel</span>
+                <span class="fw-semibold mb-1 small mt-2 text-center">Edwin Carbonel</span>
                 <span class="text-secondary icon-sm text-center">Experto en inventarios</span>
               </div>
             </a>
@@ -107,7 +107,7 @@
               <div class="col-md-12">
                 <div class="row">
                   <div class="col-md-3">
-                    <label class="mb-1">Usuario</label>
+                    <label class="mb-1 small">Usuario</label>
                     <input
                       type="text"
                       class="form-control form-control-sm borde"
@@ -115,7 +115,7 @@
                     >
                   </div>
                   <div class="col-md-3">
-                    <label class="mb-1">Fecha</label>
+                    <label class="mb-1 small">Fecha</label>
                     <input
                       type="date"
                       class="form-control form-control-sm borde"
@@ -123,35 +123,35 @@
                     >
                   </div>
                   <div class="col-md-6">
-                    <label class="mb-1">Observaciòn</label>
+                    <label class="mb-1 small">Observaciòn</label>
                     <textarea rows="1" class="form-control form-control-sm borde"></textarea>
                   </div>
                 </div>
                 <!--  -->
                 <div class="row mt-3">
                   <div class="col-md-3">
-                    <label class="mb-1">Ubicaciòn</label>
+                    <label class="mb-1 small">Ubicaciòn</label>
                     <input
                       type="number"
                       class="form-control form-control-sm borde"
                     >
                   </div>
                    <div class="col-md-3">
-                    <label class="mb-1">Localizacion</label>
+                    <label class="mb-1 small">Localizacion</label>
                     <input
                       type="number"
                       class="form-control form-control-sm borde"
                     >
                   </div>
                    <div class="col-md-3">
-                    <label class="mb-1">Nº Localizacion</label>
+                    <label class="mb-1 small">Nº Localizacion</label>
                     <input
                       type="number"
                       class="form-control form-control-sm borde"
                     >
                   </div>
                   <div class="col-md-3">
-                    <label class="mb-1">Conteo</label>
+                    <label class="mb-1 small">Conteo</label>
                     <input
                       type="number"
                       class="form-control form-control-sm borde"
@@ -161,7 +161,7 @@
                 </div>
                 <div class="row mt-3">
                   <div class="col-md-7">
-                    <label class="mb-1 text-danger">Codigo Producto (*)</label>
+                    <label class="mb-1 small text-danger">Codigo Producto (*)</label>
                     <input
                       type="text"
                       class="form-control form-control-sm borde"
@@ -170,7 +170,7 @@
                     <br>
                     <div class="row">
                       <div class="col-md-8">
-                        <label class="mb-1">Nombre Producto</label>
+                        <label class="mb-1 small">Nombre Producto</label>
                         <input
                           type="text"
                           class="form-control form-control-sm borde"
@@ -178,7 +178,7 @@
                         >
                       </div>
                       <div class="col-md-4">
-                        <label class="mb-1">Referencia</label>
+                        <label class="mb-1 small">Referencia</label>
                         <input
                           type="text"
                           class="form-control form-control-sm borde"
@@ -187,7 +187,7 @@
                       </div>
                     </div>
                     <br>
-                     <label class="mb-1">Proveedor</label>
+                     <label class="mb-1 small">Proveedor</label>
                      <input
                        type="text"
                        class="form-control form-control-sm borde"
@@ -195,21 +195,21 @@
                      >
                   </div>
                   <div class="col-md-5">
-                    <label class="mb-1">Linea</label>
+                    <label class="mb-1 small">Linea</label>
                      <input
                        type="text"
                        class="form-control form-control-sm borde"
                        readonly
                      >
                      <br>
-                     <label class="mb-1">Sublinea</label>
+                     <label class="mb-1 small">Sublinea</label>
                      <input
                        type="text"
                        class="form-control form-control-sm borde"
                        readonly
                      >
                      <br>
-                     <label class="mb-1">Subgrupo</label>
+                     <label class="mb-1 small">Subgrupo</label>
                      <input
                        type="text"
                        class="form-control form-control-sm borde"
@@ -220,33 +220,37 @@
                 <!--  -->
                 <div class="row mt-3">
                   <div class="col-md-3">
-                    <label class="mb-1">Unidades</label>
+                    <label class="mb-1 small">Unidades</label>
                     <input
                       type="number"
                       class="form-control form-control-sm borde"
                     >
                     <br>
-                    <label class="mb-1">Embalaje</label>
+                    <label class="mb-1 small">Embalaje</label>
+                    <input
+                      type="number"
+                      class="form-control form-control-sm borde"
+                    >
+                    
+                  </div>
+                  <!--  -->
+                  <div class="col-md-3">
+                    <label class="mb-1 small ">Cajas</label>
                     <input
                       type="number"
                       class="form-control form-control-sm borde"
                     >
                     <br>
-                    <label class="mb-1">Cajas</label>
+                    <label class="mb-1 small"><strong>TOTAL</strong> </label>
                     <input
                       type="number"
                       class="form-control form-control-sm borde"
-                    >
-                    <br>
-                    <label class="mb-1">Total</label>
-                    <input
-                      type="number"
-                      class="form-control form-control-sm borde"
+                      readonly
                     >
                   </div>
                   <!--  -->
-                  <div class="col-md-9">
-                    <label class="mb-1">Estado del producto</label>
+                  <div class="col-md-6">
+                    <label class="mb-1 small ">Estado del producto</label>
                     <select
                       class="form-control form-control-sm borde"
                     >
@@ -257,10 +261,18 @@
                     </select>
                     <br>
                     <div class="row">
-                      <div class="col-md-12">
+                      <div class="col-md-7">
                         <button class="btn btn-primary mb-2 mb-md-0 me-3 mt-4">Guardar</button>
                         <button class="btn btn-success mb-2 mb-md-0 me-3 mt-4">Modificar</button>
                         <button class="btn btn-danger mb-2 mb-md-0 me-3 mt-4">Salir</button>
+                      </div>
+                      <div class="col-md-5">
+                        <label class="mb-1 small"><strong>Diferencia</strong> </label>
+                        <input
+                          type="number"
+                          class="form-control form-control-sm borde"
+                          readonly
+                        >
                       </div>
                     </div>
                   </div>
