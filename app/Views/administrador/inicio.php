@@ -13,81 +13,9 @@
 </head>
 <body>
     <div class="container-scroller">
-      <!-- partial:../../partials/_sidebar.html -->
-      <nav class="sidebar sidebar-offcanvas" id="sidebar">
-        <ul class="nav">
-          <li class="nav-item nav-profile border-bottom">
-            <a href="#" class="nav-link flex-column">
-              <div class="nav-profile-image">
-                <img src="https://themewagon.github.io/plus-admin/assets/images/faces/face1.jpg" alt="profile">
-                <!--change to offline or busy as needed-->
-              </div>
-              <div class="nav-profile-text d-flex ms-0 mb-3 flex-column">
-                <span class="fw-semibold mb-1 mt-2 text-center">Edwin Carbonel</span>
-                <span class="text-secondary icon-sm text-center">Experto en inventarios</span>
-              </div>
-            </a>
-          </li>
-          <li class="nav-item pt-3">
-            <a class="nav-link d-block" href="../../index.html">
-              <img class="sidebar-brand-logo" src="https://themewagon.github.io/plus-admin/assets/images/logo.svg" alt="">
-              <img class="sidebar-brand-logomini" src="../../assets/images/logo-mini.svg" alt="">
-              <div class="small fw-light pt-1">Panel responsivo </div>
-            </a>
-            <br>
-            <form class="d-flex align-items-center" action="#">
-              <div class="input-group">
-                <div class="input-group-prepend">
-                  <i class="input-group-text border-0 mdi mdi-magnify"></i>
-                </div>
-                <input type="text" class="form-control border-0" placeholder="Buscar">
-              </div>
-            </form>
-          </li>
-          <li class="pt-2 pb-1">
-            <span class="nav-item-head">Modulos</span>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="../../index.html">
-              <i class="mdi mdi-compass-outline menu-icon"></i>
-              <span class="menu-title">Inicio</span>
-            </a>
-          </li>
-          <!-- <li class="pt-2 pb-1">
-            <span class="nav-item-head">UI Elements</span>
-          </li> -->
-         
-          
-          <li class="nav-item pt-3">
-            <a class="nav-link" href="../../docs/documentation.html" target="_blank">
-              <i class="mdi mdi-file-document-box menu-icon"></i>
-              <span class="menu-title">Documentation</span>
-            </a>
-          </li>
-        </ul>
-      </nav>
+      <?php require_once("componentes/navbar.php")?>
       <div class="container-fluid page-body-wrapper ">
-        <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
-          <div class="navbar-menu-wrapper d-flex align-items-stretch color-morado">
-            <button class="navbar-toggler navbar-toggler align-self-center color-morado" type="button" data-toggle="minimize">
-              <span class="fas fa-chevron-left"></span>
-            </button>
-            <div class="text-center  d-flex align-items-center justify-content-center">
-              <a class="navbar-brand brand-logo-mini" ><img src="https://static.vecteezy.com/system/resources/thumbnails/012/986/755/small_2x/abstract-circle-logo-icon-free-png.png" width="70px" alt="logo" /></a>
-            </div>
-            <ul class="navbar-nav navbar-nav-right">
-              <li class="nav-item nav-logout d-none d-md-block me-3">
-                <a class="nav-link" href="#">Perfil</a>
-              </li>
-              <li class="nav-item nav-logout d-none d-md-block">
-                <button class="btn btn-sm btn-danger">Cerrar Sesiòn</button>
-              </li>
-            </ul>
-            <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
-              <span class="mdi mdi-menu"></span>
-            </button>
-          </div>
-        </nav>
+        <?php require_once("componentes/lateralderecha.php")?>
         <div class="main-panel">
           <div class="content-wrapper">
             <div class="page-header flex-wrap">
