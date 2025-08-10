@@ -7,3 +7,4 @@ use CodeIgniter\Router\RouteCollection;
  */
 $routes->get('/', 'Login::index');
 $routes->get('/inicio', 'Inicio::index');
+$routes->get('/conteos', 'Conteos::index');

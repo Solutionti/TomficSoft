@@ -1,3 +1,7 @@
 .color-morado {
   background-color: #9a3de0 !important;
 }
+
+.borde {
+  border: 2px solid #c5b8da !important;
+}
