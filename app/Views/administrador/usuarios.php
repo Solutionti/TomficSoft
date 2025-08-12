@@ -44,30 +44,33 @@
                     <table class="table table-striped">
                         <thead >
                           <tr >
-                            <th class="color-morado text-white"> </th>
-                            <th class="color-morado text-white"> Codigo</th>
-                            <th class="color-morado text-white"></th>
-                            <th class="color-morado text-white"> Nombre completo </th>
-                            <th class="color-morado text-white"> Documento </th>
-                            <th class="color-morado text-white"> Empresa </th>
-                            <th class="color-morado text-white"> Email </th>
-                            <th class="color-morado text-white"> Rol </th>
-                            <th class="color-morado text-white"> Estado </th>
+                            <th class="color-morado text-white text-uppercase"> </th>
+                            <th class="color-morado text-white text-uppercase"> Codigo</th>
+                            <th class="color-morado text-white text-uppercase"> Nombre completo </th>
+                            <th class="color-morado text-white text-uppercase"> Empresa </th>
+                            <th class="color-morado text-white text-uppercase"> Email </th>
+                            <th class="color-morado text-white text-uppercase"> Rol </th>
+                            <th class="color-morado text-white text-uppercase"> Estado </th>
                           </tr>
                         </thead>
                         <tbody>
                           <tr>
+                            <td> </td>
+                            <td> 01</td>
                             <td>
                               <div class="row">
-                               
+                               <div class="d-flex px-2 py-1">
+                                 <div>
+                                    <img src="https://themewagon.github.io/plus-admin/assets/images/faces-clipart/pic-1.png" class="avatar avatar-sm me-3">
+                                 </div>
+                                 <div class="d-flex flex-column justify-content-center">
+                                    <h6 class="mb-0 text-xs">Jerson Galvez Ensuncho</h6>
+                                    <p class="text-xs text-dark mb-0">1110542802</p>
+                                 </div>
+                              </div>
                               </div>
                             </td>
-                            <td> 01</td>
-                            <td class="py-1">
-                              <img src="https://themewagon.github.io/plus-admin/assets/images/faces-clipart/pic-1.png" alt="image" />
-                            </td>
-                            <td>Jerson Galvez Ensuncho</td>
-                            <td>1110542802</td>
+                            
                             <td>GO Future</td>
                             <td>jerson_galvez@hotmail.com</td>
                             <td>Administrador</td>
