@@ -17,3 +17,4 @@ $routes->get('/inicio', 'Inicio::index');
 $routes->get('/conteos', 'Conteos::index');
 
 // USUARIOS
+$routes->get('/usuarios', 'UsuariosController::index');
