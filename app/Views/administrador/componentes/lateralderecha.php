@@ -11,8 +11,9 @@
                 <a class="nav-link" href="#">Perfil</a>
               </li>
               <li class="nav-item nav-logout d-none d-md-block">
+                <i class="fas fa-user mx-2"></i>
                 <a
-                  class="btn btn-sm btn-danger text-small"
+                  class="btn btn-sm btn-primary text-small btn-rounded"
                   href="<?php echo base_url(); ?>cerrarsesion"
                 >
                   Cerrar Sesiòn
