@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Iniciar Sesiòn</title>
   <link rel="stylesheet" href="<?= base_url('css/estilo.css') ?>">
+  <link rel="stylesheet" href="<?= base_url('fontawesome/css/fontawesome.min.css') ?>">
+    <link rel="stylesheet" href="<?= base_url('fontawesome/css/brands.css') ?>">
+    <link rel="stylesheet" href="<?= base_url('fontawesome/css/solid.css') ?>">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap">
   <link rel="stylesheet" href="https://htmlstream.com/preview/front-v4.2/html/assets/css/vendor.min.css">
   <link rel="stylesheet" href="https://htmlstream.com/preview/front-v4.2/html/assets/css/theme.min.css?v=1.0">
@@ -55,6 +58,7 @@
               <h1 class="h2">Bienvenido a TOMFIC</h1>
               <p>Inicie sesión para administrar su cuenta.</p>
             </div>
+            <div class="messageError mt-2"></div>
             <form class="js-validate needs-validation" [formGroup]="iniciarSesionForm">
               <div class="mb-4">
                 <label class="form-label" for="signupModalFormLoginEmail">Correo electronico</label>
@@ -70,14 +74,18 @@
                   <label class="form-label" for="signupModalFormLoginPassword">Contraseña</label>
                   <!-- <a class="form-label-link" href="#">Olvido su contraseña?</a> -->
                 </div>
-                <div class="input-group input-group-merge" data-hs-validation-validate-class>
+                <div class="input-group">
                   <input
-                    [type]="typepassword"
+                    type="password"
                     class="js-toggle-password form-control form-control-lg"
                     placeholder="Contraseña"
                     id="password"
                   >
-                  
+                  <a
+                    class="input-group-append input-group-text"
+                  >
+                    <i id="changePassIcon" class="fas fa-eye"></i>
+                  </a>
                 </div>
               </div>
               <div class="d-grid mb-3">
