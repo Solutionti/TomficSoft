@@ -11,7 +11,12 @@
                 <a class="nav-link" href="#">Perfil</a>
               </li>
               <li class="nav-item nav-logout d-none d-md-block">
-                <button class="btn btn-sm btn-danger text-small">Cerrar Sesiòn</button>
+                <a
+                  class="btn btn-sm btn-danger text-small"
+                  href="<?php echo base_url(); ?>cerrarsesion"
+                >
+                  Cerrar Sesiòn
+                </a>
               </li>
             </ul>
             <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">

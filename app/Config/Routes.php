@@ -8,13 +8,15 @@ use CodeIgniter\Router\RouteCollection;
 
 
 //INICIO DE SESION
-$routes->get('/', 'Login::index');
+$routes->get('/', 'LoginController::index');
+$routes->post('/iniciarsesion', 'LoginController::iniciarSesion');
+$routes->get('/cerrarsesion', 'LoginController::cerrarSesion');
 
 // INICIO
-$routes->get('/inicio', 'Inicio::index');
+$routes->get('/inicio', 'InicioController::index');
 
 // CONTEOS
-$routes->get('/conteos', 'Conteos::index');
+$routes->get('/conteos', 'ConteosController::index');
 
 // USUARIOS
 $routes->get('/usuarios', 'UsuariosController::index');

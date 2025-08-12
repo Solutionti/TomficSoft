@@ -2,11 +2,16 @@
 
 namespace App\Controllers;
 
-class Conteos extends BaseController {
+class ConteosController extends BaseController {
 
 
   public function index(): string {
-    return view('administrador/conteos');
+    if(session()->get('logeado') == true) {
+       return view('administrador/conteos');
+    }
+    else {
+      return view('iniciarsesion');
+    }
   }
 
   public function buscarProducto(): string {
