@@ -38,29 +38,29 @@
           <li class="pt-2 pb-1">
             <span class="nav-item-head">inventarios</span>
           </li>
-          <li class="nav-item pt-1">
+          <!-- <li class="nav-item pt-1">
             <a class="nav-link" href="<?= base_url('conteos') ?>">
               <i class="mdi mdi-file-document-box menu-icon"></i>
               <span class="menu-title">Asignación de inventario</span>
             </a>
-          </li>
+          </li> -->
           <li class="nav-item pt-1">
             <a class="nav-link" href="<?= base_url('conteos') ?>">
               <i class="mdi mdi-file-document-box menu-icon"></i>
               <span class="menu-title">Conteos</span>
             </a>
           </li>
-          <li class="nav-item pt-1">
+          <!-- <li class="nav-item pt-1">
             <a class="nav-link" href="<?= base_url('conteos') ?>">
               <i class="mdi mdi-file-document-box menu-icon"></i>
               <span class="menu-title">Usuarios</span>
             </a>
-          </li>
-          <li class="nav-item pt-1">
+          </li> -->
+          <!-- <li class="nav-item pt-1">
             <a class="nav-link" href="<?= base_url('conteos') ?>">
               <i class="mdi mdi-file-document-box menu-icon"></i>
               <span class="menu-title">Reportes</span>
             </a>
-          </li>
+          </li> -->
         </ul>
       </nav>

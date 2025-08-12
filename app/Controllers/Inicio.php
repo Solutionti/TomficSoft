@@ -2,10 +2,13 @@
 
 namespace App\Controllers;
 
-class Inicio extends BaseController
-{
-    public function index(): string
-    {
-        return view('administrador/inicio');
-    }
+class Inicio extends BaseController {
+
+
+  public function index(): string {
+    return view('administrador/inicio');
+  }
+
+  
+
 }
