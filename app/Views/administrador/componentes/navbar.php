@@ -51,7 +51,7 @@
             </a>
           </li>
            <li class="nav-item pt-1">
-            <a class="nav-link" href="<?= base_url('conteos') ?>">
+            <a class="nav-link" href="<?= base_url('usuarios') ?>">
               <i class="mdi mdi-file-document-box menu-icon"></i>
               <span class="menu-title">Usuarios</span>
             </a>
