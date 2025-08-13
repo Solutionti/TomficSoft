@@ -20,8 +20,8 @@
           <div class="content-wrapper">
             <div class="page-header flex-wrap">
               <div class="header-left">
-                <button class="btn btn-primary mb-2 mb-md-0 me-2">Crear nuevo Documento</button>
-                <button class="btn btn-outline-primary bg-white mb-2 mb-md-0">Importar documentos</button>
+                <button class="btn btn-primary mb-2 mb-md-0 me-2 btn-rounded">Crear nuevo Documento</button>
+                <button class="btn btn-outline-primary bg-white mb-2 mb-md-0 btn-rounded">Importar documentos</button>
               </div>
               <div class="header-right d-flex flex-wrap mt-2 mt-sm-0">
                 <div class="d-flex align-items-center">

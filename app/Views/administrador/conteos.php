@@ -19,8 +19,8 @@
           <div class="content-wrapper">
             <div class="page-header flex-wrap">
               <div class="header-left">
-                <button class="btn btn-primary mb-2 mb-md-0 me-2">Terminar el conteo</button>
-                <button class="btn btn-outline-primary bg-white mb-2 mb-md-0">Exportar base de datos</button>
+                <button class="btn btn-primary mb-2 mb-md-0 me-2 btn-rounded">Terminar el conteo</button>
+                <button class="btn btn-outline-primary bg-white mb-2 mb-md-0 btn-rounded">Exportar base de datos</button>
               </div>
               <div class="header-right d-flex flex-wrap mt-2 mt-sm-0">
                 <div class="d-flex align-items-center">
@@ -191,12 +191,12 @@
                     </select>
                     <br>
                     <div class="row">
-                      <div class="col-md-7">
-                        <button class="btn btn-primary mb-2 mb-md-0 me-3 mt-4">Guardar</button>
-                        <button class="btn btn-success mb-2 mb-md-0 me-3 mt-4">Modificar</button>
-                        <button class="btn btn-danger mb-2 mb-md-0 me-3 mt-4">Salir</button>
+                      <div class="col-md-8">
+                        <button class="btn btn-primary mb-2 mb-md-0 me-3 mt-4 btn-rounded">Guardar</button>
+                        <button class="btn btn-success mb-2 mb-md-0 me-3 mt-4 btn-rounded">Modificar</button>
+                        <button class="btn btn-danger mb-2 mb-md-0 me-3 mt-4 btn-rounded">Salir</button>
                       </div>
-                      <div class="col-md-5">
+                      <div class="col-md-4">
                         <label class="mb-1 small"><strong>Diferencia</strong> </label>
                         <input
                           type="number"
