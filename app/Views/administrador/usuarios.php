@@ -38,7 +38,6 @@
                 </div>
               </div>
             </div>
-            
             <div class="row">
                 <div class="col-md-12">
                     <table class="table table-striped">
@@ -70,25 +69,33 @@
                               </div>
                               </div>
                             </td>
-                            
                             <td>GO Future</td>
                             <td>jerson_galvez@hotmail.com</td>
-                            <td>Administrador</td>
-                            <td><label class="badge badge-success ">Activo</label></td>
+                            <td><label class="badge badge-primary">Administrador</label></td>
+                            <td><label class="badge badge-success">Activo</label></td>
                           </tr>
-                          <!-- <tr>
-                            <td class="py-1">
-                              <img src="https://themewagon.github.io/plus-admin/assets/images/faces-clipart/pic-2.png" alt="image" />
-                            </td>
-                            <td> Messsy Adam </td>
+                          <tr>
+                            <td></td>
+                            <td>02</td>
                             <td>
-                              <div class="progress">
-                                <div class="progress-bar bg-danger" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                              <div class="row">
+                               <div class="d-flex px-2 py-1">
+                                 <div>
+                                    <img src="https://themewagon.github.io/plus-admin/assets/images/faces-clipart/pic-2.png" class="avatar avatar-sm me-3">
+                                 </div>
+                                 <div class="d-flex flex-column justify-content-center">
+                                    <h6 class="mb-0 text-xs">Mabel Andrea Guerra</h6>
+                                    <p class="text-xs text-dark mb-0">56868539</p>
+                                 </div>
+                              </div>
                               </div>
                             </td>
-                            <td> $245.30 </td>
-                            <td> July 1, 2015 </td>
-                          </tr> -->
+                            <td>GO Future</td>
+                            <td>jerson_galvez@hotmail.com</td>
+                            <td><label class="badge badge-primary ">Capturador</label></td>
+                            <td><label class="badge badge-success ">Activo</label></td>
+                          </tr>
+                         
                         </tbody>
                       </table>  
                 </div>
