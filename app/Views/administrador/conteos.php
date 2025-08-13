@@ -298,19 +298,19 @@
       <div class="modal-body">
         <div class="row">
           <div class="col-md-12">
-  <table class="table table-striped table-hover">
-                        <thead >
-                          <tr >
-                            <th class="color-morado text-white text-uppercase"> </th>
-                            <th class="color-morado text-white text-uppercase"> Codigo</th>
-                            <th class="color-morado text-white text-uppercase"> EAN8 </th>
-                            <th class="color-morado text-white text-uppercase"> Nombre </th>
-                            <th class="color-morado text-white text-uppercase"> proveedor </th>
-                            <th class="color-morado text-white text-uppercase"> Categoria </th>
-                            <th class="color-morado text-white text-uppercase"> subCategoria </th>
-                            <th class="color-morado text-white text-uppercase"> estado </th>
-                          </tr>
-                        </thead>
+            <table class="table table-striped table-hover table-borderless" id="table-productos">
+              <thead >
+                <tr>
+                  <th class="color-morado text-white text-uppercase"> </th>
+                  <th class="color-morado text-white text-uppercase"> Codigo</th>
+                  <th class="color-morado text-white text-uppercase"> EAN8 </th>
+                  <th class="color-morado text-white text-uppercase"> Nombre </th>
+                  <th class="color-morado text-white text-uppercase"> proveedor </th>
+                  <th class="color-morado text-white text-uppercase"> Categoria </th>
+                  <th class="color-morado text-white text-uppercase"> subCategoria </th>
+                  <th class="color-morado text-white text-uppercase"> estado </th>
+                </tr>
+              </thead>
                         <tbody>
                           <?php foreach($productos->getResult() as $producto){ ?>
                           <tr>
@@ -321,7 +321,7 @@
                                   type="radio"
                                   name="radioDefault"
                                   id="radioDefault1"
-
+                                  onclick="VincularProductoModal(<?= $producto->codigo_barras; ?>)"
                                 >
                               </div>
                             </td>
@@ -353,7 +353,6 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger btn-rounded" data-bs-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary btn-rounded" >Aceptar</button>
       </div>
     </div>
   </div>

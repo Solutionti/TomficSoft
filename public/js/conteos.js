@@ -1,4 +1,21 @@
 
+$("#table-productos").DataTable({
+  "lengthMenu": [10, 50, 100, 200],
+  "language":{
+  "processing": "Procesando",
+  "search": "Buscar:",
+  "lengthMenu": "Ver _MENU_ Productos",
+  "info": "Viendo _START_ a _END_ de _TOTAL_ Productos",
+  "zeroRecords": "No encontraron resultados",
+  "paginate": {
+    "first":      "Primera",
+    "last":       "Ultima",
+    "next":       "Siguiente",
+    "previous":   "Anterior"
+  }
+ }
+});
+
 $("#codigo_producto").on("blur", function() {
     var codigo_producto = $('#codigo_producto').val();
     var url = baseurl + '/buscarproducto/' + codigo_producto;
@@ -66,7 +83,7 @@ $("#embalaje").on("keyup", function() {
       embalaje = $("#embalaje").val(),
       total = parseInt(embalaje) * parseInt(cajas) + parseInt(unidades),
       saldo = parseInt($("#saldo").val()) - parseInt(total);
-      
+
   $("#total").val(total);
   $("#diferencia").val(saldo);
 });
@@ -114,5 +131,56 @@ $("#exportardatos").on("click", function(e) {
   }
 });        
 });
+
+function VincularProductoModal(codigo) {
+  var url = baseurl + '/buscarproducto/' + codigo;
+    
+    $.ajax({
+      url: url,
+      method: 'GET',
+      success: function(response) {
+        if(response === "error") {
+          $("body").overhang({
+            type: "error",
+            message: "Alerta ! El producto no existe o no se encuentra registrado.",
+          });
+          
+          $("#nombre_producto").val("");
+          $("#referencia").val("");
+          $("#proveedor").val("");
+          $("#linea").val("");
+          $("#sublinea").val("");
+          $("#subgrupo").val("");
+          $("#saldo").val("");
+        }
+        else {
+          $("#codigo_producto").val(response[0].codigo_barras);
+          $("#nombre_producto").val(response[0].nombre);
+          $("#referencia").val(response[0].referencia);
+          $("#proveedor").val(response[0].proveedor);
+          $("#linea").val(response[0].categoria);
+          $("#sublinea").val(response[0].subcategoria);
+          $("#subgrupo").val(response[0].subgrupo);
+          $("#saldo").val(response[0].saldo);
+          $("#listaproductos").modal('hide');
+        }
+      },
+      error: function(xhr, status, error) {
+      
+      }
+    });
+}
+
+function GuardarConteo() {
+  
+}
+
+function modificarConteo() {
+  
+}
+
+function finalizarConteo() {
+
+}
 
 
