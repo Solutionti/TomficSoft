@@ -6,6 +6,15 @@ use CodeIgniter\Model;
 
 class ConteosModel extends Model {
 
+  public function getProductos() {
+    $query = $this->db->table('productos')
+           ->select('*')
+           ->where('estado', 'Activo')
+           ->get();
+
+    return $query;
+  }
+
   public function buscarProducto($codigo){
     
     $query = $this->db->table('productos')

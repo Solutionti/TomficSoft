@@ -298,7 +298,7 @@
       <div class="modal-body">
         <div class="row">
           <div class="col-md-12">
-  <table class="table table-striped">
+  <table class="table table-striped table-hover">
                         <thead >
                           <tr >
                             <th class="color-morado text-white text-uppercase"> </th>
@@ -312,10 +312,21 @@
                           </tr>
                         </thead>
                         <tbody>
+                          <?php foreach($productos->getResult() as $producto){ ?>
                           <tr>
-                            <td> </td>
-                            <td> 01</td>
-                            <td> 01</td>
+                            <td>
+                              <div class="form-check">
+                                <input
+                                  class="form-check-input mx-3 borde"
+                                  type="radio"
+                                  name="radioDefault"
+                                  id="radioDefault1"
+
+                                >
+                              </div>
+                            </td>
+                            <td> <?= $producto->codigo_interno; ?></td>
+                            <td> <?= $producto->codigo_barras; ?></td>
                             <td>
                               <div class="row">
                                <div class="d-flex px-2 py-1">
@@ -323,17 +334,18 @@
                                     <img src="https://themewagon.github.io/plus-admin/assets/images/faces-clipart/pic-1.png" class="avatar avatar-sm me-3">
                                  </div>
                                  <div class="d-flex flex-column justify-content-center">
-                                    <h6 class="mb-0 text-xs">AGUA CRISTAL POSTOBON</h6>
-                                    <p class="text-xs text-dark mb-0">7770255400011</p>
+                                    <h6 class="mb-0 text-xs"><?= $producto->nombre; ?></h6>
+                                    <p class="text-xs text-dark mb-0"><?= $producto->codigo_barras; ?></p>
                                  </div>
                               </div>
                               </div>
                             </td>
-                            <td>GO Future</td>
-                            <td>GO Future</td>
-                            <td>GO Future</td>
-                            <td><label class="badge badge-success">Activo</label></td>
+                            <td><?= $producto->proveedor; ?></td>
+                            <td><?= $producto->categoria; ?></td>
+                            <td><?= $producto->subcategoria; ?></td>
+                            <td><label class="badge badge-success"><?= $producto->estado; ?></label></td>
                           </tr>
+                          <?php } ?>
                         </tbody>
                       </table>
           </div>

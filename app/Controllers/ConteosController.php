@@ -14,8 +14,11 @@ class ConteosController extends BaseController {
   }
 
   public function index(): string {
+    $data = [
+      "productos" => $this->conteosModel->getProductos(),
+    ];
     if(session()->get('logeado') == true) {
-       return view('administrador/conteos');
+       return view('administrador/conteos', $data);
     }
     else {
       return view('iniciarsesion');
