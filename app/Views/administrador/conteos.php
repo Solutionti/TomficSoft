@@ -16,7 +16,7 @@
             <div class="page-header flex-wrap">
               <div class="header-left">
                 <button class="btn btn-primary mb-2 mb-md-0 me-2 btn-rounded">Terminar el conteo</button>
-                <button class="btn btn-outline-primary bg-white mb-2 mb-md-0 btn-rounded">Exportar base de datos</button>
+                <button class="btn btn-outline-primary bg-white mb-2 mb-md-0 btn-rounded" data-bs-toggle="modal" data-bs-target="#exportarexcelmodal">Exportar base de datos</button>
               </div>
               <div class="header-right d-flex flex-wrap mt-2 mt-sm-0">
                 <div class="d-flex align-items-center">
@@ -214,7 +214,16 @@
                         <button class="btn btn-success mb-2 mb-md-0 me-3 mt-4 btn-rounded">Modificar</button>
                         <button class="btn btn-danger mb-2 mb-md-0 me-3 mt-4 btn-rounded">Salir</button>
                       </div>
-                      <div class="col-md-4">
+                      <div class="col-md-2">
+                        <label class="mb-1 small"><strong>Saldo</strong> </label>
+                        <input
+                          type="number"
+                          class="form-control form-control-sm borde text-uppercase"
+                          id="saldo"
+                          readonly
+                        >
+                      </div>
+                      <div class="col-md-2">
                         <label class="mb-1 small"><strong>Diferencia</strong> </label>
                         <input
                           type="number"
@@ -236,6 +245,39 @@
     </div>
     <?php require_once("componentes/footer.php")?>
 </div>
+
+<!-- EXPORTAR EXCEL -->
+<div class="modal fade" id="exportarexcelmodal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="exportarexcelmodalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content ">
+      <div class="modal-header color-morado">
+        <h1 class="modal-title fs-5 text-white" id="exportarexcelmodalLabel">EXPORTAR BASE DE DATOS</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-12">
+            <label class="mb-3 small">Seleccione un archivo a cargar *</label>
+            <form id="formExcel" enctype="multipart/form-data">
+              <input
+                type="file"
+                class="form-control form-control-sm"
+                accept=".xls,.xlsx"
+                name="archivo"
+                id="archivo"
+              >
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger btn-rounded" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary btn-rounded" id="exportardatos">Exportar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
   <?php require_once("componentes/scripts.php")?>
   <script src="<?= base_url('js/conteos.js') ?>"></script>
   </body>
