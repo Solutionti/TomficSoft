@@ -37,7 +37,6 @@ function iniciarSesion() {
         $(".messageError").html('<div class="alert text-white color-morado">Alerta !! El usuario y contraseña ingresado son invalidos.</div>');
         $("#password").addClass("is-invalid");
         $("#usuario").addClass("is-invalid");
-        
      }  
      else {
          window.location.href = baseurl + '/inicio';
