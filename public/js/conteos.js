@@ -1,6 +1,6 @@
 
 $("#table-productos").DataTable({
-  "lengthMenu": [10, 50, 100, 200],
+  "lengthMenu": [5, 50, 100, 200],
   "language":{
   "processing": "Procesando",
   "search": "Buscar:",
