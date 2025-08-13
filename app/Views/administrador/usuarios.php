@@ -227,7 +227,7 @@
                   <a
                     class="input-group-append input-group-text"
                   >
-                    <i id="changePassIcon" class="fas fa-eye"></i>
+                    <i id="changePassIcon" class="fas fa-eye text-primary"></i>
                   </a>
                 </div>
           </div>
@@ -243,11 +243,6 @@
                     placeholder="Contraseña"
                     id="repetir_password_usuario"
                   >
-                  <a
-                    class="input-group-append input-group-text"
-                  >
-                    <i id="changePassIcon1" class="fas fa-eye"></i>
-                  </a>
                 </div>
           </div>
         </div>

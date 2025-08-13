@@ -72,7 +72,6 @@
               <div class="mb-4">
                 <div class="d-flex justify-content-between align-items-center">
                   <label class="form-label" for="signupModalFormLoginPassword">Contraseña</label>
-                  <!-- <a class="form-label-link" href="#">Olvido su contraseña?</a> -->
                 </div>
                 <div class="input-group">
                   <input
