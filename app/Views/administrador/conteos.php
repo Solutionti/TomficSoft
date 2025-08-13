@@ -4,11 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Administracion - Inicio</title>
-    <link rel="stylesheet" href="<?= base_url('css/estilo.css') ?>">
-    <link rel="stylesheet" href="<?= base_url('css/material.css') ?>">
-    <link rel="stylesheet" href="<?= base_url('fontawesome/css/fontawesome.min.css') ?>">
-    <link rel="stylesheet" href="<?= base_url('fontawesome/css/brands.css') ?>">
-    <link rel="stylesheet" href="<?= base_url('fontawesome/css/solid.css') ?>">
+    <?php require_once("componentes/head.php")?>
 </head>
 <body>
     <div class="container-scroller">
@@ -40,21 +36,25 @@
                     <label class="mb-1 small">Usuario</label>
                     <input
                       type="text"
-                      class="form-control form-control-sm borde"
+                      class="form-control form-control-sm borde text-uppercase"
+                      id="usuario"
                       readonly
+                      value="<?php echo session()->get('nombre'). ' ' .session()->get('apellido')?>"
                     >
                   </div>
                   <div class="col-md-3">
                     <label class="mb-1 small">Fecha</label>
                     <input
                       type="date"
-                      class="form-control form-control-sm borde"
+                      class="form-control form-control-sm borde text-uppercase"
+                      id="fecha"
+                      value="<?php echo date('Y-m-d') ?>"
                       readonly
                     >
                   </div>
                   <div class="col-md-6">
                     <label class="mb-1 small">Observaciòn</label>
-                    <textarea rows="1" class="form-control form-control-sm borde"></textarea>
+                    <textarea rows="1" class="form-control form-control-sm borde text-uppercase" id="observacion"></textarea>
                   </div>
                 </div>
                 <!--  -->
@@ -63,28 +63,33 @@
                     <label class="mb-1 small">Ubicaciòn</label>
                     <input
                       type="number"
-                      class="form-control form-control-sm borde"
+                      class="form-control form-control-sm borde text-uppercase"
+                      id="ubicacion"
                     >
                   </div>
                    <div class="col-md-3">
                     <label class="mb-1 small">Localizacion</label>
                     <input
                       type="number"
-                      class="form-control form-control-sm borde"
+                      class="form-control form-control-sm borde text-uppercase"
+                      id="localizacion"
                     >
                   </div>
                    <div class="col-md-3">
                     <label class="mb-1 small">Nº Localizacion</label>
                     <input
                       type="number"
-                      class="form-control form-control-sm borde"
+                      class="form-control form-control-sm borde text-uppercase"
+                      id="numero_localizacion"
                     >
                   </div>
                   <div class="col-md-3">
                     <label class="mb-1 small">Conteo</label>
                     <input
                       type="number"
-                      class="form-control form-control-sm borde"
+                      class="form-control form-control-sm borde text-uppercase"
+                      id="conteo"
+                      value="1"
                       readonly
                     >
                   </div>
@@ -94,7 +99,8 @@
                     <label class="mb-1 small text-danger">Codigo Producto (*)</label>
                     <input
                       type="text"
-                      class="form-control form-control-sm borde"
+                      class="form-control form-control-sm borde text-uppercase"
+                      id="codigo_producto"
                       autofocus
                     >
                     <br>
@@ -103,7 +109,8 @@
                         <label class="mb-1 small">Nombre Producto</label>
                         <input
                           type="text"
-                          class="form-control form-control-sm borde"
+                          class="form-control form-control-sm borde text-uppercase"
+                          id="nombre_producto"
                           readonly
                         >
                       </div>
@@ -111,7 +118,8 @@
                         <label class="mb-1 small">Referencia</label>
                         <input
                           type="text"
-                          class="form-control form-control-sm borde"
+                          class="form-control form-control-sm borde text-uppercase"
+                          id="referencia"
                           readonly
                         >
                       </div>
@@ -120,7 +128,8 @@
                      <label class="mb-1 small">Proveedor</label>
                      <input
                        type="text"
-                       class="form-control form-control-sm borde"
+                       class="form-control form-control-sm borde text-uppercase"
+                       id="proveedor"
                        readonly
                      >
                   </div>
@@ -128,21 +137,24 @@
                     <label class="mb-1 small">Linea</label>
                      <input
                        type="text"
-                       class="form-control form-control-sm borde"
+                       class="form-control form-control-sm borde text-uppercase"
+                       id="linea"
                        readonly
                      >
                      <br>
                      <label class="mb-1 small">Sublinea</label>
                      <input
                        type="text"
-                       class="form-control form-control-sm borde"
+                       class="form-control form-control-sm borde text-uppercase"
+                       id="sublinea"
                        readonly
                      >
                      <br>
                      <label class="mb-1 small">Subgrupo</label>
                      <input
                        type="text"
-                       class="form-control form-control-sm borde"
+                       class="form-control form-control-sm borde text-uppercase"
+                       id="subgrupo"
                        readonly
                      >
                   </div>
@@ -153,13 +165,15 @@
                     <label class="mb-1 small">Unidades</label>
                     <input
                       type="number"
-                      class="form-control form-control-sm borde"
+                      class="form-control form-control-sm borde text-uppercase"
+                      id="unidades"
                     >
                     <br>
                     <label class="mb-1 small">Embalaje</label>
                     <input
                       type="number"
-                      class="form-control form-control-sm borde"
+                      class="form-control form-control-sm borde text-uppercase"
+                      id="embalaje"
                     >
                     
                   </div>
@@ -168,13 +182,15 @@
                     <label class="mb-1 small ">Cajas</label>
                     <input
                       type="number"
-                      class="form-control form-control-sm borde"
+                      class="form-control form-control-sm borde text-uppercase"
+                      id="cajas"
                     >
                     <br>
                     <label class="mb-1 small"><strong>TOTAL</strong> </label>
                     <input
                       type="number"
-                      class="form-control form-control-sm borde"
+                      class="form-control form-control-sm borde text-uppercase"
+                      id="total"
                       readonly
                     >
                   </div>
@@ -182,7 +198,8 @@
                   <div class="col-md-6">
                     <label class="mb-1 small ">Estado del producto</label>
                     <select
-                      class="form-control form-control-sm borde"
+                      class="form-control form-control-sm borde text-uppercase"
+                      id="estado_producto"
                     >
                       <option value="">Seleccione el estado del producto</option>
                       <option value="">Bueno</option>
@@ -200,7 +217,8 @@
                         <label class="mb-1 small"><strong>Diferencia</strong> </label>
                         <input
                           type="number"
-                          class="form-control form-control-sm borde"
+                          class="form-control form-control-sm borde text-uppercase"
+                          id="diferencia"
                           readonly
                         >
                       </div>
@@ -215,12 +233,9 @@
           </div>
         </div>
     </div>
-    <!-- <footer class="footer">
-      <div class="d-sm-flex justify-content-center justify-content-sm-between">
-        <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2023 <a href="https://www.bootstrapdash.com/" target="_blank">BootstrapDash</a>. All rights reserved. Distributed by <a href="https://themewagon.com" target="_blank">ThemeWagon</a></span>
-        <span class="float-none float-sm-end d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="mdi mdi-heart text-danger"></i></span>
-      </div>
-    </footer> -->
+    <?php require_once("componentes/footer.php")?>
 </div>
+  <?php require_once("componentes/scripts.php")?>
+  <script src="<?= base_url('js/conteos.js') ?>"></script>
   </body>
 </html>

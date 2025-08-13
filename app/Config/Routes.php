@@ -17,6 +17,7 @@ $routes->get('/inicio', 'InicioController::index');
 
 // CONTEOS
 $routes->get('/conteos', 'ConteosController::index');
+$routes->get('/buscarproducto/(:num)', 'ConteosController::buscarProducto/$1');
 
 // USUARIOS
 $routes->get('/usuarios', 'UsuariosController::index');
