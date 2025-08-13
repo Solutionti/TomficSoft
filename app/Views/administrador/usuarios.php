@@ -123,11 +123,130 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        ...
+        <div class="row mt-3">
+          <div class="col-md-4">
+            <label>Documento *</label>
+            <input 
+              type="number"
+              id="documento-usuario"
+              name="documento-usuario"
+              class="form-control form-control-sm borde"
+            >
+          </div>
+          <div class="col-md-4">
+            <label>Nombre *</label>
+            <input 
+              type="text"
+              id="nombre-usuario"
+              name="nombre-usuario"
+              class="form-control form-control-sm borde"
+            >
+          </div>
+          <div class="col-md-4">
+            <label>Apellido *</label>
+            <input 
+              type="text"
+              id="apellido-usuario"
+              name="apellido-usuario"
+              class="form-control form-control-sm borde"
+            >
+          </div>
+      </div>
+
+        <div class="row mt-3">
+          <div class="col-md-4">
+            <label>Empresa *</label>
+            <input 
+              type="text"
+              id="empresa-usuario"
+              name="empresa-usuario"
+              class="form-control form-control-sm borde"
+            >
+          </div>
+          <div class="col-md-4">
+            <label>Telefono *</label>
+            <input 
+              type="text"
+              id="telefono-usuario"
+              name="telefono-usuario"
+              class="form-control form-control-sm borde"
+            >
+          </div>
+          <div class="col-md-4">
+            <label>Estado *</label>
+            <input 
+              type="text"
+              id="estado-usuario"
+              name="estado-usuario"
+              class="form-control form-control-sm borde"
+            >
+          </div>
+        </div>
+        <div class="row mt-3">
+          <div class="col-md-4">
+            <label>Rol  </label>
+            <input 
+              type="text"
+              id="rol-usuario"
+              name="rol-usuario"
+              class="form-control form-control-sm borde"
+            >
+          </div>
+          <div class="col-md-4">
+            <label>Fecha  </label>
+            <input 
+              type="date"
+              id="fecha-usuario"
+              name="fecha-usuario"
+              class="form-control form-control-sm borde"
+            >
+          </div>
+          <div class="col-md-4">
+            <label>Hora  </label>
+            <input 
+              type="time"
+              id="hora-usuario"
+              name="hora-usuario"
+              class="form-control form-control-sm borde"
+            >
+          </div>
+        </div>
+        <div class="row mt-3">
+          <div class="col-md-4">
+            <label>Usuario</label>
+            <input 
+              type="text"
+              id="usuario-usuario"
+              name="usuario-usuario"
+              class="form-control form-control-sm borde"
+            >
+          </div>
+          <div class="col-md-4">
+            <label>Contraseña *</label>
+            <input 
+              type="password"
+              id="contraseña-usuario"
+              name="contraseña-usuario"
+              class="form-control form-control-sm borde"
+            >
+          </div>
+          <div class="col-md-4">
+            <label>Repetir Contraseña *</label>
+            <input 
+              type="password"
+              id="repetir-usuario"
+              name="repetir-usuario"
+              class="form-control form-control-sm borde"
+            >
+          </div>
+        </div>
+        
+
+
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary">Guardar</button>
+        <button type="button" class="btn btn-danger btn-rounded" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary btn-rounded">Guardar</button>
       </div>
     </div>
   </div>
