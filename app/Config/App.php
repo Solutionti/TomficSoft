@@ -199,4 +199,5 @@ class App extends BaseConfig
      * @see http://www.w3.org/TR/CSP/
      */
     public bool $CSPEnabled = false;
+    public $sessionExpiration = 900; // 15 minutos
 }

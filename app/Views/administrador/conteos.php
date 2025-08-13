@@ -61,12 +61,21 @@
                 <div class="row mt-3">
                   <div class="col-md-7">
                     <label class="mb-1 small text-danger">Codigo Producto *</label>
-                    <input
-                      type="text"
-                      class="form-control form-control-sm borde text-uppercase"
-                      id="codigo_producto"
-                      autofocus
-                    >
+                    <div class="input-group">
+                      <input
+                        type="text"
+                        class="js-toggle-password form-control form-control-sm borde text-uppercase"
+                        id="codigo_producto"
+                        autofocus
+                      >
+                      <a
+                        class="input-group-append input-group-text"
+                        data-bs-toggle="modal"
+                        data-bs-target="#listaproductos"
+                      >
+                        <i id="changePassIcon" class="fas fa-store text-morado"></i>
+                      </a>
+                    </div>
                     <br>
                     <div class="row">
                       <div class="col-md-8">
@@ -273,6 +282,66 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-danger btn-rounded" data-bs-dismiss="modal">Cerrar</button>
         <button type="button" class="btn btn-primary btn-rounded" id="exportardatos">Exportar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- LISTADO DE PRODUCTOS -->
+<div class="modal fade" id="listaproductos" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="listaproductosLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header color-morado">
+        <h1 class="modal-title fs-5 text-white" id="listaproductosLabel">LISTADO DE PRODUCTOS</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-12">
+  <table class="table table-striped">
+                        <thead >
+                          <tr >
+                            <th class="color-morado text-white text-uppercase"> </th>
+                            <th class="color-morado text-white text-uppercase"> Codigo</th>
+                            <th class="color-morado text-white text-uppercase"> EAN8 </th>
+                            <th class="color-morado text-white text-uppercase"> Nombre </th>
+                            <th class="color-morado text-white text-uppercase"> proveedor </th>
+                            <th class="color-morado text-white text-uppercase"> Categoria </th>
+                            <th class="color-morado text-white text-uppercase"> subCategoria </th>
+                            <th class="color-morado text-white text-uppercase"> estado </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td> </td>
+                            <td> 01</td>
+                            <td> 01</td>
+                            <td>
+                              <div class="row">
+                               <div class="d-flex px-2 py-1">
+                                 <div>
+                                    <img src="https://themewagon.github.io/plus-admin/assets/images/faces-clipart/pic-1.png" class="avatar avatar-sm me-3">
+                                 </div>
+                                 <div class="d-flex flex-column justify-content-center">
+                                    <h6 class="mb-0 text-xs">AGUA CRISTAL POSTOBON</h6>
+                                    <p class="text-xs text-dark mb-0">7770255400011</p>
+                                 </div>
+                              </div>
+                              </div>
+                            </td>
+                            <td>GO Future</td>
+                            <td>GO Future</td>
+                            <td>GO Future</td>
+                            <td><label class="badge badge-success">Activo</label></td>
+                          </tr>
+                        </tbody>
+                      </table>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger btn-rounded" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary btn-rounded" >Aceptar</button>
       </div>
     </div>
   </div>
