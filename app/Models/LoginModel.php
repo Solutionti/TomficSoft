@@ -26,6 +26,7 @@ class LoginModel extends Model
               $data = $value;
             }
           }
+          
           if($contador == 1) {
             return $data;
           }

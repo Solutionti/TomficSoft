@@ -42,6 +42,9 @@ function iniciarSesion() {
      else {
          window.location.href = baseurl + '/inicio';
      } 
+    },
+    error: function(error, exp, cost) {
+      alert("no se pudo conectar a internet");
     }
   });
 }

@@ -35,6 +35,7 @@ function crearUsuarios() {
     hora = $("hora_usuario").val(),
     usuario = $("usuario_usuario").val(),
     contraseña = $("password_usuario").val(),
-    repetirContraseña = $("repetir_password_usuario").val();  
+    repetirContraseña = $("repetir_password_usuario").val(); 
+    
 }
 
