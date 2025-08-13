@@ -111,7 +111,6 @@
   <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/countdown@2.6.0/countdown.min.js"></script>
   <script>
     var baseurl = '<?= base_url() ?>';
   </script>

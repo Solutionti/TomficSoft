@@ -4,16 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Administracion - Usuarios</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      crossorigin="anonymous"
-    >
-    <link rel="stylesheet" href="<?= base_url('css/estilo.css') ?>">
-    <link rel="stylesheet" href="<?= base_url('css/material.css') ?>">
-    <link rel="stylesheet" href="<?= base_url('fontawesome/css/fontawesome.min.css') ?>">
-    <link rel="stylesheet" href="<?= base_url('fontawesome/css/brands.css') ?>">
-    <link rel="stylesheet" href="<?= base_url('fontawesome/css/solid.css') ?>">
+    <?php require_once("componentes/head.php")?>
 </head>
 <body>
   <div class="container-scroller">
@@ -100,18 +91,13 @@
                       </table>  
                 </div>
             </div>
-
         </div>
     </div>
           </div>
         </div>
     </div>
-    <footer class="footer">
-      <div class="d-sm-flex justify-content-center justify-content-sm-between">
-        <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2025 <a href="https://www.bootstrapdash.com/" target="_blank">GOFuture</a>. Todos los derechos reservados.
-        <!-- <span class="float-none float-sm-end d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="mdi mdi-heart text-danger"></i></span> -->
-      </div>
-    </footer>
+    <!--  -->
+    <?php require_once("componentes/footer.php")?>
 </div>
 
 <!-- MODAL PARA CREAR EL FORMULARIO -->
@@ -125,29 +111,29 @@
       <div class="modal-body">
         <div class="row mt-3">
           <div class="col-md-4">
-            <label>Documento *</label>
+            <label class="mb-1 small ">Documento *</label>
             <input 
               type="number"
-              id="documento-usuario"
-              name="documento-usuario"
+              id="documento_usuario"
+              name="documento_usuario"
               class="form-control form-control-sm borde"
             >
           </div>
           <div class="col-md-4">
-            <label>Nombre *</label>
+            <label class="mb-1 small ">Nombre *</label>
             <input 
               type="text"
-              id="nombre-usuario"
-              name="nombre-usuario"
+              id="nombre_usuario"
+              name="nombre_usuario"
               class="form-control form-control-sm borde"
             >
           </div>
           <div class="col-md-4">
-            <label>Apellido *</label>
+            <label class="mb-1 small ">Apellido *</label>
             <input 
               type="text"
-              id="apellido-usuario"
-              name="apellido-usuario"
+              id="apellido_usuario"
+              name="apellido_usuario"
               class="form-control form-control-sm borde"
             >
           </div>
@@ -155,89 +141,114 @@
 
         <div class="row mt-3">
           <div class="col-md-4">
-            <label>Empresa *</label>
+            <label class="mb-1 small ">Empresa *</label>
             <input 
               type="text"
-              id="empresa-usuario"
-              name="empresa-usuario"
+              id="empresa_usuario"
+              name="empresa_usuario"
               class="form-control form-control-sm borde"
             >
           </div>
           <div class="col-md-4">
-            <label>Telefono *</label>
+            <label class="mb-1 small ">Telefono *</label>
             <input 
               type="text"
-              id="telefono-usuario"
-              name="telefono-usuario"
+              id="telefono_usuario"
+              name="telefono_usuario"
               class="form-control form-control-sm borde"
             >
           </div>
           <div class="col-md-4">
-            <label>Estado *</label>
-            <input 
-              type="text"
-              id="estado-usuario"
-              name="estado-usuario"
-              class="form-control form-control-sm borde"
-            >
+            <label class="mb-1 small ">Estado *</label>
+              <select
+                class="form-control form-control-sm borde text-uppercase"
+                id="estado_usuario"
+              >
+                <option value="">Seleccione el estado del usuario</option>
+                <option value="">Activo</option>
+                <option value="">Inactivo</option>    
+               </select>
           </div>
         </div>
         <div class="row mt-3">
           <div class="col-md-4">
-            <label>Rol  </label>
-            <input 
-              type="text"
-              id="rol-usuario"
-              name="rol-usuario"
-              class="form-control form-control-sm borde"
-            >
+            <label class="mb-1 small ">Rol  </label>
+            <select
+                class="form-control form-control-sm borde text-uppercase"
+                id="rol_usuario"
+              >
+                <option value="">Seleccione el rol del usuario</option>
+                <option value="">Administrador</option>
+                <option value="">Auxiliar Capturador</option>    
+               </select>
           </div>
           <div class="col-md-4">
-            <label>Fecha  </label>
+            <label class="mb-1 small ">Fecha  </label>
             <input 
               type="date"
-              id="fecha-usuario"
-              name="fecha-usuario"
+              id="fecha_usuario"
+              name="fecha_usuario"
               class="form-control form-control-sm borde"
+              value="<?php echo date('Y-m-d') ?>"
             >
           </div>
           <div class="col-md-4">
-            <label>Hora  </label>
+            <label class="mb-1 small ">Hora  </label>
             <input 
               type="time"
-              id="hora-usuario"
-              name="hora-usuario"
+              id="hora_usuario"
+              name="hora_usuario"
               class="form-control form-control-sm borde"
+              value="<?= date('H:i') ?>"
             >
           </div>
         </div>
         <div class="row mt-3">
           <div class="col-md-4">
-            <label>Usuario</label>
+            <label class="mb-1 small ">Usuario</label>
             <input 
               type="text"
-              id="usuario-usuario"
-              name="usuario-usuario"
+              id="usuario_usuario"
+              name="usuario_usuario"
               class="form-control form-control-sm borde"
             >
           </div>
           <div class="col-md-4">
-            <label>Contraseña *</label>
-            <input 
-              type="password"
-              id="contraseña-usuario"
-              name="contraseña-usuario"
-              class="form-control form-control-sm borde"
-            >
+            <div class="d-flex justify-content-between align-items-center">
+                  <label class="form-label" for="signupModalFormLoginPassword">Contraseña</label>
+                </div>
+                <div class="input-group">
+                  <input
+                    type="password"
+                    class="js-toggle-password form-control form-control-sm"
+                    placeholder="Contraseña"
+                    id="password_usuario"
+                  >
+                  <a
+                    class="input-group-append input-group-text"
+                  >
+                    <i id="changePassIcon" class="fas fa-eye"></i>
+                  </a>
+                </div>
           </div>
+
           <div class="col-md-4">
-            <label>Repetir Contraseña *</label>
-            <input 
-              type="password"
-              id="repetir-usuario"
-              name="repetir-usuario"
-              class="form-control form-control-sm borde"
-            >
+             <div class="d-flex justify-content-between align-items-center">
+                  <label class="form-label" for="signupModalFormLoginPassword">Repetir contraseña</label>
+                </div>
+                <div class="input-group">
+                  <input
+                    type="password"
+                    class="js-toggle-password form-control form-control-sm"
+                    placeholder="Contraseña"
+                    id="repetir_password_usuario"
+                  >
+                  <a
+                    class="input-group-append input-group-text"
+                  >
+                    <i id="changePassIcon1" class="fas fa-eye"></i>
+                  </a>
+                </div>
           </div>
         </div>
         
@@ -252,6 +263,7 @@
   </div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.min.js" integrity="sha384-7qAoOXltbVP82dhxHAUje59V5r2YsVfBafyUDxEdApLPmcdhBPg1DKg1ERo0BZlK" crossorigin="anonymous"></script>
+<?php require_once("componentes/scripts.php")?>
+<script src="<?= base_url('js/usuarios.js') ?>"></script>
 </body>
 </html>

@@ -6,10 +6,9 @@ use CodeIgniter\Model;
 
 class LoginModel extends Model
 {
-    
 
     public function iniciarSesion($user, $password) {
-     
+      
       $query = $this->db->table('usuarios')
              ->select('*')
              ->where('usuario', $user)
@@ -27,7 +26,6 @@ class LoginModel extends Model
               $data = $value;
             }
           }
-        
           if($contador == 1) {
             return $data;
           }
