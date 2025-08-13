@@ -53,50 +53,14 @@
                     >
                   </div>
                   <div class="col-md-6">
-                    <label class="mb-1 small">Observaciòn</label>
+                    <label class="mb-1 small">Observaciòn *</label>
                     <textarea rows="1" class="form-control form-control-sm borde text-uppercase" id="observacion"></textarea>
                   </div>
                 </div>
                 <!--  -->
                 <div class="row mt-3">
-                  <div class="col-md-3">
-                    <label class="mb-1 small">Ubicaciòn</label>
-                    <input
-                      type="number"
-                      class="form-control form-control-sm borde text-uppercase"
-                      id="ubicacion"
-                    >
-                  </div>
-                   <div class="col-md-3">
-                    <label class="mb-1 small">Localizacion</label>
-                    <input
-                      type="number"
-                      class="form-control form-control-sm borde text-uppercase"
-                      id="localizacion"
-                    >
-                  </div>
-                   <div class="col-md-3">
-                    <label class="mb-1 small">Nº Localizacion</label>
-                    <input
-                      type="number"
-                      class="form-control form-control-sm borde text-uppercase"
-                      id="numero_localizacion"
-                    >
-                  </div>
-                  <div class="col-md-3">
-                    <label class="mb-1 small">Conteo</label>
-                    <input
-                      type="number"
-                      class="form-control form-control-sm borde text-uppercase"
-                      id="conteo"
-                      value="1"
-                      readonly
-                    >
-                  </div>
-                </div>
-                <div class="row mt-3">
                   <div class="col-md-7">
-                    <label class="mb-1 small text-danger">Codigo Producto (*)</label>
+                    <label class="mb-1 small text-danger">Codigo Producto *</label>
                     <input
                       type="text"
                       class="form-control form-control-sm borde text-uppercase"
@@ -162,14 +126,51 @@
                 <!--  -->
                 <div class="row mt-3">
                   <div class="col-md-3">
-                    <label class="mb-1 small">Unidades</label>
+                    <label class="mb-1 small">Ubicaciòn *</label>
+                    <input
+                      type="number"
+                      class="form-control form-control-sm borde text-uppercase"
+                      id="ubicacion"
+                    >
+                  </div>
+                   <div class="col-md-3">
+                    <label class="mb-1 small">Localizacion *</label>
+                    <input
+                      type="number"
+                      class="form-control form-control-sm borde text-uppercase"
+                      id="localizacion"
+                    >
+                  </div>
+                   <div class="col-md-3">
+                    <label class="mb-1 small">Nº Localizacion *</label>
+                    <input
+                      type="number"
+                      class="form-control form-control-sm borde text-uppercase"
+                      id="numero_localizacion"
+                    >
+                  </div>
+                  <div class="col-md-3">
+                    <label class="mb-1 small">Conteo</label>
+                    <input
+                      type="number"
+                      class="form-control form-control-sm borde text-uppercase"
+                      id="conteo"
+                      value="1"
+                      readonly
+                    >
+                  </div>
+                </div>
+                <!--  -->
+                <div class="row mt-3">
+                  <div class="col-md-3">
+                    <label class="mb-1 small">Unidades *</label>
                     <input
                       type="number"
                       class="form-control form-control-sm borde text-uppercase"
                       id="unidades"
                     >
                     <br>
-                    <label class="mb-1 small">Embalaje</label>
+                    <label class="mb-1 small">Embalaje *</label>
                     <input
                       type="number"
                       class="form-control form-control-sm borde text-uppercase"
@@ -179,7 +180,7 @@
                   </div>
                   <!--  -->
                   <div class="col-md-3">
-                    <label class="mb-1 small ">Cajas</label>
+                    <label class="mb-1 small ">Cajas *</label>
                     <input
                       type="number"
                       class="form-control form-control-sm borde text-uppercase"
@@ -196,7 +197,7 @@
                   </div>
                   <!--  -->
                   <div class="col-md-6">
-                    <label class="mb-1 small ">Estado del producto</label>
+                    <label class="mb-1 small ">Estado del producto *</label>
                     <select
                       class="form-control form-control-sm borde text-uppercase"
                       id="estado_producto"

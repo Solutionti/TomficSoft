@@ -220,7 +220,7 @@
                 <div class="input-group">
                   <input
                     type="password"
-                    class="js-toggle-password form-control form-control-sm"
+                    class="js-toggle-password form-control form-control-sm borde"
                     placeholder="Contraseña"
                     id="password_usuario"
                   >
@@ -231,24 +231,58 @@
                   </a>
                 </div>
           </div>
-
           <div class="col-md-4">
              <div class="d-flex justify-content-between align-items-center">
-                  <label class="form-label" for="signupModalFormLoginPassword">Repetir contraseña</label>
+                  <label class="form-label" for="signupModalFormLoginPassword">Repetir Contraseña</label>
                 </div>
                 <div class="input-group">
                   <input
                     type="password"
-                    class="js-toggle-password form-control form-control-sm"
+                    class="js-toggle-password form-control form-control-sm borde"
                     placeholder="Contraseña"
                     id="repetir_password_usuario"
                   >
                 </div>
           </div>
         </div>
-        
+        <div class="row mt-3">
+          <h5>PERMISOS DE USUARIO</h5>
 
-
+          <div class="col-md-12 mt-2">
+            <table class="table table-striped">
+                        <thead >
+                          <tr >
+                            <th class="color-morado text-white text-uppercase"> </th>
+                            <th class="color-morado text-white text-uppercase"> Codigo</th>
+                            <th class="color-morado text-white text-uppercase"> Nombre </th>
+                            <th class="color-morado text-white text-uppercase"> link </th>
+                            <th class="color-morado text-white text-uppercase"> Estado </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td> </td>
+                            <td> 01</td>
+                            <td>
+                              <div class="row">
+                               <div class="d-flex px-2 py-1">
+                                 <div>
+                                    <img src="https://themewagon.github.io/plus-admin/assets/images/faces-clipart/pic-1.png" class="avatar avatar-sm me-3">
+                                 </div>
+                                 <div class="d-flex flex-column justify-content-center">
+                                    <h6 class="mb-0 text-xs">Modulo de conteos</h6>
+                                    <p class="text-xs text-dark mb-0">Permiso de usuario</p>
+                                 </div>
+                              </div>
+                              </div>
+                            </td>
+                            <td>GO Future</td>
+                            <td><label class="badge badge-success">Activo</label></td>
+                          </tr>
+                        </tbody>
+                      </table>
+          </div>
+        </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger btn-rounded" data-bs-dismiss="modal">Cerrar</button>

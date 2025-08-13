@@ -31,8 +31,12 @@ $("#codigo_producto").on("blur", function() {
     });
 });
 
-$("#unidades").on("keyup", function() {
-  alert();
+$("#cajas").on("keyup", function() {
+  var unidades = $("#unidades").val(),
+      cajas = $("#cajas").val(),
+      total = parseInt(unidades) * parseInt(cajas);
+
+  $("#total").val(total);
 });
 
 
