@@ -31,36 +31,46 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" href="<?= base_url('inicio') ?>">
-              <i class="mdi mdi-compass-outline menu-icon"></i>
-              <span class="menu-title">Inicio</span>
+              <span class="menu-title"> <i class="fas fa-home text-morado"></i> Inicio</span>
             </a>
           </li>
           <li class="pt-2 pb-1">
             <span class="nav-item-head">inventarios</span>
           </li>
-          <!-- <li class="nav-item pt-1">
-            <a class="nav-link" href="<?= base_url('conteos') ?>">
-              <i class="mdi mdi-file-document-box menu-icon"></i>
-              <span class="menu-title">Asignación de inventario</span>
+          <li class="nav-item pt-1">
+            <a class="nav-link" href="#">
+              <span class="menu-title"><i class="fas fa-chart-line text-morado"></i> Panel de inventarios</span>
             </a>
-          </li> -->
+          </li>
+          <li class="nav-item pt-1">
+            <a class="nav-link" href="#">
+              
+              <span class="menu-title"><i class="fas fa-truck-moving text-morado"></i>  Asignación de inventario</span>
+            </a>
+          </li>
           <li class="nav-item pt-1">
             <a class="nav-link" href="<?= base_url('conteos') ?>">
-              <i class="mdi mdi-file-document-box menu-icon"></i>
-              <span class="menu-title">Conteos</span>
+              
+              <span class="menu-title"><i class="fas fa-barcode text-morado"></i> Captura de conteos</span>
             </a>
           </li>
            <li class="nav-item pt-1">
             <a class="nav-link" href="<?= base_url('usuarios') ?>">
-              <i class="mdi mdi-file-document-box menu-icon"></i>
-              <span class="menu-title">Usuarios</span>
+              
+              <span class="menu-title"> <i class="fas fa-users text-morado"></i> Usuarios</span>
             </a>
           </li>
-          <!-- <li class="nav-item pt-1">
-            <a class="nav-link" href="<?= base_url('conteos') ?>">
-              <i class="mdi mdi-file-document-box menu-icon"></i>
-              <span class="menu-title">Reportes</span>
+          <li class="nav-item pt-1">
+            <a class="nav-link" href="#">
+              
+              <span class="menu-title"> <i class="fas fa-user-tie text-morado"></i> Procesos</span>
             </a>
-          </li> -->
+          </li>
+          <li class="nav-item pt-1">
+            <a class="nav-link" href="#">
+              
+              <span class="menu-title"><i class="fas fa-chart-pie text-morado"></i> Reportes</span>
+            </a>
+          </li>
         </ul>
       </nav>

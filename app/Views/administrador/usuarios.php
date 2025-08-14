@@ -142,12 +142,15 @@
         <div class="row mt-3">
           <div class="col-md-4">
             <label class="mb-1 small ">Empresa *</label>
-            <input 
-              type="text"
-              id="empresa_usuario"
-              name="empresa_usuario"
-              class="form-control form-control-sm borde"
-            >
+            <select
+                class="form-control form-control-sm borde text-uppercase"
+                id="empresa_usuario"
+              >
+                <option value="">Seleccione la empresa</option>
+                <?php foreach($empresas->getResult() as $empresa) {  ?>
+                  <option value="<?= $empresa->nit ?>"><?= $empresa->nombre; ?></option>
+                <?php } ?>
+               </select>
           </div>
           <div class="col-md-4">
             <label class="mb-1 small ">Telefono *</label>
@@ -165,8 +168,8 @@
                 id="estado_usuario"
               >
                 <option value="">Seleccione el estado del usuario</option>
-                <option value="">Activo</option>
-                <option value="">Inactivo</option>    
+                <option value="Activo">Activo</option>
+                <option value="Inactivo">Inactivo</option>    
                </select>
           </div>
         </div>
@@ -178,8 +181,8 @@
                 id="rol_usuario"
               >
                 <option value="">Seleccione el rol del usuario</option>
-                <option value="">Administrador</option>
-                <option value="">Auxiliar Capturador</option>    
+                <option value="Administrador">Administrador</option>
+                <option value="Capturador">Auxiliar Capturador</option>    
                </select>
           </div>
           <div class="col-md-4">
@@ -220,7 +223,7 @@
                 <div class="input-group">
                   <input
                     type="password"
-                    class="js-toggle-password form-control form-control-sm"
+                    class="js-toggle-password form-control form-control-sm borde"
                     placeholder="Contraseña"
                     id="password_usuario"
                   >
@@ -231,28 +234,82 @@
                   </a>
                 </div>
           </div>
-
           <div class="col-md-4">
              <div class="d-flex justify-content-between align-items-center">
-                  <label class="form-label" for="signupModalFormLoginPassword">Repetir contraseña</label>
+                  <label class="form-label" for="signupModalFormLoginPassword">Repetir Contraseña</label>
                 </div>
                 <div class="input-group">
                   <input
                     type="password"
-                    class="js-toggle-password form-control form-control-sm"
+                    class="js-toggle-password form-control form-control-sm borde"
                     placeholder="Contraseña"
                     id="repetir_password_usuario"
                   >
                 </div>
           </div>
         </div>
-        
+        <div class="row mt-3">
+          <h5>PERMISOS DE USUARIO</h5>
 
-
+          <div class="col-md-12 mt-2">
+            <table class="table table-striped">
+              <thead >
+                <tr>
+                  <th class="color-morado text-white text-uppercase">
+                    <div class="form-check">
+                      <input
+                        class="form-check-input mx-3 borde"
+                        type="checkbox"
+                        value=""
+                        id="checkDefault"
+                      >
+                    </div>
+                  </th>
+                  <th class="color-morado text-white text-uppercase"> Codigo</th>
+                  <th class="color-morado text-white text-uppercase"> Nombre </th>
+                  <th class="color-morado text-white text-uppercase"> link </th>
+                  <th class="color-morado text-white text-uppercase"> Estado </th>
+                </tr>
+              </thead>
+              <tbody>
+                <?php foreach($permisos->getResult() as $permiso){ ?>
+                <tr>
+                  <td>
+                    <div class="form-check">
+                      <input
+                        class="form-check-input mx-3 borde"
+                        type="checkbox"
+                        value=""
+                        id="checkDefault"
+                      >
+                    </div>
+                  </td>
+                  <td><?= $permiso->codigo_permiso;  ?></td>
+                  <td>
+                    <div class="row">
+                      <div class="d-flex px-2 py-1">
+                        <div>
+                          <img src="https://themewagon.github.io/plus-admin/assets/images/faces-clipart/pic-1.png" class="avatar avatar-sm me-3">
+                        </div>
+                        <div class="d-flex flex-column justify-content-center">
+                          <h6 class="mb-0 text-xs">Modulo de <?= $permiso->nombre;  ?></h6>
+                          <p class="text-xs text-dark mb-0">Permiso de usuario</p>
+                        </div>
+                      </div>
+                    </div>
+                   </td>
+                   <td><?= $permiso->url;  ?></td>
+                   <td><label class="badge badge-success"><?= $permiso->estado;  ?></label></td>
+                </tr>
+              <?php }?>
+             </tbody>
+            </table>
+          </div>
+        </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger btn-rounded" data-bs-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary btn-rounded">Guardar</button>
+        <button type="button" class="btn btn-primary btn-rounded"  onclick=" crearUsuarios()">Guardar</button>
       </div>
     </div>
   </div>
