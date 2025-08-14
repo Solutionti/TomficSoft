@@ -260,8 +260,7 @@
                       <input
                         class="form-check-input mx-3 borde"
                         type="checkbox"
-                        value=""
-                        id="checkDefault"
+                        id="selectAll"
                       >
                     </div>
                   </th>
@@ -277,10 +276,9 @@
                   <td>
                     <div class="form-check">
                       <input
-                        class="form-check-input mx-3 borde"
+                        class="form-check-input mx-3 borde fila"
                         type="checkbox"
-                        value=""
-                        id="checkDefault"
+                        value="<?= $permiso->codigo_permiso; ?>"
                       >
                     </div>
                   </td>
@@ -308,7 +306,7 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-danger btn-rounded" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-danger btn-rounded" id="btnObtener" data-bs-dismiss="modal">Cerrar</button>
         <button type="button" class="btn btn-primary btn-rounded"  onclick=" crearUsuarios()">Guardar</button>
       </div>
     </div>

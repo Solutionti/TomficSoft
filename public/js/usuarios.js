@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
   var passwordField = document.getElementById("password_usuario");
   var passwordField2 = document.getElementById("repetir_password_usuario");
   var icon = document.getElementById("changePassIcon");
+  var permisosarray = [];
 
   if (togglePassword) {
       togglePassword.addEventListener("click", function (event) {
@@ -21,10 +22,25 @@ document.addEventListener("DOMContentLoaded", function () {
       });
   }
 });
+// Seleccionar todo
+document.getElementById('selectAll').addEventListener('change', function() {
+    let checkboxes = document.querySelectorAll('.fila');
+    checkboxes.forEach(cb => cb.checked = this.checked);
+});
 
-//
+// Obtener los seleccionados en un array
+document.getElementById('btnObtener').addEventListener('click', function() {
+    let seleccionados = [];
+    let checkboxes = document.querySelectorAll('.fila:checked');
+    
+    checkboxes.forEach(cb => {
+        seleccionados.push(cb.value);
+    });
+    
+    console.log(seleccionados);
+});
+
 function crearUsuarios() {
-  
  //definir las variables que vienen del input 
  var documento = $("#documento_usuario").val(),
     nombre = $("#nombre_usuario").val(),
@@ -48,6 +64,16 @@ function crearUsuarios() {
 //   }
   //definir una variable url para el ajax
   var url = baseurl + '/crearusuario';
+
+  //permisos de los usuarios
+  let seleccionados = [];
+  let checkboxes = document.querySelectorAll('.fila:checked');
+    
+  checkboxes.forEach(cb => {
+    seleccionados.push(cb.value);
+  });
+    
+  console.log(seleccionados); 
 
   //hacer el llamado de nuestra funcion ajax que es la encargada de llamar el controllador
   $.ajax({
