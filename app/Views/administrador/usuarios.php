@@ -7,6 +7,7 @@
     <?php require_once("componentes/head.php")?>
 </head>
 <body>
+ 
   <div class="container-scroller">
       <?php require_once("componentes/navbar.php")?>
       <div class="container-fluid page-body-wrapper ">
@@ -250,37 +251,57 @@
 
           <div class="col-md-12 mt-2">
             <table class="table table-striped">
-                        <thead >
-                          <tr >
-                            <th class="color-morado text-white text-uppercase"> </th>
-                            <th class="color-morado text-white text-uppercase"> Codigo</th>
-                            <th class="color-morado text-white text-uppercase"> Nombre </th>
-                            <th class="color-morado text-white text-uppercase"> link </th>
-                            <th class="color-morado text-white text-uppercase"> Estado </th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td> </td>
-                            <td> 01</td>
-                            <td>
-                              <div class="row">
-                               <div class="d-flex px-2 py-1">
-                                 <div>
-                                    <img src="https://themewagon.github.io/plus-admin/assets/images/faces-clipart/pic-1.png" class="avatar avatar-sm me-3">
-                                 </div>
-                                 <div class="d-flex flex-column justify-content-center">
-                                    <h6 class="mb-0 text-xs">Modulo de conteos</h6>
-                                    <p class="text-xs text-dark mb-0">Permiso de usuario</p>
-                                 </div>
-                              </div>
-                              </div>
-                            </td>
-                            <td>GO Future</td>
-                            <td><label class="badge badge-success">Activo</label></td>
-                          </tr>
-                        </tbody>
-                      </table>
+              <thead >
+                <tr>
+                  <th class="color-morado text-white text-uppercase">
+                    <div class="form-check">
+                      <input
+                        class="form-check-input mx-3 borde"
+                        type="checkbox"
+                        value=""
+                        id="checkDefault"
+                      >
+                    </div>
+                  </th>
+                  <th class="color-morado text-white text-uppercase"> Codigo</th>
+                  <th class="color-morado text-white text-uppercase"> Nombre </th>
+                  <th class="color-morado text-white text-uppercase"> link </th>
+                  <th class="color-morado text-white text-uppercase"> Estado </th>
+                </tr>
+              </thead>
+              <tbody>
+                <?php foreach($permisos->getResult() as $permiso){ ?>
+                <tr>
+                  <td>
+                    <div class="form-check">
+                      <input
+                        class="form-check-input mx-3 borde"
+                        type="checkbox"
+                        value=""
+                        id="checkDefault"
+                      >
+                    </div>
+                  </td>
+                  <td><?= $permiso->codigo_permiso;  ?></td>
+                  <td>
+                    <div class="row">
+                      <div class="d-flex px-2 py-1">
+                        <div>
+                          <img src="https://themewagon.github.io/plus-admin/assets/images/faces-clipart/pic-1.png" class="avatar avatar-sm me-3">
+                        </div>
+                        <div class="d-flex flex-column justify-content-center">
+                          <h6 class="mb-0 text-xs">Modulo de <?= $permiso->nombre;  ?></h6>
+                          <p class="text-xs text-dark mb-0">Permiso de usuario</p>
+                        </div>
+                      </div>
+                    </div>
+                   </td>
+                   <td><?= $permiso->url;  ?></td>
+                   <td><label class="badge badge-success"><?= $permiso->estado;  ?></label></td>
+                </tr>
+              <?php }?>
+             </tbody>
+            </table>
           </div>
         </div>
       </div>
