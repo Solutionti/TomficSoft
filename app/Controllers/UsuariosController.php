@@ -16,6 +16,10 @@ class UsuariosController extends BaseController {
     }
   }
 
-  
+  public function crearUsuario() {
+
+    $correo = $this->request->getPost('usuario');
+
+  }
 
 }
