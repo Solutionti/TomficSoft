@@ -180,7 +180,24 @@ function modificarConteo() {
 }
 
 function finalizarConteo() {
+ $("body").overhang({
+  type: "confirm",
+  primary: "#9a3de0",
+  accent: "#c5b8da",
+  yesColor: "#0033c4",
+  yesMessage: "Sí",
+  noMessage: "No",
+  message: "¿Desea terminar el proceso de conteo?",
+  overlay: true,
+  callback: function (value) {
+    if (value) {
 
+    }
+    else {
+
+    }
+  }
+ });        
 }
 
 
