@@ -13,5 +13,13 @@ class ListasModel extends Model {
 
       return $query;
     }
+
+    public function getUsuarios(){
+      $query = $this->db->table('usuarios')
+             ->select('*')
+             ->get();
+
+      return $query;
+    }
     
 }
