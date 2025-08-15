@@ -48,6 +48,7 @@ function crearUsuarios() {
     empresa = $("#empresa_usuario").val(),
     telefono = $("#telefono_usuario").val(),
     estado = $("#estado_usuario").val(),
+    correo = $("#correo").val(),
     rol = $("#rol_usuario").val(),
     fecha = $("#fecha_usuario").val(),
     hora = $("#hora_usuario").val(),
@@ -73,8 +74,6 @@ function crearUsuarios() {
     seleccionados.push(cb.value);
   });
     
-  console.log(seleccionados); 
-
   //hacer el llamado de nuestra funcion ajax que es la encargada de llamar el controllador
   $.ajax({
     url: url,
@@ -86,19 +85,22 @@ function crearUsuarios() {
       empresa: empresa,
       telefono: telefono,
       estado: estado,
+      correo: correo,
       rol: rol,
       fecha: fecha,
       hora: hora,
       usuario: usuario,
       contraseña: contraseña,
       repetirContraseña: repetirContraseña,
+      permisos: seleccionados
     },
     success: function(response) {
        $("body").overhang({
           type: "success",
           message: "El usuario se ha creado correctamente en la base de datos. " 
         });
-      location.reload();
+
+        setTimeout(reloadPage, 3000);
     },
     error: function(error, ext) {
       $("body").overhang({
@@ -110,3 +112,6 @@ function crearUsuarios() {
     
 }
 
+function reloadPage() {
+  location.reload();
+}

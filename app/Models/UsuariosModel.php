@@ -15,14 +15,32 @@ class UsuariosModel extends Model {
       return $query;
     }
 
+    public function getPermisoAsignar($codigo) {
+      $query = $this->db->table('permisos')
+             ->select('*')
+             ->where('codigo_permiso', $codigo)
+             ->get();
+
+      return $query->getRow();
+    }
+
+    public function crearPermisosUsuario($data) {
+      $permisos = [
+        "nombre" => $data["nombre"],
+        "url" => $data["url"],
+        "usuario" => $data["usuario"],
+        "estado" => $data["estado"],
+      ];
+      $this->db->table('permiso_usuarios')
+               ->insert($permisos);
+    }
+
     public function CrearUsuarios($data) {
-      
-      // 
       //crear el array de los datos que voy a insertar
       $usuarios = [
         'usuario' => $data["usuario"],
         'password' => password_hash($data["password"], PASSWORD_DEFAULT),
-        'email' => 'jerson_galvez@hotmail.com',
+        'email' => $data["correo"],
         'nombre' => $data["nombre"],
         'apellido' => $data["apellido"],
         'documento' => $data["documento"],
@@ -34,9 +52,8 @@ class UsuariosModel extends Model {
         'estado' => $data["estado"],
         'usuario_creacion' => 'jerson',
       ];
-
       //llamar la funcion de codeigniter que me inserta en la base de datos
         $this->db->table('usuarios')
-        ->insert($usuarios);
+                 ->insert($usuarios);
     }
 }

@@ -174,6 +174,17 @@
           </div>
         </div>
         <div class="row mt-3">
+          <div class="col-md-12">
+            <label class="mb-1 small ">Correo Electronico</label>
+              <input 
+                type="email"
+                id="correo"
+                name="correo"
+                class="form-control form-control-sm borde"
+              >
+          </div>
+        </div>
+        <div class="row mt-3">
           <div class="col-md-4">
             <label class="mb-1 small ">Rol  </label>
             <select
