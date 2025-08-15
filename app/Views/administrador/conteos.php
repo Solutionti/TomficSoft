@@ -148,7 +148,7 @@
                   <div class="col-md-3">
                     <label class="mb-1 small">Ubicaciòn *</label>
                     <input
-                      type="number"
+                      type="text"
                       class="form-control form-control-sm borde text-uppercase"
                       id="ubicacion"
                     >
@@ -156,7 +156,7 @@
                    <div class="col-md-3">
                     <label class="mb-1 small">Localizacion *</label>
                     <input
-                      type="number"
+                      type="text"
                       class="form-control form-control-sm borde text-uppercase"
                       id="localizacion"
                     >
@@ -164,7 +164,7 @@
                    <div class="col-md-3">
                     <label class="mb-1 small">Nº Localizacion *</label>
                     <input
-                      type="number"
+                      type="text"
                       class="form-control form-control-sm borde text-uppercase"
                       id="numero_localizacion"
                     >
@@ -223,16 +223,16 @@
                       id="estado_producto"
                     >
                       <option value="">Seleccione el estado del producto</option>
-                      <option value="">Bueno</option>
-                      <option value="">Averiado</option>
-                      <option value="">Vencido</option>
+                      <option value="Bueno">Bueno</option>
+                      <option value="Averiado">Averiado</option>
+                      <option value="Vencido">Vencido</option>
                     </select>
                     <br>
                     <div class="row">
                       <div class="col-md-8">
-                        <button class="btn btn-primary mb-2 mb-md-0 me-3 mt-4 btn-rounded">Guardar</button>
-                        <button class="btn btn-success mb-2 mb-md-0 me-3 mt-4 btn-rounded">Modificar</button>
-                        <button class="btn btn-danger mb-2 mb-md-0 me-3 mt-4 btn-rounded">Salir</button>
+                        <button class="btn btn-primary mb-2 mb-md-0 me-3 mt-4 btn-rounded" onclick="GuardarConteo()">Guardar</button>
+                        <!-- <button class="btn btn-success mb-2 mb-md-0 me-3 mt-4 btn-rounded">Modificar</button> -->
+                        <button class="btn btn-danger mb-2 mb-md-0 me-3 mt-4 btn-rounded">Limpiar</button>
                       </div>
                       <div class="col-md-2">
                         <label class="mb-1 small"><strong>Saldo</strong> </label>

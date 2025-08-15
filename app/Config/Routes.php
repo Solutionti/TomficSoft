@@ -19,6 +19,7 @@ $routes->get('/inicio', 'InicioController::index');
 $routes->get('/conteos', 'ConteosController::index');
 $routes->get('/buscarproducto/(:num)', 'ConteosController::buscarProducto/$1');
 $routes->post('/cargarexcelproductos', 'ConteosController::cargarExcelProducto');
+$routes->post('/guardarconteo', 'ConteosController::guardarConteo');
 
 // USUARIOS
 $routes->get('/usuarios', 'UsuariosController::index');

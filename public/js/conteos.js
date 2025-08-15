@@ -172,7 +172,50 @@ function VincularProductoModal(codigo) {
 }
 
 function GuardarConteo() {
-  
+  var url = baseurl + 'guardarconteo';
+  var codigo_producto = $("#codigo_producto").val(),
+      nombre_producto = $("#nombre_producto").val(),
+      referencia = $("#referencia").val(),
+      saldo = $("#saldo").val(),
+      estado_producto = $("#estado_producto").val(),
+      observacion = $("#observacion").val(),
+      ubicacion = $("#ubicacion").val(),
+      localizacion = $("#localizacion").val(),
+      numero_localizacion = $("#numero_localizacion").val(),
+      total = $("#total").val(),
+      saldo = $("#saldo").val(),
+      diferencia = $("#diferencia").val();
+
+
+  $.ajax({
+    url: url,
+    method: 'POST',
+    data: {
+      codigo_producto: codigo_producto,
+      nombre_producto: nombre_producto,
+      referencia: referencia,
+      saldo: saldo,
+      estado_producto: estado_producto,
+      observacion: observacion,
+      ubicacion: ubicacion,
+      localizacion: localizacion,
+      numero_localizacion: numero_localizacion,
+      total: total,
+      diferencia: diferencia
+    },
+    success: function(response) {
+      $("body").overhang({
+        type: "success",
+        message: "El conteo se ha registrado en la base de datos correctamente." 
+      });
+    },
+    error: function() {
+      $("body").overhang({
+        type: "error",
+        message: "Alerta ! Tenemos un problema al conectar con la base de datos verifica tu red.",
+      });
+    }
+  });
 }
 
 function modificarConteo() {

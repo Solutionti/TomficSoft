@@ -45,4 +45,25 @@ class ConteosModel extends Model {
     $this->db->table('productos')
     ->insert($productos);
   }
+
+  public function guardarConteo($datos){
+    $conteo = [
+      "codigo_producto" => $datos["codigo_producto"],
+      "nombre" => $datos["nombre_producto"],
+      "referencia" => $datos["referencia"],
+      "estado" => $datos["estado_producto"],
+      "observacion" => $datos["observacion"],
+      "ubicacion" => $datos["ubicacion"],
+      "localizacion" => $datos["localizacion"],
+      "num_localizacion" => $datos["numero_localizacion"],
+      "conteo1" => $datos["total"],
+      "usuario" => session()->get('documento'),
+      "fecha" => date("Y-m-d"),
+      "hora" => date("H:i:s"),
+      "saldo" => $datos["saldo"],
+      "diferencia" => $datos["diferencia"],
+    ];
+    $this->db->table('captura_conteos')
+    ->insert($conteo);
+  }
 }
