@@ -8,9 +8,9 @@ class ConteosModel extends Model {
 
   public function getProductos() {
     $query = $this->db->table('productos')
-           ->select('*')
-           ->where('estado', 'Activo')
-           ->get();
+                      ->select('*')
+                      ->where('estado', 'Activo')
+                      ->get();
 
     return $query;
   }
@@ -18,10 +18,10 @@ class ConteosModel extends Model {
   public function buscarProducto($codigo){
     
     $query = $this->db->table('productos')
-           ->select('*')
-           ->where('codigo_barras', $codigo)
-           ->orWhere('codigo_interno', $codigo)
-           ->get();
+                      ->select('*')
+                      ->where('codigo_barras', $codigo)
+                      ->orWhere('codigo_interno', $codigo)
+                      ->get();
 
     return $query->getResult();
 
@@ -43,7 +43,16 @@ class ConteosModel extends Model {
       "costo" => $datos['costo'],
     ];
     $this->db->table('productos')
-    ->insert($productos);
+             ->insert($productos);
+  }
+
+  public function validarExistenciaProductoConteo($codigo) {
+    $query = $this->db->table('captura_conteos')
+                      ->select('*')
+                      ->where('codigo_producto', $codigo)
+                      ->get();
+
+    return $query->getResult();
   }
 
   public function guardarConteo($datos){
@@ -64,6 +73,24 @@ class ConteosModel extends Model {
       "diferencia" => $datos["diferencia"],
     ];
     $this->db->table('captura_conteos')
-    ->insert($conteo);
+             ->insert($conteo);
+  }
+
+  public function actualizarConteo($datos) {
+    $conteo2 = [
+      "referencia" => $datos["referencia"],
+      "estado" => $datos["estado_producto"],
+      "observacion" => $datos["observacion"],
+      "ubicacion" => $datos["ubicacion"],
+      "localizacion" => $datos["localizacion"],
+      "num_localizacion" => $datos["numero_localizacion"],
+      "conteo1" => $datos["total"],
+      "saldo" => $datos["saldo"],
+      "diferencia" => $datos["diferencia"],
+    ];
+    
+    $this->db->table('captura_conteos')
+             ->where('codigo_producto', $datos['codigo_producto'])
+             ->update($conteo2);
   }
 }

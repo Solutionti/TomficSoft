@@ -231,8 +231,8 @@
                     <div class="row">
                       <div class="col-md-8">
                         <button class="btn btn-primary mb-2 mb-md-0 me-3 mt-4 btn-rounded" onclick="GuardarConteo()">Guardar</button>
-                        <!-- <button class="btn btn-success mb-2 mb-md-0 me-3 mt-4 btn-rounded">Modificar</button> -->
-                        <button class="btn btn-danger mb-2 mb-md-0 me-3 mt-4 btn-rounded">Limpiar</button>
+                        <button class="btn btn-success mb-2 mb-md-0 me-3 mt-4 btn-rounded" onclick="modificarConteo()">Modificar</button>
+                        <button class="btn btn-danger mb-2 mb-md-0 me-3 mt-4 btn-rounded" onclick="limpiar()">Limpiar</button>
                       </div>
                       <div class="col-md-2">
                         <label class="mb-1 small"><strong>Saldo</strong> </label>

@@ -39,6 +39,7 @@
                             <th class="color-morado text-white text-uppercase"> Nombre completo </th>
                             <th class="color-morado text-white text-uppercase"> Empresa </th>
                             <th class="color-morado text-white text-uppercase"> Email </th>
+                            <th class="color-morado text-white text-uppercase"> Telefono </th>
                             <th class="color-morado text-white text-uppercase"> Rol </th>
                             <th class="color-morado text-white text-uppercase"> Estado </th>
                           </tr>
@@ -52,17 +53,18 @@
                               <div class="row">
                                <div class="d-flex px-2 py-1">
                                  <div>
-                                    <img src="https://themewagon.github.io/plus-admin/assets/images/faces-clipart/pic-1.png" class="avatar avatar-sm me-3">
+                                    <img src="<?= base_url('img/team-41.jpg') ?>" class="avatar avatar-sm me-3">
                                  </div>
                                  <div class="d-flex flex-column justify-content-center">
                                     <h6 class="mb-0 text-xs"><?= $usuario->nombre.' '.$usuario->apellido; ?></h6>
-                                    <p class="text-xs text-dark mb-0"><?= $usuario->documento; ?></p>
+                                    <p class="text-xs text-dark mb-0"><?= $usuario->documento.' - '.$usuario->usuario; ?></p>
                                  </div>
                               </div>
                               </div>
                             </td>
                             <td><?= $usuario->empresa; ?></td>
                             <td><?= $usuario->email; ?></td>
+                            <td><?= $usuario->telefono; ?></td>
                             <td><label class="badge badge-primary"><?= $usuario->rol_usuario; ?></label></td>
                             <td><label class="badge badge-success"><?= $usuario->estado; ?></label></td>
                           </tr>

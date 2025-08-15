@@ -20,6 +20,7 @@ $routes->get('/conteos', 'ConteosController::index');
 $routes->get('/buscarproducto/(:num)', 'ConteosController::buscarProducto/$1');
 $routes->post('/cargarexcelproductos', 'ConteosController::cargarExcelProducto');
 $routes->post('/guardarconteo', 'ConteosController::guardarConteo');
+$routes->post('/modificarconteo', 'ConteosController::actualizarConteo');
 
 // USUARIOS
 $routes->get('/usuarios', 'UsuariosController::index');

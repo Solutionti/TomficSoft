@@ -64,12 +64,43 @@ class ConteosController extends BaseController {
         "total" => $total,
         "diferencia" => $diferencia
       ];
-
-      $this->conteosModel->guardarConteo($data);
+      $exist = $this->conteosModel->validarExistenciaProductoConteo($codigo_producto);
+      if(!empty($exist)){
+        echo "error";
+      }
+      else {
+        $this->conteosModel->guardarConteo($data);
+      }
   }
 
   public function actualizarConteo() {
-    
+    $codigo_producto = $this->request->getPost("codigo_producto");
+    $nombre_producto = $this->request->getPost("nombre_producto");
+    $referencia = $this->request->getPost("referencia");
+    $saldo = $this->request->getPost("saldo");
+    $estado_producto = $this->request->getPost("estado_producto");
+    $observacion = $this->request->getPost("observacion");
+    $ubicacion = $this->request->getPost("ubicacion");
+    $localizacion = $this->request->getPost("localizacion");
+    $numero_localizacion = $this->request->getPost("numero_localizacion");
+    $total = $this->request->getPost("total");
+    $diferencia = $this->request->getPost("diferencia");
+
+      $data = [
+        "codigo_producto" => $codigo_producto,
+        "nombre_producto" => $nombre_producto,
+        "referencia" => $referencia,
+        "saldo" => $saldo,
+        "estado_producto" => $estado_producto,
+        "observacion" => $observacion,
+        "ubicacion" => $ubicacion,
+        "localizacion" => $localizacion,
+        "numero_localizacion" => $numero_localizacion,
+        "total" => $total,
+        "diferencia" => $diferencia
+      ];
+
+      $this->conteosModel->actualizarConteo($data);
   }
 
   public function cargarExcelProducto() {
@@ -93,6 +124,7 @@ class ConteosController extends BaseController {
       "subgrupo" => $fila[9],
       "saldo" => $fila[10],
       "costo" => $fila[11],
+      "estado" => "Activo"
     ];
     $this->conteosModel->guardarProductoExcel($datos);
     $totalInsertados++;
