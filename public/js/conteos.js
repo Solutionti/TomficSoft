@@ -186,44 +186,58 @@ function GuardarConteo() {
       saldo = $("#saldo").val(),
       diferencia = $("#diferencia").val();
 
-
-  $.ajax({
-    url: url,
-    method: 'POST',
-    data: {
-      codigo_producto: codigo_producto,
-      nombre_producto: nombre_producto,
-      referencia: referencia,
-      saldo: saldo,
-      estado_producto: estado_producto,
-      observacion: observacion,
-      ubicacion: ubicacion,
-      localizacion: localizacion,
-      numero_localizacion: numero_localizacion,
-      total: total,
-      diferencia: diferencia
-    },
-    success: function(response) {
-      if(response === "error") {
-        $("body").overhang({
-          type: "error",
-          message: "Alerta ! El producto ya se encuentra registrado en el conteo.",
-        });
-      }
-      else {
-        $("body").overhang({
-          type: "success",
-          message: "El conteo se ha registrado en la base de datos correctamente." 
-        });
-      }
-    },
-    error: function() {
-      $("body").overhang({
-        type: "error",
-        message: "Alerta ! Tenemos un problema al conectar con la base de datos verifica tu red.",
+  if(estado_producto === "") {
+    $("#estado_producto").addClass("is-invalid");
+  }
+  else if (total === "") {
+    $("#total").addClass("is-invalid");
+  }
+  else if (saldo === "") {
+    $("#saldo").addClass("is-invalid");
+  }
+  else if (saldo === "") {
+    $("#diferencia").addClass("is-invalid");
+  }
+  else {
+    
+      $.ajax({
+        url: url,
+        method: 'POST',
+        data: {
+          codigo_producto: codigo_producto,
+          nombre_producto: nombre_producto,
+          referencia: referencia,
+          saldo: saldo,
+          estado_producto: estado_producto,
+          observacion: observacion,
+          ubicacion: ubicacion,
+          localizacion: localizacion,
+          numero_localizacion: numero_localizacion,
+          total: total,
+          diferencia: diferencia
+        },
+        success: function(response) {
+          if(response === "error") {
+            $("body").overhang({
+              type: "error",
+              message: "Alerta ! El producto ya se encuentra registrado en el conteo.",
+            });
+          }
+          else {
+            $("body").overhang({
+              type: "success",
+              message: "El conteo se ha registrado en la base de datos correctamente." 
+            });
+          }
+        },
+        error: function() {
+          $("body").overhang({
+            type: "error",
+            message: "Alerta ! Tenemos un problema al conectar con la base de datos verifica tu red.",
+          });
+        }
       });
-    }
-  });
+  }
 }
 
 function modificarConteo() {
