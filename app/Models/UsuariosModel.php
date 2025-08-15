@@ -56,4 +56,7 @@ class UsuariosModel extends Model {
         $this->db->table('usuarios')
                  ->insert($usuarios);
     }
+
+
+
 }

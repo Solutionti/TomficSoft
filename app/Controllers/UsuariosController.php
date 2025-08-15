@@ -17,7 +17,8 @@ class UsuariosController extends BaseController {
   public function index() {
      $data = [
       'permisos' => $this->usuariosModel->getPermisos(),
-      'empresas' => $this->listasModel->getEmpresas()
+      'empresas' => $this->listasModel->getEmpresas(),
+      'usuarios' => $this->listasModel->getUsuarios(),
      ];
      if(session()->get('logeado') == true) {
       return view('administrador/usuarios', $data); 

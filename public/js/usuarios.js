@@ -56,13 +56,25 @@ function crearUsuarios() {
     contraseña = $("#password_usuario").val(),
     repetirContraseña = $("#repetir_password_usuario").val();
 
-//   // valirdar las contraseñas que coincidan
-//   if(contraseña == repetirContraseña) {
 
-//   }
-//   else {
 
-//   }
+    if (contraseña.trim() === "" || repetirContraseña.trim() === "") {
+        $("body").overhang({
+            type: "error",
+            message: "⚠️ Los campos de contraseña no pueden estar vacíos."
+        });
+        return; // Detiene la ejecución
+    }
+
+    if (contraseña !== repetirContraseña) {
+        $("body").overhang({
+            type: "error",
+            message: "⚠️ Las contraseñas no coinciden."
+        });
+        return; // Detiene la  ejecución
+    }
+
+
   //definir una variable url para el ajax
   var url = baseurl + '/crearusuario';
 

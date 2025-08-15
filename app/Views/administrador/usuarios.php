@@ -44,9 +44,10 @@
                           </tr>
                         </thead>
                         <tbody>
+                          <?php foreach($usuarios->getResult() as $usuario) { ?>
                           <tr>
-                            <td> </td>
-                            <td> 01</td>
+                            <td></td>
+                            <td><?= $usuario->codigo_usuario; ?></td>
                             <td>
                               <div class="row">
                                <div class="d-flex px-2 py-1">
@@ -54,18 +55,18 @@
                                     <img src="https://themewagon.github.io/plus-admin/assets/images/faces-clipart/pic-1.png" class="avatar avatar-sm me-3">
                                  </div>
                                  <div class="d-flex flex-column justify-content-center">
-                                    <h6 class="mb-0 text-xs">Jerson Galvez Ensuncho</h6>
-                                    <p class="text-xs text-dark mb-0">1110542802</p>
+                                    <h6 class="mb-0 text-xs"><?= $usuario->nombre.' '.$usuario->apellido; ?></h6>
+                                    <p class="text-xs text-dark mb-0"><?= $usuario->documento; ?></p>
                                  </div>
                               </div>
                               </div>
                             </td>
-                            <td>GO Future</td>
-                            <td>jerson_galvez@hotmail.com</td>
-                            <td><label class="badge badge-primary">Administrador</label></td>
-                            <td><label class="badge badge-success">Activo</label></td>
+                            <td><?= $usuario->empresa; ?></td>
+                            <td><?= $usuario->email; ?></td>
+                            <td><label class="badge badge-primary"><?= $usuario->rol_usuario; ?></label></td>
+                            <td><label class="badge badge-success"><?= $usuario->estado; ?></label></td>
                           </tr>
-                          <tr>
+                          <!-- <tr>
                             <td></td>
                             <td>02</td>
                             <td>
@@ -85,8 +86,8 @@
                             <td>jerson_galvez@hotmail.com</td>
                             <td><label class="badge badge-primary ">Capturador</label></td>
                             <td><label class="badge badge-success ">Activo</label></td>
-                          </tr>
-                         
+                          </tr> -->
+                         <?php } ?>
                         </tbody>
                       </table>  
                 </div>
