@@ -56,23 +56,65 @@ function crearUsuarios() {
     contraseña = $("#password_usuario").val(),
     repetirContraseña = $("#repetir_password_usuario").val();
 
+    //validacion campo input con icono de requerido
+if(documento === "") {
+  $("#documento_usuario").addClass("is-invalid");
+}
+else if (nombre === "") {
+  $("#nombre_usuario").addClass("is-invalid");
+}
+else if (apellido === "") {
+  $("#apellido_usuario").addClass("is-invalid");
+}
+else if (empresa === "") {
+  $("#empresa_usuario").addClass("is-invalid");
+}
+else if (telefono === "") {
+  $("#telefono_usuario").addClass("is-invalid");
+}
+else if (estado === "") {
+  $("#estado_usuario").addClass("is-invalid");
+}
+    
+
+// Validación  de campos requeridos con mensaje
+let campos = [
+  { id: "documento_usuario", valor: documento, nombre: "Documento" },
+  { id: "nombre_usuario", valor: nombre, nombre: "Nombre" },
+  { id: "apellido_usuario", valor: apellido, nombre: "Apellido" },
+  { id: "empresa_usuario", valor: empresa, nombre: "Empresa" },
+  { id: "telefono_usuario", valor: telefono, nombre: "Teléfono" },
+  { id: "estado_usuario", valor: estado, nombre: "Estado" },
+];
+
+for (let campo of campos) {
+  if (campo.valor.trim() === "") {
+    $("#" + campo.id).focus();
+    $("body").overhang({
+    type: "error",
+    message: "⚠️ El campo " + campo.nombre + " es obligatorio."
+  });
+  return; // detiene la ejecución
+  }
+};
 
 
-    if (contraseña.trim() === "" || repetirContraseña.trim() === "") {
-        $("body").overhang({
-            type: "error",
-            message: "⚠️ Los campos de contraseña no pueden estar vacíos."
-        });
-        return; // Detiene la ejecución
-    }
+// validacion contraseña, que sean iguales
+if (contraseña.trim() === "" || repetirContraseña.trim() === "") {
+  $("body").overhang({
+    type: "error",
+    message: "⚠️ Los campos de contraseña no pueden estar vacíos."
+  });
+  return; // Detiene la ejecución
+}
 
-    if (contraseña !== repetirContraseña) {
-        $("body").overhang({
-            type: "error",
-            message: "⚠️ Las contraseñas no coinciden."
-        });
-        return; // Detiene la  ejecución
-    }
+if (contraseña !== repetirContraseña) {
+  $("body").overhang({
+    type: "error",
+    message: "⚠️ Las contraseñas no coinciden."
+  });
+  return; // Detiene la  ejecución
+}
 
 
   //definir una variable url para el ajax

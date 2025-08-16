@@ -120,6 +120,7 @@
               id="documento_usuario"
               name="documento_usuario"
               class="form-control form-control-sm borde"
+              required
             >
           </div>
           <div class="col-md-4">
@@ -129,6 +130,7 @@
               id="nombre_usuario"
               name="nombre_usuario"
               class="form-control form-control-sm borde"
+              required
             >
           </div>
           <div class="col-md-4">
@@ -138,6 +140,7 @@
               id="apellido_usuario"
               name="apellido_usuario"
               class="form-control form-control-sm borde"
+              required
             >
           </div>
       </div>
@@ -148,6 +151,7 @@
             <select
                 class="form-control form-control-sm borde text-uppercase"
                 id="empresa_usuario"
+                required
               >
                 <option value="">Seleccione la empresa</option>
                 <?php foreach($empresas->getResult() as $empresa) {  ?>
@@ -162,6 +166,7 @@
               id="telefono_usuario"
               name="telefono_usuario"
               class="form-control form-control-sm borde"
+              required
             >
           </div>
           <div class="col-md-4">
@@ -169,6 +174,7 @@
               <select
                 class="form-control form-control-sm borde text-uppercase"
                 id="estado_usuario"
+                required
               >
                 <option value="">Seleccione el estado del usuario</option>
                 <option value="Activo">Activo</option>
