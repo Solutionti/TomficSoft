@@ -25,3 +25,7 @@ $routes->post('/modificarconteo', 'ConteosController::actualizarConteo');
 // USUARIOS
 $routes->get('/usuarios', 'UsuariosController::index');
 $routes->post('/crearusuario', 'UsuariosController::crearUsuario');
+
+
+//Asignacion inventarios
+$routes->get('/asignacioninventarios', 'AsignacionInventariosController::index');

@@ -50,7 +50,7 @@ class UsuariosModel extends Model {
         'fecha' => $data["fecha"],
         'rol_usuario' => $data["rol"],
         'estado' => $data["estado"],
-        'usuario_creacion' => 'jerson',
+        'usuario_creacion' => session()->get('documento'),
       ];
       //llamar la funcion de codeigniter que me inserta en la base de datos
         $this->db->table('usuarios')
