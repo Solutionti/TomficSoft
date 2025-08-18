@@ -60,17 +60,17 @@
               <span class="menu-title"> <i class="fas fa-users text-morado"></i> Usuarios</span>
             </a>
           </li>
-          <li class="nav-item pt-1">
+          <!-- <li class="nav-item pt-1">
             <a class="nav-link" href="#">
               
               <span class="menu-title"> <i class="fas fa-user-tie text-morado"></i> Procesos</span>
             </a>
-          </li>
-          <li class="nav-item pt-1">
+          </li> -->
+          <!-- <li class="nav-item pt-1">
             <a class="nav-link" href="#">
               
               <span class="menu-title"><i class="fas fa-chart-pie text-morado"></i> Reportes</span>
             </a>
-          </li>
+          </li> -->
         </ul>
       </nav>
