@@ -34,14 +34,14 @@
               <span class="menu-title"> <i class="fas fa-home text-morado"></i> Inicio</span>
             </a>
           </li>
-          <li class="pt-2 pb-1">
+          <!-- <li class="pt-2 pb-1">
             <span class="nav-item-head">inventarios</span>
-          </li>
-          <li class="nav-item pt-1">
+          </li> -->
+          <!-- <li class="nav-item pt-1">
             <a class="nav-link" href="#">
               <span class="menu-title"><i class="fas fa-chart-line text-morado"></i> Panel de inventarios</span>
             </a>
-          </li>
+          </li> -->
           <li class="nav-item pt-1">
             <a class="nav-link" href="<?= base_url('asignacioninventarios') ?>"> 
               
