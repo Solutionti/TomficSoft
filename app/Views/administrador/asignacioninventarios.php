@@ -148,8 +148,8 @@
               id="observacion_agregar_inventario"
               name="observacion_agregar_inventario"
               class="form-control form-control-md borde"
-              >
-            </textarea>
+              rows="27"
+              ></textarea>
           </div>
         </div>
       </div>

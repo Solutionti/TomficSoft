@@ -49,6 +49,11 @@
                           <tr>
                             <td>
                               <button
+                                class="badge badge-danger"
+                              >
+                                <i class="fas fa-trash fa-1x "></i>
+                              </button>
+                              <button
                                 class="badge badge-primary"
                               >
                                 <i class="fas fa-edit fa-1x "></i>
