@@ -162,7 +162,7 @@
           <div class="col-md-4">
             <label class="mb-1 small ">Telefono *</label>
             <input 
-              type="text"
+              type="number"
               id="telefono_usuario"
               name="telefono_usuario"
               class="form-control form-control-sm borde"
@@ -213,6 +213,7 @@
               name="fecha_usuario"
               class="form-control form-control-sm borde"
               value="<?php echo date('Y-m-d') ?>"
+              readonly
             >
           </div>
           <div class="col-md-4">
@@ -223,6 +224,7 @@
               name="hora_usuario"
               class="form-control form-control-sm borde"
               value="<?= date('H:i') ?>"
+              readonly
             >
           </div>
         </div>
