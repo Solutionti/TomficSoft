@@ -37,6 +37,7 @@ $("#codigo_producto").on("blur", function() {
           $("#sublinea").val("");
           $("#subgrupo").val("");
           $("#saldo").val("");
+          $("#costo").val("");
         }
         else {
           $("#nombre_producto").val(response[0].nombre);
@@ -46,6 +47,8 @@ $("#codigo_producto").on("blur", function() {
           $("#sublinea").val(response[0].subcategoria);
           $("#subgrupo").val(response[0].subgrupo);
           $("#saldo").val(response[0].saldo);
+          $("#costo").val(response[0].costo);
+          
           
         }
       },
@@ -152,6 +155,7 @@ function VincularProductoModal(codigo) {
           $("#sublinea").val("");
           $("#subgrupo").val("");
           $("#saldo").val("");
+          $("#costo").val("");
         }
         else {
           $("#codigo_producto").val(response[0].codigo_barras);
@@ -162,6 +166,7 @@ function VincularProductoModal(codigo) {
           $("#sublinea").val(response[0].subcategoria);
           $("#subgrupo").val(response[0].subgrupo);
           $("#saldo").val(response[0].saldo);
+          $("#costo").val(response[0].costo);
           $("#listaproductos").modal('hide');
         }
       },
@@ -217,18 +222,22 @@ function GuardarConteo() {
           diferencia: diferencia
         },
         success: function(response) {
-          if(response === "error") {
-            $("body").overhang({
-              type: "error",
-              message: "Alerta ! El producto ya se encuentra registrado en el conteo.",
-            });
-          }
-          else {
-            $("body").overhang({
-              type: "success",
-              message: "El conteo se ha registrado en la base de datos correctamente." 
-            });
-          }
+          $("body").overhang({
+            type: "success",
+            message: "El conteo se ha registrado en la base de datos correctamente." 
+          });
+
+           $("#codigo_producto").val("");
+           $("#saldo").val("");
+           $("#cajas").val("");
+           $("#unidades").val("");
+           $("#embalaje").val("");
+           $("#total").val("");
+           $("#diferencia").val("");
+           $("#estado_producto").val("");
+           $("#observacion").val("");
+           $("#codigo_producto").focus();
+          
         },
         error: function() {
           $("body").overhang({
@@ -287,31 +296,6 @@ function modificarConteo() {
   });
 }
 
-function limpiar() {
-  $("#codigo_producto").val("");
-  $("#nombre_producto").val("");
-  $("#referencia").val("");
-  $("#proveedor").val("");
-  $("#linea").val("");
-  $("#sublinea").val("");
-  $("#subgrupo").val("");
-  $("#saldo").val("");
-  $("#cajas").val("");
-  $("#unidades").val("");
-  $("#embalaje").val("");
-  $("#total").val("");
-  $("#diferencia").val("");
-  $("#estado_producto").val("");
-  $("#observacion").val("");
-  // $("#ubicacion").val("");
-  // $("#localizacion").val("");
-  // $("#numero_localizacion").val("");
-
-  $("body").overhang({
-        type: "success",
-        message: "Los campos se han limpiado correctamente." 
-  });
-}
 
 function finalizarConteo() {
  $("body").overhang({

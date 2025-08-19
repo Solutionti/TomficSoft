@@ -64,13 +64,13 @@ class ConteosController extends BaseController {
         "total" => $total,
         "diferencia" => $diferencia
       ];
-      $exist = $this->conteosModel->validarExistenciaProductoConteo($codigo_producto);
-      if(!empty($exist)){
-        echo "error";
-      }
-      else {
+      // $exist = $this->conteosModel->validarExistenciaProductoConteo($codigo_producto);
+      // if(!empty($exist)){
+      //   echo "error";
+      // }
+      // else {
         $this->conteosModel->guardarConteo($data);
-      }
+      // }
   }
 
   public function actualizarConteo() {

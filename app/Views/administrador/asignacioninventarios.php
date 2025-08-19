@@ -16,7 +16,7 @@
             <div class="page-header flex-wrap">
               <div class="header-left">
                 <button class="btn btn-primary mb-2 mb-md-0 me-2 btn-rounded" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Agregar inventario</button>
-                <button class="btn btn-outline-primary mb-2 mb-md-0 me-2 btn-rounded" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Exportar base de datos</button>
+                <button class="btn btn-outline-primary mb-2 mb-md-0 me-2 btn-rounded">Exportar base de datos</button>
               </div>
               <div class="header-right d-flex flex-wrap mt-2 mt-sm-0">
                 <div class="d-flex align-items-center">
@@ -130,7 +130,7 @@
       </div>
       <div class="modal-body">
         <div class="row mt-3">
-          <div class="col-md-6">
+          <div class="col-md-12">
             <label class="mb-1 small">Fecha inicial *</label>
             <input 
               type="date"
@@ -141,8 +141,8 @@
           </div>
         </div>
         <div class="row mt-3">
-          <div class="col-md-6">
-            <label class="mb-1 small ">OBSERVACION *</label>
+          <div class="col-md-12">
+            <label class="mb-1 small ">Observaciòn *</label>
             <textarea 
               type="text"
               id="observacion_agregar_inventario"

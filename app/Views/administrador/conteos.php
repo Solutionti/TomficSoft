@@ -109,13 +109,26 @@
                       </div>
                     </div>
                     <br>
-                     <label class="mb-1 small">Proveedor</label>
-                     <input
-                       type="text"
-                       class="form-control form-control-sm borde text-uppercase"
-                       id="proveedor"
-                       readonly
-                     >
+                    <div class="row">
+                      <div class="col-md-9">
+                        <label class="mb-1 small">Proveedor</label>
+                        <input
+                          type="text"
+                          class="form-control form-control-sm borde text-uppercase"
+                          id="proveedor"
+                          readonly
+                        >
+                      </div>
+                      <div class="col-md-3">
+                        <label class="mb-1 small">Costo</label>
+                        <input
+                          type="text"
+                          class="form-control form-control-sm borde text-uppercase"
+                          id="costo"
+                          readonly
+                        >
+                      </div>
+                    </div>
                   </div>
                   <div class="col-md-5">
                     <label class="mb-1 small">Linea</label>
@@ -229,12 +242,11 @@
                     </select>
                     <br>
                     <div class="row">
-                      <div class="col-md-8">
+                      <div class="col-md-6">
                         <button class="btn btn-primary mb-2 mb-md-0 me-3 mt-4 btn-rounded" onclick="GuardarConteo()">Guardar</button>
                         <button class="btn btn-success mb-2 mb-md-0 me-3 mt-4 btn-rounded" onclick="modificarConteo()">Modificar</button>
-                        <button class="btn btn-danger mb-2 mb-md-0 me-3 mt-4 btn-rounded" onclick="limpiar()">Limpiar</button>
                       </div>
-                      <div class="col-md-2">
+                      <div class="col-md-3">
                         <label class="mb-1 small"><strong>Saldo</strong> </label>
                         <input
                           type="number"
@@ -243,7 +255,7 @@
                           readonly
                         >
                       </div>
-                      <div class="col-md-2">
+                      <div class="col-md-3">
                         <label class="mb-1 small"><strong>Diferencia</strong> </label>
                         <input
                           type="number"
