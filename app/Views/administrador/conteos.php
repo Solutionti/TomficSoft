@@ -65,7 +65,7 @@
                   </div>
                   <div class="col-md-6">
                     <label class="mb-1 small">Observaciòn *</label>
-                    <textarea rows="1" class="form-control form-control-sm borde text-uppercase" id="observacion"></textarea>
+                    <textarea rows="1" class="form-control form-control-sm borde text-uppercase" id="observacion" readonly></textarea>
                   </div>
                 </div>
                 <!--  -->
@@ -164,6 +164,7 @@
                       type="text"
                       class="form-control form-control-sm borde text-uppercase"
                       id="ubicacion"
+                      readonly
                     >
                   </div>
                    <div class="col-md-3">
@@ -172,6 +173,7 @@
                       type="text"
                       class="form-control form-control-sm borde text-uppercase"
                       id="localizacion"
+                      readonly
                     >
                   </div>
                    <div class="col-md-3">
@@ -180,6 +182,7 @@
                       type="text"
                       class="form-control form-control-sm borde text-uppercase"
                       id="numero_localizacion"
+                      readonly
                     >
                   </div>
                   <div class="col-md-3">

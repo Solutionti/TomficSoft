@@ -90,8 +90,8 @@
               <div class="col-sm-6 col-xl-4 stretch-card grid-margin">
                 <div class="card">
                   <div class="card-body">
-                    <div class="card-title mb-2"> Upcoming events (3) </div>
-                    <h3 class="mb-3">23 september 2019</h3>
+                    <div class="card-title mb-2"> Próximos Inventarios (3) </div>
+                    <h3 class="mb-3">23 Septiembre 2019</h3>
                     <div class="d-flex border-bottom border-top py-3">
                       <div class="form-check">
                         <label class="form-check-label">
@@ -99,30 +99,10 @@
                       </div>
                       <div class="ps-2">
                         <span class="font-12 text-muted">Tue, Mar 5, 9.30am</span>
-                        <p class="m-0 text-black">Hey I attached some new PSD files…</p>
+                        <p class="m-0 text-black">Empresa: Mercacentro</p>
                       </div>
                     </div>
-                    <div class="d-flex border-bottom py-3">
-                      <div class="form-check">
-                        <label class="form-check-label">
-                          <input type="checkbox" class="form-check-input"></label>
-                      </div>
-                      <div class="ps-2">
-                        <span class="font-12 text-muted">Mon, Mar 11, 4.30 PM</span>
-                        <p class="m-0 text-black">Discuss performance with manager</p>
-                      </div>
-                    </div>
-                    <div class="d-flex border-bottom py-3">
-                      <div class="form-check">
-                        <label class="form-check-label">
-                          <input type="checkbox" class="form-check-input"></label>
-                      </div>
-                      <div class="ps-2">
-                        <span class="font-12 text-muted">Tue, Mar 5, 9.30am</span>
-                        <p class="m-0 text-black">Meeting with Alisa </p>
-                      </div>
-                    </div>
-                    <div class="d-flex pt-3">
+                    <!-- <div class="d-flex pt-3">
                       <div class="form-check">
                         <label class="form-check-label">
                           <input type="checkbox" class="form-check-input"></label>
@@ -131,7 +111,7 @@
                         <span class="font-12 text-muted">Mon, Mar 11, 4.30 PM</span>
                         <p class="m-0 text-black">Hey I attached some new PSD files…</p>
                       </div>
-                    </div>
+                    </div> -->
                   </div>
                 </div>
               </div>
