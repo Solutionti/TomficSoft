@@ -99,7 +99,7 @@
                                 <td><label class="badge badge-success ">Activo</label></td>
                                 <td><label class="badge badge-success ">Finalizado</label></td>
                                 <td>
-                                  <button class="btn btn-primary btn-xs btn-rounded mx-1" data-bs-toggle="modal" data-bs-target="#modalConteos">Productos</button>
+                                  <button class="btn btn-primary btn-xs btn-rounded mx-1" data-bs-toggle="modal" data-bs-target="#listaproductos">Productos</button>
                                   <button class="btn btn-primary btn-xs btn-rounded mx-1" data-bs-toggle="modal" data-bs-target="#modalConteos">Conteos</button>
                                   <button class="btn btn-primary btn-xs btn-rounded mx-1" data-bs-toggle="modal" data-bs-target="#modalProceso">Procesos</button>
                                   <button class="btn btn-primary btn-xs btn-rounded mx-1" data-bs-toggle="modal" data-bs-target="#modalReportes">Reportes</button>
@@ -370,7 +370,69 @@
     </div>
   </div>
 </div>
-        
+
+<!-- PRODUCTOS -->
+<div class="modal fade" id="listaproductos" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="listaproductosLabel" aria-hidden="true">
+  <div class="modal-dialog modal-fullscreen">
+    <div class="modal-content">
+      <div class="modal-header color-morado">
+        <h1 class="modal-title fs-5 text-white" id="listaproductosLabel">LISTADO DE PRODUCTOS</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-12">
+            <table class="table table-striped table-hover table-borderless" id="table-productos">
+              <thead >
+                <tr>
+                  <th class="color-morado text-white text-uppercase"> </th>
+                  <th class="color-morado text-white text-uppercase"> Codigo</th>
+                  <th class="color-morado text-white text-uppercase"> EAN8 </th>
+                  <th class="color-morado text-white text-uppercase"> Nombre </th>
+                  <th class="color-morado text-white text-uppercase"> proveedor </th>
+                  <th class="color-morado text-white text-uppercase"> Categoria </th>
+                  <th class="color-morado text-white text-uppercase"> subCategoria </th>
+                  <th class="color-morado text-white text-uppercase"> estado </th>
+                </tr>
+              </thead>
+                        <tbody>
+                          <?php foreach($productos->getResult() as $producto){ ?>
+                          <tr>
+                            <td>
+                             
+                            </td>
+                            <td> <?= $producto->codigo_interno; ?></td>
+                            <td> <?= $producto->codigo_barras; ?></td>
+                            <td>
+                              <div class="row">
+                               <div class="d-flex px-2 py-1">
+                                 <div>
+                                    <img src="<?= base_url('img/team-41.jpg') ?>" class="avatar avatar-sm me-3">
+                                 </div>
+                                 <div class="d-flex flex-column justify-content-center">
+                                    <h6 class="mb-0 text-xs"><?= $producto->nombre; ?></h6>
+                                    <p class="text-xs text-dark mb-0"><?= $producto->codigo_barras; ?></p>
+                                 </div>
+                              </div>
+                              </div>
+                            </td>
+                            <td><?= $producto->proveedor; ?></td>
+                            <td><?= $producto->categoria; ?></td>
+                            <td><?= $producto->subcategoria; ?></td>
+                            <td><label class="badge badge-success"><?= $producto->estado; ?></label></td>
+                          </tr>
+                          <?php } ?>
+                        </tbody>
+                      </table>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger btn-rounded" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>        
 
 <?php require_once("componentes/scripts.php")?>
 </body>

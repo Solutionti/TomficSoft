@@ -60,12 +60,12 @@
               <span class="menu-title"> <i class="fas fa-users text-morado"></i> Usuarios</span>
             </a>
           </li>
-          <!-- <li class="nav-item pt-1">
-            <a class="nav-link" href="#">
+          <li class="nav-item pt-1">
+            <a class="nav-link" href="<?= base_url('conteos') ?>">
               
-              <span class="menu-title"> <i class="fas fa-user-tie text-morado"></i> Procesos</span>
+              <span class="menu-title"> <i class="fas fa-wifi text-danger"></i> Modo offline</span>
             </a>
-          </li> -->
+          </li>
           <!-- <li class="nav-item pt-1">
             <a class="nav-link" href="#">
               

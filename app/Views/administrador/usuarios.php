@@ -47,7 +47,13 @@
                         <tbody>
                           <?php foreach($usuarios->getResult() as $usuario) { ?>
                           <tr>
-                            <td></td>
+                            <td>
+                              <button
+                                class="badge badge-primary"
+                              >
+                                <i class="fas fa-edit fa-1x "></i>
+                              </button>
+                            </td>
                             <td><?= $usuario->codigo_usuario; ?></td>
                             <td>
                               <div class="row">
@@ -309,7 +315,7 @@
                     <div class="row">
                       <div class="d-flex px-2 py-1">
                         <div>
-                          <img src="https://themewagon.github.io/plus-admin/assets/images/faces-clipart/pic-1.png" class="avatar avatar-sm me-3">
+                          <img src="<?= base_url('img/team-41.jpg') ?>" class="avatar avatar-sm me-3">
                         </div>
                         <div class="d-flex flex-column justify-content-center">
                           <h6 class="mb-0 text-xs">Modulo de <?= $permiso->nombre;  ?></h6>
