@@ -59,7 +59,7 @@
               <p>Inicie sesión para administrar su cuenta.</p>
             </div>
             <div class="messageError mt-2"></div>
-            <form class="js-validate needs-validation" [formGroup]="iniciarSesionForm">
+            <form role="form" method="post" validate id="FormLOG">
               <div class="mb-4">
                 <label class="form-label" for="signupModalFormLoginEmail">Correo electronico</label>
                 <input
@@ -89,10 +89,10 @@
               </div>
               <div class="d-grid mb-3">
                 <button
-                  type="button"
+                  type="submit"
                   class="btn  btn-lg color-morado text-white"
-                  onclick="iniciarSesion()"
-                >
+                  id="login"
+                  >
                   Iniciar Sesion
                 </button>
               </div>

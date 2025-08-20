@@ -19,6 +19,11 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
+$("#FormLOG").submit(function (event) {
+	event.preventDefault();
+  iniciarSesion();
+});
+
 function iniciarSesion() {
   
   var usuario = $('#usuario').val(),
