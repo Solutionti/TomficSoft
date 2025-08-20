@@ -97,7 +97,15 @@
                 </button>
               </div>
               <div class="text-center">
-                <p>¿Olvidaste tu contraseña?  <a type="button" class="link" routerLink="/zonasport">Recuperar</a></p>
+                <p>¿Olvidaste tu contraseña? 
+                  <a
+                    type="button"
+                    class="link"
+                    routerLink="/zonasport"
+                  >
+                    Recuperar
+                  </a>
+                </p>
               </div>
             </form>
           </div>
