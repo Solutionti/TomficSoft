@@ -90,14 +90,15 @@
                               </tr>
                             </thead>
                             <tbody>
+                              <?php foreach($asignacionInventarios->getResult() as $asignacionInventario) { ?>
                               <tr>
                                 <td></td>
-                                <td>12-03-2025</td>
-                                <td>lpepito peres es el mejor del mundoo, mundial</td>
-                                <td>12-04-2025</td>
-                                <td>12-05-2025</td>
-                                <td><label class="badge badge-success ">Activo</label></td>
-                                <td><label class="badge badge-success ">Finalizado</label></td>
+                                <td><?= $asignacionInventario->fecha; ?></td>
+                                <td><?= $asignacionInventario->observacion; ?></td>
+                                <td><?= $asignacionInventario->fecha_inicio; ?></td>
+                                <td><?= $asignacionInventario->fecha_cierre; ?></td>
+                                <td><label class="badge badge-success "><?= $asignacionInventario->estado; ?></label></td>
+                                <td><label class="badge badge-success "><?= $asignacionInventario->proceso_final; ?></label></td>
                                 <td>
                                   <button class="btn btn-primary btn-xs btn-rounded mx-1" data-bs-toggle="modal" data-bs-target="#listaproductos">Productos</button>
                                   <button class="btn btn-primary btn-xs btn-rounded mx-1" data-bs-toggle="modal" data-bs-target="#modalConteos">Conteos</button>
@@ -105,6 +106,7 @@
                                   <button class="btn btn-primary btn-xs btn-rounded mx-1" data-bs-toggle="modal" data-bs-target="#modalReportes">Reportes</button>
                                 </td>
                               </tr>  
+                              <?php } ?>
                             </tbody>
                           </table>
 
