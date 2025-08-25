@@ -80,6 +80,7 @@
                             <thead >
                               <tr >
                                 <th class="color-morado text-white text-uppercase"> </th>
+                                <th class="color-morado text-white text-uppercase">ID</th>
                                 <th class="color-morado text-white text-uppercase">Fecha</th>
                                 <th class="color-morado text-white text-uppercase">Observacion</th>
                                 <th class="color-morado text-white text-uppercase">Fecha inicio</th>
@@ -93,6 +94,7 @@
                               <?php foreach($asignacionInventarios->getResult() as $asignacionInventario) { ?>
                               <tr>
                                 <td></td>
+                                <td><?= $asignacionInventario->codigo_inventario; ?></td>
                                 <td><?= $asignacionInventario->fecha; ?></td>
                                 <td><?= $asignacionInventario->observacion; ?></td>
                                 <td><?= $asignacionInventario->fecha_inicio; ?></td>
