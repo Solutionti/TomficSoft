@@ -50,11 +50,14 @@
                             <td>
                               <button
                                 class="badge badge-danger"
+                                onclick="eliminarUsuario('<?= $usuario->codigo_usuario; ?>')"
                               >
                                 <i class="fas fa-trash fa-1x "></i>
                               </button>
                               <button
                                 class="badge badge-primary"
+                                data-bs-toggle="modal"
+                                data-bs-target="#staticBackdrop"
                               >
                                 <i class="fas fa-edit fa-1x "></i>
                               </button>

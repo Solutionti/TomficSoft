@@ -21,13 +21,13 @@
                 >
                 Terminar el conteo
                 </button>
-                <button
+                <!-- <button
                   class="btn btn-outline-primary bg-white mb-2 mb-md-0 btn-rounded"
                   data-bs-toggle="modal"
                   data-bs-target="#exportarexcelmodal"
                 >
                   Exportar base de datos
-                </button>
+                </button> -->
               </div>
               <div class="header-right d-flex flex-wrap mt-2 mt-sm-0">
                 <div class="d-flex align-items-center">
