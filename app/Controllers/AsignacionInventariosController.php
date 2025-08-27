@@ -22,4 +22,12 @@ class AsignacionInventariosController extends BaseController {
 
       return view('administrador/asignacioninventarios', $data);
     }
+
+    public function crearInventarios(){
+      $fecha = $this->request->getPost('fecha');
+      $descripcion = $this->request->getPost('descripcion');
+
+      $this->asignacionInventarios->crearInventarios($fecha,$descripcion);
+
+    }
 }

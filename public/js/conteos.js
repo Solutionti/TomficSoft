@@ -177,6 +177,7 @@ function VincularProductoModal(codigo) {
 }
 
 function GuardarConteo() {
+  
   var url = baseurl + 'guardarconteo';
   var codigo_producto = $("#codigo_producto").val(),
       nombre_producto = $("#nombre_producto").val(),
@@ -222,6 +223,7 @@ function GuardarConteo() {
           diferencia: diferencia
         },
         success: function(response) {
+          
           $("body").overhang({
             type: "success",
             message: "El conteo se ha registrado en la base de datos correctamente." 

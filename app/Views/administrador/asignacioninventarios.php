@@ -165,7 +165,7 @@
       </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-danger btn-rounded" data-bs-dismiss="modal">Cerrar</button>
-          <button type="button" class="btn btn-primary btn-rounded">Guardar</button>
+          <button type="button" class="btn btn-primary btn-rounded" onclick="crearInventarios()">Guardar</button>
         </div>
       </div>
     </div>
@@ -492,5 +492,7 @@
 
 <?php require_once("componentes/scripts.php")?>
 <script src="<?= base_url('js/conteos.js') ?>"></script>
+<script src="<?= base_url('js/asignacioninventarios.js') ?>"></script>
+
 </body>
 </html>

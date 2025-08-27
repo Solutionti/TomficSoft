@@ -29,3 +29,4 @@ $routes->post('/crearusuario', 'UsuariosController::crearUsuario');
 
 //Asignacion inventarios
 $routes->get('/asignacioninventarios', 'AsignacionInventariosController::index');
+$routes->post('/crearinventario', 'AsignacionInventariosController::crearInventarios');

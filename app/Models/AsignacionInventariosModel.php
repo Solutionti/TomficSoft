@@ -16,5 +16,25 @@ class AsignacionInventariosModel extends Model
 
    }
 
+   public function crearInventarios($fecha, $descripcion){
+
+      $inventarios = [
+        'fecha' => $fecha,
+        'observacion' => $descripcion,
+        'fecha_inicio' => $fecha,
+        'fecha_cierre' => '',
+        'estado' => 'Activo',
+        'proceso_final' => 'En ejecucion',
+        'usuario' => session()->get('documento'),
+      ];
+
+      //llamar la tabla conexion
+      $this->db->table('inventarios')
+      //insetar los datos
+               ->insert($inventarios);
+      
+
+   }
+
    
 }
