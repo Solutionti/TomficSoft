@@ -75,6 +75,21 @@ else if (telefono === "") {
 else if (estado === "") {
   $("#estado_usuario").addClass("is-invalid");
 }
+else if (correo === "") {
+  $("#correo").addClass("is-invalid");
+}
+else if (rol === "") {
+  $("#rol_usuario").addClass("is-invalid");
+}
+else if (usuario === "") {
+  $("#usuario_usuario").addClass("is-invalid");
+}
+else if (contraseña === "") {
+  $("#password_usuario").addClass("is-invalid");
+}
+else if (repetirContraseña === "") {
+  $("#repetir_password_usuario").addClass("is-invalid");
+}
     
 
 // Validación  de campos requeridos con mensaje
@@ -85,6 +100,11 @@ let campos = [
   { id: "empresa_usuario", valor: empresa, nombre: "Empresa" },
   { id: "telefono_usuario", valor: telefono, nombre: "Teléfono" },
   { id: "estado_usuario", valor: estado, nombre: "Estado" },
+  { id: "correo", valor: correo, nombre: "Correo" },
+  { id: "rol_usuario", valor: rol, nombre: "Rol" },
+  { id: "usuario_usuario", valor: usuario, nombre: "Usuario" },
+  { id: "password_usuario", valor: contraseña, nombre: "Contraseña" },
+  { id: "repetir_password_usuario", valor: repetirContraseña, nombre: "RepetirContraseña" },
 ];
 
 for (let campo of campos) {

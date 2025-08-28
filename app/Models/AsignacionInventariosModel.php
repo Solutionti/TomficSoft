@@ -17,7 +17,7 @@ class AsignacionInventariosModel extends Model
    }
 
    public function crearInventarios($fecha, $descripcion){
-
+      
       $inventarios = [
         'fecha' => $fecha,
         'observacion' => $descripcion,

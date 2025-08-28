@@ -147,6 +147,8 @@
               id="fecha_agregar_inventario"
               name="fecha_agregar_inventario"
               class="form-control form-control-sm borde"
+              value="<?php echo date('Y-m-d') ?>"
+              readonly
             >
           </div>
         </div>
@@ -181,7 +183,7 @@
       </div>
       <div class="modal-body">
 <!-- aca va el formulario -->
-        <div class="row mt-3">
+        <div class="row mt-2">
           <div class="col-md-4">
             <label class="mb-1 small">Ubicacion</label>
             <select
@@ -243,7 +245,7 @@
       </div>
       <div class="modal-body">
 <!-- aca va el formulario -->
-        <div class="row mt-3">
+        <div class="row mt-2">
           <div class="col-md-6">
             <label class="mb-1 small">Ubicacion</label>
             <select
@@ -390,6 +392,63 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
+        <div class="row mt-2">
+          <div class="col-md-1">
+            <label class="mb-1 small">Id</label>
+            <input 
+              type="text"
+              class="form-control form-control-sm borde"
+            >
+          </div>
+          <div class="col-md-3">
+            <label class="mb-1 small">Linea</label>
+            <select 
+              name="" 
+              id="" 
+              class="form-control form-control-sm borde text-uppercase"
+            >
+              <option value="">Seleccione una opcion</option>
+              <option value="">1</option>
+              <option value="">2</option>
+              <option value="">3</option>
+              <option value="">4</option>
+            </select>
+          </div>
+          <div class="col-md-3">
+            <label class="mb-1 small">Sub linea</label>
+            <select 
+              name="" 
+              id="" 
+              class="form-control form-control-sm borde text-uppercase"
+            >
+              <option value="">Seleccione una opcion</option>
+              <option value="">1</option>
+              <option value="">2</option>
+              <option value="">3</option>
+              <option value="">4</option>
+            </select>
+          </div>
+          <div class="col-md-3">
+            <label class="mb-1 small">Sub grupo</label>
+            <select 
+              name="" 
+              id="" 
+              class="form-control form-control-sm borde text-uppercase"
+            >
+              <option value="">Seleccione una opcion</option>
+              <option value="">1</option>
+              <option value="">2</option>
+              <option value="">3</option>
+              <option value="">4</option>
+            </select>
+          </div>
+          <div class="col-md-2">
+            <br>
+            <button class="btn btn-primary btn-rounded">Consultar</button>
+          </div>
+        </div>
+
+
         <div class="row mt-4">
           <div class="col-md-12">
             <table class="table table-striped table-hover table-borderless" id="table-productos">
