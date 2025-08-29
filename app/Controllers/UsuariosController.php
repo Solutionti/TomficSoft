@@ -94,6 +94,10 @@ class UsuariosController extends BaseController {
         ])->setStatusCode(500);
     }
 }
+
+public function mostrarDatosUsuarioModal(){
+    $id = $this->request->getPost('id');
+}
   
 
 }

@@ -56,8 +56,7 @@
                               </button>
                               <button
                                 class="badge badge-primary"
-                                data-bs-toggle="modal"
-                                data-bs-target="#actualizarUsuario"
+                                onclick="mostrarDatosUsuarioModal(<?= $usuario->codigo_usuario; ?>)"
                               >
                                 <i class="fas fa-edit fa-1x "></i>
                               </button>

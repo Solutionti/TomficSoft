@@ -206,6 +206,11 @@ function eliminarUsuario(id) {
   });
 }
 
+function mostrarDatosUsuarioModal(id){
+  $("#actualizarUsuario").modal('show');
+  
+}
+
 function reloadPage() {
   location.reload();
 }

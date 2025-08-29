@@ -108,9 +108,9 @@
                                 <td><label class="badge badge-success "><?= $asignacionInventario->estado; ?></label></td>
                                 <td><label class="badge badge-success "><?= $asignacionInventario->proceso_final; ?></label></td>
                                 <td>
-                                  <button class="btn btn-primary btn-xs btn-rounded mx-1" data-bs-toggle="modal" data-bs-target="#listaproductos">Productos</button>
-                                  <button class="btn btn-primary btn-xs btn-rounded mx-1" data-bs-toggle="modal" data-bs-target="#modalConteos">Conteos</button>
-                                  <button class="btn btn-primary btn-xs btn-rounded mx-1" data-bs-toggle="modal" data-bs-target="#modalProceso">Procesos</button>
+                                  <button class="btn btn-primary btn-xs btn-rounded mx-1" onclick="asociarDatosModalProductos(<?= $asignacionInventario->codigo_inventario; ?>)">Productos</button>
+                                  <button class="btn btn-primary btn-xs btn-rounded mx-1" onclick="asociarDatosModalConteos(<?= $asignacionInventario->codigo_inventario; ?>)">Conteos</button>
+                                  <button class="btn btn-primary btn-xs btn-rounded mx-1" onclick="asociarDatosModalProcesos(<?= $asignacionInventario->codigo_inventario; ?>)">Procesos</button>
                                   <button class="btn btn-primary btn-xs btn-rounded mx-1" data-bs-toggle="modal" data-bs-target="#modalReportes">Reportes</button>
                                 </td>
                               </tr>  
@@ -184,7 +184,15 @@
       <div class="modal-body">
 <!-- aca va el formulario -->
         <div class="row mt-2">
-          <div class="col-md-4">
+          <div class="col-md-1">
+            <label class="mb-1 small">Id</label>
+            <input 
+              type="text"
+              class="form-control form-control-sm borde"
+              id="id_conteo_modal"
+            >
+          </div>
+          <div class="col-md-3">
             <label class="mb-1 small">Ubicacion</label>
             <select
                 class="form-control form-control-sm borde text-uppercase"
@@ -246,7 +254,15 @@
       <div class="modal-body">
 <!-- aca va el formulario -->
         <div class="row mt-2">
-          <div class="col-md-6">
+          <div class="col-md-1">
+            <label class="mb-1 small">Id</label>
+            <input 
+              type="text"
+              class="form-control form-control-sm borde"
+              id="id_procesos_modal"
+            >
+          </div>
+          <div class="col-md-5">
             <label class="mb-1 small">Ubicacion</label>
             <select
                 class="form-control form-control-sm borde text-uppercase"
@@ -398,6 +414,7 @@
             <input 
               type="text"
               class="form-control form-control-sm borde"
+              id="id_inventario_modal"
             >
           </div>
           <div class="col-md-3">

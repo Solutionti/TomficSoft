@@ -57,6 +57,15 @@ class UsuariosModel extends Model {
                  ->insert($usuarios);
     }
 
+    public function mostrarDatosUsuarioModal($id){
+      $query = $this->db->table('usuarios')
+             ->select('*')
+             ->where('codigo_usuario', $id)
+             ->get();
+
+      return $query;
+    }
+
 
 
 }

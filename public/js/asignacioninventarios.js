@@ -32,7 +32,20 @@ function crearInventarios(){
         });
 }
 
+function asociarDatosModalProductos(id){
+  var id = $("#id_inventario_modal").val(id);
+  $("#listaproductos").modal('show');
+}
 
+function asociarDatosModalConteos(id){
+  var id = $("#id_conteo_modal").val(id);
+  $("#modalConteos").modal('show');
+}
+
+function asociarDatosModalProcesos(id){
+  var id = $("#id_procesos_modal").val(id);
+  $("#modalProceso").modal('show');
+}
 
 
 
