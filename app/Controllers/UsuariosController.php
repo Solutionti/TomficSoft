@@ -95,8 +95,13 @@ class UsuariosController extends BaseController {
     }
 }
 
-public function mostrarDatosUsuarioModal(){
-    $id = $this->request->getPost('id');
+public function mostrarDatosUsuarioModal($id){
+    // $id = $this->request->getPost('id');
+
+    $uuario = $this->usuariosModel->mostrarDatosUsuarioModal($id)->getResult();
+
+    //enviar los datos de tipo JSON al javascriot
+    return $this->response->setJSON($uuario);
 }
   
 

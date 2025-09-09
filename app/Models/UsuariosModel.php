@@ -66,6 +66,13 @@ class UsuariosModel extends Model {
       return $query;
     }
 
+    public function eliminarUsuiario($id) {
+       $this->db->table('usuarios')
+                 ->where('id', $id)
+                 ->delete();
+    }
+
+    
 
 
 }

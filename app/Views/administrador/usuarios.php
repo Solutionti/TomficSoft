@@ -361,8 +361,8 @@
             <label class="mb-1 small ">Documento *</label>
             <input 
               type="number"
-              id="documento_usuario"
-              name="documento_usuario"
+              id="documento_usuario_actualizar"
+              name="documento_usuario_actualizar"
               class="form-control form-control-sm borde"
               required
             >
@@ -371,8 +371,8 @@
             <label class="mb-1 small ">Nombre *</label>
             <input 
               type="text"
-              id="nombre_usuario"
-              name="nombre_usuario"
+              id="nombre_usuario_actualizar"
+              name="nombre_usuario_actualizar"
               class="form-control form-control-sm borde"
               required
             >
@@ -381,8 +381,8 @@
             <label class="mb-1 small ">Apellido *</label>
             <input 
               type="text"
-              id="apellido_usuario"
-              name="apellido_usuario"
+              id="apellido_usuario_actualizar"
+              name="apellido_usuario_actualizar"
               class="form-control form-control-sm borde"
               required
             >
@@ -394,7 +394,7 @@
             <label class="mb-1 small ">Empresa *</label>
             <select
                 class="form-control form-control-sm borde text-uppercase"
-                id="empresa_usuario"
+                id="empresa_usuario_actualizar"
                 required
               >
                 <option value="">Seleccione la empresa</option>
@@ -407,7 +407,7 @@
             <label class="mb-1 small ">Telefono *</label>
             <input 
               type="number"
-              id="telefono_usuario"
+              id="telefono_usuario_actualizar"
               name="telefono_usuario"
               class="form-control form-control-sm borde"
               required
@@ -417,7 +417,7 @@
             <label class="mb-1 small ">Estado *</label>
               <select
                 class="form-control form-control-sm borde text-uppercase"
-                id="estado_usuario"
+                id="estado_usuario_actualizar"
                 required
               >
                 <option value="">Seleccione el estado del usuario</option>
@@ -431,7 +431,7 @@
             <label class="mb-1 small ">Correo Electronico *</label>
               <input 
                 type="email"
-                id="correo"
+                id="correo_actualizar"
                 name="correo"
                 class="form-control form-control-sm borde"
               >
@@ -442,7 +442,7 @@
             <label class="mb-1 small ">Rol *</label>
             <select
                 class="form-control form-control-sm borde text-uppercase"
-                id="rol_usuario"
+                id="rol_usuario_actualizar"
               >
                 <option value="">Seleccione el rol del usuario</option>
                 <option value="Administrador">Administrador</option>
@@ -453,7 +453,7 @@
             <label class="mb-1 small ">Fecha</label>
             <input 
               type="date"
-              id="fecha_usuario"
+              id="fecha_usuario_actualizar"
               name="fecha_usuario"
               class="form-control form-control-sm borde"
               value="<?php echo date('Y-m-d') ?>"
@@ -464,7 +464,7 @@
             <label class="mb-1 small ">Hora</label>
             <input 
               type="time"
-              id="hora_usuario"
+              id="hora_usuario_actualizar"
               name="hora_usuario"
               class="form-control form-control-sm borde"
               value="<?= date('H:i') ?>"
@@ -477,7 +477,7 @@
             <label class="mb-1 small ">Usuario *</label>
             <input 
               type="text"
-              id="usuario_usuario"
+              id="usuario_usuario_actualizar"
               name="usuario_usuario"
               class="form-control form-control-sm borde"
             >
@@ -491,7 +491,7 @@
                     type="password"
                     class="js-toggle-password form-control form-control-sm borde"
                     placeholder="Contraseña"
-                    id="password_usuario"
+                    id="password_usuario_actualizar"
                   >
                   <a
                     class="input-group-append input-group-text"
@@ -509,7 +509,7 @@
                     type="password"
                     class="js-toggle-password form-control form-control-sm borde"
                     placeholder="Contraseña"
-                    id="repetir_password_usuario"
+                    id="repetir_password_usuario_actualizar"
                   >
                 </div>
           </div>

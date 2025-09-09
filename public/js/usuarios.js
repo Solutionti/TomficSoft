@@ -207,8 +207,35 @@ function eliminarUsuario(id) {
 }
 
 function mostrarDatosUsuarioModal(id){
-  $("#actualizarUsuario").modal('show');
   
+  let url = baseurl + "getusuarioid/" + id;
+  
+  $.ajax({
+    url: url,
+    method: 'GET',
+    success: function (response){
+      $("#actualizarUsuario").modal('show');
+      console.log(response);
+      $('#documento_usuario_actualizar').val(response[0].documento);
+      $('#nombre_usuario_actualizar').val(response[0].nombre);
+      $('#apellido_usuario_actualizar').val(response[0].apellido);
+      $('#empresa_usuario_actualizar').val(response[0].empresa);
+      $('#telefono_usuario_actualizar').val(response[0].telefono);
+      $('#estado_usuario_actualizar').val(response[0].estado);
+      $('#correo_actualizar').val(response[0].email);
+      $('#rol_usuario_actualizar').val(response[0].rol_usuario);
+      $('#fecha_usuario_actualizar').val(response[0].fecha);
+      $('#hora_usuario_actualizar').val(response[0].hora);
+      $('#usuario_usuario_actualizar').val(response[0].usuario_creacion);
+    },
+    error: function (response){
+      $("body").overhang({
+        type: "error",
+        message: "Alerta ! Tenemos un problema al conectar con la base de datos verifica tu red.",
+      });
+    }
+      
+  });
 }
 
 function reloadPage() {
