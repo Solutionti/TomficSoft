@@ -25,7 +25,9 @@ $routes->post('/modificarconteo', 'ConteosController::actualizarConteo');
 // USUARIOS
 $routes->get('/usuarios', 'UsuariosController::index');
 $routes->post('/crearusuario', 'UsuariosController::crearUsuario');
+$routes->post('/actualizarusuario', 'UsuariosController::actualizarUsuario');
 $routes->get('/getusuarioid/(:num)', 'UsuariosController::mostrarDatosUsuarioModal/$1');
+$routes->post('/eliminarusuario', 'UsuariosController::eliminarusuario');
 
 
 //Asignacion inventarios

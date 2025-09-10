@@ -103,6 +103,68 @@ public function mostrarDatosUsuarioModal($id){
     //enviar los datos de tipo JSON al javascriot
     return $this->response->setJSON($uuario);
 }
+
+public function actualizarUsuario() {
+
+    try {
+        $documento = $this->request->getPost('documento');
+        $nombre = $this->request->getPost('nombre');
+        $apellido = $this->request->getPost('apellido');
+        $empresa = $this->request->getPost('empresa');
+        $telefono = $this->request->getPost('telefono');
+        $estado = $this->request->getPost('estado');
+        $email = $this->request->getPost('email');
+        $rol = $this->request->getPost('rol');
+        $fecha = $this->request->getPost('fecha');
+        $hora = $this->request->getPost('hora');
+        $usuario = $this->request->getPost('usuario');
+    
+        $datos = [
+          'documento' => $documento,
+          'usuario' => $usuario,
+          'email' => $email,
+          'nombre' => $nombre,
+          'apellido' => $apellido,
+          'empresa' => $empresa,
+          'telefono' => $telefono,
+          'rol_usuario' => $rol,
+          'estado' => $estado,
+        ];
+    
+        $this->usuariosModel->actualizarUsuario($datos);
+
+         return $this->response->setJSON([
+            "status"  => "success",
+            "message" => "Usuario actualizado correctamente"
+         ]);
+
+    }catch (\Throwable $e) {
+        return $this->response->setJSON([
+            "status"  => "error",
+            "message" => "Error en el servidor: " . $e->getMessage()
+        ])->setStatusCode(500);
+    }
+}
+
+public function eliminarusuario() {
+    try {
+      $id = $this->request->getPost('id');
+    
+      $this->usuariosModel->eliminarUsuiario($id);
+      
+      return $this->response->setJSON([
+            "status"  => "success",
+            "message" => "el Usuario se ha eliminado correctamente"
+         ]);  
+    }
+    catch (\Throwable $e) {
+        return $this->response->setJSON([
+            "status"  => "error",
+            "message" => "Error en el servidor: " . $e->getMessage()
+        ])->setStatusCode(500);
+    }
+
+}
   
 
 }

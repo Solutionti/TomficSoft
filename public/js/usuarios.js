@@ -186,6 +186,7 @@ if (contraseña !== repetirContraseña) {
 }
 
 function eliminarUsuario(id) {
+  let url = baseurl + "eliminarusuario";
    $("body").overhang({
      type: "confirm",
      primary: "#9a3de0",
@@ -197,7 +198,28 @@ function eliminarUsuario(id) {
      overlay: true,
      callback: function (value) {
       if (value) {
-        alert(id);
+        $.ajax({
+          url: url,
+          method: "POST",
+          data: {
+            id: id
+          },
+          success: function(response) {
+            $("body").overhang({
+             type: "success",
+             message: response.message
+            });
+
+            setTimeout(reloadPage, 3000);
+          },
+          error: function() {
+$("body").overhang({
+        type: "error",
+        message: "Alerta ! Tenemos un problema al conectar con la base de datos verifica tu red.",
+      });
+            
+          }
+        });
       }
       else {
 
@@ -236,6 +258,55 @@ function mostrarDatosUsuarioModal(id){
     }
       
   });
+}
+
+function actualizarUsuario() {
+  var url = baseurl + "/actualizarusuario";
+  var documento =  $('#documento_usuario_actualizar').val(),
+      nombre = $('#nombre_usuario_actualizar').val(),
+      apellido = $('#apellido_usuario_actualizar').val(),
+      empresa = $('#empresa_usuario_actualizar').val(),
+      telefono = $('#telefono_usuario_actualizar').val(),
+      estado = $('#estado_usuario_actualizar').val(),
+      email = $('#correo_actualizar').val(),
+      rol = $('#rol_usuario_actualizar').val(),
+      fecha =$('#fecha_usuario_actualizar').val(),
+      hora = $('#hora_usuario_actualizar').val(),
+      usuario = $('#usuario_usuario_actualizar').val();
+
+      $.ajax({
+        url: url,
+        method: 'POST',
+        data: {
+          documento: documento,
+          nombre: nombre,
+          apellido: apellido,
+          empresa: empresa,
+          telefono: telefono,
+          estado: estado,
+          email: email,
+          rol: rol,
+          fecha: fecha,
+          hora: hora,
+          usuario: usuario
+        },
+        success: function(response){
+          $("body").overhang({
+          type: "success",
+          message: "El usuario se ha actualizado correctamente en la base de datos. " 
+        });
+
+        setTimeout(reloadPage, 3000);
+        },
+        error: function(responde){
+          $("body").overhang({
+          type: "error",
+          message: "El usuario no se ha actualizado correctamente en la base de datos. " 
+        });
+        }
+      });
+
+
 }
 
 function reloadPage() {

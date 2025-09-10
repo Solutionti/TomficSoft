@@ -68,8 +68,25 @@ class UsuariosModel extends Model {
 
     public function eliminarUsuiario($id) {
        $this->db->table('usuarios')
-                 ->where('id', $id)
+                 ->where('codigo_usuario', $id)
                  ->delete();
+    }
+
+    public function actualizarUsuario($data){
+       $usuarios = [
+        'usuario' => $data["usuario"],
+        'email' => $data["email"],
+        'nombre' => $data["nombre"],
+        'apellido' => $data["apellido"],
+        'empresa' => $data["empresa"],
+        'telefono' => $data["telefono"],
+        'rol_usuario' => $data["rol_usuario"],
+        'estado' => $data["estado"],
+      ];
+
+      $this->db->table('usuarios')
+                ->where('documento', $data["documento"])
+                ->update($usuarios);
     }
 
     
