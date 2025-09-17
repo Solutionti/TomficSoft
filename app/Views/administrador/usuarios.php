@@ -454,7 +454,7 @@
             <input 
               type="date"
               id="fecha_usuario_actualizar"
-              name="fecha_usuario"
+              name="fecha_usuarios"
               class="form-control form-control-sm borde"
               value="<?php echo date('Y-m-d') ?>"
               readonly
