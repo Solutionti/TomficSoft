@@ -61,6 +61,12 @@
             </a>
           </li>
           <li class="nav-item pt-1">
+            <a class="nav-link" href="<?= base_url('inventarios') ?>">
+              
+              <span class="menu-title"> <i class="fas fa-truck-moving text-morado"></i> Inventarios</span>
+            </a>
+          </li>
+          <li class="nav-item pt-1">
             <a class="nav-link" href="<?= base_url('conteos') ?>">
               
               <span class="menu-title"> <i class="fas fa-wifi text-danger"></i> Modo offline</span>
