@@ -7,10 +7,10 @@ use CodeIgniter\HTTP\ResponseInterface;
 
 class InventarioController extends BaseController
 {
-    public function __construct()
-    {
+    // public function __construct()
+    // {
         
-    }
+    // }
     
     public function index()
     {

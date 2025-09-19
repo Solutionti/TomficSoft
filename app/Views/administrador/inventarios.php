@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Administracion - Inventarios</title>
-    <?php require_once("componentes/head.php")?>
+   <?php require_once("componentes/head.php")?>
 </head>
 <body>
   <div class="container-scroller">
@@ -15,8 +15,10 @@
           <div class="content-wrapper">
             <div class="page-header flex-wrap">
               <div class="header-left">
-                <button class="btn btn-primary mb-2 mb-md-0 me-2 btn-rounded" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Agregar Usuarios</button>
-                <!-- <button class="btn btn-outline-primary bg-white mb-2 mb-md-0">Exportar base de datos</button> -->
+                <button class="btn btn-primary mb-2 mb-md-0 me-2" data-bs-toggle="modal" data-bs-target="#agregarProducto">Agregar Producto</button>
+                <button class="btn btn-outline-primary bg-white mb-2 mb-md-0 me-2">Consulta</button>
+                <button class="btn btn-success mb-2 mb-md-0 me-2">Entrada</button>
+                <button class="btn btn-danger mb-2 mb-md-0 me-2">Salida</button>
               </div>
               <div class="header-right d-flex flex-wrap mt-2 mt-sm-0">
                 <div class="d-flex align-items-center">
@@ -24,134 +26,95 @@
                     <p class="m-0 pe-3">ADMINISTRACIÒN</p>
                   </a>
                   <a class="ps-3 me-4" href="#">
-                    <p class="m-0">INV - USUARIOS</p>
+                    <p class="m-0">INV - INVENTARIOS</p>
                   </a>
                 </div>
               </div>
             </div>
             <div class="row">
+              <div class="col-md-12">
+                <!-- aca va el contenido  -->
+                 <div class="row">
                 <div class="col-md-12">
                     <table class="table table-striped">
                         <thead >
                           <tr >
                             <th class="color-morado text-white text-uppercase"> </th>
-                            <th class="color-morado text-white text-uppercase"> Codigo</th>
-                            <th class="color-morado text-white text-uppercase"> Nombre completo </th>
-                            <th class="color-morado text-white text-uppercase"> Empresa </th>
-                            <th class="color-morado text-white text-uppercase"> Email </th>
-                            <th class="color-morado text-white text-uppercase"> Telefono </th>
-                            <th class="color-morado text-white text-uppercase"> Rol </th>
-                            <th class="color-morado text-white text-uppercase"> Estado </th>
+                            <th class="color-morado text-white text-uppercase"> opciones</th>
+                            <th class="color-morado text-white text-uppercase"> imagen</th>
+                            <th class="color-morado text-white text-uppercase"> Codigo </th>
+                            <th class="color-morado text-white text-uppercase"> Nombre </th>
+                            <th class="color-morado text-white text-uppercase"> Categoria </th>
+                            <th class="color-morado text-white text-uppercase"> Valor </th>
+                            <th class="color-morado text-white text-uppercase"> Stock </th>
                           </tr>
                         </thead>
                         <tbody>
-                          <?php foreach($usuarios->getResult() as $usuario) { ?>
-                          <tr>
-                            <td>
-                              <button
-                                class="badge badge-danger"
-                                onclick="eliminarUsuario('<?= $usuario->codigo_usuario; ?>')"
-                              >
-                                <i class="fas fa-trash fa-1x "></i>
-                              </button>
-                              <button
-                                class="badge badge-primary"
-                                onclick="mostrarDatosUsuarioModal(<?= $usuario->codigo_usuario; ?>)"
-                              >
-                                <i class="fas fa-edit fa-1x "></i>
-                              </button>
-                            </td>
-                            <td><?= $usuario->codigo_usuario; ?></td>
-                            <td>
-                              <div class="row">
-                               <div class="d-flex px-2 py-1">
-                                 <div>
-                                    <img src="<?= base_url('img/team-41.jpg') ?>" class="avatar avatar-sm me-3">
-                                 </div>
-                                 <div class="d-flex flex-column justify-content-center">
-                                    <h6 class="mb-0 text-xs"><?= $usuario->nombre.' '.$usuario->apellido; ?></h6>
-                                    <p class="text-xs text-dark mb-0"><?= $usuario->documento.' - '.$usuario->usuario; ?></p>
-                                 </div>
-                              </div>
-                              </div>
-                            </td>
-                            <td><?= $usuario->empresa; ?></td>
-                            <td><?= $usuario->email; ?></td>
-                            <td><?= $usuario->telefono; ?></td>
-                            <td><label class="badge badge-primary"><?= $usuario->rol_usuario; ?></label></td>
-                            <td><label class="badge badge-success"><?= $usuario->estado; ?></label></td>
-                          </tr>
-                          <!-- <tr>
-                            <td></td>
-                            <td>02</td>
-                            <td>
-                              <div class="row">
-                               <div class="d-flex px-2 py-1">
-                                 <div>
-                                    <img src="https://themewagon.github.io/plus-admin/assets/images/faces-clipart/pic-2.png" class="avatar avatar-sm me-3">
-                                 </div>
-                                 <div class="d-flex flex-column justify-content-center">
-                                    <h6 class="mb-0 text-xs">Mabel Andrea Guerra</h6>
-                                    <p class="text-xs text-dark mb-0">56868539</p>
-                                 </div>
-                              </div>
-                              </div>
-                            </td>
-                            <td>GO Future</td>
-                            <td>jerson_galvez@hotmail.com</td>
-                            <td><label class="badge badge-primary ">Capturador</label></td>
-                            <td><label class="badge badge-success ">Activo</label></td>
-                          </tr> -->
-                         <?php } ?>
+                          
                         </tbody>
                       </table>  
                 </div>
+            </div>
+              </div>
             </div>
         </div>
     </div>
           </div>
         </div>
     </div>
-    <!--  -->
     <?php require_once("componentes/footer.php")?>
 </div>
 
-<!-- MODAL PARA CREAR EL FORMULARIO -->
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<!-- MODAL PARA AGREGAR PRODUCTO -->
+<div class="modal fade" id="agregarProducto" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="agregarProductoLabel" aria-hidden="true">
   <div class="modal-dialog modal-fullscreen">
     <div class="modal-content">
       <div class="modal-header color-morado">
-        <h1 class="modal-title fs-5  text-white" id="staticBackdropLabel">CREAR USUARIOS Y PERMISOS DE USUARIO</h1>
+        <h1 class="modal-title fs-5  text-white" id="agregarProductoLabel">AGREGAR PRODUCTO</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <div class="row mt-3">
           <div class="col-md-4">
-            <label class="mb-1 small ">Documento *</label>
-            <input 
-              type="number"
-              id="documento_usuario"
-              name="documento_usuario"
-              class="form-control form-control-sm borde"
+            <label class="mb-1 small ">Categoria *</label>
+            <select
+              class="form-control form-control-sm borde text-uppercase"
+              id="categoria_inventario"
               required
             >
+              <option value="">Seleccione una categoria</option>
+              <option value="">1</option>
+              <option value="">2</option>
+              <option value="">3</option>
+                
+            </select>
           </div>
           <div class="col-md-4">
             <label class="mb-1 small ">Nombre *</label>
             <input 
               type="text"
-              id="nombre_usuario"
-              name="nombre_usuario"
+              id="nombre_inventario"
+              name="nombre_inventario"
               class="form-control form-control-sm borde"
               required
             >
           </div>
-          <div class="col-md-4">
-            <label class="mb-1 small ">Apellido *</label>
+          <div class="col-md-2">
+            <label class="mb-1 small ">Codigo *</label>
+            <input 
+              type="number"
+              id="codigo_inventario"
+              name="codigo_inventario"
+              class="form-control form-control-sm borde"
+              required
+            >
+          </div>
+          <div class="col-md-2">
+            <label class="mb-1 small ">Codigo de barras *</label>
             <input 
               type="text"
-              id="apellido_usuario"
-              name="apellido_usuario"
+              id="barras_inventario"
+              name="barras_inventario"
               class="form-control form-control-sm borde"
               required
             >
@@ -159,426 +122,99 @@
       </div>
 
         <div class="row mt-3">
-          <div class="col-md-4">
-            <label class="mb-1 small ">Empresa *</label>
+          <div class="col-md-3">
+            <label class="mb-1 small ">Unidad medida *</label>
             <select
-                class="form-control form-control-sm borde text-uppercase"
-                id="empresa_usuario"
-                required
-              >
-                <option value="">Seleccione la empresa</option>
-                <?php foreach($empresas->getResult() as $empresa) {  ?>
-                  <option value="<?= $empresa->nit ?>"><?= $empresa->nombre; ?></option>
-                <?php } ?>
-               </select>
+              class="form-control form-control-sm borde text-uppercase"
+              id="unidad_inventario"
+              required
+            >
+              <option value="">Seleccione unidad</option>
+              <option value="">1</option>
+              <option value="">2</option>
+              <option value="">3</option>
+                
+            </select>
           </div>
-          <div class="col-md-4">
-            <label class="mb-1 small ">Telefono *</label>
+          <div class="col-md-3">
+            <label class="mb-1 small ">Merma *</label>
             <input 
-              type="number"
-              id="telefono_usuario"
-              name="telefono_usuario"
+              type="text"
+              id="merma_inventario"
+              name="merma_inventario"
               class="form-control form-control-sm borde"
               required
             >
           </div>
-          <div class="col-md-4">
-            <label class="mb-1 small ">Estado *</label>
-              <select
+          <div class="col-md-2">
+            <label class="mb-1 small ">Cantidad *</label>
+              <input
                 class="form-control form-control-sm borde text-uppercase"
-                id="estado_usuario"
+                id="cantidad_inventario"
+                name="cantidad_inventario"
+                type="number"
                 required
               >
-                <option value="">Seleccione el estado del usuario</option>
-                <option value="Activo">Activo</option>
-                <option value="Inactivo">Inactivo</option>    
-               </select>
+              </input>
+          </div>
+            <div class="col-md-2">
+              <label class="mb-1 small ">Precio de venta *</label>
+                <input 
+                  type="number"
+                  id="precio_inventario"
+                  name="precio_inventario"
+                  class="form-control form-control-sm borde"
+                >
+            </div>
+            <div class="col-md-2">
+              <label class="mb-1 small ">Moneda *</label>
+                <select
+              class="form-control form-control-sm borde text-uppercase"
+              id="moneda_inventario"
+              required
+            >
+              <option value="">Seleccione Moneda</option>
+              <option value="">1</option>
+              <option value="">2</option>
+              <option value="">3</option>
+                
+            </select>
+            </div>
+        </div>
+        <div class="row mt-3">
+          <div class="col-md-4">
+            <label class="mb-1 small ">Precio proveedor *</label>
+            <input 
+              type="number"
+              id="proveedor_inventario"
+              name="proveedor_inventario"
+              class="form-control form-control-sm borde"
+              required>
+          </div>
+          <div class="col-md-5">
+            <label class="mb-1 small ">Imagen </label>
+            <input 
+              type="file"
+              id="imagen_inventario"
+              name="imagen_inventario"
+              class="form-control form-control-sm borde"
+            >
+          </div>
+          <div class="col-md-3">
+            <div class="form-check form-switch">
+              <br>
+              <input class="form-check-input mx-2 " type="checkbox" role="switch" id="switchCheckChecked venta_inventario" checked>
+              <label class="form-check-label " for="switchCheckChecked">Producto de venta</label>
+            </div> 
           </div>
         </div>
         <div class="row mt-3">
           <div class="col-md-12">
-            <label class="mb-1 small ">Correo Electronico *</label>
-              <input 
-                type="email"
-                id="correo"
-                name="correo"
-                class="form-control form-control-sm borde"
-              >
+            <label class="mb-1 small ">Descripcion *</label>
+            <textarea class="form-control form-control-sm borde" placeholder="Descripcion" id="floatingTextarea2" style="height: 100px"></textarea>
+          </div>
           </div>
         </div>
-        <div class="row mt-3">
-          <div class="col-md-4">
-            <label class="mb-1 small ">Rol *</label>
-            <select
-                class="form-control form-control-sm borde text-uppercase"
-                id="rol_usuario"
-              >
-                <option value="">Seleccione el rol del usuario</option>
-                <option value="Administrador">Administrador</option>
-                <option value="Capturador">Auxiliar Capturador</option>    
-               </select>
-          </div>
-          <div class="col-md-4">
-            <label class="mb-1 small ">Fecha</label>
-            <input 
-              type="date"
-              id="fecha_usuario"
-              name="fecha_usuario"
-              class="form-control form-control-sm borde"
-              value="<?php echo date('Y-m-d') ?>"
-              readonly
-            >
-          </div>
-          <div class="col-md-4">
-            <label class="mb-1 small ">Hora</label>
-            <input 
-              type="time"
-              id="hora_usuario"
-              name="hora_usuario"
-              class="form-control form-control-sm borde"
-              value="<?= date('H:i') ?>"
-              readonly
-            >
-          </div>
-        </div>
-        <div class="row mt-3">
-          <div class="col-md-4">
-            <label class="mb-1 small ">Usuario *</label>
-            <input 
-              type="text"
-              id="usuario_usuario"
-              name="usuario_usuario"
-              class="form-control form-control-sm borde"
-            >
-          </div>
-          <div class="col-md-4">
-            <div class="d-flex justify-content-between align-items-center">
-                  <label class="form-label" for="signupModalFormLoginPassword">Contraseña *</label>
-                </div>
-                <div class="input-group">
-                  <input
-                    type="password"
-                    class="js-toggle-password form-control form-control-sm borde"
-                    placeholder="Contraseña"
-                    id="password_usuario"
-                  >
-                  <a
-                    class="input-group-append input-group-text"
-                  >
-                    <i id="changePassIcon" class="fas fa-eye text-primary"></i>
-                  </a>
-                </div>
-          </div>
-          <div class="col-md-4">
-             <div class="d-flex justify-content-between align-items-center">
-                  <label class="form-label" for="signupModalFormLoginPassword">Repetir Contraseña *</label>
-                </div>
-                <div class="input-group">
-                  <input
-                    type="password"
-                    class="js-toggle-password form-control form-control-sm borde"
-                    placeholder="Contraseña"
-                    id="repetir_password_usuario"
-                  >
-                </div>
-          </div>
-        </div>
-        <div class="row mt-3">
-          <h5>PERMISOS DE USUARIO</h5>
-
-          <div class="col-md-12 mt-2">
-            <table class="table table-striped">
-              <thead >
-                <tr>
-                  <th class="color-morado text-white text-uppercase">
-                    <div class="form-check">
-                      <input
-                        class="form-check-input mx-3 borde"
-                        type="checkbox"
-                        id="selectAll"
-                      >
-                    </div>
-                  </th>
-                  <th class="color-morado text-white text-uppercase"> Codigo</th>
-                  <th class="color-morado text-white text-uppercase"> Nombre </th>
-                  <th class="color-morado text-white text-uppercase"> link </th>
-                  <th class="color-morado text-white text-uppercase"> Estado </th>
-                </tr>
-              </thead>
-              <tbody>
-                <?php foreach($permisos->getResult() as $permiso){ ?>
-                <tr>
-                  <td>
-                    <div class="form-check">
-                      <input
-                        class="form-check-input mx-3 borde fila"
-                        type="checkbox"
-                        value="<?= $permiso->codigo_permiso; ?>"
-                      >
-                    </div>
-                  </td>
-                  <td><?= $permiso->codigo_permiso;  ?></td>
-                  <td>
-                    <div class="row">
-                      <div class="d-flex px-2 py-1">
-                        <div>
-                          <img src="<?= base_url('img/team-41.jpg') ?>" class="avatar avatar-sm me-3">
-                        </div>
-                        <div class="d-flex flex-column justify-content-center">
-                          <h6 class="mb-0 text-xs">Modulo de <?= $permiso->nombre;  ?></h6>
-                          <p class="text-xs text-dark mb-0">Permiso de usuario</p>
-                        </div>
-                      </div>
-                    </div>
-                   </td>
-                   <td><?= $permiso->url;  ?></td>
-                   <td><label class="badge badge-success"><?= $permiso->estado;  ?></label></td>
-                </tr>
-              <?php }?>
-             </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger btn-rounded" data-bs-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary btn-rounded"  onclick=" crearUsuarios()">Guardar</button>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- MODAL PARA ACTUALIZAR EL FORMULARIO -->
-<div class="modal fade" id="actualizarUsuario" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="actualizarUsuarioLabel" aria-hidden="true">
-  <div class="modal-dialog modal-fullscreen">
-    <div class="modal-content">
-      <div class="modal-header color-morado">
-        <h1 class="modal-title fs-5  text-white" id="actualizarUsuarioLabel">ACTUALIZAR USUARIOS Y PERMISOS DE USUARIO</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <div class="row mt-3">
-          <div class="col-md-4">
-            <label class="mb-1 small ">Documento *</label>
-            <input 
-              type="number"
-              id="documento_usuario_actualizar"
-              name="documento_usuario_actualizar"
-              class="form-control form-control-sm borde"
-              required
-            >
-          </div>
-          <div class="col-md-4">
-            <label class="mb-1 small ">Nombre *</label>
-            <input 
-              type="text"
-              id="nombre_usuario_actualizar"
-              name="nombre_usuario_actualizar"
-              class="form-control form-control-sm borde"
-              required
-            >
-          </div>
-          <div class="col-md-4">
-            <label class="mb-1 small ">Apellido *</label>
-            <input 
-              type="text"
-              id="apellido_usuario_actualizar"
-              name="apellido_usuario_actualizar"
-              class="form-control form-control-sm borde"
-              required
-            >
-          </div>
-      </div>
-
-        <div class="row mt-3">
-          <div class="col-md-4">
-            <label class="mb-1 small ">Empresa *</label>
-            <select
-                class="form-control form-control-sm borde text-uppercase"
-                id="empresa_usuario_actualizar"
-                required
-              >
-                <option value="">Seleccione la empresa</option>
-                <?php foreach($empresas->getResult() as $empresa) {  ?>
-                  <option value="<?= $empresa->nit ?>"><?= $empresa->nombre; ?></option>
-                <?php } ?>
-               </select>
-          </div>
-          <div class="col-md-4">
-            <label class="mb-1 small ">Telefono *</label>
-            <input 
-              type="number"
-              id="telefono_usuario_actualizar"
-              name="telefono_usuario"
-              class="form-control form-control-sm borde"
-              required
-            >
-          </div>
-          <div class="col-md-4">
-            <label class="mb-1 small ">Estado *</label>
-              <select
-                class="form-control form-control-sm borde text-uppercase"
-                id="estado_usuario_actualizar"
-                required
-              >
-                <option value="">Seleccione el estado del usuario</option>
-                <option value="Activo">Activo</option>
-                <option value="Inactivo">Inactivo</option>    
-               </select>
-          </div>
-        </div>
-        <div class="row mt-3">
-          <div class="col-md-12">
-            <label class="mb-1 small ">Correo Electronico *</label>
-              <input 
-                type="email"
-                id="correo_actualizar"
-                name="correo"
-                class="form-control form-control-sm borde"
-              >
-          </div>
-        </div>
-        <div class="row mt-3">
-          <div class="col-md-4">
-            <label class="mb-1 small ">Rol *</label>
-            <select
-                class="form-control form-control-sm borde text-uppercase"
-                id="rol_usuario_actualizar"
-              >
-                <option value="">Seleccione el rol del usuario</option>
-                <option value="Administrador">Administrador</option>
-                <option value="Capturador">Auxiliar Capturador</option>    
-               </select>
-          </div>
-          <div class="col-md-4">
-            <label class="mb-1 small ">Fecha</label>
-            <input 
-              type="date"
-              id="fecha_usuario_actualizar"
-              name="fecha_usuarios"
-              class="form-control form-control-sm borde"
-              value="<?php echo date('Y-m-d') ?>"
-              readonly
-            >
-          </div>
-          <div class="col-md-4">
-            <label class="mb-1 small ">Hora</label>
-            <input 
-              type="time"
-              id="hora_usuario_actualizar"
-              name="hora_usuario"
-              class="form-control form-control-sm borde"
-              value="<?= date('H:i') ?>"
-              readonly
-            >
-          </div>
-        </div>
-        <div class="row mt-3">
-          <div class="col-md-4">
-            <label class="mb-1 small ">Usuario *</label>
-            <input 
-              type="text"
-              id="usuario_usuario_actualizar"
-              name="usuario_usuario"
-              class="form-control form-control-sm borde"
-            >
-          </div>
-          <div class="col-md-4">
-            <div class="d-flex justify-content-between align-items-center">
-                  <label class="form-label" for="signupModalFormLoginPassword">Contraseña *</label>
-                </div>
-                <div class="input-group">
-                  <input
-                    type="password"
-                    class="js-toggle-password form-control form-control-sm borde"
-                    placeholder="Contraseña"
-                    id="password_usuario_actualizar"
-                  >
-                  <a
-                    class="input-group-append input-group-text"
-                  >
-                    <i id="changePassIcon" class="fas fa-eye text-primary"></i>
-                  </a>
-                </div>
-          </div>
-          <div class="col-md-4">
-             <div class="d-flex justify-content-between align-items-center">
-                  <label class="form-label" for="signupModalFormLoginPassword">Repetir Contraseña *</label>
-                </div>
-                <div class="input-group">
-                  <input
-                    type="password"
-                    class="js-toggle-password form-control form-control-sm borde"
-                    placeholder="Contraseña"
-                    id="repetir_password_usuario_actualizar"
-                  >
-                </div>
-          </div>
-        </div>
-        <div class="row mt-3">
-          <h5>PERMISOS DE USUARIO</h5>
-
-          <div class="col-md-12 mt-2">
-            <table class="table table-striped">
-              <thead >
-                <tr>
-                  <th class="color-morado text-white text-uppercase">
-                    <div class="form-check">
-                      <input
-                        class="form-check-input mx-3 borde"
-                        type="checkbox"
-                        id="selectAll"
-                      >
-                    </div>
-                  </th>
-                  <th class="color-morado text-white text-uppercase"> Codigo</th>
-                  <th class="color-morado text-white text-uppercase"> Nombre </th>
-                  <th class="color-morado text-white text-uppercase"> link </th>
-                  <th class="color-morado text-white text-uppercase"> Estado </th>
-                </tr>
-              </thead>
-              <tbody>
-                <?php foreach($permisos->getResult() as $permiso){ ?>
-                <tr>
-                  <td>
-                    <div class="form-check">
-                      <input
-                        class="form-check-input mx-3 borde fila"
-                        type="checkbox"
-                        value="<?= $permiso->codigo_permiso; ?>"
-                      >
-                    </div>
-                  </td>
-                  <td><?= $permiso->codigo_permiso;  ?></td>
-                  <td>
-                    <div class="row">
-                      <div class="d-flex px-2 py-1">
-                        <div>
-                          <img src="<?= base_url('img/team-41.jpg') ?>" class="avatar avatar-sm me-3">
-                        </div>
-                        <div class="d-flex flex-column justify-content-center">
-                          <h6 class="mb-0 text-xs">Modulo de <?= $permiso->nombre;  ?></h6>
-                          <p class="text-xs text-dark mb-0">Permiso de usuario</p>
-                        </div>
-                      </div>
-                    </div>
-                   </td>
-                   <td><?= $permiso->url;  ?></td>
-                   <td><label class="badge badge-success"><?= $permiso->estado;  ?></label></td>
-                </tr>
-              <?php }?>
-             </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger btn-rounded" data-bs-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary btn-rounded"  onclick=" actualizarUsuario()">Actualizar</button>
-      </div>
-    </div>
-  </div>
-</div>
-
 <?php require_once("componentes/scripts.php")?>
 </body>
 </html>
