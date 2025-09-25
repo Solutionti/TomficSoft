@@ -32,4 +32,7 @@ $routes->post('/eliminarusuario', 'UsuariosController::eliminarusuario');
 
 //Asignacion inventarios
 $routes->get('/asignacioninventarios', 'AsignacionInventariosController::index');
-$routes->post('/crearinventarios', 'AsignacionInventariosController::crearInventarios');
+$routes->post('/crearinventario', 'AsignacionInventariosController::crearInventarios');
+
+// INVENTARIOS
+$routes->get('/inventarios', 'InventarioController::index');
