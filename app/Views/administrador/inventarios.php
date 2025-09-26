@@ -40,13 +40,15 @@
                         <thead >
                           <tr >
                             <th class="color-morado text-white text-uppercase"> </th>
-                            <th class="color-morado text-white text-uppercase"> opciones</th>
-                            <th class="color-morado text-white text-uppercase"> imagen</th>
-                            <th class="color-morado text-white text-uppercase"> Codigo </th>
-                            <th class="color-morado text-white text-uppercase"> Nombre </th>
+                            <th class="color-morado text-white text-uppercase"> codigo de barras</th>
+                            <th class="color-morado text-white text-uppercase"> referencia</th>
+                            <th class="color-morado text-white text-uppercase"> nombre </th>
+                            <th class="color-morado text-white text-uppercase"> proveedor</th>
                             <th class="color-morado text-white text-uppercase"> Categoria </th>
-                            <th class="color-morado text-white text-uppercase"> Valor </th>
-                            <th class="color-morado text-white text-uppercase"> Stock </th>
+                            <th class="color-morado text-white text-uppercase"> sub categoria </th>
+                            <th class="color-morado text-white text-uppercase"> grupo </th>
+                            <th class="color-morado text-white text-uppercase"> sub grupo </th>
+                            <th class="color-morado text-white text-uppercase"> valor </th>
                           </tr>
                         </thead>
                         <tbody>
