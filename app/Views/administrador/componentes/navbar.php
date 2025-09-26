@@ -27,7 +27,7 @@
             </form>
           </li>
           <li class="pt-2 pb-1">
-            <span class="nav-item-head">General</span>
+            <span class="nav-item-head">Inventarios</span>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="<?= base_url('inicio') ?>">
@@ -61,15 +61,17 @@
             </a>
           </li>
           <li class="nav-item pt-1">
-            <a class="nav-link" href="<?= base_url('inventarios') ?>">
-              
-              <span class="menu-title"> <i class="fas fa-truck-moving text-morado"></i> Inventarios</span>
+            <a class="nav-link" href="<?= base_url('conteos') ?>">
+              <span class="menu-title"> <i class="fas fa-wifi text-danger"></i> Modo offline</span>
             </a>
           </li>
+          <li class="pt-2 pb-1">
+            <span class="nav-item-head">Ventas</span>
+          </li>
           <li class="nav-item pt-1">
-            <a class="nav-link" href="<?= base_url('conteos') ?>">
+            <a class="nav-link" href="<?= base_url('inventarios') ?>">
               
-              <span class="menu-title"> <i class="fas fa-wifi text-danger"></i> Modo offline</span>
+              <span class="menu-title"> <i class="fas fa-truck-moving text-morado"></i> Kardex</span>
             </a>
           </li>
           <!-- <li class="nav-item pt-1">

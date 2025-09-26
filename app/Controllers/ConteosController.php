@@ -15,7 +15,8 @@ class ConteosController extends BaseController {
 
   public function index(): string {
     $data = [
-      "productos" => $this->conteosModel->getProductos(),
+      "productos" => $this->conteosModel->getProductosAsignacion(),
+      "inventarios" => $this->conteosModel->getInventariosSesion(),
     ];
     if(session()->get('logeado') == true) {
        return view('administrador/conteos', $data);
@@ -131,6 +132,16 @@ class ConteosController extends BaseController {
    }
 
    echo $totalInsertados;
+  }
+
+  public function CrearVariableSesion() {
+    $inventario = $this->request->getPost('codigo');
+    session()->set('inventario', $inventario);
+
+    return $this->response->setJSON([
+      "status"  => "success",
+      "message" => "Se ha asignado el inventario correctamente"
+    ]);
   }
 
 }

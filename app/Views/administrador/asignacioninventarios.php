@@ -16,6 +16,7 @@
             <div class="page-header flex-wrap">
               <div class="header-left">
                 <button class="btn btn-primary mb-2 mb-md-0 me-2 btn-rounded" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Agregar inventario</button>
+                <button class="btn btn-outline-danger mb-2 mb-md-0 me-2 btn-rounded" data-bs-toggle="modal" data-bs-target="#modalProceso">Reportes</button>
                 <button
                   class="btn btn-outline-primary bg-white mb-2 mb-md-0 btn-rounded"
                   data-bs-toggle="modal"
@@ -108,10 +109,37 @@
                                 <td><label class="badge badge-success "><?= $asignacionInventario->estado; ?></label></td>
                                 <td><label class="badge badge-success "><?= $asignacionInventario->proceso_final; ?></label></td>
                                 <td>
-                                  <button class="btn btn-primary btn-xs btn-rounded mx-1" onclick="asociarDatosModalProductos(<?= $asignacionInventario->codigo_inventario; ?>)">Productos</button>
-                                  <button class="btn btn-primary btn-xs btn-rounded mx-1" onclick="asociarDatosModalConteos(<?= $asignacionInventario->codigo_inventario; ?>)">Conteos</button>
-                                  <button class="btn btn-primary btn-xs btn-rounded mx-1" onclick="asociarDatosModalProcesos(<?= $asignacionInventario->codigo_inventario; ?>)">Procesos</button>
-                                  <button class="btn btn-primary btn-xs btn-rounded mx-1" data-bs-toggle="modal" data-bs-target="#modalReportes">Reportes</button>
+                                    <?php if($asignacionInventario->btnproducto == 0) {?>
+                                      <button class="btn btn-primary btn-xs btn-rounded mx-1" onclick="asociarDatosModalProductos(<?= $asignacionInventario->codigo_inventario; ?>)">Productos</button>
+                                    <?php } else {?>
+                                      <button class="btn btn-success btn-xs btn-rounded mx-1" onclick="asociarDatosModalProductos(<?= $asignacionInventario->codigo_inventario; ?>)">Productos</button>
+                                    <?php }?>
+
+                                    <?php if($asignacionInventario->btnubicacion == 0) {?>
+                                      <button class="btn btn-primary btn-xs btn-rounded mx-1" onclick="asociarDatosModalConteos(<?= $asignacionInventario->codigo_inventario; ?>)">Ubicacion</button>
+                                    <?php } else {?>
+                                      <button class="btn btn-success btn-xs btn-rounded mx-1" onclick="asociarDatosModalConteos(<?= $asignacionInventario->codigo_inventario; ?>)">Ubicacion</button>
+                                    <?php }?>
+
+                                    <?php if($asignacionInventario->btnproceso == 0) {?>
+                                      <button
+                                        class="btn btn-primary btn-xs btn-rounded mx-1"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#modalReportes"
+                                        onclick="procesoDatosModal(<?= $asignacionInventario->codigo_inventario; ?>)"
+                                      >
+                                        Procesos
+                                      </button>
+                                    <?php } else {?>
+                                      <button
+                                        class="btn btn-success btn-xs btn-rounded mx-1"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#modalReportes"
+                                        onclick="procesoDatosModal(<?= $asignacionInventario->codigo_inventario; ?>)"
+                                      >
+                                        Procesos
+                                      </button>
+                                    <?php }?>
                                 </td>
                               </tr>  
                               <?php } ?>
@@ -208,7 +236,6 @@
             <input 
               type="text"
               id="localizacion_conteo"
-              name="localizacion_conteo"
               class="form-control form-control-sm borde"
             >
           </div>
@@ -218,7 +245,6 @@
             <input 
               type="text"
               id="numero_conteo"
-              name="numero_conteo"
               class="form-control form-control-sm borde"
             >
           </div>
@@ -228,8 +254,7 @@
             <label class="mb-1 small ">Observaciòn *</label>
             <textarea 
               type="text"
-              id="observacion_agregar_inventario"
-              name="observacion_agregar_inventario"
+              id="observacion_agregar_inventarios"
               class="form-control form-control-md borde"
               rows="27"
               ></textarea>
@@ -238,7 +263,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger btn-rounded" data-bs-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary btn-rounded">Guardar</button>
+        <button type="button" class="btn btn-primary btn-rounded" onclick="asignarUbicacionInventario()">Guardar</button>
       </div>
     </div>
   </div>
@@ -252,83 +277,51 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-<!-- aca va el formulario -->
-        <div class="row mt-2">
-          <div class="col-md-1">
-            <label class="mb-1 small">Id</label>
-            <input 
-              type="text"
-              class="form-control form-control-sm borde"
-              id="id_procesos_modal"
-            >
-          </div>
-          <div class="col-md-5">
-            <label class="mb-1 small">Ubicacion</label>
-            <select
-                class="form-control form-control-sm borde text-uppercase"
-                id="ubicacion_procesos"
-              >
-                <option value="">Seleccione Ubicacion</option>
-                <option value="Piso de venta">Piso de venta</option>
-                <option value="Bodega">Bodega</option>    
-               </select>
-          </div>
-          <div class="col-md-6">
-            <label class="mb-1 small">Productos</label>
-            <select
-                class="form-control form-control-sm borde text-uppercase"
-                id="productos_procesos"
-              >
-                <option value="">Seleccione Ubicacion</option>
-                <option value="producto 1">Producto 1</option>
-                <option value="producto 2">producto 2</option>    
-               </select>
-          </div>
-        </div>
         <div class="row mt-3">
-                <div class="col-md-12">
-                    <table class="table table-striped">
-                        <thead >
-                          <tr >
-                            <th class="color-morado text-white text-uppercase"> </th>
-                            <th class="color-morado text-white text-uppercase">Ubicacion</th>
-                            <th class="color-morado text-white text-uppercase">Localizacion</th>
-                            <th class="color-morado text-white text-uppercase">N. Localizacion</th>
-                            <th class="color-morado text-white text-uppercase">Observacion</th>
-                            <th class="color-morado text-white text-uppercase">Usuario</th>
-                            <th class="color-morado text-white text-uppercase">Conteo #1</th>
-                            <th class="color-morado text-white text-uppercase">Obs #1</th>
-                            <th class="color-morado text-white text-uppercase">Conteo #2</th>
-                            <th class="color-morado text-white text-uppercase">Obs #2</th>
-                            <th class="color-morado text-white text-uppercase">Diferencia</th>
-                            <!-- <th class="color-morado text-white text-uppercase">Conteo #3</th>
-                            <th class="color-morado text-white text-uppercase">Obs #3</th> -->
-                            <th class="color-morado text-white text-uppercase">Validador</th>
-                            <th class="color-morado text-white text-uppercase">Imprimir reporte</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td></td>
-                            <td>Bodega</td>
-                            <td>Mueble</td>
-                            <td>Detergente</td>
-                            <td>2</td>
-                            <td>10</td>
-                            <td><label class="badge badge-success ">Ok</label></td>
-                            <td>20</td>
-                            <td><label class="badge badge-success ">Ok</label></td>
-                            <td>10</td>
-                            <td><label class="badge badge-success ">COINCIDE</label></td>
-                            <!-- <td></td>
-                            <td></td> -->
-                            <td><label class="badge badge-success ">Finalizado</label></td>
-                            <td>
-                              <div class="col-md-4">
-                                <button class="btn btn-primary btn-sm btn-rounded" data-bs-toggle="modal" data-bs-target="#modalReportes">Imprimir</button>
-                              </div>
-                            </td>
-                          </tr>  
+          <div class="col-md-12">
+            <table class="table table-striped">
+              <thead >
+                <tr>
+                  <th class="color-morado text-white text-uppercase"> </th>
+                  <th class="color-morado text-white text-uppercase">Ubicacion</th>
+                  <th class="color-morado text-white text-uppercase">Localizacion</th>
+                  <th class="color-morado text-white text-uppercase">N. Localizacion</th>
+                  <th class="color-morado text-white text-uppercase">Observacion</th>
+                  <th class="color-morado text-white text-uppercase">Usuario</th>
+                  <th class="color-morado text-white text-uppercase">Conteo #1</th>
+                  <th class="color-morado text-white text-uppercase">Obs #1</th>
+                  <th class="color-morado text-white text-uppercase">Conteo #2</th>
+                  <th class="color-morado text-white text-uppercase">Obs #2</th>
+                  <th class="color-morado text-white text-uppercase">Diferencia</th>
+             <!-- <th class="color-morado text-white text-uppercase">Conteo #3</th>
+                  <th class="color-morado text-white text-uppercase">Obs #3</th> -->
+                  <th class="color-morado text-white text-uppercase">Validador</th>
+                  <th class="color-morado text-white text-uppercase">Imprimir reporte</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td></td>
+                  <td>Bodega</td>
+                  <td>Mueble</td>
+                  <td>Detergente</td>
+                  <td>2</td>
+                  <td>10</td>
+                  <td><label class="badge badge-success ">Ok</label></td>
+                  <td>20</td>
+                  <td><label class="badge badge-success ">Ok</label></td>
+                  <td>10</td>
+                  <td><label class="badge badge-success ">COINCIDE</label></td>
+              <!-- <td></td>
+                   <td></td> -->
+                   <td><label class="badge badge-success ">Finalizado</label></td>
+                   <td>
+                <div class="col-md-4">
+                  <button class="btn btn-primary btn-sm btn-rounded" data-bs-toggle="modal" data-bs-target="#modalReportes">Ver</button>
+                  <button class="btn btn-danger btn-sm btn-rounded" data-bs-toggle="modal" data-bs-target="#modalReportes">Imprimir</button>
+                </div>
+              </td>
+             </tr>  
                         </tbody>
                       </table>  
                 </div>
@@ -346,54 +339,151 @@
   <div class="modal-dialog modal-fullscreen">
     <div class="modal-content">
       <div class="modal-header color-morado">
-        <h1 class="modal-title fs-5  text-white" id="modalReportesLabel">PROGRAMACION DE CONTEOS FISICOS</h1>
+        <h1 class="modal-title fs-5  text-white" id="modalReportesLabel">ASIGNACION DE CONTEOS FISICOS</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-<!-- aca va el formulario -->
         <div class="row mt-3">
-                <div class="col-md-12">
-                    <table class="table table-striped">
-                        <thead >
-                          <tr >
-                            <th class="color-morado text-white text-uppercase"> </th>
-                            <th class="color-morado text-white text-uppercase">Ubicacion</th>
-                            <th class="color-morado text-white text-uppercase">Localizacion</th>
-                            <th class="color-morado text-white text-uppercase">N. Localizacion</th>
-                            <th class="color-morado text-white text-uppercase">Observacion</th>
-                            <th class="color-morado text-white text-uppercase">Usuario</th>
-                            <th class="color-morado text-white text-uppercase">Estado</th>
-                            <th class="color-morado text-white text-uppercase"></th>
-    
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td></td>
-                            <td>Bodega</td>
-                            <td>Mueble</td>
-                            <td>Mueble 1</td>
-                            <td>Detergentes</td>
-                            <td>2</td>
-                            <td>
-                              <label class="badge badge-success mx-1">Ok</label>
-                              <label class="badge badge-success mx-1">Ok</label>
-                              <label class="badge badge-success mx-1">Ok</label>
-                            </td>
-                            <td>
-                              <div class="col-md-4">
-                                <button class="btn btn-primary btn-sm btn-rounded" data-bs-toggle="modal" data-bs-target="#modalAsignarConteos">Asignar conteos</button>
-                              </div>
-                            </td>
-                          </tr>  
-                        </tbody>
-                      </table>  
-                </div>
-            </div>
+          <div class="col-md-4 ">
+            <label class="mb-1 small">Fecha</label>
+            <input
+              type="date"
+              class="form-control form-control-sm borde"
+              id="fecha_asignacion"
+              readonly
+            >
+          </div>
+          <!--  -->
+          <div class="col-md-6">
+            <label class="mb-1 small">Observación</label>
+            <input
+              type="text"
+               class="form-control form-control-sm borde"
+               id="observacion_asignacion"
+                readonly
+            >
+          </div>
+          <!--  -->
+          <div class="col-md-2">
+            <label class="mb-1 small">Codigo Inventario</label>
+            <input
+              type="text"
+               class="form-control form-control-sm borde"
+               id="codigo_asignacion"
+                readonly
+            >
+          </div>
+        </div>
+        <!--  -->
+        <div class="row mt-4">
+          <div class="col-md-4 ">
+            <label class="mb-1 small">Ubicación</label>
+            <input
+              type="text"
+               class="form-control form-control-sm borde"
+               id="ubicacion_asignacion"
+                readonly
+            >
+          </div>
+          <!--  -->
+          <div class="col-md-4">
+            <label class="mb-1 small">Localización</label>
+            <input
+              type="text"
+               class="form-control form-control-sm borde"
+               id="localizacion_asignacion"
+                readonly
+            >
+          </div>
+          <!--  -->
+          <div class="col-md-4">
+            <label class="mb-1 small">N° Localización</label>
+            <input
+              type="text"
+               class="form-control form-control-sm borde"
+               id="nlocalizacion_asignacion"
+                readonly
+            >
+          </div>
+        </div>
+        <div class="row mt-4">
+          <div class="col-md-6">
+             <h5>Asignar usuario conteo 1</h5>
+             <br>
+            <table class="table table-striped" id="tablaconteo1usuario">
+              <thead >
+                <tr>
+                  <th class="color-morado text-white text-uppercase"> </th>
+                  <th class="color-morado text-white text-uppercase">Codigo</th>
+                  <th class="color-morado text-white text-uppercase">Nombre</th>
+                  <th class="color-morado text-white text-uppercase">Apellido</th>
+                  <th class="color-morado text-white text-uppercase">Rol</th>
+                  <th class="color-morado text-white text-uppercase">Estado</th>
+                </tr>
+              </thead>
+              <tbody>
+                <?php foreach($usuarios->getResult() as $usuario) { ?>
+                <tr>
+                  <td>
+                    <div class="form-check">
+                      <input
+                        class="form-check-input mx-3 borde chk"
+                        type="checkbox"
+                        value="<?= $usuario->documento; ?>"
+                      >
+                    </div>
+                  </td>
+                  <td><?= $usuario->documento; ?></td>
+                  <td><?= $usuario->nombre; ?></td>
+                  <td><?= $usuario->apellido; ?></td>
+                  <td><?= $usuario->rol_usuario; ?></td>
+                  <td><?= $usuario->estado; ?></td>
+                </tr> 
+                <?php } ?> 
+              </tbody>
+            </table>  
+          </div>
+          <div class="col-md-6">
+            <h5>Asignar usuario conteo 2</h5>
+            <br>
+            <table class="table table-striped" id="tablaconteo2usuario">
+              <thead >
+                <tr>
+                  <th class="color-morado text-white text-uppercase"> </th>
+                  <th class="color-morado text-white text-uppercase">Codigo</th>
+                  <th class="color-morado text-white text-uppercase">Nombre</th>
+                  <th class="color-morado text-white text-uppercase">Apellido</th>
+                  <th class="color-morado text-white text-uppercase">Rol</th>
+                  <th class="color-morado text-white text-uppercase">Estado</th>
+                </tr> 
+              </thead>
+              <tbody>
+                <?php foreach($usuarios->getResult() as $usuario) { ?>
+                <tr>
+                  <td>
+                    <div class="form-check">
+                      <input
+                        class="form-check-input mx-3 borde fila"
+                        type="checkbox"
+                        value="<?= $usuario->documento; ?>"
+                      >
+                    </div>
+                  </td>
+                  <td><?= $usuario->documento; ?></td>
+                  <td><?= $usuario->nombre; ?></td>
+                  <td><?= $usuario->apellido; ?></td>
+                  <td><?= $usuario->rol_usuario; ?></td>
+                  <td><?= $usuario->estado; ?></td>
+                </tr> 
+                <?php } ?>  
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger btn-rounded" data-bs-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary btn-rounded">Guardar</button>
+        <button type="button" class="btn btn-primary btn-rounded" onclick="asignarUsuarioInventario()">Guardar</button>
       </div>
     </div>
   </div>
@@ -409,72 +499,74 @@
       </div>
       <div class="modal-body">
         <div class="row mt-2">
-          <div class="col-md-1">
+          <div class="col-md-2">
             <label class="mb-1 small">Id</label>
             <input 
               type="text"
               class="form-control form-control-sm borde"
               id="id_inventario_modal"
+              readonly
             >
           </div>
           <div class="col-md-3">
-            <label class="mb-1 small">Linea</label>
+            <label class="mb-1 small">Subcategoria</label>
             <select 
-              name="" 
-              id="" 
+              id="subcategoria_filtro" 
               class="form-control form-control-sm borde text-uppercase"
             >
-              <option value="">Seleccione una opcion</option>
-              <option value="">1</option>
-              <option value="">2</option>
-              <option value="">3</option>
-              <option value="">4</option>
+              <option value="">SELECCIONE UNA SUBCATEGORIA</option>
+              <?php foreach($subcategorias->getResult() as $subcategoria) { ?>
+              <option value="<?= $subcategoria->subcategoria ?>"><?= $subcategoria->subcategoria ?></option>
+              <?php } ?>
             </select>
           </div>
           <div class="col-md-3">
-            <label class="mb-1 small">Sub linea</label>
+            <label class="mb-1 small">Grupo</label>
             <select 
-              name="" 
-              id="" 
+              id="grupo_filtro" 
               class="form-control form-control-sm borde text-uppercase"
             >
-              <option value="">Seleccione una opcion</option>
-              <option value="">1</option>
-              <option value="">2</option>
-              <option value="">3</option>
-              <option value="">4</option>
+              <option value="">SELECCIONE UN GRUPO</option>
+              <?php foreach($grupos->getResult() as $grupo) { ?>
+              <option value="<?= $grupo->grupo ?>"><?= $grupo->grupo ?></option>
+              <?php } ?>
             </select>
           </div>
           <div class="col-md-3">
-            <label class="mb-1 small">Sub grupo</label>
+            <label class="mb-1 small">Subgrupo</label>
             <select 
-              name="" 
-              id="" 
+              id="subgrupo_filtro" 
               class="form-control form-control-sm borde text-uppercase"
             >
-              <option value="">Seleccione una opcion</option>
-              <option value="">1</option>
-              <option value="">2</option>
-              <option value="">3</option>
-              <option value="">4</option>
+              <option value="">SELECCIONE UN SUBGRUPO</option>
+              <?php foreach($subgrupos->getResult() as $subgrupo) { ?>
+              <option value="<?= $subgrupo->subgrupo ?>"><?= $subgrupo->subgrupo ?></option>
+              <?php } ?>
             </select>
           </div>
-          <div class="col-md-2">
+          <div class="col-md-1 mt-2">
             <br>
-            <button class="btn btn-primary btn-rounded">Consultar</button>
+            <button
+              class="btn btn-primary btn-rounded btn-sm"
+              onclick="buscarProductosAsignar()"
+              id="btnconsultaproductos"
+            >
+            <span class="spinner-border spinner-border-sm" id="spinnerproducto" hidden="true"></span>
+            <span role="status">Buscar</span> 
+            </button>
           </div>
         </div>
 
 
         <div class="row mt-4">
           <div class="col-md-12">
-            <table class="table table-striped table-hover table-borderless" id="table-productos">
+            <table class="table table-striped table-hover table-borderless">
               <thead >
                 <tr>
                   <th class="color-morado text-white text-uppercase">
                     <div class="form-check">
                       <input
-                        class="form-check-input mx-3 borde"
+                        class="form-check-input mx-4 borde"
                         type="checkbox"
                         id="selectAll"
                       >
@@ -489,46 +581,16 @@
                   <th class="color-morado text-white text-uppercase"> estado </th>
                 </tr>
               </thead>
-                        <tbody>
-                          <?php foreach($productos->getResult() as $producto){ ?>
-                          <tr>
-                            <td>
-                             <div class="form-check">
-                               <input
-                                 class="form-check-input mx-4 borde fila"
-                                 type="checkbox"
-                                 value="<?= $producto->codigo_barras; ?>"
-                              >
-                              </div>
-                            </td>
-                            <td> <?= $producto->codigo_interno; ?></td>
-                            <td> <?= $producto->codigo_barras; ?></td>
-                            <td>
-                              <div class="row">
-                               <div class="d-flex px-2 py-1">
-                                 <div>
-                                    <img src="<?= base_url('img/team-41.jpg') ?>" class="avatar avatar-sm me-3">
-                                 </div>
-                                 <div class="d-flex flex-column justify-content-center">
-                                    <h6 class="mb-0 text-xs"><?= $producto->nombre; ?></h6>
-                                    <p class="text-xs text-dark mb-0"><?= $producto->codigo_barras; ?></p>
-                                 </div>
-                              </div>
-                              </div>
-                            </td>
-                            <td><?= $producto->proveedor; ?></td>
-                            <td><?= $producto->categoria; ?></td>
-                            <td><?= $producto->subcategoria; ?></td>
-                            <td><label class="badge badge-success"><?= $producto->estado; ?></label></td>
-                          </tr>
-                          <?php } ?>
-                        </tbody>
-                      </table>
+              <tbody id="tabla_productos_asignar">
+                         
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger btn-rounded" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary btn-rounded" id="btnObtener">Guardar</button>
       </div>
     </div>
   </div>

@@ -1,4 +1,5 @@
 
+
 $("#table-productos").DataTable({
   "lengthMenu": [5, 50, 100, 200],
   "language":{
@@ -6,6 +7,40 @@ $("#table-productos").DataTable({
   "search": "Buscar:",
   "lengthMenu": "Ver _MENU_ Productos",
   "info": "Viendo _START_ a _END_ de _TOTAL_ Productos",
+  "zeroRecords": "No encontraron resultados",
+  "paginate": {
+    "first":      "Primera",
+    "last":       "Ultima",
+    "next":       "Siguiente",
+    "previous":   "Anterior"
+  }
+ }
+});
+
+$("#tablaconteo1usuario").DataTable({
+  "lengthMenu": [5, 50, 100, 200],
+  "language":{
+  "processing": "Procesando",
+  "search": "Buscar:",
+  "lengthMenu": "Ver _MENU_ Usuarios",
+  "info": "Viendo _START_ a _END_ de _TOTAL_ Usuarios",
+  "zeroRecords": "No encontraron resultados",
+  "paginate": {
+    "first":      "Primera",
+    "last":       "Ultima",
+    "next":       "Siguiente",
+    "previous":   "Anterior"
+  }
+ }
+});
+
+$("#tablaconteo2usuario").DataTable({
+  "lengthMenu": [5, 50, 100, 200],
+  "language":{
+  "processing": "Procesando",
+  "search": "Buscar:",
+  "lengthMenu": "Ver _MENU_ Usuarios",
+  "info": "Viendo _START_ a _END_ de _TOTAL_ Usuarios",
   "zeroRecords": "No encontraron resultados",
   "paginate": {
     "first":      "Primera",
@@ -38,8 +73,14 @@ $("#codigo_producto").on("blur", function() {
           $("#subgrupo").val("");
           $("#saldo").val("");
           $("#costo").val("");
+          $("#observacion").val("");
+          $("#ubicacion").val("");
+          $("#localizacion").val("");
+          $("#numero_localizacion").val("");
         }
         else {
+          $("#observacion").val(response[0].observacion2);
+          // $("#codigo_producto").val(response[0].codigo_barras);
           $("#nombre_producto").val(response[0].nombre);
           $("#referencia").val(response[0].referencia);
           $("#proveedor").val(response[0].proveedor);
@@ -48,6 +89,9 @@ $("#codigo_producto").on("blur", function() {
           $("#subgrupo").val(response[0].subgrupo);
           $("#saldo").val(response[0].saldo);
           $("#costo").val(response[0].costo);
+          $("#ubicacion").val(response[0].ubicacion);
+          $("#localizacion").val(response[0].localizacion);
+          $("#numero_localizacion").val(response[0].numerolocalizacion);
           
           
         }
@@ -117,7 +161,7 @@ $("#exportardatos").on("click", function(e) {
     success: function(response) {
       $("body").overhang({
         type: "success",
-        message: "La base de datos se ha exportado correctamente. total registro " + response
+        message: "La base de datos se ha exportado correctamente. total registro "
       });
       $("#archivo").val("");
     },
@@ -156,8 +200,14 @@ function VincularProductoModal(codigo) {
           $("#subgrupo").val("");
           $("#saldo").val("");
           $("#costo").val("");
+          $("#observacion").val("");
+          $("#ubicacion").val("");
+          $("#localizacion").val("");
+          $("#numero_localizacion").val("");
         }
         else {
+          
+          $("#observacion").val(response[0].observacion2);
           $("#codigo_producto").val(response[0].codigo_barras);
           $("#nombre_producto").val(response[0].nombre);
           $("#referencia").val(response[0].referencia);
@@ -167,6 +217,9 @@ function VincularProductoModal(codigo) {
           $("#subgrupo").val(response[0].subgrupo);
           $("#saldo").val(response[0].saldo);
           $("#costo").val(response[0].costo);
+          $("#ubicacion").val(response[0].ubicacion);
+          $("#localizacion").val(response[0].localizacion);
+          $("#numero_localizacion").val(response[0].numerolocalizacion);
           $("#listaproductos").modal('hide');
         }
       },
@@ -318,6 +371,35 @@ function finalizarConteo() {
     }
   }
  });        
+}
+
+function crearvariableSesion(codigo) {
+  var url = baseurl + '/crearvariablesesion';
+  
+  $.ajax({
+    url: url,
+    method: 'POST',
+    data: {codigo: codigo},
+    success: function(response) {
+      if(response.status == "success") {
+        $("body").overhang({
+          type: "success",
+          message: response.message
+        });
+        setTimeout(reloadPage, 3000);
+      }
+    },
+    error: function() {
+      $("body").overhang({
+        type: "error",
+        message: "Alerta ! Tenemos un problema al conectar con la base de datos verifica tu red.",
+      });
+    }
+  });  
+}
+
+function reloadPage() {
+  location.reload();
 }
 
 
