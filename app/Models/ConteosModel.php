@@ -15,12 +15,26 @@ class ConteosModel extends Model {
     return $query;
   }
 
+  public function getProductosAsignacion() {
+    $query = $this->db->table('asignacion_productos as ap')
+                      ->select('ap.*, p.*')
+                      ->join('productos p', 'ap.codigo_producto = p.codigo_barras')
+                      ->where('p.estado', 'Activo')
+                      ->where('ap.codigo_inventario', session()->get('inventario'))
+                      ->get();
+
+    return $query;
+  }
+
   public function buscarProducto($codigo){
     
-    $query = $this->db->table('productos')
-                      ->select('*')
-                      ->where('codigo_barras', $codigo)
-                      ->orWhere('codigo_interno', $codigo)
+    $query = $this->db->table('asignacion_productos as ap')
+                      ->select('ap.*,p.*, in.*')
+                      ->join('productos p', 'ap.codigo_producto = p.codigo_barras')
+                      ->join('inventarios in', 'ap.codigo_inventario = in.codigo_inventario')
+                      ->where('ap.codigo_inventario', session()->get('inventario'))
+                      ->where('p.codigo_barras', $codigo)
+                      ->orWhere('p.codigo_interno', $codigo)
                       ->get();
 
     return $query->getResult();
@@ -41,6 +55,7 @@ class ConteosModel extends Model {
       "subgrupo" => $datos['subgrupo'],
       "saldo" => $datos['saldo'],
       "costo" => $datos['costo'],
+      "estado" => "Activo"
     ];
     $this->db->table('productos')
              ->insert($productos);
@@ -93,4 +108,17 @@ class ConteosModel extends Model {
              ->where('codigo_producto', $datos['codigo_producto'])
              ->update($conteo2);
   }
+
+  public function getInventariosSesion() {
+    $query = $this->db->table('inventarios as in')
+                      ->select('in.*, us.usuario as usuario1')
+                      ->join("usuarios as us", "in.usuarioconteo1 = us.documento")
+                      ->where('in.usuarioconteo1', session()->get('documento'))
+                      ->orWhere('in.usuarioconteo2', session()->get('documento'))
+                      ->get();
+
+    return $query;
+   }
+
+   
 }

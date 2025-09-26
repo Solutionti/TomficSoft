@@ -39,8 +39,10 @@ class LoginController extends BaseController {
         "empresa" => $respuesta->empresa,
         "rol_usuario" => $respuesta->rol_usuario,
         "estado" => $respuesta->estado,
-        "logeado" => true
+        "logeado" => true,
+        "inventario" => 0
       ]);
+      
     }
 
 

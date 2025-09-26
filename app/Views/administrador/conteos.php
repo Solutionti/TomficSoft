@@ -21,13 +21,13 @@
                 >
                 Terminar el conteo
                 </button>
-                <!-- <button
+                <button
                   class="btn btn-outline-primary bg-white mb-2 mb-md-0 btn-rounded"
                   data-bs-toggle="modal"
                   data-bs-target="#exportarexcelmodal"
                 >
-                  Exportar base de datos
-                </button> -->
+                  Inventario
+                </button>
               </div>
               <div class="header-right d-flex flex-wrap mt-2 mt-sm-0">
                 <div class="d-flex align-items-center">
@@ -283,31 +283,57 @@
 
 <!-- EXPORTAR EXCEL -->
 <div class="modal fade" id="exportarexcelmodal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="exportarexcelmodalLabel" aria-hidden="true">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-lg">
     <div class="modal-content ">
       <div class="modal-header color-morado">
-        <h1 class="modal-title fs-5 text-white" id="exportarexcelmodalLabel">EXPORTAR BASE DE DATOS</h1>
+        <h1 class="modal-title fs-5 text-white" id="exportarexcelmodalLabel">INVENTARIO ASOCIADO AL USUARIO</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <div class="row">
           <div class="col-md-12">
-            <label class="mb-3 small">Seleccione un archivo a cargar *</label>
-            <form id="formExcel" enctype="multipart/form-data">
-              <input
-                type="file"
-                class="form-control form-control-sm"
-                accept=".xls,.xlsx"
-                name="archivo"
-                id="archivo"
-              >
-            </form>
+            <table class="table table-striped table-hover">
+              <thead>
+                <tr>
+                  <th class="color-morado text-white text-uppercase"></th>
+                  <th class="color-morado text-white text-uppercase">Inventario</th>
+                  <th class="color-morado text-white text-uppercase">Descripcion</th>
+                  <th class="color-morado text-white text-uppercase">Fecha</th>
+                  <th class="color-morado text-white text-uppercase">conteo 1</th>
+                  <th class="color-morado text-white text-uppercase">conteo 2</th>
+                  <th class="color-morado text-white text-uppercase">Estado</th>
+                </tr>
+              </thead>
+              <tbody>
+                <?php foreach($inventarios->getResult() as $inventario) { ?>
+                <tr>
+                  <td>
+                    <div class="form-check">
+                      <input
+                        class="form-check-input mx-3 borde"
+                        type="radio"
+                        name="radioDefault"
+                        id="radioDefault1"
+                        onclick="crearvariableSesion(<?= $inventario->codigo_inventario; ?>)"
+                      >
+                    </div>
+                  </td>
+                  <td><?= $inventario->codigo_inventario; ?></td>
+                  <td><?= $inventario->observacion; ?></td>
+                  <td><?= $inventario->fecha; ?></td>
+                  <td><?= $inventario->usuarioconteo1; ?></td>
+                  <td><?= $inventario->usuarioconteo2; ?></td>
+                  <td><label class="badge badge-success "><?= $inventario->estado; ?></label></td>
+                </tr>
+                <?php } ?>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger btn-rounded" data-bs-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary btn-rounded" id="exportardatos">Exportar</button>
+        <!-- <button type="button" class="btn btn-primary btn-rounded" id="exportardatos">Aceptar</button> -->
       </div>
     </div>
   </div>
