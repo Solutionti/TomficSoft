@@ -36,3 +36,4 @@ $routes->post('/crearinventario', 'AsignacionInventariosController::crearInventa
 
 // INVENTARIOS
 $routes->get('/inventarios', 'InventarioController::index');
+$routes->get('crearproducto', 'InventarioController::crearProducto');

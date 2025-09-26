@@ -7,4 +7,13 @@ use CodeIgniter\Model;
 class InventarioModel extends Model
 {
     
+    public function getProductos()
+    {
+        $query = $this->db->table('productos')
+                ->select('*')
+                ->get();
+
+        return $query;
+    }
+
 }
