@@ -72,7 +72,13 @@
               <span class="menu-title"> <i class="fas fa-truck-moving text-morado"></i> Kardex</span>
             </a>
           </li>
-          <!-- 
+          <li class="nav-item pt-1">
+            <a class="nav-link" href="#">
+              
+              <span class="menu-title"><i class="fas fa-shopping-cart text-morado"></i> Ecommerce</span>
+            </a>
+          </li>
+          <!--
           <li class="nav-item pt-1">
             <a class="nav-link" href="#">
               

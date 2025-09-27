@@ -31,29 +31,37 @@ document.getElementById('btnObtener').addEventListener('click', function() {
     var url = baseurl + '/asinarproductosinventario',
         id_inventario = $('#id_inventario_modal').val();
 
-    $.ajax({
-      url: url,
-      method: "POST",
-      data: {
-        codigoinventario: id_inventario,
-        codigoproducto: seleccionados
-      },
-      success: function(response) {
-        if(response.status == 'success'){
-          $("body").overhang({
-            type: "success",
-            message:  response.message
-          });
-          setTimeout(reloadPage, 3000);
-        }
-      },
-      error: function() {
-        $("body").overhang({
+    if(seleccionados.length == 0) {
+      $("body").overhang({
           type: "error",
-          message: "Alerta ! Tenemos un problema al conectar con la base de datos verifica tu red.",
-        });
-      }
-    })
+          message: "Alerta ! Por favor seleccione al menos 1 producto asociar al inventario",
+      });
+    }
+    else {
+      $.ajax({
+        url: url,
+        method: "POST",
+        data: {
+          codigoinventario: id_inventario,
+          codigoproducto: seleccionados
+        },
+        success: function(response) {
+          if(response.status == 'success'){
+            $("body").overhang({
+              type: "success",
+              message:  response.message
+            });
+            setTimeout(reloadPage, 3000);
+          }
+        },
+        error: function() {
+          $("body").overhang({
+            type: "error",
+            message: "Alerta ! Tenemos un problema al conectar con la base de datos verifica tu red.",
+          });
+        }
+      });
+    }
 });
 
 function crearInventarios(){

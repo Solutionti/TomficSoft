@@ -62,7 +62,7 @@ $("#codigo_producto").on("blur", function() {
         if(response === "error") {
           $("body").overhang({
             type: "error",
-            message: "Alerta ! El producto no existe o no se encuentra registrado.",
+            message: "Alerta ! El producto no existe o no se encuentra registrado en el inventario.",
           });
           
           $("#nombre_producto").val("");
@@ -193,7 +193,7 @@ function VincularProductoModal(codigo) {
         if(response === "error") {
           $("body").overhang({
             type: "error",
-            message: "Alerta ! El producto no existe o no se encuentra registrado.",
+            message: "Alerta ! El producto no existe o no se encuentra registrado en el inventario.",
           });
           
           $("#nombre_producto").val("");

@@ -103,7 +103,7 @@
                                 <td></td>
                                 <td><?= $asignacionInventario->codigo_inventario; ?></td>
                                 <td><?= $asignacionInventario->fecha; ?></td>
-                                <td><?= $asignacionInventario->observacion; ?></td>
+                                <td class="text-uppercase"><?= $asignacionInventario->observacion; ?></td>
                                 <td><?= $asignacionInventario->fecha_inicio; ?></td>
                                 <td><?= $asignacionInventario->fecha_cierre; ?></td>
                                 <td><label class="badge badge-success "><?= $asignacionInventario->estado; ?></label></td>
