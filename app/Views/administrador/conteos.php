@@ -412,5 +412,12 @@
 
   <?php require_once("componentes/scripts.php")?>
   <script src="<?= base_url('js/conteos.js') ?>"></script>
+  <?php if(session()->get('inventario') == 0) { ?>
+  <script>
+    $(document).ready(function () {
+      $("#exportarexcelmodal").modal('show');
+    });
+  </script>
+  <?php } ?>
   </body>
 </html>

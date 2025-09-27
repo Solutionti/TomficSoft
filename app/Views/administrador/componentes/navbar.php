@@ -51,35 +51,28 @@
           <li class="nav-item pt-1">
             <a class="nav-link" href="<?= base_url('conteos') ?>">
               
-              <span class="menu-title"><i class="fas fa-barcode text-morado"></i> Captura de conteos</span>
-            </a>
-          </li>
-           <li class="nav-item pt-1">
-            <a class="nav-link" href="<?= base_url('usuarios') ?>">
-              
-              <span class="menu-title"> <i class="fas fa-users text-morado"></i> Usuarios</span>
+              <span class="menu-title"><i class="fas fa-barcode text-success"></i> Conteos Online</span>
             </a>
           </li>
           <li class="nav-item pt-1">
             <a class="nav-link" href="<?= base_url('conteos') ?>">
-              <span class="menu-title"> <i class="fas fa-wifi text-danger"></i> Modo offline</span>
+              <span class="menu-title"> <i class="fas fa-barcode text-danger"></i> Conteos Offline</span>
             </a>
           </li>
+          <li class="nav-item pt-1">
+           <a class="nav-link" href="<?= base_url('usuarios') ?>">
+             <span class="menu-title"> <i class="fas fa-users text-morado"></i> Usuarios</span>
+           </a>
+         </li>
           <li class="pt-2 pb-1">
             <span class="nav-item-head">Ventas</span>
           </li>
           <li class="nav-item pt-1">
             <a class="nav-link" href="<?= base_url('inventarios') ?>">
-              
               <span class="menu-title"> <i class="fas fa-truck-moving text-morado"></i> Kardex</span>
             </a>
           </li>
-          <!-- <li class="nav-item pt-1">
-            <a class="nav-link" href="#">
-              
-              <span class="menu-title"><i class="fas fa-chart-pie text-morado"></i> Kardex</span>
-            </a>
-          </li>
+          <!-- 
           <li class="nav-item pt-1">
             <a class="nav-link" href="#">
               

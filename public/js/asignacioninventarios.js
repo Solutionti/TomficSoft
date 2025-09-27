@@ -224,32 +224,46 @@ function asignarUsuarioInventario() {
         let id = fila.value;
         usuario2.push({ id });
     });
-    console.log(usuario2[0].id);
-
-    $.ajax({
-      url: baseurl + 'asignarusuariosinventario',
-      method: "POST",
-      data: {
-        usuario1: usuario1[0].id,
-        usuario2: usuario2[0].id,
-        codigo_inventario: $('#codigo_asignacion').val()
-      },
-      success: function(response) {
-        if(response.status == 'success'){
-          $("body").overhang({
-            type: "success",
-            message:  response.message
-          });
-          setTimeout(reloadPage, 3000);
-        }
-      },
-      error: function() {
-        $("body").overhang({
+    
+    if(checkboxes1.length == 0) {
+      $("body").overhang({
           type: "error",
-          message: "Alerta ! Tenemos un problema al conectar con la base de datos verifica tu red.",
-        });
-      }
-    });
+          message: "Alerta ! Por favor seleccione el usuario hacer el conteo #1",
+      });
+    }
+    else if (checkboxes2.length == 0) {
+      $("body").overhang({
+        type: "error",
+        message: "Alerta ! Por favor seleccione el usuario hacer el conteo #2",
+      });
+    }
+    else {
+      $.ajax({
+        url: baseurl + 'asignarusuariosinventario',
+        method: "POST",
+        data: {
+          usuario1: usuario1[0].id,
+          usuario2: usuario2[0].id,
+          codigo_inventario: $('#codigo_asignacion').val()
+        },
+        success: function(response) {
+          if(response.status == 'success'){
+            $("body").overhang({
+              type: "success",
+              message:  response.message
+            });
+            setTimeout(reloadPage, 3000);
+          }
+        },
+        error: function() {
+          $("body").overhang({
+            type: "error",
+            message: "Alerta ! Tenemos un problema al conectar con la base de datos verifica tu red.",
+          });
+        }
+      });
+    }
+
 }
 
 function reloadPage() {

@@ -31,7 +31,7 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <table class="table table-striped">
+                    <table class="table table-striped table-borderless" id="table_usuarios">
                         <thead >
                           <tr >
                             <th class="color-morado text-white text-uppercase"> </th>

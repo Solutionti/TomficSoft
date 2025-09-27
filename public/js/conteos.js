@@ -152,6 +152,8 @@ $("#exportardatos").on("click", function(e) {
   overlay: true,
   callback: function (value) {
     if (value) {
+     $("#exportardatos").prop("disabled", true);
+     $("#spinnerexportarproducto").prop("hidden", false);
     $.ajax({
     url:url,
     method: 'POST',
@@ -161,9 +163,11 @@ $("#exportardatos").on("click", function(e) {
     success: function(response) {
       $("body").overhang({
         type: "success",
-        message: "La base de datos se ha exportado correctamente. total registro "
+        message: "La base de datos se ha exportado correctamente"
       });
       $("#archivo").val("");
+      $("#exportardatos").prop("disabled", false);
+      $("#spinnerexportarproducto").prop("hidden", true);
     },
     error: function(xhr, status, error) {
       $("body").overhang({
