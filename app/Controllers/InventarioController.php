@@ -16,7 +16,8 @@ class InventarioController extends BaseController
     public function index()
     {
         $data = [
-            'productos' => $this->inventarioModel->getProductos()
+            'productos' => $this->inventarioModel->getProductos(),
+            'categorias' => $this->inventarioModel->getCategorias(),
         ];
 
         return view('administrador/inventarios', $data);

@@ -107,11 +107,10 @@
               id="categoria_inventario"
               required
             >
-              <option value="">Seleccione una categoria</option>
-              <option value="">1</option>
-              <option value="">2</option>
-              <option value="">3</option>
-                
+            <option value="">Seleccione una categoria</option>
+            <?php foreach($categorias->getResult() as $categoria) { ?>
+              <option value="<?= $categoria->codigo_categoria  ?>"><?= $categoria->nombre; ?></option>  
+            <?php } ?>    
             </select>
           </div>
           <div class="col-md-3">

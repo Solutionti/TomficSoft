@@ -16,4 +16,13 @@ class InventarioModel extends Model
         return $query;
     }
 
+    public function getCategorias()
+    {
+        $query = $this->db->table('categorias')
+                ->select('*')
+                ->get();
+
+        return $query;
+    }
+
 }
