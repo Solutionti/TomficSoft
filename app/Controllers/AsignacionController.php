@@ -10,6 +10,9 @@ use CodeIgniter\HTTP\ResponseInterface;
 
 use FPDF;
 
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+
 class AsignacionController extends BaseController {
 
     public function __construct() {
@@ -174,6 +177,47 @@ class AsignacionController extends BaseController {
       // Salida del PDF al navegador
       $this->response->setHeader('Content-Type', 'application/pdf');
       $pdf->Output('I', 'ejemplo.pdf');
+    }
+
+    public function generarExcel() {
+
+      // Crear nuevo archivo Excel
+      $spreadsheet = new Spreadsheet();
+      $sheet = $spreadsheet->getActiveSheet();
+
+      // Encabezados
+        $sheet->setCellValue('A1', 'ID');
+        $sheet->setCellValue('B1', 'Nombre');
+        $sheet->setCellValue('C1', 'Email');
+
+        // Datos de ejemplo
+        $data = [
+            [1, 'Juan Pérez', 'juan@example.com'],
+            [2, 'Ana López', 'ana@example.com'],
+            [3, 'Carlos Ruiz', 'carlos@example.com'],
+        ];
+
+        // Insertar datos en filas
+        $row = 2;
+        foreach ($data as $item) {
+            $sheet->setCellValue('A' . $row, $item[0]);
+            $sheet->setCellValue('B' . $row, $item[1]);
+            $sheet->setCellValue('C' . $row, $item[2]);
+            $row++;
+        }
+
+        // Descargar archivo
+        $writer = new Xlsx($spreadsheet);
+
+        $filename = 'usuarios_' . date('Ymd_His') . '.xlsx';
+
+        // Headers para forzar la descarga
+        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        header("Content-Disposition: attachment; filename=\"{$filename}\"");
+        header('Cache-Control: max-age=0');
+
+        $writer->save('php://output');
+        exit;
     }
     
 }
