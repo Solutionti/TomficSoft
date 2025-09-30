@@ -86,6 +86,7 @@ class ConteosModel extends Model {
       "hora" => date("H:i:s"),
       "saldo" => $datos["saldo"],
       "diferencia" => $datos["diferencia"],
+      "codigo_inventario" => session()->get('inventario'),
     ];
     $this->db->table('captura_conteos')
              ->insert($conteo);

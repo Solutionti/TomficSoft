@@ -1,12 +1,14 @@
 <?php
 
 namespace App\Controllers;
-
+use CodeIgniter\Controller;
 use App\Controllers\BaseController;
 use App\Models\ConteosModel;
 use App\Models\AsignacionModel;
 use App\Models\ListasModel;
 use CodeIgniter\HTTP\ResponseInterface;
+
+use FPDF;
 
 class AsignacionController extends BaseController {
 
@@ -24,6 +26,7 @@ class AsignacionController extends BaseController {
         "grupos" => $this->asignacionModel->getGrupo(),
         "subgrupos" => $this->asignacionModel->getSubgrupo(),
         "usuarios" => $this->listasModel->getUsuarios(),
+        "reportes" => $this->asignacionModel->getConteosTablaReportes()
       ];
 
       return view('administrador/asignacioninventarios', $data);
@@ -115,6 +118,62 @@ class AsignacionController extends BaseController {
         "status"  => "success",
         "message" => "los usuarios se han asociado correctamente"
       ]);
+    }
+
+    public function generarPdf() {
+    
+      require APPPATH . 'Libraries/fpdf/fpdf.php';
+      
+      $reportes = $this->asignacionModel->getpdfReportes();
+
+      $pdf = new \FPDF();
+      $pdf->AddPage();
+      $pdf->SetFont('Arial', 'B', 16);
+      $pdf->Cell(60,5,'', '', 0,'L', false );
+      $pdf->Cell(1,5,'REPORTES DEL SISTEMA', '', 0,'L', false );
+      $pdf->SetFont('Times','',9);
+      $pdf->Ln(5);
+      $pdf->Cell(75,5,'', '', 0,'L', false );
+      $pdf->Cell(7,5,'Sistema de inventarios Tomfic', '', 0,'L', false );
+      $pdf->Ln(2);
+      $pdf->Cell(55,5,'', '', 0,'L', false );
+      $pdf->Cell(10,5,'____________________________________________________', '', 0,'L', false );
+      $pdf->SetFont('Times','',9);
+      $pdf->Ln(9);
+      $pdf->Cell(36,5,'FECHA DEL REPORTE:', '', 0,'L', false );
+      $pdf->Cell(18,5,date("d-m-Y"), '', 0,'L', false );
+      $pdf->Ln(5);
+      $pdf->SetFont('Times','',8);
+      $pdf->Cell(12,5,'HORA:', '', 0,'L', false );
+      $pdf->Cell(4,5,date("H: i A"), '', 0,'L', false );
+      $pdf->Ln(5);
+      $pdf->SetFont('Times','',8);
+      $pdf->Cell(24,5,'QUIEN GENERA:', '', 0,'L', false );
+      $pdf->Cell(4,5,"jersom", '', 0,'L', false );
+      $pdf->Ln(8);
+      $pdf->SetFont('Times','b',10);
+      $pdf->Cell(18,5,'REPORTE DE CONTEOS DE PRODUCTOS', '', 0,'L', false );
+      $pdf->Ln(6);
+      $pdf->SetFont('Times','b',9);
+      $pdf->Cell(25,5,'CODIGO', 'LTBR', 0,'L', false );
+      $pdf->Cell(100,5,'NOMBRE', 'TBR', 0,'L', false );
+      $pdf->Cell(20,5,"CONTEO #1", 'TBR', 0,'L', false );
+      $pdf->Cell(22,5,"CONTEO #2", 'TBR', 0,'L', false );
+      $pdf->Cell(26,5,"DIFERENCIA", 'TBR', 0,'L', false );
+
+      $pdf->SetFont('Times','',9);
+      foreach($reportes->getResult() as $reporte) {
+        $pdf->Ln(5);
+        $pdf->Cell(25,5,$reporte->codigo_producto, 'LTBR', 0,'L', false );
+        $pdf->Cell(100,5,utf8_decode($reporte->nombre), 'TBR', 0,'L', false );
+        $pdf->Cell(20,5,$reporte->conteo1, 'TBR', 0,'L', false );
+        $pdf->Cell(22,5,$reporte->conteo2, 'TBR', 0,'L', false );
+        $pdf->Cell(26,5,abs($reporte->conteo1 - $reporte->conteo2), 'TBR', 0,'L', false );
+      }
+        
+        // Salida del PDF al navegador
+      $this->response->setHeader('Content-Type', 'application/pdf');
+      $pdf->Output('I', 'ejemplo.pdf');
     }
     
 }
