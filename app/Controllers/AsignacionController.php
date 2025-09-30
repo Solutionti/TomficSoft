@@ -161,7 +161,7 @@ class AsignacionController extends BaseController {
       $pdf->Cell(22,5,"CONTEO #2", 'TBR', 0,'L', false );
       $pdf->Cell(26,5,"DIFERENCIA", 'TBR', 0,'L', false );
 
-      $pdf->SetFont('Times','',9);
+      $pdf->SetFont('Times','',8);
       foreach($reportes->getResult() as $reporte) {
         $pdf->Ln(5);
         $pdf->Cell(25,5,$reporte->codigo_producto, 'LTBR', 0,'L', false );
@@ -171,7 +171,7 @@ class AsignacionController extends BaseController {
         $pdf->Cell(26,5,abs($reporte->conteo1 - $reporte->conteo2), 'TBR', 0,'L', false );
       }
         
-        // Salida del PDF al navegador
+      // Salida del PDF al navegador
       $this->response->setHeader('Content-Type', 'application/pdf');
       $pdf->Output('I', 'ejemplo.pdf');
     }
