@@ -321,8 +321,17 @@
                   <td><?= $inventario->codigo_inventario; ?></td>
                   <td><?= $inventario->observacion; ?></td>
                   <td><?= $inventario->fecha; ?></td>
-                  <td><?= $inventario->usuarioconteo1; ?></td>
-                  <td><?= $inventario->usuarioconteo2; ?></td>
+                  <?php if($inventario->usuarioconteo1 == session()->get('documento')) { ?>
+                  <td class="text-danger"><?= $inventario->usuarioconteo1; ?></td>
+                  <?php } else { ?>
+                    <td><?= $inventario->usuarioconteo1; ?></td>
+                  <?php } ?>
+
+                  <?php if($inventario->usuarioconteo2 == session()->get('documento')) { ?>
+                  <td class="text-danger"><?= $inventario->usuarioconteo2; ?></td>
+                  <?php } else { ?>
+                    <td><?= $inventario->usuarioconteo2; ?></td>
+                  <?php } ?>
                   <td><label class="badge badge-success "><?= $inventario->estado; ?></label></td>
                 </tr>
                 <?php } ?>
@@ -412,5 +421,12 @@
 
   <?php require_once("componentes/scripts.php")?>
   <script src="<?= base_url('js/conteos.js') ?>"></script>
+  <?php if(session()->get('inventario') == 0) { ?>
+  <script>
+    $(document).ready(function () {
+      $("#exportarexcelmodal").modal('show');
+    });
+  </script>
+  <?php } ?>
   </body>
 </html>

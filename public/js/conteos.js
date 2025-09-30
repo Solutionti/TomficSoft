@@ -62,7 +62,7 @@ $("#codigo_producto").on("blur", function() {
         if(response === "error") {
           $("body").overhang({
             type: "error",
-            message: "Alerta ! El producto no existe o no se encuentra registrado.",
+            message: "Alerta ! El producto no existe o no se encuentra registrado en el inventario.",
           });
           
           $("#nombre_producto").val("");
@@ -152,6 +152,8 @@ $("#exportardatos").on("click", function(e) {
   overlay: true,
   callback: function (value) {
     if (value) {
+     $("#exportardatos").prop("disabled", true);
+     $("#spinnerexportarproducto").prop("hidden", false);
     $.ajax({
     url:url,
     method: 'POST',
@@ -161,9 +163,11 @@ $("#exportardatos").on("click", function(e) {
     success: function(response) {
       $("body").overhang({
         type: "success",
-        message: "La base de datos se ha exportado correctamente. total registro "
+        message: "La base de datos se ha exportado correctamente"
       });
       $("#archivo").val("");
+      $("#exportardatos").prop("disabled", false);
+      $("#spinnerexportarproducto").prop("hidden", true);
     },
     error: function(xhr, status, error) {
       $("body").overhang({
@@ -189,7 +193,7 @@ function VincularProductoModal(codigo) {
         if(response === "error") {
           $("body").overhang({
             type: "error",
-            message: "Alerta ! El producto no existe o no se encuentra registrado.",
+            message: "Alerta ! El producto no existe o no se encuentra registrado en el inventario.",
           });
           
           $("#nombre_producto").val("");

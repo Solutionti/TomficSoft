@@ -1,3 +1,20 @@
+
+$("#table_usuarios").DataTable({
+  "lengthMenu": [5, 50, 100, 200],
+  "language":{
+  "processing": "Procesando",
+  "search": "Buscar:",
+  "lengthMenu": "Ver _MENU_ Usuarios",
+  "info": "Viendo _START_ a _END_ de _TOTAL_ Usuarios",
+  "zeroRecords": "No encontraron resultados",
+  "paginate": {
+    "first":      "Primera",
+    "last":       "Ultima",
+    "next":       "Siguiente",
+    "previous":   "Anterior"
+  }
+ }
+});
 document.addEventListener("DOMContentLoaded", function () {
   var togglePassword = document.querySelector(".input-group-append.input-group-text");
   var passwordField = document.getElementById("password_usuario");
