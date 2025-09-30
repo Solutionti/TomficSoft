@@ -273,7 +273,7 @@
   <div class="modal-dialog modal-fullscreen">
     <div class="modal-content">
       <div class="modal-header color-morado">
-        <h1 class="modal-title fs-5  text-white" id="modalProcesoLabel">VISTA DE PROCESOS - TIPO DE VISTA</h1>
+        <h1 class="modal-title fs-5  text-white" id="modalProcesoLabel">VISTA DE PROCESOS - TABLERO DE REPORTES DE CONTEOS</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -282,50 +282,67 @@
             <table class="table table-striped">
               <thead >
                 <tr>
-                  <th class="color-morado text-white text-uppercase"> </th>
+                  <!-- <th class="color-morado text-white text-uppercase"> </th> -->
                   <th class="color-morado text-white text-uppercase">Ubicacion</th>
                   <th class="color-morado text-white text-uppercase">Localizacion</th>
-                  <th class="color-morado text-white text-uppercase">N. Localizacion</th>
+                  <th class="color-morado text-white text-uppercase">N.Local</th>
                   <th class="color-morado text-white text-uppercase">Observacion</th>
-                  <th class="color-morado text-white text-uppercase">Usuario</th>
+                  <th class="color-morado text-white text-uppercase">Usuarios</th>
                   <th class="color-morado text-white text-uppercase">Conteo #1</th>
                   <th class="color-morado text-white text-uppercase">Obs #1</th>
                   <th class="color-morado text-white text-uppercase">Conteo #2</th>
                   <th class="color-morado text-white text-uppercase">Obs #2</th>
                   <th class="color-morado text-white text-uppercase">Diferencia</th>
-             <!-- <th class="color-morado text-white text-uppercase">Conteo #3</th>
-                  <th class="color-morado text-white text-uppercase">Obs #3</th> -->
                   <th class="color-morado text-white text-uppercase">Validador</th>
                   <th class="color-morado text-white text-uppercase">Imprimir reporte</th>
                 </tr>
               </thead>
               <tbody>
+                 <?php foreach($reportes->getResult() as $reporte){ ?>
                 <tr>
-                  <td></td>
-                  <td>Bodega</td>
-                  <td>Mueble</td>
-                  <td>Detergente</td>
-                  <td>2</td>
-                  <td>10</td>
+                  <!-- <td>
+                    <button
+                      class="badge badge-primary"
+                    >
+                      <i class="fas fa-eye fa-1x "></i>
+                    </button>
+                  </td> -->
+                  <td class="text-uppercase"><?= $reporte->ubicacion; ?></td>
+                  <td class="text-uppercase"><?= $reporte->localizacion; ?></td>
+                  <td><?= $reporte->numerolocalizacion; ?></td>
+                  <td class="text-uppercase"><?= $reporte->observacion; ?></td>
+                  <td><?= $reporte->usuarioconteo1.' - '.$reporte->usuarioconteo2; ?></td>
+                  <td><label class="badge badge-dark"><?= $reporte->conte1; ?></label></td>
                   <td><label class="badge badge-success ">Ok</label></td>
-                  <td>20</td>
+                  <td><label class="badge badge-dark "><?= $reporte->conte2; ?></label></td>
                   <td><label class="badge badge-success ">Ok</label></td>
-                  <td>10</td>
-                  <td><label class="badge badge-success ">COINCIDE</label></td>
-              <!-- <td></td>
-                   <td></td> -->
-                   <td><label class="badge badge-success ">Finalizado</label></td>
-                   <td>
-                <div class="col-md-4">
-                  <button class="btn btn-primary btn-sm btn-rounded" data-bs-toggle="modal" data-bs-target="#modalReportes">Ver</button>
-                  <button class="btn btn-danger btn-sm btn-rounded" data-bs-toggle="modal" data-bs-target="#modalReportes">Imprimir</button>
-                </div>
-              </td>
-             </tr>  
-                        </tbody>
-                      </table>  
-                </div>
-            </div>
+                  <td><label class="badge badge-danger "><?= ($reporte->conte1 - $reporte->conte2); ?></label></td>
+                  <?php
+                    $total = $reporte->conte1 - $reporte->conte2;
+                    if($total > 0){
+                  ?>
+                    <td><label class="badge badge-danger ">Diferencia</label></td>
+                    <?php } else { ?>
+                    <td><label class="badge badge-success">Completo</label></td>
+                  <?php } ?>
+                  <td>
+                    <div class="col-md-4">
+                      <a
+                        target="_blank"
+                        href="<?php echo base_url(); ?>generarpdfreportes"
+                        class="btn btn-danger btn-sm btn-rounded mx-2"
+                      >
+                        Pdf
+                      </a>
+                      <button class="btn btn-success btn-sm btn-rounded">Excel</button>
+                    </div>
+                  </td>
+                 </tr>
+                 <?php } ?>
+              </tbody>
+            </table>  
+          </div>
+        </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger btn-rounded" data-bs-dismiss="modal">Cerrar</button>

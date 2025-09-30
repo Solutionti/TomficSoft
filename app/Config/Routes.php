@@ -39,7 +39,10 @@ $routes->post('/asinarproductosinventario', 'AsignacionController::asignarProduc
 $routes->post('/asignarubicacioninventario', 'AsignacionController::asignarUbicacionInventario');
 $routes->get('/getinventarioid/(:num)', 'AsignacionController::procesoDatosModal/$1');
 $routes->post('/asignarusuariosinventario', 'AsignacionController::asignarUsuariosInventario');
+$routes->get('/generarpdfreportes', 'AsignacionController::generarPdf');
 
 // INVENTARIOS
 $routes->get('/inventarios', 'InventarioController::index');
 $routes->get('crearproducto', 'InventarioController::crearProducto');
+
+

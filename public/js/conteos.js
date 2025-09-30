@@ -293,8 +293,8 @@ function GuardarConteo() {
            $("#embalaje").val("");
            $("#total").val("");
            $("#diferencia").val("");
-           $("#estado_producto").val("");
-           $("#observacion").val("");
+           $("#estado_producto").val("Bueno");
+          //  $("#observacion").val("");
            $("#codigo_producto").focus();
           
         },

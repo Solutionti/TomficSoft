@@ -143,4 +143,22 @@ class AsignacionModel extends Model {
                 ->update($inventarios);
    }
 
+   public function getConteosTablaReportes() {
+    $inventarios = $this->db->table('inventarios as inven')
+                        ->select("inven.ubicacion, inven.localizacion, inven.numerolocalizacion, inven.usuarioconteo1,
+                        inven.usuarioconteo2,inven.observacion, SUM(cp.conteo1) as conte1, SUM(cp.conteo2) as conte2, SUM(cp.diferencia) as diferencia")
+                        ->join("captura_conteos as cp", "inven.codigo_inventario = cp.codigo_inventario")
+                        ->get();
+
+     return $inventarios;
+   }
+
+   public function getpdfReportes() {
+    $reportepdf = $this->db->table('captura_conteos')
+                           ->select("*")
+                           ->get();
+
+    return $reportepdf;
+   }
+
 }
