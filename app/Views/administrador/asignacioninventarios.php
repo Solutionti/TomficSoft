@@ -334,7 +334,12 @@
                       >
                         Pdf
                       </a>
-                      <button class="btn btn-success btn-sm btn-rounded">Excel</button>
+                      <a
+                        class="btn btn-success btn-sm btn-rounded"
+                        href="<?php echo base_url(); ?>generarexcelreportes"
+                      >
+                        Excel
+                      </a>
                     </div>
                   </td>
                  </tr>
