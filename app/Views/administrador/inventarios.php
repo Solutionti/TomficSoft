@@ -15,10 +15,9 @@
           <div class="content-wrapper">
             <div class="page-header flex-wrap">
               <div class="header-left">
-                <button class="btn btn-primary mb-2 mb-md-0 me-2" data-bs-toggle="modal" data-bs-target="#agregarProducto">Agregar Producto</button>
-                <button class="btn btn-outline-primary bg-white mb-2 mb-md-0 me-2">Consulta</button>
-                <button class="btn btn-success mb-2 mb-md-0 me-2" data-bs-toggle="modal" data-bs-target="#ingresoProducto">Entrada</button>
-                <button class="btn btn-danger mb-2 mb-md-0 me-2" data-bs-toggle="modal" data-bs-target="#salidaProducto">Salida</button>
+                <button class="btn btn-primary mb-2 mb-md-0 me-2 btn-rounded" data-bs-toggle="modal" data-bs-target="#agregarProducto">Agregar Producto</button>
+                <button class="btn btn-outline-success mb-2 mb-md-0 me-2 btn-rounded" data-bs-toggle="modal" data-bs-target="#ingresoProducto">Entrada</button>
+                <button class="btn btn-outline-danger mb-2 mb-md-0 me-2 btn-rounded" data-bs-toggle="modal" data-bs-target="#salidaProducto">Salida</button>
               </div>
               <div class="header-right d-flex flex-wrap mt-2 mt-sm-0">
                 <div class="d-flex align-items-center">
@@ -38,7 +37,7 @@
                 <div class="col-md-12">
                   <div class="table-responsive">
 
-                    <table class="table table-striped">
+                    <table class="table table-striped table-borderless" id="tabla_inventarios">
                         <thead >
                           <tr >
                             <th class="color-morado text-white text-uppercase"> </th>
