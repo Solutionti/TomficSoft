@@ -23,4 +23,58 @@ class InventarioController extends BaseController
         return view('administrador/inventarios', $data);
     }
 
+    public function agregarProductos() {
+
+        try {
+
+            //definir las variables que vienen del input
+            $categoria = $this->request->getPost('categoria');
+            $subcategoria = $this->request->getPost('subcategoria');
+            $grupo = $this->request->getPost('grupo');
+            $subgrupo = $this->request->getPost('subgrupo');
+            $nombre = $this->request-getPost('nombre');
+            $referencia = $this->request->getPost('referencia');
+            $codigointerno = $this->request->getPost('codigointerno');
+            $codigoBarras = $this->request->getPost('codigobarras');
+            $nit = $this->request->getPost('nit');
+            $proveedor = $this->request->getPost('proveedor');
+            $saldo = $this->request->getPost('saldo');
+            $costo = $this->request->getPost('costo');
+            
+            // crear un array con todos los campos que defini anteriormente
+    
+            $data = [
+                'categoria' => $categoria,
+                'subcategoria' => $subcategoria,
+                'grupo' => $grupo,
+                'subgrupo' => $subgrupo,
+                'nombre' => $nombre,
+                'referencia' => $referencia,
+                'codigointerno' => $codigointerno,
+                'codigoBarras' => $codigoBarras,
+                'nit' => $nit,
+                'proveedor' => $proveedor,
+                'saldo' => $saldo,
+                'costo' => $costo
+            ];
+    
+            $this->inventarioModel->agregarProductos($data);
+
+            // devuelve  JSON cuando todo es éxitoso
+            return $this->response->setJSON([
+                "status"  => "success",
+                "message" => "Usuario creado correctamente"
+            ]);
+        } 
+        catch (\Throwable $e) {
+        //atrapar errores y responder
+        return $this->response->setJSON([
+            "status"  => "error",
+            "message" => "Error en el servidor: " . $e->getMessage()
+        ])->setStatusCode(500);
+    } 
+ }
+
+
+
 }
