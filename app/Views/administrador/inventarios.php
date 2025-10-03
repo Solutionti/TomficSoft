@@ -200,7 +200,7 @@
           <div class="col-md-3">
             <label class="mb-1 small ">Proveedor *</label>
             <input 
-              type="number"
+              type="text"
               id="proveedor_inventario"
               name="proveedor_inventario"
               class="form-control form-control-sm borde"
@@ -228,7 +228,7 @@
         
       </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-primary btn-rounded" data-bs-dismiss="modal">Guardar</button>
+          <button type="button" class="btn btn-primary btn-rounded" data-bs-dismiss="modal" onclick="agregarProductos()">Guardar</button>
         </div>
     </div>
   </div>
