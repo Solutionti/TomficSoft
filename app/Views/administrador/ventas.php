@@ -134,15 +134,17 @@
           </div>
           <!--  -->
           <div class="form-group">
+            <label>Usuario</label>
+            <input
+              type="text"
+              class="form-control form-control-sm"
+              value="<?=  session()->get('nombre').' '.session()->get('apellido') ?>"
+              readonly
+            >
+          </div>
+          <!--  -->
+          <div class="form-group">
             <div class="form-check">
-              <input
-                class="form-check-input"
-                type="checkbox"
-                id="checkdevolucion"
-              >
-              <label class="custom-control-label mt-2" for="customCheck1">Devolución?</label>
-           </div>
-           <div class="form-check">
              <input
                class="form-check-input"
                type="checkbox"
