@@ -46,4 +46,7 @@ $routes->get('/generarexcelreportes', 'AsignacionController::generarExcel');
 $routes->get('/inventarios', 'InventarioController::index');
 $routes->get('crearproducto', 'InventarioController::crearProducto');
 
+// VENTAS
+$routes->get('/ventas', 'VentasController::index');
+
 

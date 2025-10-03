@@ -78,13 +78,12 @@
               <span class="menu-title"><i class="fas fa-shopping-cart text-morado"></i> Ecommerce</span>
             </a>
           </li>
-          <!--
           <li class="nav-item pt-1">
-            <a class="nav-link" href="#">
-              
+            <a class="nav-link" href="<?= base_url('ventas') ?>">
               <span class="menu-title"><i class="fas fa-shopping-cart text-morado"></i> Ventas</span>
             </a>
           </li>
+          <!--
           <li class="nav-item pt-1">
             <a class="nav-link" href="#">
               
