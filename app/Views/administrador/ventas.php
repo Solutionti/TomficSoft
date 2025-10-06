@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Administracion - Usuarios</title>
+    <title>Administracion - Ventas</title>
     <link rel="stylesheet" href="<?= base_url('css/estilo.css') ?>">
     <link rel="stylesheet" href="<?= base_url('css/material.css') ?>">
     <link rel="stylesheet" href="<?= base_url('fontawesome/css/fontawesome.min.css') ?>">
@@ -14,8 +14,7 @@
 <body>
   <div class="container-fluid">
       <div class="container-fluid">
-        <?php require_once("componentes/lateralderecha.php")?>
-        <div class="main-panel">
+        <div class="">
           <div class="content-wrapper">
             <div class="page-header flex-wrap">
               <div class="header-left">

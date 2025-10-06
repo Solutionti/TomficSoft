@@ -329,14 +329,14 @@
                     <div class="col-md-4">
                       <a
                         target="_blank"
-                        href="<?php echo base_url(); ?>generarpdfreportes"
+                        href="<?php echo base_url(); ?>generarpdfreportes/<?= $reporte->codigo_inventario; ?>"
                         class="btn btn-danger btn-sm btn-rounded mx-2"
                       >
                         Pdf
                       </a>
                       <a
                         class="btn btn-success btn-sm btn-rounded"
-                        href="<?php echo base_url(); ?>generarexcelreportes"
+                        href="<?php echo base_url(); ?>generarexcelreportes/<?= $reporte->codigo_inventario; ?>"
                       >
                         Excel
                       </a>
@@ -350,8 +350,7 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-danger btn-rounded" data-bs-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary btn-rounded">Guardar</button>
+        <button type="button" class="btn btn-danger btn-rounded mx-3" data-bs-dismiss="modal">Cerrar</button>
       </div>
     </div>
   </div>

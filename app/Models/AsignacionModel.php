@@ -146,19 +146,29 @@ class AsignacionModel extends Model {
    public function getConteosTablaReportes() {
     $inventarios = $this->db->table('inventarios as inven')
                         ->select("inven.ubicacion, inven.localizacion, inven.numerolocalizacion, inven.usuarioconteo1,
-                        inven.usuarioconteo2,inven.observacion, SUM(cp.conteo1) as conte1, SUM(cp.conteo2) as conte2, SUM(cp.diferencia) as diferencia")
+                        inven.usuarioconteo2,inven.observacion, SUM(cp.conteo1) as conte1, SUM(cp.conteo2) as conte2, SUM(cp.diferencia) as diferencia, inven.codigo_inventario")
                         ->join("captura_conteos as cp", "inven.codigo_inventario = cp.codigo_inventario")
                         ->get();
 
      return $inventarios;
    }
 
-   public function getpdfReportes() {
+   public function getpdfReportes($inventario) {
     $reportepdf = $this->db->table('captura_conteos')
                            ->select("*")
+                           ->where("codigo_inventario", $inventario)
                            ->get();
 
     return $reportepdf;
+   }
+
+   public function getExcelReportes() {
+    $reporteExcel = $this->db->table('captura_conteos')
+                           ->select("*")
+                           ->where("codigo_inventario", $inventario)
+                           ->get();
+
+    return $reporteExcel;
    }
 
 }

@@ -1,5 +1,5 @@
 $("#tabla_inventarios").DataTable({
-  "lengthMenu": [13, 50, 100, 200],
+  "lengthMenu": [11, 50, 100, 200],
   "language":{
   "processing": "Procesando",
   "search": "Buscar:",

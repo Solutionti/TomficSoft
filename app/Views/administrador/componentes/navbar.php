@@ -51,17 +51,22 @@
           <li class="nav-item pt-1">
             <a class="nav-link" href="<?= base_url('conteos') ?>">
               
-              <span class="menu-title"><i class="fas fa-barcode text-success"></i> Conteos Online</span>
+              <span class="menu-title"><i class="fas fa-barcode text-morado"></i> Conteos Online</span>
             </a>
           </li>
-          <li class="nav-item pt-1">
+          <!-- <li class="nav-item pt-1">
             <a class="nav-link" href="<?= base_url('conteos') ?>">
               <span class="menu-title"> <i class="fas fa-barcode text-danger"></i> Conteos Offline</span>
             </a>
-          </li>
+          </li> -->
           <li class="nav-item pt-1">
            <a class="nav-link" href="<?= base_url('usuarios') ?>">
              <span class="menu-title"> <i class="fas fa-users text-morado"></i> Usuarios</span>
+           </a>
+         </li>
+         <li class="nav-item pt-1">
+           <a class="nav-link" href="<?= base_url('usuarios') ?>">
+             <span class="menu-title"> <i class="fas fa-chart-pie text-morado"></i> Reportes</span>
            </a>
          </li>
           <li class="pt-2 pb-1">
@@ -73,22 +78,21 @@
             </a>
           </li>
           <li class="nav-item pt-1">
-            <a class="nav-link" href="#">
-              
-              <span class="menu-title"><i class="fas fa-shopping-cart text-morado"></i> Ecommerce</span>
+            <a class="nav-link" href="<?= base_url('ventas') ?>" target="_blank">
+              <span class="menu-title"><i class="fas fa-cash-register text-morado"></i> Ventas</span>
             </a>
           </li>
-          <li class="nav-item pt-1">
-            <a class="nav-link" href="<?= base_url('ventas') ?>">
-              <span class="menu-title"><i class="fas fa-shopping-cart text-morado"></i> Ventas</span>
-            </a>
-          </li>
-          <!--
+          
           <li class="nav-item pt-1">
             <a class="nav-link" href="#">
               
               <span class="menu-title"><i class="fas fa-motorcycle text-morado"></i> Pedidos</span>
             </a>
-          </li> -->
+          </li>
+          <li class="nav-item pt-1">
+            <a class="nav-link" href="http://inventsoftdemo.saludmadreymujer.com/ecommerce/inicio" target="_blank">
+              <span class="menu-title"><i class="fas fa-shopping-cart text-morado"></i> Ecommerce</span>
+            </a>
+          </li>
         </ul>
       </nav>
