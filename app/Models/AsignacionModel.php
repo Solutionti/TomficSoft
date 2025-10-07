@@ -171,4 +171,14 @@ class AsignacionModel extends Model {
     return $reporteExcel;
    }
 
+   public function getNumeroLocalizacion($localizacion) {
+     $localizacion = $this->db->table('inventarios')
+                              ->select("COUNT(*) as cantidad")
+                              ->where("localizacion", $localizacion)
+                              ->get();
+
+     return $localizacion->getResult();
+
+   }
+
 }

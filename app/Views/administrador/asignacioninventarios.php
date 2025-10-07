@@ -236,9 +236,12 @@
             <select
               id="localizacion_conteo"
               class="form-control form-control-sm borde text-uppercase"
+              onchange="getnumerolocalizacion()"
             >
               <option value="">Seleccione Localizacion</option>
               <option value="GONDOLA">GONDOLA</option>
+              <option value="NEVERAS">NEVERAS</option>
+              <option value="VITRINAS">VITRINAS</option>
             </select>
           </div>
           
@@ -248,6 +251,7 @@
               type="text"
               id="numero_conteo"
               class="form-control form-control-sm borde"
+              readonly
             >
           </div>
         </div>

@@ -260,5 +260,11 @@ class AsignacionController extends BaseController {
         $writer->save('php://output');
         exit;
     }
+
+    public function getNumeroLocalizacion($localizacion) {
+      $result = $this->asignacionModel->getNumeroLocalizacion($localizacion);
+
+      return $this->response->setJSON($result);
+    }
     
 }

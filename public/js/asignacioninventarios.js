@@ -271,7 +271,25 @@ function asignarUsuarioInventario() {
         }
       });
     }
+}
 
+function getnumerolocalizacion() {
+  var localizacion = $("#localizacion_conteo").val();
+  var url = baseurl + 'getnumerolocalizacion/' + localizacion;
+
+  $.ajax({
+        url: url,
+        method: "GET",
+        success: function(response) {
+         $("#numero_conteo").val(parseInt(response[0].cantidad) + 1);
+        },
+        error: function() {
+          $("body").overhang({
+            type: "error",
+            message: "Alerta ! Tenemos un problema al conectar con la base de datos verifica tu red.",
+          });
+        }
+      });
 }
 
 function reloadPage() {

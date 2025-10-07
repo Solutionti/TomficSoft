@@ -41,6 +41,7 @@ $routes->get('/getinventarioid/(:num)', 'AsignacionController::procesoDatosModal
 $routes->post('/asignarusuariosinventario', 'AsignacionController::asignarUsuariosInventario');
 $routes->get('/generarpdfreportes/(:num)', 'AsignacionController::generarPdf/$1');
 $routes->get('/generarexcelreportes/(:num)', 'AsignacionController::generarExcel/$1');
+$routes->get('/getnumerolocalizacion/(:any)', 'AsignacionController::getNumeroLocalizacion/$1');
 
 // INVENTARIOS
 $routes->get('/inventarios', 'InventarioController::index');
