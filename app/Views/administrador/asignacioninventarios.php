@@ -233,11 +233,13 @@
           </div>
           <div class="col-md-4">
             <label class="mb-1 small">Localizacion</label>
-            <input 
-              type="text"
+            <select
               id="localizacion_conteo"
-              class="form-control form-control-sm borde"
+              class="form-control form-control-sm borde text-uppercase"
             >
+              <option value="">Seleccione Localizacion</option>
+              <option value="GONDOLA">GONDOLA</option>
+            </select>
           </div>
           
           <div class="col-md-4">
