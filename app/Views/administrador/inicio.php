@@ -42,7 +42,7 @@
                   <div class="card-body">
                     <div class="d-flex justify-content-between flex-wrap">
                       <div>
-                        <div class="card-title mb-0">Ingresos por ventas</div>
+                        <div class="card-title mb-0">Ingresos por ventas diaria</div>
                           <h3 class="fw-bold mb-0">$32,409</h3>
                         </div>
                       <div>
@@ -80,7 +80,7 @@
                         </div>
                       </div>
                     </div>
-                    <p class="text-muted font-13 mt-2 mt-sm-0">Plantilla para tu panel de control de ventas. Más información.<a class="text-muted font-13" href="#"><u> Leer mas</u></a></p>
+                    <!-- <p class="text-muted font-13 mt-2 mt-sm-0">Plantilla para tu panel de control de ventas. Más información.<a class="text-muted font-13" href="#"><u> Leer mas</u></a></p> -->
                     <div class="flot-chart-wrapper">
                       <div id="flotChart" class="flot-chart">
                         <canvas class="flot-base" id="miGrafico"  width="850" height="200"></canvas>
