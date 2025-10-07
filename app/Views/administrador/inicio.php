@@ -240,6 +240,20 @@ new Chart(ctx, {
   }
 });
 </script>
-
+  <!-- <script src="https://themewagon.github.io/plus-admin/assets/vendors/js/vendor.bundle.base.js"></script>
+  <script src="https://themewagon.github.io/plus-admin/assets/vendors/chart.js/chart.umd.js"></script>
+  <script src="https://themewagon.github.io/plus-admin/assets/vendors/flot/jquery.flot.js"></script>
+  <script src="https://themewagon.github.io/plus-admin/assets/vendors/flot/jquery.flot.resize.js"></script>
+  <script src="https://themewagon.github.io/plus-admin/assets/vendors/flot/jquery.flot.categories.js"></script>
+  <script src="https://themewagon.github.io/plus-admin/assets/vendors/flot/jquery.flot.fillbetween.js"></script>
+  <script src="https://themewagon.github.io/plus-admin/assets/vendors/flot/jquery.flot.stack.js"></script>
+  <script src="https://themewagon.github.io/plus-admin/assets/js/jquery.cookie.js"></script>
+  <script src="https://themewagon.github.io/plus-admin/assets/js/off-canvas.js"></script>
+  <script src="https://themewagon.github.io/plus-admin/assets/js/misc.js"></script>
+  <script src="https://themewagon.github.io/plus-admin/assets/js/settings.js"></script>
+  <script src="https://themewagon.github.io/plus-admin/assets/js/todolist.js"></script>
+  <script src="https://themewagon.github.io/plus-admin/assets/js/hoverable-collapse.js"></script>
+  <script src="https://themewagon.github.io/plus-admin/assets/js/proBanner.js"></script>
+  <script src="https://themewagon.github.io/plus-admin/assets/js/dashboard.js"></script> -->
   </body>
 </html>

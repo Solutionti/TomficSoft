@@ -12,10 +12,10 @@
             </a>
           </li>
           <li class="nav-item pt-3">
-            <a class="nav-link d-block" href="#">
+            <!-- <a class="nav-link d-block" href="#">
               <img class="sidebar-brand-logo" src="https://themewagon.github.io/plus-admin/assets/images/logo.svg" alt="">
-              <!-- <div class="small fw-light pt-1">Panel responsivo </div> -->
-            </a>
+              <div class="small fw-light pt-1">Panel responsivo </div>
+            </a> -->
             <br>
             <form class="d-flex align-items-center" action="#">
               <div class="input-group">
