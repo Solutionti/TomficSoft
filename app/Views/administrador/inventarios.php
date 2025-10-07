@@ -244,105 +244,108 @@
       </div>
       <div class="modal-body">
 <!-- ACA VA EL CONTENIDO DE LA MODAL-->
-        <div class="row mt-3">
-          <div class="col-md-5">
-            <label class="mb-1 small ">Producto *</label>
-            <input 
-              type="text" 
-              class="form-control form-control-sm borde" 
-              id="producto_ingreso" 
-              name="producto_ingreso" 
-              required>
-          </div>
-          <div class="col-md-2">
-            <label class="mb-1 small ">Cantidad *</label>
-            <input 
-              type="number" 
-              class="form-control form-control-sm borde" 
-              id="cantidad_ingreso" 
-              name="cantidad_ingreso" 
-              required>
-        </div>
-          <div class="col-md-3">
-            <label class="mb-1 small ">Precio producto *</label>
-            <input 
-              type="number" 
-              class="form-control form-control-sm borde" 
-              id="precio_ingreso" 
-              name="precio_ingreso" 
-              required
-            >
-          </div>
-          <div class="col-md-2">
-            <label class="mb-1 small ">Stock *</label>
-            <input 
-              type="number" 
-              class="form-control form-control-sm borde" 
-              id="stock_ingreso" 
-              name="stock_ingreso" 
-              required
-            >
-          </div>
-        </div>
-        <div class="row mt-3">
-          <div class="col-md-8">
-            <label class="mb-1 small ">Nombre producto</label>
-            <input 
-              type="text" 
-              class="form-control form-control-sm borde" 
-              id="nombre_ingreso" 
-              name="nombre_ingreso"
-            >
-          </div>
-          <div class="col-md-4">
-            <label class="mb-1 small ">Valor compra</label>
-            <input type="number" 
-              class="form-control form-control-sm borde" 
-              id="valor_ingreso" 
-              name="valor_ingreso"
-            >
-          </div>
-        </div>
-        <div class="row mt-3">
-          <div class="col-md-6">
-            <label class="mb-1 small ">Sede principal</label>
-            <select 
-              name="sede_ingreso" 
-              id="sede_ingreso" 
-              class="form-control form-control-sm borde text-uppercase" 
-              required
-            >
-              <option value="">Seleccione sede</option>
-              <option value="">1</option>
-              <option value="">2</option>
-              <option value="">3</option>
-            </select>
-          </div>
-          <div class="col-md-6">
-            <label class="mb-1 small ">Motivo de ingreso</label>
-            <select 
-              name="motivo_ingreso" 
-              id="motivo_ingreso" 
-              class="form-control form-control-sm borde text-uppercase"
-              >
-              <option value="">Seleccione el motivo de ingreso</option>
-              <option value="">1</option>
-              <option value="">2</option>
-              <option value="">3</option>
-            </select>
-          </div>
-        </div>
-        <div class="row mt-3">
-          <div class="col-md-12">
-            <label class="mb-1 small ">Comentarios </label>
-            <textarea 
-              class="form-control form-control-sm borde" 
-              placeholder="Descripcion" 
-              id="floatingTextarea2 comentarios_ingreso" 
-              style="height: 100px"
-            ></textarea>
-          </div>
-        </div>
+ <div class="container-fluid">
+
+   <div class="row mt-3">
+     <div class="col-md-5">
+       <label class="mb-1 small ">Producto *</label>
+       <input 
+         type="text" 
+         class="form-control form-control-sm borde" 
+         id="producto_ingreso" 
+         name="producto_ingreso" 
+         required>
+     </div>
+     <div class="col-md-2">
+       <label class="mb-1 small ">Cantidad *</label>
+       <input 
+         type="number" 
+         class="form-control form-control-sm borde" 
+         id="cantidad_ingreso" 
+         name="cantidad_ingreso" 
+         required>
+   </div>
+     <div class="col-md-3">
+       <label class="mb-1 small ">Precio producto *</label>
+       <input 
+         type="number" 
+         class="form-control form-control-sm borde" 
+         id="precio_ingreso" 
+         name="precio_ingreso" 
+         required
+       >
+     </div>
+     <div class="col-md-2">
+       <label class="mb-1 small ">Stock *</label>
+       <input 
+         type="number" 
+         class="form-control form-control-sm borde" 
+         id="stock_ingreso" 
+         name="stock_ingreso" 
+         required
+       >
+     </div>
+   </div>
+   <div class="row mt-3">
+     <div class="col-md-8">
+       <label class="mb-1 small ">Nombre producto</label>
+       <input 
+         type="text" 
+         class="form-control form-control-sm borde" 
+         id="nombre_ingreso" 
+         name="nombre_ingreso"
+       >
+     </div>
+     <div class="col-md-4">
+       <label class="mb-1 small ">Valor compra</label>
+       <input type="number" 
+         class="form-control form-control-sm borde" 
+         id="valor_ingreso" 
+         name="valor_ingreso"
+       >
+     </div>
+   </div>
+   <div class="row mt-3">
+     <div class="col-md-6">
+       <label class="mb-1 small ">Sede principal</label>
+       <select 
+         name="sede_ingreso" 
+         id="sede_ingreso" 
+         class="form-control form-control-sm borde text-uppercase" 
+         required
+       >
+         <option value="">Seleccione sede</option>
+         <option value="">1</option>
+         <option value="">2</option>
+         <option value="">3</option>
+       </select>
+     </div>
+     <div class="col-md-6">
+       <label class="mb-1 small ">Motivo de ingreso</label>
+       <select 
+         name="motivo_ingreso" 
+         id="motivo_ingreso" 
+         class="form-control form-control-sm borde text-uppercase"
+         >
+         <option value="">Seleccione el motivo de ingreso</option>
+         <option value="">1</option>
+         <option value="">2</option>
+         <option value="">3</option>
+       </select>
+     </div>
+   </div>
+   <div class="row mt-3">
+     <div class="col-md-12">
+       <label class="mb-1 small ">Comentarios </label>
+       <textarea 
+         class="form-control form-control-sm borde" 
+         placeholder="Descripcion" 
+         id="floatingTextarea2 comentarios_ingreso" 
+         style="height: 100px"
+       ></textarea>
+     </div>
+   </div>
+ </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary btn-rounded" data-bs-dismiss="modal">Guardar</button>
