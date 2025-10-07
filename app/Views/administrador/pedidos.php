@@ -38,7 +38,9 @@
               <table class="table table-striped table-borderless" id="tabla_inventarios">
                         <thead >
                           <tr >
-                            <th class="color-morado text-white text-uppercase"> </th>
+                            <th class="color-morado text-white text-uppercase">
+                                
+                            </th>
                             <th class="color-morado text-white text-uppercase"> CONSECUTIVO</th>
                             <th class="color-morado text-white text-uppercase"> TIPO PAGO</th>
                             <th class="color-morado text-white text-uppercase"> TOTAL </th>
@@ -49,6 +51,32 @@
                           </tr>
                         </thead>
                         <tbody>
+                            <tr>
+                              <td width="100">
+                                <button
+                                  class="badge badge-dark "
+                                >
+                                  <i class="fas fa-file-pdf fa-1x "></i>
+                                </button>
+                                <button
+                                  class="badge badge-primary "
+                                >
+                                  <i class="fas fa-eye fa-1x "></i>
+                                </button>
+                                <button
+                                  class="badge badge-success "
+                                >
+                                  <i class="fab fa-whatsapp fa-1x "></i>
+                                </button>
+                                </td>
+                                <td>12345</td>
+                                <td>CE</td>
+                                <td>90.000</td>
+                                <td>NO</td>
+                                <td>12:30</td>
+                                <td>26-12-2025</td>
+                                <td>PEDIDO</td>
+                            </tr>
                         </tbody>
                       </table>
               </div>

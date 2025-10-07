@@ -39,12 +39,12 @@
                       class="card-header color-morado text-center pt-4 pb-5 position-relative"
                     >
                       <div class="z-index-1 position-relative">
-                        <h6 class="text-white">TOTAL VENTA </h6> 
+                        <h6 class="text-white">TOTAL DE  VENTA </h6> 
                         <h3 class="text-white mt-2 mb-0" id="ventaa">
                         <small id="compracero">$0 </small>
                         <small class="total-compra" id="total-compra" hidden></small>
                         </h3>
-                        <h6 class="text-white">DEVUELTAS</h6>
+                        <h6 class="text-white">A DEVOLVER</h6>
                         <div id="volver">
                           <h3 class="text-white" id="devolver">
                            <small>$0</small> 
