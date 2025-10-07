@@ -38,6 +38,14 @@ class UsuariosModel extends Model {
     }
 
     public function CrearUsuarios($data) {
+
+      if($data["rol"] == "Administrador") {
+        $rolAct = "Experto en Inventarios";
+      }
+      else if ($data["rol"] == "Capturador") {
+        $rolAct = "Auxiliar Capturador";
+      }
+      
       //crear el array de los datos que voy a insertar
       $usuarios = [
         'usuario' => $data["usuario"],
@@ -51,6 +59,7 @@ class UsuariosModel extends Model {
         'hora' => $data["hora"],
         'fecha' => $data["fecha"],
         'rol_usuario' => $data["rol"],
+        'descripcion_rol' => $rolAct,
         'estado' => $data["estado"],
         'usuario_creacion' => session()->get('documento'),
       ];

@@ -47,6 +47,8 @@ class UsuariosController extends BaseController {
         $contraseña = $this->request->getPost('contraseña');
         $repetirContraseña = $this->request->getPost('repetirContraseña');
         $permisos = $this->request->getPost('permisos');
+        
+        
 
         // crear un array con todos los campos que defini anteriormente
         $data = [

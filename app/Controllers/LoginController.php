@@ -38,6 +38,7 @@ class LoginController extends BaseController {
         "documento" => $respuesta->documento,
         "empresa" => $respuesta->empresa,
         "rol_usuario" => $respuesta->rol_usuario,
+        "descripcion_rol" => $respuesta->descripcion_rol,
         "estado" => $respuesta->estado,
         "logeado" => true,
         "inventario" => 0

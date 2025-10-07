@@ -7,7 +7,7 @@
               </div>
               <div class="nav-profile-text d-flex ms-0 mb-3 flex-column">
                 <span class="fw-semibold mb-1 small mt-2 text-center text-capitalize"><?php echo session()->get('nombre'). ' ' .session()->get('apellido') ?></span>
-                <span class="text-secondary icon-sm text-center"> <i class="fas fa-circle text-success"></i> Experto en inventarios</span>
+                <span class="text-secondary icon-sm text-center"> <i class="fas fa-circle text-success"></i> <?php echo session()->get('descripcion_rol');?> </span>
               </div>
             </a>
           </li>
