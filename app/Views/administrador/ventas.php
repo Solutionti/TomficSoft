@@ -36,7 +36,7 @@
               <div class="col-md-3">
                 <div class="card card-pricing">
                     <div
-                      class="card-header bg-gradient-primary text-center pt-4 pb-5 position-relative"
+                      class="card-header color-morado text-center pt-4 pb-5 position-relative"
                     >
                       <div class="z-index-1 position-relative">
                         <h6 class="text-white">TOTAL VENTA </h6> 

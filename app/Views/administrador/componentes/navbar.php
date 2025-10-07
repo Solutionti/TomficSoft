@@ -52,7 +52,7 @@
           </li>
           
           <li class="nav-item pt-1">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="<?= base_url('pedidos') ?>">
               
               <span class="menu-title"><i class="fas fa-motorcycle text-morado"></i> Pedidos</span>
             </a>
