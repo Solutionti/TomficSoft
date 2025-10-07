@@ -5,19 +5,22 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use CodeIgniter\HTTP\ResponseInterface;
 use App\Models\InventarioModel;
+use App\Models\ListasModel;
 
 class InventarioController extends BaseController
 {
      public function __construct()
      {
         $this->inventarioModel = new InventarioModel();
+        $this->listasModel = new ListasModel();
      }
     
     public function index()
     {
         $data = [
-            'productos' => $this->inventarioModel->getProductos(),
-            'categorias' => $this->inventarioModel->getCategorias(),
+          'productos' => $this->inventarioModel->getProductos(),
+          'categorias' => $this->inventarioModel->getCategorias(),
+          "permisoUsuario" => $this->listasModel->getPermisosMenu()
         ];
 
         return view('administrador/inventarios', $data);
