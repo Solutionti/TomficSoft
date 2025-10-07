@@ -70,12 +70,12 @@
                                 </button>
                                 </td>
                                 <td>12345</td>
-                                <td>CE</td>
+                                <td><label class="badge badge-success">CONTRAENTREGA</label></td>
                                 <td>90.000</td>
                                 <td>NO</td>
                                 <td>12:30</td>
                                 <td>26-12-2025</td>
-                                <td>PEDIDO</td>
+                                <td><label class="badge badge-primary">PEDIDO</label></td>
                             </tr>
                         </tbody>
                       </table>
