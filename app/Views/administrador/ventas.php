@@ -83,15 +83,33 @@
         </div>
         <div class="col-md-7">
           <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-7">
               <label>Codigo de barras</label>
+              <div class="input-group">
+
+                <input
+                  type="text"
+                  class="js-toggle-password form-control form-control-sm"
+                >
+                <a
+                  class="input-group-append input-group-text"
+                  data-bs-toggle="modal"
+                  data-bs-target="#listaproductos"
+                >
+                  <i id="changePassIcon" class="fas fa-store text-morado"></i>
+                </a>
+              </div>
+            </div>
+            <!--  -->
+            <div class="col-md-2">
+              <label>%</label>
               <input
                 type="text"
                 class="form-control form-control-sm"
               >
             </div>
             <!--  -->
-            <div class="col-md-4">
+            <div class="col-md-3">
               <label>Recibo de efectivo</label>
               <input
                 type="text"
@@ -100,12 +118,52 @@
             </div>
           </div>
           <!--  -->
-          <div class="row">
-
+          <div class="row mt-3">
+           <div class="col-md-6">
+              <label>Nombre producto</label>
+              <input
+                type="text"
+                class="form-control form-control-sm"
+              >
+            </div>
+            <div class="col-md-3">
+              <label>Precio</label>
+              <input
+                type="text"
+                class="form-control form-control-sm"
+              >
+            </div>
+            <div class="col-md-3">
+              <label>Cantidad</label>
+              <input
+                type="text"
+                class="form-control form-control-sm"
+              >
+            </div>
           </div>
           <!--  -->
-          <div class="row">
-
+          <div class="row mt-2">
+            <div class="col-md-6">
+              <label>Usuario vendedor</label>
+              <input
+                type="text"
+                class="form-control form-control-sm"
+              >
+            </div>
+            <div class="col-md-4">
+              <label>Dia</label>
+              <input
+                type="text"
+                class="form-control form-control-sm"
+              >
+            </div>
+            <div class="col-md-2">
+              <label>Numero de caja</label>
+              <input
+                type="text"
+                class="form-control form-control-sm"
+              >
+            </div>
           </div>
           <!--  -->
           <!--  -->
@@ -167,7 +225,7 @@
             </thead>
             <tbody>
               <tr>
-                <td>
+                <td width="110">
                   <div class="row">
                     <div class="d-flex px-2 py-1">
                       <div>
