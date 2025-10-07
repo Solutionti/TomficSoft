@@ -55,7 +55,7 @@
                             <button type="button" class="btn btn-social-icon btn-outline-sales profit"><i class="fas fa-coins text-info"></i></button>
                             <div class="ps-2">
                               <h4 class="mb-0 fw-semibold head-count">2,804</h4>
-                              <span class="font-10 fw-semibold text-muted">DIFERENCIA CONTEOS</span>
+                              <span class="font-10 fw-semibold text-muted">DIFERE CONTEOS</span>
                             </div>
                           </div>
                         </div>
@@ -64,7 +64,7 @@
                             <button type="button" class="btn btn-social-icon btn-outline-sales"><i class="fas fa-database"></i></button>
                             <div class="ps-2">
                               <h4 class="mb-0 fw-semibold head-count">$8,217</h4>
-                              <span class="font-10 fw-semibold text-muted">DIFERENCIA INVENTARIOS</span>
+                              <span class="font-10 fw-semibold text-muted">DIFE INVENTARIOS</span>
                             </div>
                           </div>
                           <div class="d-flex me-3 mt-2 mt-sm-0">
@@ -117,7 +117,7 @@
                             <button type="button" class="btn btn-social-icon btn-outline-sales"><i class="fas fa-database"></i></button>
                             <div class="ps-2">
                               <h4 class="mb-0 fw-semibold head-count">$8,217</h4>
-                              <span class="font-10 fw-semibold text-muted">REPORTE KARDEX</span>
+                              <span class="font-10 fw-semibold text-muted">REPORTE DE KARDEX</span>
                             </div>
                           </div>
                           <div class="d-flex me-3 mt-2 mt-sm-0">
@@ -130,7 +130,7 @@
                         </div>
                       </div>
                     </div>
-                    <!-- <p class="text-muted font-13 mt-2 mt-sm-0">Plantilla para tu panel de control de ventas. Más información.<a class="text-muted font-13" href="#"><u> Leer mas</u></a></p> -->
+                    <p class="text-muted font-13 mt-2 mt-sm-0">En esta seccion podras visualizar las ventas dia a dia de tu negocio.</a></p>
                     <!-- <div class="flot-chart-wrapper">
                       <div id="flotChart" class="flot-chart">
                         <canvas class="flot-base" id="miGrafico"  width="850" height="200"></canvas>
@@ -145,12 +145,7 @@
           </div>
         </div>
     </div>
-    <footer class="footer">
-      <div class="d-sm-flex justify-content-center justify-content-sm-between">
-        <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2023 <a href="https://www.bootstrapdash.com/" target="_blank">BootstrapDash</a>. All rights reserved. Distributed by <a href="https://themewagon.com" target="_blank">ThemeWagon</a></span>
-        <span class="float-none float-sm-end d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="mdi mdi-heart text-danger"></i></span>
-      </div>
-    </footer>
+    <?php require_once("componentes/footer.php")?>   <!-- se usa para reutilizar codigo  -->
 </div>
 </body>
 </html>
