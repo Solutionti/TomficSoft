@@ -348,7 +348,7 @@
  </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary btn-rounded" data-bs-dismiss="modal">Guardar</button>
+        <button type="button" class="btn btn-primary btn-rounded mr-2" data-bs-dismiss="modal">Guardar</button>
       </div>
     </div>
   </div>

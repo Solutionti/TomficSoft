@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 // Seleccionar todo
 document.getElementById('selectAll').addEventListener('change', function() {
-    let checkboxes = document.querySelectorAll('.fila');
+    let checkboxes = document.querySelectorAll('.fila2');
     checkboxes.forEach(cb => cb.checked = this.checked);
 });
 
@@ -58,7 +58,18 @@ document.getElementById('btnObtener').addEventListener('click', function() {
 });
 
 function crearUsuarios() {
- //definir las variables que vienen del input 
+ //definir las variables que vienen del input
+ //definir una variable url para el ajax
+  var url = baseurl + '/crearusuario';
+
+  //permisos de los usuarios
+  let seleccionados = [];
+  let checkboxes = document.querySelectorAll('.fila2:checked');
+    
+  checkboxes.forEach(cb => {
+    seleccionados.push(cb.value);
+  });
+ 
  var documento = $("#documento_usuario").val(),
     nombre = $("#nombre_usuario").val(),
     apellido = $("#apellido_usuario").val(),
@@ -153,18 +164,6 @@ if (contraseña !== repetirContraseña) {
   return; // Detiene la  ejecución
 }
 
-
-  //definir una variable url para el ajax
-  var url = baseurl + '/crearusuario';
-
-  //permisos de los usuarios
-  let seleccionados = [];
-  let checkboxes = document.querySelectorAll('.fila:checked');
-    
-  checkboxes.forEach(cb => {
-    seleccionados.push(cb.value);
-  });
-    
   //hacer el llamado de nuestra funcion ajax que es la encargada de llamar el controllador
   $.ajax({
     url: url,
