@@ -19,7 +19,7 @@
       <nav class="navbar-nav-wrap">
         
         <a class="navbar-brand d-flex d-lg-none" href="./index.html" aria-label="Front">
-          <img class="navbar-brand-logo" src="https://htmlstream.com/preview/front-v4.2/html/assets/svg/logos/logo.svg" alt="Logo">
+          <!-- <img class="navbar-brand-logo" src="https://static.vecteezy.com/system/resources/thumbnails/012/986/755/small_2x/abstract-circle-logo-icon-free-png.png" alt="Logo"> -->
         </a>
         <div class="ms-auto">
           <!-- <a class="link link-sm link-secondary" routerLink="/">
@@ -36,7 +36,7 @@
           <div class="flex-grow-1 p-5">
             <figure class="text-center">
               <div class="mb-4">
-                <img class="avatar avatar-xl avatar-4x3" src="https://static.vecteezy.com/system/resources/thumbnails/012/986/755/small_2x/abstract-circle-logo-icon-free-png.png" alt="Logo">
+                <!-- <img class="avatar avatar-xl avatar-4x3" src="https://static.vecteezy.com/system/resources/thumbnails/012/986/755/small_2x/abstract-circle-logo-icon-free-png.png" alt="Logo"> -->
               </div>
               <blockquote class="blockquote blockquote-light">“ Hemos creado un espacio para tus inventarios para que puedas estar al dia de tus pasos. bienvenido. ”</blockquote>
               <figcaption class="blockquote-footer blockquote-light">
@@ -52,20 +52,26 @@
             </div>
           </div>
         </div>
-        <div class="col-lg-7 col-xl-8 d-flex justify-content-center content-space-3 align-items-center min-vh-lg-100">
+        <div class="col-lg-7 col-xl-8 d-flex justify-content-center content-space-1 align-items-center min-vh-lg-100">
           <div class="flex-grow-1 mx-auto" style="max-width: 28rem;">
             <div class="text-center mb-5 mb-md-7">
-              <h1 class="h2">Bienvenido a TOMFIC</h1>
+                <img
+                  class="avatar avatar-xl avatar-4x3"
+                  src="https://static.vecteezy.com/system/resources/thumbnails/012/986/755/small_2x/abstract-circle-logo-icon-free-png.png"
+                  alt="Logo"
+                >
+              
+              <h1 class="h3">Bienvenido a TOMFIC</h1>
               <p>Inicie sesión para administrar su cuenta.</p>
             </div>
             <div class="messageError mt-2"></div>
             <form role="form" method="post" validate id="FormLOG">
               <div class="mb-4">
-                <label class="form-label" for="signupModalFormLoginEmail">Correo electronico</label>
+                <label class="form-label" for="signupModalFormLoginEmail">Email / Usuario</label>
                 <input
                   type="text"
                   class="form-control form-control-lg"
-                  placeholder="Correo electronico"
+                  placeholder="Email / Usuario"
                   id="usuario"
                 >
               </div>
