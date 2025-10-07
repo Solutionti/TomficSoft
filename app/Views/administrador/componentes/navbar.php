@@ -29,46 +29,14 @@
           <li class="pt-2 pb-1">
             <span class="nav-item-head">Inventarios</span>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="<?= base_url('inicio') ?>">
-              <span class="menu-title"> <i class="fas fa-home text-morado"></i> Inicio</span>
-            </a>
-          </li>
-          <!-- <li class="pt-2 pb-1">
-            <span class="nav-item-head">inventarios</span>
-          </li> -->
-          <!-- <li class="nav-item pt-1">
-            <a class="nav-link" href="#">
-              <span class="menu-title"><i class="fas fa-chart-line text-morado"></i> Panel de inventarios</span>
-            </a>
-          </li> -->
-          <li class="nav-item pt-1">
-            <a class="nav-link" href="<?= base_url('asignacioninventarios') ?>"> 
-              
-              <span class="menu-title"><i class="fas fa-truck-moving text-morado"></i>  Asignación de inventario</span>
-            </a>
-          </li>
-          <li class="nav-item pt-1">
-            <a class="nav-link" href="<?= base_url('conteos') ?>">
-              
-              <span class="menu-title"><i class="fas fa-barcode text-morado"></i> Conteos Online</span>
-            </a>
-          </li>
-          <!-- <li class="nav-item pt-1">
-            <a class="nav-link" href="<?= base_url('conteos') ?>">
-              <span class="menu-title"> <i class="fas fa-barcode text-danger"></i> Conteos Offline</span>
-            </a>
-          </li> -->
-          <li class="nav-item pt-1">
-           <a class="nav-link" href="<?= base_url('usuarios') ?>">
-             <span class="menu-title"> <i class="fas fa-users text-morado"></i> Usuarios</span>
-           </a>
-         </li>
-         <li class="nav-item pt-1">
-           <a class="nav-link" href="<?= base_url('usuarios') ?>">
-             <span class="menu-title"> <i class="fas fa-chart-pie text-morado"></i> Reportes</span>
-           </a>
-         </li>
+          <?php foreach($permisoUsuario->getResult() as $permiso) { ?>
+           <li class="nav-item">
+             <a class="nav-link" href="<?= base_url($permiso->url) ?>">
+              <span class="menu-title"> <i class="<?=  $permiso->icono; ?> text-morado"></i> <?=  $permiso->nombre; ?> </span>
+             </a>
+           </li>
+          <?php } ?>
+          
           <li class="pt-2 pb-1">
             <span class="nav-item-head">Ventas</span>
           </li>
@@ -96,3 +64,5 @@
           </li>
         </ul>
       </nav>
+      
+      

@@ -29,7 +29,8 @@ class AsignacionController extends BaseController {
         "grupos" => $this->asignacionModel->getGrupo(),
         "subgrupos" => $this->asignacionModel->getSubgrupo(),
         "usuarios" => $this->listasModel->getUsuarios(),
-        "reportes" => $this->asignacionModel->getConteosTablaReportes()
+        "reportes" => $this->asignacionModel->getConteosTablaReportes(),
+        "permisoUsuario" => $this->listasModel->getPermisosMenu()
       ];
 
       return view('administrador/asignacioninventarios', $data);

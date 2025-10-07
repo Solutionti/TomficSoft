@@ -21,5 +21,17 @@ class ListasModel extends Model {
 
       return $query;
     }
+
+    public function getPermisosMenu(){
+      $query = $this->db->table('permiso_usuarios')
+             ->distinct()
+             ->select('*')
+             ->where("usuario", session()->get('documento'))
+             ->groupBy("nombre")
+             ->orderBy('orden', "ASC")
+             ->get();
+
+      return $query;
+    }
     
 }

@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 use App\Models\ConteosModel;
+use App\Models\ListasModel;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use PhpOffice\PhpSpreadsheet\IOFactory;
@@ -11,12 +12,15 @@ class ConteosController extends BaseController {
 
   public function __construct() {
     $this->conteosModel = new ConteosModel();
+      $this->listasModel = new ListasModel();
+
   }
 
   public function index(): string {
     $data = [
       "productos" => $this->conteosModel->getProductosAsignacion(),
       "inventarios" => $this->conteosModel->getInventariosSesion(),
+      "permisoUsuario" => $this->listasModel->getPermisosMenu()
     ];
     if(session()->get('logeado') == true) {
        return view('administrador/conteos', $data);

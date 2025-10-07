@@ -342,7 +342,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger btn-rounded" data-bs-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary btn-rounded"  onclick=" crearUsuarios()">Guardar</button>
+        <button type="button" class="btn btn-primary btn-rounded"  id="btnObtener">Guardar</button>
       </div>
     </div>
   </div>

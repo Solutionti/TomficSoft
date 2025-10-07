@@ -50,4 +50,7 @@ $routes->post('agregarproductos', 'InventarioController::agregarProductos');
 // VENTAS
 $routes->get('/ventas', 'VentasController::index');
 
+// REPORTES
+$routes->get('/reportes', 'ReportesController::index');
+
 

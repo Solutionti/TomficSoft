@@ -29,6 +29,8 @@ class UsuariosModel extends Model {
         "nombre" => $data["nombre"],
         "url" => $data["url"],
         "usuario" => $data["usuario"],
+        "icono" =>  $data["icono"],
+        "orden" =>  $data["orden"],
         "estado" => $data["estado"],
       ];
       $this->db->table('permiso_usuarios')

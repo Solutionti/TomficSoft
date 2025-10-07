@@ -15,14 +15,15 @@ class UsuariosController extends BaseController {
   }
 
   public function index() {
-     $data = [
-      'permisos' => $this->usuariosModel->getPermisos(),
-      'empresas' => $this->listasModel->getEmpresas(),
-      'usuarios' => $this->listasModel->getUsuarios(),
-     ];
-     if(session()->get('logeado') == true) {
+      if(session()->get('logeado') == true) {
+         $data = [
+          'permisoUsuario' => $this->listasModel->getPermisosMenu(),
+          'permisos' => $this->usuariosModel->getPermisos(),
+          'empresas' => $this->listasModel->getEmpresas(),
+          'usuarios' => $this->listasModel->getUsuarios(),
+         ];
       return view('administrador/usuarios', $data); 
-    }
+     }
     else {
       return view('iniciarsesion');
     }
@@ -73,6 +74,8 @@ class UsuariosController extends BaseController {
                 $data2 = [
                     "nombre"  => $permisact->nombre,
                     "url"     => $permisact->url,
+                    "icono"   => $permisact->icono,
+                    "orden"   => $permisact->orden,
                     "usuario" => $documento,
                     "estado"  => "Activo"
                 ];

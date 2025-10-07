@@ -1,13 +1,20 @@
 <?php
 
 namespace App\Controllers;
+use App\Models\ListasModel;
 
 class InicioController extends BaseController {
 
+  public function __construct() {
+      $this->listasModel = new ListasModel();
+  } 
 
   public function index(): string {
     if(session()->get('logeado') == true) {
-      return view('administrador/inicio');
+      $data = [
+        "permisoUsuario" => $this->listasModel->getPermisosMenu()
+      ];
+      return view('administrador/inicio', $data);
     }
     else {
       return view('iniciarsesion');
