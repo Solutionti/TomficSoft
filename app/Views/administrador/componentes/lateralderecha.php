@@ -7,9 +7,9 @@
               <a class="navbar-brand brand-logo-mini" ><img src="https://static.vecteezy.com/system/resources/thumbnails/012/986/755/small_2x/abstract-circle-logo-icon-free-png.png" width="70px" alt="logo" /></a>
             </div>
             <ul class="navbar-nav navbar-nav-right">
-              <li class="nav-item nav-logout d-none d-md-block me-3">
+              <!-- <li class="nav-item nav-logout d-none d-md-block me-3">
                 <a class="nav-link" href="#">Perfil</a>
-              </li>
+              </li> -->
               <li class="nav-item nav-logout d-none d-md-block">
                 <i class="fas fa-user mx-2"></i>
                 <a
