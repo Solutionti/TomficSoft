@@ -15,6 +15,7 @@
           <div class="content-wrapper">
             <div class="page-header flex-wrap">
               <div class="header-left">
+                <button class="btn btn-outline-primary mb-2 mb-md-0 me-2 btn-rounded">Ajustar Inventario</button>
                 <button class="btn btn-primary mb-2 mb-md-0 me-2 btn-rounded" data-bs-toggle="modal" data-bs-target="#agregarProducto">Agregar Producto</button>
                 <button class="btn btn-outline-success mb-2 mb-md-0 me-2 btn-rounded" data-bs-toggle="modal" data-bs-target="#ingresoProducto">Entrada</button>
                 <button class="btn btn-outline-danger mb-2 mb-md-0 me-2 btn-rounded" data-bs-toggle="modal" data-bs-target="#salidaProducto">Salida</button>
@@ -46,6 +47,7 @@
                             <th class="color-morado text-white text-uppercase"> proveedor </th>
                             <th class="color-morado text-white text-uppercase"> Categoria </th>
                             <th class="color-morado text-white text-uppercase"> sub categoria </th>
+                            <th class="color-morado text-white text-uppercase">stock</th>
                             <th class="color-morado text-white text-uppercase"> valor </th>
                           </tr>
                         </thead>
@@ -71,6 +73,7 @@
                             <td><?= $producto->proveedor; ?></td>
                             <td><?= $producto->categoria; ?></td>
                             <td><?= $producto->subcategoria; ?></td>
+                            <td><?= $producto->saldo; ?></td>
                             <td><?= $producto->costo; ?></td>
                           </tr>
                           <?php } ?> 
