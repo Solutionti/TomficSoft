@@ -7,6 +7,7 @@ use CodeIgniter\HTTP\ResponseInterface;
 use App\Models\InventarioModel;
 use App\Models\ListasModel;
 
+
 class InventarioController extends BaseController
 {
      public function __construct()
