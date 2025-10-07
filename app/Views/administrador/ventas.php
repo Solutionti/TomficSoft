@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="<?= base_url('fontawesome/css/fontawesome.min.css') ?>">
     <link rel="stylesheet" href="<?= base_url('fontawesome/css/brands.css') ?>">
     <link rel="stylesheet" href="<?= base_url('fontawesome/css/solid.css') ?>">
-    <link id="pagestyle" href="http://localhost/CODEIGNITER/InventSoft/public/css/argon-dashboard.css?v=2.0.2" rel="stylesheet" />
+    <link rel="stylesheet" href="<?= base_url('css/argon-dashboard.css?v=2.0.2') ?>">
 </head>
 <body>
   <div class="container-fluid">
@@ -214,11 +214,11 @@
       </div>
       <div class="row">
         <div class="col-md-12">
-          <table class="table table-striped">
+          <table class="table table-striped table-hover">
             <thead>
                 <th class="color-morado text-white text-uppercase"></th>
                 <th class="color-morado text-white text-uppercase">CODIGO</th>
-                <th class="color-morado text-white text-uppercase">NOMBRE</th>
+                <th class="color-morado text-white text-uppercase">NOMBRE PRODUCTO</th>
                 <th class="color-morado text-white text-uppercase">CANTIDAD</th>
                 <th class="color-morado text-white text-uppercase">PRECIO</th>
                 <th class="color-morado text-white text-uppercase">ACCIONES</th>
@@ -240,9 +240,9 @@
                 <td>PAPAS</td>
                 <td>1</td>
                 <td>$0202</td>
-                <td>
+                <td width="120">
                   <button
-                    class="badge badge-danger"
+                    class="badge badge-danger mx-4"
                   >
                     <i class="fas fa-trash fa-1x "></i>
                   </button>
