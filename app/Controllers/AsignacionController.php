@@ -22,18 +22,23 @@ class AsignacionController extends BaseController {
     }  
 
     public function index() {
-      $data = [
-        "productos" => $this->conteosModel->getProductos(),
-        "asignacionInventarios" => $this->asignacionModel->getAsignacion(),
-        "subcategorias" => $this->asignacionModel->getSubcategorias(),
-        "grupos" => $this->asignacionModel->getGrupo(),
-        "subgrupos" => $this->asignacionModel->getSubgrupo(),
-        "usuarios" => $this->listasModel->getUsuarios(),
-        "reportes" => $this->asignacionModel->getConteosTablaReportes(),
-        "permisoUsuario" => $this->listasModel->getPermisosMenu()
-      ];
-
-      return view('administrador/asignacioninventarios', $data);
+      if(session()->get('logeado') == true) {
+        $data = [
+          "productos" => $this->conteosModel->getProductos(),
+          "asignacionInventarios" => $this->asignacionModel->getAsignacion(),
+          "subcategorias" => $this->asignacionModel->getSubcategorias(),
+          "grupos" => $this->asignacionModel->getGrupo(),
+          "subgrupos" => $this->asignacionModel->getSubgrupo(),
+          "usuarios" => $this->listasModel->getUsuarios(),
+          "reportes" => $this->asignacionModel->getConteosTablaReportes(),
+          "permisoUsuario" => $this->listasModel->getPermisosMenu()
+        ];
+  
+        return view('administrador/asignacioninventarios', $data);
+      }
+      else {
+        return view('iniciarsesion');
+      }
     }
 
     public function crearInventarios(){

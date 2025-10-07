@@ -17,13 +17,13 @@ class ConteosController extends BaseController {
   }
 
   public function index(): string {
-    $data = [
-      "productos" => $this->conteosModel->getProductosAsignacion(),
-      "inventarios" => $this->conteosModel->getInventariosSesion(),
-      "permisoUsuario" => $this->listasModel->getPermisosMenu()
-    ];
     if(session()->get('logeado') == true) {
-       return view('administrador/conteos', $data);
+      $data = [
+        "productos" => $this->conteosModel->getProductosAsignacion(),
+        "inventarios" => $this->conteosModel->getInventariosSesion(),
+        "permisoUsuario" => $this->listasModel->getPermisosMenu()
+      ];
+      return view('administrador/conteos', $data);
     }
     else {
       return view('iniciarsesion');

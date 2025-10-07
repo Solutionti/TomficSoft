@@ -11,6 +11,11 @@ class VentasController extends BaseController {
     }
 
     public function index() {
-      return view('administrador/ventas'); 
+      if(session()->get('logeado') == true) {
+        return view('administrador/ventas'); 
+      }
+      else {
+        return view('iniciarsesion');
+      }
     }
 }

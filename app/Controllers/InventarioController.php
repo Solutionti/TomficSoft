@@ -16,15 +16,20 @@ class InventarioController extends BaseController
         $this->listasModel = new ListasModel();
      }
     
-    public function index()
-    {
-        $data = [
-          'productos' => $this->inventarioModel->getProductos(),
-          'categorias' => $this->inventarioModel->getCategorias(),
-          "permisoUsuario" => $this->listasModel->getPermisosMenu()
-        ];
+    public function index() {
+      if(session()->get('logeado') == true) {
+          $data = [
+            'productos' => $this->inventarioModel->getProductos(),
+            'categorias' => $this->inventarioModel->getCategorias(),
+            "permisoUsuario" => $this->listasModel->getPermisosMenu()
+          ];
+  
+          return view('administrador/inventarios', $data);
+      }
+      else {
+        return view('iniciarsesion');
+      }
 
-        return view('administrador/inventarios', $data);
     }
 
     public function agregarProductos() {
