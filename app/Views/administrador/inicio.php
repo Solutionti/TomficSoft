@@ -10,6 +10,7 @@
     <!-- <link rel="stylesheet" href="<?= base_url('fontawesome/css/fontawesome.css') ?>"> -->
     <link rel="stylesheet" href="<?= base_url('fontawesome/css/brands.css') ?>">
     <link rel="stylesheet" href="<?= base_url('fontawesome/css/solid.css') ?>">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <div class="container-scroller">
@@ -42,10 +43,26 @@
                     <div class="d-flex justify-content-between flex-wrap">
                       <div>
                         <div class="card-title mb-0">Ingresos por ventas</div>
-                        <h3 class="fw-bold mb-0">$32,409</h3>
-                      </div>
+                          <h3 class="fw-bold mb-0">$32,409</h3>
+                        </div>
                       <div>
                         <div class="d-flex flex-wrap pt-2 justify-content-between sales-header-right">
+                          <div class="d-flex me-5">
+                            <button type="button" class="btn btn-social-icon btn-outline-sales"><i class="fas fa-database"></i></button>
+                            <div class="ps-2">
+                              <h4 class="mb-0 fw-semibold head-count">$8,217</h4>
+                              <span class="font-10 fw-semibold text-muted">VENTAS TOTALES</span>
+                            </div>
+                          </div>
+                          <div class="d-flex me-3 mt-2 mt-sm-0">
+                            <button type="button" class="btn btn-social-icon btn-outline-sales profit"><i class="fas fa-coins text-info"></i></button>
+                            <div class="ps-2">
+                              <h4 class="mb-0 fw-semibold head-count">2,804</h4>
+                              <span class="font-10 fw-semibold text-muted">GANANCIA TOTAL</span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="d-flex flex-wrap pt-4 justify-content-between sales-header-right">
                           <div class="d-flex me-5">
                             <button type="button" class="btn btn-social-icon btn-outline-sales"><i class="fas fa-database"></i></button>
                             <div class="ps-2">
@@ -66,7 +83,7 @@
                     <p class="text-muted font-13 mt-2 mt-sm-0">Plantilla para tu panel de control de ventas. Más información.<a class="text-muted font-13" href="#"><u> Leer mas</u></a></p>
                     <div class="flot-chart-wrapper">
                       <div id="flotChart" class="flot-chart">
-                        <canvas class="flot-base"></canvas>
+                        <canvas class="flot-base" id="miGrafico"  width="850" height="200"></canvas>
                       </div>
                     </div>
                   </div>
@@ -199,5 +216,30 @@
     </div>
     <?php require_once("componentes/footer.php")?>
     </div>
+
+    <script>
+const ctx = document.getElementById('miGrafico');
+
+new Chart(ctx, {
+  type: 'bar', // tipos: bar, line, pie, doughnut, radar, polarArea, etc.
+  data: {
+    labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+    datasets: [{
+      label: 'Ventas',
+      data: [12, 19, 3, 5,10, 2,13,3],
+      borderWidth: 1,
+      backgroundColor: ['#36a2eb', '#ff6384', '#ffcd56', '#4bc0c0', '#ff6384', '#ffcd56', '#4bc0c0',, '#ff6384', '#ffcd56', '#4bc0c0']
+    }]
+  },
+  options: {
+    scales: {
+      y: {
+        beginAtZero: true
+      }
+    }
+  }
+});
+</script>
+
   </body>
 </html>
