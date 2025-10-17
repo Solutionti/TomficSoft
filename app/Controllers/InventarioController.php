@@ -41,7 +41,7 @@ class InventarioController extends BaseController
             $subcategoria = $this->request->getPost('subcategoria');
             $grupo = $this->request->getPost('grupo');
             $subgrupo = $this->request->getPost('subgrupo');
-            $nombre = $this->request-getPost('nombre');
+            $nombre = $this->request->getPost('nombre');
             $referencia = $this->request->getPost('referencia');
             $codigointerno = $this->request->getPost('codigointerno');
             $codigoBarras = $this->request->getPost('codigobarras');
@@ -49,9 +49,9 @@ class InventarioController extends BaseController
             $proveedor = $this->request->getPost('proveedor');
             $saldo = $this->request->getPost('saldo');
             $costo = $this->request->getPost('costo');
-            
+            // echo "hola aca ";
+            // exit;
             // crear un array con todos los campos que defini anteriormente
-    
             $data = [
                 'categoria' => $categoria,
                 'subcategoria' => $subcategoria,
