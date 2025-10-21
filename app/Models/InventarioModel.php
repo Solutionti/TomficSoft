@@ -46,4 +46,43 @@ class InventarioModel extends Model
                  ->insert($productos);
     }
 
+    public function mostrarDatosProductosModal($id){
+        $query = $this->db->table('productos')
+                ->select('*')
+                ->where('codigo_producto ', $id)
+                ->get();
+
+        return $query;
+    }
+
+    public function actualizarProductos($data){
+        //codigo para actualizar productos
+        $productos = [
+            'categoria' => $data['categoria'],
+            'subcategoria' => $data['subcategoria'],
+            'grupo' => $data['grupo'],
+            'subgrupo' => $data['subgrupo'],
+            'nombre' => $data['nombre'],
+            'referencia' => $data['referencia'],
+            'codigo_interno' => $data['codigo_interno'],
+            'codigo_barras' => $data['codigo_barras'],
+            'nit' => $data['nit'],
+            'proveedor' => $data['proveedor'],
+            'saldo' => $data['saldo'],
+            'costo' => $data['costo'],
+        ];
+        // actualizar en la base de datos
+        $this->db->table('productos')
+                 ->where('codigo_interno', $data['codigo_interno'])   
+                 ->update($productos);
+    }
+
+    public function eliminarProducto($id){
+        // eliminar producto de la base de datos
+        $this->db->table('productos')
+                 ->where('codigo_producto', $id)
+                 ->delete();
+    }
+
+
 }

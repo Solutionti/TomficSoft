@@ -29,6 +29,25 @@ function eliminarProducto(id) {
      callback: function (value) {
       if (value) {
         //si
+        $.ajax({
+          url: url,
+          method: "POST",
+          data: {id: id},
+          success: function(response){
+            $("body").overhang({
+             type: "success",
+             message: response.message
+            });
+
+            setTimeout(reloadPage, 3000);
+          },
+          error: function(response){
+            $("body").overhang({
+            type: "error",
+            message: "Alerta ! Tenemos un problema al conectar con la base de datos verifica tu red.",
+          });
+          }
+        });
       }
       else {
         //no
@@ -91,6 +110,94 @@ function eliminarProducto(id) {
     });    
   }
 
+  function mostrarDatosProductosModal(id) {
+    //creamos la ruta
+    let url = baseurl + "obtenerdatoproducto/" + id;
+
+    $.ajax({
+      url: url,
+      method: "GET",
+      success: function(response){
+        $("#actualizarProducto").modal('show');
+        console.log(response);
+
+        $("#categoria_editar").val(response[0].categoria);
+        $("#subcategoria_editar").val(response[0].subcategoria);
+        $("#grupo_editar").val(response[0].grupo);
+        $("#subgrupo_editar").val(response[0].subgrupo);
+        $("#nombre_editar").val(response[0].nombre);
+        $("#referencia_editar").val(response[0].referencia);
+        $("#codigo_editar").val(response[0].codigo_interno);
+        $("#barras_editar").val(response[0].codigo_barras);
+        $("#nit_editar").val(response[0].nit);
+        $("#proveedor_editar").val(response[0].proveedor);
+        $("#saldo_editar").val(response[0].saldo);
+        $("#costo_editar").val(response[0].costo);
+      },
+      error: function(response){
+        $("body").overhang({
+        type: "error",
+        message: "Alerta ! Tenemos un problema al conectar con la base de datos verifica tu red.",
+        });
+      }
+    });
+  }
+  function actualizarProductos(){
+    var categoria = $("#categoria_editar").val(),
+    subcategoria = $("#subcategoria_editar").val(),
+    grupo = $("#grupo_editar").val(),
+    subgrupo = $("#subgrupo_editar").val(),
+    nombre = $("#nombre_editar").val(),
+    referencia = $("#referencia_editar").val(),
+    codigointerno = $("#codigo_editar").val(),
+    codigobarras = $("#barras_editar").val(),
+    nit = $("#nit_editar").val(),
+    proveedor = $("#proveedor_editar").val(),
+    saldo = $("#saldo_editar").val(),
+    costo = $("#costo_editar").val();
+
+    let url = baseurl + "actualizarproductos";
+
+    $.ajax({
+      url: url,
+      method: 'POST',
+      data: {
+        categoria: categoria,
+        subcategoria: subcategoria,
+        grupo: grupo,
+        subgrupo: subgrupo,
+        nombre: nombre,
+        referencia: referencia,
+        codigointerno: codigointerno,
+        codigobarras: codigobarras,
+        nit: nit,
+        proveedor: proveedor,
+        saldo: saldo,
+        costo: costo
+      },
+      success: function (response){
+        $("body").overhang({
+          type: "success",
+          message: "El producto se ha actualizado correctamente en la base de datos."
+        });
+        setTimeout(reloadPage, 3000);
+      },
+      error: function (response){
+        $("body").overhang({
+          type: "error",
+          message: "Ha ocurrido un error al actualizar el producto."
+        });
+      }
+    });
+  }
+
+
+
+
+
+  function reloadPage() {
+  location.reload();
+}
 
 
 

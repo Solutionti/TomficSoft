@@ -229,10 +229,10 @@ function eliminarUsuario(id) {
             setTimeout(reloadPage, 3000);
           },
           error: function() {
-$("body").overhang({
-        type: "error",
-        message: "Alerta ! Tenemos un problema al conectar con la base de datos verifica tu red.",
-      });
+            $("body").overhang({
+            type: "error",
+            message: "Alerta ! Tenemos un problema al conectar con la base de datos verifica tu red.",
+        });
             
           }
         });
