@@ -44,7 +44,7 @@ function iniciarSesion() {
         $("#usuario").addClass("is-invalid");
      }  
      else {
-         window.location.href = baseurl + '/inicio';
+         window.location.href = baseurl + 'inicio';
      } 
     },
     error: function(error, exp, cost) {

@@ -18,8 +18,8 @@
           <div class="content-wrapper">
             <div class="page-header flex-wrap">
               <div class="header-left">
-                <!-- <button class="btn btn-primary mb-2 mb-md-0 me-2">Terminar el conteo</button> -->
-                <!-- <button class="btn btn-outline-primary bg-white mb-2 mb-md-0">Exportar base de datos</button> -->
+                <!--  -->
+               <!-- <h4 class="text-danger">SUPER MERCADO MERCACENTRO</h4> -->
               </div>
               <div class="header-right d-flex flex-wrap  mt-sm-0">
                 <div class="d-flex align-items-center">

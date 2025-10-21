@@ -649,11 +649,14 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-danger btn-rounded" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-success btn-rounded">
+          Formato Excel
+        </button>
         <button type="button" class="btn btn-primary btn-rounded" id="exportardatos">
           <span class="spinner-border spinner-border-sm" id="spinnerexportarproducto" hidden="true"></span>
           Exportar
         </button>
+        <button type="button" class="btn btn-danger btn-rounded" data-bs-dismiss="modal">Cerrar</button>
       </div>
     </div>
   </div>

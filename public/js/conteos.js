@@ -92,8 +92,8 @@ $("#codigo_producto").on("blur", function() {
           $("#ubicacion").val(response[0].ubicacion);
           $("#localizacion").val(response[0].localizacion);
           $("#numero_localizacion").val(response[0].numerolocalizacion);
-          
-          
+          $("#estado_producto").val("Bueno");
+          $("#unidades").focus();
         }
       },
       error: function(xhr, status, error) {
@@ -168,6 +168,7 @@ $("#exportardatos").on("click", function(e) {
       $("#archivo").val("");
       $("#exportardatos").prop("disabled", false);
       $("#spinnerexportarproducto").prop("hidden", true);
+      setTimeout(reloadPage, 3000);
     },
     error: function(xhr, status, error) {
       $("body").overhang({
@@ -224,7 +225,9 @@ function VincularProductoModal(codigo) {
           $("#ubicacion").val(response[0].ubicacion);
           $("#localizacion").val(response[0].localizacion);
           $("#numero_localizacion").val(response[0].numerolocalizacion);
+          $("#estado_producto").val("Bueno");
           $("#listaproductos").modal('hide');
+          $("#unidades").focus();
         }
       },
       error: function(xhr, status, error) {
@@ -401,6 +404,47 @@ function crearvariableSesion(codigo) {
     }
   });  
 }
+
+$("#unidades").on("keypress", function(e) {
+  if (e.which === 13) { // 13 es el código de la tecla Enter
+    e.preventDefault(); // evita que se envíe un formulario o recargue la página
+    // Aquí puedes ejecutar cualquier acción
+    $("#cajas").focus();
+  }
+});
+
+$("#cajas").on("keypress", function(e) {
+  if (e.which === 13) { // 13 es el código de la tecla Enter
+    e.preventDefault(); // evita que se envíe un formulario o recargue la página
+    // Aquí puedes ejecutar cualquier acción
+    $("#embalaje").focus();
+  }
+});
+
+$("#embalaje").on("keypress", function(e) {
+  if (e.which === 13) { // 13 es el código de la tecla Enter
+    e.preventDefault(); // evita que se envíe un formulario o recargue la página
+    // Aquí puedes ejecutar cualquier acción
+     var unidades = $("#unidades").val(),
+      cajas = $("#cajas").val(),
+      embalaje = $("#embalaje").val();
+
+      if(cajas === "") {
+        cajas = 0;
+      }
+      if (embalaje === "") {
+        embalaje = 0;
+      }
+
+      var total = parseInt(embalaje) * parseInt(cajas) + parseInt(unidades),
+      saldo = parseInt($("#saldo").val()) - parseInt(total);
+
+    $("#total").val(total);
+    $("#diferencia").val(saldo);
+
+    $("#btnguardar").focus();
+  }
+});
 
 function reloadPage() {
   location.reload();

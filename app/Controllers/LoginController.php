@@ -9,9 +9,9 @@ class LoginController extends BaseController {
     $this->loginModel = new LoginModel();
   }
 
-  public function index(): string {
+  public function index() {
 
-    if(session()->get('logeado') == true) {
+    if(session()->get('logeado') === true) {
       return view('administrador/inicio');
     }
     else {

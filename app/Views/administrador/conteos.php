@@ -47,7 +47,7 @@
                     <label class="mb-1 small">Usuario</label>
                     <input
                       type="text"
-                      class="form-control form-control-sm borde text-uppercase"
+                      class="form-control form-control-sm  text-uppercase"
                       id="usuario"
                       readonly
                       value="<?php echo session()->get('nombre'). ' ' .session()->get('apellido')?>"
@@ -57,7 +57,7 @@
                     <label class="mb-1 small">Fecha</label>
                     <input
                       type="date"
-                      class="form-control form-control-sm borde text-uppercase"
+                      class="form-control form-control-sm  text-uppercase"
                       id="fecha"
                       value="<?php echo date('Y-m-d') ?>"
                       readonly
@@ -65,7 +65,7 @@
                   </div>
                   <div class="col-md-6">
                     <label class="mb-1 small">Observaciòn *</label>
-                    <textarea rows="1" class="form-control form-control-sm borde text-uppercase" id="observacion" readonly></textarea>
+                    <textarea rows="1" class="form-control form-control-sm  text-uppercase" id="observacion" readonly></textarea>
                   </div>
                 </div>
                 <!--  -->
@@ -75,7 +75,7 @@
                     <div class="input-group">
                       <input
                         type="text"
-                        class="js-toggle-password form-control form-control-sm borde text-uppercase"
+                        class="js-toggle-password form-control form-control-sm  text-uppercase"
                         id="codigo_producto"
                         autofocus
                       >
@@ -93,7 +93,7 @@
                         <label class="mb-1 small">Nombre Producto</label>
                         <input
                           type="text"
-                          class="form-control form-control-sm borde text-uppercase"
+                          class="form-control form-control-sm  text-uppercase"
                           id="nombre_producto"
                           readonly
                         >
@@ -102,7 +102,7 @@
                         <label class="mb-1 small">Referencia</label>
                         <input
                           type="text"
-                          class="form-control form-control-sm borde text-uppercase"
+                          class="form-control form-control-sm  text-uppercase"
                           id="referencia"
                           readonly
                         >
@@ -114,7 +114,7 @@
                         <label class="mb-1 small">Proveedor</label>
                         <input
                           type="text"
-                          class="form-control form-control-sm borde text-uppercase"
+                          class="form-control form-control-sm  text-uppercase"
                           id="proveedor"
                           readonly
                         >
@@ -123,7 +123,7 @@
                         <label class="mb-1 small">Costo</label>
                         <input
                           type="text"
-                          class="form-control form-control-sm borde text-uppercase"
+                          class="form-control form-control-sm  text-uppercase"
                           id="costo"
                           readonly
                         >
@@ -134,7 +134,7 @@
                     <label class="mb-1 small">Linea</label>
                      <input
                        type="text"
-                       class="form-control form-control-sm borde text-uppercase"
+                       class="form-control form-control-sm  text-uppercase"
                        id="linea"
                        readonly
                      >
@@ -142,7 +142,7 @@
                      <label class="mb-1 small">Sublinea</label>
                      <input
                        type="text"
-                       class="form-control form-control-sm borde text-uppercase"
+                       class="form-control form-control-sm  text-uppercase"
                        id="sublinea"
                        readonly
                      >
@@ -150,7 +150,7 @@
                      <label class="mb-1 small">Subgrupo</label>
                      <input
                        type="text"
-                       class="form-control form-control-sm borde text-uppercase"
+                       class="form-control form-control-sm  text-uppercase"
                        id="subgrupo"
                        readonly
                      >
@@ -162,7 +162,7 @@
                     <label class="mb-1 small">Ubicaciòn *</label>
                     <input
                       type="text"
-                      class="form-control form-control-sm borde text-uppercase"
+                      class="form-control form-control-sm  text-uppercase"
                       id="ubicacion"
                       readonly
                     >
@@ -171,7 +171,7 @@
                     <label class="mb-1 small">Localizacion *</label>
                     <input
                       type="text"
-                      class="form-control form-control-sm borde text-uppercase"
+                      class="form-control form-control-sm  text-uppercase"
                       id="localizacion"
                       readonly
                     >
@@ -180,7 +180,7 @@
                     <label class="mb-1 small">Nº Localizacion *</label>
                     <input
                       type="text"
-                      class="form-control form-control-sm borde text-uppercase"
+                      class="form-control form-control-sm  text-uppercase"
                       id="numero_localizacion"
                       readonly
                     >
@@ -189,7 +189,7 @@
                     <label class="mb-1 small">Conteo</label>
                     <input
                       type="number"
-                      class="form-control form-control-sm borde text-uppercase"
+                      class="form-control form-control-sm  text-uppercase"
                       id="conteo"
                       value="1"
                       readonly
@@ -246,7 +246,7 @@
                     <br>
                     <div class="row">
                       <div class="col-md-6">
-                        <button class="btn btn-primary mb-2 mb-md-0 me-3 mt-4 btn-rounded" onclick="GuardarConteo()">Guardar</button>
+                        <button class="btn btn-primary mb-2 mb-md-0 me-3 mt-4 btn-rounded" id="btnguardar" onclick="GuardarConteo()">Guardar</button>
                         <button class="btn btn-success mb-2 mb-md-0 me-3 mt-4 btn-rounded" onclick="modificarConteo()">Modificar</button>
                       </div>
                       <div class="col-md-3">
