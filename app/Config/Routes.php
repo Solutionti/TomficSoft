@@ -46,7 +46,10 @@ $routes->get('/getnumerolocalizacion/(:any)', 'AsignacionController::getNumeroLo
 // INVENTARIOS
 $routes->get('/inventarios', 'InventarioController::index');
 $routes->get('crearproducto', 'InventarioController::crearProducto');
+$routes->get('obtenerdatoproducto/(:num)', 'InventarioController::mostrarDatosProductosModal/$1');
 $routes->post('agregarproductos', 'InventarioController::agregarProductos');
+$routes->post('actualizarproductos', 'InventarioController::actualizarProductos');
+$routes->post('eliminarproducto', 'InventarioController::eliminarProducto');
 
 // VENTAS
 $routes->get('/ventas', 'VentasController::index');
