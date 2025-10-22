@@ -21,7 +21,8 @@ class InventarioController extends BaseController
           $data = [
             'productos' => $this->inventarioModel->getProductos(),
             'categorias' => $this->inventarioModel->getCategorias(),
-            "permisoUsuario" => $this->listasModel->getPermisosMenu()
+            "permisoUsuario" => $this->listasModel->getPermisosMenu(),
+            'empresas' => $this->inventarioModel->getEmpresas(),
           ];
   
           return view('administrador/inventarios', $data);

@@ -25,6 +25,14 @@ class InventarioModel extends Model
         return $query;
     }
 
+    public function getEmpresas(){
+        $query = $this->db->table('empresas')
+                ->select('*')
+                ->get();
+
+        return $query;
+    }
+
     public function agregarProductos($data){
         $productos = [
             'categoria' => $data['categoria'],
