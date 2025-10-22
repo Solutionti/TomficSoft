@@ -191,9 +191,31 @@ function eliminarProducto(id) {
     });
   }
 
+  //ENTRADA DE PRODUCTOS 
+  $("#producto_ingreso").on("blur", function(){
 
+    //definir lo que  necesitamos
+    var codigo = $("#producto_ingreso").val(); 
+    var url = baseurl + "obtenerstock/" + codigo;
 
-
+    //llamamos al controlador
+    $.ajax({
+      url: url,
+      method: "GET",
+      success: function(response){
+        //obtener lo que me trae el conttrolador verificar 
+        console.log(response); 
+        // respuesta de lo que necesitamos
+        // $("#precio_ingreso").val(response[0].precio);
+      },
+      error: function(response){
+        $("body").overhang({
+          type: "error",
+          message: "Alerta ! Tenemos un problema al conectar con la base de datos verifica tu red.",
+        });
+      }
+    });
+  });
 
   function reloadPage() {
   location.reload();

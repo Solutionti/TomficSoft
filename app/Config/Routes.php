@@ -50,6 +50,7 @@ $routes->get('obtenerdatoproducto/(:num)', 'InventarioController::mostrarDatosPr
 $routes->post('agregarproductos', 'InventarioController::agregarProductos');
 $routes->post('actualizarproductos', 'InventarioController::actualizarProductos');
 $routes->post('eliminarproducto', 'InventarioController::eliminarProducto');
+$routes->get('obtenerstock/(:num)', 'InventarioController::obtenerstock/$1');
 
 // VENTAS
 $routes->get('/ventas', 'VentasController::index');

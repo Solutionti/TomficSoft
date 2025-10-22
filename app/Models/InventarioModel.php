@@ -84,5 +84,16 @@ class InventarioModel extends Model
                  ->delete();
     }
 
+    public function obtenerstock($codigo) {
+
+      $producto = $this->db->table('productos')
+                ->select('*')
+                ->where('codigo_barras', $codigo)
+                ->get();
+
+      return $producto->getResult();
+    
+    }
+
 
 }

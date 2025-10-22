@@ -161,13 +161,10 @@ class InventarioController extends BaseController
     ])->setStatusCode(500);
   }
  }
- 
+  
+  public function obtenerstock($codigo) {
+    $producto = $this->inventarioModel->obtenerstock($codigo);
 
-
-
-
-
-
-
-
+    return $this->response->setJSON($producto);
+  }
 }
