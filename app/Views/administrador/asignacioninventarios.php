@@ -167,29 +167,42 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <div class="row mt-3">
-          <div class="col-md-12">
-            <label class="mb-1 small">Fecha inicial *</label>
-            <input 
-              type="date"
-              id="fecha_agregar_inventario"
-              name="fecha_agregar_inventario"
-              class="form-control form-control-sm borde"
-              value="<?php echo date('Y-m-d') ?>"
-              readonly
-            >
+        <div class="container-fluid">
+
+          <div class="row mt-3">
+            <div class="col-md-8">
+              <label class="mb-1 small">Fecha inicial *</label>
+              <input 
+                type="date"
+                id="fecha_agregar_inventario"
+                name="fecha_agregar_inventario"
+                class="form-control form-control-sm borde"
+                value="<?php echo date('Y-m-d') ?>"
+                readonly
+              >
+            </div>
+             <div class="col-md-4">
+              <label class="mb-1 small">Cuantos conteos? *</label>
+              <select
+                class="form-control form-control-sm borde"
+              >
+                <option value="">Seleccione a cuantos conteos </option>
+                <option value="1">1 </option>
+                <option value="2">2</option>
+              </select>
+            </div>
           </div>
-        </div>
-        <div class="row mt-3">
-          <div class="col-md-12">
-            <label class="mb-1 small ">Observaciòn *</label>
-            <textarea 
-              type="text"
-              id="observacion_agregar_inventario"
-              name="observacion_agregar_inventario"
-              class="form-control form-control-md borde"
-              rows="27"
-              ></textarea>
+          <div class="row mt-3">
+            <div class="col-md-12">
+              <label class="mb-1 small ">Observaciòn *</label>
+              <textarea 
+                type="text"
+                id="observacion_agregar_inventario"
+                name="observacion_agregar_inventario"
+                class="form-control form-control-md borde"
+                rows="27"
+                ></textarea>
+            </div>
           </div>
         </div>
       </div>
@@ -283,75 +296,80 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <div class="row mt-3">
-          <div class="col-md-12">
-            <table class="table table-striped">
-              <thead >
-                <tr>
-                  <!-- <th class="color-morado text-white text-uppercase"> </th> -->
-                  <th class="color-morado text-white text-uppercase">Ubicacion</th>
-                  <th class="color-morado text-white text-uppercase">Localizacion</th>
-                  <th class="color-morado text-white text-uppercase">N.Local</th>
-                  <th class="color-morado text-white text-uppercase">Observacion</th>
-                  <th class="color-morado text-white text-uppercase">Usuarios</th>
-                  <th class="color-morado text-white text-uppercase">Conteo #1</th>
-                  <th class="color-morado text-white text-uppercase">Obs #1</th>
-                  <th class="color-morado text-white text-uppercase">Conteo #2</th>
-                  <th class="color-morado text-white text-uppercase">Obs #2</th>
-                  <th class="color-morado text-white text-uppercase">Diferencia</th>
-                  <th class="color-morado text-white text-uppercase">Validador</th>
-                  <th class="color-morado text-white text-uppercase">Imprimir reporte</th>
-                </tr>
-              </thead>
-              <tbody>
-                 <?php foreach($reportes->getResult() as $reporte){ ?>
-                <tr>
-                  <!-- <td>
-                    <button
-                      class="badge badge-primary"
-                    >
-                      <i class="fas fa-eye fa-1x "></i>
-                    </button>
-                  </td> -->
-                  <td class="text-uppercase"><?= $reporte->ubicacion; ?></td>
-                  <td class="text-uppercase"><?= $reporte->localizacion; ?></td>
-                  <td><?= $reporte->numerolocalizacion; ?></td>
-                  <td class="text-uppercase"><?= $reporte->observacion; ?></td>
-                  <td><?= $reporte->usuarioconteo1.' - '.$reporte->usuarioconteo2; ?></td>
-                  <td><label class="badge badge-dark"><?= $reporte->conte1; ?></label></td>
-                  <td><label class="badge badge-success ">Ok</label></td>
-                  <td><label class="badge badge-dark "><?= $reporte->conte2; ?></label></td>
-                  <td><label class="badge badge-success ">Ok</label></td>
-                  <td><label class="badge badge-danger "><?= ($reporte->conte1 - $reporte->conte2); ?></label></td>
-                  <?php
-                    $total = $reporte->conte1 - $reporte->conte2;
-                    if($total > 0){
-                  ?>
-                    <td><label class="badge badge-danger ">Diferencia</label></td>
-                    <?php } else { ?>
-                    <td><label class="badge badge-success">Completo</label></td>
-                  <?php } ?>
-                  <td>
-                    <div class="col-md-4">
-                      <a
-                        target="_blank"
-                        href="<?php echo base_url(); ?>generarpdfreportes/<?= $reporte->codigo_inventario; ?>"
-                        class="btn btn-danger btn-sm btn-rounded mx-2"
-                      >
-                        Pdf
-                      </a>
-                      <a
-                        class="btn btn-success btn-sm btn-rounded"
-                        href="<?php echo base_url(); ?>generarexcelreportes/<?= $reporte->codigo_inventario; ?>"
-                      >
-                        Excel
-                      </a>
-                    </div>
-                  </td>
-                 </tr>
-                 <?php } ?>
-              </tbody>
-            </table>  
+        <div class="container-fluid">
+          <div class="row mt-3">
+            <div class="col-md-12">
+              <div class="table-responsive">
+
+                <table class="table table-striped">
+                  <thead >
+                    <tr>
+                      <!-- <th class="color-morado text-white text-uppercase"> </th> -->
+                      <th class="color-morado text-white text-uppercase">Ubicacion</th>
+                      <th class="color-morado text-white text-uppercase">Localizacion</th>
+                      <th class="color-morado text-white text-uppercase">N.Local</th>
+                      <th class="color-morado text-white text-uppercase">Observacion</th>
+                      <th class="color-morado text-white text-uppercase">Usuarios</th>
+                      <th class="color-morado text-white text-uppercase">Conteo #1</th>
+                      <th class="color-morado text-white text-uppercase">Obs #1</th>
+                      <th class="color-morado text-white text-uppercase">Conteo #2</th>
+                      <th class="color-morado text-white text-uppercase">Obs #2</th>
+                      <th class="color-morado text-white text-uppercase">Diferencia</th>
+                      <th class="color-morado text-white text-uppercase">Validador</th>
+                      <th class="color-morado text-white text-uppercase">Imprimir reporte</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                     <?php foreach($reportes->getResult() as $reporte){ ?>
+                    <tr>
+                      <!-- <td>
+                        <button
+                          class="badge badge-primary"
+                        >
+                          <i class="fas fa-eye fa-1x "></i>
+                        </button>
+                      </td> -->
+                      <td class="text-uppercase"><?= $reporte->ubicacion; ?></td>
+                      <td class="text-uppercase"><?= $reporte->localizacion; ?></td>
+                      <td><?= $reporte->numerolocalizacion; ?></td>
+                      <td class="text-uppercase"><?= $reporte->observacion; ?></td>
+                      <td><?= $reporte->usuarioconteo1.' - '.$reporte->usuarioconteo2; ?></td>
+                      <td><label class="badge badge-dark"><?= $reporte->conte1; ?></label></td>
+                      <td><label class="badge badge-success ">Ok</label></td>
+                      <td><label class="badge badge-dark "><?= $reporte->conte2; ?></label></td>
+                      <td><label class="badge badge-success ">Ok</label></td>
+                      <td><label class="badge badge-danger "><?= ($reporte->conte1 - $reporte->conte2); ?></label></td>
+                      <?php
+                        $total = $reporte->conte1 - $reporte->conte2;
+                        if($total > 0){
+                      ?>
+                        <td><label class="badge badge-danger ">Diferencia</label></td>
+                        <?php } else { ?>
+                        <td><label class="badge badge-success">Completo</label></td>
+                      <?php } ?>
+                      <td>
+                        <div class="col-md-4">
+                          <a
+                            target="_blank"
+                            href="<?php echo base_url(); ?>generarpdfreportes/<?= $reporte->codigo_inventario; ?>"
+                            class="btn btn-danger btn-sm btn-rounded mx-2"
+                          >
+                            Pdf
+                          </a>
+                          <a
+                            class="btn btn-success btn-sm btn-rounded"
+                            href="<?php echo base_url(); ?>generarexcelreportes/<?= $reporte->codigo_inventario; ?>"
+                          >
+                            Excel
+                          </a>
+                        </div>
+                      </td>
+                     </tr>
+                     <?php } ?>
+                  </tbody>
+                </table>  
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -649,9 +667,9 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-success btn-rounded">
+        <a type="button" class="btn btn-success btn-rounded" href="<?= base_url('excel/formato_productos.xlsx') ?>">
           Formato Excel
-        </button>
+        </a>
         <button type="button" class="btn btn-primary btn-rounded" id="exportardatos">
           <span class="spinner-border spinner-border-sm" id="spinnerexportarproducto" hidden="true"></span>
           Exportar
