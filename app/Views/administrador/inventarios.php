@@ -232,6 +232,7 @@
         
       </div>
         <div class="modal-footer">
+          <button type="button" class="btn btn-danger btn-rounded" data-bs-dismiss="modal">Cerrar</button>
           <button type="button" class="btn btn-primary btn-rounded" data-bs-dismiss="modal" onclick="agregarProductos()">Guardar</button>
         </div>
     </div>
@@ -319,9 +320,11 @@
          required
        >
          <option value="">Seleccione sede</option>
-         <option value="">1</option>
-         <option value="">2</option>
-         <option value="">3</option>
+          <?php foreach($empresas->getResult() as $empresa) { ?>      
+         <option value="<?= $empresa->codigo_empresa ?>"> <?= $empresa->nombre; ?> </option>
+         <?php } ?>
+
+         
        </select>
      </div>
      <div class="col-md-6">
@@ -332,9 +335,8 @@
          class="form-control form-control-sm borde text-uppercase"
          >
          <option value="">Seleccione el motivo de ingreso</option>
-         <option value="">1</option>
-         <option value="">2</option>
-         <option value="">3</option>
+         <option value="Compra de insumos">Compra de insumos</option>
+         <option value="Regalo empresarial">Regalo empresarial</option>
        </select>
      </div>
    </div>
@@ -352,6 +354,7 @@
  </div>
       </div>
       <div class="modal-footer">
+        <button type="button" class="btn btn-danger btn-rounded" data-bs-dismiss="modal">Cerrar</button>
         <button type="button" class="btn btn-primary btn-rounded mr-2" data-bs-dismiss="modal">Guardar</button>
       </div>
     </div>
@@ -469,6 +472,7 @@
         </div>
       </div>
       <div class="modal-footer">
+        <button type="button" class="btn btn-danger btn-rounded" data-bs-dismiss="modal">Cerrar</button>
         <button type="button" class="btn btn-primary btn-rounded" data-bs-dismiss="modal">Guardar</button>
       </div>
     </div>
@@ -614,6 +618,7 @@
         
       </div>
         <div class="modal-footer">
+          <button type="button" class="btn btn-danger btn-rounded" data-bs-dismiss="modal">Cerrar</button>
           <button type="button" class="btn btn-primary btn-rounded" data-bs-dismiss="modal" onclick="actualizarProductos()">Guardar</button>
         </div>
     </div>

@@ -25,6 +25,14 @@ class InventarioModel extends Model
         return $query;
     }
 
+    public function getEmpresas(){
+        $query = $this->db->table('empresas')
+                ->select('*')
+                ->get();
+
+        return $query;
+    }
+
     public function agregarProductos($data){
         $productos = [
             'categoria' => $data['categoria'],
@@ -82,6 +90,17 @@ class InventarioModel extends Model
         $this->db->table('productos')
                  ->where('codigo_producto', $id)
                  ->delete();
+    }
+
+    public function obtenerstock($codigo) {
+
+      $producto = $this->db->table('productos')
+                ->select('*')
+                ->where('codigo_barras', $codigo)
+                ->get();
+
+      return $producto->getResult();
+    
     }
 
 
