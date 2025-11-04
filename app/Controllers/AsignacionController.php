@@ -44,9 +44,10 @@ class AsignacionController extends BaseController {
     public function crearInventarios(){
       
       $fecha = $this->request->getPost('fecha');
+      $conteos = $this->request->getPost('conteos');
       $descripcion = $this->request->getPost('descripcion');
 
-      $this->asignacionModel->crearInventarios($descripcion);
+      $this->asignacionModel->crearInventarios($descripcion, $conteos);
 
     }
 

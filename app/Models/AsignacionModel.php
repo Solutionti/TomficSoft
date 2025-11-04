@@ -28,7 +28,7 @@ class AsignacionModel extends Model {
    }
 
    
-   public function crearInventarios($descripcion) {
+   public function crearInventarios($descripcion, $conteos) {
       $query= [
         "fecha" => date("Y-m-d"),
         "observacion" => $descripcion,
@@ -41,6 +41,7 @@ class AsignacionModel extends Model {
         "btnproducto" => 0,
         "btnubicacion" => 0,
         "btnproceso" => 0,
+        "conteos" => $conteos
       ];
 
       $this->db->table('inventarios')
@@ -148,6 +149,15 @@ class AsignacionModel extends Model {
                         ->select("inven.ubicacion, inven.localizacion, inven.numerolocalizacion, inven.usuarioconteo1,
                         inven.usuarioconteo2,inven.observacion, SUM(cp.conteo1) as conte1, SUM(cp.conteo2) as conte2, SUM(cp.diferencia) as diferencia, inven.codigo_inventario")
                         ->join("captura_conteos as cp", "inven.codigo_inventario = cp.codigo_inventario")
+                        ->groupBy([
+                          "inven.ubicacion", 
+                          "inven.localizacion", 
+                          "inven.numerolocalizacion", 
+                          "inven.usuarioconteo1",
+                          "inven.usuarioconteo2",
+                          "inven.observacion",
+                          "inven.codigo_inventario"
+                        ])
                         ->get();
 
      return $inventarios;

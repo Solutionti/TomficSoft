@@ -90,6 +90,7 @@
                                 <th class="color-morado text-white text-uppercase">ID</th>
                                 <th class="color-morado text-white text-uppercase">Fecha</th>
                                 <th class="color-morado text-white text-uppercase">Observacion</th>
+                                <th class="color-morado text-white text-uppercase">Conteo?</th>
                                 <th class="color-morado text-white text-uppercase">Fecha inicio</th>
                                 <th class="color-morado text-white text-uppercase">Fecha cierre</th>
                                 <th class="color-morado text-white text-uppercase">Estado</th>
@@ -104,6 +105,7 @@
                                 <td><?= $asignacionInventario->codigo_inventario; ?></td>
                                 <td><?= $asignacionInventario->fecha; ?></td>
                                 <td class="text-uppercase"><?= $asignacionInventario->observacion; ?></td>
+                                <td class="text-uppercase"><?= $asignacionInventario->conteos; ?></td>
                                 <td><?= $asignacionInventario->fecha_inicio; ?></td>
                                 <td><?= $asignacionInventario->fecha_cierre; ?></td>
                                 <td><label class="badge badge-success "><?= $asignacionInventario->estado; ?></label></td>
@@ -185,6 +187,7 @@
               <label class="mb-1 small">Cuantos conteos? *</label>
               <select
                 class="form-control form-control-sm borde"
+                id="conteos_agregar_inventario"
               >
                 <option value="">Seleccione a cuantos conteos </option>
                 <option value="1">1 </option>
@@ -322,13 +325,6 @@
                   <tbody>
                      <?php foreach($reportes->getResult() as $reporte){ ?>
                     <tr>
-                      <!-- <td>
-                        <button
-                          class="badge badge-primary"
-                        >
-                          <i class="fas fa-eye fa-1x "></i>
-                        </button>
-                      </td> -->
                       <td class="text-uppercase"><?= $reporte->ubicacion; ?></td>
                       <td class="text-uppercase"><?= $reporte->localizacion; ?></td>
                       <td><?= $reporte->numerolocalizacion; ?></td>
