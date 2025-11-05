@@ -52,6 +52,8 @@ $routes->post('actualizarproductos', 'InventarioController::actualizarProductos'
 $routes->post('eliminarproducto', 'InventarioController::eliminarProducto');
 $routes->get('obtenerstock/(:num)', 'InventarioController::obtenerstock/$1');
 
+$routes->post('ingresarentrada', 'InventarioController::ingresarEntradaProductos');
+
 // VENTAS
 $routes->get('/ventas', 'VentasController::index');
 

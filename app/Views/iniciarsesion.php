@@ -57,7 +57,7 @@
             <div class="text-center mb-5 mb-md-7">
                 <img
                   class="avatar avatar-xl avatar-4x3"
-                  src="https://static.vecteezy.com/system/resources/thumbnails/012/986/755/small_2x/abstract-circle-logo-icon-free-png.png"
+                  src="<?= base_url('img/logo.png') ?>"
                   alt="Logo"
                 >
               

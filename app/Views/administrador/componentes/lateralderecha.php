@@ -4,7 +4,7 @@
               <span class="fas fa-chevron-left"></span>
             </button>
             <div class="text-center  d-flex align-items-center justify-content-center">
-              <a class="navbar-brand brand-logo-mini" ><img src="https://static.vecteezy.com/system/resources/thumbnails/012/986/755/small_2x/abstract-circle-logo-icon-free-png.png" width="70px" alt="logo" /></a>
+              <!-- <a class="navbar-brand brand-logo-mini" ><img src="" width="30px" alt="logo" /></a> -->
             </div>
             <ul class="navbar-nav navbar-nav-right">
               <!-- <li class="nav-item nav-logout d-none d-md-block me-3">

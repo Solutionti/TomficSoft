@@ -22,7 +22,7 @@
                   data-bs-toggle="modal"
                   data-bs-target="#exportarexcelmodal"
                 >
-                  Exportar base de datos
+                  Importar base de datos
                 </button>
               </div>
               <div class="header-right d-flex flex-wrap mt-2 mt-sm-0">
@@ -668,7 +668,7 @@
         </a>
         <button type="button" class="btn btn-primary btn-rounded" id="exportardatos">
           <span class="spinner-border spinner-border-sm" id="spinnerexportarproducto" hidden="true"></span>
-          Exportar
+          Importar
         </button>
         <button type="button" class="btn btn-danger btn-rounded" data-bs-dismiss="modal">Cerrar</button>
       </div>

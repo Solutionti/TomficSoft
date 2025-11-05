@@ -168,4 +168,37 @@ class InventarioController extends BaseController
 
     return $this->response->setJSON($producto);
   }
+
+  public function ingresarEntradaProductos() {
+
+    try{
+      $producto = $this->request->getPost('producto');
+      $cantidad = $this->request->getPost('cantidad');
+      $valor = $this->request->getPost('valor');
+      $sede = $this->request->getPost('sede');
+      $motivo = $this->request->getPost('motivo');
+      $comentarios = $this->request->getPost('comentarios');
+      $stock = $this->request->getPost('stock');
+
+      $data = [
+        'producto' => $producto,
+        'cantidad' => $cantidad,
+        'valor' => $valor,
+        'sede' => $sede,
+        'motivo' => $motivo,
+        'comentarios' => $comentarios,
+        'stock' => $stock
+      ];
+
+      $this->inventarioModel->ingresarEntradaProductos($data);
+    }
+    catch (\Throwable $e) {
+      //atrapar errores y responder
+      return $this->response->setJSON([
+          "status"  => "error",
+          "message" => "Error en el servidor: " . $e->getMessage()
+      ])->setStatusCode(500);
+    }
+  }
+
 }

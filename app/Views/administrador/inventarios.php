@@ -15,7 +15,7 @@
           <div class="content-wrapper">
             <div class="page-header flex-wrap">
               <div class="header-left">
-                <button class="btn btn-outline-primary mb-2 mb-md-0 me-2 btn-rounded">Ajustar Inventario</button>
+                <button class="btn btn-outline-primary mb-2 mb-md-0 me-2 btn-rounded" onclick="ajustarInventario()">Ajustar Inventario</button>
                 <button class="btn btn-primary mb-2 mb-md-0 me-2 btn-rounded" data-bs-toggle="modal" data-bs-target="#agregarProducto">Agregar Producto</button>
                 <button class="btn btn-outline-success mb-2 mb-md-0 me-2 btn-rounded" data-bs-toggle="modal" data-bs-target="#ingresoProducto">Entrada</button>
                 <button class="btn btn-outline-danger mb-2 mb-md-0 me-2 btn-rounded" data-bs-toggle="modal" data-bs-target="#salidaProducto">Salida</button>
@@ -102,134 +102,136 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <div class="row mt-3">
-          <div class="col-md-3">
-            <label class="mb-1 small ">Categoria *</label>
-            <select
-              class="form-control form-control-sm borde text-uppercase"
-              id="categoria_inventario"
-              required
-            >
-            <option value="">Seleccione una categoria</option>
-            <?php foreach($categorias->getResult() as $categoria) { ?>
-              <option value="<?= $categoria->codigo_categoria  ?>"><?= $categoria->nombre; ?></option>  
-            <?php } ?>    
-            </select>
-          </div>
-          <div class="col-md-3">
-            <label class="mb-1 small ">Sub categoria *</label>
-            <input 
-              type="text"
-              id="subcategoria_inventario"
-              name="subcategoria_inventario"
-              class="form-control form-control-sm borde"
-              required
-            >
-          </div>
-          <div class="col-md-3">
-            <label class="mb-1 small ">Grupo *</label>
-            <input 
-              type="text"
-              id="grupo_inventario"
-              name="grupo_inventario"
-              class="form-control form-control-sm borde"
-              required
-            >
-          </div>
-          <div class="col-md-3">
-            <label class="mb-1 small ">Sub grupo *</label>
-            <input 
-              type="text"
-              id="subgrupo_inventario"
-              name="subgrupo_inventario"
-              class="form-control form-control-sm borde"
-              required
-            >
-          </div>
-      </div>
-
-        <div class="row mt-3">
-          <div class="col-md-3">
-            <label class="mb-1 small ">Nombre *</label>
-            <input 
-              type="text"
-              id="nombre_inventario"
-              name="nombre_inventario"
-              class="form-control form-control-sm borde"
-              required
-            >
-          </div>
-          <div class="col-md-3">
-            <label class="mb-1 small ">Referencia *</label>
-            <input 
-              type="text"
-              id="referencia_inventario"
-              name="referencia_inventario"
-              class="form-control form-control-sm borde"
-              required
-            >
-          </div>
-          <div class="col-md-3">
-            <label class="mb-1 small ">Codigo interno *</label>
-              <input
+        <div class="container-fluid">
+          <div class="row mt-3">
+            <div class="col-md-3">
+              <label class="mb-1 small ">Categoria *</label>
+              <select
                 class="form-control form-control-sm borde text-uppercase"
-                id="codigo_inventario"
-                name="codigo_inventario"
-                type="number"
+                id="categoria_inventario"
                 required
               >
-              </input>
-          </div>
+              <option value="">Seleccione una categoria</option>
+              <?php foreach($categorias->getResult() as $categoria) { ?>
+                <option value="<?= $categoria->codigo_categoria  ?>"><?= $categoria->nombre; ?></option>  
+              <?php } ?>    
+              </select>
+            </div>
             <div class="col-md-3">
-              <label class="mb-1 small ">Codigo de barras *</label>
-                <input 
-                  type="number"
-                  id="barras_inventario"
-                  name="barras_inventario"
-                  class="form-control form-control-sm borde"
-                >
+              <label class="mb-1 small ">Sub categoria *</label>
+              <input 
+                type="text"
+                id="subcategoria_inventario"
+                name="subcategoria_inventario"
+                class="form-control form-control-sm borde"
+                required
+              >
             </div>
-            
-        </div>
-        <div class="row mt-3">
-          <div class="col-md-2">
-              <label class="mb-1 small ">Nit *</label>
-                <input 
-                  type="number"
-                  id="nit_inventario"
-                  name="nit_inventario"
-                  class="form-control form-control-sm borde"
-                >
+            <div class="col-md-3">
+              <label class="mb-1 small ">Grupo *</label>
+              <input 
+                type="text"
+                id="grupo_inventario"
+                name="grupo_inventario"
+                class="form-control form-control-sm borde"
+                required
+              >
             </div>
-          <div class="col-md-3">
-            <label class="mb-1 small ">Proveedor *</label>
-            <input 
-              type="text"
-              id="proveedor_inventario"
-              name="proveedor_inventario"
-              class="form-control form-control-sm borde"
-              required>
-          </div>
-          <div class="col-md-2">
-            <label class="mb-1 small ">Saldo </label>
-            <input 
-              type="number"
-              id="saldo_inventario"
-              name="saldo_inventario"
-              class="form-control form-control-sm borde"
-            >
-          </div>
-          <div class="col-md-2">
-            <label class="mb-1 small ">Costo </label>
-            <input 
-              type="number"
-              id="costo_inventario"
-              name="costo_inventario"
-              class="form-control form-control-sm borde"
-            > 
-          </div>
+            <div class="col-md-3">
+              <label class="mb-1 small ">Sub grupo *</label>
+              <input 
+                type="text"
+                id="subgrupo_inventario"
+                name="subgrupo_inventario"
+                class="form-control form-control-sm borde"
+                required
+              >
+            </div>
         </div>
-        
+  
+          <div class="row mt-3">
+            <div class="col-md-3">
+              <label class="mb-1 small ">Nombre *</label>
+              <input 
+                type="text"
+                id="nombre_inventario"
+                name="nombre_inventario"
+                class="form-control form-control-sm borde"
+                required
+              >
+            </div>
+            <div class="col-md-3">
+              <label class="mb-1 small ">Referencia *</label>
+              <input 
+                type="text"
+                id="referencia_inventario"
+                name="referencia_inventario"
+                class="form-control form-control-sm borde"
+                required
+              >
+            </div>
+            <div class="col-md-3">
+              <label class="mb-1 small ">Codigo interno *</label>
+                <input
+                  class="form-control form-control-sm borde text-uppercase"
+                  id="codigo_inventario"
+                  name="codigo_inventario"
+                  type="number"
+                  required
+                >
+                </input>
+            </div>
+              <div class="col-md-3">
+                <label class="mb-1 small ">Codigo de barras *</label>
+                  <input 
+                    type="number"
+                    id="barras_inventario"
+                    name="barras_inventario"
+                    class="form-control form-control-sm borde"
+                  >
+              </div>
+              
+          </div>
+          <div class="row mt-3">
+            <div class="col-md-3">
+                <label class="mb-1 small ">Nit *</label>
+                  <input 
+                    type="number"
+                    id="nit_inventario"
+                    name="nit_inventario"
+                    class="form-control form-control-sm borde"
+                  >
+              </div>
+            <div class="col-md-3">
+              <label class="mb-1 small ">Proveedor *</label>
+              <input 
+                type="text"
+                id="proveedor_inventario"
+                name="proveedor_inventario"
+                class="form-control form-control-sm borde"
+                required>
+            </div>
+            <div class="col-md-3">
+              <label class="mb-1 small ">Saldo </label>
+              <input 
+                type="number"
+                id="saldo_inventario"
+                name="saldo_inventario"
+                class="form-control form-control-sm borde"
+              >
+            </div>
+            <div class="col-md-3">
+              <label class="mb-1 small ">Costo </label>
+              <input 
+                type="number"
+                id="costo_inventario"
+                name="costo_inventario"
+                class="form-control form-control-sm borde"
+              > 
+            </div>
+          </div>
+
+        </div>
       </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-danger btn-rounded" data-bs-dismiss="modal">Cerrar</button>
@@ -276,8 +278,8 @@
          type="number" 
          class="form-control form-control-sm borde" 
          id="precio_ingreso" 
-         name="precio_ingreso" 
-         required
+         name="precio_ingreso"
+         readonly
        >
      </div>
      <div class="col-md-2">
@@ -287,18 +289,19 @@
          class="form-control form-control-sm borde" 
          id="stock_ingreso" 
          name="stock_ingreso" 
-         required
+         readonly
        >
      </div>
    </div>
    <div class="row mt-3">
      <div class="col-md-8">
-       <label class="mb-1 small ">Nombre producto</label>
+       <label class="mb-1 small ">Nombre producto </label>
        <input 
          type="text" 
          class="form-control form-control-sm borde" 
          id="nombre_ingreso" 
          name="nombre_ingreso"
+         readonly
        >
      </div>
      <div class="col-md-4">
@@ -307,28 +310,29 @@
          class="form-control form-control-sm borde" 
          id="valor_ingreso" 
          name="valor_ingreso"
+         readonly
        >
      </div>
    </div>
    <div class="row mt-3">
      <div class="col-md-6">
-       <label class="mb-1 small ">Sede principal</label>
+       <label class="mb-1 small ">Sede principal *</label>
        <select 
          name="sede_ingreso" 
          id="sede_ingreso" 
          class="form-control form-control-sm borde text-uppercase" 
-         required
+         readonly
        >
-         <option value="">Seleccione sede</option>
+         <option value="">Seleccione sede </option>
           <?php foreach($empresas->getResult() as $empresa) { ?>      
-         <option value="<?= $empresa->codigo_empresa ?>"> <?= $empresa->nombre; ?> </option>
+         <option value="<?= $empresa->nit ?>"> <?= $empresa->nombre; ?> </option>
          <?php } ?>
 
          
        </select>
      </div>
      <div class="col-md-6">
-       <label class="mb-1 small ">Motivo de ingreso</label>
+       <label class="mb-1 small ">Motivo de ingreso *</label>
        <select 
          name="motivo_ingreso" 
          id="motivo_ingreso" 
@@ -346,8 +350,8 @@
        <textarea 
          class="form-control form-control-sm borde" 
          placeholder="Descripcion" 
-         id="floatingTextarea2 comentarios_ingreso" 
-         style="height: 100px"
+         id="comentarios_ingreso" 
+         rows="15"
        ></textarea>
      </div>
    </div>
@@ -355,7 +359,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger btn-rounded" data-bs-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary btn-rounded mr-2" data-bs-dismiss="modal">Guardar</button>
+        <button type="button" class="btn btn-primary btn-rounded mr-2" onclick="ingresarEntradaProductos()">Guardar</button>
       </div>
     </div>
   </div>
@@ -371,103 +375,106 @@
       </div>
       <div class="modal-body">
 <!-- ACA VA EL CONTENIDO DE LA MODAL-->
-        <div class="row mt-3">
-          <div class="col-md-5">
-            <label class="mb-1 small ">Producto *</label>
-            <input 
-              type="text" 
-              class="form-control form-control-sm borde" 
-              id="producto_salida" 
-              name="producto_salida" 
-              required>
+        <div class="container-fluid">
+
+          <div class="row mt-3">
+            <div class="col-md-5">
+              <label class="mb-1 small ">Producto *</label>
+              <input 
+                type="text" 
+                class="form-control form-control-sm borde" 
+                id="producto_salida" 
+                name="producto_salida" 
+                required>
+            </div>
+            <div class="col-md-2">
+              <label class="mb-1 small ">Cantidad *</label>
+              <input 
+                type="number" 
+                class="form-control form-control-sm borde" 
+                id="cantidad_salida" 
+                name="cantidad_salida" 
+                required>
           </div>
-          <div class="col-md-2">
-            <label class="mb-1 small ">Cantidad *</label>
-            <input 
-              type="number" 
-              class="form-control form-control-sm borde" 
-              id="cantidad_salida" 
-              name="cantidad_salida" 
-              required>
-        </div>
-          <div class="col-md-3">
-            <label class="mb-1 small ">Precio producto *</label>
-            <input 
-              type="number" 
-              class="form-control form-control-sm borde" 
-              id="precio_salida" 
-              name="precio_salida" 
-              required
-            >
-          </div>
-          <div class="col-md-2">
-            <label class="mb-1 small ">Stock *</label>
-            <input 
-              type="number" 
-              class="form-control form-control-sm borde" 
-              id="stock_salida" 
-              name="stock_salida" 
-              required
-            >
-          </div>
-        </div>
-        <div class="row mt-3">
-          <div class="col-md-8">
-            <label class="mb-1 small ">Nombre producto</label>
-            <input 
-              type="text" 
-              class="form-control form-control-sm borde" 
-              id="nombre_salida" 
-              name="nombre_salida"
-            >
-          </div>
-          <div class="col-md-4">
-            <label class="mb-1 small ">Valor compra</label>
-            <input type="number" 
-              class="form-control form-control-sm borde" 
-              id="valor_salida" 
-              name="valor_salida"
-            >
-          </div>
-        </div>
-        <div class="row mt-3">
-          <div class="col-md-6">
-            <label class="mb-1 small ">Sede principal</label>
-            <select 
-              name="sede_salida" 
-              id="sede_salida" 
-              class="form-control form-control-sm borde text-uppercase" 
-              required
-            >
-              <option value="">Seleccione sede</option>
-              <option value="">1</option>
-              <option value="">2</option>
-              <option value="">3</option>
-            </select>
-          </div>
-          <div class="col-md-6">
-            <label class="mb-1 small ">Motivo de salida</label>
-            <select 
-              name="motivo_salida" 
-              id="motivo_salida" 
-              class="form-control form-control-sm borde text-uppercase"
+            <div class="col-md-3">
+              <label class="mb-1 small ">Precio producto *</label>
+              <input 
+                type="number" 
+                class="form-control form-control-sm borde" 
+                id="precio_salida" 
+                name="precio_salida" 
+                required
               >
-              <option value="">Seleccione el motivo de salida</option>
-              <option value="">1</option>
-              <option value="">2</option>
-              <option value="">3</option>
-            </select>
+            </div>
+            <div class="col-md-2">
+              <label class="mb-1 small ">Stock *</label>
+              <input 
+                type="number" 
+                class="form-control form-control-sm borde" 
+                id="stock_salida" 
+                name="stock_salida" 
+                required
+              >
+            </div>
           </div>
-        </div>
-        <div class="row mt-3">
-          <div class="col-md-12">
-            <label class="mb-1 small ">Comentarios </label>
-            <textarea 
-              class="form-control form-control-sm borde" 
-              placeholder="Descripcion" 
-              id="floatingTextarea2 comentarios_salida" 
-              style="height: 100px"
-            ></textarea>
+          <div class="row mt-3">
+            <div class="col-md-8">
+              <label class="mb-1 small ">Nombre producto</label>
+              <input 
+                type="text" 
+                class="form-control form-control-sm borde" 
+                id="nombre_salida" 
+                name="nombre_salida"
+              >
+            </div>
+            <div class="col-md-4">
+              <label class="mb-1 small ">Valor compra</label>
+              <input type="number" 
+                class="form-control form-control-sm borde" 
+                id="valor_salida" 
+                name="valor_salida"
+              >
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-md-6">
+              <label class="mb-1 small ">Sede principal</label>
+              <select 
+                name="sede_salida" 
+                id="sede_salida" 
+                class="form-control form-control-sm borde text-uppercase" 
+                required
+              >
+                <option value="">Seleccione sede</option>
+                <option value="">1</option>
+                <option value="">2</option>
+                <option value="">3</option>
+              </select>
+            </div>
+            <div class="col-md-6">
+              <label class="mb-1 small ">Motivo de salida</label>
+              <select 
+                name="motivo_salida" 
+                id="motivo_salida" 
+                class="form-control form-control-sm borde text-uppercase"
+                >
+                <option value="">Seleccione el motivo de salida</option>
+                <option value="">1</option>
+                <option value="">2</option>
+                <option value="">3</option>
+              </select>
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-md-12">
+              <label class="mb-1 small ">Comentarios </label>
+              <textarea 
+                class="form-control form-control-sm borde" 
+                placeholder="Descripcion" 
+                id="floatingTextarea2 comentarios_salida" 
+                style="height: 100px"
+              ></textarea>
+            </div>
           </div>
         </div>
       </div>

@@ -103,5 +103,31 @@ class InventarioModel extends Model
     
     }
 
+    public function ingresarEntradaProductos($data) {
+        $kardex = [
+          "id_producto" => $data["producto"],
+          "tp_documento" => "ENT",
+          "entrada" => $data["cantidad"],
+          "salida" => 0,
+          "devolucion" => 0,
+          "fecha" => date("Y-m-d"),
+          "hora" => date("H:i:s"),
+          "descripcion" => $data["comentarios"],
+          "usuario" => session()->get('documento'),
+          "sede" => $data["sede"],
+          "motivo" => $data["motivo"],
+          "saldo" => 0,
+        ];
+        $this->db->table('kardex')
+                 ->insert($kardex);
+
+        $productos = [
+          "saldo" => $data["stock"] + $data["cantidad"],
+        ];
+        $this->db->table('productos')
+                  ->where('codigo_barras', $data["producto"])
+                  ->update($productos);
+    }
+
 
 }

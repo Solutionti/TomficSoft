@@ -193,7 +193,6 @@ function eliminarProducto(id) {
 
   //ENTRADA DE PRODUCTOS 
     $("#producto_ingreso").on("blur", function(){
-  
       //definir lo que  necesitamos
       var codigo = $("#producto_ingreso").val(); 
       var url = baseurl + "obtenerstock/" + codigo;
@@ -206,9 +205,11 @@ function eliminarProducto(id) {
           //obtener lo que me trae el conttrolador verificar 
            // console.log(response); 
           // respuesta de lo que necesitamos
-           $("#precio_ingreso").val(response[0].costo);
            $("#stock_ingreso").val(response[0].saldo);
            $("#nombre_ingreso").val(response[0].nombre);
+           $("#precio_ingreso").val(response[0].costo);
+           $("#sede_ingreso").val(response[0].nit);
+           
         },
         error: function(response){
           $("body").overhang({
@@ -218,6 +219,65 @@ function eliminarProducto(id) {
         }
       });
     });
+
+    function ingresarEntradaProductos(){
+      let url = baseurl + "ingresarentrada";
+      var producto = $("#producto_ingreso").val(),
+      cantidad = $("#cantidad_ingreso").val(),
+      valor = $("#valor_ingreso").val(),
+      sede = $("#sede_ingreso").val(),
+      motivo = $("#motivo_ingreso").val(),
+      stock = $("#stock_ingreso").val(),
+      comentarios = $("#comentarios_ingreso").val();
+
+      $.ajax({
+        url: url,
+        method: "POST",
+        data: {
+          producto: producto,
+          cantidad: cantidad,
+          valor: valor,
+          sede: sede,
+          motivo: motivo,
+          comentarios: comentarios,
+          stock: stock
+        },
+        success: function (response){
+          $("body").overhang({
+            type: "success",
+            message: "La entrada de productos se ha registrado correctamente."
+          });
+          setTimeout(reloadPage, 3000);
+        },
+        error: function (response){
+          $("body").overhang({    
+            type: "error",
+            message: "Ha ocurrido un error al registrar la entrada de productos."
+          });
+        }
+      });
+    }
+
+    function ajustarInventario() {
+      $("body").overhang({
+        type: "confirm",
+        primary: "#9a3de0",
+        accent: "#c5b8da",
+        yesColor: "#0033c4",
+        yesMessage: "Sí",
+        noMessage: "No",
+        message: "¿Desea ajustar el stock del inventario?",
+        overlay: true,
+        callback: function (value) {
+          if (value) {
+            //si
+          }
+          else {
+            //no
+          }
+        }
+     });
+    }
 
   function reloadPage() {
   location.reload();
