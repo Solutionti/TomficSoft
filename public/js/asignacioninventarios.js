@@ -73,6 +73,8 @@ function crearInventarios(){
         descripcion = $('#observacion_agregar_inventario').val();
     // hacer la validacion de los campos del imput
     // llamar la funcion ajax que me ejecuta el controlador
+     $("#creinventario").prop("disabled", true);
+     $("#spinnerinventarios").prop("hidden", false);
         $.ajax({
           //url
           url: url,
@@ -91,6 +93,8 @@ function crearInventarios(){
               type: "success",
               message: "El inventario se ha creado en la base de datos correctamente." 
             });
+            $("#creinventario").prop("disabled", false);
+            $("#spinnerinventarios").prop("hidden", true);
             setTimeout(reloadPage, 3000);
           },
           //error
@@ -99,6 +103,8 @@ function crearInventarios(){
               type: "error",
               message: "Alerta ! Tenemos un problema al conectar con la base de datos verifica tu red.",
             });
+            $("#creinventario").prop("disabled", false);
+            $("#spinnerinventarios").prop("hidden", true);
           }
         });
 }

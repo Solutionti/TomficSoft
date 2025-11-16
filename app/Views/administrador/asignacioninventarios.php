@@ -101,7 +101,13 @@
                             <tbody>
                               <?php foreach($asignacionInventarios->getResult() as $asignacionInventario) { ?>
                               <tr>
-                                <td></td>
+                                <td>
+                                  <button
+                                    class="badge badge-primary"
+                                  >
+                                    <i class="fas fa-edit fa-1x "></i>
+                                  </button>
+                                </td>
                                 <td><?= $asignacionInventario->codigo_inventario; ?></td>
                                 <td><?= $asignacionInventario->fecha; ?></td>
                                 <td class="text-uppercase"><?= $asignacionInventario->observacion; ?></td>
@@ -211,7 +217,10 @@
       </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-danger btn-rounded" data-bs-dismiss="modal">Cerrar</button>
-          <button type="button" class="btn btn-primary btn-rounded" onclick="crearInventarios()">Guardar</button>
+          <button type="button" class="btn btn-primary btn-rounded" onclick="crearInventarios()" id="creinventario">
+            <span class="spinner-border spinner-border-sm" id="spinnerinventarios" hidden="true"></span>  
+            Guardar
+          </button>
         </div>
       </div>
     </div>
@@ -643,7 +652,7 @@
   <div class="modal-dialog">
     <div class="modal-content ">
       <div class="modal-header color-morado">
-        <h1 class="modal-title fs-5 text-white" id="exportarexcelmodalLabel">EXPORTAR BASE DE DATOS</h1>
+        <h1 class="modal-title fs-5 text-white" id="exportarexcelmodalLabel">IMPORTAR BASE DE DATOS</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
