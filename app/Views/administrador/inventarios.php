@@ -494,132 +494,135 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <div class="row mt-3">
-          <div class="col-md-3">
-            <label class="mb-1 small ">Categoria *</label>
-            <select
-              class="form-control form-control-sm borde text-uppercase"
-              id="categoria_editar"
-              required
-            >
-            <option value="">Seleccione una categoria</option>
-              <?php foreach($categorias->getResult() as $categoria) { ?>
-                <option value="<?= $categoria->codigo_categoria  ?>"><?= $categoria->nombre; ?></option>  
-              <?php } ?> 
-             
-            </select>
-          </div>
-          <div class="col-md-3">
-            <label class="mb-1 small ">Sub categoria *</label>
-            <input 
-              type="text"
-              id="subcategoria_editar"
-              name="subcategoria_editar"
-              class="form-control form-control-sm borde"
-              required
-            >
-          </div>
-          <div class="col-md-3">
-            <label class="mb-1 small ">Grupo *</label>
-            <input 
-              type="text"
-              id="grupo_editar"
-              name="grupo_editar"
-              class="form-control form-control-sm borde"
-              required
-            >
-          </div>
-          <div class="col-md-3">
-            <label class="mb-1 small ">Sub grupo *</label>
-            <input 
-              type="text"
-              id="subgrupo_editar"
-              name="subgrupo_editar"
-              class="form-control form-control-sm borde"
-              required
-            >
-          </div>
-      </div>
+        <div class="container-fluid">
 
-        <div class="row mt-3">
-          <div class="col-md-3">
-            <label class="mb-1 small ">Nombre *</label>
-            <input 
-              type="text"
-              id="nombre_editar"
-              name="nombre_editar"
-              class="form-control form-control-sm borde"
-              required
-            >
-          </div>
-          <div class="col-md-3">
-            <label class="mb-1 small ">Referencia *</label>
-            <input 
-              type="text"
-              id="referencia_editar"
-              name="referencia_editar"
-              class="form-control form-control-sm borde"
-              required
-            >
-          </div>
-          <div class="col-md-3">
-            <label class="mb-1 small ">Codigo interno *</label>
-              <input
+          <div class="row mt-3">
+            <div class="col-md-3">
+              <label class="mb-1 small ">Categoria *</label>
+              <select
                 class="form-control form-control-sm borde text-uppercase"
-                id="codigo_editar"
-                name="codigo_editar"
-                type="number"
+                id="categoria_editar"
                 required
               >
-              </input>
-          </div>
+              <option value="">Seleccione una categoria</option>
+                <?php foreach($categorias->getResult() as $categoria) { ?>
+                  <option value="<?= $categoria->codigo_categoria  ?>"><?= $categoria->nombre; ?></option>  
+                <?php } ?> 
+               
+              </select>
+            </div>
             <div class="col-md-3">
-              <label class="mb-1 small ">Codigo de barras *</label>
-                <input 
-                  type="number"
-                  id="barras_editar"
-                  name="barras_editar"
-                  class="form-control form-control-sm borde"
-                >
+              <label class="mb-1 small ">Sub categoria *</label>
+              <input 
+                type="text"
+                id="subcategoria_editar"
+                name="subcategoria_editar"
+                class="form-control form-control-sm borde"
+                required
+              >
             </div>
-            
+            <div class="col-md-3">
+              <label class="mb-1 small ">Grupo *</label>
+              <input 
+                type="text"
+                id="grupo_editar"
+                name="grupo_editar"
+                class="form-control form-control-sm borde"
+                required
+              >
+            </div>
+            <div class="col-md-3">
+              <label class="mb-1 small ">Sub grupo *</label>
+              <input 
+                type="text"
+                id="subgrupo_editar"
+                name="subgrupo_editar"
+                class="form-control form-control-sm borde"
+                required
+              >
+            </div>
         </div>
-        <div class="row mt-3">
-          <div class="col-md-2">
-              <label class="mb-1 small ">Nit *</label>
-                <input 
-                  type="number"
-                  id="nit_editar"
-                  name="nit_editar"
-                  class="form-control form-control-sm borde"
-                >
+  
+          <div class="row mt-3">
+            <div class="col-md-3">
+              <label class="mb-1 small ">Nombre *</label>
+              <input 
+                type="text"
+                id="nombre_editar"
+                name="nombre_editar"
+                class="form-control form-control-sm borde"
+                required
+              >
             </div>
-          <div class="col-md-3">
-            <label class="mb-1 small ">Proveedor *</label>
-            <input 
-              type="text"
-              id="proveedor_editar"
-              name="proveedor_editar"
-              class="form-control form-control-sm borde"
-              required>
+            <div class="col-md-3">
+              <label class="mb-1 small ">Referencia *</label>
+              <input 
+                type="text"
+                id="referencia_editar"
+                name="referencia_editar"
+                class="form-control form-control-sm borde"
+                required
+              >
+            </div>
+            <div class="col-md-3">
+              <label class="mb-1 small ">Codigo interno *</label>
+                <input
+                  class="form-control form-control-sm borde text-uppercase"
+                  id="codigo_editar"
+                  name="codigo_editar"
+                  type="number"
+                  required
+                >
+                </input>
+            </div>
+              <div class="col-md-3">
+                <label class="mb-1 small ">Codigo de barras *</label>
+                  <input 
+                    type="number"
+                    id="barras_editar"
+                    name="barras_editar"
+                    class="form-control form-control-sm borde"
+                  >
+              </div>
+              
           </div>
-          <div class="col-md-2">
-            <label class="mb-1 small ">Saldo </label>
-            <input 
-              type="number"
-              id="saldo_editar"
-              name="saldo_editar"
-              class="form-control form-control-sm borde"
-            >
-          </div>
-          <div class="col-md-2">
-            <label class="mb-1 small ">Costo </label>
-            <input 
-              type="number"
-              id="costo_editar"
-              name="costo_editar"
-              class="form-control form-control-sm borde"
-            > 
+          <div class="row mt-3">
+            <div class="col-md-3">
+                <label class="mb-1 small ">Nit *</label>
+                  <input 
+                    type="number"
+                    id="nit_editar"
+                    name="nit_editar"
+                    class="form-control form-control-sm borde"
+                  >
+              </div>
+            <div class="col-md-3">
+              <label class="mb-1 small ">Proveedor *</label>
+              <input 
+                type="text"
+                id="proveedor_editar"
+                name="proveedor_editar"
+                class="form-control form-control-sm borde"
+                required>
+            </div>
+            <div class="col-md-3">
+              <label class="mb-1 small ">Saldo </label>
+              <input 
+                type="number"
+                id="saldo_editar"
+                name="saldo_editar"
+                class="form-control form-control-sm borde"
+              >
+            </div>
+            <div class="col-md-3">
+              <label class="mb-1 small ">Costo </label>
+              <input 
+                type="number"
+                id="costo_editar"
+                name="costo_editar"
+                class="form-control form-control-sm borde"
+              > 
+            </div>
           </div>
         </div>
         

@@ -24,7 +24,7 @@ function eliminarProducto(id) {
      yesColor: "#0033c4",
      yesMessage: "Sí",
      noMessage: "No",
-     message: "¿Desea eliminar el usuario?",
+     message: "¿Desea eliminar el producto?",
      overlay: true,
      callback: function (value) {
       if (value) {
