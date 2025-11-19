@@ -17,17 +17,12 @@ class ConteosController extends BaseController {
   }
 
   public function index(): string {
-    if(session()->get('logeado') == true) {
       $data = [
         "productos" => $this->conteosModel->getProductosAsignacion(),
         "inventarios" => $this->conteosModel->getInventariosSesion(),
         "permisoUsuario" => $this->listasModel->getPermisosMenu()
       ];
       return view('administrador/conteos', $data);
-    }
-    else {
-      return view('iniciarsesion');
-    } 
   }
 
   public function buscarProducto($codigo_producto) {

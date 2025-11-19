@@ -10,14 +10,7 @@ class LoginController extends BaseController {
   }
 
   public function index() {
-
-    if(session()->get('logeado') === true) {
-      return view('administrador/inicio');
-    }
-    else {
-      return view('iniciarsesion');
-    }
-    
+    return view('iniciarsesion');
   }
 
   public function iniciarSesion() {

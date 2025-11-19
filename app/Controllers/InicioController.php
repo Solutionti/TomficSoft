@@ -10,15 +10,12 @@ class InicioController extends BaseController {
   } 
 
   public function index(): string {
-    if(session()->get('logeado') == true) {
+    
       $data = [
         "permisoUsuario" => $this->listasModel->getPermisosMenu()
       ];
       return view('administrador/inicio', $data);
-    }
-    else {
-      return view('iniciarsesion');
-    }
+    
     
   }
 

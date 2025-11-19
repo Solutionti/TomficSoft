@@ -15,7 +15,6 @@ class UsuariosController extends BaseController {
   }
 
   public function index() {
-      if(session()->get('logeado') == true) {
          $data = [
           'permisoUsuario' => $this->listasModel->getPermisosMenu(),
           'permisos' => $this->usuariosModel->getPermisos(),
@@ -23,10 +22,6 @@ class UsuariosController extends BaseController {
           'usuarios' => $this->listasModel->getUsuarios(),
          ];
       return view('administrador/usuarios', $data); 
-     }
-    else {
-      return view('iniciarsesion');
-    }
   }
 
  public function crearUsuario()

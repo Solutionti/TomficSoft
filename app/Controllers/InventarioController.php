@@ -17,7 +17,7 @@ class InventarioController extends BaseController
      }
     
     public function index() {
-      if(session()->get('logeado') == true) {
+      
           $data = [
             'productos' => $this->inventarioModel->getProductos(),
             'categorias' => $this->inventarioModel->getCategorias(),
@@ -26,10 +26,7 @@ class InventarioController extends BaseController
           ];
   
           return view('administrador/inventarios', $data);
-      }
-      else {
-        return view('iniciarsesion');
-      }
+      
 
     }
 

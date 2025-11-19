@@ -22,7 +22,6 @@ class AsignacionController extends BaseController {
     }  
 
     public function index() {
-      if(session()->get('logeado') == true) {
         $data = [
           "productos" => $this->conteosModel->getProductos(),
           "asignacionInventarios" => $this->asignacionModel->getAsignacion(),
@@ -33,12 +32,7 @@ class AsignacionController extends BaseController {
           "reportes" => $this->asignacionModel->getConteosTablaReportes(),
           "permisoUsuario" => $this->listasModel->getPermisosMenu()
         ];
-  
         return view('administrador/asignacioninventarios', $data);
-      }
-      else {
-        return view('iniciarsesion');
-      }
     }
 
     public function crearInventarios(){

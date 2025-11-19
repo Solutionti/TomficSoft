@@ -10,15 +10,11 @@ class ReportesController extends BaseController {
     }
     
     public function index() {
-      if(session()->get('logeado') == true) {
-         $data = [
-          'permisoUsuario' => $this->listasModel->getPermisosMenu(),
-         ];
-        return view('administrador/reportes', $data); 
-     }
-    else {
-        return view('iniciarsesion');
-    }
+       $data = [
+         'permisoUsuario' => $this->listasModel->getPermisosMenu(),
+      ];
+      return view('administrador/reportes', $data); 
+    
   }
 
 }

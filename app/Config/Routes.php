@@ -6,12 +6,14 @@ use CodeIgniter\Router\RouteCollection;
  * @var RouteCollection $routes
  */
 
-
 //INICIO DE SESION
 $routes->get('/', 'LoginController::index');
 $routes->post('/iniciarsesion', 'LoginController::iniciarSesion');
 $routes->get('/cerrarsesion', 'LoginController::cerrarSesion');
 
+//RUTAS PROTEGIDAS 
+
+$routes->group('', ['filter' => 'auth'], function($routes) {
 // INICIO
 $routes->get('/inicio', 'InicioController::index');
 
@@ -61,6 +63,9 @@ $routes->get('/ventas', 'VentasController::index');
 $routes->get('/reportes', 'ReportesController::index');
 
 // REPORTES
-$routes->get('/pedidos', 'PedidosController::index');
+$routes->get('/pedidos', 'PedidosController::index'); 
+});
+
+
 
 
