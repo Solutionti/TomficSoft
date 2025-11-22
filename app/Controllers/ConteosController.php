@@ -110,7 +110,7 @@ class ConteosController extends BaseController {
    $filas = $hoja->toArray();
    $totalInsertados = 0;
    foreach ($filas as $index => $fila) {
-    //  if ($index == 0) continue;
+    if ($index == 0) continue;
     $datos = [
       "codigo_interno" => $fila[0],
       "codigo_barras" => $fila[1],
