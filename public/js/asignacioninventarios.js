@@ -330,7 +330,7 @@ function procesoDatosModalActualizar(codigo) {
     success: function(response) {
       
       $("#codigo_actualizar_inventario").val(response[0].codigo_inventario);
-      $("#fecha_actualizar_inventario").val(response[0].fecha);
+      $("#fecha_actualizar_inventario").val(response[0].fecha_inicio);
       $("#conteos_actualizar_inventario").val(response[0].conteos);
       $("#observacion_actualizar_inventario").val(response[0].observacion);
     },

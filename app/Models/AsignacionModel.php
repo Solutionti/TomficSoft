@@ -48,6 +48,19 @@ class AsignacionModel extends Model {
                ->insert($query);
    }
 
+   public function actualizarinventario( $codigo, $fecha, $descripcion, $conteos) {
+      $datos = [
+        "fecha_inicio" => $fecha,
+        "observacion" => $descripcion,
+        "conteos" => $conteos
+      ];
+
+      $this->db->table('inventarios')
+               ->where("codigo_inventario", $codigo)
+               ->update($datos);
+
+   }
+
    public function getcategorias() {
     $query = $this->db->table('productos')
                       ->select('categoria')

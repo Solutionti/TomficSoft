@@ -46,6 +46,16 @@ class AsignacionController extends BaseController {
 
     }
 
+    public function actualizarinventario() {
+      $codigo = $this->request->getPost('codigo');
+      $fecha = $this->request->getPost('fecha');
+      $conteos = $this->request->getPost('conteos');
+      $descripcion = $this->request->getPost('descripcion');
+
+
+      $this->asignacionModel->actualizarinventario($codigo, $fecha, $descripcion, $conteos); ;  
+    }
+
     public function buscarProductosAsignar() {
       $subcategoria = $this->request->getPost('subcategoria');
       $grupo = $this->request->getPost('grupo');

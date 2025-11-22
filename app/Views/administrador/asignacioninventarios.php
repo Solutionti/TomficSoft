@@ -16,6 +16,7 @@
             <div class="page-header flex-wrap">
               <div class="header-left">
                 <button class="btn btn-primary mb-2 mb-md-0 me-2 btn-rounded" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Agregar inventario</button>
+                <button class="btn btn-success mb-2 mb-md-0 me-2 btn-rounded" >Agregar ubicaciones</button>
                 <button class="btn btn-outline-danger mb-2 mb-md-0 me-2 btn-rounded" data-bs-toggle="modal" data-bs-target="#modalProceso">Reportes</button>
                 <button
                   class="btn btn-outline-primary bg-white mb-2 mb-md-0 btn-rounded"
@@ -745,7 +746,6 @@
                 type="date"
                 id="fecha_actualizar_inventario"
                 class="form-control form-control-sm borde"
-                readonly
               >
             </div>
              <div class="col-md-4">
