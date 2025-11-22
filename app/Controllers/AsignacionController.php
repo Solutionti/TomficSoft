@@ -25,6 +25,7 @@ class AsignacionController extends BaseController {
         $data = [
           "productos" => $this->conteosModel->getProductos(),
           "asignacionInventarios" => $this->asignacionModel->getAsignacion(),
+          "categorias" => $this->asignacionModel->getcategorias(),
           "subcategorias" => $this->asignacionModel->getSubcategorias(),
           "grupos" => $this->asignacionModel->getGrupo(),
           "subgrupos" => $this->asignacionModel->getSubgrupo(),
@@ -49,8 +50,9 @@ class AsignacionController extends BaseController {
       $subcategoria = $this->request->getPost('subcategoria');
       $grupo = $this->request->getPost('grupo');
       $subgrupo = $this->request->getPost('subgrupo');
+      $categoria = $this->request->getPost('categoria');
 
-      $productos = $this->asignacionModel->buscarProductosAsignar($subcategoria, $grupo, $subgrupo);
+      $productos = $this->asignacionModel->buscarProductosAsignar($categoria,$subcategoria, $grupo, $subgrupo);
 
       if(!empty($productos)){
         return $this->response->setJSON($productos);

@@ -63,7 +63,8 @@ $routes->get('/ventas', 'VentasController::index');
 $routes->get('/reportes', 'ReportesController::index');
 
 // PEDIDOS
-$routes->get('/pedidos', 'PedidosController::index'); 
+$routes->get('/pedidos', 'PedidosController::index');
+
 });
 
 

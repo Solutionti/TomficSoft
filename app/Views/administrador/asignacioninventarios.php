@@ -104,6 +104,9 @@
                                 <td>
                                   <button
                                     class="badge badge-primary"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#actualizarinventario"
+                                    onclick="procesoDatosModalActualizar(<?= $asignacionInventario->codigo_inventario; ?>)"
                                   >
                                     <i class="fas fa-edit fa-1x "></i>
                                   </button>
@@ -236,59 +239,62 @@
       </div>
       <div class="modal-body">
 <!-- aca va el formulario -->
-        <div class="row mt-2">
-          <div class="col-md-1">
-            <label class="mb-1 small">Id</label>
-            <input 
-              type="text"
-              class="form-control form-control-sm borde"
-              id="id_conteo_modal"
-            >
-          </div>
-          <div class="col-md-3">
-            <label class="mb-1 small">Ubicacion</label>
-            <select
-                class="form-control form-control-sm borde text-uppercase"
-                id="ubicacion_conteo"
+        <div class="container-fluid">
+
+          <div class="row mt-2">
+            <div class="col-md-1">
+              <label class="mb-1 small">Id</label>
+              <input 
+                type="text"
+                class="form-control form-control-sm borde"
+                id="id_conteo_modal"
               >
-                <option value="">Seleccione Ubicacion</option>
-                <option value="Piso de venta">Piso de venta</option>
-                <option value="Bodega">Bodega</option>    
-               </select>
+            </div>
+            <div class="col-md-3">
+              <label class="mb-1 small">Ubicacion</label>
+              <select
+                  class="form-control form-control-sm borde text-uppercase"
+                  id="ubicacion_conteo"
+                >
+                  <option value="">Seleccione Ubicacion</option>
+                  <option value="Piso de venta">Piso de venta</option>
+                  <option value="Bodega">Bodega</option>    
+                 </select>
+            </div>
+            <div class="col-md-4">
+              <label class="mb-1 small">Localizacion</label>
+              <select
+                id="localizacion_conteo"
+                class="form-control form-control-sm borde text-uppercase"
+                onchange="getnumerolocalizacion()"
+              >
+                <option value="">Seleccione Localizacion</option>
+                <option value="GONDOLA">GONDOLA</option>
+                <option value="NEVERAS">NEVERAS</option>
+                <option value="VITRINAS">VITRINAS</option>
+              </select>
+            </div>
+            
+            <div class="col-md-4">
+              <label class="mb-1 small">N. Localizacion</label>
+              <input 
+                type="text"
+                id="numero_conteo"
+                class="form-control form-control-sm borde"
+                readonly
+              >
+            </div>
           </div>
-          <div class="col-md-4">
-            <label class="mb-1 small">Localizacion</label>
-            <select
-              id="localizacion_conteo"
-              class="form-control form-control-sm borde text-uppercase"
-              onchange="getnumerolocalizacion()"
-            >
-              <option value="">Seleccione Localizacion</option>
-              <option value="GONDOLA">GONDOLA</option>
-              <option value="NEVERAS">NEVERAS</option>
-              <option value="VITRINAS">VITRINAS</option>
-            </select>
-          </div>
-          
-          <div class="col-md-4">
-            <label class="mb-1 small">N. Localizacion</label>
-            <input 
-              type="text"
-              id="numero_conteo"
-              class="form-control form-control-sm borde"
-              readonly
-            >
-          </div>
-        </div>
-        <div class="row mt-3">
-          <div class="col-md-12">
-            <label class="mb-1 small ">Observaciòn *</label>
-            <textarea 
-              type="text"
-              id="observacion_agregar_inventarios"
-              class="form-control form-control-md borde"
-              rows="27"
-              ></textarea>
+          <div class="row mt-3">
+            <div class="col-md-12">
+              <label class="mb-1 small ">Observaciòn *</label>
+              <textarea 
+                type="text"
+                id="observacion_agregar_inventarios"
+                class="form-control form-control-md borde"
+                rows="27"
+                ></textarea>
+            </div>
           </div>
         </div>
       </div>
@@ -393,141 +399,153 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <div class="row mt-3">
-          <div class="col-md-4 ">
-            <label class="mb-1 small">Fecha</label>
-            <input
-              type="date"
-              class="form-control form-control-sm borde"
-              id="fecha_asignacion"
-              readonly
-            >
+        <div class="container-fluid">
+
+          <div class="row mt-3">
+            <div class="col-md-4 ">
+              <label class="mb-1 small">Fecha</label>
+              <input
+                type="date"
+                class="form-control form-control-sm borde"
+                id="fecha_asignacion"
+                readonly
+              >
+            </div>
+            <!--  -->
+            <div class="col-md-6">
+              <label class="mb-1 small">Observación</label>
+              <input
+                type="text"
+                 class="form-control form-control-sm borde"
+                 id="observacion_asignacion"
+                  readonly
+              >
+            </div>
+            <!--  -->
+            <div class="col-md-2">
+              <label class="mb-1 small">Codigo Inventario</label>
+              <input
+                type="text"
+                 class="form-control form-control-sm borde"
+                 id="codigo_asignacion"
+                  readonly
+              >
+            </div>
           </div>
           <!--  -->
-          <div class="col-md-6">
-            <label class="mb-1 small">Observación</label>
-            <input
-              type="text"
-               class="form-control form-control-sm borde"
-               id="observacion_asignacion"
-                readonly
-            >
+          <div class="row mt-4">
+            <div class="col-md-4 ">
+              <label class="mb-1 small">Ubicación</label>
+              <input
+                type="text"
+                 class="form-control form-control-sm borde"
+                 id="ubicacion_asignacion"
+                  readonly
+              >
+            </div>
+            <!--  -->
+            <div class="col-md-3">
+              <label class="mb-1 small">Localización</label>
+              <input
+                type="text"
+                 class="form-control form-control-sm borde"
+                 id="localizacion_asignacion"
+                  readonly
+              >
+            </div>
+            <!--  -->
+            <div class="col-md-3">
+              <label class="mb-1 small">N° Localización</label>
+              <input
+                type="text"
+                 class="form-control form-control-sm borde"
+                 id="nlocalizacion_asignacion"
+                  readonly
+              >
+            </div>
+             <div class="col-md-2">
+              <label class="mb-1 small"># conteos</label>
+              <input
+                type="text"
+                 class="form-control form-control-sm borde"
+                 id="nconteos_asignacion"
+                 readonly
+              >
+            </div>
           </div>
-          <!--  -->
-          <div class="col-md-2">
-            <label class="mb-1 small">Codigo Inventario</label>
-            <input
-              type="text"
-               class="form-control form-control-sm borde"
-               id="codigo_asignacion"
-                readonly
-            >
-          </div>
-        </div>
-        <!--  -->
-        <div class="row mt-4">
-          <div class="col-md-4 ">
-            <label class="mb-1 small">Ubicación</label>
-            <input
-              type="text"
-               class="form-control form-control-sm borde"
-               id="ubicacion_asignacion"
-                readonly
-            >
-          </div>
-          <!--  -->
-          <div class="col-md-4">
-            <label class="mb-1 small">Localización</label>
-            <input
-              type="text"
-               class="form-control form-control-sm borde"
-               id="localizacion_asignacion"
-                readonly
-            >
-          </div>
-          <!--  -->
-          <div class="col-md-4">
-            <label class="mb-1 small">N° Localización</label>
-            <input
-              type="text"
-               class="form-control form-control-sm borde"
-               id="nlocalizacion_asignacion"
-                readonly
-            >
-          </div>
-        </div>
-        <div class="row mt-4">
-          <div class="col-md-6">
-             <h5>Asignar usuario conteo 1</h5>
-             <br>
-            <table class="table table-striped" id="tablaconteo1usuario">
-              <thead >
-                <tr>
-                  <th class="color-morado text-white text-uppercase"> </th>
-                  <th class="color-morado text-white text-uppercase">Codigo</th>
-                  <th class="color-morado text-white text-uppercase">Nombre</th>
-                  <th class="color-morado text-white text-uppercase">Apellido</th>
-                  <th class="color-morado text-white text-uppercase">Rol</th>
-                  <th class="color-morado text-white text-uppercase">Estado</th>
-                </tr>
-              </thead>
-              <tbody>
-                <?php foreach($usuarios->getResult() as $usuario) { ?>
-                <tr>
-                  <td>
-                    <div class="form-check">
-                      <input
-                        class="form-check-input mx-3 borde chk"
-                        type="checkbox"
-                        value="<?= $usuario->documento; ?>"
-                      >
-                    </div>
-                  </td>
-                  <td><?= $usuario->documento; ?></td>
-                  <td><?= $usuario->nombre; ?></td>
-                  <td><?= $usuario->apellido; ?></td>
-                  <td><?= $usuario->rol_usuario; ?></td>
-                  <td><?= $usuario->estado; ?></td>
-                </tr> 
-                <?php } ?> 
-              </tbody>
-            </table>  
-          </div>
-          <div class="col-md-6">
-            <h5>Asignar usuario conteo 2</h5>
-            <br>
-            <table class="table table-striped" id="tablaconteo2usuario">
-              <thead >
-                <tr>
-                  <th class="color-morado text-white text-uppercase"> </th>
-                  <th class="color-morado text-white text-uppercase">Codigo</th>
-                  <th class="color-morado text-white text-uppercase">Nombre</th>
-                  <th class="color-morado text-white text-uppercase">Apellido</th>
-                  <th class="color-morado text-white text-uppercase">Rol</th>
-                  <th class="color-morado text-white text-uppercase">Estado</th>
-                </tr> 
-              </thead>
-              <tbody>
-                <?php foreach($usuarios->getResult() as $usuario) { ?>
-                <tr>
-                  <td>
-                    <div class="form-check">
-                      <input
-                        class="form-check-input mx-3 borde fila"
-                        type="checkbox"
-                        value="<?= $usuario->documento; ?>"
-                      >
-                    </div>
-                  </td>
-                  <td><?= $usuario->documento; ?></td>
-                  <td><?= $usuario->nombre; ?></td>
-                  <td><?= $usuario->apellido; ?></td>
-                  <td><?= $usuario->rol_usuario; ?></td>
-                  <td><?= $usuario->estado; ?></td>
-                </tr> 
-                <?php } ?>  
-              </tbody>
-            </table>
+          <div class="row mt-4">
+            <div class="col-md-6">
+               <h5>Asignar usuario conteo 1</h5>
+               <br>
+              <table class="table table-striped" id="tablaconteo1usuario">
+                <thead >
+                  <tr>
+                    <th class="color-morado text-white text-uppercase"> </th>
+                    <th class="color-morado text-white text-uppercase">Codigo</th>
+                    <th class="color-morado text-white text-uppercase">Nombre</th>
+                    <th class="color-morado text-white text-uppercase">Apellido</th>
+                    <th class="color-morado text-white text-uppercase">Rol</th>
+                    <th class="color-morado text-white text-uppercase">Estado</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <?php foreach($usuarios->getResult() as $usuario) { ?>
+                  <tr>
+                    <td>
+                      <div class="form-check">
+                        <input
+                          class="form-check-input mx-3 borde chk"
+                          type="checkbox"
+                          value="<?= $usuario->documento; ?>"
+                        >
+                      </div>
+                    </td>
+                    <td><?= $usuario->documento; ?></td>
+                    <td><?= $usuario->nombre; ?></td>
+                    <td><?= $usuario->apellido; ?></td>
+                    <td><?= $usuario->rol_usuario; ?></td>
+                    <td><?= $usuario->estado; ?></td>
+                  </tr> 
+                  <?php } ?> 
+                </tbody>
+              </table>  
+            </div>
+            <div class="col-md-6">
+              <h5>Asignar usuario conteo 2</h5>
+              <br>
+              <table class="table table-striped" id="tablaconteo2usuario">
+                <thead >
+                  <tr>
+                    <th class="color-morado text-white text-uppercase"> </th>
+                    <th class="color-morado text-white text-uppercase">Codigo</th>
+                    <th class="color-morado text-white text-uppercase">Nombre</th>
+                    <th class="color-morado text-white text-uppercase">Apellido</th>
+                    <th class="color-morado text-white text-uppercase">Rol</th>
+                    <th class="color-morado text-white text-uppercase">Estado</th>
+                  </tr> 
+                </thead>
+                <tbody>
+                  <?php foreach($usuarios->getResult() as $usuario) { ?>
+                  <tr>
+                    <td>
+                      <div class="form-check">
+                        <input
+                          class="form-check-input mx-3 borde fila"
+                          type="checkbox"
+                          value="<?= $usuario->documento; ?>"
+                        >
+                      </div>
+                    </td>
+                    <td><?= $usuario->documento; ?></td>
+                    <td><?= $usuario->nombre; ?></td>
+                    <td><?= $usuario->apellido; ?></td>
+                    <td><?= $usuario->rol_usuario; ?></td>
+                    <td><?= $usuario->estado; ?></td>
+                  </tr> 
+                  <?php } ?>  
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>
@@ -548,94 +566,109 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <div class="row mt-2">
-          <div class="col-md-2">
-            <label class="mb-1 small">Id</label>
-            <input 
-              type="text"
-              class="form-control form-control-sm borde"
-              id="id_inventario_modal"
-              readonly
-            >
-          </div>
-          <div class="col-md-3">
-            <label class="mb-1 small">Subcategoria</label>
-            <select 
-              id="subcategoria_filtro" 
-              class="form-control form-control-sm borde text-uppercase"
-            >
-              <option value="">SELECCIONE UNA SUBCATEGORIA</option>
-              <?php foreach($subcategorias->getResult() as $subcategoria) { ?>
-              <option value="<?= $subcategoria->subcategoria ?>"><?= $subcategoria->subcategoria ?></option>
-              <?php } ?>
-            </select>
-          </div>
-          <div class="col-md-3">
-            <label class="mb-1 small">Grupo</label>
-            <select 
-              id="grupo_filtro" 
-              class="form-control form-control-sm borde text-uppercase"
-            >
-              <option value="">SELECCIONE UN GRUPO</option>
-              <?php foreach($grupos->getResult() as $grupo) { ?>
-              <option value="<?= $grupo->grupo ?>"><?= $grupo->grupo ?></option>
-              <?php } ?>
-            </select>
-          </div>
-          <div class="col-md-3">
-            <label class="mb-1 small">Subgrupo</label>
-            <select 
-              id="subgrupo_filtro" 
-              class="form-control form-control-sm borde text-uppercase"
-            >
-              <option value="">SELECCIONE UN SUBGRUPO</option>
-              <?php foreach($subgrupos->getResult() as $subgrupo) { ?>
-              <option value="<?= $subgrupo->subgrupo ?>"><?= $subgrupo->subgrupo ?></option>
-              <?php } ?>
-            </select>
-          </div>
-          <div class="col-md-1 mt-2">
-            <br>
-            <button
-              class="btn btn-primary btn-rounded btn-sm"
-              onclick="buscarProductosAsignar()"
-              id="btnconsultaproductos"
-            >
-            <span class="spinner-border spinner-border-sm" id="spinnerproducto" hidden="true"></span>
-            <span role="status">Buscar</span> 
-            </button>
-          </div>
-        </div>
+        <div class="container-fluid">
 
-
-        <div class="row mt-4">
-          <div class="col-md-12">
-            <table class="table table-striped table-hover table-borderless">
-              <thead >
-                <tr>
-                  <th class="color-morado text-white text-uppercase">
-                    <div class="form-check">
-                      <input
-                        class="form-check-input mx-4 borde"
-                        type="checkbox"
-                        id="selectAll"
-                      >
-                    </div>
-                  </th>
-                  <th class="color-morado text-white text-uppercase"> Codigo</th>
-                  <th class="color-morado text-white text-uppercase"> EAN8 </th>
-                  <th class="color-morado text-white text-uppercase"> Nombre </th>
-                  <th class="color-morado text-white text-uppercase"> proveedor </th>
-                  <th class="color-morado text-white text-uppercase"> Categoria </th>
-                  <th class="color-morado text-white text-uppercase"> subCategoria </th>
-                  <th class="color-morado text-white text-uppercase"> estado </th>
-                </tr>
-              </thead>
-              <tbody id="tabla_productos_asignar">
-                         
-              </tbody>
-            </table>
-            
+          <div class="row mt-2">
+            <div class="col-md-1">
+              <label class="mb-1 small">Id</label>
+              <input 
+                type="text"
+                class="form-control form-control-sm borde"
+                id="id_inventario_modal"
+                readonly
+              >
+            </div>
+            <div class="col-md-3">
+              <label class="mb-1 small">Categoria</label>
+              <select 
+                id="categoria_filtro" 
+                class="form-control form-control-sm borde text-uppercase"
+              >
+                <option value="">SELECCIONE UNA CATEGORIA</option>
+                <?php foreach($categorias->getResult() as $categoria) { ?>
+                <option value="<?= $categoria->categoria ?>"><?= $categoria->categoria ?></option>
+                <?php } ?>
+              </select>
+            </div>
+            <div class="col-md-3">
+              <label class="mb-1 small">Subcategoria</label>
+              <select 
+                id="subcategoria_filtro" 
+                class="form-control form-control-sm borde text-uppercase"
+              >
+                <option value="">SELECCIONE UNA SUBCATEGORIA</option>
+                <?php foreach($subcategorias->getResult() as $subcategoria) { ?>
+                <option value="<?= $subcategoria->subcategoria ?>"><?= $subcategoria->subcategoria ?></option>
+                <?php } ?>
+              </select>
+            </div>
+            <div class="col-md-2">
+              <label class="mb-1 small">Grupo</label>
+              <select 
+                id="grupo_filtro" 
+                class="form-control form-control-sm borde text-uppercase"
+              >
+                <option value="">SELECCIONE UN GRUPO</option>
+                <?php foreach($grupos->getResult() as $grupo) { ?>
+                <option value="<?= $grupo->grupo ?>"><?= $grupo->grupo ?></option>
+                <?php } ?>
+              </select>
+            </div>
+            <div class="col-md-2">
+              <label class="mb-1 small">Subgrupo</label>
+              <select 
+                id="subgrupo_filtro" 
+                class="form-control form-control-sm borde text-uppercase"
+              >
+                <option value="">SELECCIONE UN SUBGRUPO</option>
+                <?php foreach($subgrupos->getResult() as $subgrupo) { ?>
+                <option value="<?= $subgrupo->subgrupo ?>"><?= $subgrupo->subgrupo ?></option>
+                <?php } ?>
+              </select>
+            </div>
+            <div class="col-md-1 mt-2">
+              <br>
+              <button
+                class="btn btn-primary btn-rounded btn-sm"
+                onclick="buscarProductosAsignar()"
+                id="btnconsultaproductos"
+              >
+              <span class="spinner-border spinner-border-sm" id="spinnerproducto" hidden="true"></span>
+              <span role="status">Buscar</span> 
+              </button>
+            </div>
+          </div>
+  
+  
+          <div class="row mt-4">
+            <div class="col-md-12">
+              <table class="table table-striped table-hover table-borderless">
+                <thead >
+                  <tr>
+                    <th class="color-morado text-white text-uppercase">
+                      <div class="form-check">
+                        <input
+                          class="form-check-input mx-4 borde"
+                          type="checkbox"
+                          id="selectAll"
+                        >
+                      </div>
+                    </th>
+                    <th class="color-morado text-white text-uppercase"> Codigo</th>
+                    <th class="color-morado text-white text-uppercase"> EAN8 </th>
+                    <th class="color-morado text-white text-uppercase"> Nombre </th>
+                    <th class="color-morado text-white text-uppercase"> proveedor </th>
+                    <th class="color-morado text-white text-uppercase"> Categoria </th>
+                    <th class="color-morado text-white text-uppercase"> subCategoria </th>
+                    <th class="color-morado text-white text-uppercase"> estado </th>
+                  </tr>
+                </thead>
+                <tbody id="tabla_productos_asignar">
+                           
+                </tbody>
+              </table>
+              
+            </div>
           </div>
         </div>
       </div>
@@ -684,6 +717,71 @@
     </div>
   </div>
 </div>
+
+<!-- ACTUALIZAR EL INVENTARIO  -->
+ <div class="modal fade" id="actualizarinventario" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="actualizarinventarioLabel" aria-hidden="true">
+  <div class="modal-dialog modal-fullscreen">
+    <div class="modal-content">
+      <div class="modal-header color-morado">
+        <h1 class="modal-title fs-5  text-white" id="actualizarinventarioLabel">ACTUALIZAR  INVENTARIO</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="container-fluid">
+
+          <div class="row mt-3">
+            <div class="col-md-2">
+              <label class="mb-1 small">Codigo inventario *</label>
+              <input 
+                type="number"
+                id="codigo_actualizar_inventario"
+                class="form-control form-control-sm borde"
+                readonly
+              >
+            </div>
+            <div class="col-md-6">
+              <label class="mb-1 small">Fecha inicial *</label>
+              <input 
+                type="date"
+                id="fecha_actualizar_inventario"
+                class="form-control form-control-sm borde"
+                readonly
+              >
+            </div>
+             <div class="col-md-4">
+              <label class="mb-1 small">Cuantos conteos? *</label>
+              <select
+                class="form-control form-control-sm borde"
+                id="conteos_actualizar_inventario"
+              >
+                <option value="">Seleccione a cuantos conteos </option>
+                <option value="1">1 </option>
+                <option value="2">2</option>
+              </select>
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-md-12">
+              <label class="mb-1 small ">Observaciòn *</label>
+              <textarea 
+                type="text"
+                id="observacion_actualizar_inventario"
+                class="form-control form-control-md borde"
+                rows="27"
+                ></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger btn-rounded" data-bs-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-primary btn-rounded" onclick="actualizarInventarios()">
+            Actualizar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 
 <?php require_once("componentes/scripts.php")?>
 <script src="<?= base_url('js/conteos.js') ?>"></script>

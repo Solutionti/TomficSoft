@@ -127,7 +127,8 @@ function buscarProductosAsignar() {
   var url = baseurl + 'buscarproductos';
   var grupo = $('#grupo_filtro').val(),
       subgrupo = $('#subgrupo_filtro').val(),
-      subcategoria = $('#subcategoria_filtro').val();
+      subcategoria = $('#subcategoria_filtro').val(),
+      categoria = $('#categoria_filtro').val();
 
   $("#btnconsultaproductos").prop("disabled", true);
   $("#spinnerproducto").prop("hidden", false);
@@ -138,9 +139,11 @@ function buscarProductosAsignar() {
     data: {
       grupo: grupo,
       subgrupo: subgrupo,
-      subcategoria: subcategoria
+      subcategoria: subcategoria,
+      categoria: categoria
     },
     success: function(response) {
+      console.log(response);
       const tbody = document.querySelector("#tabla_productos_asignar");
       tbody.innerHTML = "";
       response.forEach(element => {
@@ -213,6 +216,7 @@ function procesoDatosModal(id) {
       $("#codigo_asignacion").val(response[0].codigo_inventario);
       $("#observacion_asignacion").val(response[0].observacion);
       $("#fecha_asignacion").val(response[0].fecha);
+      $("#nconteos_asignacion").val(response[0].conteos);
     },
     error: function() {
       $("body").overhang({
@@ -230,7 +234,9 @@ function asignarUsuarioInventario() {
     let usuario2 = [];
     let checkboxes1 = document.querySelectorAll('#tablaconteo1usuario .chk:checked');
     let checkboxes2 = document.querySelectorAll('#tablaconteo2usuario .fila:checked');
-    
+    let conteos = $("#nconteos_asignacion").val();
+    let usuarioo2 = '';
+
     checkboxes1.forEach(chk => {
         let id = chk.value;
         usuario1.push({ id });
@@ -240,17 +246,32 @@ function asignarUsuarioInventario() {
         let id = fila.value;
         usuario2.push({ id });
     });
-    
-    if(checkboxes1.length == 0) {
+
+     if (checkboxes2.length == 0) {
+      usuarioo2 = 0;
+    }
+    else {
+      usuarioo2 = usuario2[0].id
+    }
+
+    if(conteos == 2 && checkboxes2.length == 0) {
+      $("body").overhang({
+          type: "error",
+          message: "Alerta ! Por favor seleccione el usuario hacer el conteo #2",
+      });
+    }
+
+    else if (conteos == 1 && checkboxes2.length > 0) {
+      $("body").overhang({
+          type: "error",
+          message: "Alerta ! el conteo es de 1 solo usuario",
+      });
+    }
+
+    else if(checkboxes1.length == 0) {
       $("body").overhang({
           type: "error",
           message: "Alerta ! Por favor seleccione el usuario hacer el conteo #1",
-      });
-    }
-    else if (checkboxes2.length == 0) {
-      $("body").overhang({
-        type: "error",
-        message: "Alerta ! Por favor seleccione el usuario hacer el conteo #2",
       });
     }
     else {
@@ -259,7 +280,7 @@ function asignarUsuarioInventario() {
         method: "POST",
         data: {
           usuario1: usuario1[0].id,
-          usuario2: usuario2[0].id,
+          usuario2: usuarioo2,
           codigo_inventario: $('#codigo_asignacion').val()
         },
         success: function(response) {
@@ -279,7 +300,7 @@ function asignarUsuarioInventario() {
         }
       });
     }
-}
+  }
 
 function getnumerolocalizacion() {
   var localizacion = $("#localizacion_conteo").val();
@@ -298,6 +319,61 @@ function getnumerolocalizacion() {
           });
         }
       });
+}
+
+function procesoDatosModalActualizar(codigo) {
+  var url = baseurl + 'getinventarioid/' + codigo;
+
+  $.ajax({
+    url: url,
+    method: "GET",
+    success: function(response) {
+      
+      $("#codigo_actualizar_inventario").val(response[0].codigo_inventario);
+      $("#fecha_actualizar_inventario").val(response[0].fecha);
+      $("#conteos_actualizar_inventario").val(response[0].conteos);
+      $("#observacion_actualizar_inventario").val(response[0].observacion);
+    },
+    error: function() {
+      $("body").overhang({
+        type: "error",
+        message: "Alerta ! Tenemos un problema al conectar con la base de datos verifica tu red.",
+      });
+    }
+  });
+}
+
+function actualizarInventarios() {
+    var url = baseurl + '/actualizarinventario';
+    var codigo = $('#codigo_actualizar_inventario').val(),
+        fecha = $('#fecha_actualizar_inventario').val(),
+        conteos = $('#conteos_actualizar_inventario').val(),
+        descripcion = $('#observacion_actualizar_inventario').val();
+     
+        $.ajax({
+          url: url,
+          method:"POST",
+          data: {
+            codigo: codigo,
+            fecha: fecha,
+            conteos: conteos,
+            descripcion: descripcion
+          },
+          success: function(response) {
+            $("body").overhang({
+              type: "success",
+              message: "El inventario se ha actualizado en la base de datos correctamente."
+            });
+           
+            setTimeout(reloadPage, 3000);
+          },
+          error: function() {
+            $("body").overhang({
+              type: "error",
+              message: "Alerta ! Tenemos un problema al conectar con la base de datos verifica tu red.",
+            });
+          }
+        });
 }
 
 function reloadPage() {

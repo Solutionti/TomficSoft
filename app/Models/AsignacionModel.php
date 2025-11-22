@@ -48,6 +48,15 @@ class AsignacionModel extends Model {
                ->insert($query);
    }
 
+   public function getcategorias() {
+    $query = $this->db->table('productos')
+                      ->select('categoria')
+                      ->distinct()
+                      ->get();
+
+    return $query;
+   }
+
    public function getSubcategorias() {
     $query = $this->db->table('productos')
                       ->select('subcategoria')
@@ -74,18 +83,13 @@ class AsignacionModel extends Model {
     return $query;
    }
 
-   public function buscarProductosAsignar($subcategoria,$grupo,$subgrupo) {
+   public function buscarProductosAsignar($categoria,$subcategoria,$grupo,$subgrupo) {
     
      $query = $this->db->table('productos');
-              if($subcategoria != '') {
-                $query->where('subcategoria', $subcategoria);
-              }
-              else if($grupo != '') {
-                $query->where('grupo', $grupo);
-              }
-              else if($subgrupo != '') {
-                $query->where('subgrupo', $subgrupo);
-              }
+     $query->where('categoria', $categoria);
+     $query->where('subcategoria', $subcategoria);
+     $query->where('grupo', $grupo);
+     $query->where('subgrupo', $subgrupo);
                       
       $consulta = $query->get();
 
