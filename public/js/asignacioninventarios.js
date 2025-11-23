@@ -254,7 +254,13 @@ function asignarUsuarioInventario() {
       usuarioo2 = usuario2[0].id
     }
 
-    if(conteos == 2 && checkboxes2.length == 0) {
+    if(checkboxes1.length == 0) {
+      $("body").overhang({
+          type: "error",
+          message: "Alerta ! Por favor seleccione el usuario hacer el conteo #1",
+      });
+    }
+    else if(conteos == 2 && checkboxes2.length == 0) {
       $("body").overhang({
           type: "error",
           message: "Alerta ! Por favor seleccione el usuario hacer el conteo #2",
@@ -265,13 +271,6 @@ function asignarUsuarioInventario() {
       $("body").overhang({
           type: "error",
           message: "Alerta ! el conteo es de 1 solo usuario",
-      });
-    }
-
-    else if(checkboxes1.length == 0) {
-      $("body").overhang({
-          type: "error",
-          message: "Alerta ! Por favor seleccione el usuario hacer el conteo #1",
       });
     }
     else {

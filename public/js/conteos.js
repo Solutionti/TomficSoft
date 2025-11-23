@@ -168,7 +168,7 @@ $("#exportardatos").on("click", function(e) {
       $("#archivo").val("");
       $("#exportardatos").prop("disabled", false);
       $("#spinnerexportarproducto").prop("hidden", true);
-      // setTimeout(reloadPage, 3000);
+      setTimeout(reloadPage, 3000);
     },
     error: function(xhr, status, error) {
       $("body").overhang({
