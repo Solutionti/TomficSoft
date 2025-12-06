@@ -215,10 +215,10 @@ class AsignacionModel extends Model {
         "estado" => $data['estado'],
         "fecha" => $data['fecha'],
         "hora" => $data['hora'],
-        "usuario" => $data['usuario']
+        // "usuario" => $data['usuario']
       ];
 
-       $this->db->table('productos_conteo')
+       $this->db->table('asignacion_productos')
                 ->insert($asignacion);
 
        $inventarios = [
