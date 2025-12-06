@@ -7,11 +7,10 @@ use App\Models\ConteosModel;
 use App\Models\AsignacionModel;
 use App\Models\ListasModel;
 use CodeIgniter\HTTP\ResponseInterface;
-
-use FPDF;
-
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+use PhpOffice\PhpSpreadsheet\IOFactory;
+use FPDF;
 
 class AsignacionController extends BaseController {
 
@@ -64,8 +63,12 @@ class AsignacionController extends BaseController {
 
       $productos = $this->asignacionModel->buscarProductosAsignar($categoria,$subcategoria, $grupo, $subgrupo);
 
+      $response = [
+        'data' => $productos
+      ];
+
       if(!empty($productos)){
-        return $this->response->setJSON($productos);
+        return $this->response->setJSON($response);
       }
       else {
         echo "error";
@@ -272,6 +275,29 @@ class AsignacionController extends BaseController {
       $result = $this->asignacionModel->getNumeroLocalizacion($localizacion);
 
       return $this->response->setJSON($result);
+    }
+
+    public function cargarExcelProductosInventarios() {
+      $filePath = $_FILES['archivo']['tmp_name'];
+      $spreadsheet = IOFactory::load($filePath);
+      $hoja = $spreadsheet->getActiveSheet();
+      $filas = $hoja->toArray();
+
+      foreach ($filas as $index => $fila) {
+        if ($index == 0) continue;
+        // echo $fila[1];
+        // exit;
+        $datos = [
+          "codigo_producto" => $fila[1],
+          "codigo_inventario" => $this->request->getPost('codigo'),
+          "estado" => "Activo",
+          "fecha" => $this->request->getPost('fecha'),
+          "hora" => $this->request->getPost('hora'),
+          "usuario" => $this->request->getPost('usuario')
+        ];
+
+        $this->asignacionModel->cargarExcelProductosInventarios($datos);
+      }
     }
     
 }

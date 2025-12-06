@@ -1,12 +1,11 @@
-
-$("#table-productos").DataTable({
+$("#resultTable").DataTable({
   "lengthMenu": [5, 50, 100, 200],
   "language":{
   "processing": "Procesando",
   "search": "Buscar:",
-  "lengthMenu": "Ver _MENU_ Productos",
-  "info": "Viendo _START_ a _END_ de _TOTAL_ Productos",
-  "zeroRecords": "No encontraron resultados",
+  "lengthMenu": "Ver _MENU_ Productos conteo",
+  "info": "Viendo _START_ a _END_ de _TOTAL_ Productos conteo",
+  "zeroRecords": "No se encontraron resultados",
   "paginate": {
     "first":      "Primera",
     "last":       "Ultima",
@@ -16,52 +15,57 @@ $("#table-productos").DataTable({
  }
 });
 
-document.getElementById('selectAll').addEventListener('change', function() {
-    let checkboxes = document.querySelectorAll('.fila');
-    checkboxes.forEach(cb => cb.checked = this.checked);
-});
+$("#btnObtener").on("click", function(e) {
+  e.preventDefault();
+  let codigo = $("#id_inventario_modal").val(),
+      fecha = $("#fecha_inventario_modal").val(),
+      hora = $("#hora_inventario_modal").val(),
+      usuario = $("#usuario_inventario_modal").val();
+  let url = baseurl + 'cargarexcelproductosinventarios';
+  let formData = new FormData();
+  formData.append("archivo", document.getElementById("fileInput").files[0]);
+  formData.append("codigo", codigo);
+  formData.append("fecha", fecha);
+  formData.append("hora", hora);
+  formData.append("usuario", usuario);
 
-document.getElementById('btnObtener').addEventListener('click', function() {
-    let seleccionados = [];
-    let checkboxes = document.querySelectorAll('.fila:checked');
-    
-    checkboxes.forEach(cb => {
-        seleccionados.push(cb.value);
-    });
-    var url = baseurl + '/asinarproductosinventario',
-        id_inventario = $('#id_inventario_modal').val();
-
-    if(seleccionados.length == 0) {
-      $("body").overhang({
-          type: "error",
-          message: "Alerta ! Por favor seleccione al menos 1 producto asociar al inventario",
-      });
-    }
-    else {
-      $.ajax({
-        url: url,
-        method: "POST",
-        data: {
-          codigoinventario: id_inventario,
-          codigoproducto: seleccionados
-        },
-        success: function(response) {
-          if(response.status == 'success'){
+  $("body").overhang({
+  type: "confirm",
+  primary: "#9a3de0",
+  accent: "#c5b8da",
+  yesColor: "#0033c4",
+  yesMessage: "Sí",
+  noMessage: "No",
+  message: "¿Desea cargar los productos a la base de datos?",
+  overlay: true,
+    callback: function (value) {
+      if (value) {
+        $.ajax({
+          url: url,
+          method: "POST",
+          data: formData,
+          processData: false,
+          contentType: false,
+          success: function(response) {
             $("body").overhang({
               type: "success",
-              message:  response.message
+              message: "Los productos se han asociado al inventario correctamente." 
             });
             setTimeout(reloadPage, 3000);
+          },
+          error: function() {
+            $("body").overhang({
+              type: "error",
+              message: "Alerta ! Tenemos un problema al conectar con la base de datos verifica tu red.",
+            });
           }
-        },
-        error: function() {
-          $("body").overhang({
-            type: "error",
-            message: "Alerta ! Tenemos un problema al conectar con la base de datos verifica tu red.",
-          });
-        }
-      });
+        });
+      }
+      else {
+
+      }
     }
+  });
 });
 
 function crearInventarios(){

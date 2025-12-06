@@ -45,6 +45,8 @@ $routes->get('/generarpdfreportes/(:num)', 'AsignacionController::generarPdf/$1'
 $routes->get('/generarexcelreportes/(:num)', 'AsignacionController::generarExcel/$1');
 $routes->get('/getnumerolocalizacion/(:any)', 'AsignacionController::getNumeroLocalizacion/$1');
 $routes->post('/actualizarinventario', 'AsignacionController::actualizarinventario');
+$routes->post('/cargarexcelproductosinventarios', 'AsignacionController::cargarExcelProductosInventarios');
+
 
 // INVENTARIOS
 $routes->get('/inventarios', 'InventarioController::index');

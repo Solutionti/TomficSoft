@@ -109,6 +109,7 @@ class ConteosController extends BaseController {
    $hoja = $spreadsheet->getActiveSheet();
    $filas = $hoja->toArray();
    $totalInsertados = 0;
+   
    foreach ($filas as $index => $fila) {
     if ($index == 0) continue;
     $datos = [

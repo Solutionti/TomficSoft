@@ -96,7 +96,7 @@ class AsignacionModel extends Model {
     return $query;
    }
 
-   public function buscarProductosAsignar($categoria,$subcategoria,$grupo,$subgrupo) {
+   public function buscarProductosAsignar($categoria,$subcategoria, $grupo, $subgrupo) {
     
      $query = $this->db->table('productos');
      $query->where('categoria', $categoria);
@@ -106,7 +106,7 @@ class AsignacionModel extends Model {
                       
       $consulta = $query->get();
 
-      return $consulta->getResult();
+      return $consulta->getResultArray();
 
    }
 
@@ -206,6 +206,27 @@ class AsignacionModel extends Model {
 
      return $localizacion->getResult();
 
+   }
+
+   public function cargarExcelProductosInventarios($data) {
+      $asignacion = [
+        "codigo_producto" => $data['codigo_producto'],
+        "codigo_inventario" => $data['codigo_inventario'],
+        "estado" => $data['estado'],
+        "fecha" => $data['fecha'],
+        "hora" => $data['hora'],
+        "usuario" => $data['usuario']
+      ];
+
+       $this->db->table('productos_conteo')
+                ->insert($asignacion);
+
+       $inventarios = [
+        "btnproducto" => 1
+      ];
+      $this->db->table('inventarios')
+                ->where("codigo_inventario",$data['codigo_inventario'])
+                ->update($inventarios);
    }
 
 }

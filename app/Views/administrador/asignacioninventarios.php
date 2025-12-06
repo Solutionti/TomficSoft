@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Administracion - Asignacion de inventarios</title>
     <?php require_once("componentes/head.php")?>
+    
 </head>
 <body>
   <div class="container-scroller">
@@ -563,112 +564,106 @@
   <div class="modal-dialog modal-fullscreen">
     <div class="modal-content">
       <div class="modal-header color-morado">
-        <h1 class="modal-title fs-5 text-white" id="listaproductosLabel">LISTADO DE PRODUCTOS</h1>
+        <h1 class="modal-title fs-5 text-white" id="listaproductosLabel">ASIGNACION DE PRODUCTOS</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <div class="container-fluid">
-
-          <div class="row mt-2">
-            <div class="col-md-1">
-              <label class="mb-1 small">Id</label>
-              <input 
-                type="text"
-                class="form-control form-control-sm borde"
-                id="id_inventario_modal"
-                readonly
-              >
-            </div>
-            <div class="col-md-3">
-              <label class="mb-1 small">Categoria</label>
-              <select 
-                id="categoria_filtro" 
-                class="form-control form-control-sm borde text-uppercase"
-              >
-                <option value="">SELECCIONE UNA CATEGORIA</option>
-                <?php foreach($categorias->getResult() as $categoria) { ?>
-                <option value="<?= $categoria->categoria ?>"><?= $categoria->categoria ?></option>
-                <?php } ?>
-              </select>
-            </div>
-            <div class="col-md-3">
-              <label class="mb-1 small">Subcategoria</label>
-              <select 
-                id="subcategoria_filtro" 
-                class="form-control form-control-sm borde text-uppercase"
-              >
-                <option value="">SELECCIONE UNA SUBCATEGORIA</option>
-                <?php foreach($subcategorias->getResult() as $subcategoria) { ?>
-                <option value="<?= $subcategoria->subcategoria ?>"><?= $subcategoria->subcategoria ?></option>
-                <?php } ?>
-              </select>
-            </div>
-            <div class="col-md-2">
-              <label class="mb-1 small">Grupo</label>
-              <select 
-                id="grupo_filtro" 
-                class="form-control form-control-sm borde text-uppercase"
-              >
-                <option value="">SELECCIONE UN GRUPO</option>
-                <?php foreach($grupos->getResult() as $grupo) { ?>
-                <option value="<?= $grupo->grupo ?>"><?= $grupo->grupo ?></option>
-                <?php } ?>
-              </select>
-            </div>
-            <div class="col-md-2">
-              <label class="mb-1 small">Subgrupo</label>
-              <select 
-                id="subgrupo_filtro" 
-                class="form-control form-control-sm borde text-uppercase"
-              >
-                <option value="">SELECCIONE UN SUBGRUPO</option>
-                <?php foreach($subgrupos->getResult() as $subgrupo) { ?>
-                <option value="<?= $subgrupo->subgrupo ?>"><?= $subgrupo->subgrupo ?></option>
-                <?php } ?>
-              </select>
-            </div>
-            <div class="col-md-1 mt-2">
-              <br>
-              <button
-                class="btn btn-primary btn-rounded btn-sm"
-                onclick="buscarProductosAsignar()"
-                id="btnconsultaproductos"
-              >
-              <span class="spinner-border spinner-border-sm" id="spinnerproducto" hidden="true"></span>
-              <span role="status">Buscar</span> 
-              </button>
-            </div>
+            <div class="row mt-2">
+              <div class="col-md-3">
+                <label class="mb-1 small">Codigo</label>
+                <input 
+                  type="text"
+                  class="form-control form-control-sm borde"
+                  id="id_inventario_modal"
+                  readonly
+                >
+              </div>
+              <div class="col-md-3">
+                <label class="mb-1 small">Fecha</label>
+                <input 
+                  type="date"
+                  class="form-control form-control-sm borde"
+                  id="fecha_inventario_modal"
+                  value="<?php echo date("Y-m-d") ?>"
+                  readonly
+                >
+              </div>
+              <div class="col-md-3">
+                <label class="mb-1 small">Hora</label>
+                <input 
+                  type="time"
+                  class="form-control form-control-sm borde"
+                  id="hora_inventario_modal"
+                  value="<?php echo date('H:i'); ?>"
+                  readonly
+                >
+              </div>
+              <div class="col-md-3">
+                <label class="mb-1 small">Usuario</label>
+                <input 
+                  type="text"
+                  class="form-control form-control-sm borde"
+                  id="usuario_inventario_modal"
+                  value="<?php echo session('nombre'). ' ' .session('apellido') ?>"
+                  readonly
+                >
+              </div>
           </div>
-  
-  
           <div class="row mt-4">
-            <div class="col-md-12">
-              <table class="table table-striped table-hover table-borderless">
+            <div class="col-md-4">
+              <div class="upload-card">
+                <h3 class="text-center mb-4">
+                  <i class="bi bi-cloud-upload"></i> Subir Archivo
+                </h3>
+                <div class="file-input-wrapper" id="fileWrapper">
+                  <input
+                    type="file"
+                    id="fileInput"
+                    class="form-control"
+                    accept=".xlsx,.xls,.xlsm,.xlsb,.xltx,.xltm"
+                  >
+                  <div class="file-icon">
+                    <i class="bi bi-file-earmark-arrow-up"></i>
+                  </div>
+                    <h5 >Arrastra y suelta tu archivo aquí</h5>
+                    <p class="text-muted mb-0">o haz clic para seleccionar</p>
+                   <small class="text-muted d-block mt-2">Formatos permitidos: XLSX, XLS, XLSM (Max 30MB)</small>
+                </div>
+                <div class="file-info" id="fileInfo">
+                  <div class="d-flex align-items-center justify-content-between">
+                    <div class="d-flex align-items-center">
+                      <i class="bi bi-file-earmark-check text-success fs-3 me-3"></i>
+                      <div>
+                        <strong id="fileName">archivo.pdf</strong>
+                        <small class="text-muted d-block" id="fileSize">2.5 MB</small>
+                      </div>
+                    </div>
+                    <button class="btn btn-sm btn-danger" id="removeFile">
+                      <i class="bi bi-trash"></i>
+                    </button>
+                </div>
+                <div class="progress mt-3" style="height: 6px;">
+                  <div class="progress-bar bg-success" role="progressbar" style="width: 100%"></div>
+                </div>
+              </div>
+             </div>
+            </div>
+            <div class="col-md-8">
+              <table class="table table-striped table-hover table-borderless" id="resultTable">
                 <thead >
                   <tr>
-                    <th class="color-morado text-white text-uppercase">
-                      <div class="form-check">
-                        <input
-                          class="form-check-input mx-4 borde"
-                          type="checkbox"
-                          id="selectAll"
-                        >
-                      </div>
-                    </th>
                     <th class="color-morado text-white text-uppercase"> Codigo</th>
-                    <th class="color-morado text-white text-uppercase"> EAN8 </th>
-                    <th class="color-morado text-white text-uppercase"> Nombre </th>
-                    <th class="color-morado text-white text-uppercase"> proveedor </th>
-                    <th class="color-morado text-white text-uppercase"> Categoria </th>
-                    <th class="color-morado text-white text-uppercase"> subCategoria </th>
-                    <th class="color-morado text-white text-uppercase"> estado </th>
+                    <th class="color-morado text-white text-uppercase"> Inventario</th>
+                    <th class="color-morado text-white text-uppercase"> Fecha </th>
+                    <th class="color-morado text-white text-uppercase"> Hora </th>
+                    <th class="color-morado text-white text-uppercase"> Usuario </th>
+                    <th class="color-morado text-white text-uppercase"> Estado </th>
                   </tr>
                 </thead>
-                <tbody id="tabla_productos_asignar">
-                           
+                <tbody>
                 </tbody>
               </table>
-              
             </div>
           </div>
         </div>
