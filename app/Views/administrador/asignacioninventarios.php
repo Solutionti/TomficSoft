@@ -17,7 +17,7 @@
             <div class="page-header flex-wrap">
               <div class="header-left">
                 <button class="btn btn-primary mb-2 mb-md-0 me-2 btn-rounded" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Agregar inventario</button>
-                <button class="btn btn-success mb-2 mb-md-0 me-2 btn-rounded" >Agregar ubicaciones</button>
+                <button class="btn btn-success mb-2 mb-md-0 me-2 btn-rounded" data-bs-toggle="modal" data-bs-target="#modalasgignacionescrear" >Agregar ubicaciones</button>
                 <button class="btn btn-outline-danger mb-2 mb-md-0 me-2 btn-rounded" data-bs-toggle="modal" data-bs-target="#modalProceso">Reportes</button>
                 <button
                   class="btn btn-outline-primary bg-white mb-2 mb-md-0 btn-rounded"
@@ -777,6 +777,45 @@
       </div>
     </div>
   </div>
+
+<!-- MODAL DE ASIGNACIONES -->
+<div class="modal fade" id="modalasgignacionescrear" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalasgignacionescrearLabel" aria-hidden="true">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="modal-header color-morado">
+        <h1 class="modal-title fs-5 text-white" id="modalasgignacionescrearLabel">CREACION DE UBICACIONES</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+          <li class="nav-item" role="presentation">
+           <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">UBICACIÓN</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">LOCALIZACIÓN</button>
+          </li>
+        </ul>
+        <div class="tab-content" id="pills-tabContent">
+          <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
+          
+          <label class="mb-1 small ">Descripcion</label>
+          <input type="text" class="form-control form-control-sm borde" placeholder="Ubicación">
+            <button class="btn btn-primary mt-2">Guardar</button>        
+          </div>
+          <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0">
+           <label class="mb-1 small ">Descripcion</label>
+           <input type="text" class="form-control form-control-sm borde" placeholder="Localizacion">
+           <button class="btn btn-success mt-2">Guardar</button>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger btn-rounded" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 <?php require_once("componentes/scripts.php")?>
 <script src="<?= base_url('js/conteos.js') ?>"></script>
