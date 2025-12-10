@@ -235,9 +235,9 @@ class AsignacionController extends BaseController {
         $sheet->setCellValue('L1', 'N° LOCALIZACION');
         $sheet->setCellValue('M1', 'USUARIOS');
 
-        // Datos de ejemplo
+        // // Datos de ejemplo
         $data = $this->asignacionModel->getExcelReportes($inventario);
-
+        
         // Insertar datos en filas
         $row = 2;
         foreach ($data->getResult() as $item) {
@@ -260,7 +260,7 @@ class AsignacionController extends BaseController {
         // Descargar archivo
         $writer = new Xlsx($spreadsheet);
 
-        $filename = 'usuarios_' . date('Ymd_His') . '.xlsx';
+        $filename = 'reporte_' . date('Ymd_His') . '.xlsx';
 
         // Headers para forzar la descarga
         header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
@@ -285,8 +285,6 @@ class AsignacionController extends BaseController {
 
       foreach ($filas as $index => $fila) {
         if ($index == 0) continue;
-        // echo $fila[1];
-        // exit;
         $datos = [
           "codigo_producto" => $fila[1],
           "codigo_inventario" => $this->request->getPost('codigo'),

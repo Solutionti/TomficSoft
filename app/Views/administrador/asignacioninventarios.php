@@ -331,9 +331,9 @@
                       <th class="color-morado text-white text-uppercase">Observacion</th>
                       <th class="color-morado text-white text-uppercase">Usuarios</th>
                       <th class="color-morado text-white text-uppercase">Conteo #1</th>
-                      <th class="color-morado text-white text-uppercase">Obs #1</th>
+                      <!-- <th class="color-morado text-white text-uppercase">Obs #1</th> -->
                       <th class="color-morado text-white text-uppercase">Conteo #2</th>
-                      <th class="color-morado text-white text-uppercase">Obs #2</th>
+                      <!-- <th class="color-morado text-white text-uppercase">Obs #2</th> -->
                       <th class="color-morado text-white text-uppercase">Diferencia</th>
                       <th class="color-morado text-white text-uppercase">Validador</th>
                       <th class="color-morado text-white text-uppercase">Imprimir reporte</th>
@@ -346,11 +346,11 @@
                       <td class="text-uppercase"><?= $reporte->localizacion; ?></td>
                       <td><?= $reporte->numerolocalizacion; ?></td>
                       <td class="text-uppercase"><?= $reporte->observacion; ?></td>
-                      <td><?= $reporte->usuarioconteo1.' - '.$reporte->usuarioconteo2; ?></td>
+                      <td><?= $reporte->usuarioconteo1.' --> '.$reporte->usuarioconteo2; ?></td>
                       <td><label class="badge badge-dark"><?= $reporte->conte1; ?></label></td>
-                      <td><label class="badge badge-success ">Ok</label></td>
+                      <!-- <td><label class="badge badge-success ">Proceso</label></td> -->
                       <td><label class="badge badge-dark "><?= $reporte->conte2; ?></label></td>
-                      <td><label class="badge badge-success ">Ok</label></td>
+                      <!-- <td><label class="badge badge-success ">No conteo</label></td> -->
                       <td><label class="badge badge-danger "><?= ($reporte->conte1 - $reporte->conte2); ?></label></td>
                       <?php
                         $total = $reporte->conte1 - $reporte->conte2;

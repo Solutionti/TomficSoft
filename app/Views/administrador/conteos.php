@@ -246,7 +246,7 @@
                     <br>
                     <div class="row">
                       <div class="col-md-6">
-                        <button class="btn btn-primary mb-2 mb-md-0 me-3 mt-4 btn-rounded" id="btnguardar" onclick="GuardarConteo()">Guardar</button>
+                        <button class="btn btn-outline-primary mb-2 mb-md-0 me-3 mt-4 btn-rounded" id="btnguardar" onclick="GuardarConteo()">Guardar</button>
                         <button class="btn btn-success mb-2 mb-md-0 me-3 mt-4 btn-rounded" onclick="modificarConteo()">Modificar</button>
                       </div>
                       <div class="col-md-3">

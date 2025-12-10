@@ -189,7 +189,7 @@ class AsignacionModel extends Model {
     return $reportepdf;
    }
 
-   public function getExcelReportes() {
+   public function getExcelReportes($inventario) {
     $reporteExcel = $this->db->table('captura_conteos')
                            ->select("*")
                            ->where("codigo_inventario", $inventario)
