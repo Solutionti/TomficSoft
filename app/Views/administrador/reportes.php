@@ -19,7 +19,7 @@
           <div class="content-wrapper">
             <div class="page-header flex-wrap">
               <div class="header-left">
-                <button class="btn btn-primary mb-2 mb-md-0 me-2 btn-rounded">FILTROS DE REPORTE</button>
+                <button class="btn btn-primary mb-2 mb-md-0 me-2 btn-rounded" data-bs-toggle="modal" data-bs-target="#diferenciaconteo">FILTROS DE REPORTE</button>
                 <!-- <button class="btn btn-outline-primary bg-white mb-2 mb-md-0">Exportar base de datos</button> -->
               </div>
               <div class="header-right d-flex flex-wrap mt-2 mt-sm-0">
@@ -45,16 +45,16 @@
                       <div>
                         <div class="d-flex flex-wrap pt-2 justify-content-between sales-header-right">
                           <div class="d-flex me-5">
-                            <button type="button" class="btn btn-social-icon btn-outline-sales"><i class="fas fa-database"></i></button>
+                            <button type="button" class="btn btn-social-icon btn-outline-sales"><i class="fas fa-file-pdf text-danger"></i></button>
                             <div class="ps-2">
-                              <h4 class="mb-0 fw-semibold head-count">$8,217</h4>
+                              <h4 class="mb-0 fw-semibold head-count">SC</h4>
                               <span class="font-10 fw-semibold text-muted">SIN CONTEO</span>
                             </div>
                           </div>
                           <div class="d-flex me-3 mt-2 mt-sm-0">
-                            <button type="button" class="btn btn-social-icon btn-outline-sales profit"><i class="fas fa-coins text-info"></i></button>
+                            <button type="button" class="btn btn-social-icon btn-outline-sales profit" id="descargardiferencia"><i class="fas fa-file-excel text-success"></i></button>
                             <div class="ps-2">
-                              <h4 class="mb-0 fw-semibold head-count">2,804</h4>
+                              <h4 class="mb-0 fw-semibold head-count">DC</h4>
                               <span class="font-10 fw-semibold text-muted">DIFERE CONTEOS</span>
                             </div>
                           </div>
@@ -63,14 +63,14 @@
                           <div class="d-flex me-5">
                             <button type="button" class="btn btn-social-icon btn-outline-sales"><i class="fas fa-database"></i></button>
                             <div class="ps-2">
-                              <h4 class="mb-0 fw-semibold head-count">$8,217</h4>
+                              <h4 class="mb-0 fw-semibold head-count">DI</h4>
                               <span class="font-10 fw-semibold text-muted">DIFE INVENTARIOS</span>
                             </div>
                           </div>
                           <div class="d-flex me-3 mt-2 mt-sm-0">
                             <button type="button" class="btn btn-social-icon btn-outline-sales profit"><i class="fas fa-coins text-info"></i></button>
                             <div class="ps-2">
-                              <h4 class="mb-0 fw-semibold head-count">2,804</h4>
+                              <h4 class="mb-0 fw-semibold head-count">GT</h4>
                               <span class="font-10 fw-semibold text-muted">GANANCIA TOTAL</span>
                             </div>
                           </div>
@@ -100,14 +100,14 @@
                           <div class="d-flex me-5">
                             <button type="button" class="btn btn-social-icon btn-outline-sales"><i class="fas fa-database"></i></button>
                             <div class="ps-2">
-                              <h4 class="mb-0 fw-semibold head-count">$8,217</h4>
+                              <h4 class="mb-0 fw-semibold head-count">VP</h4>
                               <span class="font-10 fw-semibold text-muted">VENTA DE PEDIDOS</span>
                             </div>
                           </div>
                           <div class="d-flex me-3 mt-2 mt-sm-0">
                             <button type="button" class="btn btn-social-icon btn-outline-sales profit"><i class="fas fa-coins text-info"></i></button>
                             <div class="ps-2">
-                              <h4 class="mb-0 fw-semibold head-count">2,804</h4>
+                              <h4 class="mb-0 fw-semibold head-count">VD</h4>
                               <span class="font-10 fw-semibold text-muted">VENTA DIARIA</span>
                             </div>
                           </div>
@@ -116,14 +116,14 @@
                           <div class="d-flex me-5">
                             <button type="button" class="btn btn-social-icon btn-outline-sales"><i class="fas fa-database"></i></button>
                             <div class="ps-2">
-                              <h4 class="mb-0 fw-semibold head-count">$8,217</h4>
+                              <h4 class="mb-0 fw-semibold head-count">RK</h4>
                               <span class="font-10 fw-semibold text-muted">REPORTE DE KARDEX</span>
                             </div>
                           </div>
                           <div class="d-flex me-3 mt-2 mt-sm-0">
                             <button type="button" class="btn btn-social-icon btn-outline-sales profit"><i class="fas fa-coins text-info"></i></button>
                             <div class="ps-2">
-                              <h4 class="mb-0 fw-semibold head-count">2,804</h4>
+                              <h4 class="mb-0 fw-semibold head-count">RC</h4>
                               <span class="font-10 fw-semibold text-muted">REPORTE ABC</span>
                             </div>
                           </div>
@@ -141,11 +141,57 @@
               </div>
             </div>
         </div>
+      </div>
     </div>
+  </div>
+</div>
+<?php require_once("componentes/footer.php")?>   <!-- se usa para reutilizar codigo  -->
+</div>
+<!-- FILTRO DE REPORTES  -->
+ <div class="modal fade" id="diferenciaconteo" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="diferenciaconteoLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header color-morado">
+        <h1 class="modal-title fs-5 text-white" id="diferenciaconteoLabel">FILTROS PARA REPORTES</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="mb-3">
+                <label for="fechaInicio" class="form-label">Fecha Inicial</label>
+                <input
+                  type="date"
+                  class="form-control"
+                  id="fechaInicio"
+                  name="fechaInicio"
+                >
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="mb-3">
+                <label for="fechaFin" class="form-label">Fecha Final</label>
+                <input
+                  type="date"
+                  class="form-control"
+                  id="fechaFin"
+                  name="fechaFin"
+                  value="<?= date('Y-m-d'); ?>"
+                >
+              </div>
           </div>
         </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger btn-rounded" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary btn-rounded" data-bs-dismiss="modal">Aceptar</button>
+      </div>
     </div>
-    <?php require_once("componentes/footer.php")?>   <!-- se usa para reutilizar codigo  -->
+  </div>
 </div>
+
+<?php require_once("componentes/scripts.php")?>
+<script src="<?= base_url('js/reportes.js') ?>"></script>
 </body>
 </html>

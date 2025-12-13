@@ -121,5 +121,14 @@ class ConteosModel extends Model {
     return $query;
    }
 
-   
+   public function cerrarInventario($codigo) {
+    $data = [
+      "estado" => "Cerrado",
+      "fecha_cierre" => date("Y-m-d"),
+    ];
+
+    $this->db->table('inventarios')
+             ->where('codigo_inventario', $codigo)
+             ->update($data);
+   }
 }

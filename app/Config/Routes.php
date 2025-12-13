@@ -24,6 +24,8 @@ $routes->post('/cargarexcelproductos', 'ConteosController::cargarExcelProducto')
 $routes->post('/guardarconteo', 'ConteosController::guardarConteo');
 $routes->post('/modificarconteo', 'ConteosController::actualizarConteo');
 $routes->post('/crearvariablesesion', 'ConteosController::CrearVariableSesion');
+$routes->get('/cerrarinventario', 'ConteosController::cerrarInventario');
+
 
 // USUARIOS
 $routes->get('/usuarios', 'UsuariosController::index');
@@ -64,6 +66,7 @@ $routes->get('/ventas', 'VentasController::index');
 
 // REPORTES
 $routes->get('/reportes', 'ReportesController::index');
+$routes->get('/diferenciaconteos/(:any)/(:any)', 'ReportesController::diferenciaConteos/$1/$2');
 
 // PEDIDOS
 $routes->get('/pedidos', 'PedidosController::index');

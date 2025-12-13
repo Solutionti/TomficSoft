@@ -144,4 +144,15 @@ class ConteosController extends BaseController {
     ]);
   }
 
+  public function cerrarInventario() {
+    $inventario = session()->get('inventario');
+    $this->conteosModel->cerrarInventario($inventario);
+    session()->remove('inventario');
+
+    return $this->response->setJSON([
+      "status"  => "success",
+      "message" => "El inventario se ha cerrado correctamente"
+    ]);
+  }
+
 }

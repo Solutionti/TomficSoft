@@ -360,6 +360,8 @@ function modificarConteo() {
 
 
 function finalizarConteo() {
+  var url = baseurl + 'cerrarinventario';
+
  $("body").overhang({
   type: "confirm",
   primary: "#9a3de0",
@@ -367,11 +369,27 @@ function finalizarConteo() {
   yesColor: "#0033c4",
   yesMessage: "Sí",
   noMessage: "No",
-  message: "¿Desea terminar el proceso de conteo?",
+  message: "¿Desea cerrar el inventario asociado a este conteo?" ,
   overlay: true,
   callback: function (value) {
     if (value) {
-
+      $.ajax({
+        url: url,
+        method: 'GET',
+        success: function(response) {
+          $("body").overhang({
+            type: "success",
+            message: "El inventario se ha cerrado correctamente." 
+          });
+      setTimeout(reloadPage, 3000);
+    },
+    error: function() {
+      $("body").overhang({
+        type: "error",
+        message: "Alerta ! Tenemos un problema al conectar con la base de datos verifica tu red.",
+      });
+    }
+  });
     }
     else {
 
@@ -445,6 +463,8 @@ $("#embalaje").on("keypress", function(e) {
     $("#btnguardar").focus();
   }
 });
+
+
 
 function reloadPage() {
   location.reload();

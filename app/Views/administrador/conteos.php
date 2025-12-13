@@ -298,7 +298,8 @@
                   <th class="color-morado text-white text-uppercase"></th>
                   <th class="color-morado text-white text-uppercase">Inventario</th>
                   <th class="color-morado text-white text-uppercase">Descripcion</th>
-                  <th class="color-morado text-white text-uppercase">Fecha</th>
+                  <th class="color-morado text-white text-uppercase">Fecha inicio</th>
+                  <th class="color-morado text-white text-uppercase">Fecha Cierre</th>
                   <th class="color-morado text-white text-uppercase">conteo 1</th>
                   <th class="color-morado text-white text-uppercase">conteo 2</th>
                   <th class="color-morado text-white text-uppercase">Estado</th>
@@ -308,6 +309,7 @@
                 <?php foreach($inventarios->getResult() as $inventario) { ?>
                 <tr>
                   <td>
+                    <?php if($inventario->estado != "Cerrado"){ ?>
                     <div class="form-check">
                       <input
                         class="form-check-input mx-3 borde"
@@ -317,10 +319,12 @@
                         onclick="crearvariableSesion(<?= $inventario->codigo_inventario; ?>)"
                       >
                     </div>
+                    <?php }?>
                   </td>
                   <td><?= $inventario->codigo_inventario; ?></td>
                   <td><?= $inventario->observacion; ?></td>
                   <td><?= $inventario->fecha; ?></td>
+                  <td><?= $inventario->fecha_cierre; ?></td>
                   <?php if($inventario->usuarioconteo1 == session()->get('documento')) { ?>
                   <td class="text-danger"><?= $inventario->usuarioconteo1; ?></td>
                   <?php } else { ?>
@@ -332,7 +336,11 @@
                   <?php } else { ?>
                     <td><?= $inventario->usuarioconteo2; ?></td>
                   <?php } ?>
-                  <td><label class="badge badge-success "><?= $inventario->estado; ?></label></td>
+                  <?php if($inventario->estado == "Activo") { ?>
+                    <td><label class="badge badge-success "><?= $inventario->estado; ?></label></td>
+                  <?php } else {?>
+                    <td><label class="badge badge-danger "><?= $inventario->estado; ?></label></td>
+                  <?php   } ?>
                 </tr>
                 <?php } ?>
               </tbody>
