@@ -5,6 +5,35 @@ use CodeIgniter\Model;
 
 class ReportesModel extends Model {
 
+  public function productosSinConteo($fechaInicio, $fechaFin) {
+     $sql = "
+       SELECT 
+         ap.codigo_inventario,
+         co.codigo_interno,
+         ap.codigo_producto,
+         co.nombre,
+         co.referencia,
+         co.categoria,
+         co.subcategoria,
+         co.grupo,
+         ap.fecha,
+         co.saldo,
+         co.saldo * co.costo AS valor
+      FROM asignacion_productos ap
+      LEFT JOIN productos co ON co.codigo_barras = ap.codigo_producto
+      LEFT JOIN captura_conteos cc ON cc.codigo_producto = ap.codigo_producto 
+                                   AND cc.fecha BETWEEN '$fechaInicio' AND '$fechaFin'
+      WHERE 
+        ap.fecha BETWEEN '$fechaInicio' AND '$fechaFin'
+        AND cc.codigo_producto IS NULL
+      ";
+      
+      $query = $this->db->query($sql);  
+      $resultado = $query->getResult();
+
+      return $resultado;
+  }
+
   public function diferenciaConteos($fechaInicio, $fechaFin) {
     $sql = "
       WITH conteos AS (

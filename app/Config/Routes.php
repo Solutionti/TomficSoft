@@ -67,6 +67,8 @@ $routes->get('/ventas', 'VentasController::index');
 // REPORTES
 $routes->get('/reportes', 'ReportesController::index');
 $routes->get('/diferenciaconteos/(:any)/(:any)', 'ReportesController::diferenciaConteos/$1/$2');
+$routes->get('/productossinconteo/(:any)/(:any)', 'ReportesController::productosSinConteoPdf/$1/$2');
+$routes->get('/productossinconteoexcel/(:any)/(:any)', 'ReportesController::productosSinConteoExcel/$1/$2');
 
 // PEDIDOS
 $routes->get('/pedidos', 'PedidosController::index');

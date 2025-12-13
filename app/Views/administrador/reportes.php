@@ -45,7 +45,8 @@
                       <div>
                         <div class="d-flex flex-wrap pt-2 justify-content-between sales-header-right">
                           <div class="d-flex me-5">
-                            <button type="button" class="btn btn-social-icon btn-outline-sales"><i class="fas fa-file-pdf text-danger"></i></button>
+                            <button type="button" class="btn btn-social-icon btn-outline-sales" id="sinconteopdf" title="Descargar Pdf"><i class="fas fa-file-pdf text-danger"></i></button>
+                            <button type="button" class="btn btn-social-icon btn-outline-sales mx-2" id="sinconteoexcel"  title="Descargar Excel"><i class="fas fa-file-excel text-success"></i></button>
                             <div class="ps-2">
                               <h4 class="mb-0 fw-semibold head-count">SC</h4>
                               <span class="font-10 fw-semibold text-muted">SIN CONTEO</span>

@@ -119,7 +119,11 @@
                                 <td class="text-uppercase"><?= $asignacionInventario->conteos; ?></td>
                                 <td><?= $asignacionInventario->fecha_inicio; ?></td>
                                 <td><?= $asignacionInventario->fecha_cierre; ?></td>
-                                <td><label class="badge badge-success "><?= $asignacionInventario->estado; ?></label></td>
+                                  <?php if($asignacionInventario->estado == 'Activo') { ?>
+                                    <td><label class="badge badge-success "><?= $asignacionInventario->estado; ?></label></td>
+                                    <?php } else { ?>
+                                      <td><label class="badge badge-danger "><?= $asignacionInventario->estado; ?></label></td>
+                                  <?php } ?>
                                 <td><label class="badge badge-success "><?= $asignacionInventario->proceso_final; ?></label></td>
                                 <td>
                                     <?php if($asignacionInventario->btnproducto == 0) {?>
@@ -800,12 +804,12 @@
           
           <label class="mb-1 small ">Descripcion</label>
           <input type="text" class="form-control form-control-sm borde" placeholder="Ubicación">
-            <button class="btn btn-primary mt-2">Guardar</button>        
+            <button class="btn btn-primary mt-2 btn-rounded">Guardar</button>        
           </div>
           <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0">
            <label class="mb-1 small ">Descripcion</label>
            <input type="text" class="form-control form-control-sm borde" placeholder="Localizacion">
-           <button class="btn btn-success mt-2">Guardar</button>
+           <button class="btn btn-success mt-2 btn-rounded">Guardar</button>
           </div>
         </div>
       </div>
