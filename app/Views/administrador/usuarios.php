@@ -24,7 +24,7 @@
                     <p class="m-0 pe-3">ADMINISTRACIÒN</p>
                   </a>
                   <a class="ps-3 me-4" href="#">
-                    <p class="m-0">INV - USUARIOS</p>
+                    <p class="m-0">TOMFIC - USUARIOS</p>
                   </a>
                 </div>
               </div>
@@ -215,7 +215,8 @@
               >
                 <option value="">Seleccione el rol del usuario</option>
                 <option value="Administrador">Administrador</option>
-                <option value="Capturador">Auxiliar Capturador</option>    
+                <option value="Capturador">Auxiliar Capturador</option>
+                <option value="Vendedor">Vendedor</option>  
                </select>
           </div>
           <div class="col-md-4">
@@ -447,6 +448,7 @@
                 <option value="">Seleccione el rol del usuario</option>
                 <option value="Administrador">Administrador</option>
                 <option value="Capturador">Auxiliar Capturador</option>    
+                <option value="Vendedor">Vendedor</option>    
                </select>
           </div>
           <div class="col-md-4">

@@ -33,7 +33,7 @@
                     <p class="m-0 pe-3">ADMINISTRACIÒN</p>
                   </a>
                   <a class="ps-3 me-4" href="#">
-                    <p class="m-0">INV - ASIGNACION</p>
+                    <p class="m-0">TOMFIC - ASIGNACION</p>
                   </a>
                 </div>
               </div>

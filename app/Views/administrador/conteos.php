@@ -35,7 +35,7 @@
                     <p class="m-0 pe-3">ADMINISTRACIÒN</p>
                   </a>
                   <a class="ps-3 me-4" href="#">
-                    <p class="m-0">INV - CONTEOS</p>
+                    <p class="m-0">TOMFIC - CONTEOS</p>
                   </a>
                 </div>
               </div>

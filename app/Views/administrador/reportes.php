@@ -28,7 +28,7 @@
                     <p class="m-0 pe-3">ADMINISTRACIÒN</p>
                   </a>
                   <a class="ps-3 me-4" href="#">
-                    <p class="m-0">INV - USUARIOS</p>
+                    <p class="m-0">TOMFIC - REPORTES</p>
                   </a>
                 </div>
               </div>

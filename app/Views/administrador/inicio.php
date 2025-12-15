@@ -30,7 +30,7 @@
                     <p class="m-0 pe-3">ADMINISTRACIÒN</p>
                   </a>
                   <a class="ps-3 me-4" href="#">
-                    <p class="m-0">INV - INICIO</p>
+                    <p class="m-0">TOMFIC - INICIO</p>
                     
                   </a>
                 </div>
