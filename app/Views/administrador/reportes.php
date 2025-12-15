@@ -62,14 +62,14 @@
                         </div>
                         <div class="d-flex flex-wrap pt-4 justify-content-between sales-header-right">
                           <div class="d-flex me-5">
-                            <button type="button" class="btn btn-social-icon btn-outline-sales"><i class="fas fa-database"></i></button>
+                            <button type="button" class="btn btn-social-icon btn-outline-sales"><i class="fas fa-file-excel text-success"></i></button>
                             <div class="ps-2">
                               <h4 class="mb-0 fw-semibold head-count">DI</h4>
                               <span class="font-10 fw-semibold text-muted">DIFE INVENTARIOS</span>
                             </div>
                           </div>
                           <div class="d-flex me-3 mt-2 mt-sm-0">
-                            <button type="button" class="btn btn-social-icon btn-outline-sales profit"><i class="fas fa-coins text-info"></i></button>
+                            <button type="button" class="btn btn-social-icon btn-outline-sales profit"><i class="fas fa-file-pdf text-danger"></i></button>
                             <div class="ps-2">
                               <h4 class="mb-0 fw-semibold head-count">GT</h4>
                               <span class="font-10 fw-semibold text-muted">GANANCIA TOTAL</span>
@@ -99,14 +99,15 @@
                       <div>
                         <div class="d-flex flex-wrap pt-2 justify-content-between sales-header-right">
                           <div class="d-flex me-5">
-                            <button type="button" class="btn btn-social-icon btn-outline-sales"><i class="fas fa-database"></i></button>
+                            <button type="button" class="btn btn-social-icon btn-outline-sales"><i class="fas fa-file-pdf text-danger"></i></button>
                             <div class="ps-2">
                               <h4 class="mb-0 fw-semibold head-count">VP</h4>
                               <span class="font-10 fw-semibold text-muted">VENTA DE PEDIDOS</span>
                             </div>
                           </div>
                           <div class="d-flex me-3 mt-2 mt-sm-0">
-                            <button type="button" class="btn btn-social-icon btn-outline-sales profit"><i class="fas fa-coins text-info"></i></button>
+                            <button type="button" class="btn btn-social-icon btn-outline-sales profit"><i class="fas fa-file-pdf text-danger"></i></button>
+                            <button type="button" class="btn btn-social-icon btn-outline-sales profit mx-2"><i class="fas fa-file-excel text-success"></i></button>
                             <div class="ps-2">
                               <h4 class="mb-0 fw-semibold head-count">VD</h4>
                               <span class="font-10 fw-semibold text-muted">VENTA DIARIA</span>
@@ -115,14 +116,15 @@
                         </div>
                         <div class="d-flex flex-wrap pt-4 justify-content-between sales-header-right">
                           <div class="d-flex me-5">
-                            <button type="button" class="btn btn-social-icon btn-outline-sales"><i class="fas fa-database"></i></button>
+                            <button type="button" class="btn btn-social-icon btn-outline-sales"><i class="fas fa-file-pdf text-danger"></i></button>
+                            <button type="button" class="btn btn-social-icon btn-outline-sales mx-2"><i class="fas fa-file-excel text-success"></i></button>
                             <div class="ps-2">
                               <h4 class="mb-0 fw-semibold head-count">RK</h4>
                               <span class="font-10 fw-semibold text-muted">REPORTE DE KARDEX</span>
                             </div>
                           </div>
                           <div class="d-flex me-3 mt-2 mt-sm-0">
-                            <button type="button" class="btn btn-social-icon btn-outline-sales profit"><i class="fas fa-coins text-info"></i></button>
+                            <button type="button" class="btn btn-social-icon btn-outline-sales profit"><i class="fas fa-file-pdf text-danger"></i></button>
                             <div class="ps-2">
                               <h4 class="mb-0 fw-semibold head-count">RC</h4>
                               <span class="font-10 fw-semibold text-muted">REPORTE ABC</span>
@@ -158,7 +160,17 @@
       </div>
       <div class="modal-body">
         <div class="container-fluid">
-          <div class="row">
+          <div class="row ">
+          <div class="col-md-12">
+            <label for="fechaFin" class="form-label">Usuarios</label>
+            <select class="form-control">
+              <option value="">Todos los usuarios</option>
+              <option value="1">Usuario 1</option>
+              <option value="2">Usuario 2</option>
+            </select>
+          </div>
+        </div>
+          <div class="row mt-4">
             <div class="col-md-6">
               <div class="mb-3">
                 <label for="fechaInicio" class="form-label">Fecha Inicial</label>
@@ -183,6 +195,8 @@
               </div>
           </div>
         </div>
+        
+        <br>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger btn-rounded" data-bs-dismiss="modal">Cerrar</button>
