@@ -263,8 +263,9 @@
                   id="ubicacion_conteo"
                 >
                   <option value="">Seleccione Ubicacion</option>
-                  <option value="Piso de venta">Piso de venta</option>
-                  <option value="Bodega">Bodega</option>    
+                  <?php foreach ($ubicaciones->getResult() as $ubicacion): ?>
+                    <option value="<?= $ubicacion->descripcion ?>"><?= $ubicacion->descripcion ?></option>
+                  <?php endforeach; ?>
                  </select>
             </div>
             <div class="col-md-4">
@@ -275,9 +276,9 @@
                 onchange="getnumerolocalizacion()"
               >
                 <option value="">Seleccione Localizacion</option>
-                <option value="GONDOLA">GONDOLA</option>
-                <option value="NEVERAS">NEVERAS</option>
-                <option value="VITRINAS">VITRINAS</option>
+                <?php foreach ($localizaciones->getResult() as $localizacion): ?>
+                  <option value="<?= $localizacion->descripcion ?>"><?= $localizacion->descripcion ?></option>
+                <?php endforeach; ?>
               </select>
             </div>
             

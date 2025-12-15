@@ -239,6 +239,14 @@ class AsignacionModel extends Model {
                ->insert($ubicacion);
    }
 
+   public function getUbicaciones() {
+     $ubicacion = $this->db->table('ubicaciones')
+                      ->select('*')
+                      ->get();
+
+     return $ubicacion;
+   }
+
    public function crearLocalizaciones($descripcion) {
       $localizacion = [
         "descripcion" => $descripcion,
@@ -247,6 +255,14 @@ class AsignacionModel extends Model {
 
       $this->db->table('localizaciones')
                ->insert($localizacion);
+   }
+
+   public function getLocalizaciones() {
+     $localizacion = $this->db->table('localizaciones')
+                        ->select('*')
+                        ->get();
+  
+     return $localizacion;
    }
 
 }

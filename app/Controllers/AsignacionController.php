@@ -30,7 +30,10 @@ class AsignacionController extends BaseController {
           "subgrupos" => $this->asignacionModel->getSubgrupo(),
           "usuarios" => $this->listasModel->getUsuarios(),
           "reportes" => $this->asignacionModel->getConteosTablaReportes(),
-          "permisoUsuario" => $this->listasModel->getPermisosMenu()
+          "permisoUsuario" => $this->listasModel->getPermisosMenu(),
+
+          "ubicaciones" => $this->asignacionModel->getUbicaciones(),
+          "localizaciones" => $this->asignacionModel->getLocalizaciones()
         ];
         return view('administrador/asignacioninventarios', $data);
     }
