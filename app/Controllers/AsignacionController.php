@@ -297,5 +297,17 @@ class AsignacionController extends BaseController {
         $this->asignacionModel->cargarExcelProductosInventarios($datos);
       }
     }
+
+     public function crearUbicaciones() {
+      $ubicacion = $this->request->getPost('ubicacion');
+      
+      $this->asignacionModel->crearUbicaciones($ubicacion);
+     }
+
+     public function crearLocalizaciones() {
+       $localizacion = $this->request->getPost('localizacion');
+      
+       $this->asignacionModel->crearLocalizaciones($localizacion);
+     }
     
 }

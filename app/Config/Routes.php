@@ -49,6 +49,10 @@ $routes->get('/getnumerolocalizacion/(:any)', 'AsignacionController::getNumeroLo
 $routes->post('/actualizarinventario', 'AsignacionController::actualizarinventario');
 $routes->post('/cargarexcelproductosinventarios', 'AsignacionController::cargarExcelProductosInventarios');
 
+$routes->post('/crearubicacion', 'AsignacionController::crearUbicaciones');
+$routes->post('/crearlocalizacion', 'AsignacionController::crearLocalizaciones');
+
+
 
 // INVENTARIOS
 $routes->get('/inventarios', 'InventarioController::index');

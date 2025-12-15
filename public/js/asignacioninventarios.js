@@ -378,6 +378,58 @@ function actualizarInventarios() {
         });
 }
 
+function crearUbicacion() {
+  var url = baseurl + '/crearubicacion';
+  var ubicacion = $('#ubicacioncrear').val();
+
+  $.ajax({
+    url: url,
+    method:"POST",
+    data: {
+      ubicacion: ubicacion
+    },
+    success: function(response) {
+      $("body").overhang({
+        type: "success",
+        message: "La ubicación se ha creado en la base de datos correctamente."
+      });
+      setTimeout(reloadPage, 3000);
+    },
+    error: function() {
+      $("body").overhang({
+        type: "error",  
+        message: "Alerta ! Tenemos un problema al conectar con la base de datos verifica tu red.",
+      });
+    }
+  });
+}
+
+function crearLocalizacion() {
+  var url = baseurl + '/crearlocalizacion';
+  var localizacion = $('#localizacioncrear').val();
+  $.ajax({
+    url: url,
+    method:"POST",
+    data: {
+      localizacion: localizacion
+    },
+    success: function(response) {
+      $("body").overhang({
+        type: "success",
+        message: "La localización se ha creado en la base de datos correctamente."
+      });
+      setTimeout(reloadPage, 3000);
+    },
+    error: function() {
+      $("body").overhang({
+        type: "error",
+        message: "Alerta ! Tenemos un problema al conectar con la base de datos verifica tu red.",
+      });
+    }
+  });
+}
+
+
 function reloadPage() {
   location.reload();
 }

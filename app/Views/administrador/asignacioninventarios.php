@@ -803,13 +803,13 @@
           <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
           
           <label class="mb-1 small ">Descripcion</label>
-          <input type="text" class="form-control form-control-sm borde" placeholder="Ubicación">
-            <button class="btn btn-primary mt-2 btn-rounded">Guardar</button>        
+          <input type="text" class="form-control form-control-sm borde" id="ubicacioncrear" placeholder="Ubicación">
+            <button class="btn btn-primary mt-2 btn-rounded" onclick="crearUbicacion()">Guardar</button>        
           </div>
           <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0">
            <label class="mb-1 small ">Descripcion</label>
-           <input type="text" class="form-control form-control-sm borde" placeholder="Localizacion">
-           <button class="btn btn-success mt-2 btn-rounded">Guardar</button>
+           <input type="text" class="form-control form-control-sm borde" id="localizacioncrear" placeholder="Localizacion">
+           <button class="btn btn-success mt-2 btn-rounded" onclick="crearLocalizacion()">Guardar</button>
           </div>
         </div>
       </div>

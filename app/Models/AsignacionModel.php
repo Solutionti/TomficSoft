@@ -229,4 +229,24 @@ class AsignacionModel extends Model {
                 ->update($inventarios);
    }
 
+   public function crearUbicaciones($descripcion) {
+      $ubicacion = [
+        "descripcion" => $descripcion,
+        "empresa" => "",
+      ];
+
+      $this->db->table('ubicaciones')
+               ->insert($ubicacion);
+   }
+
+   public function crearLocalizaciones($descripcion) {
+      $localizacion = [
+        "descripcion" => $descripcion,
+        "empresa" => "",
+      ];
+
+      $this->db->table('localizaciones')
+               ->insert($localizacion);
+   }
+
 }
