@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="<?= base_url('fontawesome/css/brands.css') ?>">
     <link rel="stylesheet" href="<?= base_url('fontawesome/css/solid.css') ?>">
     <link rel="stylesheet" href="<?= base_url('css/argon-dashboard.css?v=2.0.2') ?>">
+    <link rel="stylesheet" href="<?= base_url('css/overhang.min.css') ?>">
+    <link rel="stylesheet" href="<?= base_url('css/datatable.css') ?>">
 </head>
 <body>
   <div class="container-fluid">
@@ -83,13 +85,24 @@
         </div>
         <div class="col-md-7">
           <div class="row">
+                    <div class="col-md-6" hidden>
+                      <label>Total</label>
+                      <input
+                        type="text"
+                        class="form-control form-control-sm"
+                        id="total"
+                        readonly
+                      >
+                    </div>
+                  </div>
+          <div class="row">
             <div class="col-md-7">
-              <label>Codigo de barras</label>
+              <label>Codigo del Producto</label>
               <div class="input-group">
-
                 <input
                   type="text"
                   class="js-toggle-password form-control form-control-sm"
+                  id="codigo_barras"
                 >
                 <a
                   class="input-group-append input-group-text"
@@ -114,6 +127,8 @@
               <input
                 type="text"
                 class="form-control form-control-sm"
+                id="recibio"
+                oninput="formatearMiles(this)"
               >
             </div>
           </div>
@@ -124,6 +139,7 @@
               <input
                 type="text"
                 class="form-control form-control-sm"
+                id="producto"
               >
             </div>
             <div class="col-md-3">
@@ -131,6 +147,7 @@
               <input
                 type="text"
                 class="form-control form-control-sm"
+                id="precio"
               >
             </div>
             <div class="col-md-3">
@@ -138,6 +155,7 @@
               <input
                 type="text"
                 class="form-control form-control-sm"
+                id="cantidad"
               >
             </div>
           </div>
@@ -148,14 +166,38 @@
               <input
                 type="text"
                 class="form-control form-control-sm"
+                value="<?=  session()->get('nombre').' '.session()->get('apellido') ?>"
               >
             </div>
             <div class="col-md-4">
               <label>Dia</label>
-              <input
-                type="text"
-                class="form-control form-control-sm"
+              <select
+                class="form-control form-control-lg disabled"
+                id="dia"
+                readonly
               >
+                <?php if(strftime('%A') == 'Monday') { ?>
+                  <option value="1" selected>LUNES </option>
+                <?php } ?>
+                <?php if(strftime('%A') == 'Tuesday') { ?>
+                  <option value="2" selected>MARTES </option>
+                <?php } ?>
+                <?php if(strftime('%A') == 'Wednesday') { ?>
+                  <option value="3" selected>MIERCOLES </option>
+                <?php } ?>
+                <?php if(strftime('%A') == 'Thursday') { ?>
+                  <option value="4" selected>JUEVES </option>
+                <?php } ?>
+                <?php if(strftime('%A') == 'Friday') { ?>
+                  <option value="5" selected>VIERNES </option>
+                <?php } ?>
+                <?php if(strftime('%A') == 'Saturday') { ?>
+                  <option value="6" selected>SABADO </option>
+                <?php } ?>
+                <?php if(strftime('%A') == 'Sunday') { ?>
+                  <option value="7" selected>DOMINGO </option>
+                <?php } ?>
+              </select>
             </div>
             <div class="col-md-2">
               <label>Numero de caja</label>
@@ -174,7 +216,7 @@
             <input
               type="text"
               class="form-control form-control-sm"
-              value="VNT006"
+              value="VNT001916"
               id="consecutivo"
               readonly
             >
@@ -185,7 +227,7 @@
             <input
               type="text"
               class="form-control form-control-sm"
-              value="03-10-2025"
+              value="<?= strftime('%d/%m/%Y'); ?>"
               readonly
             >
           </div>
@@ -207,8 +249,9 @@
                type="checkbox"
                name="checkrecibocaja"
                id="checkrecibocaja"
+               checked
              >
-             <label class="custom-control-label mt-2" for="customCheck1">Recibo de Caja?</label>
+             <label class="custom-control-label mt-2" for="customCheck1" >Imprimir recibo?</label>
            </div>
         </div>
       </div>
@@ -223,31 +266,8 @@
                 <th class="color-morado text-white text-uppercase">PRECIO</th>
                 <th class="color-morado text-white text-uppercase">ACCIONES</th>
             </thead>
-            <tbody>
-              <tr>
-                <td width="110">
-                  <div class="row">
-                    <div class="d-flex px-2 py-1">
-                      <div>
-                       <img src="<?= base_url('img/team-41.jpg') ?>" class="avatar avatar-sm me-3 mx-5">
-                      </div>
-                      <div class="d-flex flex-column justify-content-center">
-                      </div>
-                    </div>
-                  </div>
-                </td>
-                <td>12345</td>
-                <td>PAPAS</td>
-                <td>1</td>
-                <td>$0202</td>
-                <td width="120">
-                  <button
-                    class="badge badge-danger mx-4"
-                  >
-                    <i class="fas fa-trash fa-1x "></i>
-                  </button>
-                </td>
-              </tr>
+            <tbody class="tbody">
+             
             </tbody>
           </table>
         </div>
@@ -263,5 +283,7 @@
       </div>
     </footer> -->
 </div>
+<?php require_once("componentes/scripts.php")?>
+<script src="<?= base_url('js/ventas.js') ?>"></script>
 </body>
 </html>

@@ -67,6 +67,8 @@ $routes->post('ingresarentrada', 'InventarioController::ingresarEntradaProductos
 
 // VENTAS
 $routes->get('/ventas', 'VentasController::index');
+$routes->post('/getproductoventa', 'VentasController::getProductoVenta');
+$routes->post('/crearventa', 'VentasController::crearVenta');
 
 // REPORTES
 $routes->get('/reportes', 'ReportesController::index');
