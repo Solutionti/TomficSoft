@@ -304,13 +304,13 @@
       <div class="modal-footer">
         <button
           type="button"
-          class="btn btn-primary text-white"
+          class="btn btn-primary text-white btn-rounded"
         >
           Cancelar
         </button>
         <button
           type="button"
-          class="btn btn-dark text-white"
+          class="btn btn-dark text-white btn-rounded"
           id="Actualizarpedido"
         >
           Actualizar
