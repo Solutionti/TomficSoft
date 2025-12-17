@@ -51,6 +51,7 @@
                           </tr>
                         </thead>
                         <tbody>
+                          <?php foreach ($pedidos->getResult() as $pedido): ?>
                             <tr>
                               <td width="100">
                                 <button
@@ -63,20 +64,23 @@
                                 >
                                   <i class="fas fa-eye fa-1x "></i>
                                 </button>
-                                <button
-                                  class="badge badge-success "
+                                <a
+                                  class="badge badge-success"
+                                  target="_blank"
+                                  href="https://wa.me/+57<?php echo $pedido->codigo_cliente; ?>?text=Hola hemos recibido tu pedido. Revisa el detalle del pedido en el siguiente link <?php echo $pedido->link; ?> opcion *Rastrear Pedido,* Con su numero de celular podra conocer el estado en tiempo real de su pedido.gracias por su compra."
                                 >
                                   <i class="fab fa-whatsapp fa-1x "></i>
-                                </button>
+                                </a>
                                 </td>
-                                <td>12345</td>
-                                <td><label class="badge badge-success">CONTRAENTREGA</label></td>
-                                <td>90.000</td>
-                                <td>NO</td>
-                                <td>12:30</td>
-                                <td>26-12-2025</td>
-                                <td><label class="badge badge-primary">PEDIDO</label></td>
+                                <td><?= $pedido->consecutivo; ?></td>
+                                <td><label class="badge badge-success text-uppercase"><?= $pedido->tppago; ?></label></td>
+                                <td><?= $pedido->total; ?></td>
+                                <td>SI</td>
+                                <td><?= $pedido->hora; ?></td>
+                                <td><?= $pedido->fecha; ?></td>
+                                <td><label class="badge badge-primary text-uppercase"><?= $pedido->estado; ?></label></td>
                             </tr>
+                          <?php endforeach; ?>
                         </tbody>
                       </table>
               </div>

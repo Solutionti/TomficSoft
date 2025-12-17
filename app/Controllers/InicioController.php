@@ -10,15 +10,27 @@ class InicioController extends BaseController {
   } 
 
   public function index(): string {
-    
       $data = [
         "permisoUsuario" => $this->listasModel->getPermisosMenu()
       ];
+
       return view('administrador/inicio', $data);
-    
-    
   }
 
-  
+  public function countProductos() {
+
+  }
+
+  public function countInventarios() {
+
+  }
+
+  public function countProductosPerdida() {
+
+  }
+
+  public function countEstadoProducto() {
+
+  }
 
 }
