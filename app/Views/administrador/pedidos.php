@@ -4,11 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Administracion - Usuarios</title>
-    <link rel="stylesheet" href="<?= base_url('css/estilo.css') ?>">
-    <link rel="stylesheet" href="<?= base_url('css/material.css') ?>">
-    <link rel="stylesheet" href="<?= base_url('fontawesome/css/fontawesome.min.css') ?>">
-    <link rel="stylesheet" href="<?= base_url('fontawesome/css/brands.css') ?>">
-    <link rel="stylesheet" href="<?= base_url('fontawesome/css/solid.css') ?>">
+    <?php require_once("componentes/head.php")?>
 </head>
 <body>
   <div class="container-scroller">
@@ -60,7 +56,9 @@
                                   <i class="fas fa-file-pdf fa-1x "></i>
                                 </button>
                                 <button
-                                  class="badge badge-primary "
+                                  class="badge badge-primary"
+                                  data-bs-toggle="modal"
+                                  data-bs-target="#verpedido"
                                 >
                                   <i class="fas fa-eye fa-1x "></i>
                                 </button>
@@ -121,12 +119,207 @@
           </div>
         </div>
     </div>
-    <!-- <footer class="footer">
-      <div class="d-sm-flex justify-content-center justify-content-sm-between">
-        <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2023 <a href="https://www.bootstrapdash.com/" target="_blank">BootstrapDash</a>. All rights reserved. Distributed by <a href="https://themewagon.com" target="_blank">ThemeWagon</a></span>
-        <span class="float-none float-sm-end d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="mdi mdi-heart text-danger"></i></span>
+  </div>
+  <?php require_once("componentes/footer.php")?>
+<!-- MODAL VER PEDIDO  -->
+ <div class="modal fade" id="verpedido" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header color-morado">
+        <h5 class="modal-title text-uppercase text-white" id="exampleModalLabel">Detalle del pedido</h5>
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button> 
       </div>
-    </footer> -->
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-3">
+            <div class="form-group input-group-sm">
+            <label>Codigo pedido</label>
+            <input
+                type="text"
+                class="form-control"
+                id="codigo_pedido"
+                readonly
+              >
+            </div>
+          </div>
+          <div class="col-md-5">
+            <div class="form-group">
+              <label>Sede</label>
+              <select 
+                class="form-control form-control-sm"
+                id="sede_pedido"
+                readonly
+              >
+                <option value="SEDE PRINCIPAL (BARRIO AMBALA)">SEDE PRINCIPAL (BARRIO AMBALA)</option>
+              </select>
+            </div>              
+          </div>
+          <div class="col-md-2">
+            <div class="form-group input-group-sm">
+              <label>Fecha</label>
+              <input
+                type="date"
+                class="form-control"
+                id="fecha_pedido"
+                readonly
+              >
+            </div>
+          </div>
+          <div class="col-md-2">
+            <div class="form-group input-group-sm">
+              <label>Hora</label>
+              <input
+                type="text"
+                class="form-control"
+                id="hora_pedido"
+                readonly
+              >
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-3">
+            <div class="form-group input-group-sm">
+              <label>Tipo pago</label>
+              <select 
+                class="form-control form-control-sm"
+                id="tppago_pedido"
+                readonly
+              >
+                <option value="NEQUI">NEQUI</option>
+                <option value="BANCARIA">BANCARIA</option>
+                <option value="CONTRAENTREGA">CONTRAENTREGA</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group input-group-sm">
+              <label>Celular cliente</label>
+              <input
+                type="number"
+                class="form-control"
+                id="celular_pedido"
+                readonly
+              >
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="form-group input-group-sm">
+              <label>Total pedido</label>
+              <input
+                type="text"
+                class="form-control"
+                id="total_pedido"
+                readonly
+              >
+            </div>
+          </div>
+          <div class="col-md-2 mt-4">            
+            <div class="form-check">
+              <input class="form-check-input mt-1" type="checkbox"  id="porpagar">
+              <label >
+                Cuentas por cobrar
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="form-group input-group-sm">
+              <label>Nombre</label>
+              <input
+                type="text"
+                class="form-control"
+                id="nombre_pedido"
+                readonly
+              >
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group input-group-sm">
+              <label>Dirección</label>
+              <input
+                type="text"
+                class="form-control"
+                id="direccion_pedido"
+                readonly
+              >
+            </div>
+          </div>
+          <div class="col-md-2">
+            <div class="form-group input-group-sm">
+              <label>Domicilio</label>
+              <input
+                type="text"
+                class="form-control"
+                id="domicilio_pedido"
+              >
+            </div>
+          </div>
+          <div class="col-md-2">
+            <div class="form-group">
+              <label>Estado</label>
+              <select 
+                class="form-control form-control-sm"
+                id="estado_pedido"
+              >
+                <option value="PEDIDO">PEDIDO</option>
+                <option value="PREPARACION">PREPARACION</option>
+                <option value="EN CAMINO">EN CAMINO</option>
+                <option value="CANCELADO">CANCELADO</option>
+                <option value="ELIMINAR">ELIMINAR</option>
+
+              </select>
+            </div>              
+          </div>
+        </div>
+        <div class="form-group input-group-sm">
+            <label>Comentarios</label>
+            <textarea
+              class="form-control"
+              id="comentarios_pedido"
+              readonly
+            ></textarea>
+        </div>
+        <div class="row">
+          <div class="table-responsive">
+            <table class="table table-striped" >
+              <thead>
+                <tr>
+                  <th class="text-uppercase text-xs font-weight-bolder opacity-12">#</th>
+                  <th class="text-uppercase text-xs font-weight-bolder opacity-12">Pedido</th>
+                  <th class="text-uppercase text-xs font-weight-bolder opacity-12">Producto</th>
+                  <th class="text-uppercase text-xs font-weight-bolder opacity-12">Cantidad</th>
+                </tr>
+              </thead>
+              <tbody class="detalle_productos_pedido ">
+                
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-primary text-white"
+        >
+          Cancelar
+        </button>
+        <button
+          type="button"
+          class="btn btn-dark text-white"
+          id="Actualizarpedido"
+        >
+          Actualizar
+        </button>
+      </div>
+    </div>
+  </div>
 </div>
+
+<?php require_once("componentes/scripts.php")?>
 </body>
 </html>
