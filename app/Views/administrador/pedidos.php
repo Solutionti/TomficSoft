@@ -85,12 +85,7 @@
                 <div class="card">
                   <div class="card-body">
                     <div id="contenidotiemporeal">
-                      
                       <!--  -->
-                      
-                    <!--  -->
-                    </div>
-                      </div>
                     </div>
                   </div>
                 </div>
@@ -98,8 +93,10 @@
             </div>
           </div>
         </div>
+      </div>
     </div>
   </div>
+</div>
   <?php require_once("componentes/footer.php")?>
 <!-- MODAL VER PEDIDO  -->
  <div class="modal fade" id="verpedido" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
