@@ -31,7 +31,7 @@
             </div>
             <div class="row">
               <div class="col-md-9">
-              <table class="table table-striped table-borderless" id="tabla_inventarios">
+              <table class="table table-striped table-borderless" id="table-pedidos">
                         <thead >
                           <tr >
                             <th class="color-morado text-white text-uppercase">
@@ -41,8 +41,8 @@
                             <th class="color-morado text-white text-uppercase"> TIPO PAGO</th>
                             <th class="color-morado text-white text-uppercase"> TOTAL </th>
                             <th class="color-morado text-white text-uppercase"> C*C </th>
-                            <th class="color-morado text-white text-uppercase"> HORA </th>
                             <th class="color-morado text-white text-uppercase"> FECHA </th>
+                            <th class="color-morado text-white text-uppercase"> HORA </th>
                             <th class="color-morado text-white text-uppercase"> ESTADO </th>
                           </tr>
                         </thead>
@@ -57,8 +57,7 @@
                                 </button>
                                 <button
                                   class="badge badge-primary"
-                                  data-bs-toggle="modal"
-                                  data-bs-target="#verpedido"
+                                  onclick="verPedido('<?= $pedido->codigo_pedido; ?>')"
                                 >
                                   <i class="fas fa-eye fa-1x "></i>
                                 </button>
@@ -74,8 +73,8 @@
                                 <td><label class="badge badge-success text-uppercase"><?= $pedido->tppago; ?></label></td>
                                 <td><?= $pedido->total; ?></td>
                                 <td>SI</td>
-                                <td><?= $pedido->hora; ?></td>
                                 <td><?= $pedido->fecha; ?></td>
+                                <td><?= $pedido->hora; ?></td>
                                 <td><label class="badge badge-primary text-uppercase"><?= $pedido->estado; ?></label></td>
                             </tr>
                           <?php endforeach; ?>
@@ -85,37 +84,18 @@
               <div class="col-md-3">
                 <div class="card">
                   <div class="card-body">
-                    <div class="d-flex border-bottom mb-4 pb-2">
-                      <div class="hexagon">
-                    <div class="d-flex border-bottom mb-4 pb-2">
-                      <div class="hexagon">
-                        <div class="hex-mid hexagon-danger ">
-                          <i class="fas fa-times"></i>
-                        </div>
-                      </div>
-                      <div class="ps-4">
-                        <h4 class="fw-bold text-danger mb-0">#5452 - 90.000</h4>
-                        <h6 class="text-muted">Cancelado</h6>
+                    <div id="contenidotiemporeal">
+                      
+                      <!--  -->
+                      
+                    <!--  -->
+                    </div>
                       </div>
                     </div>
-                    <div class="d-flex border-bottom mb-4 pb-2">
-                      <div class="hexagon">
-                        <div class="hex-mid hexagon-primary hexagon-xs fa-1x">
-                          <i class="fas fa-clock"></i>
-                        </div>
-                      </div>
-                      <div class="ps-4">
-                        <h4 class="fw-bold text-primary mb-0">#5452 - 90.000</h4>
-                        <h6 class="text-muted">Pedido</h6>
-                      </div>
-                    </div>
-                    
                   </div>
                 </div>
               </div>
             </div>
-        </div>
-    </div>
           </div>
         </div>
     </div>
@@ -288,13 +268,13 @@
             <table class="table table-striped" >
               <thead>
                 <tr>
-                  <th class="text-uppercase text-xs font-weight-bolder opacity-12">#</th>
-                  <th class="text-uppercase text-xs font-weight-bolder opacity-12">Pedido</th>
-                  <th class="text-uppercase text-xs font-weight-bolder opacity-12">Producto</th>
-                  <th class="text-uppercase text-xs font-weight-bolder opacity-12">Cantidad</th>
+                  <th class="text-uppercase text-xs font-weight-bolder text-white color-morado">#</th>
+                  <th class="text-uppercase text-xs font-weight-bolder text-white color-morado">Pedido</th>
+                  <th class="text-uppercase text-xs font-weight-bolder text-white color-morado">Producto</th>
+                  <th class="text-uppercase text-xs font-weight-bolder text-white color-morado">Cantidad</th>
                 </tr>
               </thead>
-              <tbody class="detalle_productos_pedido ">
+              <tbody class="detalle_productos_pedido">
                 
               </tbody>
             </table>
@@ -305,6 +285,7 @@
         <button
           type="button"
           class="btn btn-primary text-white btn-rounded"
+          data-bs-dismiss="modal"
         >
           Cancelar
         </button>

@@ -78,6 +78,10 @@ $routes->get('/productossinconteoexcel/(:any)/(:any)', 'ReportesController::prod
 
 // PEDIDOS
 $routes->get('/pedidos', 'PedidosController::index');
+$routes->get('/getpedidos/(:num)', 'PedidosController::getPedidoId/$1');
+$routes->get('/getpeditosdetalle/(:num)', 'PedidosController::getPedidosDetalle/$1');
+$routes->post('/actualizarpedido', 'PedidosController::actualizarPedido');
+$routes->get('/getpedidoreal', 'PedidosController::getPedidosTiempoReal');
 
 });
 
