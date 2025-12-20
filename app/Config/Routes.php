@@ -63,10 +63,12 @@ $routes->get('obtenerstock/(:num)', 'InventarioController::obtenerstock/$1');
 
 $routes->post('ingresarentrada', 'InventarioController::ingresarEntradaProductos');
 $routes->post('ingresarsalida', 'InventarioController::ingresarSalidaProductos');
+
 // VENTAS
 $routes->get('/ventas', 'VentasController::index');
 $routes->post('/getproductoventa', 'VentasController::getProductoVenta');
 $routes->post('/crearventa', 'VentasController::crearVenta');
+$routes->get('generarpdfventas/(:any)', 'VentasController::pdfreciboventa/$1');
 
 // REPORTES
 $routes->get('/reportes', 'ReportesController::index');

@@ -119,6 +119,7 @@
               <input
                 type="text"
                 class="form-control form-control-sm"
+                readonly
               >
             </div>
             <!--  -->
@@ -140,6 +141,7 @@
                 type="text"
                 class="form-control form-control-sm"
                 id="producto"
+                readonly
               >
             </div>
             <div class="col-md-3">
@@ -148,6 +150,7 @@
                 type="text"
                 class="form-control form-control-sm"
                 id="precio"
+                readonly
               >
             </div>
             <div class="col-md-3">
@@ -156,6 +159,7 @@
                 type="text"
                 class="form-control form-control-sm"
                 id="cantidad"
+                readonly
               >
             </div>
           </div>
@@ -167,6 +171,7 @@
                 type="text"
                 class="form-control form-control-sm"
                 value="<?=  session()->get('nombre').' '.session()->get('apellido') ?>"
+                readonly
               >
             </div>
             <div class="col-md-4">
@@ -199,11 +204,14 @@
                 <?php } ?>
               </select>
             </div>
+            <?php $cajas = $caja->getResult()[0]; ?>
             <div class="col-md-2">
               <label>Numero de caja</label>
               <input
                 type="text"
                 class="form-control form-control-sm"
+                value="<?= $cajas->codigo_caja ?>"
+                readonly
               >
             </div>
           </div>
@@ -216,7 +224,7 @@
             <input
               type="text"
               class="form-control form-control-sm"
-              value="VNT001916"
+              value="<?= "VNT00". $consecutivo->getRow()->consecutivo + 1 ?>"
               id="consecutivo"
               readonly
             >

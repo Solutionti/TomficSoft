@@ -94,4 +94,40 @@ class VentasModel extends Model  {
         $this->db->table('detalle_venta')
              ->insert($datos);
     }
+
+    public function getCajaDisponible() {
+      $caja = $this->db->table('cajas')
+                       ->select('*')
+                       ->where('estado', 'ABIERTA')
+                       ->get();
+                 
+      return $caja;
+    }
+
+    public function getNumeroVenta() {
+      $consecutivo = $this->db->table('ventas')
+                       ->select('COUNT(codigo_venta) as consecutivo')
+                       ->get();
+                 
+      return $consecutivo;
+    }
+
+    public function getVentaPdf($consecutivo) {
+      $venta = $this->db->table('ventas')
+               ->select('*')
+               ->where('codigo_consecutivo', $consecutivo)
+               ->get();
+
+      return $venta;
+    }
+
+    public function getDetalleVenta($consecutivo) {
+      $detalle = $this->db->table('detalle_venta v')
+               ->select('v.*, p.nombre, p.costo')
+                ->join('productos p', 'p.codigo_barras = v.codigo_producto OR p.codigo_interno = v.codigo_producto')
+               ->where('v.codigo_venta', $consecutivo)
+               ->get();
+
+      return $detalle;
+    }
 }

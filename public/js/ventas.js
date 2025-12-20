@@ -191,9 +191,9 @@ document.addEventListener("keydown", function(event) {
                 type: "success",
                 message: "La venta se ha creado correctamente"
               });
-            //   if( $('#checkrecibocaja').is(':checked') ) {
-            //     facturaVenta(consecutivo);
-            //   }
+              if( $('#checkrecibocaja').is(':checked') ) {
+                facturaVenta(consecutivo);
+              }
               setTimeout(reloadPage, 3000);
             }
           },
@@ -207,6 +207,11 @@ document.addEventListener("keydown", function(event) {
       }
   }
 });
+
+function facturaVenta(consecutivo) {
+  url = baseurl  + "generarpdfventas/" + consecutivo;
+  window.open(url, "_blank", " width=500, height=400");
+}
 
 function reloadPage() {
   location.reload();
