@@ -52,8 +52,6 @@ $routes->post('/cargarexcelproductosinventarios', 'AsignacionController::cargarE
 $routes->post('/crearubicacion', 'AsignacionController::crearUbicaciones');
 $routes->post('/crearlocalizacion', 'AsignacionController::crearLocalizaciones');
 
-
-
 // INVENTARIOS
 $routes->get('/inventarios', 'InventarioController::index');
 $routes->get('crearproducto', 'InventarioController::crearProducto');
@@ -64,7 +62,7 @@ $routes->post('eliminarproducto', 'InventarioController::eliminarProducto');
 $routes->get('obtenerstock/(:num)', 'InventarioController::obtenerstock/$1');
 
 $routes->post('ingresarentrada', 'InventarioController::ingresarEntradaProductos');
-
+$routes->post('ingresarsalida', 'InventarioController::ingresarSalidaProductos');
 // VENTAS
 $routes->get('/ventas', 'VentasController::index');
 $routes->post('/getproductoventa', 'VentasController::getProductoVenta');

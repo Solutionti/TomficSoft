@@ -209,6 +209,7 @@ function eliminarProducto(id) {
            $("#nombre_ingreso").val(response[0].nombre);
            $("#precio_ingreso").val(response[0].costo);
            $("#sede_ingreso").val(response[0].nit);
+          //  $("#valor_ingreso").val(response[0].costo);
            
         },
         error: function(response){
@@ -246,6 +247,72 @@ function eliminarProducto(id) {
           $("body").overhang({
             type: "success",
             message: "La entrada de productos se ha registrado correctamente."
+          });
+          setTimeout(reloadPage, 3000);
+        },
+        error: function (response){
+          $("body").overhang({    
+            type: "error",
+            message: "Ha ocurrido un error al registrar la entrada de productos."
+          });
+        }
+      });
+    }
+
+    //SALIDA DE PRODUCTOS
+    $("#producto_salida").on("blur", function(){
+      //definir lo que  necesitamos
+      var codigo = $("#producto_salida").val(); 
+      var url = baseurl + "obtenerstock/" + codigo;
+  
+      //llamamos al controlador
+      $.ajax({
+        url: url,
+        method: "GET",
+        success: function(response){
+          // respuesta de lo que necesitamos
+           $("#stock_salida").val(response[0].saldo);
+           $("#nombre_salida").val(response[0].nombre);
+           $("#precio_salida").val(response[0].costo);
+           $("#sede_salida").val(response[0].nit);
+          //  $("#valor_salida").val(response[0].costo);
+           
+        },
+        error: function(response){
+          $("body").overhang({
+            type: "error",
+            message: "Alerta ! Tenemos un problema al conectar con la base de datos verifica tu red.",
+          });
+        }
+      });
+    });
+
+    function ingresarSalidaProductos(){
+      let url = baseurl + "ingresarsalida";
+      var producto = $("#producto_salida").val(),
+      cantidad = $("#cantidad_salida").val(),
+      valor = $("#valor_salida").val(),
+      sede = $("#sede_salida").val(),
+      motivo = $("#motivo_salida").val(),
+      stock = $("#stock_salida").val(),
+      comentarios = $("#comentarios_salida").val();
+
+      $.ajax({
+        url: url,
+        method: "POST",
+        data: {
+          producto: producto,
+          cantidad: cantidad,
+          valor: valor,
+          sede: sede,
+          motivo: motivo,
+          comentarios: comentarios,
+          stock: stock
+        },
+        success: function (response){
+          $("body").overhang({
+            type: "success",
+            message: "La salida de productos se ha registrado correctamente."
           });
           setTimeout(reloadPage, 3000);
         },
