@@ -139,7 +139,6 @@ class VentasController extends BaseController {
         $pdf->Cell(20,5,$detventa->nombre, '', 0,'L', false );
         $pdf->Cell(5,5,"$".$detventa->costo, '', 0,'L', false );
       }
-      
       //FIN DEL PRODUCTO
       $pdf->Ln(7);
       $pdf->SetFont('Times','b',8);
@@ -155,7 +154,6 @@ class VentasController extends BaseController {
       $pdf->Cell(1,5,'', '', 0,'L', false );
       $pdf->Cell(25,5,' GRACIAS POR TU COMPRA ', '', 0,'L', false );
       $pdf->Ln(10);
-
       $this->response->setHeader('Content-Type', 'application/pdf');
       $pdf->Output('I', 'productos_sinconteo.pdf');
     }  
