@@ -43,21 +43,21 @@
                     <div class="d-flex justify-content-between flex-wrap">
                       <div>
                         <div class="card-title mb-0">Ingresos por ventas diaria</div>
-                          <h3 class="fw-bold mb-0">$32,409</h3>
+                          <h3 class="fw-bold mb-0">$0</h3>
                         </div>
                       <div>
                         <div class="d-flex flex-wrap pt-2 justify-content-between sales-header-right">
                           <div class="d-flex me-5">
                             <button type="button" class="btn btn-social-icon btn-outline-sales"><i class="fas fa-database"></i></button>
                             <div class="ps-2">
-                              <h4 class="mb-0 fw-semibold head-count">$8,217</h4>
+                              <h4 class="mb-0 fw-semibold head-count">$0</h4>
                               <span class="font-10 fw-semibold text-muted">VENTAS TOTALES</span>
                             </div>
                           </div>
                           <div class="d-flex me-3 mt-2 mt-sm-0">
                             <button type="button" class="btn btn-social-icon btn-outline-sales profit"><i class="fas fa-coins text-info"></i></button>
                             <div class="ps-2">
-                              <h4 class="mb-0 fw-semibold head-count">2,804</h4>
+                              <h4 class="mb-0 fw-semibold head-count">$0</h4>
                               <span class="font-10 fw-semibold text-muted">GANANCIA TOTAL</span>
                             </div>
                           </div>
@@ -66,14 +66,14 @@
                           <div class="d-flex me-5">
                             <button type="button" class="btn btn-social-icon btn-outline-sales"><i class="fas fa-database"></i></button>
                             <div class="ps-2">
-                              <h4 class="mb-0 fw-semibold head-count">$8,217</h4>
+                              <h4 class="mb-0 fw-semibold head-count">$0</h4>
                               <span class="font-10 fw-semibold text-muted">VENTAS TOTALES</span>
                             </div>
                           </div>
                           <div class="d-flex me-3 mt-2 mt-sm-0">
                             <button type="button" class="btn btn-social-icon btn-outline-sales profit"><i class="fas fa-coins text-info"></i></button>
                             <div class="ps-2">
-                              <h4 class="mb-0 fw-semibold head-count">2,804</h4>
+                              <h4 class="mb-0 fw-semibold head-count">$0</h4>
                               <span class="font-10 fw-semibold text-muted">GANANCIA TOTAL</span>
                             </div>
                           </div>
@@ -142,8 +142,8 @@
                         </div>
                       </div>
                       <div class="ps-4">
-                        <h4 class="fw-bold text-success mb-0">12.45</h4>
-                        <h6 class="text-muted">Bueno</h6>
+                        <h4 class="fw-bold text-success mb-0"><?php echo $bueno->getResult()[0]->total_estado; ?></h4>
+                        <h6 class="text-muted">Buenos</h6>
                       </div>
                     </div>
                     <div class="d-flex border-bottom mb-4 pb-2">
@@ -153,8 +153,8 @@
                         </div>
                       </div>
                       <div class="ps-4">
-                        <h4 class="fw-bold text-danger mb-0">34.568</h4>
-                        <h6 class="text-muted">Averiado</h6>
+                        <h4 class="fw-bold text-danger mb-0"><?php echo $averiado->getResult()[0]->total_estado; ?></h4>
+                        <h6 class="text-muted">Averiados</h6>
                       </div>
                     </div>
                     <div class="d-flex border-bottom mb-4 pb-2">
@@ -164,8 +164,8 @@
                         </div>
                       </div>
                       <div class="ps-4">
-                        <h4 class="fw-bold text-primary mb-0">33.50%</h4>
-                        <h6 class="text-muted">Vencido</h6>
+                        <h4 class="fw-bold text-primary mb-0"><?php echo $vencido->getResult()[0]->total_estado; ?></h4>
+                        <h6 class="text-muted">Vencidos</h6>
                       </div>
                     </div>
                     
@@ -181,28 +181,29 @@
                         <div class="color-card primary m-auto">
                           <i class="mdi mdi-clock-outline"></i>
                           <p class="fw-semibold mb-0">Productos</p>
-                          <span class="small">15 Packages</span>
+                          
+                          <span class="small"><?php echo $producto->getResult()[0]->total_productos; ?> total</span>
                         </div>
                       </div>
                       <div class="col-6 p-0 mb-4">
                         <div class="color-card bg-success  m-auto">
                           <i class="mdi mdi-tshirt-crew"></i>
                           <p class="fw-semibold mb-0">Inventarios</p>
-                          <span class="small">72 Items</span>
+                          <span class="small"><?php echo $inventario->getResult()[0]->total_inventarios; ?> total</span>
                         </div>
                       </div>
                       <div class="col-6 p-0">
                         <div class="color-card bg-info m-auto">
                           <i class="mdi mdi-trophy-outline"></i>
                           <p class="fw-semibold mb-0">Perdidas</p>
-                          <span class="small">34 Upgraded</span>
+                          <span class="small"><?php echo $perdida->getResult()[0]->total_estado; ?> total</span>
                         </div>
                       </div>
                       <div class="col-6 p-0">
                         <div class="color-card bg-danger m-auto">
                           <i class="mdi mdi-presentation"></i>
-                          <p class="fw-semibold mb-0">Reportado</p>
-                          <span class="small">72 Support</span>
+                          <p class="fw-semibold mb-0">Reportados</p>
+                          <span class="small"> <?php echo $reportado->getResult()[0]->total_reportados; ?> total</span>
                         </div>
                       </div>
                     </div>
