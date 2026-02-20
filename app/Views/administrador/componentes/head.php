@@ -10,3 +10,9 @@
 <link rel="stylesheet" href="<?= base_url('fontawesome/css/solid.css') ?>">
 <link rel="stylesheet" href="<?= base_url('css/overhang.min.css') ?>">
 <link rel="stylesheet" href="<?= base_url('css/datatable.css') ?>">
+<style>
+  .dataTables_filter {
+    margin-bottom: 15px;   /* espacio abajo */
+    text-align: right;
+}
+</style>

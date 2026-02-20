@@ -36,10 +36,7 @@ class LoginController extends BaseController {
         "logeado" => true,
         "inventario" => 0
       ]);
-      
     }
-
-
   }
 
   public function cerrarSesion() {

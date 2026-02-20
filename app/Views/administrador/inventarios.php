@@ -23,10 +23,10 @@
               <div class="header-right d-flex flex-wrap mt-2 mt-sm-0">
                 <div class="d-flex align-items-center">
                   <a href="#">
-                    <p class="m-0 pe-3">ADMINISTRACIÒN</p>
+                    <p class="m-0 pe-3">Administracion</p>
                   </a>
                   <a class="ps-3 me-4" href="#">
-                    <p class="m-0">TOMFIC - INVENTARIOS</p>
+                    <p class="m-0">InventSoft - Inventarios</p>
                   </a>
                 </div>
               </div>
@@ -41,7 +41,7 @@
                     <table class="table table-striped table-borderless" id="tabla_inventarios">
                         <thead >
                           <tr >
-                            <th class="color-morado text-white text-uppercase"> </th>
+                            <th class="color-morado text-white text-uppercase">OPCIONES</th>
                             <th class="color-morado text-white text-uppercase"> codigo de barras </th>
                             <th class="color-morado text-white text-uppercase"> nombre </th>
                             <th class="color-morado text-white text-uppercase"> proveedor </th>
@@ -137,8 +137,18 @@
                 required
               >
             </div>
-            <div class="col-md-3">
+            <div class="col-md-2">
               <label class="mb-1 small ">Sub grupo *</label>
+              <input 
+                type="text"
+                id="subgrupo_inventario"
+                name="subgrupo_inventario"
+                class="form-control form-control-sm borde"
+                required
+              >
+            </div>
+            <div class="col-md-1">
+              <label class="mb-1 small ">Merma *</label>
               <input 
                 type="text"
                 id="subgrupo_inventario"
@@ -530,8 +540,18 @@
                 required
               >
             </div>
-            <div class="col-md-3">
+            <div class="col-md-2">
               <label class="mb-1 small ">Sub grupo *</label>
+              <input 
+                type="text"
+                id="subgrupo_editar"
+                name="subgrupo_editar"
+                class="form-control form-control-sm borde"
+                required
+              >
+            </div>
+            <div class="col-md-1">
+              <label class="mb-1 small ">Merma *</label>
               <input 
                 type="text"
                 id="subgrupo_editar"

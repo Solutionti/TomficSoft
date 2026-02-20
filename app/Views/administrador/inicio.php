@@ -27,10 +27,10 @@
               <div class="header-right d-flex flex-wrap mt-2 mt-sm-0">
                 <div class="d-flex align-items-center">
                   <a href="#">
-                    <p class="m-0 pe-3">ADMINISTRACIÒN</p>
+                    <p class="m-0 pe-3">Administracion</p>
                   </a>
                   <a class="ps-3 me-4" href="#">
-                    <p class="m-0">TOMFIC - INICIO</p>
+                    <p class="m-0">InventSoft - Inicio</p>
                     
                   </a>
                 </div>
@@ -220,7 +220,6 @@
 
     <script>
 const ctx = document.getElementById('miGrafico');
-
 new Chart(ctx, {
   type: 'bar', // tipos: bar, line, pie, doughnut, radar, polarArea, etc.
   data: {

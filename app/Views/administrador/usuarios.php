@@ -21,10 +21,10 @@
               <div class="header-right d-flex flex-wrap mt-2 mt-sm-0">
                 <div class="d-flex align-items-center">
                   <a href="#">
-                    <p class="m-0 pe-3">ADMINISTRACIÒN</p>
+                    <p class="m-0 pe-3">Administracion</p>
                   </a>
                   <a class="ps-3 me-4" href="#">
-                    <p class="m-0">TOMFIC - USUARIOS</p>
+                    <p class="m-0">InventSoft - Usuarios</p>
                   </a>
                 </div>
               </div>
@@ -34,7 +34,7 @@
                     <table class="table table-striped table-borderless" id="table_usuarios">
                         <thead>
                           <tr>
-                            <th class="color-morado text-white text-uppercase"> </th>
+                            <th class="color-morado text-white text-uppercase">Opciones</th>
                             <th class="color-morado text-white text-uppercase"> Codigo</th>
                             <th class="color-morado text-white text-uppercase"> Nombre completo </th>
                             <th class="color-morado text-white text-uppercase"> Empresa </th>
@@ -81,27 +81,7 @@
                             <td><label class="badge badge-primary"><?= $usuario->rol_usuario; ?></label></td>
                             <td><label class="badge badge-success"><?= $usuario->estado; ?></label></td>
                           </tr>
-                          <!-- <tr>
-                            <td></td>
-                            <td>02</td>
-                            <td>
-                              <div class="row">
-                               <div class="d-flex px-2 py-1">
-                                 <div>
-                                    <img src="https://themewagon.github.io/plus-admin/assets/images/faces-clipart/pic-2.png" class="avatar avatar-sm me-3">
-                                 </div>
-                                 <div class="d-flex flex-column justify-content-center">
-                                    <h6 class="mb-0 text-xs">Mabel Andrea Guerra</h6>
-                                    <p class="text-xs text-dark mb-0">56868539</p>
-                                 </div>
-                              </div>
-                              </div>
-                            </td>
-                            <td>GO Future</td>
-                            <td>jerson_galvez@hotmail.com</td>
-                            <td><label class="badge badge-primary ">Capturador</label></td>
-                            <td><label class="badge badge-success ">Activo</label></td>
-                          </tr> -->
+                          
                          <?php } ?>
                         </tbody>
                       </table>  

@@ -30,10 +30,10 @@
               <div class="header-right d-flex flex-wrap mt-2 mt-sm-0">
                 <div class="d-flex align-items-center">
                   <a href="#">
-                    <p class="m-0 pe-3">ADMINISTRACIÒN</p>
+                    <p class="m-0 pe-3">Administracion</p>
                   </a>
                   <a class="ps-3 me-4" href="#">
-                    <p class="m-0">TOMFIC - ASIGNACION</p>
+                    <p class="m-0">InventSoft - Asignacion</p>
                   </a>
                 </div>
               </div>

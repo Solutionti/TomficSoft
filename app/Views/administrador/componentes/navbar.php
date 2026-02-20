@@ -58,7 +58,7 @@
             </a>
           </li>
           <li class="nav-item pt-1">
-            <a class="nav-link" href="http://localhost/CODEIGNITER/InventSoft/ecommerce/inicio" target="_blank">
+            <a class="nav-link" href="http://localhost/CODEIGNITER/EcommerceSoft_/ecommerce/inicio" target="_blank">
               <span class="menu-title"><i class="fas fa-shopping-cart text-morado"></i> Ecommerce</span>
             </a>
           </li>

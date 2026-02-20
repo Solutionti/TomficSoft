@@ -44,8 +44,8 @@
                   <img class="avatar avatar-circle" src="https://www.sport.es/bicio/wp-content/uploads/2022/05/requisitos-buen-ciclista.jpg" alt="Image Description">
                 </div> -->
 
-                TOMFIC
-                <span class="blockquote-footer-source"> Edwin Carbonel - experto en inventarios</span>
+                InventSoft
+                <span class="blockquote-footer-source"> Jerson Galvez - experto en inventarios</span>
               </figcaption>
             </figure>
             <div class="position-absolute start-0 end-0 bottom-0 text-center p-5">
@@ -57,11 +57,11 @@
             <div class="text-center mb-5 mb-md-7">
                 <img
                   class="avatar avatar-xl avatar-4x3"
-                  src="<?= base_url('img/logo.png') ?>"
+                  src="http://localhost/CODEIGNITER/EcommerceSoft_/public/img/theme/logo.png"
                   alt="Logo"
                 >
               
-              <h1 class="h3">Bienvenido a TOMFIC</h1>
+              <h1 class="h3">Bienvenido a InventSoft</h1>
               <p>Inicie sesión para administrar su cuenta.</p>
             </div>
             <div class="messageError mt-2"></div>
