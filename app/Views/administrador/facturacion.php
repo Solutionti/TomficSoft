@@ -140,6 +140,12 @@
             color:#fff;
         }
 
+        .btn-inv-danger {
+            background: linear-gradient(135deg, #ef4444, var(--accent-red));
+            color: #fff;
+            box-shadow: 0 4px 14px rgba(239,68,68,.3);
+        }
+
         .btn-inv-outline-danger {
             background: transparent;
             border: 1.5px solid var(--accent-red);
@@ -608,17 +614,17 @@
                             <h1 class="">Facturación electronica</h1>
                         </div>
                         <div class="inv-topbar-actions">
-                            <button class="btn-inv btn-inv-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                            <button class="btn-inv btn-inv-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                                 <i class="fas fa-plus-circle"></i>
-                                <span class="label">Agregar inventario</span>
+                                <span class="label">Notas credito</span>
                             </button>
                             <button class="btn-inv btn-inv-success" data-bs-toggle="modal" data-bs-target="#modalasgignacionescrear">
-                                <i class="fas fa-map-marker-alt"></i>
-                                <span class="label">Agregar ubicaciones</span>
+                                <i class="fas fa-plus-circle"></i>
+                                <span class="label">Notas debito</span>
                             </button>
                             <button class="btn-inv btn-inv-outline-danger" data-bs-toggle="modal" data-bs-target="#modalProceso">
-                                <i class="fas fa-chart-bar"></i>
-                                <span class="label">Reportes</span>
+                                <i class="fas fa-user"></i>
+                                <span class="label">Clientes</span>
                             </button>
                             <button class="btn-inv btn-inv-outline" data-bs-toggle="modal" data-bs-target="#exportarexcelmodal">
                                 <i class="fas fa-file-import"></i>
