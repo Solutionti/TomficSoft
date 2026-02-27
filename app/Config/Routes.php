@@ -83,6 +83,9 @@ $routes->get('/getpeditosdetalle/(:num)', 'PedidosController::getPedidosDetalle/
 $routes->post('/actualizarpedido', 'PedidosController::actualizarPedido');
 $routes->get('/getpedidoreal', 'PedidosController::getPedidosTiempoReal');
 
+// FACTURACION
+$routes->get('/facturacion', 'FacturacionController::index');
+
 });
 
 

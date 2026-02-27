@@ -1,7 +1,33 @@
+:root {
+            --purple-900: #1a0533;
+            --purple-800: #2d0a55;
+            --purple-700: #4a1282;
+            --purple-600: #6b21b8;
+            --purple-500: #8b3fd4;
+            --purple-400: #a855f7;
+            --purple-300: #c084fc;
+            --purple-200: #e9d5ff;
+            --purple-100: #f5f0ff;
+            --accent-green: #10b981;
+            --accent-red:   #ef4444;
+            --accent-amber: #f59e0b;
+            --accent-blue:  #3b82f6;
+            --surface:      #ffffff;
+            --surface-alt:  #fafbff;
+            --border:       #e8e0f5;
+            --text-primary: #1a0533;
+            --text-muted:   #7c6fa0;
+            --shadow-sm:    0 1px 3px rgba(74,18,130,.08);
+            --shadow-md:    0 4px 16px rgba(74,18,130,.12);
+            --shadow-lg:    0 12px 40px rgba(74,18,130,.18);
+            --shadow-glow:  0 0 30px rgba(139,63,212,.25);
+            --radius:       14px;
+            --radius-sm:    8px;
+            --transition:   all .25s cubic-bezier(.4,0,.2,1);
+        }
+
 .color-morado {
-  /* background-color: #9a3de0 !important; */
-  background-color: #3b1d49 !important;
-  /* background: linear-gradient(70deg, #3b1d49, #000000) !important; */
+  background: linear-gradient(200deg, var(--purple-900), var(--purple-900)) !important;
 }
 
 .borde {

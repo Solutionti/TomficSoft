@@ -53,7 +53,7 @@
 
         * { box-sizing:border-box; margin:0; padding:0; }
         body { font-family:'DM Sans',sans-serif; background:var(--surface-alt); color:var(--text); }
-        h1,h2,h3,h4,h5,h6 { font-family:'Syne',sans-serif; }
+        h1,h2,h3,h4,h5,h6 { font-family:Arial, Helvetica, sans-serif; }
         ::-webkit-scrollbar { width:6px; height:6px; }
         ::-webkit-scrollbar-track { background:#f5f0ff; }
         ::-webkit-scrollbar-thumb { background:var(--purple-400); border-radius:99px; }
@@ -114,7 +114,7 @@
             font-size:16px; color:#fff;
         }
         .pos-brand-name {
-            font-family:'Syne',sans-serif; font-size:16px;
+            font-family:Arial, Helvetica, sans-serif; font-size:16px;
             font-weight:800; color:#fff; letter-spacing:-.01em;
         }
         .pos-brand-sub { font-size:10px; color:rgba(255,255,255,.55); margin-top:1px; }
@@ -143,7 +143,8 @@
         }
 
         .pos-total-amount {
-            font-family:'Syne',sans-serif; font-size:44px;
+            font-family: Arial, Helvetica, sans-serif; 
+            font-size:44px;
             font-weight:800; color:#fff; line-height:1;
             transition:all .3s var(--ease);
         }
@@ -165,7 +166,7 @@
         }
 
         .pos-return-amount {
-            font-family:'Syne',sans-serif; font-size:28px;
+            font-family: Arial, Helvetica, sans-serif; font-size:28px;
             font-weight:800; color:#a7f3d0; line-height:1;
         }
 
@@ -180,7 +181,7 @@
             background:rgba(255,255,255,.12);
             border:1.5px solid rgba(255,255,255,.2);
             border-radius:var(--radius-sm);
-            font-family:'JetBrains Mono',monospace;
+            font-family: Arial, Helvetica, sans-serif;
             font-size:16px; font-weight:700; color:#fff;
             outline:none; transition:all .25s var(--ease);
             text-align:center;
@@ -309,7 +310,7 @@
             display:inline-flex; align-items:center; justify-content:center;
             background:var(--amber-light); border:1.5px solid #fde68a;
             border-radius:var(--radius-sm); height:38px;
-            font-family:'Syne',sans-serif; font-size:15px;
+            font-family:Arial, Helvetica, sans-serif; font-size:15px;
             font-weight:800; color:#92400e; width:100%;
         }
 
@@ -319,7 +320,7 @@
             border:1.5px solid var(--purple-200);
             border-radius:var(--radius-sm);
             padding:8px 12px;
-            font-family:'Syne',sans-serif;
+            font-family:Arial, Helvetica, sans-serif;
             font-size:13px; font-weight:700;
             color:var(--purple-700);
             text-align:center;
@@ -356,7 +357,7 @@
         .cart-table thead th {
             background:linear-gradient(135deg,var(--purple-800),var(--purple-700));
             color:#fff; padding:11px 16px;
-            font-family:'Syne',sans-serif; font-size:10.5px;
+            font-family:Arial, Helvetica, sans-serif; font-size:10.5px;
             font-weight:700; letter-spacing:.06em; text-transform:uppercase;
             text-align:left; white-space:nowrap;
         }
@@ -388,14 +389,14 @@
         .qty-input {
             width:60px; padding:5px 8px; text-align:center;
             border:1.5px solid var(--border); border-radius:6px;
-            font-family:'Syne',sans-serif; font-size:13px; font-weight:700;
+            font-family:Arial, Helvetica, sans-serif; font-size:13px; font-weight:700;
             color:var(--purple-700); outline:none;
             transition:all .2s var(--ease);
         }
         .qty-input:focus { border-color:var(--purple-400); box-shadow:0 0 0 3px rgba(168,85,247,.15); }
 
         .price-cell {
-            font-family:'Syne',sans-serif; font-size:13px;
+            font-family:Arial, Helvetica, sans-serif; font-size:13px;
             font-weight:700; color:var(--purple-700);
         }
 
@@ -447,14 +448,14 @@
             <div class="pos-total-section">
                 <div class="pos-total-label"><i class="fas fa-receipt"></i>&nbsp; Total de venta</div>
                 <div class="pos-total-amount zero" id="ventaa">
-                    <small id="compracero">$0</small>
-                    <small class="total-compra" id="total-compra" hidden></small>
+                    <small id="compracero" class="text-white">$0</small>
+                    <small class="total-compra text-white" id="total-compra" hidden></small>
                 </div>
             </div>
             <div class="pos-divider"></div>
             <div class="pos-return-section" id="volver">
                 <div class="pos-return-label"><i class="fas fa-undo-alt"></i>&nbsp; A devolver</div>
-                <div class="pos-return-amount" id="devolver">$0</div>
+                <div class="pos-return-amount text-white" id="devolver">$0</div>
             </div>
             <div class="pos-cash-section">
                 <div class="pos-cash-label"><i class="fas fa-money-bill-wave"></i>&nbsp; Recibo de efectivo</div>

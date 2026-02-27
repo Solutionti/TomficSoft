@@ -375,7 +375,7 @@
     <!-- ── Branding ── -->
     <li>
       <a href="#" class="sb-brand">
-        <div class="sb-brand-icon"><i class="fas fa-boxes-stacked"></i></div>
+        <div class="sb-brand-icon"><i class="fas fa-user"></i></div>
         <div class="sb-brand-text">
           <div class="sb-brand-name">InventSoft</div>
           <div class="sb-brand-sub">Panel de control</div>
@@ -465,7 +465,6 @@
            style="font-size:9px;color:var(--ink3);margin-left:auto;flex-shrink:0"></i>
       </a>
     </li>
-
     <li class="sb-item">
       <a
         class="sb-link <?= str_contains(current_url(), 'pedidos') ? 'active' : '' ?>"
@@ -473,11 +472,19 @@
       >
         <span class="sb-link-icon"><i class="fas fa-motorcycle"></i></span>
         <span class="sb-link-text">Pedidos</span>
-        <!-- Badge de pedidos pendientes — actualizado por JS -->
         <span class="sb-badge" id="sb-pedidos-badge" style="display:none">0</span>
       </a>
     </li>
-
+    <li class="sb-item">
+      <a
+        class="sb-link <?= str_contains(current_url(), 'facturacion') ? 'active' : '' ?>"
+        href="<?= base_url('facturacion') ?>"
+      >
+        <span class="sb-link-icon"><i class="fas fa-file-invoice"></i></span>
+        <span class="sb-link-text">Facturaciòn</span>
+        <span class="sb-badge" id="sb-facturacion-badge" style="display:none">0</span>
+      </a>
+    </li>
     <li class="sb-item">
       <a
         class="sb-link"

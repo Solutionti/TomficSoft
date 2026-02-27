@@ -45,7 +45,7 @@ $("#recibio").on("keyup", function () {
     var recibio = $("#recibio").val().replace(/\./g, "");
 
     $("#devolver").attr("hidden", true);
-    document.getElementById("volver").innerHTML = '<h2 class="text-white text-uppercase">'+ (recibio - totalPedido).toLocaleString(undefined, {minimumFractionDigits: 0, maximumFractionDigits: 0})+'</h2>';
+    document.getElementById("volver").innerHTML = '<h2 class="text-white text-uppercase">$'+ (recibio - totalPedido).toLocaleString(undefined, {minimumFractionDigits: 0, maximumFractionDigits: 0})+'</h2>';
  });
 
 function addItemCarrito(newItem){
