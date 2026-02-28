@@ -43,8 +43,8 @@
         }
 
         * { box-sizing:border-box; margin:0; padding:0; }
-        body { font-family:'DM Sans',sans-serif; background:var(--surface-alt); color:var(--text); }
-        h1,h2,h3,h4,h5,h6 { font-family:'Syne',sans-serif; }
+        body { font-family:Arial, Helvetica; background:var(--surface-alt); color:var(--text); }
+        h1,h2,h3,h4,h5,h6 { font-family:Arial, Helvetica; }
         ::-webkit-scrollbar { width:6px; height:6px; }
         ::-webkit-scrollbar-track { background:#f5f0ff; }
         ::-webkit-scrollbar-thumb { background:var(--purple-400); border-radius:99px; }
@@ -74,7 +74,7 @@
         .btn-i {
             display:inline-flex; align-items:center; gap:7px;
             padding:9px 18px; border-radius:50px;
-            font-family:'DM Sans',sans-serif; font-size:13px; font-weight:600;
+            font-family:Arial, Helvetica; font-size:13px; font-weight:600;
             cursor:pointer; border:none;
             transition:all .25s var(--ease); white-space:nowrap; text-decoration:none;
         }
@@ -136,7 +136,7 @@
         .si-blue  {background:#dbeafe;color:#1e40af;}
 
         . {
-            font-family:'Syne',sans-serif; font-size:22px;
+            font-family:Arial, Helvetica; font-size:22px;
             font-weight:800; color:var(--purple-800); line-height:1;
         }
         .stat-lbl {
@@ -178,7 +178,7 @@
             transition:all .25s var(--ease);
         }
         .tbl-search:focus-within { border-color:var(--purple-400); box-shadow:0 0 0 3px rgba(168,85,247,.12); }
-        .tbl-search input { border:none; outline:none; font-family:'DM Sans',sans-serif; font-size:13px; color:var(--text); background:transparent; width:180px; }
+        .tbl-search input { border:none; outline:none; font-family:Arial, Helvetica; font-size:13px; color:var(--text); background:transparent; width:180px; }
         .tbl-search i { color:var(--muted); font-size:13px; }
 
         /* ══════════════════════════════════════
@@ -191,7 +191,7 @@
         .inv-table thead th {
             background:linear-gradient(135deg,var(--purple-800),var(--purple-700));
             color:#fff; padding:12px 16px; text-align:left;
-            font-family:'Syne',sans-serif; font-size:10.5px; font-weight:700;
+            font-family:Arial, Helvetica; font-size:10.5px; font-weight:700;
             letter-spacing:.06em; text-transform:uppercase; white-space:nowrap;
         }
 
@@ -223,7 +223,7 @@
         .stock-pill {
             display:inline-flex; align-items:center; gap:5px;
             padding:4px 11px; border-radius:50px;
-            font-family:'Syne',sans-serif; font-size:12px; font-weight:700;
+            font-family:Arial, Helvetica; font-size:12px; font-weight:700;
         }
         .stock-ok   {background:var(--green-light);color:var(--green-dark);}
         .stock-low  {background:#fef3c7;color:#92400e;}
@@ -231,7 +231,7 @@
 
         /* Cost cell */
         .cost-cell {
-            font-family:'Syne',sans-serif; font-size:13px;
+            font-family:Arial, Helvetica; font-size:13px;
             font-weight:700; color:var(--purple-600);
         }
 
@@ -260,7 +260,7 @@
         .modal-content {
             border:none; border-radius:var(--radius) !important;
             overflow:hidden; box-shadow:var(--shadow-lg);
-            font-family:'DM Sans',sans-serif;
+            font-family:Arial, Helvetica;
         }
         .modal-header-inv {
             background:linear-gradient(135deg,var(--purple-800),var(--purple-600)) !important;
@@ -270,7 +270,7 @@
         .modal-header-inv.red-header   { background:linear-gradient(135deg,#991b1b,var(--red)) !important; }
 
         .modal-header-inv .modal-title {
-            font-family:'Syne',sans-serif; font-size:14.5px;
+            font-family:Arial, Helvetica; font-size:14.5px;
             font-weight:700; color:#fff; letter-spacing:.04em;
         }
         .modal-header-inv .btn-close { filter:invert(1); opacity:.85; }
@@ -311,7 +311,7 @@
         .fc, .fsel {
             width:100%; padding:8px 12px;
             border:1.5px solid var(--border); border-radius:var(--radius-sm);
-            font-family:'DM Sans',sans-serif; font-size:13px; color:var(--text);
+            font-family:Arial, Helvetica; font-size:13px; color:var(--text);
             background:var(--surface); transition:all .25s var(--ease);
             outline:none; appearance:none;
         }

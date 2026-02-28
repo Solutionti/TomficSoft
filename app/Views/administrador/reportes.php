@@ -47,8 +47,8 @@
         }
 
         * { box-sizing:border-box; margin:0; padding:0; }
-        body { font-family:'DM Sans',sans-serif; background:var(--surface-alt); color:var(--text); }
-        h1,h2,h3,h4,h5,h6 { font-family:'Syne',sans-serif; }
+        body { font-family:Arial, Helvetica; background:var(--surface-alt); color:var(--text); }
+        h1,h2,h3,h4,h5,h6 { font-family:Arial, Helvetica; }
         ::-webkit-scrollbar { width:6px; height:6px; }
         ::-webkit-scrollbar-track { background:#f5f0ff; }
         ::-webkit-scrollbar-thumb { background:var(--purple-400); border-radius:99px; }
@@ -76,7 +76,7 @@
         .btn-r {
             display:inline-flex; align-items:center; gap:7px;
             padding:9px 20px; border-radius:50px;
-            font-family:'DM Sans',sans-serif; font-size:13px; font-weight:600;
+            font-family:Arial, Helvetica; font-size:13px; font-weight:600;
             cursor:pointer; border:none; transition:all .25s var(--ease);
             white-space:nowrap; text-decoration:none;
         }
@@ -128,7 +128,7 @@
         }
 
         .module-name {
-            font-family:'Syne',sans-serif; font-size:20px;
+            font-family:Arial, Helvetica; font-size:20px;
             font-weight:800; color:#fff; line-height:1.1;
         }
 
@@ -184,7 +184,7 @@
         }
 
         .rpt-code-badge {
-            font-family:'Syne',sans-serif;
+            font-family:Arial, Helvetica;
             font-size:22px; font-weight:800;
             color:var(--purple-700);
             line-height:1;
@@ -212,7 +212,7 @@
         .btn-dl {
             display:inline-flex; align-items:center; gap:5px;
             padding:6px 13px; border-radius:50px;
-            font-family:'DM Sans',sans-serif;
+            font-family:Arial, Helvetica;
             font-size:12px; font-weight:600;
             cursor:pointer; border:none;
             transition:all .22s var(--ease);
@@ -239,7 +239,7 @@
         .modal-content {
             border:none; border-radius:var(--radius) !important;
             overflow:hidden; box-shadow:var(--shadow-lg);
-            font-family:'DM Sans',sans-serif;
+            font-family:Arial, Helvetica;
         }
 
         .modal-header-inv {
@@ -248,7 +248,7 @@
         }
 
         .modal-header-inv .modal-title {
-            font-family:'Syne',sans-serif; font-size:14.5px;
+            font-family:Arial, Helvetica; font-size:14.5px;
             font-weight:700; color:#fff; letter-spacing:.04em;
         }
 
@@ -262,7 +262,7 @@
         .fc, .fsel {
             width:100%; padding:9px 13px;
             border:1.5px solid var(--border); border-radius:var(--radius-sm);
-            font-family:'DM Sans',sans-serif; font-size:13px; color:var(--text);
+            font-family:Arial, Helvetica; font-size:13px; color:var(--text);
             background:var(--surface); transition:all .25s var(--ease);
             outline:none; appearance:none;
         }

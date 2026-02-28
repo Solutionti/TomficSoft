@@ -51,7 +51,7 @@
 
         * { box-sizing:border-box; margin:0; padding:0; }
         body { font-family:'DM Sans',sans-serif; background:var(--surface-alt); color:var(--text); }
-        h1,h2,h3,h4,h5,h6 { font-family:'Syne',sans-serif; }
+        h1,h2,h3,h4,h5,h6 { font-family: Arial, Helvetica; }
         ::-webkit-scrollbar { width:6px; height:6px; }
         ::-webkit-scrollbar-track { background:#f5f0ff; }
         ::-webkit-scrollbar-thumb { background:var(--purple-400); border-radius:99px; }
@@ -131,7 +131,7 @@
         .ki-slate  { background:#f1f5f9; color:#475569; }
 
         . {
-            font-family:'Syne',sans-serif; font-size:21px;
+            font-family:Arial, Helvetica; font-size:21px;
             font-weight:800; color:var(--purple-800); line-height:1;
         }
         .kpi-lbl {
@@ -198,7 +198,7 @@
         }
 
         . {
-            font-family:'Syne',sans-serif; font-size:16px;
+            font-family:Arial, Helvetica; font-size:16px;
             font-weight:800; color:var(--purple-800); line-height:1;
         }
         .metric-chip-lbl {
@@ -240,7 +240,7 @@
         .premium-stars i { color:var(--amber); font-size:13px; }
 
         .premium-title {
-            font-family:'Syne',sans-serif; font-size:22px;
+            font-family:Arial, Helvetica; font-size:22px;
             font-weight:800; color:#fff; line-height:1.2; margin-bottom:10px;
         }
 
@@ -331,7 +331,7 @@
         .state-sub   { font-size:11px; color:var(--muted); }
 
         .state-count {
-            font-family:'Syne',sans-serif; font-size:22px;
+            font-family:Arial, Helvetica; font-size:22px;
             font-weight:800;
         }
         .sc-green { color:var(--green-dark); }
@@ -355,7 +355,7 @@
 
         .color-stat-icon { font-size:18px; }
         . {
-            font-family:'Syne',sans-serif; font-size:20px;
+            font-family:Arial, Helvetica; font-size:20px;
             font-weight:800; line-height:1;
         }
         .color-stat-lbl { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.06em; }

@@ -43,7 +43,7 @@
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
-            font-family: 'DM Sans', sans-serif;
+            font-family: Arial, Helvetica;
             background: var(--surface-alt);
             color: var(--text-primary);
         }
@@ -107,7 +107,7 @@
             gap: 7px;
             padding: 9px 18px;
             border-radius: 50px;
-            font-family: 'DM Sans', sans-serif;
+            font-family: Arial, Helvetica;
             font-size: 13px;
             font-weight: 600;
             cursor: pointer;
@@ -216,7 +216,7 @@
         .inv-meta-info input {
             background: transparent;
             border: none;
-            font-family: 'DM Sans', sans-serif;
+            font-family: Arial, Helvetica;
             font-size: 13px;
             font-weight: 600;
             color: var(--text-primary);
@@ -408,7 +408,7 @@
             border-radius: var(--radius) !important;
             overflow: hidden;
             box-shadow: var(--shadow-lg);
-            font-family: 'DM Sans', sans-serif;
+            font-family: Arial, Helvetica;
         }
 
         .modal-header-inv {
@@ -450,7 +450,7 @@
             padding: 9px 13px;
             border: 1.5px solid var(--border);
             border-radius: var(--radius-sm);
-            font-family: 'DM Sans', sans-serif;
+            font-family: Arial, Helvetica;
             font-size: 13px;
             color: var(--text-primary);
             background: var(--surface);
@@ -476,7 +476,7 @@
            TABS (modal ubicaciones)
         ============================================================ */
         .nav-pills-inv .nav-link {
-            font-family: 'DM Sans', sans-serif;
+            font-family: Arial, Helvetica;
             font-size: 12.5px;
             font-weight: 600;
             color: var(--text-muted);

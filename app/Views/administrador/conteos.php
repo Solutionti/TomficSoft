@@ -41,12 +41,12 @@
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
-            font-family: 'DM Sans', sans-serif;
+            font-family: Arial, Helvetica;
             background: var(--surface-alt);
             color: var(--text-primary);
         }
 
-        h1,h2,h3,h4,h5,h6 { font-family: 'Syne', sans-serif; }
+        h1,h2,h3,h4,h5,h6 { font-family: Arial, Helvetica; }
 
         /* ══════════════════════════════════════
            SCROLLBAR
@@ -96,7 +96,7 @@
             gap: 7px;
             padding: 9px 20px;
             border-radius: 50px;
-            font-family: 'DM Sans', sans-serif;
+            font-family: Arial, Helvetica;
             font-size: 13px;
             font-weight: 600;
             cursor: pointer;
@@ -189,7 +189,7 @@
         .cnt-meta-info textarea {
             background: transparent;
             border: none;
-            font-family: 'DM Sans', sans-serif;
+            font-family: Arial, Helvetica;
             font-size: 13px;
             font-weight: 600;
             color: var(--text-primary);
@@ -275,7 +275,7 @@
             padding: 8px 12px;
             border: 1.5px solid var(--border);
             border-radius: var(--radius-sm);
-            font-family: 'DM Sans', sans-serif;
+            font-family: Arial, Helvetica;
             font-size: 13px;
             color: var(--text-primary);
             background: var(--surface);
@@ -323,7 +323,7 @@
             flex: 1;
             padding: 9px 14px;
             border: none;
-            font-family: 'DM Sans', sans-serif;
+            font-family: Arial, Helvetica;
             font-size: 14px;
             font-weight: 700;
             color: var(--text-primary);
@@ -377,7 +377,7 @@
             width: 100%;
             border: none;
             background: transparent;
-            font-family: 'Syne', sans-serif;
+            font-family: Arial, Helvetica;
             font-size: 22px;
             font-weight: 800;
             color: var(--purple-700);
@@ -431,7 +431,7 @@
             width: 100%;
             border: none;
             background: transparent;
-            font-family: 'Syne', sans-serif;
+            font-family: Arial, Helvetica;
             font-size: 20px;
             font-weight: 800;
             text-align: center;
@@ -500,7 +500,7 @@
         .loc-card .loc-info input {
             background: transparent;
             border: none;
-            font-family: 'DM Sans', sans-serif;
+            font-family: Arial, Helvetica;
             font-size: 12px;
             font-weight: 700;
             color: var(--text-primary);
@@ -518,7 +518,7 @@
             border-radius: var(--radius) !important;
             overflow: hidden;
             box-shadow: var(--shadow-lg);
-            font-family: 'DM Sans', sans-serif;
+            font-family: Arial, Helvetica;
         }
 
         .modal-header-inv {
@@ -528,7 +528,7 @@
         }
 
         .modal-header-inv .modal-title {
-            font-family: 'Syne', sans-serif;
+            font-family: Arial, Helvetica;
             font-size: 14px;
             font-weight: 700;
             color: #fff;
@@ -554,7 +554,7 @@
             color: #fff;
             padding: 11px 14px;
             text-align: left;
-            font-family: 'Syne', sans-serif;
+            font-family: Arial, Helvetica;
             font-size: 10.5px;
             font-weight: 700;
             letter-spacing: .06em;

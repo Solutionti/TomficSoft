@@ -48,7 +48,7 @@
   body {
     background: var(--bg);
     color: var(--ink);
-    font-family: 'Outfit', sans-serif;
+    font-family: Arial, Helvetica;
     font-size: 14px;
     min-height: 100vh;
   }
@@ -280,7 +280,7 @@
     font-size: 12.5px;
     width: 190px;
     outline: none;
-    font-family: 'Outfit', sans-serif;
+    font-family: Arial, Helvetica;
     transition: border-color .2s, box-shadow .2s, width .3s;
   }
   .search-box input:focus {
@@ -773,7 +773,7 @@
     padding: 18px 22px !important;
   }
   .modal-header .modal-title {
-    font-family: 'Outfit', sans-serif !important;
+    font-family: Arial, Helvetica !important;
     font-size: 14px !important; font-weight: 700 !important;
     letter-spacing: .04em !important;
     display: flex; align-items: center; gap: 9px;
@@ -816,7 +816,7 @@
     border-radius: var(--r2) !important;
     color: var(--ink) !important;
     font-size: 13px !important; padding: 8px 11px !important;
-    font-family: 'Outfit', sans-serif !important;
+    font-family: Arial, Helvetica !important;
     transition: border-color .2s, box-shadow .2s;
     width: 100%;
   }
@@ -850,7 +850,7 @@
     background: rgba(91,47,201,.07);
     color: var(--v);
     font-size: 10.5px; letter-spacing: .07em; text-transform: uppercase;
-    font-family: 'Outfit', sans-serif; font-weight: 700;
+    font-family: Arial, Helvetica; font-weight: 700;
     padding: 9px 13px;
   }
   .modal-table tbody td { padding: 9px 13px; font-size: 13px; color: var(--ink); }
@@ -862,7 +862,7 @@
     color: var(--ink2);
     padding: 8px 18px; border-radius: var(--r2);
     font-size: 13px; font-weight: 500;
-    cursor: pointer; font-family: 'Outfit', sans-serif;
+    cursor: pointer; font-family: Arial, Helvetica;
     transition: background .2s, border-color .2s;
     display: flex; align-items: center; gap: 6px;
   }
@@ -873,7 +873,7 @@
     border: none; color: #fff;
     padding: 8px 20px; border-radius: var(--r2);
     font-size: 13px; font-weight: 600;
-    cursor: pointer; font-family: 'Outfit', sans-serif;
+    cursor: pointer; font-family: Arial, Helvetica;
     box-shadow: 0 4px 16px var(--v-glow);
     transition: box-shadow .2s, transform .15s;
     display: flex; align-items: center; gap: 6px;
