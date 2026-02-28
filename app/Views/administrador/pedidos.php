@@ -928,7 +928,7 @@
             </div>
           </div>
           <div class="stat" style="--stat-color:var(--green); --stat-bg:var(--green-s)">
-            <div class="stat-icon"><i class="fas fa-circle-check"></i></div>
+            <div class="stat-icon"><i class="fas fa-weight-hanging"></i></div>
             <div class="stat-body">
               <div class="stat-val" id="s-entregados">—</div>
               <div class="stat-lbl">Entregados</div>
@@ -942,7 +942,7 @@
             </div>
           </div>
           <div class="stat" style="--stat-color:var(--amber); --stat-bg:var(--amber-s)">
-            <div class="stat-icon"><i class="fas fa-fire-burner"></i></div>
+            <div class="stat-icon"><i class="fas fa-utensils"></i></div>
             <div class="stat-body">
               <div class="stat-val" id="s-prep">—</div>
               <div class="stat-lbl">Preparación</div>
@@ -1038,13 +1038,10 @@
                 </tbody>
               </table>
             </div>
-          </div><!-- /.tcard -->
-
-          <!-- ── RIGHT PANEL ── -->
+          </div>
           <div class="rpanel">
-
             <!-- Clock -->
-            <div class="clock-card">
+            <!-- <div class="clock-card">
               <div class="clock-top">
                 <div class="live-pill">
                   <span class="live-dot"></span>
@@ -1056,14 +1053,12 @@
                 <span class="hh">--</span><span class="colon">:</span><span class="mm">--</span><span class="colon">:</span><span class="ss">--</span>
               </div>
               <div class="clock-sub">Actualización automática cada segundo</div>
-            </div>
-
-            <!-- Activity feed -->
+            </div> -->
             <div class="feed-card">
               <div class="feed-hdr">
                 <div class="feed-hdr-left">
                   <div class="feed-hdr-icon">
-                    <i class="fas fa-bolt"></i>
+                    <i class="fas fa-shopping-cart"></i>
                   </div>
                   <div class="feed-hdr-text">
                     <div class="feed-title">Actividad reciente</div>
@@ -1073,7 +1068,7 @@
                 <div class="feed-hdr-right">
                   <span class="feed-badge" id="feed-count">0</span>
                   <button class="feed-refresh" id="feed-refresh" title="Limpiar">
-                    <i class="fas fa-rotate-right"></i>
+                    <i class="fas fa-broom"></i>
                   </button>
                 </div>
               </div>
@@ -1086,8 +1081,6 @@
                 </div>
               </div>
             </div>
-
-            <!-- Status bars -->
             <div class="status-card">
               <div class="status-card-title">
                 <i class="fas fa-chart-bar"></i>
@@ -1095,15 +1088,12 @@
               </div>
               <div class="sb-list" id="sb-list"></div>
             </div>
-
-          </div><!-- /.rpanel -->
-
-        </div><!-- /.main-grid -->
-      </div><!-- /.pw -->
-    </div><!-- /.main-panel -->
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
-
 <!-- ══════════════════════════════════════
      MODAL DETALLE PEDIDO
 ══════════════════════════════════════ -->
@@ -1117,10 +1107,7 @@
           Detalle del Pedido
         </h5>
       </div>
-
       <div class="modal-body">
-
-        <!-- Sección info -->
         <div class="msec">
           <div class="msec-label"><i class="fas fa-info-circle"></i>Información general</div>
           <div class="row g-3">
@@ -1238,7 +1225,6 @@
   </div>
 </div>
 
-<?php require_once("componentes/footer.php")?>
 <?php require_once("componentes/scripts.php")?>
 <script src="<?= base_url('js/pedidos.js') ?>"></script>
 
@@ -1393,7 +1379,7 @@ function pushFeed(consecutivo, estado, hora) {
   el.className = 'fi';
   el.innerHTML = `
     <div class="fi-icon" style="--fi-bg:${meta.bg}; --fi-c:${meta.c}; background:${meta.bg}; color:${meta.c}">
-      <i class="fas ${meta.icon}"></i>
+      <i class="fas fa-shopping-basket"></i>
     </div>
     <div class="fi-body">
       <div class="fi-status" style="color:${meta.c}">${meta.label}</div>
