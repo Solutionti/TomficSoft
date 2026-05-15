@@ -36,7 +36,7 @@
   border-right: 1px solid var(--border);
   display: flex;
   flex-direction: column;
-  font-family: 'Outfit', sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
   position: relative;
   overflow: hidden;
   transition: width .3s cubic-bezier(.4,0,.2,1);
@@ -181,7 +181,7 @@
 
 .sb-search input {
   border: none; outline: none; background: transparent;
-  font-family: 'Outfit', sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
   font-size: 12.5px; color: var(--ink);
   width: 100%;
 }
@@ -295,7 +295,7 @@
   background: var(--v);
   color: #fff;
   font-size: 9px; font-weight: 700;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: Arial, Helvetica, sans-serif;
   box-shadow: 0 2px 8px var(--v-glow);
   animation: sb-bump .3s ease;
 }
@@ -318,7 +318,7 @@
 
 .sb-version {
   font-size: 10px; color: var(--ink3);
-  font-family: 'JetBrains Mono', monospace;
+  font-family: Arial, Helvetica, sans-serif;
   letter-spacing: .04em;
 }
 

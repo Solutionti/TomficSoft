@@ -130,7 +130,7 @@
         }
         .pos-sale-num label { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.08em; color:rgba(255,255,255,.6); }
         .pos-sale-num .sale-id {
-            font-family:'JetBrains Mono',monospace;
+            font-family: Arial, Helvetica, sans-serif;
             font-size:14px; font-weight:700; color:#e9d5ff;
         }
 
@@ -510,7 +510,7 @@
             </div>
             <div class="pos-time-badge">
                 <i class="fas fa-clock"></i>
-                <span id="liveClock">12:00:PM</span>
+                <span id="liveDateLabel">—</span>
             </div>
         </div>
 
@@ -616,6 +616,14 @@
 <script src="<?= base_url('js/ventas.js') ?>"></script>
 
 <script>
+    (function(){
+    const el = document.getElementById('liveDateLabel');
+    if (!el) return;
+    const days = ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'];
+    const months = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+    const d = new Date();
+    el.textContent = `${days[d.getDay()]}, ${d.getDate()} de ${months[d.getMonth()]} ${d.getFullYear()}`;
+})();
 /* ══ Live clock ══ */
 (function tick(){
     const el = document.getElementById('liveClock');

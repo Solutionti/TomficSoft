@@ -558,7 +558,7 @@
 
     /* ── Consecutive ── */
     .consec {
-      font-family: 'JetBrains Mono', monospace;
+      font-family: Arial, Helvetica, sans-serif;
       font-size: 12px;
       font-weight: 500;
       color: var(--v);
@@ -570,7 +570,7 @@
 
     /* ── Amount ── */
     .amount {
-      font-family: 'JetBrains Mono', monospace;
+      font-family: Arial, Helvetica, sans-serif;
       font-size: 12.5px;
       font-weight: 500;
       color: var(--green);
@@ -578,7 +578,7 @@
 
     /* ── Date/Time ── */
     .dt {
-      font-family: 'JetBrains Mono', monospace;
+      font-family: Arial, Helvetica, sans-serif;
       font-size: 11.5px;
       color: var(--ink3);
     }
@@ -730,7 +730,7 @@
       font-size: 11.5px;
       font-weight: 600;
       color: var(--blue);
-      font-family: 'JetBrains Mono', monospace;
+      font-family: Arial, Helvetica, sans-serif;
     }
 
     .cxc-dot i {
@@ -817,7 +817,7 @@
     }
 
     .clock-time {
-      font-family: 'JetBrains Mono', monospace;
+      font-family: Arial, Helvetica, sans-serif;
       font-size: 38px;
       font-weight: 500;
       color: #fff;
@@ -917,7 +917,7 @@
       color: #fff;
       font-size: 9px;
       font-weight: 700;
-      font-family: 'JetBrains Mono', monospace;
+      font-family: Arial, Helvetica, sans-serif;
       letter-spacing: .03em;
       box-shadow: 0 2px 8px var(--v-glow);
       transition: transform .15s;
@@ -1091,7 +1091,7 @@
       display: inline-flex;
       align-items: center;
       gap: 3px;
-      font-family: 'JetBrains Mono', monospace;
+      font-family: Arial, Helvetica, sans-serif;
       font-size: 9.5px;
       color: var(--ink3);
       background: var(--bg);
@@ -1169,7 +1169,7 @@
     }
 
     .sb-count {
-      font-family: 'JetBrains Mono', monospace;
+      font-family: Arial, Helvetica, sans-serif;
       font-size: 11.5px;
       font-weight: 500;
       color: var(--pip, var(--v));

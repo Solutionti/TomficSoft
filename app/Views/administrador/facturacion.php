@@ -43,12 +43,12 @@
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
-            font-family: 'DM Sans', sans-serif;
+            font-family: Arial, Helvetica, sans-serif;
             background: var(--surface-alt);
             color: var(--text-primary);
         }
 
-        h1,h2,h3,h4,h5 { font-family: 'Syne', sans-serif; }
+        h1,h2,h3,h4,h5 { font-family: Arial, Helvetica, sans-serif; }
 
         /* ============================================================
            PAGE WRAPPER
@@ -107,7 +107,7 @@
             gap: 7px;
             padding: 9px 18px;
             border-radius: 50px;
-            font-family: 'DM Sans', sans-serif;
+            font-family: Arial, Helvetica, sans-serif;
             font-size: 13px;
             font-weight: 600;
             cursor: pointer;
@@ -222,7 +222,7 @@
         .inv-meta-info input {
             background: transparent;
             border: none;
-            font-family: 'DM Sans', sans-serif;
+            font-family: Arial, Helvetica, sans-serif;
             font-size: 13px;
             font-weight: 600;
             color: var(--text-primary);
@@ -286,7 +286,7 @@
             color: #fff;
             padding: 13px 16px;
             text-align: left;
-            font-family: 'Syne', sans-serif;
+            font-family: Arial, Helvetica, sans-serif;
             font-size: 11px;
             font-weight: 700;
             letter-spacing: .06em;
@@ -414,7 +414,7 @@
             border-radius: var(--radius) !important;
             overflow: hidden;
             box-shadow: var(--shadow-lg);
-            font-family: 'DM Sans', sans-serif;
+            font-family: Arial, Helvetica, sans-serif;
         }
 
         .modal-header-inv {
@@ -424,7 +424,7 @@
         }
 
         .modal-header-inv .modal-title {
-            font-family: 'Syne', sans-serif;
+            font-family: Arial, Helvetica, sans-serif;
             font-size: 15px;
             font-weight: 700;
             color: #fff;
@@ -456,7 +456,7 @@
             padding: 9px 13px;
             border: 1.5px solid var(--border);
             border-radius: var(--radius-sm);
-            font-family: 'DM Sans', sans-serif;
+            font-family: Arial, Helvetica, sans-serif;
             font-size: 13px;
             color: var(--text-primary);
             background: var(--surface);
@@ -482,7 +482,7 @@
            TABS (modal ubicaciones)
         ============================================================ */
         .nav-pills-inv .nav-link {
-            font-family: 'DM Sans', sans-serif;
+            font-family: Arial, Helvetica, sans-serif;
             font-size: 12.5px;
             font-weight: 600;
             color: var(--text-muted);
@@ -691,87 +691,10 @@
                                         <th>Fecha cierre</th>
                                         <th>Estado</th>
                                         <th>Proceso final</th>
-                                        <th>Panel de control</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php foreach($asignacionInventarios->getResult() as $asignacionInventario) { ?>
-                                    <tr>
-                                        <td>
-                                            <button class="btn-edit" data-bs-toggle="modal" data-bs-target="#actualizarinventario"
-                                                onclick="procesoDatosModalActualizar(<?= $asignacionInventario->codigo_inventario; ?>)"
-                                                title="Editar inventario">
-                                                <i class="fas fa-pen fa-xs"></i>
-                                            </button>
-                                        </td>
-                                        
-                                        <td><?= $asignacionInventario->fecha; ?></td>
-                                        <td class="text-uppercase" style="max-width:220px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;"
-                                            title="<?= $asignacionInventario->observacion; ?>">
-                                            <?= $asignacionInventario->observacion; ?>
-                                        </td>
-                                        <td>
-                                            <span class="badge-inv badge-blue-inv"><?= $asignacionInventario->conteos; ?></span>
-                                        </td>
-                                        <td><?= $asignacionInventario->fecha_inicio; ?></td>
-                                        <td><?= $asignacionInventario->fecha_cierre; ?></td>
-                                        <td>
-                                            <?php if($asignacionInventario->estado == 'Activo') { ?>
-                                                <span class="badge-inv badge-success-inv badge-active-pulse">
-                                                    <?= $asignacionInventario->estado; ?>
-                                                </span>
-                                            <?php } else { ?>
-                                                <span class="badge-inv badge-danger-inv">
-                                                    <?= $asignacionInventario->estado; ?>
-                                                </span>
-                                            <?php } ?>
-                                        </td>
-                                        <td>
-                                            <span class="badge-inv badge-success-inv"><?= $asignacionInventario->proceso_final; ?></span>
-                                        </td>
-                                        <td>
-                                            <div style="display:flex;gap:6px;flex-wrap:nowrap;">
-                                                <?php if($asignacionInventario->btnproducto == 0) { ?>
-                                                    <button class="btn-panel btn-panel-blue"
-                                                        onclick="asociarDatosModalProductos(<?= $asignacionInventario->codigo_inventario; ?>)">
-                                                        <i class="fas fa-box fa-xs"></i> Productos
-                                                    </button>
-                                                <?php } else { ?>
-                                                    <button class="btn-panel btn-panel-green"
-                                                        onclick="asociarDatosModalProductos(<?= $asignacionInventario->codigo_inventario; ?>)">
-                                                        <i class="fas fa-box-open fa-xs"></i> Productos
-                                                    </button>
-                                                <?php } ?>
-
-                                                <?php if($asignacionInventario->btnubicacion == 0) { ?>
-                                                    <button class="btn-panel btn-panel-blue"
-                                                        onclick="asociarDatosModalConteos(<?= $asignacionInventario->codigo_inventario; ?>)">
-                                                        <i class="fas fa-map-pin fa-xs"></i> Ubicación
-                                                    </button>
-                                                <?php } else { ?>
-                                                    <button class="btn-panel btn-panel-green"
-                                                        onclick="asociarDatosModalConteos(<?= $asignacionInventario->codigo_inventario; ?>)">
-                                                        <i class="fas fa-map-pin fa-xs"></i> Ubicación
-                                                    </button>
-                                                <?php } ?>
-
-                                                <?php if($asignacionInventario->btnproceso == 0) { ?>
-                                                    <button class="btn-panel btn-panel-blue" data-bs-toggle="modal"
-                                                        data-bs-target="#modalReportes"
-                                                        onclick="procesoDatosModal(<?= $asignacionInventario->codigo_inventario; ?>)">
-                                                        <i class="fas fa-tasks fa-xs"></i> Procesos
-                                                    </button>
-                                                <?php } else { ?>
-                                                    <button class="btn-panel btn-panel-green" data-bs-toggle="modal"
-                                                        data-bs-target="#modalReportes"
-                                                        onclick="procesoDatosModal(<?= $asignacionInventario->codigo_inventario; ?>)">
-                                                        <i class="fas fa-tasks fa-xs"></i> Procesos
-                                                    </button>
-                                                <?php } ?>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <?php } ?>
+                                    
                                 </tbody>
                             </table>
                         </div>
@@ -785,7 +708,7 @@
      MODAL: CREAR INVENTARIO
 ══════════════════════════════════════════════════ -->
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog modal-fullscreen">
+  <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header modal-header-inv">
         <h1 class="modal-title" id="staticBackdropLabel">
@@ -895,7 +818,7 @@
      MODAL: TABLERO REPORTES
 ══════════════════════════════════════════════════ -->
 <div class="modal fade" id="modalProceso" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog modal-fullscreen">
+  <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header modal-header-inv">
         <h1 class="modal-title">
@@ -907,63 +830,7 @@
         <div class="container-fluid">
           <div class="row mt-3">
             <div class="col-md-12">
-              <div class="inv-table-card">
-                <div class="inv-table-scroll">
-                  <table class="inv-table inv-table-sm">
-                    <thead>
-                      <tr>
-                        <th>Ubicación</th>
-                        <th>Localización</th>
-                        <th>N.Local</th>
-                        <th>Observación</th>
-                        <th>Usuarios</th>
-                        <th>Conteo #1</th>
-                        <th>Conteo #2</th>
-                        <th>Diferencia</th>
-                        <th>Validador</th>
-                        <th>Imprimir reporte</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <?php foreach($reportes->getResult() as $reporte){ ?>
-                      <tr>
-                        <td class="text-uppercase"><?= $reporte->ubicacion; ?></td>
-                        <td class="text-uppercase"><?= $reporte->localizacion; ?></td>
-                        <td><?= $reporte->numerolocalizacion; ?></td>
-                        <td class="text-uppercase"><?= $reporte->observacion; ?></td>
-                        <td style="font-size:12px;"><?= $reporte->usuarioconteo1.' → '.$reporte->usuarioconteo2; ?></td>
-                        <td><span class="badge-inv badge-dark-inv"><?= $reporte->conte1; ?></span></td>
-                        <td><span class="badge-inv badge-dark-inv"><?= $reporte->conte2; ?></span></td>
-                        <td>
-                            <?php $diff = $reporte->conte1 - $reporte->conte2; ?>
-                            <span class="badge-inv <?= $diff == 0 ? 'badge-success-inv' : 'badge-danger-inv' ?>">
-                                <?= $diff; ?>
-                            </span>
-                        </td>
-                        <?php if($diff > 0) { ?>
-                          <td><span class="badge-inv badge-danger-inv">Diferencia</span></td>
-                        <?php } else { ?>
-                          <td><span class="badge-inv badge-success-inv">Completo</span></td>
-                        <?php } ?>
-                        <td>
-                          <div style="display:flex;gap:6px;">
-                            <a target="_blank"
-                              href="<?php echo base_url(); ?>generarpdfreportes/<?= $reporte->codigo_inventario; ?>"
-                              class="btn-panel" style="background:#fee2e2;color:#b91c1c;">
-                              <i class="fas fa-file-pdf fa-xs"></i> PDF
-                            </a>
-                            <a href="<?php echo base_url(); ?>generarexcelreportes/<?= $reporte->codigo_inventario; ?>"
-                              class="btn-panel btn-panel-green">
-                              <i class="fas fa-file-excel fa-xs"></i> Excel
-                            </a>
-                          </div>
-                        </td>
-                      </tr>
-                      <?php } ?>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
+             <!--  -->
             </div>
           </div>
         </div>
@@ -1290,7 +1157,7 @@
      MODAL: CREAR UBICACIONES
 ══════════════════════════════════════════════════ -->
 <div class="modal fade" id="modalasgignacionescrear" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
+  <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header modal-header-inv">
         <h1 class="modal-title">

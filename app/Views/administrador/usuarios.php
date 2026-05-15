@@ -1156,7 +1156,7 @@
                         <input class="chk-perm fila2" type="checkbox" value="<?= $permiso->codigo_permiso; ?>">
                       </td>
                       <td>
-                        <span style="font-family:'Syne',sans-serif;font-weight:700;color:var(--purple-600);">
+                        <span style="font-family: Arial, Helvetica, sans-serif;font-weight:700;color:var(--purple-600);">
                           #<?= $permiso->codigo_permiso; ?>
                         </span>
                       </td>
@@ -1350,7 +1350,7 @@
                         <input class="chk-perm fila" type="checkbox" value="<?= $permiso->codigo_permiso; ?>">
                       </td>
                       <td>
-                        <span style="font-family:'Syne',sans-serif;font-weight:700;color:var(--purple-600);">
+                        <span style="font-family: Arial, Helvetica, sans-serif;font-weight:700;color:var(--purple-600);">
                           #<?= $permiso->codigo_permiso; ?>
                         </span>
                       </td>

@@ -48,7 +48,7 @@
             color: var(--text-primary);
         }
 
-        h1,h2,h3,h4,h5 { font-family: 'Syne', sans-serif; }
+        h1,h2,h3,h4,h5 { font-family: Arial, Helvetica, sans-serif; }
 
         /* ============================================================
            PAGE WRAPPER
@@ -280,7 +280,7 @@
             color: #fff;
             padding: 13px 16px;
             text-align: left;
-            font-family: 'Syne', sans-serif;
+            font-family: Arial, Helvetica, sans-serif;
             font-size: 11px;
             font-weight: 700;
             letter-spacing: .06em;
@@ -418,7 +418,7 @@
         }
 
         .modal-header-inv .modal-title {
-            font-family: 'Syne', sans-serif;
+            font-family: Arial, Helvetica, sans-serif;
             font-size: 15px;
             font-weight: 700;
             color: #fff;

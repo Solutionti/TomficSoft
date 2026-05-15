@@ -825,7 +825,7 @@
                                     </div>
                                     <div class="count-cell total-cell">
                                         <label>Total calculado</label>
-                                        <input type="number" id="total" readonly placeholder="0">
+                                        <input type="number" id="total" class="text-white" readonly value="0">
                                     </div>
                                 </div>
                                 <div class="fl" style="margin-bottom:14px;">
@@ -901,7 +901,7 @@
                   <?php } ?>
                 </td>
                 <td>
-                    <span style="font-family:'Syne',sans-serif;font-weight:700;color:var(--purple-600);">
+                    <span style="font-family:Arial, Helvetica, sans-serif;font-weight:700;color:var(--purple-600);">
                         #<?= $inventario->codigo_inventario; ?>
                     </span>
                 </td>
@@ -981,7 +981,7 @@
                   <input class="radio-inv" type="radio" name="radioProducto"
                     onclick="VincularProductoModal(<?= $producto->codigo_barras; ?>)">
                 </td>
-                <td style="font-family:'Syne',sans-serif;font-weight:700;color:var(--purple-600);">
+                <td style="font-family:Arial, Helvetica, sans-serif;font-weight:700;color:var(--purple-600);">
                     <?= $producto->codigo_interno; ?>
                 </td>
                 <td style="font-size:12px;color:var(--text-muted);"><?= $producto->codigo_barras; ?></td>
