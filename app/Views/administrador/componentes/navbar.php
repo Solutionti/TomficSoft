@@ -436,7 +436,7 @@
     <?php endforeach; ?>
 
     <!-- ══════════════ SECCIÓN: VENTAS ══════════════ -->
-    <li>
+    <!-- <li>
       <div class="sb-section-label">
         <span>Ventas</span>
       </div>
@@ -460,7 +460,6 @@
       >
         <span class="sb-link-icon"><i class="fas fa-cash-register"></i></span>
         <span class="sb-link-text">Ventas</span>
-        <!-- Indicador de pestaña externa -->
         <i class="fas fa-arrow-up-right-from-square"
            style="font-size:9px;color:var(--ink3);margin-left:auto;flex-shrink:0"></i>
       </a>
@@ -496,7 +495,7 @@
         <i class="fas fa-arrow-up-right-from-square"
            style="font-size:9px;color:var(--ink3);margin-left:auto;flex-shrink:0"></i>
       </a>
-    </li>
+    </li> -->
 
     <!-- ══════════════ FOOTER ══════════════ -->
     <li style="margin-top:auto; padding-top:8px">
