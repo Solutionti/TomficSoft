@@ -229,4 +229,13 @@ class InventarioController extends BaseController
     }
   }
 
+  //SOLICITUD DE INVENTARIOS
+   public function solicitudInventarios() {
+      $data = [
+        
+      ];
+  
+      return view('administrador/solicitudinventarios', $data);
+   }
+
 }

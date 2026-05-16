@@ -88,6 +88,18 @@ $routes->get('/facturacion', 'FacturacionController::index');
 
 });
 
+//HORARIOS
+$routes->get('/horarios', 'HorariosController::index');
+
+//DESECHOS
+$routes->get('/desechos', 'DesechosController::index');
+
+//SOLICITUD DE INVENTARIOS
+$routes->get('/solicitudinventario', 'InventarioController::solicitudInventarios');
+
+//FORMATOS
+$routes->get('/formatos', 'FormatosController::index');
+
 
 
 
