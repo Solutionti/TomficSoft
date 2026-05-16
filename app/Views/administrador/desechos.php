@@ -1001,10 +1001,10 @@
 ══════════════════════════════════════════════ -->
   <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
     aria-hidden="true">
-    <div class="modal-dialog modal-fullscreen">
+    <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header modal-header-inv">
-          <h1 class="modal-title"><i class="fas fa-user-plus me-2"></i>Crear Usuario y Permisos</h1>
+          <h1 class="modal-title"><i class="fas fa-user-plus me-2"></i>Productos organicos</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -1012,40 +1012,29 @@
           <!-- SECCIÓN: Datos personales -->
           <div class="form-section">
             <div class="form-section-title">
-              <i class="fas fa-id-card"></i> Datos personales
+              <i class="fas fa-id-card"></i> Productos a desechar
             </div>
             <div class="row g-3">
               <div class="col-md-4">
                 <div class="fl">
-                  <label>Documento *</label>
-                  <input type="number" id="documento_usuario" class="fc" required>
+                  <label>Codigo *</label>
+                  <input type="number" id="codigo_producto" class="fc" required>
                 </div>
               </div>
               <div class="col-md-4">
                 <div class="fl">
-                  <label>Nombre *</label>
-                  <input type="text" id="nombre_usuario" class="fc" required>
+                  <label>Nombre del producto *</label>
+                  <input type="text" id="nombre_producto" class="fc" required>
                 </div>
               </div>
-              <div class="col-md-4">
+              <div class="col-md-2">
                 <div class="fl">
-                  <label>Apellido *</label>
-                  <input type="text" id="apellido_usuario" class="fc" required>
+                  <label>Unidades *</label>
+                  <input type="text" id="unidades_producto" class="fc" required>
                 </div>
               </div>
-              <div class="col-md-4">
-                <div class="fl">
-                  <label>Empresa *</label>
-                  
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="fl">
-                  <label>Teléfono *</label>
-                  <input type="number" id="telefono_usuario" class="fc" required>
-                </div>
-              </div>
-              <div class="col-md-4">
+              
+              <div class="col-md-2">
                 <div class="fl">
                   <label>Estado *</label>
                   <select class="fc fsel" id="estado_usuario" required>
@@ -1057,90 +1046,19 @@
               </div>
               <div class="col-md-12">
                 <div class="fl">
-                  <label>Correo electrónico *</label>
+                  <label>Comentarios *</label>
                   <input type="email" id="correo" class="fc">
                 </div>
               </div>
             </div>
           </div>
-
-          <!-- SECCIÓN: Acceso al sistema -->
-          <div class="form-section">
-            <div class="form-section-title">
-              <i class="fas fa-lock"></i> Acceso al sistema
-            </div>
-            <div class="row g-3">
-              <div class="col-md-4">
-                <div class="fl">
-                  <label>Rol *</label>
-                  <select class="fc fsel" id="rol_usuario">
-                    <option value="">Seleccione el rol</option>
-                    <option value="Administrador">Administrador</option>
-                    <option value="Capturador">Auxiliar Capturador</option>
-                    <option value="Vendedor">Vendedor</option>
-                  </select>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="fl">
-                  <label>Fecha</label>
-                  <input type="date" id="fecha_usuario" class="fc" value="<?php echo date('Y-m-d') ?>" readonly>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="fl">
-                  <label>Hora</label>
-                  <input type="time" id="hora_usuario" class="fc" value="<?= date('H:i') ?>" readonly>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="fl">
-                  <label>Usuario *</label>
-                  <input type="text" id="usuario_usuario" class="fc">
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="fl">
-                  <label>Contraseña *</label>
-                  <div class="pass-group">
-                    <input type="password" id="password_usuario" placeholder="Ingresa contraseña"
-                      class="js-toggle-password">
-                    <button type="button" class="pass-toggle" id="changePassIcon"
-                      onclick="this.previousElementSibling.type = this.previousElementSibling.type === 'password' ? 'text' : 'password'; this.querySelector('i').classList.toggle('fa-eye'); this.querySelector('i').classList.toggle('fa-eye-slash');">
-                      <i class="fas fa-eye"></i>
-                    </button>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="fl">
-                  <label>Repetir contraseña *</label>
-                  <div class="pass-group">
-                    <input type="password" id="repetir_password_usuario" placeholder="Confirma contraseña"
-                      class="js-toggle-password">
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- SECCIÓN: Permisos -->
-          <div class="form-section">
-            <div class="form-section-title">
-              <i class="fas fa-shield-alt"></i> Permisos de usuario
-            </div>
-            <div class="perm-table-wrap">
-              <!--  -->
-            </div>
-          </div>
-
         </div>
         <div class="modal-footer">
           <button type="button" class="btn-u btn-u-danger-outline" data-bs-dismiss="modal">
             <i class="fas fa-times"></i> Cerrar
           </button>
           <button type="button" class="btn-u btn-u-primary" onclick="crearUsuarios()">
-            <i class="fas fa-save"></i> Guardar usuario
+            <i class="fas fa-save"></i> Guardar
           </button>
         </div>
       </div>
