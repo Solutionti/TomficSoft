@@ -891,21 +891,21 @@
                 <div class="stat-icon green"><i class="fas fa-user-check"></i></div>
                 <div class="stat-info">
                   <div class="stat-num" id="statActive">0</div>
-                  <div class="stat-label">Activos</div>
+                  <div class="stat-label">KG</div>
                 </div>
               </div>
               <div class="stat-card">
                 <div class="stat-icon red"><i class="fas fa-user-times"></i></div>
                 <div class="stat-info">
                   <div class="stat-num" id="statInactive">0</div>
-                  <div class="stat-label">Inactivos</div>
+                  <div class="stat-label">Unidades</div>
                 </div>
               </div>
               <div class="stat-card">
                 <div class="stat-icon blue"><i class="fas fa-user-shield"></i></div>
                 <div class="stat-info">
                   <div class="stat-num" id="statAdmin">0</div>
-                  <div class="stat-label">Administradores</div>
+                  <div class="stat-label">Total Mensual</div>
                 </div>
               </div>
             </div>
