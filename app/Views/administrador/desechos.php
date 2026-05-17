@@ -915,39 +915,105 @@
               <div class="row">
                 <div class="col-md-6 mt-3">
                   <div class="col-md-12">
-                    <div class="card" style="width: 30rem;">
-                      <img src="..." class="card-img-top" alt="...">
+                    <div class="card">
+
+                      <!-- ── Zona OCR: drop o canvas ── -->
+                      <div id="ocr-drop-zone" style="
+                          border: 2px dashed #e9d5ff; border-radius: 10px 10px 0 0;
+                          padding: 22px; text-align: center; cursor: pointer;
+                          position: relative; background: #fafbff; transition: background .2s;">
+                        <input type="file" id="ocr-file-input" accept="image/*"
+                          style="position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%">
+                        <i class="fas fa-cloud-arrow-up" style="font-size:28px;color:#c084fc;"></i>
+                        <p style="font-size:12px;color:#7c6fa0;margin-top:6px">
+                          <strong style="color:#6b21b8">Arrastra una imagen</strong> o haz clic<br>
+                          <span style="font-size:10px">JPG · PNG · WEBP</span>
+                        </p>
+                      </div>
+
+                      <!-- Canvas con overlay de selección -->
+                      <div id="ocr-crop-container" style="display:none;position:relative;background:#000;">
+                        <canvas id="ocr-base-canvas" style="display:block;"></canvas>
+                        <canvas id="ocr-sel-canvas" style="position:absolute;top:0;left:0;cursor:crosshair;"></canvas>
+                        <div id="ocr-crop-hint" style="
+                            position:absolute;bottom:8px;left:50%;transform:translateX(-50%);
+                            background:rgba(26,5,51,.75);color:#fff;font-size:11px;
+                            padding:4px 12px;border-radius:99px;pointer-events:none;white-space:nowrap;">
+                          <i class="fas fa-hand-pointer"></i> Arrastra sobre el display
+                        </div>
+                      </div>
+
+                      <!-- Preview del recorte -->
+                      <div id="ocr-preview-wrap" style="display:none;padding:8px;background:#111;">
+                        <div style="font-size:10px;color:#a855f7;margin-bottom:4px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;">
+                          <i class="fas fa-crop"></i> Zona a procesar
+                        </div>
+                        <img id="ocr-preview-img" style="width:100%;max-height:70px;object-fit:contain;" alt="">
+                      </div>
+
+                      <!-- Resultado OCR raw -->
+                      <div id="ocr-result-wrap" style="display:none;padding:8px 12px;background:#f5f0ff;border-top:1px solid #e9d5ff;">
+                        <div style="font-size:10px;color:#6b21b8;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:3px;">
+                          <i class="fas fa-file-lines"></i> Texto reconocido
+                        </div>
+                        <div id="ocr-result-text" style="font-size:12px;color:#4a1282;word-break:break-all;line-height:1.5;"></div>
+                      </div>
+
+                      <!-- Barra de progreso -->
+                      <div id="ocr-progress" style="display:none;padding:8px 12px;background:#f5f0ff;">
+                        <div style="background:#e9d5ff;border-radius:99px;height:6px;overflow:hidden;">
+                          <div id="ocr-progress-fill" style="height:100%;background:#8b3fd4;width:0%;transition:width .3s;border-radius:99px;"></div>
+                        </div>
+                        <div id="ocr-progress-label" style="font-size:10px;color:#7c6fa0;text-align:center;margin-top:3px;">Procesando…</div>
+                      </div>
+
                     <div class="card-body">
                       <h5 class="card-title">Captura Inteligente</h5>
                       <div class="row">
                         <div class="col-md-12">
-                          <input
-                            type="text"
-                            class="form-control"
-                            placeholder="Código o nombre del producto"
-                          >
+                          <input type="text" class="form-control" placeholder="Código o nombre del producto">
                         </div>
                       </div>
                       <div class="row mt-3">
                         <div class="col-md-7">
-                          <input
-                            type="text"
-                            class="form-control"
-                            placeholder="Peso en kg"
-                          >
+                          <input type="text" id="ocr-peso-input" class="form-control" placeholder="Peso en kg">
                         </div>
                         <div class="col-md-5">
-                          <input
-                            type="text"
-                            class="form-control"
-                            placeholder="Cantidad unidades"
-                          >
+                          <input type="text" class="form-control" placeholder="Cantidad unidades">
                         </div>
                       </div>
-                      <a href="#" class="btn btn-primary mt-3">Guardar</a>
-                      <a href="#" class="btn btn-danger  mt-3"> <span class="fas fa-camera"></span> Capturar</a>
+                      <div class="mt-3 d-flex gap-2 flex-wrap">
+                        <a href="#" class="btn btn-primary">Guardar</a>
+                        <button type="button" class="btn btn-danger" id="ocr-btn-camara">
+                          <i class="fas fa-camera"></i> Cámara
+                        </button>
+                        <button type="button" class="btn btn-secondary" id="ocr-btn-procesar" disabled>
+                          <i class="fas fa-magnifying-glass"></i> Leer balanza
+                        </button>
+                      </div>
                     </div>
                   </div>
+                  </div>
+                </div>
+
+                <!-- Modal cámara -->
+                <div class="modal fade" id="ocr-camera-modal" tabindex="-1" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                      <div class="modal-header modal-header-inv">
+                        <h5 class="modal-title"><i class="fas fa-camera me-2"></i>Capturar desde cámara</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                      </div>
+                      <div class="modal-body" style="background:#000;padding:12px;">
+                        <video id="ocr-camera-video" autoplay playsinline style="width:100%;border-radius:8px;max-height:300px;object-fit:cover;"></video>
+                        <canvas id="ocr-camera-canvas" style="display:none;"></canvas>
+                      </div>
+                      <div class="modal-footer" style="justify-content:center;">
+                        <button id="ocr-btn-capturar" class="btn btn-danger px-4">
+                          <i class="fas fa-circle-dot me-2"></i>Capturar
+                        </button>
+                      </div>
+                    </div>
                   </div>
                 </div>
                 <!-- aca cierra  -->
@@ -1218,7 +1284,8 @@
   </div>
 
   <?php require_once("componentes/scripts.php") ?>
-  <script src="<?= base_url('js/usuarios.js') ?>"></script>
+  <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+  <script src="<?= base_url('js/balanza.js') ?>"></script>
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {

@@ -93,6 +93,7 @@ $routes->get('/horarios', 'HorariosController::index');
 
 //DESECHOS
 $routes->get('/desechos', 'DesechosController::index');
+$routes->post('/desechos/ocr', 'DesechosController::procesarOcr');
 
 //SOLICITUD DE INVENTARIOS
 $routes->get('/solicitudinventario', 'InventarioController::solicitudInventarios');
