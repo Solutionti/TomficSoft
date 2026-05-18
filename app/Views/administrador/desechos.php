@@ -985,9 +985,9 @@
                       <div class="mt-3 d-flex gap-2 flex-wrap">
                         <a href="#" class="btn btn-primary">Guardar</a>
                         <button type="button" class="btn btn-danger" id="ocr-btn-camara">
-                          <i class="fas fa-camera"></i> Cámara
+                          <span class="fas fa-camera"></span> Cámara
                         </button>
-                        <button type="button" class="btn btn-secondary" id="ocr-btn-procesar" disabled>
+                        <button type="button" class="btn btn-success" id="ocr-btn-procesar" disabled>
                           <i class="fas fa-magnifying-glass"></i> Leer balanza
                         </button>
                       </div>
@@ -1020,7 +1020,18 @@
                 <div class="col-md-6 mt-3">
                   <div class="col-md-12">
                     <div class="card" style="width: 30rem;">
-                      <img src="..." class="card-img-top" alt="...">
+                      <div id="captura_manual" style="
+                          border: 2px dashed #e9d5ff; border-radius: 10px 10px 0 0;
+                          padding: 22px; text-align: center; cursor: pointer;
+                          position: relative; background: #fafbff; transition: background .2s;">
+                        <input type="file" id="ocr-file-input" accept="image/*"
+                          style="position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%">
+                        <i class="fas fa-cloud-arrow-up" style="font-size:28px;color:#c084fc;"></i>
+                        <p style="font-size:12px;color:#7c6fa0;margin-top:6px">
+                          <strong style="color:#6b21b8">Arrastra una imagen</strong> o haz clic<br>
+                          <span style="font-size:10px">JPG · PNG · WEBP</span>
+                        </p>
+                      </div>
                     <div class="card-body">
                       <h5 class="card-title">Captura Manual</h5>
                       <div class="row">
@@ -1049,7 +1060,6 @@
                         </div>
                       </div>
                       <a href="#" class="btn btn-primary mt-3">Guardar</a>
-                      <a href="#" class="btn btn-danger  mt-3"> <span class="fas fa-camera"></span> Capturar</a>
                     </div>
                   </div>
                   </div>
@@ -1096,7 +1106,12 @@
               <div class="col-md-2">
                 <div class="fl">
                   <label>Unidades *</label>
-                  <input type="text" id="unidades_producto" class="fc" required>
+                  <label>Estado *</label>
+                  <select class="fc fsel" id="estado_usuario" required>
+                    <option value="">Seleccione la unidad</option>
+                    <option value="Peso">Peso</option>
+                    <option value="Unidades">Unidades</option>
+                  </select>
                 </div>
               </div>
               

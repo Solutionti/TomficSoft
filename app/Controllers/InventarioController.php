@@ -6,7 +6,7 @@ use App\Controllers\BaseController;
 use CodeIgniter\HTTP\ResponseInterface;
 use App\Models\InventarioModel;
 use App\Models\ListasModel;
-
+use App\Models\VentasModel;
 
 class InventarioController extends BaseController
 {
@@ -14,6 +14,7 @@ class InventarioController extends BaseController
      {
         $this->inventarioModel = new InventarioModel();
         $this->listasModel = new ListasModel();
+        $this->ventasModel = new VentasModel();
      }
     
     public function index() {
@@ -232,9 +233,10 @@ class InventarioController extends BaseController
   //SOLICITUD DE INVENTARIOS
    public function solicitudInventarios() {
       $data = [
-        
+         'permisoUsuario' => $this->listasModel->getPermisosMenu(),
+         'caja' => $this->ventasModel->getCajaDisponible(),
+        'consecutivo' => $this->ventasModel->getNumeroVenta()
       ];
-  
       return view('administrador/solicitudinventarios', $data);
    }
 
