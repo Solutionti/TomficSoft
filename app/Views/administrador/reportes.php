@@ -496,6 +496,64 @@
                         </div>
                     </div>
 
+                    <!-- ══════════ MÓDULO: PÉRDIDAS / DESECHOS ══════════ -->
+                    <div class="module-card">
+                        <div class="module-card-header" style="background:linear-gradient(135deg,#7f1d1d,#b91c1c);">
+                            <div class="module-card-header-left">
+                                <div class="module-icon-wrap" style="background:rgba(255,255,255,.15);">
+                                    <i class="fas fa-trash-alt"></i>
+                                </div>
+                                <div>
+                                    <div class="module-label">Módulo de reportes</div>
+                                    <div class="module-name">Pérdidas / Desechos</div>
+                                    <div class="module-desc">Análisis de desechos orgánicos registrados</div>
+                                </div>
+                            </div>
+                            <button class="btn-r" style="background:rgba(255,255,255,.2);color:#fff;border:1.5px solid rgba(255,255,255,.4);"
+                                    data-bs-toggle="modal" data-bs-target="#modalPerdidasFiltro">
+                                <i class="fas fa-calendar-alt"></i> Período
+                            </button>
+                        </div>
+
+                        <div class="rpt-grid">
+
+                            <!-- PF: Pérdidas por fecha -->
+                            <div class="rpt-item">
+                                <div class="rpt-item-top">
+                                    <span class="rpt-code-badge">PF</span>
+                                    <span class="rpt-type-tag tag-both">PDF · Excel</span>
+                                </div>
+                                <div class="rpt-item-name">Pérdidas por Fecha<br><span style="font-size:11px;color:var(--muted);font-weight:400;">Detalle de desechos en un rango de fechas</span></div>
+                                <div class="rpt-actions">
+                                    <button class="btn-dl btn-dl-pdf" id="perdidasFechaPdf" title="Descargar PDF">
+                                        <i class="fas fa-file-pdf"></i> PDF
+                                    </button>
+                                    <button class="btn-dl btn-dl-excel" id="perdidasFechaExcel" title="Descargar Excel">
+                                        <i class="fas fa-file-excel"></i> Excel
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- PP: Pérdidas por producto -->
+                            <div class="rpt-item">
+                                <div class="rpt-item-top">
+                                    <span class="rpt-code-badge">PP</span>
+                                    <span class="rpt-type-tag tag-both">PDF · Excel</span>
+                                </div>
+                                <div class="rpt-item-name">Pérdidas por Producto<br><span style="font-size:11px;color:var(--muted);font-weight:400;">Resumen agrupado por tipo de desecho</span></div>
+                                <div class="rpt-actions">
+                                    <button class="btn-dl btn-dl-pdf" id="perdidasProductoPdf" title="Descargar PDF">
+                                        <i class="fas fa-file-pdf"></i> PDF
+                                    </button>
+                                    <button class="btn-dl btn-dl-excel" id="perdidasProductoExcel" title="Descargar Excel">
+                                        <i class="fas fa-file-excel"></i> Excel
+                                    </button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
                 </div><!-- /rpt-wrapper -->
             </div>
         </div>
@@ -546,6 +604,45 @@
         </button>
         <button type="button" class="btn-r btn-r-primary" data-bs-dismiss="modal">
             <i class="fas fa-check"></i> Aplicar filtros
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     MODAL: FILTROS PÉRDIDAS
+══════════════════════════════════════ -->
+<div class="modal fade" id="modalPerdidasFiltro" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header modal-header-inv" style="background:linear-gradient(135deg,#7f1d1d,#b91c1c) !important;">
+        <h1 class="modal-title"><i class="fas fa-calendar-alt me-2"></i>Período — Pérdidas / Desechos</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="filter-section-title"><i class="fas fa-calendar-alt"></i> Rango de fechas</div>
+        <div class="row g-3">
+          <div class="col-6">
+            <div class="fl">
+              <label>Fecha inicial</label>
+              <input type="date" class="fc" id="perdFechaInicio" name="perdFechaInicio">
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="fl">
+              <label>Fecha final</label>
+              <input type="date" class="fc" id="perdFechaFin" name="perdFechaFin" value="<?= date('Y-m-d'); ?>">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn-r btn-r-danger-outline" data-bs-dismiss="modal">
+            <i class="fas fa-times"></i> Cerrar
+        </button>
+        <button type="button" class="btn-r btn-r-primary" data-bs-dismiss="modal">
+            <i class="fas fa-check"></i> Aplicar
         </button>
       </div>
     </div>

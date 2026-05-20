@@ -91,9 +91,17 @@ $routes->get('/facturacion', 'FacturacionController::index');
 //HORARIOS
 $routes->get('/horarios', 'HorariosController::index');
 
+//PERDIDAS (desechos reports)
+$routes->get('/perdidasfechapdf/(:any)/(:any)',      'ReportesController::perdidasPorFechaPdf/$1/$2');
+$routes->get('/perdidasfechaexcel/(:any)/(:any)',    'ReportesController::perdidasPorFechaExcel/$1/$2');
+$routes->get('/perdidasproductopdf/(:any)/(:any)',   'ReportesController::perdidasPorProductoPdf/$1/$2');
+$routes->get('/perdidasproductoexcel/(:any)/(:any)', 'ReportesController::perdidasPorProductoExcel/$1/$2');
+
 //DESECHOS
 $routes->get('/desechos', 'DesechosController::index');
+$routes->get('/desechos/buscar', 'DesechosController::buscarProductos');
 $routes->post('/desechos/ocr', 'DesechosController::procesarOcr');
+$routes->post('/desechos/guardar', 'DesechosController::guardar');
 
 //SOLICITUD DE INVENTARIOS
 $routes->get('/solicitudinventario', 'InventarioController::solicitudInventarios');

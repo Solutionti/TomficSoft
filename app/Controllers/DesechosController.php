@@ -6,13 +6,82 @@ use App\Controllers\BaseController;
 class DesechosController extends BaseController {
 
   public function __construct() {
-     $this->listasModel = new \App\Models\ListasModel();
+     $this->listasModel   = new \App\Models\ListasModel();
+     $this->desechosModel = new \App\Models\DesechosModel();
+  }
+
+  public function buscarProductos()
+  {
+    $q = trim($this->request->getGet('q') ?? '');
+    if (strlen($q) < 1) {
+      return $this->response->setJSON([]);
+    }
+
+    $db = \Config\Database::connect();
+    $resultados = $db->table('productos')
+      ->select('codigo_producto, codigo_interno, nombre, referencia')
+      ->like('nombre', $q)
+      ->orLike('codigo_interno', $q)
+      ->where('estado', 'Activo')
+      ->limit(8)
+      ->get()
+      ->getResultArray();
+
+    return $this->response->setJSON($resultados);
+  }
+
+  public function guardar()
+  {
+    try {
+      $nombre   = $this->request->getPost('nombre');
+      $unidades = $this->request->getPost('unidades');
+      $peso     = $this->request->getPost('peso');
+      $imagen   = $this->request->getPost('imagen');
+
+      if (!$nombre || $peso === null || $peso === '') {
+        return $this->response->setJSON([
+          'status'  => 'error',
+          'message' => 'Nombre y peso son obligatorios',
+        ])->setStatusCode(400);
+      }
+
+      $now  = new \DateTime();
+      $dias = [
+        'Sunday'    => 'Domingo',   'Monday'    => 'Lunes',
+        'Tuesday'   => 'Martes',    'Wednesday' => 'Miércoles',
+        'Thursday'  => 'Jueves',    'Friday'    => 'Viernes',
+        'Saturday'  => 'Sábado',
+      ];
+
+      $this->desechosModel->guardarDesecho([
+        'nombre'   => $nombre,
+        'unidades' => ($unidades !== '' && $unidades !== null) ? (int)$unidades : null,
+        'peso'     => $peso,
+        'imagen'   => $imagen ?: null,
+        'dia'      => $dias[$now->format('l')] ?? $now->format('l'),
+        'fecha'    => $now->format('Y-m-d'),
+        'hora'     => $now->format('H:i:s'),
+      ]);
+
+      return $this->response->setJSON(['status' => 'success']);
+
+    } catch (\Throwable $e) {
+      return $this->response->setJSON([
+        'status'  => 'error',
+        'message' => $e->getMessage(),
+      ])->setStatusCode(500);
+    }
   }
 
   public function index(){
-    $data = [
-         'permisoUsuario' => $this->listasModel->getPermisosMenu(),
-      ];
+    $stats = $this->desechosModel->getStats();
+    $data  = [
+      'permisoUsuario' => $this->listasModel->getPermisosMenu(),
+      'statTotal'      => $stats['total'],
+      'statKg'         => $stats['kg'],
+      'statUnidades'   => $stats['unidades'],
+      'statMensual'    => $stats['mensual'],
+    ];
     return view('administrador/desechos', $data);
   }
 

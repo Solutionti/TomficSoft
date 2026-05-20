@@ -73,4 +73,33 @@ class ReportesModel extends Model {
   return $resultado;
 }
 
+  public function perdidasPorFecha($fechaInicio, $fechaFin) {
+    $sql = "
+      SELECT codigo_desecho, nombre, unidades,
+             CAST(NULLIF(peso,'') AS DECIMAL(10,2)) AS peso,
+             dia, fecha, hora
+      FROM desechos_organicos
+      WHERE fecha BETWEEN '$fechaInicio' AND '$fechaFin'
+      ORDER BY fecha ASC, hora ASC
+    ";
+    return $this->db->query($sql)->getResult();
+  }
+
+  public function perdidasPorProducto($fechaInicio, $fechaFin) {
+    $sql = "
+      SELECT
+        nombre,
+        COUNT(*) AS registros,
+        SUM(unidades) AS total_unidades,
+        SUM(CAST(NULLIF(peso,'') AS DECIMAL(10,2))) AS total_peso,
+        MIN(fecha) AS primera_fecha,
+        MAX(fecha) AS ultima_fecha
+      FROM desechos_organicos
+      WHERE fecha BETWEEN '$fechaInicio' AND '$fechaFin'
+      GROUP BY nombre
+      ORDER BY total_peso DESC
+    ";
+    return $this->db->query($sql)->getResult();
+  }
+
 }

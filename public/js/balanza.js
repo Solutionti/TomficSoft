@@ -29,6 +29,10 @@
   const cropPreviewWrap = document.getElementById('ocr-preview-wrap');
   const resultWrap      = document.getElementById('ocr-result-wrap');
   const resultText      = document.getElementById('ocr-result-text');
+  const nombreInput       = document.getElementById('ocr-nombre-input');
+  const nombreDropdown    = document.getElementById('ocr-nombre-dropdown');
+  const unidadesInput     = document.getElementById('ocr-unidades-input');
+  const btnGuardar        = document.getElementById('ocr-btn-guardar');
 
   /* cameraModal se crea solo cuando se abre (evita error si Bootstrap aún no cargó) */
   let cameraModal = null;
@@ -46,7 +50,8 @@
   let selection     = null;   // { x, y, w, h } en coordenadas del canvas visual
   let dragging      = false;
   let startX = 0, startY = 0;
-  let cameraStream  = null;
+  let cameraStream   = null;
+  let lastCropBase64 = null;
 
   /* ══════════════════════════════════════
      Carga de imagen (file / drag-drop)
@@ -336,8 +341,9 @@
     }
     octx.putImageData(id, 0, 0);
 
-    /* Mostrar preview de la imagen procesada (lo que se enviará al OCR) */
-    cropPreview.src = offscreen.toDataURL('image/png');
+    /* Guardar base64 del recorte procesado para enviarlo al guardar */
+    lastCropBase64 = offscreen.toDataURL('image/png');
+    cropPreview.src = lastCropBase64;
     cropPreviewWrap.style.display = 'block';
 
     console.log('[OCR] base64 length:', offscreen.toDataURL('image/png').length);
@@ -404,6 +410,136 @@
 
     return null;
   }
+
+  /* ══════════════════════════════════════
+     Autocomplete de productos (reutilizable)
+  ══════════════════════════════════════ */
+  function initAutocomplete(input, dropdown) {
+    if (!input || !dropdown) return;
+    let timer = null;
+
+    input.addEventListener('input', () => {
+      clearTimeout(timer);
+      const q = input.value.trim();
+      if (q.length < 1) { dropdown.style.display = 'none'; return; }
+
+      timer = setTimeout(async () => {
+        try {
+          const res  = await fetch('/desechos/buscar?q=' + encodeURIComponent(q));
+          const data = await res.json();
+          if (!data.length) { dropdown.style.display = 'none'; return; }
+
+          dropdown.innerHTML = data.map(p => `
+            <div class="ac-item" data-nombre="${p.nombre}"
+              style="padding:9px 14px;cursor:pointer;border-bottom:1px solid #f5f0ff;
+                     font-size:13px;transition:background .15s;">
+              <div style="font-weight:600;color:#1a0533;">${p.nombre}</div>
+              <div style="font-size:11px;color:#7c6fa0;">
+                Cód: ${p.codigo_interno || '—'} · ${p.referencia || ''}
+              </div>
+            </div>`).join('');
+          dropdown.style.display = 'block';
+
+          dropdown.querySelectorAll('.ac-item').forEach(item => {
+            item.addEventListener('mouseenter', () => item.style.background = '#f5f0ff');
+            item.addEventListener('mouseleave', () => item.style.background = '');
+            item.addEventListener('mousedown', e => {
+              e.preventDefault();
+              input.value = item.dataset.nombre;
+              dropdown.style.display = 'none';
+            });
+          });
+        } catch { dropdown.style.display = 'none'; }
+      }, 250);
+    });
+
+    document.addEventListener('click', e => {
+      if (!input.contains(e.target) && !dropdown.contains(e.target))
+        dropdown.style.display = 'none';
+    });
+
+    input.addEventListener('keydown', e => {
+      const items = [...dropdown.querySelectorAll('.ac-item')];
+      if (!items.length) return;
+      const active = dropdown.querySelector('.ac-active');
+      let idx = items.indexOf(active);
+
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        if (active) { active.classList.remove('ac-active'); active.style.background = ''; }
+        idx = (idx + 1) % items.length;
+        items[idx].classList.add('ac-active'); items[idx].style.background = '#f5f0ff';
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        if (active) { active.classList.remove('ac-active'); active.style.background = ''; }
+        idx = (idx - 1 + items.length) % items.length;
+        items[idx].classList.add('ac-active'); items[idx].style.background = '#f5f0ff';
+      } else if (e.key === 'Enter' && active) {
+        e.preventDefault();
+        input.value = active.dataset.nombre;
+        dropdown.style.display = 'none';
+      } else if (e.key === 'Escape') {
+        dropdown.style.display = 'none';
+      }
+    });
+  }
+
+  /* Aplicar a Captura Inteligente y Captura Manual */
+  initAutocomplete(nombreInput, nombreDropdown);
+  initAutocomplete(
+    document.getElementById('man-nombre-input'),
+    document.getElementById('man-nombre-dropdown')
+  );
+
+  /* ══════════════════════════════════════
+     Guardar en base de datos
+  ══════════════════════════════════════ */
+  btnGuardar.addEventListener('click', async () => {
+    const nombre   = nombreInput   ? nombreInput.value.trim()   : '';
+    const peso     = pesoInput     ? pesoInput.value.trim()     : '';
+    const unidades = unidadesInput ? unidadesInput.value.trim() : '';
+
+    if (!nombre) {
+      showToast('Ingresa el nombre o código del producto.');
+      nombreInput && nombreInput.focus();
+      return;
+    }
+    if (!peso) {
+      showToast('El peso está vacío. Usa el OCR o ingrésalo manualmente.');
+      pesoInput && pesoInput.focus();
+      return;
+    }
+
+    const textoOriginal = btnGuardar.innerHTML;
+    btnGuardar.disabled  = true;
+    btnGuardar.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Guardando…';
+
+    try {
+      const body = new FormData();
+      body.append('nombre',   nombre);
+      body.append('unidades', unidades);
+      body.append('peso',     peso);
+      body.append('imagen',   lastCropBase64 || '');
+
+      const res  = await fetch('/desechos/guardar', { method: 'POST', body });
+      const json = await res.json();
+
+      if (json.status === 'success') {
+        showToast('Registro guardado correctamente.');
+        nombreInput   && (nombreInput.value   = '');
+        pesoInput     && (pesoInput.value     = '');
+        unidadesInput && (unidadesInput.value = '');
+        lastCropBase64 = null;
+      } else {
+        showToast('Error: ' + (json.message || 'No se pudo guardar.'));
+      }
+    } catch (err) {
+      showToast('Error de red: ' + err.message);
+    } finally {
+      btnGuardar.disabled  = false;
+      btnGuardar.innerHTML = textoOriginal;
+    }
+  });
 
   /* ══════════════════════════════════════
      Toast (notificación flotante simple)

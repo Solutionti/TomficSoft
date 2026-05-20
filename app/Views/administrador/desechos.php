@@ -881,31 +881,31 @@
             <!-- ══════════ STATS STRIP ══════════ -->
             <div class="usr-stats anim-2">
               <div class="stat-card">
-                <div class="stat-icon purple"><i class="fas fa-users"></i></div>
+                <div class="stat-icon purple"><i class="fas fa-boxes"></i></div>
                 <div class="stat-info">
-                  <div class="stat-num" id="statTotal">0</div>
-                  <div class="stat-label">Total productos</div>
+                  <div class="stat-num"><?= $statTotal ?></div>
+                  <div class="stat-label">Total registros</div>
                 </div>
               </div>
               <div class="stat-card">
-                <div class="stat-icon green"><i class="fas fa-user-check"></i></div>
+                <div class="stat-icon green"><i class="fas fa-weight"></i></div>
                 <div class="stat-info">
-                  <div class="stat-num" id="statActive">0</div>
-                  <div class="stat-label">KG</div>
+                  <div class="stat-num"><?= $statKg ?></div>
+                  <div class="stat-label">KG acumulados</div>
                 </div>
               </div>
               <div class="stat-card">
-                <div class="stat-icon red"><i class="fas fa-user-times"></i></div>
+                <div class="stat-icon red"><i class="fas fa-cubes"></i></div>
                 <div class="stat-info">
-                  <div class="stat-num" id="statInactive">0</div>
-                  <div class="stat-label">Unidades</div>
+                  <div class="stat-num"><?= $statUnidades ?></div>
+                  <div class="stat-label">Unidades totales</div>
                 </div>
               </div>
               <div class="stat-card">
-                <div class="stat-icon blue"><i class="fas fa-user-shield"></i></div>
+                <div class="stat-icon blue"><i class="fas fa-calendar-check"></i></div>
                 <div class="stat-info">
-                  <div class="stat-num" id="statAdmin">0</div>
-                  <div class="stat-label">Total Mensual</div>
+                  <div class="stat-num"><?= $statMensual ?></div>
+                  <div class="stat-label">Registros este mes</div>
                 </div>
               </div>
             </div>
@@ -970,8 +970,15 @@
                     <div class="card-body">
                       <h5 class="card-title">Captura Inteligente</h5>
                       <div class="row">
-                        <div class="col-md-12">
-                          <input type="text" class="form-control" placeholder="Código o nombre del producto">
+                        <div class="col-md-12" style="position:relative;">
+                          <input type="text" id="ocr-nombre-input" class="form-control"
+                            placeholder="Código o nombre del producto"
+                            autocomplete="off">
+                          <div id="ocr-nombre-dropdown" style="
+                            display:none; position:absolute; top:100%; left:0; right:0; z-index:999;
+                            background:#fff; border:1.5px solid #e9d5ff; border-top:none;
+                            border-radius:0 0 10px 10px; box-shadow:0 8px 24px rgba(74,18,130,.12);
+                            max-height:220px; overflow-y:auto;"></div>
                         </div>
                       </div>
                       <div class="row mt-3">
@@ -979,11 +986,11 @@
                           <input type="text" id="ocr-peso-input" class="form-control" placeholder="Peso en kg">
                         </div>
                         <div class="col-md-5">
-                          <input type="text" class="form-control" placeholder="Cantidad unidades">
+                          <input type="text" id="ocr-unidades-input" class="form-control" placeholder="Cantidad unidades">
                         </div>
                       </div>
                       <div class="mt-3 d-flex gap-2 flex-wrap">
-                        <a href="#" class="btn btn-primary">Guardar</a>
+                        <button type="button" id="ocr-btn-guardar" class="btn btn-primary">Guardar</button>
                         <button type="button" class="btn btn-danger" id="ocr-btn-camara">
                           <span class="fas fa-camera"></span> Cámara
                         </button>
@@ -1035,12 +1042,15 @@
                     <div class="card-body">
                       <h5 class="card-title">Captura Manual</h5>
                       <div class="row">
-                        <div class="col-md-12">
-                          <input
-                            type="text"
-                            class="form-control"
+                        <div class="col-md-12" style="position:relative;">
+                          <input type="text" id="man-nombre-input" class="form-control"
                             placeholder="Código o nombre del producto"
-                          >
+                            autocomplete="off">
+                          <div id="man-nombre-dropdown" style="
+                            display:none; position:absolute; top:100%; left:0; right:0; z-index:999;
+                            background:#fff; border:1.5px solid #e9d5ff; border-top:none;
+                            border-radius:0 0 10px 10px; box-shadow:0 8px 24px rgba(74,18,130,.12);
+                            max-height:220px; overflow-y:auto;"></div>
                         </div>
                       </div>
                       <div class="row mt-3">
