@@ -909,9 +909,9 @@
                 <tbody>
                   <tr class="horario-row" style="cursor:pointer"
                     data-id="1" data-nombre="Carlos Martínez" data-cargo="Operario · Turno mañana"
-                    data-lunes="07:00 - 16:00" data-martes="07:00 - 16:00" data-miercoles="07:00 - 16:00"
-                    data-jueves="07:00 - 16:00" data-viernes="07:00 - 16:00"
-                    data-sabado="07:00 - 13:00" data-domingo="Descanso"
+                    data-lunes="7:00 AM - 4:00 PM" data-martes="7:00 AM - 4:00 PM" data-miercoles="7:00 AM - 4:00 PM"
+                    data-jueves="7:00 AM - 4:00 PM" data-viernes="7:00 AM - 4:00 PM"
+                    data-sabado="7:00 AM - 1:00 PM" data-domingo="Descanso"
                     data-tipo-lunes="trabajo" data-tipo-martes="trabajo" data-tipo-miercoles="trabajo"
                     data-tipo-jueves="trabajo" data-tipo-viernes="trabajo"
                     data-tipo-sabado="medio" data-tipo-domingo="descanso">
@@ -923,18 +923,18 @@
                         </div>
                       </div>
                     </td>
-                    <td style="text-align:center"><span class="badge-u badge-success-u">07:00 - 16:00</span></td>
-                    <td style="text-align:center"><span class="badge-u badge-success-u">07:00 - 16:00</span></td>
-                    <td style="text-align:center"><span class="badge-u badge-success-u">07:00 - 16:00</span></td>
-                    <td style="text-align:center"><span class="badge-u badge-success-u">07:00 - 16:00</span></td>
-                    <td style="text-align:center"><span class="badge-u badge-success-u">07:00 - 16:00</span></td>
-                    <td style="text-align:center"><span class="badge-u badge-amber-u">07:00 - 13:00</span></td>
+                    <td style="text-align:center"><span class="badge-u badge-success-u">7:00 AM - 4:00 PM</span></td>
+                    <td style="text-align:center"><span class="badge-u badge-success-u">7:00 AM - 4:00 PM</span></td>
+                    <td style="text-align:center"><span class="badge-u badge-success-u">7:00 AM - 4:00 PM</span></td>
+                    <td style="text-align:center"><span class="badge-u badge-success-u">7:00 AM - 4:00 PM</span></td>
+                    <td style="text-align:center"><span class="badge-u badge-success-u">7:00 AM - 4:00 PM</span></td>
+                    <td style="text-align:center"><span class="badge-u badge-amber-u">7:00 AM - 1:00 PM</span></td>
                     <td style="text-align:center"><span class="badge-u badge-danger-u">Descanso</span></td>
                   </tr>
                   <tr class="horario-row" style="cursor:pointer"
                     data-id="2" data-nombre="Ana Rodríguez" data-cargo="Supervisora · Jornada completa"
-                    data-lunes="08:00 - 17:00" data-martes="08:00 - 17:00" data-miercoles="08:00 - 17:00"
-                    data-jueves="08:00 - 17:00" data-viernes="08:00 - 17:00"
+                    data-lunes="8:00 AM - 5:00 PM" data-martes="8:00 AM - 5:00 PM" data-miercoles="8:00 AM - 5:00 PM"
+                    data-jueves="8:00 AM - 5:00 PM" data-viernes="8:00 AM - 5:00 PM"
                     data-sabado="Descanso" data-domingo="Descanso"
                     data-tipo-lunes="trabajo" data-tipo-martes="trabajo" data-tipo-miercoles="trabajo"
                     data-tipo-jueves="trabajo" data-tipo-viernes="trabajo"
@@ -947,19 +947,19 @@
                         </div>
                       </div>
                     </td>
-                    <td style="text-align:center"><span class="badge-u badge-success-u">08:00 - 17:00</span></td>
-                    <td style="text-align:center"><span class="badge-u badge-success-u">08:00 - 17:00</span></td>
-                    <td style="text-align:center"><span class="badge-u badge-success-u">08:00 - 17:00</span></td>
-                    <td style="text-align:center"><span class="badge-u badge-success-u">08:00 - 17:00</span></td>
-                    <td style="text-align:center"><span class="badge-u badge-success-u">08:00 - 17:00</span></td>
+                    <td style="text-align:center"><span class="badge-u badge-success-u">8:00 AM - 5:00 PM</span></td>
+                    <td style="text-align:center"><span class="badge-u badge-success-u">8:00 AM - 5:00 PM</span></td>
+                    <td style="text-align:center"><span class="badge-u badge-success-u">8:00 AM - 5:00 PM</span></td>
+                    <td style="text-align:center"><span class="badge-u badge-success-u">8:00 AM - 5:00 PM</span></td>
+                    <td style="text-align:center"><span class="badge-u badge-success-u">8:00 AM - 5:00 PM</span></td>
                     <td style="text-align:center"><span class="badge-u badge-danger-u">Descanso</span></td>
                     <td style="text-align:center"><span class="badge-u badge-danger-u">Descanso</span></td>
                   </tr>
                   <tr class="horario-row" style="cursor:pointer"
                     data-id="3" data-nombre="Luis Pérez" data-cargo="Auxiliar · Turno tarde"
-                    data-lunes="14:00 - 22:00" data-martes="14:00 - 22:00" data-miercoles="14:00 - 22:00"
-                    data-jueves="14:00 - 22:00" data-viernes="14:00 - 22:00"
-                    data-sabado="14:00 - 20:00" data-domingo="Descanso"
+                    data-lunes="2:00 PM - 10:00 PM" data-martes="2:00 PM - 10:00 PM" data-miercoles="2:00 PM - 10:00 PM"
+                    data-jueves="2:00 PM - 10:00 PM" data-viernes="2:00 PM - 10:00 PM"
+                    data-sabado="2:00 PM - 8:00 PM" data-domingo="Descanso"
                     data-tipo-lunes="trabajo" data-tipo-martes="trabajo" data-tipo-miercoles="trabajo"
                     data-tipo-jueves="trabajo" data-tipo-viernes="trabajo"
                     data-tipo-sabado="medio" data-tipo-domingo="descanso">
@@ -971,18 +971,18 @@
                         </div>
                       </div>
                     </td>
-                    <td style="text-align:center"><span class="badge-u badge-success-u">14:00 - 22:00</span></td>
-                    <td style="text-align:center"><span class="badge-u badge-success-u">14:00 - 22:00</span></td>
-                    <td style="text-align:center"><span class="badge-u badge-success-u">14:00 - 22:00</span></td>
-                    <td style="text-align:center"><span class="badge-u badge-success-u">14:00 - 22:00</span></td>
-                    <td style="text-align:center"><span class="badge-u badge-success-u">14:00 - 22:00</span></td>
-                    <td style="text-align:center"><span class="badge-u badge-amber-u">14:00 - 20:00</span></td>
+                    <td style="text-align:center"><span class="badge-u badge-success-u">2:00 PM - 10:00 PM</span></td>
+                    <td style="text-align:center"><span class="badge-u badge-success-u">2:00 PM - 10:00 PM</span></td>
+                    <td style="text-align:center"><span class="badge-u badge-success-u">2:00 PM - 10:00 PM</span></td>
+                    <td style="text-align:center"><span class="badge-u badge-success-u">2:00 PM - 10:00 PM</span></td>
+                    <td style="text-align:center"><span class="badge-u badge-success-u">2:00 PM - 10:00 PM</span></td>
+                    <td style="text-align:center"><span class="badge-u badge-amber-u">2:00 PM - 8:00 PM</span></td>
                     <td style="text-align:center"><span class="badge-u badge-danger-u">Descanso</span></td>
                   </tr>
                   <tr class="horario-row" style="cursor:pointer"
                     data-id="4" data-nombre="María González" data-cargo="Asistente · Medio tiempo"
-                    data-lunes="09:00 - 13:00" data-martes="09:00 - 13:00" data-miercoles="09:00 - 13:00"
-                    data-jueves="09:00 - 13:00" data-viernes="09:00 - 13:00"
+                    data-lunes="9:00 AM - 1:00 PM" data-martes="9:00 AM - 1:00 PM" data-miercoles="9:00 AM - 1:00 PM"
+                    data-jueves="9:00 AM - 1:00 PM" data-viernes="9:00 AM - 1:00 PM"
                     data-sabado="Descanso" data-domingo="Descanso"
                     data-tipo-lunes="medio" data-tipo-martes="medio" data-tipo-miercoles="medio"
                     data-tipo-jueves="medio" data-tipo-viernes="medio"
@@ -995,11 +995,11 @@
                         </div>
                       </div>
                     </td>
-                    <td style="text-align:center"><span class="badge-u badge-amber-u">09:00 - 13:00</span></td>
-                    <td style="text-align:center"><span class="badge-u badge-amber-u">09:00 - 13:00</span></td>
-                    <td style="text-align:center"><span class="badge-u badge-amber-u">09:00 - 13:00</span></td>
-                    <td style="text-align:center"><span class="badge-u badge-amber-u">09:00 - 13:00</span></td>
-                    <td style="text-align:center"><span class="badge-u badge-amber-u">09:00 - 13:00</span></td>
+                    <td style="text-align:center"><span class="badge-u badge-amber-u">9:00 AM - 1:00 PM</span></td>
+                    <td style="text-align:center"><span class="badge-u badge-amber-u">9:00 AM - 1:00 PM</span></td>
+                    <td style="text-align:center"><span class="badge-u badge-amber-u">9:00 AM - 1:00 PM</span></td>
+                    <td style="text-align:center"><span class="badge-u badge-amber-u">9:00 AM - 1:00 PM</span></td>
+                    <td style="text-align:center"><span class="badge-u badge-amber-u">9:00 AM - 1:00 PM</span></td>
                     <td style="text-align:center"><span class="badge-u badge-danger-u">Descanso</span></td>
                     <td style="text-align:center"><span class="badge-u badge-danger-u">Descanso</span></td>
                   </tr>
@@ -1441,7 +1441,7 @@
                 </label>
                 <input type="text" class="fc mh-dia-input" data-dia="${d}"
                   value="${valor}"
-                  placeholder="HH:MM - HH:MM"
+                  placeholder="ej: 8:00 AM - 5:00 PM"
                   style="font-size:12px;padding:7px 10px;">
               </div>
             </div>`;
@@ -1463,17 +1463,14 @@
         /* Determinar clase del badge según contenido */
         const lower = valor.toLowerCase();
         let cls = 'badge-success-u';
-        if (lower === 'descanso')      cls = 'badge-danger-u';
-        else if (lower === 'incapacidad' || lower === 'permiso') cls = 'badge-danger-u';
-        else if (valor.includes('-') && valor.split('-')[1]) {
-          /* Medio tiempo: jornada menor a 8 horas */
-          const partes = valor.split('-');
-          if (partes.length === 2) {
-            const [h1, m1] = partes[0].trim().split(':').map(Number);
-            const [h2, m2] = partes[1].trim().split(':').map(Number);
-            const horas = (h2 * 60 + m2 - h1 * 60 - m1) / 60;
-            if (!isNaN(horas) && horas < 7) cls = 'badge-amber-u';
-          }
+        if (['descanso', 'incapacidad', 'permiso'].some(k => lower.includes(k))) {
+          cls = 'badge-danger-u';
+        } else if (lower.includes('am') && lower.includes('pm')) {
+          /* AM → PM: jornada que cruza mediodía, considerada medio tiempo si termina antes de las 2 PM */
+          const match = valor.match(/(\d+):(\d+)\s*PM/i);
+          if (match && parseInt(match[1]) < 2) cls = 'badge-amber-u';
+        } else if (lower.includes('am - ') && !lower.includes('pm')) {
+          cls = 'badge-amber-u'; /* Solo AM → medio tiempo */
         }
 
         /* Actualizar celda correspondiente en la fila (columna = índice del día + 1) */
