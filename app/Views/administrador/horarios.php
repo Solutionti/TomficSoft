@@ -910,6 +910,14 @@
               </div>
             </div>
             
+            <!--  -->
+          <div class="usr-table-card anim-3">
+            <div class="col-md-12 mt-3">
+               <!-- aca va la tabla de IA -->
+            </div>
+          </div>
+          <!--  -->
+          <br>
             <div class="row">
               <div class="col-md-7">
                 <div class="usr-table-card anim-3">
@@ -1025,13 +1033,7 @@
             </div>
 
             <br>
-            <!--  -->
-            <div class="usr-table-card anim-3">
-              <div class="col-md-12 mt-3">
-                 <!-- aca va la tabla de IA -->
-              </div>
-            </div>
-            <!--  -->
+            
           </div>
           </div>
         <br>
