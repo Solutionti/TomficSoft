@@ -1028,7 +1028,7 @@
             <!--  -->
             <div class="usr-table-card anim-3">
               <div class="col-md-12 mt-3">
-                 
+                 <!-- aca va la tabla de IA -->
               </div>
             </div>
             <!--  -->

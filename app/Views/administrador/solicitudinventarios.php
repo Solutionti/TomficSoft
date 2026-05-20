@@ -1281,7 +1281,7 @@
                 <p class="usr-breadcrumb">Administración &rsaquo; InventSoft</p>
                 <h1 class="">Solicitud de Inventarios</h1>
               </div>
-              <button class="btn-u btn-u-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+              <button class="btn-u btn-u-primary btn-sm" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                 <i class="fas fa-user-plus"></i> Historico
               </button>
             </div>
