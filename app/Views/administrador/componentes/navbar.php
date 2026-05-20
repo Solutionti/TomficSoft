@@ -437,21 +437,22 @@
 
 
     <!-- ══════════════ SECCIÓN: VENTAS ══════════════ -->
-    <!-- <li>
+    <li>
       <div class="sb-section-label">
         <span>Ventas</span>
       </div>
     </li>
-
+    
     <li class="sb-item">
       <a
-        class="sb-link <?= str_contains(current_url(), 'inventarios') ? 'active' : '' ?>"
-        href="<?= base_url('inventarios') ?>"
+      class="sb-link <?= str_contains(current_url(), 'inventarios') ? 'active' : '' ?>"
+      href="<?= base_url('inventarios') ?>"
       >
-        <span class="sb-link-icon"><i class="fas fa-truck-moving"></i></span>
-        <span class="sb-link-text">Kardex</span>
-      </a>
-    </li>
+      <span class="sb-link-icon"><i class="fas fa-truck-moving"></i></span>
+      <span class="sb-link-text">Kardex</span>
+    </a>
+  </li>
+  <!-- 
 
     <li class="sb-item">
       <a
