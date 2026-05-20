@@ -881,8 +881,154 @@
             <!-- ══════════ STATS STRIP ══════════ -->
             <!--  -->
           <div class="usr-table-card anim-3">
-            <div class="col-md-12 mt-3">
-               <!-- aca va la tabla de IA -->
+            <div class="usr-table-header">
+              <h5>
+                <i class="fas fa-calendar-week" style="color:var(--purple-400)"></i>
+                Horarios Semanales
+                <span class="count-pill" id="horario-count">5</span>
+              </h5>
+              <div class="tbl-search">
+                <i class="fas fa-search"></i>
+                <input type="text" id="horario-search" placeholder="Buscar colaborador…">
+              </div>
+            </div>
+            <div class="table-responsive">
+              <table class="usr-table" id="tabla-horarios">
+                <thead>
+                  <tr>
+                    <th>Nombre Colaborador</th>
+                    <th style="text-align:center">Lunes</th>
+                    <th style="text-align:center">Martes</th>
+                    <th style="text-align:center">Miércoles</th>
+                    <th style="text-align:center">Jueves</th>
+                    <th style="text-align:center">Viernes</th>
+                    <th style="text-align:center">Sábado</th>
+                    <th style="text-align:center">Domingo</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="horario-row" style="cursor:pointer"
+                    data-id="1" data-nombre="Carlos Martínez" data-cargo="Operario · Turno mañana"
+                    data-lunes="07:00 - 16:00" data-martes="07:00 - 16:00" data-miercoles="07:00 - 16:00"
+                    data-jueves="07:00 - 16:00" data-viernes="07:00 - 16:00"
+                    data-sabado="07:00 - 13:00" data-domingo="Descanso"
+                    data-tipo-lunes="trabajo" data-tipo-martes="trabajo" data-tipo-miercoles="trabajo"
+                    data-tipo-jueves="trabajo" data-tipo-viernes="trabajo"
+                    data-tipo-sabado="medio" data-tipo-domingo="descanso">
+                    <td>
+                      <div class="user-cell">
+                        <div>
+                          <div class="user-name">Carlos Martínez</div>
+                          <div class="user-sub">Operario · Turno mañana</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td style="text-align:center"><span class="badge-u badge-success-u">07:00 - 16:00</span></td>
+                    <td style="text-align:center"><span class="badge-u badge-success-u">07:00 - 16:00</span></td>
+                    <td style="text-align:center"><span class="badge-u badge-success-u">07:00 - 16:00</span></td>
+                    <td style="text-align:center"><span class="badge-u badge-success-u">07:00 - 16:00</span></td>
+                    <td style="text-align:center"><span class="badge-u badge-success-u">07:00 - 16:00</span></td>
+                    <td style="text-align:center"><span class="badge-u badge-amber-u">07:00 - 13:00</span></td>
+                    <td style="text-align:center"><span class="badge-u badge-danger-u">Descanso</span></td>
+                  </tr>
+                  <tr class="horario-row" style="cursor:pointer"
+                    data-id="2" data-nombre="Ana Rodríguez" data-cargo="Supervisora · Jornada completa"
+                    data-lunes="08:00 - 17:00" data-martes="08:00 - 17:00" data-miercoles="08:00 - 17:00"
+                    data-jueves="08:00 - 17:00" data-viernes="08:00 - 17:00"
+                    data-sabado="Descanso" data-domingo="Descanso"
+                    data-tipo-lunes="trabajo" data-tipo-martes="trabajo" data-tipo-miercoles="trabajo"
+                    data-tipo-jueves="trabajo" data-tipo-viernes="trabajo"
+                    data-tipo-sabado="descanso" data-tipo-domingo="descanso">
+                    <td>
+                      <div class="user-cell">
+                        <div>
+                          <div class="user-name">Ana Rodríguez</div>
+                          <div class="user-sub">Supervisora · Jornada completa</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td style="text-align:center"><span class="badge-u badge-success-u">08:00 - 17:00</span></td>
+                    <td style="text-align:center"><span class="badge-u badge-success-u">08:00 - 17:00</span></td>
+                    <td style="text-align:center"><span class="badge-u badge-success-u">08:00 - 17:00</span></td>
+                    <td style="text-align:center"><span class="badge-u badge-success-u">08:00 - 17:00</span></td>
+                    <td style="text-align:center"><span class="badge-u badge-success-u">08:00 - 17:00</span></td>
+                    <td style="text-align:center"><span class="badge-u badge-danger-u">Descanso</span></td>
+                    <td style="text-align:center"><span class="badge-u badge-danger-u">Descanso</span></td>
+                  </tr>
+                  <tr class="horario-row" style="cursor:pointer"
+                    data-id="3" data-nombre="Luis Pérez" data-cargo="Auxiliar · Turno tarde"
+                    data-lunes="14:00 - 22:00" data-martes="14:00 - 22:00" data-miercoles="14:00 - 22:00"
+                    data-jueves="14:00 - 22:00" data-viernes="14:00 - 22:00"
+                    data-sabado="14:00 - 20:00" data-domingo="Descanso"
+                    data-tipo-lunes="trabajo" data-tipo-martes="trabajo" data-tipo-miercoles="trabajo"
+                    data-tipo-jueves="trabajo" data-tipo-viernes="trabajo"
+                    data-tipo-sabado="medio" data-tipo-domingo="descanso">
+                    <td>
+                      <div class="user-cell">
+                        <div>
+                          <div class="user-name">Luis Pérez</div>
+                          <div class="user-sub">Auxiliar · Turno tarde</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td style="text-align:center"><span class="badge-u badge-success-u">14:00 - 22:00</span></td>
+                    <td style="text-align:center"><span class="badge-u badge-success-u">14:00 - 22:00</span></td>
+                    <td style="text-align:center"><span class="badge-u badge-success-u">14:00 - 22:00</span></td>
+                    <td style="text-align:center"><span class="badge-u badge-success-u">14:00 - 22:00</span></td>
+                    <td style="text-align:center"><span class="badge-u badge-success-u">14:00 - 22:00</span></td>
+                    <td style="text-align:center"><span class="badge-u badge-amber-u">14:00 - 20:00</span></td>
+                    <td style="text-align:center"><span class="badge-u badge-danger-u">Descanso</span></td>
+                  </tr>
+                  <tr class="horario-row" style="cursor:pointer"
+                    data-id="4" data-nombre="María González" data-cargo="Asistente · Medio tiempo"
+                    data-lunes="09:00 - 13:00" data-martes="09:00 - 13:00" data-miercoles="09:00 - 13:00"
+                    data-jueves="09:00 - 13:00" data-viernes="09:00 - 13:00"
+                    data-sabado="Descanso" data-domingo="Descanso"
+                    data-tipo-lunes="medio" data-tipo-martes="medio" data-tipo-miercoles="medio"
+                    data-tipo-jueves="medio" data-tipo-viernes="medio"
+                    data-tipo-sabado="descanso" data-tipo-domingo="descanso">
+                    <td>
+                      <div class="user-cell">
+                        <div>
+                          <div class="user-name">María González</div>
+                          <div class="user-sub">Asistente · Medio tiempo</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td style="text-align:center"><span class="badge-u badge-amber-u">09:00 - 13:00</span></td>
+                    <td style="text-align:center"><span class="badge-u badge-amber-u">09:00 - 13:00</span></td>
+                    <td style="text-align:center"><span class="badge-u badge-amber-u">09:00 - 13:00</span></td>
+                    <td style="text-align:center"><span class="badge-u badge-amber-u">09:00 - 13:00</span></td>
+                    <td style="text-align:center"><span class="badge-u badge-amber-u">09:00 - 13:00</span></td>
+                    <td style="text-align:center"><span class="badge-u badge-danger-u">Descanso</span></td>
+                    <td style="text-align:center"><span class="badge-u badge-danger-u">Descanso</span></td>
+                  </tr>
+                  <tr class="horario-row" style="cursor:pointer"
+                    data-id="5" data-nombre="Jorge Hernández" data-cargo="Operario · Incapacidad médica"
+                    data-lunes="Incapacidad" data-martes="Incapacidad" data-miercoles="Incapacidad"
+                    data-jueves="Incapacidad" data-viernes="Incapacidad"
+                    data-sabado="Incapacidad" data-domingo="Incapacidad"
+                    data-tipo-lunes="incapacidad" data-tipo-martes="incapacidad" data-tipo-miercoles="incapacidad"
+                    data-tipo-jueves="incapacidad" data-tipo-viernes="incapacidad"
+                    data-tipo-sabado="incapacidad" data-tipo-domingo="incapacidad">
+                    <td>
+                      <div class="user-cell">
+                        <div>
+                          <div class="user-name">Jorge Hernández</div>
+                          <div class="user-sub">Operario · Incapacidad médica</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td style="text-align:center"><span class="badge-u badge-danger-u" style="background:#fee2e2;color:#991b1b">Incapacidad</span></td>
+                    <td style="text-align:center"><span class="badge-u badge-danger-u" style="background:#fee2e2;color:#991b1b">Incapacidad</span></td>
+                    <td style="text-align:center"><span class="badge-u badge-danger-u" style="background:#fee2e2;color:#991b1b">Incapacidad</span></td>
+                    <td style="text-align:center"><span class="badge-u badge-danger-u" style="background:#fee2e2;color:#991b1b">Incapacidad</span></td>
+                    <td style="text-align:center"><span class="badge-u badge-danger-u" style="background:#fee2e2;color:#991b1b">Incapacidad</span></td>
+                    <td style="text-align:center"><span class="badge-u badge-danger-u" style="background:#fee2e2;color:#991b1b">Incapacidad</span></td>
+                    <td style="text-align:center"><span class="badge-u badge-danger-u" style="background:#fee2e2;color:#991b1b">Incapacidad</span></td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
           <!--  -->
@@ -1233,59 +1379,127 @@
     </div>
   </div>
 
+  <!-- ══════════════════════════════════════════════
+     MODAL: EDITAR HORARIO
+══════════════════════════════════════════════ -->
+  <div class="modal fade" id="modalHorario" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header modal-header-inv">
+          <h5 class="modal-title">
+            <i class="fas fa-calendar-pen me-2"></i>
+            Editar Horario — <span id="mh-nombre"></span>
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <p style="font-size:12px;color:var(--text-muted);margin-bottom:18px;">
+            <i class="fas fa-circle-info me-1"></i>
+            Edita el horario de cada día. Usa formato <strong>HH:MM - HH:MM</strong> o escribe <strong>Descanso / Incapacidad / Permiso</strong>.
+          </p>
+          <div class="row g-3" id="mh-dias"></div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn-u btn-u-danger-outline" data-bs-dismiss="modal">
+            <i class="fas fa-times"></i> Cancelar
+          </button>
+          <button type="button" class="btn-u btn-u-primary" id="mh-btn-guardar">
+            <i class="fas fa-save"></i> Guardar horario
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <?php require_once("componentes/scripts.php") ?>
-  <script src="<?= base_url('js/usuarios.js') ?>"></script>
 
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const tbody = document.querySelector('#table_usuarios tbody');
-      if (!tbody) return;
+  document.addEventListener('DOMContentLoaded', function () {
+  (function () {
+    const dias = ['lunes','martes','miercoles','jueves','viernes','sabado','domingo'];
+    const diasLabel = ['Lunes','Martes','Miércoles','Jueves','Viernes','Sábado','Domingo'];
 
-      const rows = Array.from(tbody.querySelectorAll('tr'));
-      const total = rows.length;
-      let active = 0, inactive = 0, admins = 0;
+    const modal     = new bootstrap.Modal(document.getElementById('modalHorario'));
+    const mhNombre  = document.getElementById('mh-nombre');
+    const mhDias    = document.getElementById('mh-dias');
+    let filaActiva  = null;
 
-      rows.forEach(row => {
-        const cells = row.querySelectorAll('td');
-        // Estado = last td (index 7), Rol = index 6
-        const estadoTxt = row.querySelector('.badge-u') ? row.querySelectorAll('.badge-u') : [];
-        const tds = row.querySelectorAll('td');
-        if (tds.length >= 8) {
-          const estadoCell = tds[7].textContent.trim();
-          const rolCell = tds[6].textContent.trim();
-          if (estadoCell.toLowerCase().includes('activo')) active++;
-          else inactive++;
-          if (rolCell.toLowerCase().includes('admin')) admins++;
+    /* ── Abrir modal al hacer click en una fila ── */
+    document.querySelectorAll('.horario-row').forEach(row => {
+      row.addEventListener('click', () => {
+        filaActiva = row;
+        mhNombre.textContent = row.dataset.nombre;
+
+        /* Construir los campos de cada día */
+        mhDias.innerHTML = dias.map((d, i) => {
+          const valor = row.dataset[d] || '';
+          return `
+            <div class="col-md-6 col-lg-3">
+              <div class="fl">
+                <label style="font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted);">
+                  ${diasLabel[i]}
+                </label>
+                <input type="text" class="fc mh-dia-input" data-dia="${d}"
+                  value="${valor}"
+                  placeholder="HH:MM - HH:MM"
+                  style="font-size:12px;padding:7px 10px;">
+              </div>
+            </div>`;
+        }).join('');
+
+        modal.show();
+      });
+    });
+
+    /* ── Guardar: actualiza los data-* y los badges en la fila ── */
+    document.getElementById('mh-btn-guardar').addEventListener('click', () => {
+      if (!filaActiva) return;
+
+      document.querySelectorAll('.mh-dia-input').forEach(input => {
+        const d     = input.dataset.dia;
+        const valor = input.value.trim() || 'Descanso';
+        filaActiva.dataset[d] = valor;
+
+        /* Determinar clase del badge según contenido */
+        const lower = valor.toLowerCase();
+        let cls = 'badge-success-u';
+        if (lower === 'descanso')      cls = 'badge-danger-u';
+        else if (lower === 'incapacidad' || lower === 'permiso') cls = 'badge-danger-u';
+        else if (valor.includes('-') && valor.split('-')[1]) {
+          /* Medio tiempo: jornada menor a 8 horas */
+          const partes = valor.split('-');
+          if (partes.length === 2) {
+            const [h1, m1] = partes[0].trim().split(':').map(Number);
+            const [h2, m2] = partes[1].trim().split(':').map(Number);
+            const horas = (h2 * 60 + m2 - h1 * 60 - m1) / 60;
+            if (!isNaN(horas) && horas < 7) cls = 'badge-amber-u';
+          }
+        }
+
+        /* Actualizar celda correspondiente en la fila (columna = índice del día + 1) */
+        const idx   = dias.indexOf(d);
+        const celda = filaActiva.querySelectorAll('td')[idx + 1];
+        if (celda) {
+          celda.innerHTML = `<span class="badge-u ${cls}">${valor}</span>`;
         }
       });
 
-      document.getElementById('statTotal').textContent = total;
-      document.getElementById('statActive').textContent = active;
-      document.getElementById('statInactive').textContent = inactive;
-      document.getElementById('statAdmin').textContent = admins;
-      document.getElementById('countPill').textContent = total;
+      modal.hide();
+    });
 
-      /* Live search */
-      const searchInput = document.getElementById('searchInput');
-      if (searchInput) {
-        searchInput.addEventListener('input', function () {
-          const q = this.value.toLowerCase();
-          rows.forEach(row => {
-            row.style.display = row.textContent.toLowerCase().includes(q) ? '' : 'none';
-          });
-        });
-      }
-
-      /* Select all checkboxes */
-      ['selectAll', 'selectAllUpdate'].forEach(id => {
-        const el = document.getElementById(id);
-        if (!el) return;
-        el.addEventListener('change', function () {
-          const cls = this.id === 'selectAll' ? 'fila2' : 'fila';
-          document.querySelectorAll('.' + cls).forEach(c => c.checked = this.checked);
+    /* ── Búsqueda en tiempo real ── */
+    const searchInput = document.getElementById('horario-search');
+    if (searchInput) {
+      const rows = document.querySelectorAll('.horario-row');
+      searchInput.addEventListener('input', function () {
+        const q = this.value.toLowerCase();
+        rows.forEach(r => {
+          r.style.display = r.dataset.nombre.toLowerCase().includes(q) ? '' : 'none';
         });
       });
-    });
+    }
+  })();
+  }); // DOMContentLoaded
   </script>
 </body>
 
