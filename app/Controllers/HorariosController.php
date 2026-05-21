@@ -7,11 +7,13 @@ class HorariosController extends BaseController {
 
   public function __construct() {
      $this->listasModel = new \App\Models\ListasModel();
+     $this->horariosModel = new \App\Models\HorariosModel();
   }
 
   public function index(){
     $data = [
          'permisoUsuario' => $this->listasModel->getPermisosMenu(),
+          'colaboradores' => $this->horariosModel->getColaboradores()
       ];
     return view('administrador/horarios', $data);
   }

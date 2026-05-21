@@ -1045,6 +1045,7 @@
                             <th></th>
                           </thead>
                           <tbody>
+                            <?php foreach ($colaboradores->getResult() as $colaborador) : ?>
                             <tr>
                               <td>
                               <div class="user-cell">
@@ -1054,8 +1055,8 @@
                                     class="user-status-dot"></span>
                                 </div>
                                 <div>
-                                  <div class="user-name">Jerson Galvez Ensuncho</div>
-                                  <div class="user-sub">12345678 · jgalvez</div>
+                                  <div class="user-name"><?= $colaborador->nombres . ' ' . $colaborador->apellidos ?></div>
+                                  <div class="user-sub"><?= $colaborador->documento ?> · <?= $colaborador->cargo ?></div>
                                 </div>
                               </div>
                               </td>
@@ -1071,10 +1072,11 @@
                                     <button class="btn-action btn-action-view"  title="Ver usuario">
                                       <i class="fas fa-eye"></i>
                                     </button>
-                                 </div>
+                                  </div>
                                 </div>
                               </td>
                             </tr>
+                            <?php endforeach; ?>
                           </tbody>
                         </table>
                       </div>
@@ -1095,6 +1097,7 @@
                               <th class="text-white"></th>
                             </thead>
                             <tbody>
+                              <?php foreach ($colaboradores->getResult() as $colaborador) : ?>
                               <tr>
                                 <td>
                                 <div class="user-cell">
@@ -1104,12 +1107,13 @@
                                       class="user-status-dot"></span>
                                   </div>
                                   <div>
-                                    <div class="user-name">Jerson Galvez Ensuncho</div>
-                                    <div class="user-sub">12345678 · jgalvez</div>
+                                    <div class="user-name"><?= $colaborador->nombres . ' ' . $colaborador->apellidos ?></div>
+                                    <div class="user-sub"><?= $colaborador->documento ?> · <?= $colaborador->cargo ?></div>
                                   </div>
                                 </div>
                                 </td>
                               </tr>
+                              <?php endforeach; ?>
                             </tbody>
                           </table>
                           <br>
@@ -1166,7 +1170,7 @@
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header modal-header-inv">
-          <h1 class="modal-title"><i class="fas fa-user-plus me-2"></i>Productos organicos</h1>
+          <h1 class="modal-title"><i class="fas fa-user-plus me-2"></i>Colaboradores</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -1174,38 +1178,104 @@
           <!-- SECCIÓN: Datos personales -->
           <div class="form-section">
             <div class="form-section-title">
-              <i class="fas fa-id-card"></i> Productos a desechar
+              <i class="fas fa-id-card"></i> Datos del Colaborador
             </div>
             <div class="row g-3">
-              <div class="col-md-4">
+              <div class="col-md-3">
                 <div class="fl">
-                  <label>Codigo *</label>
+                  <label>Documento *</label>
                   <input type="number" id="codigo_producto" class="fc" required>
                 </div>
               </div>
-              <div class="col-md-4">
+              <div class="col-md-3">
                 <div class="fl">
-                  <label>Nombre del producto *</label>
+                  <label>Nombres *</label>
+                  <input type="text" id="nombre_producto" class="fc" required>
+                </div>
+              </div>
+              <div class="col-md-3">
+                  <div class="fl">
+                    <label>Apellidos *</label>
+                    <input type="text" id="unidades_producto" class="fc" required>
+                  </div>
+              </div>
+              
+              <div class="col-md-3">
+                <div class="fl">
+                  <label>Telefono *</label>
+                  <input type="text" id="unidades_producto" class="fc" required>
+                </div>
+              </div>
+            </div>
+            <div class="row g-3 mt-3">
+              <div class="col-md-3">
+                <div class="fl">
+                  <label>Direccion *</label>
+                  <select class="fc fsel text-uppercase" id="estado_usuario" required>
+                    <option value="Activo">Carrera</option>
+                    <option value="Inactivo">Calle</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-1">
+                <div class="fl">
+                  <label>*</label>
+                  <input type="text" id="nombre_producto" class="fc" required>
+                </div>
+              </div>
+              
+              <div class="col-md-1">
+                <div class="fl">
+                  <label>*</label>
+                  <input type="text" id="nombre_producto" class="fc" required>
+                </div>
+              </div>
+              <div class="col-md-1">
+                <div class="fl">
+                  <label>*</label>
                   <input type="text" id="nombre_producto" class="fc" required>
                 </div>
               </div>
               <div class="col-md-2">
                 <div class="fl">
-                  <label>Unidades *</label>
+                  <label>*</label>
+                  <input type="text" id="nombre_producto" class="fc" required>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="fl">
+                  <label>Barrio *</label>
                   <input type="text" id="unidades_producto" class="fc" required>
                 </div>
               </div>
-              
-              <div class="col-md-2">
+              <div class="col-md-3">
                 <div class="fl">
-                  <label>Estado *</label>
+                  <label>Sexo *</label>
+                  <select class="fc fsel" id="sexo_usuario" required>
+                    <option value="">Seleccione el sexo</option>
+                    <option value="Masculino">Masculino</option>
+                    <option value="Femenino">Femenino</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="fl">
+                  <label>Fecha de nacimiento *</label>
+                  <input type="date" id="fecha_nacimiento_usuario" class="fc" required>
+                </div>
+                </div>
+              <div class="col-md-6">
+                <div class="fl">
+                  <label>Cargo *</label>
                   <select class="fc fsel" id="estado_usuario" required>
-                    <option value="">Seleccione estado</option>
+                    <option value="">Seleccione el cargo</option>
                     <option value="Activo">Activo</option>
                     <option value="Inactivo">Inactivo</option>
                   </select>
                 </div>
               </div>
+            </div>
+            <div class="row mt-3">
               <div class="col-md-12">
                 <div class="fl">
                   <label>Comentarios *</label>

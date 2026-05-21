@@ -44,8 +44,8 @@
                   <img class="avatar avatar-circle" src="https://www.sport.es/bicio/wp-content/uploads/2022/05/requisitos-buen-ciclista.jpg" alt="Image Description">
                 </div> -->
 
-                InventSoft
-                <span class="blockquote-footer-source"> Jerson Galvez - experto en inventarios</span>
+                Cristal Business
+                <span class="blockquote-footer-source"> Jerson Galvez - Experto en Inventarios</span>
               </figcaption>
             </figure>
             <div class="position-absolute start-0 end-0 bottom-0 text-center p-5">
@@ -55,17 +55,18 @@
         <div class="col-lg-7 col-xl-8 d-flex justify-content-center content-space-1 align-items-center min-vh-lg-100">
           <div class="flex-grow-1 mx-auto" style="max-width: 28rem;">
             <div class="text-center mb-5 mb-md-7">
-                <img
+                <!-- <img
                   class="avatar avatar-xl avatar-4x3"
-                  src="http://localhost/CODEIGNITER/EcommerceSoft_/public/img/theme/logo.png"
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDmBJnsrjVC9kZxootVrgTtc4oyc0lE-KIiA&s"
                   alt="Logo"
-                >
+                > -->
               
-              <h1 class="h3">Bienvenido a InventSoft</h1>
-              <p>Inicie sesión para administrar su cuenta.</p>
+              <h1 class="h3">Bienvenido</h1>
+              <h1 class="h3">Cristal Business</h1>
             </div>
             <div class="messageError mt-2"></div>
             <form role="form" method="post" validate id="FormLOG">
+              <p>Inicie sesión para administrar su cuenta.</p>
               <div class="mb-4">
                 <label class="form-label" for="signupModalFormLoginEmail">Email / Usuario</label>
                 <input
