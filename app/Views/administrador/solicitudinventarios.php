@@ -1296,14 +1296,22 @@
                   <div class="section-title"><i class="fas fa-barcode"></i>Búsqueda de producto</div>
                   <div class="row g-3 align-items-end">
                       <div class="col-md-12">
-                          <div class="fl">
+                          <div class="fl" style="position:relative;">
                               <label class="req">Producto a solicitar</label>
                               <div class="search-bar">
-                                  <input type="text" id="codigo_barras" placeholder="Escribe el nombre del producto…" autofocus>
+                                  <input type="text" id="codigo_barras"
+                                      placeholder="Escribe el nombre o código del producto…"
+                                      autofocus autocomplete="off">
                                   <button type="button" data-bs-toggle="modal" data-bs-target="#listaproductos" title="Buscar en lista">
                                       <i class="fas fa-store"></i>
                                   </button>
                               </div>
+                              <div id="sol-producto-dropdown" style="
+                                  display:none; position:absolute; top:100%; left:0; right:0; z-index:1050;
+                                  background:#fff; border:1.5px solid #e9d5ff; border-top:none;
+                                  border-radius:0 0 10px 10px;
+                                  box-shadow:0 8px 24px rgba(74,18,130,.12);
+                                  max-height:220px; overflow-y:auto;"></div>
                           </div>
                       </div>
                   </div>
@@ -1632,6 +1640,131 @@
         });
       });
     });
+  </script>
+
+  <script>
+  (function () {
+    var input    = document.getElementById('codigo_barras');
+    var dropdown = document.getElementById('sol-producto-dropdown');
+    if (!input || !dropdown) return;
+
+    var timer = null;
+
+    /* ── Autocomplete ── */
+    input.addEventListener('input', function () {
+      clearTimeout(timer);
+      var q = input.value.trim();
+      if (q.length < 2) { dropdown.style.display = 'none'; return; }
+
+      timer = setTimeout(function () {
+        fetch('/desechos/buscar?q=' + encodeURIComponent(q))
+          .then(function (r) { return r.json(); })
+          .then(function (data) {
+            if (!data.length) { dropdown.style.display = 'none'; return; }
+
+            dropdown.innerHTML = data.map(function (p) {
+              return '<div class="sol-ac-item"' +
+                ' data-codigo="' + (p.codigo_interno || '') + '"' +
+                ' data-nombre="' + p.nombre.replace(/"/g, '&quot;') + '"' +
+                ' data-ref="'   + (p.referencia || '') + '"' +
+                ' style="padding:9px 14px;cursor:pointer;border-bottom:1px solid #f5f0ff;font-size:13px;">' +
+                '<div style="font-weight:600;color:#1a0533;">' + p.nombre + '</div>' +
+                '<div style="font-size:11px;color:#7c6fa0;">Cód: ' + (p.codigo_interno || '—') +
+                (p.referencia ? ' · ' + p.referencia : '') + '</div>' +
+                '</div>';
+            }).join('');
+
+            dropdown.style.display = 'block';
+
+            dropdown.querySelectorAll('.sol-ac-item').forEach(function (item) {
+              item.addEventListener('mouseenter', function () { item.style.background = '#f5f0ff'; });
+              item.addEventListener('mouseleave', function () { item.style.background = ''; });
+              item.addEventListener('mousedown', function (e) {
+                e.preventDefault();
+                agregarAlCarrito(item.dataset.codigo, item.dataset.nombre, item.dataset.ref);
+                input.value = '';
+                dropdown.style.display = 'none';
+                input.focus();
+              });
+            });
+          })
+          .catch(function () { dropdown.style.display = 'none'; });
+      }, 250);
+    });
+
+    /* Cerrar al hacer clic fuera */
+    document.addEventListener('click', function (e) {
+      if (!input.contains(e.target) && !dropdown.contains(e.target))
+        dropdown.style.display = 'none';
+    });
+
+    /* Navegación con teclado */
+    input.addEventListener('keydown', function (e) {
+      var items  = Array.from(dropdown.querySelectorAll('.sol-ac-item'));
+      if (!items.length || dropdown.style.display === 'none') return;
+      var active = dropdown.querySelector('.sol-ac-active');
+      var idx    = items.indexOf(active);
+
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        if (active) { active.classList.remove('sol-ac-active'); active.style.background = ''; }
+        idx = (idx + 1) % items.length;
+        items[idx].classList.add('sol-ac-active'); items[idx].style.background = '#f5f0ff';
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        if (active) { active.classList.remove('sol-ac-active'); active.style.background = ''; }
+        idx = (idx - 1 + items.length) % items.length;
+        items[idx].classList.add('sol-ac-active'); items[idx].style.background = '#f5f0ff';
+      } else if (e.key === 'Enter' && active) {
+        e.preventDefault();
+        agregarAlCarrito(active.dataset.codigo, active.dataset.nombre, active.dataset.ref);
+        input.value = '';
+        dropdown.style.display = 'none';
+        input.focus();
+      } else if (e.key === 'Escape') {
+        dropdown.style.display = 'none';
+      }
+    });
+
+    /* ── Carrito ── */
+    function agregarAlCarrito(codigo, nombre, referencia) {
+      var tbody    = document.querySelector('.tbody');
+      var emptyRow = document.getElementById('emptyCartRow');
+      if (!tbody) return;
+
+      /* Evitar duplicados */
+      if (tbody.querySelector('[data-sol-codigo="' + codigo + '"]')) {
+        return;
+      }
+
+      if (emptyRow) emptyRow.style.display = 'none';
+
+      var rowNum = tbody.querySelectorAll('tr:not(#emptyCartRow)').length + 1;
+      var tr     = document.createElement('tr');
+      tr.dataset.solCodigo = codigo;
+      tr.innerHTML =
+        '<td style="color:var(--muted);font-size:12px;text-align:center;">' + rowNum + '</td>' +
+        '<td><code style="font-size:11px;">' + (codigo || '—') + '</code></td>' +
+        '<td style="font-size:12px;color:var(--muted);">—</td>' +
+        '<td style="font-weight:600;">' + nombre + '</td>' +
+        '<td><input type="number" min="1" value="1" style="width:65px;padding:4px 8px;' +
+          'border:1.5px solid #e9d5ff;border-radius:6px;font-size:13px;text-align:center;"></td>' +
+        '<td><button type="button" onclick="this.closest(\'tr\').remove();actualizarContador();"' +
+          ' style="background:#fee2e2;color:#991b1b;border:none;border-radius:6px;' +
+          'padding:4px 10px;cursor:pointer;font-size:12px;">' +
+          '<i class="fas fa-trash"></i></button></td>';
+      tbody.appendChild(tr);
+      actualizarContador();
+    }
+
+    window.actualizarContador = function () {
+      var total    = document.querySelectorAll('.tbody tr:not(#emptyCartRow)').length;
+      var badge    = document.getElementById('cartCount');
+      var emptyRow = document.getElementById('emptyCartRow');
+      if (badge)    badge.textContent = total + ' Producto' + (total !== 1 ? 's' : '');
+      if (emptyRow) emptyRow.style.display = total === 0 ? '' : 'none';
+    };
+  })();
   </script>
 </body>
 

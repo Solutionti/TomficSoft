@@ -27,7 +27,7 @@ class ConteosModel extends Model {
   }
 
   public function buscarProducto($codigo){
-    
+
     $query = $this->db->table('asignacion_productos as ap')
                       ->select('ap.*,p.*, in.*')
                       ->join('productos p', 'ap.codigo_producto = p.codigo_barras')
@@ -39,6 +39,21 @@ class ConteosModel extends Model {
 
     return $query->getResult();
 
+  }
+
+  public function buscarProductoNombre($q){
+    $query = $this->db->table('asignacion_productos as ap')
+                      ->select('p.codigo_barras, p.codigo_interno, p.nombre, p.referencia')
+                      ->join('productos p', 'ap.codigo_producto = p.codigo_barras')
+                      ->where('ap.codigo_inventario', session()->get('inventario'))
+                      ->where('p.estado', 'Activo')
+                      ->groupStart()
+                          ->like('p.nombre', $q)
+                          ->orLike('p.codigo_interno', $q)
+                      ->groupEnd()
+                      ->limit(8)
+                      ->get();
+    return $query->getResultArray();
   }
 
   public function guardarProductoExcel($datos) {

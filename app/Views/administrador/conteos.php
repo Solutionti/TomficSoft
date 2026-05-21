@@ -749,16 +749,23 @@
                             </div>
                             <div class="panel-card-body">
                                 <!-- Search bar -->
-                                <div class="fl" style="margin-bottom:16px;">
+                                <div class="fl" style="margin-bottom:16px;position:relative;">
                                     <label class="required">Código Producto *</label>
                                     <div class="search-bar">
                                         <input type="text" id="codigo_producto" autofocus
-                                            class="text-uppercase" placeholder="Escanea o escribe el código…">
+                                            class="text-uppercase" placeholder="Escanea o escribe el código…"
+                                            autocomplete="off">
                                         <button type="button" data-bs-toggle="modal"
                                             data-bs-target="#listaproductos" title="Buscar en lista">
                                             <i class="fas fa-store"></i>
                                         </button>
                                     </div>
+                                    <div id="conteo-producto-dropdown" style="
+                                        display:none; position:absolute; top:100%; left:0; right:0; z-index:1050;
+                                        background:#fff; border:1.5px solid #e9d5ff; border-top:none;
+                                        border-radius:0 0 10px 10px;
+                                        box-shadow:0 8px 24px rgba(74,18,130,.12);
+                                        max-height:220px; overflow-y:auto;"></div>
                                 </div>
 
                                 <!-- Nombre + Ref -->

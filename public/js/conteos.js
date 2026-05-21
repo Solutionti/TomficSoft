@@ -346,7 +346,7 @@ function modificarConteo() {
     success: function(response) {
       $("body").overhang({
         type: "success",
-        message: "El conteo se ha actualizado en la base de datos correctamente." 
+        message: "El conteo se ha actualizado en la base de datos correctamente."
       });
     },
     error: function() {
@@ -357,6 +357,84 @@ function modificarConteo() {
     }
   });
 }
+
+// ── Autocomplete búsqueda por nombre en #codigo_producto ─────────────────────
+(function () {
+  var $input    = $('#codigo_producto');
+  var $dropdown = $('#conteo-producto-dropdown');
+  if (!$input.length || !$dropdown.length) return;
+
+  var timer = null;
+
+  $input.on('input', function () {
+    clearTimeout(timer);
+    var q = $input.val().trim();
+    if (q.length < 2) { $dropdown.hide(); return; }
+
+    timer = setTimeout(function () {
+      $.get(baseurl + 'conteos/buscar', { q: q }, function (data) {
+        if (!data || !data.length) { $dropdown.hide(); return; }
+
+        var html = data.map(function (p) {
+          return '<div class="cteo-ac-item" data-barcode="' + (p.codigo_barras || '') + '"' +
+            ' style="padding:9px 14px;cursor:pointer;border-bottom:1px solid #f5f0ff;font-size:13px;">' +
+            '<div style="font-weight:600;color:#1a0533;">' + p.nombre + '</div>' +
+            '<div style="font-size:11px;color:#7c6fa0;">Cód: ' + (p.codigo_interno || '—') +
+            (p.referencia ? ' · ' + p.referencia : '') + '</div>' +
+            '</div>';
+        }).join('');
+
+        $dropdown.html(html).show();
+
+        $dropdown.find('.cteo-ac-item')
+          .on('mouseenter', function () { $(this).css('background', '#f5f0ff'); })
+          .on('mouseleave', function () { $(this).css('background', ''); })
+          .on('mousedown', function (e) {
+            e.preventDefault();
+            var barcode = $(this).data('barcode');
+            $dropdown.hide();
+            $input.val(barcode);
+            $input.trigger('blur');
+          });
+      });
+    }, 250);
+  });
+
+  // Cerrar al hacer clic fuera
+  $(document).on('click.cteoAc', function (e) {
+    if (!$input.is(e.target) && !$dropdown.is(e.target) && !$dropdown.has(e.target).length) {
+      $dropdown.hide();
+    }
+  });
+
+  // Navegación con teclado
+  $input.on('keydown', function (e) {
+    var $items  = $dropdown.find('.cteo-ac-item');
+    if (!$items.length || !$dropdown.is(':visible')) return;
+
+    var $active = $dropdown.find('.cteo-ac-active');
+    var idx     = $items.index($active);
+
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      $active.removeClass('cteo-ac-active').css('background', '');
+      idx = (idx + 1) % $items.length;
+      $items.eq(idx).addClass('cteo-ac-active').css('background', '#f5f0ff');
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      $active.removeClass('cteo-ac-active').css('background', '');
+      idx = (idx - 1 + $items.length) % $items.length;
+      $items.eq(idx).addClass('cteo-ac-active').css('background', '#f5f0ff');
+    } else if (e.key === 'Enter' && $active.length) {
+      e.preventDefault();
+      $input.val($active.data('barcode'));
+      $dropdown.hide();
+      $input.trigger('blur');
+    } else if (e.key === 'Escape') {
+      $dropdown.hide();
+    }
+  });
+})();
 
 
 function finalizarConteo() {

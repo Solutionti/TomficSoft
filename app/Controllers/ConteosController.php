@@ -38,6 +38,15 @@ class ConteosController extends BaseController {
     
   }
 
+  public function buscarNombre() {
+    $q = trim($this->request->getGet('q') ?? '');
+    if (strlen($q) < 1) {
+      return $this->response->setJSON([]);
+    }
+    $resultados = $this->conteosModel->buscarProductoNombre($q);
+    return $this->response->setJSON($resultados);
+  }
+
   public function guardarConteo() {
       $codigo_producto = $this->request->getPost("codigo_producto");
       $nombre_producto = $this->request->getPost("nombre_producto");
