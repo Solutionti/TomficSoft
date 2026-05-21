@@ -87,10 +87,21 @@ $routes->get('/getpedidoreal', 'PedidosController::getPedidosTiempoReal');
 // FACTURACION
 $routes->get('/facturacion', 'FacturacionController::index');
 
+// ASISTENCIA (requiere auth)
+$routes->get('/asistencia',           'AsistenciaController::index');
+$routes->get('/asistencia/escanear',  'AsistenciaController::escanear');
+$routes->post('/asistencia/registrar','AsistenciaController::registrar');
+$routes->get('/asistencia/registros', 'AsistenciaController::getRegistros');
+
 });
+
+// ASISTENCIA (públicas — monitor y token sin auth)
+$routes->get('/asistencia/monitor', 'AsistenciaController::monitor');
+$routes->get('/asistencia/token',   'AsistenciaController::generarToken');
 
 //HORARIOS
 $routes->get('/horarios', 'HorariosController::index');
+$routes->post('/horarios/guardar', 'HorariosController::guardar');
 
 //PERDIDAS (desechos reports)
 $routes->get('/perdidasfechapdf/(:any)/(:any)',      'ReportesController::perdidasPorFechaPdf/$1/$2');

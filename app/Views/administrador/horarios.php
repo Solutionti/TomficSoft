@@ -906,127 +906,53 @@
                     <th style="text-align:center">Domingo</th>
                   </tr>
                 </thead>
+                <?php
+                function horarioBadgeClass(string $v): string {
+                    $l = strtolower($v);
+                    foreach (['descanso','incapacidad','permiso','vacacion'] as $k) {
+                        if (str_contains($l, $k)) return 'badge-danger-u';
+                    }
+                    if (str_contains($l, 'am') && str_contains($l, 'pm')) {
+                        preg_match('/(\d+):\d+\s*pm/i', $v, $m);
+                        if (!empty($m) && (int)$m[1] < 2) return 'badge-amber-u';
+                        return 'badge-success-u';
+                    }
+                    if (str_contains($l, 'am') || str_contains($l, 'pm')) return 'badge-amber-u';
+                    return 'badge-success-u';
+                }
+                $diasH = ['lunes','martes','miercoles','jueves','viernes','sabado','domingo'];
+                ?>
                 <tbody>
+                <?php if (empty($horarios)): ?>
+                  <tr><td colspan="8" style="text-align:center;padding:30px;color:#7c6fa0;font-size:13px;">No hay colaboradores registrados en la tabla de horarios.</td></tr>
+                <?php else: foreach ($horarios as $h): ?>
                   <tr class="horario-row" style="cursor:pointer"
-                    data-id="1" data-nombre="Carlos Martínez" data-cargo="Operario · Turno mañana"
-                    data-lunes="7:00 AM - 4:00 PM" data-martes="7:00 AM - 4:00 PM" data-miercoles="7:00 AM - 4:00 PM"
-                    data-jueves="7:00 AM - 4:00 PM" data-viernes="7:00 AM - 4:00 PM"
-                    data-sabado="7:00 AM - 1:00 PM" data-domingo="Descanso"
-                    data-tipo-lunes="trabajo" data-tipo-martes="trabajo" data-tipo-miercoles="trabajo"
-                    data-tipo-jueves="trabajo" data-tipo-viernes="trabajo"
-                    data-tipo-sabado="medio" data-tipo-domingo="descanso">
+                    data-id="<?= $h->id ?>"
+                    data-nombre="<?= esc($h->nombre) ?>"
+                    data-cargo="<?= esc($h->cargo ?? '') ?>"
+                    data-comentario="<?= esc($h->comentario ?? '') ?>"
+                    <?php foreach ($diasH as $d): ?>data-<?= $d ?>="<?= esc($h->$d ?? 'Descanso') ?>" <?php endforeach; ?>>
                     <td>
                       <div class="user-cell">
                         <div>
-                          <div class="user-name">Carlos Martínez</div>
-                          <div class="user-sub">Operario · Turno mañana</div>
+                          <div class="user-name">
+                            <?= esc($h->nombre) ?>
+                            <?php if (!empty($h->comentario)): ?>
+                              <i class="fas fa-comment-dots" style="color:#a855f7;font-size:11px;margin-left:5px;vertical-align:middle" title="<?= esc($h->comentario) ?>"></i>
+                            <?php endif; ?>
+                          </div>
+                          <div class="user-sub"><?= esc($h->cargo ?? '') ?></div>
                         </div>
                       </div>
                     </td>
-                    <td style="text-align:center"><span class="badge-u badge-success-u">7:00 AM - 4:00 PM</span></td>
-                    <td style="text-align:center"><span class="badge-u badge-success-u">7:00 AM - 4:00 PM</span></td>
-                    <td style="text-align:center"><span class="badge-u badge-success-u">7:00 AM - 4:00 PM</span></td>
-                    <td style="text-align:center"><span class="badge-u badge-success-u">7:00 AM - 4:00 PM</span></td>
-                    <td style="text-align:center"><span class="badge-u badge-success-u">7:00 AM - 4:00 PM</span></td>
-                    <td style="text-align:center"><span class="badge-u badge-amber-u">7:00 AM - 1:00 PM</span></td>
-                    <td style="text-align:center"><span class="badge-u badge-danger-u">Descanso</span></td>
+                    <?php foreach ($diasH as $d):
+                      $val = $h->$d ?? 'Descanso';
+                      $cls = horarioBadgeClass($val);
+                    ?>
+                    <td style="text-align:center"><span class="badge-u <?= $cls ?>"><?= esc($val) ?></span></td>
+                    <?php endforeach; ?>
                   </tr>
-                  <tr class="horario-row" style="cursor:pointer"
-                    data-id="2" data-nombre="Ana Rodríguez" data-cargo="Supervisora · Jornada completa"
-                    data-lunes="8:00 AM - 5:00 PM" data-martes="8:00 AM - 5:00 PM" data-miercoles="8:00 AM - 5:00 PM"
-                    data-jueves="8:00 AM - 5:00 PM" data-viernes="8:00 AM - 5:00 PM"
-                    data-sabado="Descanso" data-domingo="Descanso"
-                    data-tipo-lunes="trabajo" data-tipo-martes="trabajo" data-tipo-miercoles="trabajo"
-                    data-tipo-jueves="trabajo" data-tipo-viernes="trabajo"
-                    data-tipo-sabado="descanso" data-tipo-domingo="descanso">
-                    <td>
-                      <div class="user-cell">
-                        <div>
-                          <div class="user-name">Ana Rodríguez</div>
-                          <div class="user-sub">Supervisora · Jornada completa</div>
-                        </div>
-                      </div>
-                    </td>
-                    <td style="text-align:center"><span class="badge-u badge-success-u">8:00 AM - 5:00 PM</span></td>
-                    <td style="text-align:center"><span class="badge-u badge-success-u">8:00 AM - 5:00 PM</span></td>
-                    <td style="text-align:center"><span class="badge-u badge-success-u">8:00 AM - 5:00 PM</span></td>
-                    <td style="text-align:center"><span class="badge-u badge-success-u">8:00 AM - 5:00 PM</span></td>
-                    <td style="text-align:center"><span class="badge-u badge-success-u">8:00 AM - 5:00 PM</span></td>
-                    <td style="text-align:center"><span class="badge-u badge-danger-u">Descanso</span></td>
-                    <td style="text-align:center"><span class="badge-u badge-danger-u">Descanso</span></td>
-                  </tr>
-                  <tr class="horario-row" style="cursor:pointer"
-                    data-id="3" data-nombre="Luis Pérez" data-cargo="Auxiliar · Turno tarde"
-                    data-lunes="2:00 PM - 10:00 PM" data-martes="2:00 PM - 10:00 PM" data-miercoles="2:00 PM - 10:00 PM"
-                    data-jueves="2:00 PM - 10:00 PM" data-viernes="2:00 PM - 10:00 PM"
-                    data-sabado="2:00 PM - 8:00 PM" data-domingo="Descanso"
-                    data-tipo-lunes="trabajo" data-tipo-martes="trabajo" data-tipo-miercoles="trabajo"
-                    data-tipo-jueves="trabajo" data-tipo-viernes="trabajo"
-                    data-tipo-sabado="medio" data-tipo-domingo="descanso">
-                    <td>
-                      <div class="user-cell">
-                        <div>
-                          <div class="user-name">Luis Pérez</div>
-                          <div class="user-sub">Auxiliar · Turno tarde</div>
-                        </div>
-                      </div>
-                    </td>
-                    <td style="text-align:center"><span class="badge-u badge-success-u">2:00 PM - 10:00 PM</span></td>
-                    <td style="text-align:center"><span class="badge-u badge-success-u">2:00 PM - 10:00 PM</span></td>
-                    <td style="text-align:center"><span class="badge-u badge-success-u">2:00 PM - 10:00 PM</span></td>
-                    <td style="text-align:center"><span class="badge-u badge-success-u">2:00 PM - 10:00 PM</span></td>
-                    <td style="text-align:center"><span class="badge-u badge-success-u">2:00 PM - 10:00 PM</span></td>
-                    <td style="text-align:center"><span class="badge-u badge-amber-u">2:00 PM - 8:00 PM</span></td>
-                    <td style="text-align:center"><span class="badge-u badge-danger-u">Descanso</span></td>
-                  </tr>
-                  <tr class="horario-row" style="cursor:pointer"
-                    data-id="4" data-nombre="María González" data-cargo="Asistente · Medio tiempo"
-                    data-lunes="9:00 AM - 1:00 PM" data-martes="9:00 AM - 1:00 PM" data-miercoles="9:00 AM - 1:00 PM"
-                    data-jueves="9:00 AM - 1:00 PM" data-viernes="9:00 AM - 1:00 PM"
-                    data-sabado="Descanso" data-domingo="Descanso"
-                    data-tipo-lunes="medio" data-tipo-martes="medio" data-tipo-miercoles="medio"
-                    data-tipo-jueves="medio" data-tipo-viernes="medio"
-                    data-tipo-sabado="descanso" data-tipo-domingo="descanso">
-                    <td>
-                      <div class="user-cell">
-                        <div>
-                          <div class="user-name">María González</div>
-                          <div class="user-sub">Asistente · Medio tiempo</div>
-                        </div>
-                      </div>
-                    </td>
-                    <td style="text-align:center"><span class="badge-u badge-amber-u">9:00 AM - 1:00 PM</span></td>
-                    <td style="text-align:center"><span class="badge-u badge-amber-u">9:00 AM - 1:00 PM</span></td>
-                    <td style="text-align:center"><span class="badge-u badge-amber-u">9:00 AM - 1:00 PM</span></td>
-                    <td style="text-align:center"><span class="badge-u badge-amber-u">9:00 AM - 1:00 PM</span></td>
-                    <td style="text-align:center"><span class="badge-u badge-amber-u">9:00 AM - 1:00 PM</span></td>
-                    <td style="text-align:center"><span class="badge-u badge-danger-u">Descanso</span></td>
-                    <td style="text-align:center"><span class="badge-u badge-danger-u">Descanso</span></td>
-                  </tr>
-                  <tr class="horario-row" style="cursor:pointer"
-                    data-id="5" data-nombre="Jorge Hernández" data-cargo="Operario · Incapacidad médica"
-                    data-lunes="Incapacidad" data-martes="Incapacidad" data-miercoles="Incapacidad"
-                    data-jueves="Incapacidad" data-viernes="Incapacidad"
-                    data-sabado="Incapacidad" data-domingo="Incapacidad"
-                    data-tipo-lunes="incapacidad" data-tipo-martes="incapacidad" data-tipo-miercoles="incapacidad"
-                    data-tipo-jueves="incapacidad" data-tipo-viernes="incapacidad"
-                    data-tipo-sabado="incapacidad" data-tipo-domingo="incapacidad">
-                    <td>
-                      <div class="user-cell">
-                        <div>
-                          <div class="user-name">Jorge Hernández</div>
-                          <div class="user-sub">Operario · Incapacidad médica</div>
-                        </div>
-                      </div>
-                    </td>
-                    <td style="text-align:center"><span class="badge-u badge-danger-u" style="background:#fee2e2;color:#991b1b">Incapacidad</span></td>
-                    <td style="text-align:center"><span class="badge-u badge-danger-u" style="background:#fee2e2;color:#991b1b">Incapacidad</span></td>
-                    <td style="text-align:center"><span class="badge-u badge-danger-u" style="background:#fee2e2;color:#991b1b">Incapacidad</span></td>
-                    <td style="text-align:center"><span class="badge-u badge-danger-u" style="background:#fee2e2;color:#991b1b">Incapacidad</span></td>
-                    <td style="text-align:center"><span class="badge-u badge-danger-u" style="background:#fee2e2;color:#991b1b">Incapacidad</span></td>
-                    <td style="text-align:center"><span class="badge-u badge-danger-u" style="background:#fee2e2;color:#991b1b">Incapacidad</span></td>
-                    <td style="text-align:center"><span class="badge-u badge-danger-u" style="background:#fee2e2;color:#991b1b">Incapacidad</span></td>
-                  </tr>
+                <?php endforeach; endif; ?>
                 </tbody>
               </table>
             </div>
@@ -1086,68 +1012,99 @@
               </div>
               <div class="col-md-5">
                 <div class="usr-table-card anim-3">
-                  <div class="col-md-6 mt-3">
+                  <div class="col-md-12 mt-3">
                     <div class="container">
+
+                      <!-- ── Activos hoy (ingresaron, no han salido) ── -->
                       <table class="table table-hover usr-table">
-                            <thead>
-                              <th class="text-white">Activos hoy</th>
-                              <th class="text-white"></th>
-                              <th class="text-white"></th>
-                              <th class="text-white"></th>
-                              <th class="text-white"></th>
-                            </thead>
-                            <tbody>
-                              <?php foreach ($colaboradores->getResult() as $colaborador) : ?>
-                              <tr>
-                                <td>
+                        <thead>
+                          <tr>
+                            <th class="text-white">
+                              <i class="fas fa-circle" style="color:#10b981;font-size:8px;vertical-align:middle;margin-right:5px"></i>
+                              Activos hoy
+                              <span style="background:rgba(255,255,255,.2);border-radius:99px;padding:1px 8px;font-size:10px;margin-left:6px"><?= count($activosHoy) ?></span>
+                            </th>
+                            <th class="text-white" style="text-align:right;font-size:10px;letter-spacing:.05em">INGRESO</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <?php if (empty($activosHoy)): ?>
+                            <tr>
+                              <td colspan="2" style="text-align:center;padding:20px;color:#7c6fa0;font-size:12px;">
+                                <i class="fas fa-qrcode" style="opacity:.3;margin-right:6px"></i>
+                                Sin registros de ingreso hoy
+                              </td>
+                            </tr>
+                          <?php else: foreach ($activosHoy as $a): ?>
+                            <tr>
+                              <td>
                                 <div class="user-cell">
                                   <div class="user-avatar-wrap">
                                     <img src="<?= base_url('img/team-41.jpg') ?>" class="user-avatar">
-                                    <span
-                                      class="user-status-dot"></span>
+                                    <span class="user-status-dot" style="background:#10b981;box-shadow:0 0 0 2px rgba(16,185,129,.25)"></span>
                                   </div>
                                   <div>
-                                    <div class="user-name"><?= $colaborador->nombres . ' ' . $colaborador->apellidos ?></div>
-                                    <div class="user-sub"><?= $colaborador->documento ?> · <?= $colaborador->cargo ?></div>
+                                    <div class="user-name"><?= esc($a->nombre) ?></div>
+                                    <div class="user-sub"><?= esc($a->documento) ?></div>
                                   </div>
                                 </div>
-                                </td>
-                              </tr>
-                              <?php endforeach; ?>
-                            </tbody>
-                          </table>
-                          <br>
-                          <!--  -->
-                          <table class="table table-hover usr-table">
-                            <thead>
-                              <th class="text-white">Incapacidad / Permiso</th>
-                              <th class="text-white"></th>
-                              <th class="text-white"></th>
-                              <th class="text-white"></th>
-                              <th class="text-white"></th>
-                            </thead>
-                            <tbody>
-                              <tr>
-                                <td>
+                              </td>
+                              <td style="text-align:right;vertical-align:middle">
+                                <span style="font-size:13px;font-weight:700;color:#065f46;background:#d1fae5;padding:3px 10px;border-radius:99px;">
+                                  <?= substr($a->marcacion_ingreso, 0, 5) ?>
+                                </span>
+                              </td>
+                            </tr>
+                          <?php endforeach; endif; ?>
+                        </tbody>
+                      </table>
+
+                      <br>
+
+                      <!-- ── Salida registrada hoy ── -->
+                      <table class="table table-hover usr-table">
+                        <thead>
+                          <tr>
+                            <th class="text-white">
+                              <i class="fas fa-circle" style="color:#94a3b8;font-size:8px;vertical-align:middle;margin-right:5px"></i>
+                              Salida registrada
+                              <span style="background:rgba(255,255,255,.2);border-radius:99px;padding:1px 8px;font-size:10px;margin-left:6px"><?= count($salidaHoy) ?></span>
+                            </th>
+                            <th class="text-white" style="text-align:right;font-size:10px;letter-spacing:.05em">SALIDA</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <?php if (empty($salidaHoy)): ?>
+                            <tr>
+                              <td colspan="2" style="text-align:center;padding:20px;color:#7c6fa0;font-size:12px;">Sin salidas registradas</td>
+                            </tr>
+                          <?php else: foreach ($salidaHoy as $s): ?>
+                            <tr>
+                              <td>
                                 <div class="user-cell">
                                   <div class="user-avatar-wrap">
                                     <img src="<?= base_url('img/team-41.jpg') ?>" class="user-avatar">
-                                    <span
-                                      class="user-status-dot"></span>
+                                    <span class="user-status-dot" style="background:#94a3b8"></span>
                                   </div>
                                   <div>
-                                    <div class="user-name">Jerson Galvez Ensuncho</div>
-                                    <div class="user-sub">12345678 · jgalvez</div>
+                                    <div class="user-name"><?= esc($s->nombre) ?></div>
+                                    <div class="user-sub"><?= esc($s->documento) ?></div>
                                   </div>
                                 </div>
-                                </td>
-                              </tr>
-                            </tbody>
-                          </table>
+                              </td>
+                              <td style="text-align:right;vertical-align:middle">
+                                <span style="font-size:13px;font-weight:700;color:#1d4ed8;background:#dbeafe;padding:3px 10px;border-radius:99px;">
+                                  <?= substr($s->marcacion_salida, 0, 5) ?>
+                                </span>
+                              </td>
+                            </tr>
+                          <?php endforeach; endif; ?>
+                        </tbody>
+                      </table>
 
                     </div>
                   </div>
-                 </div>
+                </div>
               </div>
             </div>
 
@@ -1468,6 +1425,25 @@
             Edita el horario de cada día. Usa formato <strong>HH:MM - HH:MM</strong> o escribe <strong>Descanso / Incapacidad / Permiso</strong>.
           </p>
           <div class="row g-3" id="mh-dias"></div>
+
+          <!-- ── Comentario / Observación ── -->
+          <div class="row g-3 mt-2">
+            <div class="col-12">
+              <div class="fl">
+                <label style="font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted);display:flex;align-items:center;gap:6px;">
+                  <i class="fas fa-comment-dots" style="color:var(--purple-400)"></i>
+                  Observaciones / Comentario
+                </label>
+                <textarea id="mh-comentario" class="fc"
+                  rows="3"
+                  placeholder="Ej: Permiso médico autorizado por RRHH. Incapacidad del 20/05 al 25/05…"
+                  style="resize:vertical;min-height:72px;font-size:13px;padding:9px 12px;line-height:1.5"></textarea>
+                <span style="font-size:10.5px;color:var(--text-muted);margin-top:3px;">
+                  Este comentario se muestra como indicador en la tabla de horarios.
+                </span>
+              </div>
+            </div>
+          </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn-u btn-u-danger-outline" data-bs-dismiss="modal">
@@ -1517,18 +1493,26 @@
             </div>`;
         }).join('');
 
+        /* Cargar comentario */
+        document.getElementById('mh-comentario').value = row.dataset.comentario || '';
+
         modal.show();
       });
     });
 
-    /* ── Guardar: actualiza los data-* y los badges en la fila ── */
-    document.getElementById('mh-btn-guardar').addEventListener('click', () => {
+    /* ── Guardar: actualiza DOM + persiste en BD ── */
+    document.getElementById('mh-btn-guardar').addEventListener('click', async () => {
       if (!filaActiva) return;
+
+      const btn       = document.getElementById('mh-btn-guardar');
+      const comentario = document.getElementById('mh-comentario').value.trim();
+      const payload   = { id: parseInt(filaActiva.dataset.id), comentario };
 
       document.querySelectorAll('.mh-dia-input').forEach(input => {
         const d     = input.dataset.dia;
         const valor = input.value.trim() || 'Descanso';
         filaActiva.dataset[d] = valor;
+        payload[d] = valor;
 
         /* Determinar clase del badge según contenido */
         const lower = valor.toLowerCase();
@@ -1536,20 +1520,52 @@
         if (['descanso', 'incapacidad', 'permiso'].some(k => lower.includes(k))) {
           cls = 'badge-danger-u';
         } else if (lower.includes('am') && lower.includes('pm')) {
-          /* AM → PM: jornada que cruza mediodía, considerada medio tiempo si termina antes de las 2 PM */
           const match = valor.match(/(\d+):(\d+)\s*PM/i);
           if (match && parseInt(match[1]) < 2) cls = 'badge-amber-u';
         } else if (lower.includes('am - ') && !lower.includes('pm')) {
-          cls = 'badge-amber-u'; /* Solo AM → medio tiempo */
+          cls = 'badge-amber-u';
         }
 
-        /* Actualizar celda correspondiente en la fila (columna = índice del día + 1) */
         const idx   = dias.indexOf(d);
         const celda = filaActiva.querySelectorAll('td')[idx + 1];
-        if (celda) {
-          celda.innerHTML = `<span class="badge-u ${cls}">${valor}</span>`;
-        }
+        if (celda) celda.innerHTML = `<span class="badge-u ${cls}">${valor}</span>`;
       });
+
+      /* Actualizar indicador de comentario en la fila */
+      filaActiva.dataset.comentario = comentario;
+      const nameDiv = filaActiva.querySelector('.user-name');
+      const oldIcon = nameDiv.querySelector('.fa-comment-dots');
+      if (comentario) {
+        if (oldIcon) {
+          oldIcon.title = comentario;
+        } else {
+          const icon = document.createElement('i');
+          icon.className = 'fas fa-comment-dots';
+          icon.style.cssText = 'color:#a855f7;font-size:11px;margin-left:5px;vertical-align:middle;';
+          icon.title = comentario;
+          nameDiv.appendChild(icon);
+        }
+      } else if (oldIcon) {
+        oldIcon.remove();
+      }
+
+      /* Guardar en base de datos */
+      btn.disabled = true;
+      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Guardando…';
+      try {
+        const res  = await fetch('/horarios/guardar', {
+          method:  'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body:    JSON.stringify(payload),
+        });
+        const json = await res.json();
+        if (json.status !== 'success') alert('Error al guardar el horario.');
+      } catch (e) {
+        alert('Error de conexión.');
+      } finally {
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fas fa-save"></i> Guardar horario';
+      }
 
       modal.hide();
     });
