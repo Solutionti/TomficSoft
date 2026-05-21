@@ -39,16 +39,18 @@ function iniciarSesion() {
     },
     success: function(response) {
      if(response === "error") {
-        $(".messageError").html('<div class="alert text-white color-morado">Alerta !! El usuario y contraseña ingresado son invalidos.</div>');
+        $(".messageError").html('<div class="alert-login"><i class="fas fa-triangle-exclamation"></i> Usuario o contraseña incorrectos. Inténtalo de nuevo.</div>');
         $("#password").addClass("is-invalid");
         $("#usuario").addClass("is-invalid");
-     }  
+        $("#login").removeClass("loading");
+     }
      else {
          window.location.href = baseurl + 'inicio';
-     } 
+     }
     },
-    error: function(error, exp, cost) {
-      alert("no se pudo conectar a internet");
+    error: function() {
+      $(".messageError").html('<div class="alert-login"><i class="fas fa-wifi"></i> Error de conexión. Verifica tu red e inténtalo de nuevo.</div>');
+      $("#login").removeClass("loading");
     }
   });
 }
