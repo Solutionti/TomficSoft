@@ -1057,6 +1057,7 @@
                         <div class="col-md-7">
                           <input
                             type="text"
+                            id="man-peso-input"
                             class="form-control"
                             placeholder="Peso en kg"
                           >
@@ -1064,12 +1065,13 @@
                         <div class="col-md-5">
                           <input
                             type="text"
+                            id="man-unidades-input"
                             class="form-control"
                             placeholder="Cantidad unidades"
                           >
                         </div>
                       </div>
-                      <a href="#" class="btn btn-primary mt-3">Guardar</a>
+                      <button type="button" id="man-btn-guardar" class="btn btn-primary mt-3">Guardar</button>
                     </div>
                   </div>
                   </div>
