@@ -1281,9 +1281,24 @@
                 <p class="usr-breadcrumb">Administración &rsaquo; InventSoft</p>
                 <h1 class="">Solicitud de Inventarios</h1>
               </div>
-              <button class="btn-u btn-u-primary btn-sm" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                <i class="fas fa-user-plus"></i> Historico
-              </button>
+              <div class="inv-actions">
+                            <button class="btn-i btn-i-outline" onclick="ajustarInventario()">
+                                <i class="fas fa-balance-scale"></i>
+                                <span class="label">Ajustar</span>
+                            </button>
+                            <button class="btn-i btn-i-primary" data-bs-toggle="modal" data-bs-target="#agregarProducto">
+                                <i class="fas fa-plus-circle"></i>
+                                <span class="label">Agregar Producto</span>
+                            </button>
+                            <button class="btn-i btn-i-success-outline" data-bs-toggle="modal" data-bs-target="#ingresoProducto">
+                                <i class="fas fa-arrow-down"></i>
+                                <span class="label">Entrada</span>
+                            </button>
+                            <button class="btn-i btn-i-danger-outline" data-bs-toggle="modal" data-bs-target="#salidaProducto">
+                                <i class="fas fa-arrow-up"></i>
+                                <span class="label">Salida</span>
+                            </button>
+                        </div>
             </div>
             <!-- ══════════ TABLE CARD ══════════ -->
             <div class="usr-table-card anim-3">

@@ -371,19 +371,15 @@
 <!-- ════════════════════════ SIDEBAR HTML ════════════════════════ -->
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
   <ul class="nav">
-
-    <!-- ── Branding ── -->
     <li>
       <a href="#" class="sb-brand">
-        <div class="sb-brand-icon"><i class="fas fa-user"></i></div>
+        <!-- <div class="sb-brand-icon"><i class="fas fa-user"></i></div> -->
         <div class="sb-brand-text">
-          <div class="sb-brand-name">InventSoft</div>
-          <div class="sb-brand-sub">Panel de control</div>
+          <div class="sb-brand-name">CristalBusiness</div>
+          <div class="sb-brand-sub">Pimienta Express</div>
         </div>
       </a>
     </li>
-
-    <!-- ── Perfil ── -->
     <li>
       <a href="#" class="sb-profile">
         <img
@@ -403,8 +399,6 @@
         <i class="fas fa-chevron-right sb-profile-arrow"></i>
       </a>
     </li>
-
-    <!-- ── Buscador ── -->
     <li>
       <div class="sb-search-wrap">
         <div class="sb-search">
@@ -413,7 +407,6 @@
         </div>
       </div>
     </li>
-
     <!-- ══════════════ SECCIÓN: INVENTARIOS ══════════════ -->
     <li>
       <div class="sb-section-label">
@@ -437,7 +430,7 @@
 
 
     <!-- ══════════════ SECCIÓN: VENTAS ══════════════ -->
-    <li>
+    <!-- <li>
       <div class="sb-section-label">
         <span>Ventas</span>
       </div>
@@ -451,7 +444,7 @@
       <span class="sb-link-icon"><i class="fas fa-truck-moving"></i></span>
       <span class="sb-link-text">Kardex</span>
     </a>
-  </li>
+  </li> -->
   <!-- 
 
     <li class="sb-item">
@@ -502,9 +495,9 @@
     <!-- ══════════════ FOOTER ══════════════ -->
     <li style="margin-top:auto; padding-top:8px">
       <div class="sb-footer">
-        <span class="sb-version">v2.0.0</span>
-        <a href="<?= base_url('logout') ?>" class="sb-logout" title="Cerrar sesión">
-          <i class="fas fa-right-from-bracket"></i>
+        <span class="sb-version">v 3.1.2.3</span>
+        <a href="<?= base_url('cerrar_sesion') ?>" class="sb-logout" title="Cerrar sesión">
+          <i class="fas fa-power-off"></i>
         </a>
       </div>
     </li>
