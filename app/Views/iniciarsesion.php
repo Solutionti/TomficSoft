@@ -94,10 +94,10 @@
     /* Headline */
     .left-headline {
       font-size: clamp(1.6rem, 2.5vw, 2.1rem);
-      font-weight: 800;
+      font-weight: 250;
       color: #fff;
       line-height: 1.25;
-      margin-bottom: 20px;
+      margin-bottom: 10px;
     }
     .left-headline span { color: var(--p300); }
 
@@ -127,7 +127,7 @@
 
     /* Bottom quote */
     .left-quote {
-      margin-top: 52px;
+      margin-top: 20px;
       padding-top: 28px;
       border-top: 1px solid rgba(255,255,255,.1);
     }
@@ -300,23 +300,22 @@
     <div class="left-content">
 
       <div class="brand-mark">
-        <div class="brand-icon"><i class="fas fa-boxes-stacked"></i></div>
+        
         <div>
           <div class="brand-name">CristalBusiness</div>
-          <div class="brand-sub">Pimienta Express</div>
         </div>
       </div>
 
-      <h1 class="left-headline">
+      <h4 class="left-headline">
         Gestiona tu negocio<br><span>de forma inteligente</span>
-      </h1>
+      </h4>
       <p class="left-desc">
-        Inventarios, asistencia, horarios y más — todo en un solo lugar, en tiempo real.
+        Inventarios, asistencias, horarios y más — todo en un solo lugar, en tiempo real.
       </p>
 
       <div class="feature-list">
         <div class="feature-item">
-          <div class="feature-dot"><i class="fas fa-boxes-stacked"></i></div>
+          <div class="feature-dot"><i class="fas fa-truck"></i></div>
           <div class="feature-text"><strong>Control de inventario</strong><br>Seguimiento en tiempo real de entradas y salidas</div>
         </div>
         <div class="feature-item">
@@ -346,7 +345,7 @@
   <div class="login-right">
     <div class="login-card">
 
-      <p class="card-eyebrow">Bienvenido de vuelta</p>
+      <p class="card-eyebrow">Bienvenido</p>
       <h2 class="card-title">Iniciar sesión</h2>
       <p class="card-subtitle">Ingresa tus credenciales para acceder al panel de administración.</p>
 
@@ -360,7 +359,7 @@
             type="text"
             class="fc"
             id="usuario"
-            placeholder="tu.usuario"
+            placeholder="Usuario o email"
             autocomplete="username"
           >
         </div>
