@@ -876,6 +876,7 @@
               <button class="btn-u btn-u-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                 <i class="fas fa-user-plus"></i> Agregar Empleado
               </button>
+              
             </div>
 
             <!-- ══════════ STATS STRIP ══════════ -->
@@ -967,7 +968,11 @@
                       <div class="table-responsive">
                         <table class="table table-hover usr-table">
                           <thead>
-                            <th class="text-white">Colaboradores</th>
+                            <th class="text-white">Colaboradores / asistencias
+                              <a href="<?= base_url('asistencia') ?>">
+                                <span class="fas fa-plus mx-1 text-white" title="asistencia de empleados"></span>
+                              </a>
+                            </th>
                             <th></th>
                           </thead>
                           <tbody>

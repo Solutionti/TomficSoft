@@ -519,16 +519,22 @@
               </div>
             </div>
             <div class="col-md-3">
-              <div class="fl"><label>Subcategoría *</label><input type="text" id="subcategoria_inventario" class="fc" required></div>
+              <div class="fl"><label>Subcategoría *</label><input type="text" id="subcategoria_inventario" class="fc" required value="0"></div>
             </div>
             <div class="col-md-2">
-              <div class="fl"><label>Grupo *</label><input type="text" id="grupo_inventario" class="fc" required></div>
+              <div class="fl"><label>Grupo *</label><input type="text" id="grupo_inventario" class="fc" required value="0"></div>
             </div>
             <div class="col-md-2">
-              <div class="fl"><label>Subgrupo *</label><input type="text" id="subgrupo_inventario" class="fc" required></div>
+              <div class="fl"><label>Subgrupo *</label><input type="text" id="subgrupo_inventario" class="fc" required value="0"></div>
             </div>
             <div class="col-md-2">
-              <div class="fl"><label>Merma *</label><input type="text" id="merma_inventario" class="fc" required></div>
+              <div class="fl"><label>Medida *</label>
+              <select class="fc" >
+                <option value="">Selecciona medida</option>
+                <option value="Peso">Peso (Kg)</option>
+                <option value="Unidades">Unidades (Uni)</option>
+              </select>
+            </div>
             </div>
           </div>
         </div>
@@ -541,7 +547,7 @@
               <div class="fl"><label>Nombre *</label><input type="text" id="nombre_inventario" class="fc" required></div>
             </div>
             <div class="col-md-3">
-              <div class="fl"><label>Referencia *</label><input type="text" id="referencia_inventario" class="fc" required></div>
+              <div class="fl"><label>Referencia *</label><input type="text" id="referencia_inventario" class="fc" required value="0"></div>
             </div>
             <div class="col-md-3">
               <div class="fl"><label>Código interno *</label><input type="number" id="codigo_inventario" class="fc" required></div>
@@ -557,16 +563,16 @@
           <div class="form-section-title"><i class="fas fa-truck"></i>Proveedor y valores</div>
           <div class="row g-3">
             <div class="col-md-3">
-              <div class="fl"><label>NIT *</label><input type="number" id="nit_inventario" class="fc"></div>
+              <div class="fl"><label>NIT *</label><input type="text" id="nit_inventario" class="fc" value="1110542802-1"></div>
             </div>
             <div class="col-md-3">
-              <div class="fl"><label>Proveedor *</label><input type="text" id="proveedor_inventario" class="fc" required></div>
+              <div class="fl"><label>Proveedor *</label><input type="text" id="proveedor_inventario" class="fc" required value="Pimienta express"></div>
             </div>
             <div class="col-md-3">
-              <div class="fl"><label>Saldo</label><input type="number" id="saldo_inventario" class="fc"></div>
+              <div class="fl"><label>Saldo</label><input type="number" id="saldo_inventario" class="fc" value="0"></div>
             </div>
             <div class="col-md-3">
-              <div class="fl"><label>Costo</label><input type="number" id="costo_inventario" class="fc"></div>
+              <div class="fl"><label>Costo</label><input type="number" id="costo_inventario" class="fc" value="0"></div>
             </div>
           </div>
         </div>
@@ -782,7 +788,14 @@
             <div class="col-md-3"><div class="fl"><label>Subcategoría *</label><input type="text" id="subcategoria_editar" class="fc" required></div></div>
             <div class="col-md-2"><div class="fl"><label>Grupo *</label><input type="text" id="grupo_editar" class="fc" required></div></div>
             <div class="col-md-2"><div class="fl"><label>Subgrupo *</label><input type="text" id="subgrupo_editar" class="fc" required></div></div>
-            <div class="col-md-2"><div class="fl"><label>Merma *</label><input type="text" id="merma_editar" class="fc" required></div></div>
+            <div class="col-md-2"><div class="fl"><label>Medida *</label>
+              <select class="fc" >
+                <option value="">Selecciona medida</option>
+                <option value="Peso">Peso (Kg)</option>
+                <option value="Unidades">Unidades (Uni)</option>
+              </select>
+            </div>
+          </div>
           </div>
         </div>
 

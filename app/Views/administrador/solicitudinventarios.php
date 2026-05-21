@@ -128,6 +128,554 @@
             font-family: Arial, Helvetica, sans-serif;
             font-size:14px; font-weight:700; color:#e9d5ff;
         }
+        body {
+            font-family: Arial, Helvetica;
+            background: var(--surface-alt);
+            color: var(--text-primary);
+        }
+
+        h1,h2,h3,h4,h5 { font-family: Arial, Helvetica, sans-serif; }
+
+        /* ============================================================
+           PAGE WRAPPER
+        ============================================================ */
+        .inv-wrapper {
+            padding: 28px 32px;
+            max-width: 100%;
+        }
+
+        /* ============================================================
+           TOP HEADER BAR
+        ============================================================ */
+        .inv-topbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-bottom: 28px;
+        }
+
+        .inv-topbar-left {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .inv-breadcrumb {
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            color: var(--purple-400);
+            margin-bottom: 4px;
+        }
+
+        .inv-title {
+            font-size: 26px;
+            font-weight: 800;
+            color: var(--purple-800);
+            line-height: 1.15;
+        }
+
+        .inv-topbar-actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        /* ============================================================
+           BUTTONS
+        ============================================================ */
+        .btn-inv {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            padding: 9px 18px;
+            border-radius: 50px;
+            font-family: Arial, Helvetica;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: var(--transition);
+            white-space: nowrap;
+            text-decoration: none;
+        }
+
+        .btn-inv-primary {
+            background: linear-gradient(135deg, var(--purple-600), var(--purple-500));
+            color: #fff;
+            box-shadow: 0 4px 14px rgba(107,33,184,.35);
+        }
+        .btn-inv-primary:hover {
+            background: linear-gradient(135deg, var(--purple-700), var(--purple-600));
+            box-shadow: 0 6px 20px rgba(107,33,184,.45);
+            transform: translateY(-1px);
+            color:#fff;
+        }
+
+        .btn-inv-success {
+            background: linear-gradient(135deg, #059669, var(--accent-green));
+            color: #fff;
+            box-shadow: 0 4px 14px rgba(16,185,129,.3);
+        }
+        .btn-inv-success:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(16,185,129,.4);
+            color:#fff;
+        }
+
+        .btn-inv-outline-danger {
+            background: transparent;
+            border: 1.5px solid var(--accent-red);
+            color: var(--accent-red);
+        }
+        .btn-inv-outline-danger:hover {
+            background: var(--accent-red);
+            color: #fff;
+            transform: translateY(-1px);
+        }
+
+        .btn-inv-outline {
+            background: #fff;
+            border: 1.5px solid var(--border);
+            color: var(--purple-700);
+        }
+        .btn-inv-outline:hover {
+            border-color: var(--purple-400);
+            background: var(--purple-100);
+            transform: translateY(-1px);
+        }
+
+        /* ============================================================
+           META STRIP (Usuario, Año, Fecha, Bodega)
+        ============================================================ */
+        .inv-meta-strip {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 14px;
+            margin-bottom: 28px;
+        }
+
+        .inv-meta-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 14px 18px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+
+        .inv-meta-card:hover {
+            border-color: var(--purple-300);
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+        }
+
+        .inv-meta-icon {
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            background: var(--purple-100);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--purple-600);
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+
+        .inv-meta-info label {
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: .07em;
+            color: var(--text-muted);
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        .inv-meta-info input {
+            background: transparent;
+            border: none;
+            font-family: Arial, Helvetica;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-primary);
+            width: 100%;
+            outline: none;
+            padding: 0;
+        }
+
+        /* ============================================================
+           TABLE CARD
+        ============================================================ */
+        .inv-table-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-sm);
+            overflow: hidden;
+        }
+
+        .inv-table-card-header {
+            padding: 16px 22px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--border);
+            background: linear-gradient(90deg, var(--purple-100), #fdf8ff);
+        }
+
+        .inv-table-card-header h5 {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--purple-800);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .inv-count-badge {
+            background: var(--purple-600);
+            color: #fff;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 2px 9px;
+            border-radius: 50px;
+        }
+
+        /* ============================================================
+           TABLE
+        ============================================================ */
+        .inv-table-scroll { overflow-x: auto; }
+
+        .inv-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            font-size: 13px;
+        }
+
+        .inv-table thead th {
+            background: linear-gradient(135deg, var(--purple-800), var(--purple-700));
+            color: #fff;
+            padding: 13px 16px;
+            text-align: left;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: .06em;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        .inv-table thead th:first-child { border-radius: 0; }
+
+        .inv-table tbody tr {
+            border-bottom: 1px solid #f0ebfa;
+            transition: var(--transition);
+            animation: rowIn .35s ease forwards;
+            opacity: 0;
+        }
+
+        @keyframes rowIn {
+            from { opacity: 0; transform: translateX(-12px); }
+            to   { opacity: 1; transform: translateX(0); }
+        }
+
+        .inv-table tbody tr:nth-child(1)  { animation-delay: .04s; }
+        .inv-table tbody tr:nth-child(2)  { animation-delay: .08s; }
+        .inv-table tbody tr:nth-child(3)  { animation-delay: .12s; }
+        .inv-table tbody tr:nth-child(4)  { animation-delay: .16s; }
+        .inv-table tbody tr:nth-child(5)  { animation-delay: .20s; }
+        .inv-table tbody tr:nth-child(6)  { animation-delay: .24s; }
+        .inv-table tbody tr:nth-child(7)  { animation-delay: .28s; }
+        .inv-table tbody tr:nth-child(8)  { animation-delay: .32s; }
+        .inv-table tbody tr:nth-child(9)  { animation-delay: .36s; }
+        .inv-table tbody tr:nth-child(10) { animation-delay: .40s; }
+
+        .inv-table tbody tr:hover {
+            background: linear-gradient(90deg, #f9f5ff, #fdf8ff);
+            transform: scale(1.001);
+        }
+
+        .inv-table td {
+            padding: 13px 16px;
+            color: var(--text-primary);
+            vertical-align: middle;
+        }
+
+        .inv-table tbody tr:nth-child(even) { background-color: #fdfaff; }
+
+        /* ============================================================
+           BADGES
+        ============================================================ */
+        .badge-inv {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 4px 11px;
+            border-radius: 50px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: .04em;
+        }
+
+        .badge-inv::before {
+            content: '';
+            width: 6px; height: 6px;
+            border-radius: 50%;
+            background: currentColor;
+            opacity: .8;
+        }
+
+        .badge-success-inv { background: #d1fae5; color: #065f46; }
+        .badge-danger-inv  { background: #fee2e2; color: #991b1b; }
+        .badge-dark-inv    { background: #e5e7eb; color: #1f2937; }
+        .badge-blue-inv    { background: #dbeafe; color: #1e40af; }
+
+        /* ============================================================
+           PANEL BTN SMALL
+        ============================================================ */
+        .btn-panel {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 5px 12px;
+            border-radius: 50px;
+            font-size: 11.5px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            white-space: nowrap;
+        }
+
+        .btn-panel-blue    { background: #dbeafe; color: #1d4ed8; }
+        .btn-panel-blue:hover { background: #1d4ed8; color: #fff; transform: scale(1.04); }
+
+        .btn-panel-green   { background: #d1fae5; color: #065f46; }
+        .btn-panel-green:hover { background: #065f46; color: #fff; transform: scale(1.04); }
+
+        /* ============================================================
+           EDIT BTN
+        ============================================================ */
+        .btn-edit {
+            width: 32px; height: 32px;
+            border-radius: 8px;
+            background: var(--purple-100);
+            border: 1.5px solid var(--purple-200);
+            color: var(--purple-600);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .btn-edit:hover {
+            background: var(--purple-600);
+            color: #fff;
+            border-color: var(--purple-600);
+            box-shadow: 0 4px 12px rgba(107,33,184,.4);
+            transform: rotate(10deg) scale(1.1);
+        }
+
+        /* ============================================================
+           MODALS
+        ============================================================ */
+        .modal-content {
+            border: none;
+            border-radius: var(--radius) !important;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            font-family: Arial, Helvetica;
+        }
+
+        .modal-header-inv {
+            background: linear-gradient(135deg, var(--purple-800), var(--purple-600)) !important;
+            padding: 18px 24px;
+            border-bottom: none;
+        }
+
+        .modal-header-inv .modal-title {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 15px;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: .04em;
+        }
+
+        .modal-header-inv .btn-close {
+            filter: invert(1);
+            opacity: .8;
+        }
+
+        .modal-body { background: var(--surface-alt); padding: 24px; }
+        .modal-footer { background: var(--surface); border-top: 1px solid var(--border); padding: 14px 24px; }
+
+        /* Form Controls */
+        .form-label-inv {
+            font-size: 11.5px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: .06em;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+            display: block;
+        }
+
+        .form-control-inv,
+        .form-select-inv {
+            width: 100%;
+            padding: 9px 13px;
+            border: 1.5px solid var(--border);
+            border-radius: var(--radius-sm);
+            font-family: Arial, Helvetica;
+            font-size: 13px;
+            color: var(--text-primary);
+            background: var(--surface);
+            transition: var(--transition);
+            outline: none;
+            appearance: none;
+        }
+
+        .form-control-inv:focus,
+        .form-select-inv:focus {
+            border-color: var(--purple-400);
+            box-shadow: 0 0 0 3px rgba(168,85,247,.15);
+        }
+
+        .form-control-inv[readonly] {
+            background: var(--purple-100);
+            color: var(--purple-700);
+        }
+
+        textarea.form-control-inv { resize: vertical; min-height: 120px; }
+
+        /* ============================================================
+           TABS (modal ubicaciones)
+        ============================================================ */
+        .nav-pills-inv .nav-link {
+            font-family: Arial, Helvetica;
+            font-size: 12.5px;
+            font-weight: 600;
+            color: var(--text-muted);
+            border-radius: 50px;
+            padding: 7px 18px;
+            border: 1.5px solid var(--border);
+            transition: var(--transition);
+        }
+
+        .nav-pills-inv .nav-link.active {
+            background: var(--purple-600);
+            border-color: var(--purple-600);
+            color: #fff;
+        }
+
+        /* ============================================================
+           REPORTS TABLE (inside modal)
+        ============================================================ */
+        .inv-table-sm thead th {
+            font-size: 10.5px;
+            padding: 10px 13px;
+        }
+
+        .inv-table-sm td { padding: 10px 13px; font-size: 12.5px; }
+
+        /* ============================================================
+           FILE UPLOAD
+        ============================================================ */
+        .file-drop-zone {
+            border: 2.5px dashed var(--purple-300);
+            border-radius: var(--radius);
+            background: var(--purple-100);
+            text-align: center;
+            padding: 36px 20px;
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .file-drop-zone:hover, .file-drop-zone.dragover {
+            background: #ede0ff;
+            border-color: var(--purple-500);
+            box-shadow: 0 0 0 4px rgba(168,85,247,.12);
+        }
+
+        .file-drop-zone input[type="file"] {
+            position: absolute; inset: 0;
+            opacity: 0;
+            cursor: pointer;
+            width: 100%; height: 100%;
+        }
+
+        .file-drop-icon {
+            font-size: 32px;
+            margin-bottom: 10px;
+            color: var(--purple-500);
+        }
+
+        .file-info-bar {
+            display: none;
+            background: #d1fae5;
+            border: 1.5px solid #6ee7b7;
+            border-radius: var(--radius-sm);
+            padding: 10px 14px;
+            margin-top: 12px;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .file-info-bar.visible { display: flex; }
+
+        /* ============================================================
+           PULSE ANIMATION ON ACTIVE BADGE
+        ============================================================ */
+        @keyframes pulse-green {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(16,185,129,.4); }
+            50%       { box-shadow: 0 0 0 5px rgba(16,185,129,0); }
+        }
+
+        .badge-active-pulse {
+            animation: pulse-green 2.2s infinite;
+        }
+
+        /* ============================================================
+           SCROLLBAR
+        ============================================================ */
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: #f5f0ff; }
+        ::-webkit-scrollbar-thumb { background: var(--purple-400); border-radius: 99px; }
+
+        /* ============================================================
+           RESPONSIVE
+        ============================================================ */
+        @media (max-width: 768px) {
+            .inv-wrapper { padding: 16px; }
+            .inv-title { font-size: 20px; }
+            .inv-topbar-actions .btn-inv span.label { display: none; }
+        }
+
+        /* ============================================================
+           LOADING SHIMMER (optional empty state)
+        ============================================================ */
+        @keyframes shimmer {
+            0%   { background-position: -400px 0; }
+            100% { background-position: 400px 0; }
+        }
+
+        /* ============================================================
+           OVERWRITE BOOTSTRAP color-morado for legacy compat
+        ============================================================ */
+        .color-morado {
+            background: linear-gradient(135deg, var(--purple-800), var(--purple-700)) !important;
+        }
 
         /* Big total display */
         .pos-total-section { text-align:center; margin-bottom:28px; }
@@ -1281,23 +1829,20 @@
                 <p class="usr-breadcrumb">Administración &rsaquo; InventSoft</p>
                 <h1 class="">Solicitud de Inventarios</h1>
               </div>
-              <div class="inv-actions">
-                            <button class="btn-i btn-i-outline" onclick="ajustarInventario()">
-                                <i class="fas fa-balance-scale"></i>
-                                <span class="label">Ajustar</span>
-                            </button>
-                            <button class="btn-i btn-i-primary" data-bs-toggle="modal" data-bs-target="#agregarProducto">
+              <div class="inv-topbar-actions">
+                            <button class="btn-inv btn-inv-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                                 <i class="fas fa-plus-circle"></i>
-                                <span class="label">Agregar Producto</span>
+                                <span class="label">Devoluciones</span>
                             </button>
-                            <button class="btn-i btn-i-success-outline" data-bs-toggle="modal" data-bs-target="#ingresoProducto">
-                                <i class="fas fa-arrow-down"></i>
-                                <span class="label">Entrada</span>
+                            <button class="btn-inv btn-inv-success" data-bs-toggle="modal" data-bs-target="#modalasgignacionescrear">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span class="label">Historial</span>
                             </button>
-                            <button class="btn-i btn-i-danger-outline" data-bs-toggle="modal" data-bs-target="#salidaProducto">
-                                <i class="fas fa-arrow-up"></i>
-                                <span class="label">Salida</span>
+                            <button class="btn-inv btn-inv-outline-danger" data-bs-toggle="modal" data-bs-target="#modalProceso">
+                                <i class="fas fa-chart-bar"></i>
+                                <span class="label">Despachos</span>
                             </button>
+                            
                         </div>
             </div>
             <!-- ══════════ TABLE CARD ══════════ -->
@@ -1759,8 +2304,8 @@
       tr.dataset.solCodigo = codigo;
       tr.innerHTML =
         '<td style="color:var(--muted);font-size:12px;text-align:center;">' + rowNum + '</td>' +
-        '<td><code style="font-size:11px;">' + (codigo || '—') + '</code></td>' +
-        '<td style="font-size:12px;color:var(--muted);">—</td>' +
+        '<td><code style="font-size:12px;">' + (codigo || '—') + '</code></td>' +
+        '<td style="font-size:12px;color:var(--muted);">ENVIGADO</td>' +
         '<td style="font-weight:600;">' + nombre + '</td>' +
         '<td><input type="number" min="1" value="1" style="width:65px;padding:4px 8px;' +
           'border:1.5px solid #e9d5ff;border-radius:6px;font-size:13px;text-align:center;"></td>' +
