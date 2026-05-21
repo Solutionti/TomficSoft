@@ -383,7 +383,7 @@
 
         <button type="submit" class="btn-login" id="login">
           <i class="fas fa-spinner spin"></i>
-          <span class="btn-text"><i class="fas fa-sign-in-alt" style="margin-right:6px"></i>Iniciar Sesión</span>
+          <span class="btn-text">Iniciar Sesión</span>
         </button>
 
       </form>
