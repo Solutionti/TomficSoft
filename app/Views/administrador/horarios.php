@@ -968,7 +968,7 @@
                       <div class="table-responsive">
                         <table class="table table-hover usr-table">
                           <thead>
-                            <th class="text-white">Colaboradores / asistencias
+                            <th class="text-white">Colaboradores / Asistencias
                               <a href="<?= base_url('asistencia') ?>">
                                 <span class="fas fa-plus mx-1 text-white" title="asistencia de empleados"></span>
                               </a>

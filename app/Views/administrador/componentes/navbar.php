@@ -496,7 +496,7 @@
     <li style="margin-top:auto; padding-top:8px">
       <div class="sb-footer">
         <span class="sb-version">v 3.1.2.3</span>
-        <a href="<?= base_url('cerrar_sesion') ?>" class="sb-logout" title="Cerrar sesión">
+        <a href="<?= base_url('cerrarsesion') ?>" class="sb-logout" title="Cerrar sesión">
           <i class="fas fa-power-off"></i>
         </a>
       </div>
