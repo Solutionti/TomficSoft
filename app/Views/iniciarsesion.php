@@ -61,8 +61,9 @@
                   alt="Logo"
                 > -->
               
-              <h1 class="h3">Bienvenido</h1>
-              <h1 class="h3">Cristal Business</h1>
+              <h1 class="h5">Bienvenido</h1>
+              <!-- <h1 class="h3">Cristal Business</h1> -->
+              <span class="h5">Cristal</span><span class="h2 text-success">Business</span> 
             </div>
             <div class="messageError mt-2"></div>
             <form role="form" method="post" validate id="FormLOG">
