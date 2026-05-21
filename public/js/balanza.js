@@ -52,6 +52,7 @@
   let startX = 0, startY = 0;
   let cameraStream   = null;
   let lastCropBase64 = null;
+  let originalBase64 = null;
 
   /* ══════════════════════════════════════
      Carga de imagen (file / drag-drop)
@@ -67,8 +68,12 @@
   fileInput.addEventListener('change', () => { if (fileInput.files[0]) loadFile(fileInput.files[0]); });
 
   function loadFile(file) {
-    const url = URL.createObjectURL(file);
-    loadImageFromUrl(url);
+    const reader = new FileReader();
+    reader.onload = e => {
+      originalBase64 = e.target.result;
+      loadImageFromUrl(e.target.result);
+    };
+    reader.readAsDataURL(file);
   }
 
   function loadImageFromUrl(url) {
@@ -287,6 +292,7 @@
     cameraCanvas.height = cameraVideo.videoHeight;
     cameraCanvas.getContext('2d').drawImage(cameraVideo, 0, 0);
     const dataUrl = cameraCanvas.toDataURL('image/jpeg', 0.95);
+    originalBase64 = dataUrl;
     loadImageFromUrl(dataUrl);
     getCameraModal().hide();
   });
@@ -519,17 +525,14 @@
       body.append('nombre',   nombre);
       body.append('unidades', unidades);
       body.append('peso',     peso);
-      body.append('imagen',   lastCropBase64 || '');
+      body.append('imagen',   originalBase64 || '');
 
       const res  = await fetch('/desechos/guardar', { method: 'POST', body });
       const json = await res.json();
 
       if (json.status === 'success') {
-        showToast('Registro guardado correctamente.');
-        nombreInput   && (nombreInput.value   = '');
-        pesoInput     && (pesoInput.value     = '');
-        unidadesInput && (unidadesInput.value = '');
-        lastCropBase64 = null;
+        showToast('Registro guardado correctamente.', 'success');
+        setTimeout(() => location.reload(), 1600);
       } else {
         showToast('Error: ' + (json.message || 'No se pudo guardar.'));
       }
@@ -542,21 +545,77 @@
   });
 
   /* ══════════════════════════════════════
+     Guardar — Captura Manual
+  ══════════════════════════════════════ */
+  const manBtnGuardar   = document.getElementById('man-btn-guardar');
+  const manNombreInput  = document.getElementById('man-nombre-input');
+  const manPesoInput    = document.getElementById('man-peso-input');
+  const manUnidadesInput = document.getElementById('man-unidades-input');
+
+  if (manBtnGuardar) {
+    manBtnGuardar.addEventListener('click', async () => {
+      const nombre   = manNombreInput   ? manNombreInput.value.trim()   : '';
+      const peso     = manPesoInput     ? manPesoInput.value.trim()     : '';
+      const unidades = manUnidadesInput ? manUnidadesInput.value.trim() : '';
+
+      if (!nombre) {
+        showToast('Ingresa el nombre o código del producto.');
+        manNombreInput && manNombreInput.focus();
+        return;
+      }
+      if (!peso) {
+        showToast('Ingresa el peso en kg.');
+        manPesoInput && manPesoInput.focus();
+        return;
+      }
+
+      const textoOriginal = manBtnGuardar.innerHTML;
+      manBtnGuardar.disabled  = true;
+      manBtnGuardar.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Guardando…';
+
+      try {
+        const body = new FormData();
+        body.append('nombre',   nombre);
+        body.append('unidades', unidades);
+        body.append('peso',     peso);
+        body.append('imagen',   '');
+
+        const res  = await fetch('/desechos/guardar', { method: 'POST', body });
+        const json = await res.json();
+
+        if (json.status === 'success') {
+          showToast('Registro guardado correctamente.', 'success');
+          setTimeout(() => location.reload(), 1600);
+        } else {
+          showToast('Error: ' + (json.message || 'No se pudo guardar.'));
+        }
+      } catch (err) {
+        showToast('Error de red: ' + err.message);
+      } finally {
+        manBtnGuardar.disabled  = false;
+        manBtnGuardar.innerHTML = textoOriginal;
+      }
+    });
+  }
+
+  /* ══════════════════════════════════════
      Toast (notificación flotante simple)
   ══════════════════════════════════════ */
   let toastTimer = null;
-  function showToast(msg) {
+  function showToast(msg, tipo) {
     let t = document.getElementById('ocr-toast');
     if (!t) {
       t = document.createElement('div');
       t.id = 'ocr-toast';
-      t.style.cssText = 'position:fixed;bottom:26px;right:26px;background:#1a0533;color:#fff;padding:11px 18px;border-radius:8px;font-size:13px;z-index:9999;box-shadow:0 8px 30px rgba(26,5,51,.3);display:none;';
+      t.style.cssText = 'position:fixed;bottom:26px;right:26px;padding:12px 20px;border-radius:10px;font-size:13px;font-weight:600;z-index:9999;box-shadow:0 8px 30px rgba(0,0,0,.25);display:none;transition:opacity .3s;';
       document.body.appendChild(t);
     }
-    t.textContent = msg;
+    t.textContent = (tipo === 'success' ? '✓  ' : '') + msg;
+    t.style.background = tipo === 'success' ? '#065f46' : '#1a0533';
+    t.style.color = '#fff';
     t.style.display = 'block';
     clearTimeout(toastTimer);
-    toastTimer = setTimeout(() => { t.style.display = 'none'; }, 3000);
+    toastTimer = setTimeout(() => { t.style.display = 'none'; }, tipo === 'success' ? 2000 : 3500);
   }
 
 })();
