@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 
 <head>
@@ -14,15 +14,15 @@
            DESIGN SYSTEM
         ══════════════════════════════════════ */
         :root {
-            --purple-900: #1a0533;
-            --purple-800: #2d0a55;
-            --purple-700: #4a1282;
-            --purple-600: #6b21b8;
-            --purple-500: #8b3fd4;
-            --purple-400: #a855f7;
-            --purple-300: #c084fc;
-            --purple-200: #e9d5ff;
-            --purple-100: #f5f0ff;
+            --purple-900: #0d2409;
+            --purple-800: #173a10;
+            --purple-700: #2d6622;
+            --purple-600: #4a8a37;
+            --purple-500: #7fac6e;
+            --purple-400: #8fba7e;
+            --purple-300: #abd49b;
+            --purple-200: #d4eacc;
+            --purple-100: #f0f7ec;
             --green:      #10b981;
             --green-light:#d1fae5;
             --green-dark: #065f46;
@@ -36,11 +36,11 @@
             --surface:    #ffffff;
             --surface-alt:#fafbff;
             --border:     #e8e0f5;
-            --text:       #1a0533;
+            --text:       #0d2409;
             --muted:      #7c6fa0;
-            --shadow-sm:  0 1px 3px rgba(74,18,130,.08);
-            --shadow-md:  0 4px 16px rgba(74,18,130,.12);
-            --shadow-lg:  0 12px 40px rgba(74,18,130,.18);
+            --shadow-sm:  0 1px 3px rgba(45,102,34,.08);
+            --shadow-md:  0 4px 16px rgba(45,102,34,.12);
+            --shadow-lg:  0 12px 40px rgba(45,102,34,.18);
             --radius:     14px;
             --radius-sm:  8px;
             --ease:       cubic-bezier(.4,0,.2,1);
@@ -50,7 +50,7 @@
         body { font-family:Arial, Helvetica; background:var(--surface-alt); color:var(--text); }
         h1,h2,h3,h4,h5,h6 { font-family:Arial, Helvetica; }
         ::-webkit-scrollbar { width:6px; height:6px; }
-        ::-webkit-scrollbar-track { background:#f5f0ff; }
+        ::-webkit-scrollbar-track { background:#f0f7ec; }
         ::-webkit-scrollbar-thumb { background:var(--purple-400); border-radius:99px; }
 
         /* ══════════════════════════════════════
@@ -126,7 +126,7 @@
         .pos-sale-num label { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.08em; color:rgba(255,255,255,.6); }
         .pos-sale-num .sale-id {
             font-family: Arial, Helvetica, sans-serif;
-            font-size:14px; font-weight:700; color:#e9d5ff;
+            font-size:14px; font-weight:700; color:#d4eacc;
         }
         body {
             font-family: Arial, Helvetica;
@@ -206,11 +206,11 @@
         .btn-inv-primary {
             background: linear-gradient(135deg, var(--purple-600), var(--purple-500));
             color: #fff;
-            box-shadow: 0 4px 14px rgba(107,33,184,.35);
+            box-shadow: 0 4px 14px rgba(74,138,55,.35);
         }
         .btn-inv-primary:hover {
             background: linear-gradient(135deg, var(--purple-700), var(--purple-600));
-            box-shadow: 0 6px 20px rgba(107,33,184,.45);
+            box-shadow: 0 6px 20px rgba(74,138,55,.45);
             transform: translateY(-1px);
             color:#fff;
         }
@@ -482,7 +482,7 @@
             background: var(--purple-600);
             color: #fff;
             border-color: var(--purple-600);
-            box-shadow: 0 4px 12px rgba(107,33,184,.4);
+            box-shadow: 0 4px 12px rgba(74,138,55,.4);
             transform: rotate(10deg) scale(1.1);
         }
 
@@ -548,7 +548,7 @@
         .form-control-inv:focus,
         .form-select-inv:focus {
             border-color: var(--purple-400);
-            box-shadow: 0 0 0 3px rgba(168,85,247,.15);
+            box-shadow: 0 0 0 3px rgba(143,186,126,.15);
         }
 
         .form-control-inv[readonly] {
@@ -605,7 +605,7 @@
         .file-drop-zone:hover, .file-drop-zone.dragover {
             background: #ede0ff;
             border-color: var(--purple-500);
-            box-shadow: 0 0 0 4px rgba(168,85,247,.12);
+            box-shadow: 0 0 0 4px rgba(143,186,126,.12);
         }
 
         .file-drop-zone input[type="file"] {
@@ -650,7 +650,7 @@
            SCROLLBAR
         ============================================================ */
         ::-webkit-scrollbar { width: 6px; height: 6px; }
-        ::-webkit-scrollbar-track { background: #f5f0ff; }
+        ::-webkit-scrollbar-track { background: #f0f7ec; }
         ::-webkit-scrollbar-thumb { background: var(--purple-400); border-radius: 99px; }
 
         /* ============================================================
@@ -755,7 +755,7 @@
             transition:all .25s var(--ease);
         }
         .pos-print-check:hover { background:rgba(255,255,255,.13); }
-        .pos-print-check input { width:15px; height:15px; accent-color:#a855f7; cursor:pointer; }
+        .pos-print-check input { width:15px; height:15px; accent-color:#8fba7e; cursor:pointer; }
         .pos-print-check span { font-size:12px; color:rgba(255,255,255,.8); font-weight:600; }
 
         /* Wave SVG */
@@ -827,14 +827,14 @@
             background:var(--surface); transition:all .25s var(--ease);
             outline:none; appearance:none;
         }
-        .fc:focus, .fsel:focus { border-color:var(--purple-400); box-shadow:0 0 0 3px rgba(168,85,247,.15); }
+        .fc:focus, .fsel:focus { border-color:var(--purple-400); box-shadow:0 0 0 3px rgba(143,186,126,.15); }
         .fc[readonly], .fsel[readonly] { background:var(--purple-100); color:var(--purple-700); cursor:default; }
 
         /* Product search bar */
         .search-bar {
             display:flex; border:1.5px solid var(--purple-400);
             border-radius:var(--radius-sm); overflow:hidden;
-            box-shadow:0 0 0 3px rgba(168,85,247,.12);
+            box-shadow:0 0 0 3px rgba(143,186,126,.12);
         }
         .search-bar input {
             flex:1; padding:9px 14px; border:none;
@@ -909,7 +909,7 @@
             transition:all .25s var(--ease);
         }
         .cart-table tbody tr:nth-child(even){background:#fdfaff;}
-        .cart-table tbody tr:hover{background:linear-gradient(90deg,#f5f0ff,#fdf8ff) !important;}
+        .cart-table tbody tr:hover{background:linear-gradient(90deg,#f0f7ec,#fdf8ff) !important;}
         .cart-table td { padding:11px 16px; vertical-align:middle; }
 
         .cart-empty {
@@ -936,7 +936,7 @@
             color:var(--purple-700); outline:none;
             transition:all .2s var(--ease);
         }
-        .qty-input:focus { border-color:var(--purple-400); box-shadow:0 0 0 3px rgba(168,85,247,.15); }
+        .qty-input:focus { border-color:var(--purple-400); box-shadow:0 0 0 3px rgba(143,186,126,.15); }
 
         .price-cell {
             font-family:Arial, Helvetica; font-size:13px;
@@ -971,15 +971,15 @@
            DESIGN SYSTEM VARIABLES
         ══════════════════════════════════════ */
     :root {
-      --purple-900: #1a0533;
-      --purple-800: #2d0a55;
-      --purple-700: #4a1282;
-      --purple-600: #6b21b8;
-      --purple-500: #8b3fd4;
-      --purple-400: #a855f7;
-      --purple-300: #c084fc;
-      --purple-200: #e9d5ff;
-      --purple-100: #f5f0ff;
+      --purple-900: #0d2409;
+      --purple-800: #173a10;
+      --purple-700: #2d6622;
+      --purple-600: #4a8a37;
+      --purple-500: #7fac6e;
+      --purple-400: #8fba7e;
+      --purple-300: #abd49b;
+      --purple-200: #d4eacc;
+      --purple-100: #f0f7ec;
       --accent-green: #10b981;
       --accent-red: #ef4444;
       --accent-amber: #f59e0b;
@@ -987,11 +987,11 @@
       --surface: #ffffff;
       --surface-alt: #fafbff;
       --border: #e8e0f5;
-      --text-primary: #1a0533;
+      --text-primary: #0d2409;
       --text-muted: #7c6fa0;
-      --shadow-sm: 0 1px 3px rgba(74, 18, 130, .08);
-      --shadow-md: 0 4px 16px rgba(74, 18, 130, .12);
-      --shadow-lg: 0 12px 40px rgba(74, 18, 130, .18);
+      --shadow-sm: 0 1px 3px rgba(45, 102, 34, .08);
+      --shadow-md: 0 4px 16px rgba(45, 102, 34, .12);
+      --shadow-lg: 0 12px 40px rgba(45, 102, 34, .18);
       --radius: 14px;
       --radius-sm: 8px;
       --transition: all .25s cubic-bezier(.4, 0, .2, 1);
@@ -1024,7 +1024,7 @@
     }
 
     ::-webkit-scrollbar-track {
-      background: #f5f0ff;
+      background: #f0f7ec;
     }
 
     ::-webkit-scrollbar-thumb {
@@ -1085,13 +1085,13 @@
     .btn-u-primary {
       background: linear-gradient(135deg, var(--purple-600), var(--purple-500));
       color: #fff;
-      box-shadow: 0 4px 14px rgba(107, 33, 184, .35);
+      box-shadow: 0 4px 14px rgba(74, 138, 55, .35);
     }
 
     .btn-u-primary:hover {
       background: linear-gradient(135deg, var(--purple-700), var(--purple-600));
       transform: translateY(-1px);
-      box-shadow: 0 6px 20px rgba(107, 33, 184, .45);
+      box-shadow: 0 6px 20px rgba(74, 138, 55, .45);
       color: #fff;
     }
 
@@ -1268,7 +1268,7 @@
 
     .tbl-search:focus-within {
       border-color: var(--purple-400);
-      box-shadow: 0 0 0 3px rgba(168, 85, 247, .12);
+      box-shadow: 0 0 0 3px rgba(143, 186, 126, .12);
     }
 
     .tbl-search input {
@@ -1365,7 +1365,7 @@
     }
 
     .usr-table tbody tr:hover {
-      background: linear-gradient(90deg, #f5f0ff, #fdf8ff) !important;
+      background: linear-gradient(90deg, #f0f7ec, #fdf8ff) !important;
     }
 
     .usr-table td {
@@ -1508,7 +1508,7 @@
       color: #fff;
       border-color: var(--purple-600);
       transform: rotate(8deg) scale(1.12);
-      box-shadow: 0 4px 12px rgba(107, 33, 184, .4);
+      box-shadow: 0 4px 12px rgba(74, 138, 55, .4);
     }
 
     .btn-action-del {
@@ -1637,7 +1637,7 @@
     .fc:focus,
     .fsel:focus {
       border-color: var(--purple-400);
-      box-shadow: 0 0 0 3px rgba(168, 85, 247, .15);
+      box-shadow: 0 0 0 3px rgba(143, 186, 126, .15);
     }
 
     .fc[readonly] {
@@ -1656,7 +1656,7 @@
 
     .pass-group:focus-within {
       border-color: var(--purple-400);
-      box-shadow: 0 0 0 3px rgba(168, 85, 247, .15);
+      box-shadow: 0 0 0 3px rgba(143, 186, 126, .15);
     }
 
     .pass-group input {
@@ -1723,7 +1723,7 @@
     }
 
     .perm-table tbody tr:hover {
-      background: linear-gradient(90deg, #f5f0ff, #fdf8ff) !important;
+      background: linear-gradient(90deg, #f0f7ec, #fdf8ff) !important;
     }
 
     .perm-table td {
@@ -1868,9 +1868,9 @@
                               </div>
                               <div id="sol-producto-dropdown" style="
                                   display:none; position:absolute; top:100%; left:0; right:0; z-index:1050;
-                                  background:#fff; border:1.5px solid #e9d5ff; border-top:none;
+                                  background:#fff; border:1.5px solid #d4eacc; border-top:none;
                                   border-radius:0 0 10px 10px;
-                                  box-shadow:0 8px 24px rgba(74,18,130,.12);
+                                  box-shadow:0 8px 24px rgba(45,102,34,.12);
                                   max-height:220px; overflow-y:auto;"></div>
                           </div>
                       </div>
@@ -2227,8 +2227,8 @@
                 ' data-codigo="' + (p.codigo_interno || '') + '"' +
                 ' data-nombre="' + p.nombre.replace(/"/g, '&quot;') + '"' +
                 ' data-ref="'   + (p.referencia || '') + '"' +
-                ' style="padding:9px 14px;cursor:pointer;border-bottom:1px solid #f5f0ff;font-size:13px;">' +
-                '<div style="font-weight:600;color:#1a0533;">' + p.nombre + '</div>' +
+                ' style="padding:9px 14px;cursor:pointer;border-bottom:1px solid #f0f7ec;font-size:13px;">' +
+                '<div style="font-weight:600;color:#0d2409;">' + p.nombre + '</div>' +
                 '<div style="font-size:11px;color:#7c6fa0;">Cód: ' + (p.codigo_interno || '—') +
                 (p.referencia ? ' · ' + p.referencia : '') + '</div>' +
                 '</div>';
@@ -2237,7 +2237,7 @@
             dropdown.style.display = 'block';
 
             dropdown.querySelectorAll('.sol-ac-item').forEach(function (item) {
-              item.addEventListener('mouseenter', function () { item.style.background = '#f5f0ff'; });
+              item.addEventListener('mouseenter', function () { item.style.background = '#f0f7ec'; });
               item.addEventListener('mouseleave', function () { item.style.background = ''; });
               item.addEventListener('mousedown', function (e) {
                 e.preventDefault();
@@ -2269,12 +2269,12 @@
         e.preventDefault();
         if (active) { active.classList.remove('sol-ac-active'); active.style.background = ''; }
         idx = (idx + 1) % items.length;
-        items[idx].classList.add('sol-ac-active'); items[idx].style.background = '#f5f0ff';
+        items[idx].classList.add('sol-ac-active'); items[idx].style.background = '#f0f7ec';
       } else if (e.key === 'ArrowUp') {
         e.preventDefault();
         if (active) { active.classList.remove('sol-ac-active'); active.style.background = ''; }
         idx = (idx - 1 + items.length) % items.length;
-        items[idx].classList.add('sol-ac-active'); items[idx].style.background = '#f5f0ff';
+        items[idx].classList.add('sol-ac-active'); items[idx].style.background = '#f0f7ec';
       } else if (e.key === 'Enter' && active) {
         e.preventDefault();
         agregarAlCarrito(active.dataset.codigo, active.dataset.nombre, active.dataset.ref);
@@ -2308,7 +2308,7 @@
         '<td style="font-size:12px;color:var(--muted);">ENVIGADO</td>' +
         '<td style="font-weight:600;">' + nombre + '</td>' +
         '<td><input type="number" min="1" value="1" style="width:65px;padding:4px 8px;' +
-          'border:1.5px solid #e9d5ff;border-radius:6px;font-size:13px;text-align:center;"></td>' +
+          'border:1.5px solid #d4eacc;border-radius:6px;font-size:13px;text-align:center;"></td>' +
         '<td><button type="button" onclick="this.closest(\'tr\').remove();actualizarContador();"' +
           ' style="background:#fee2e2;color:#991b1b;border:none;border-radius:6px;' +
           'padding:4px 10px;cursor:pointer;font-size:12px;">' +

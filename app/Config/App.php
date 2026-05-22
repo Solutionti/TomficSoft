@@ -19,13 +19,28 @@ class App extends BaseConfig
     public string $baseURL = 'http://localhost:8080/';
 
     /**
+     * Constructor para dynamically set $baseURL con ngrok o localhost
+     */
+    public function __construct()
+    {
+        parent::__construct();
+
+        // Detectar si la petición viene a través de ngrok u otro proxy inverso
+        $httpHost = $_SERVER['HTTP_X_FORWARDED_HOST'] ?? $_SERVER['HTTP_HOST'] ?? 'localhost:8080';
+        $protocol = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') || isset($_SERVER['HTTP_X_FORWARDED_PROTO']) ? 'https' : 'http';
+        
+        // Asignar dinámicamente asegurando la barra diagonal al final
+        $this->baseURL = $protocol . '://' . $httpHost . '/';
+    }
+
+    /**
      * Allowed Hostnames in the Site URL other than the hostname in the baseURL.
      * If you want to accept multiple Hostnames, set this.
      *
      * E.g.,
      * When your site URL ($baseURL) is 'http://example.com/', and your site
      * also accepts 'http://media.example.com/' and 'http://accounts.example.com/':
-     *     ['media.example.com', 'accounts.example.com']
+     * ['media.example.com', 'accounts.example.com']
      *
      * @var list<string>
      */
@@ -51,9 +66,9 @@ class App extends BaseConfig
      * URI string. The default setting of 'REQUEST_URI' works for most servers.
      * If your links do not seem to work, try one of the other delicious flavors:
      *
-     *  'REQUEST_URI': Uses $_SERVER['REQUEST_URI']
+     * 'REQUEST_URI': Uses $_SERVER['REQUEST_URI']
      * 'QUERY_STRING': Uses $_SERVER['QUERY_STRING']
-     *    'PATH_INFO': Uses $_SERVER['PATH_INFO']
+     * 'PATH_INFO': Uses $_SERVER['PATH_INFO']
      *
      * WARNING: If you set this to 'PATH_INFO', URIs will always be URL-decoded!
      */
@@ -79,6 +94,7 @@ class App extends BaseConfig
     | and it will be used as: '/\A[<permittedURIChars>]+\z/iu'
     |
     | DO NOT CHANGE THIS UNLESS YOU FULLY UNDERSTAND THE REPERCUSSIONS!!
+    |
     |
     */
     public string $permittedURIChars = 'a-z 0-9~%.:_\-';
@@ -131,7 +147,7 @@ class App extends BaseConfig
      * dates with the date helper, and can be retrieved through app_timezone()
      *
      * @see https://www.php.net/manual/en/timezones.php for list of timezones
-     *      supported by PHP.
+     * supported by PHP.
      */
     public string $appTimezone = 'America/Bogota';
     
@@ -173,10 +189,10 @@ class App extends BaseConfig
      * the HTTP header for the client IP address.
      *
      * Here are some examples:
-     *     [
-     *         '10.0.1.200'     => 'X-Forwarded-For',
-     *         '192.168.5.0/24' => 'X-Real-IP',
-     *     ]
+     * [
+     * '10.0.1.200'     => 'X-Forwarded-For',
+     * '192.168.5.0/24' => 'X-Real-IP',
+     * ]
      *
      * @var array<string, string>
      */
@@ -200,5 +216,4 @@ class App extends BaseConfig
      */
     public bool $CSPEnabled = false;
     public $sessionExpiration = 900; // 15 minutos
-
 }

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 
 <head>
@@ -15,15 +15,15 @@
            DESIGN SYSTEM VARIABLES
         ══════════════════════════════════════ */
     :root {
-      --purple-900: #1a0533;
-      --purple-800: #2d0a55;
-      --purple-700: #4a1282;
-      --purple-600: #6b21b8;
-      --purple-500: #8b3fd4;
-      --purple-400: #a855f7;
-      --purple-300: #c084fc;
-      --purple-200: #e9d5ff;
-      --purple-100: #f5f0ff;
+      --purple-900: #0d2409;
+      --purple-800: #173a10;
+      --purple-700: #2d6622;
+      --purple-600: #4a8a37;
+      --purple-500: #7fac6e;
+      --purple-400: #8fba7e;
+      --purple-300: #abd49b;
+      --purple-200: #d4eacc;
+      --purple-100: #f0f7ec;
       --accent-green: #10b981;
       --accent-red: #ef4444;
       --accent-amber: #f59e0b;
@@ -31,11 +31,11 @@
       --surface: #ffffff;
       --surface-alt: #fafbff;
       --border: #e8e0f5;
-      --text-primary: #1a0533;
+      --text-primary: #0d2409;
       --text-muted: #7c6fa0;
-      --shadow-sm: 0 1px 3px rgba(74, 18, 130, .08);
-      --shadow-md: 0 4px 16px rgba(74, 18, 130, .12);
-      --shadow-lg: 0 12px 40px rgba(74, 18, 130, .18);
+      --shadow-sm: 0 1px 3px rgba(45, 102, 34, .08);
+      --shadow-md: 0 4px 16px rgba(45, 102, 34, .12);
+      --shadow-lg: 0 12px 40px rgba(45, 102, 34, .18);
       --radius: 14px;
       --radius-sm: 8px;
       --transition: all .25s cubic-bezier(.4, 0, .2, 1);
@@ -68,7 +68,7 @@
     }
 
     ::-webkit-scrollbar-track {
-      background: #f5f0ff;
+      background: #f0f7ec;
     }
 
     ::-webkit-scrollbar-thumb {
@@ -129,13 +129,13 @@
     .btn-u-primary {
       background: linear-gradient(135deg, var(--purple-600), var(--purple-500));
       color: #fff;
-      box-shadow: 0 4px 14px rgba(107, 33, 184, .35);
+      box-shadow: 0 4px 14px rgba(74, 138, 55, .35);
     }
 
     .btn-u-primary:hover {
       background: linear-gradient(135deg, var(--purple-700), var(--purple-600));
       transform: translateY(-1px);
-      box-shadow: 0 6px 20px rgba(107, 33, 184, .45);
+      box-shadow: 0 6px 20px rgba(74, 138, 55, .45);
       color: #fff;
     }
 
@@ -312,7 +312,7 @@
 
     .tbl-search:focus-within {
       border-color: var(--purple-400);
-      box-shadow: 0 0 0 3px rgba(168, 85, 247, .12);
+      box-shadow: 0 0 0 3px rgba(143, 186, 126, .12);
     }
 
     .tbl-search input {
@@ -409,7 +409,7 @@
     }
 
     .usr-table tbody tr:hover {
-      background: linear-gradient(90deg, #f5f0ff, #fdf8ff) !important;
+      background: linear-gradient(90deg, #f0f7ec, #fdf8ff) !important;
     }
 
     .usr-table td {
@@ -552,7 +552,7 @@
       color: #fff;
       border-color: var(--purple-600);
       transform: rotate(8deg) scale(1.12);
-      box-shadow: 0 4px 12px rgba(107, 33, 184, .4);
+      box-shadow: 0 4px 12px rgba(74, 138, 55, .4);
     }
 
     .btn-action-del {
@@ -681,7 +681,7 @@
     .fc:focus,
     .fsel:focus {
       border-color: var(--purple-400);
-      box-shadow: 0 0 0 3px rgba(168, 85, 247, .15);
+      box-shadow: 0 0 0 3px rgba(143, 186, 126, .15);
     }
 
     .fc[readonly] {
@@ -700,7 +700,7 @@
 
     .pass-group:focus-within {
       border-color: var(--purple-400);
-      box-shadow: 0 0 0 3px rgba(168, 85, 247, .15);
+      box-shadow: 0 0 0 3px rgba(143, 186, 126, .15);
     }
 
     .pass-group input {
@@ -767,7 +767,7 @@
     }
 
     .perm-table tbody tr:hover {
-      background: linear-gradient(90deg, #f5f0ff, #fdf8ff) !important;
+      background: linear-gradient(90deg, #f0f7ec, #fdf8ff) !important;
     }
 
     .perm-table td {
@@ -919,14 +919,14 @@
 
                       <!-- ── Zona OCR: drop o canvas ── -->
                       <div id="ocr-drop-zone" style="
-                          border: 2px dashed #e9d5ff; border-radius: 10px 10px 0 0;
+                          border: 2px dashed #d4eacc; border-radius: 10px 10px 0 0;
                           padding: 22px; text-align: center; cursor: pointer;
                           position: relative; background: #fafbff; transition: background .2s;">
                         <input type="file" id="ocr-file-input" accept="image/*"
                           style="position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%">
-                        <i class="fas fa-cloud-arrow-up" style="font-size:28px;color:#c084fc;"></i>
+                        <i class="fas fa-cloud-arrow-up" style="font-size:28px;color:#abd49b;"></i>
                         <p style="font-size:12px;color:#7c6fa0;margin-top:6px">
-                          <strong style="color:#6b21b8">Arrastra una imagen</strong> o haz clic<br>
+                          <strong style="color:#4a8a37">Arrastra una imagen</strong> o haz clic<br>
                           <span style="font-size:10px">JPG · PNG · WEBP</span>
                         </p>
                       </div>
@@ -937,7 +937,7 @@
                         <canvas id="ocr-sel-canvas" style="position:absolute;top:0;left:0;cursor:crosshair;"></canvas>
                         <div id="ocr-crop-hint" style="
                             position:absolute;bottom:8px;left:50%;transform:translateX(-50%);
-                            background:rgba(26,5,51,.75);color:#fff;font-size:11px;
+                            background:rgba(13,36,9,.75);color:#fff;font-size:11px;
                             padding:4px 12px;border-radius:99px;pointer-events:none;white-space:nowrap;">
                           <i class="fas fa-hand-pointer"></i> Arrastra sobre el display
                         </div>
@@ -945,24 +945,24 @@
 
                       <!-- Preview del recorte -->
                       <div id="ocr-preview-wrap" style="display:none;padding:8px;background:#111;">
-                        <div style="font-size:10px;color:#a855f7;margin-bottom:4px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;">
+                        <div style="font-size:10px;color:#8fba7e;margin-bottom:4px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;">
                           <i class="fas fa-crop"></i> Zona a procesar
                         </div>
                         <img id="ocr-preview-img" style="width:100%;max-height:70px;object-fit:contain;" alt="">
                       </div>
 
                       <!-- Resultado OCR raw -->
-                      <div id="ocr-result-wrap" style="display:none;padding:8px 12px;background:#f5f0ff;border-top:1px solid #e9d5ff;">
-                        <div style="font-size:10px;color:#6b21b8;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:3px;">
+                      <div id="ocr-result-wrap" style="display:none;padding:8px 12px;background:#f0f7ec;border-top:1px solid #d4eacc;">
+                        <div style="font-size:10px;color:#4a8a37;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:3px;">
                           <i class="fas fa-file-lines"></i> Texto reconocido
                         </div>
-                        <div id="ocr-result-text" style="font-size:12px;color:#4a1282;word-break:break-all;line-height:1.5;"></div>
+                        <div id="ocr-result-text" style="font-size:12px;color:#2d6622;word-break:break-all;line-height:1.5;"></div>
                       </div>
 
                       <!-- Barra de progreso -->
-                      <div id="ocr-progress" style="display:none;padding:8px 12px;background:#f5f0ff;">
-                        <div style="background:#e9d5ff;border-radius:99px;height:6px;overflow:hidden;">
-                          <div id="ocr-progress-fill" style="height:100%;background:#8b3fd4;width:0%;transition:width .3s;border-radius:99px;"></div>
+                      <div id="ocr-progress" style="display:none;padding:8px 12px;background:#f0f7ec;">
+                        <div style="background:#d4eacc;border-radius:99px;height:6px;overflow:hidden;">
+                          <div id="ocr-progress-fill" style="height:100%;background:#7fac6e;width:0%;transition:width .3s;border-radius:99px;"></div>
                         </div>
                         <div id="ocr-progress-label" style="font-size:10px;color:#7c6fa0;text-align:center;margin-top:3px;">Procesando…</div>
                       </div>
@@ -976,8 +976,8 @@
                             autocomplete="off">
                           <div id="ocr-nombre-dropdown" style="
                             display:none; position:absolute; top:100%; left:0; right:0; z-index:999;
-                            background:#fff; border:1.5px solid #e9d5ff; border-top:none;
-                            border-radius:0 0 10px 10px; box-shadow:0 8px 24px rgba(74,18,130,.12);
+                            background:#fff; border:1.5px solid #d4eacc; border-top:none;
+                            border-radius:0 0 10px 10px; box-shadow:0 8px 24px rgba(45,102,34,.12);
                             max-height:220px; overflow-y:auto;"></div>
                         </div>
                       </div>
@@ -1028,14 +1028,14 @@
                   <div class="col-md-12">
                     <div class="card" style="width: 30rem;">
                       <div id="captura_manual" style="
-                          border: 2px dashed #e9d5ff; border-radius: 10px 10px 0 0;
+                          border: 2px dashed #d4eacc; border-radius: 10px 10px 0 0;
                           padding: 22px; text-align: center; cursor: pointer;
                           position: relative; background: #fafbff; transition: background .2s;">
                         <input type="file" id="ocr-file-input" accept="image/*"
                           style="position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%">
-                        <i class="fas fa-cloud-arrow-up" style="font-size:28px;color:#c084fc;"></i>
+                        <i class="fas fa-cloud-arrow-up" style="font-size:28px;color:#abd49b;"></i>
                         <p style="font-size:12px;color:#7c6fa0;margin-top:6px">
-                          <strong style="color:#6b21b8">Arrastra una imagen</strong> o haz clic<br>
+                          <strong style="color:#4a8a37">Arrastra una imagen</strong> o haz clic<br>
                           <span style="font-size:10px">JPG · PNG · WEBP</span>
                         </p>
                       </div>
@@ -1048,8 +1048,8 @@
                             autocomplete="off">
                           <div id="man-nombre-dropdown" style="
                             display:none; position:absolute; top:100%; left:0; right:0; z-index:999;
-                            background:#fff; border:1.5px solid #e9d5ff; border-top:none;
-                            border-radius:0 0 10px 10px; box-shadow:0 8px 24px rgba(74,18,130,.12);
+                            background:#fff; border:1.5px solid #d4eacc; border-top:none;
+                            border-radius:0 0 10px 10px; box-shadow:0 8px 24px rgba(45,102,34,.12);
                             max-height:220px; overflow-y:auto;"></div>
                         </div>
                       </div>

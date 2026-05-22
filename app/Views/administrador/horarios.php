@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 
 <head>
@@ -15,15 +15,15 @@
            DESIGN SYSTEM VARIABLES
         ══════════════════════════════════════ */
     :root {
-      --purple-900: #1a0533;
-      --purple-800: #2d0a55;
-      --purple-700: #4a1282;
-      --purple-600: #6b21b8;
-      --purple-500: #8b3fd4;
-      --purple-400: #a855f7;
-      --purple-300: #c084fc;
-      --purple-200: #e9d5ff;
-      --purple-100: #f5f0ff;
+      --purple-900: #0d2409;
+      --purple-800: #173a10;
+      --purple-700: #2d6622;
+      --purple-600: #4a8a37;
+      --purple-500: #7fac6e;
+      --purple-400: #8fba7e;
+      --purple-300: #abd49b;
+      --purple-200: #d4eacc;
+      --purple-100: #f0f7ec;
       --accent-green: #10b981;
       --accent-red: #ef4444;
       --accent-amber: #f59e0b;
@@ -31,11 +31,11 @@
       --surface: #ffffff;
       --surface-alt: #fafbff;
       --border: #e8e0f5;
-      --text-primary: #1a0533;
+      --text-primary: #0d2409;
       --text-muted: #7c6fa0;
-      --shadow-sm: 0 1px 3px rgba(74, 18, 130, .08);
-      --shadow-md: 0 4px 16px rgba(74, 18, 130, .12);
-      --shadow-lg: 0 12px 40px rgba(74, 18, 130, .18);
+      --shadow-sm: 0 1px 3px rgba(45, 102, 34, .08);
+      --shadow-md: 0 4px 16px rgba(45, 102, 34, .12);
+      --shadow-lg: 0 12px 40px rgba(45, 102, 34, .18);
       --radius: 14px;
       --radius-sm: 8px;
       --transition: all .25s cubic-bezier(.4, 0, .2, 1);
@@ -68,7 +68,7 @@
     }
 
     ::-webkit-scrollbar-track {
-      background: #f5f0ff;
+      background: #f0f7ec;
     }
 
     ::-webkit-scrollbar-thumb {
@@ -129,13 +129,13 @@
     .btn-u-primary {
       background: linear-gradient(135deg, var(--purple-600), var(--purple-500));
       color: #fff;
-      box-shadow: 0 4px 14px rgba(107, 33, 184, .35);
+      box-shadow: 0 4px 14px rgba(74, 138, 55, .35);
     }
 
     .btn-u-primary:hover {
       background: linear-gradient(135deg, var(--purple-700), var(--purple-600));
       transform: translateY(-1px);
-      box-shadow: 0 6px 20px rgba(107, 33, 184, .45);
+      box-shadow: 0 6px 20px rgba(74, 138, 55, .45);
       color: #fff;
     }
 
@@ -312,7 +312,7 @@
 
     .tbl-search:focus-within {
       border-color: var(--purple-400);
-      box-shadow: 0 0 0 3px rgba(168, 85, 247, .12);
+      box-shadow: 0 0 0 3px rgba(143, 186, 126, .12);
     }
 
     .tbl-search input {
@@ -409,7 +409,7 @@
     }
 
     .usr-table tbody tr:hover {
-      background: linear-gradient(90deg, #f5f0ff, #fdf8ff) !important;
+      background: linear-gradient(90deg, #f0f7ec, #fdf8ff) !important;
     }
 
     .usr-table td {
@@ -552,7 +552,7 @@
       color: #fff;
       border-color: var(--purple-600);
       transform: rotate(8deg) scale(1.12);
-      box-shadow: 0 4px 12px rgba(107, 33, 184, .4);
+      box-shadow: 0 4px 12px rgba(74, 138, 55, .4);
     }
 
     .btn-action-del {
@@ -681,7 +681,7 @@
     .fc:focus,
     .fsel:focus {
       border-color: var(--purple-400);
-      box-shadow: 0 0 0 3px rgba(168, 85, 247, .15);
+      box-shadow: 0 0 0 3px rgba(143, 186, 126, .15);
     }
 
     .fc[readonly] {
@@ -700,7 +700,7 @@
 
     .pass-group:focus-within {
       border-color: var(--purple-400);
-      box-shadow: 0 0 0 3px rgba(168, 85, 247, .15);
+      box-shadow: 0 0 0 3px rgba(143, 186, 126, .15);
     }
 
     .pass-group input {
@@ -767,7 +767,7 @@
     }
 
     .perm-table tbody tr:hover {
-      background: linear-gradient(90deg, #f5f0ff, #fdf8ff) !important;
+      background: linear-gradient(90deg, #f0f7ec, #fdf8ff) !important;
     }
 
     .perm-table td {
@@ -939,7 +939,7 @@
                           <div class="user-name">
                             <?= esc($h->nombre) ?>
                             <?php if (!empty($h->comentario)): ?>
-                              <i class="fas fa-comment-dots" style="color:#a855f7;font-size:11px;margin-left:5px;vertical-align:middle" title="<?= esc($h->comentario) ?>"></i>
+                              <i class="fas fa-comment-dots" style="color:#8fba7e;font-size:11px;margin-left:5px;vertical-align:middle" title="<?= esc($h->comentario) ?>"></i>
                             <?php endif; ?>
                           </div>
                           <div class="user-sub"><?= esc($h->cargo ?? '') ?></div>
@@ -1546,7 +1546,7 @@
         } else {
           const icon = document.createElement('i');
           icon.className = 'fas fa-comment-dots';
-          icon.style.cssText = 'color:#a855f7;font-size:11px;margin-left:5px;vertical-align:middle;';
+          icon.style.cssText = 'color:#8fba7e;font-size:11px;margin-left:5px;vertical-align:middle;';
           icon.title = comentario;
           nameDiv.appendChild(icon);
         }
