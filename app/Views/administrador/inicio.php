@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -17,15 +17,15 @@
            DESIGN SYSTEM
         ══════════════════════════════════════ */
         :root {
-            --purple-900: #1a0533;
-            --purple-800: #2d0a55;
-            --purple-700: #4a1282;
-            --purple-600: #6b21b8;
-            --purple-500: #8b3fd4;
-            --purple-400: #a855f7;
-            --purple-300: #c084fc;
-            --purple-200: #e9d5ff;
-            --purple-100: #f5f0ff;
+            --purple-900: #0d2409;
+            --purple-800: #173a10;
+            --purple-700: #2d6622;
+            --purple-600: #4a8a37;
+            --purple-500: #7fac6e;
+            --purple-400: #8fba7e;
+            --purple-300: #abd49b;
+            --purple-200: #d4eacc;
+            --purple-100: #f0f7ec;
             --green:      #10b981;
             --green-light:#d1fae5;
             --green-dark: #065f46;
@@ -39,11 +39,11 @@
             --surface:    #ffffff;
             --surface-alt:#fafbff;
             --border:     #e8e0f5;
-            --text:       #1a0533;
+            --text:       #0d2409;
             --muted:      #7c6fa0;
-            --shadow-sm:  0 1px 3px rgba(74,18,130,.08);
-            --shadow-md:  0 4px 16px rgba(74,18,130,.12);
-            --shadow-lg:  0 12px 40px rgba(74,18,130,.18);
+            --shadow-sm:  0 1px 3px rgba(45,102,34,.08);
+            --shadow-md:  0 4px 16px rgba(45,102,34,.12);
+            --shadow-lg:  0 12px 40px rgba(45,102,34,.18);
             --radius:     14px;
             --radius-sm:  8px;
             --ease:       cubic-bezier(.4,0,.2,1);
@@ -53,7 +53,7 @@
         body { font-family:Arial, Helvetica, sans-serif; background:var(--surface-alt); color:var(--text); }
         h1,h2,h3,h4,h5,h6 { font-family: Arial, Helvetica; }
         ::-webkit-scrollbar { width:6px; height:6px; }
-        ::-webkit-scrollbar-track { background:#f5f0ff; }
+        ::-webkit-scrollbar-track { background:#f0f7ec; }
         ::-webkit-scrollbar-thumb { background:var(--purple-400); border-radius:99px; }
 
         /* ══════════════════════════════════════
@@ -213,7 +213,7 @@
             background:linear-gradient(145deg,var(--purple-800),var(--purple-600),#9333ea);
             border-radius:var(--radius); padding:28px 22px;
             display:flex; flex-direction:column; justify-content:space-between;
-            box-shadow:0 8px 30px rgba(107,33,184,.4);
+            box-shadow:0 8px 30px rgba(74,138,55,.4);
             animation:slideUp .4s ease .12s both;
             position:relative; overflow:hidden; height:100%;
         }
@@ -244,7 +244,7 @@
             font-weight:800; color:#fff; line-height:1.2; margin-bottom:10px;
         }
 
-        .premium-title span { color:#e9d5ff; }
+        .premium-title span { color:#d4eacc; }
 
         .premium-desc { font-size:12.5px; color:rgba(255,255,255,.7); margin-bottom:24px; line-height:1.6; }
 
@@ -254,7 +254,7 @@
             display:flex; align-items:center; gap:8px;
             font-size:12px; color:rgba(255,255,255,.85); font-weight:500;
         }
-        .premium-perk i { color:#c084fc; font-size:11px; }
+        .premium-perk i { color:#abd49b; font-size:11px; }
 
         .btn-premium {
             display:inline-flex; align-items:center; gap:8px;
@@ -393,10 +393,52 @@
 
         .color-morado{background:linear-gradient(135deg,var(--purple-800),var(--purple-700)) !important;}
 
-        @media (max-width:768px){
-            .dash-wrapper{padding:14px;}
-            .dash-title{font-size:20px;}
-            .sales-metrics{grid-template-columns:1fr 1fr;}
+        /* ══════════════════════════════════════
+           RESPONSIVE
+        ══════════════════════════════════════ */
+
+        /* ─ Tablet: sidebar off-screen, content full-width ─ */
+        @media (max-width:991px) {
+            .page-body-wrapper {
+                padding-left: 0 !important;
+                margin-left:  0 !important;
+                width: 100%   !important;
+            }
+            .main-panel {
+                width: 100%  !important;
+                min-width: 0 !important;
+                margin-left: 0 !important;
+            }
+            .dash-wrapper { padding: 16px; }
+        }
+
+        /* ─ Phablet ─ */
+        @media (max-width:768px) {
+            .dash-title  { font-size: 19px; }
+            .dash-datebadge { font-size: 11px; padding: 6px 12px; }
+            .chart-wrap  { height: 200px; }
+            .premium-card { height: auto; }
+        }
+
+        /* ─ Small mobile ─ */
+        @media (max-width:560px) {
+            .dash-wrapper  { padding: 12px 10px; }
+            .dash-topbar   { flex-direction: column; align-items: flex-start; gap: 6px; }
+            .kpi-strip     { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+            .kpi-card      { padding: 12px 14px; gap: 10px; }
+            .kpi-icon      { width: 38px; height: 38px; font-size: 15px; }
+            .sales-metrics { grid-template-columns: 1fr; }
+            .chart-wrap    { height: 180px; }
+            .panel-body    { padding: 12px 14px; }
+            .panel-header  { padding: 10px 14px; }
+            .dash-main-grid  { gap: 12px; }
+            .dash-bottom-grid { gap: 12px; }
+        }
+
+        /* ─ Tiny (≤360 px) ─ */
+        @media (max-width:360px) {
+            .kpi-strip { grid-template-columns: 1fr 1fr; gap: 8px; }
+            .color-stats-grid { gap: 8px; }
         }
     </style>
 </head>
@@ -659,8 +701,8 @@
                 {
                     label: 'Ventas',
                     data: [12, 19, 3, 5, 10, 2, 13, 3, 8, 15, 7, 11],
-                    backgroundColor: 'rgba(107,33,184,.18)',
-                    borderColor: '#6b21b8',
+                    backgroundColor: 'rgba(74,138,55,.18)',
+                    borderColor: '#4a8a37',
                     borderWidth: 2,
                     borderRadius: 8,
                     borderSkipped: false,
@@ -695,7 +737,7 @@
                     }
                 },
                 tooltip: {
-                    backgroundColor: '#2d0a55',
+                    backgroundColor: '#173a10',
                     titleFont: { family:'Syne', size:13, weight:'700' },
                     bodyFont: { family:'DM Sans', size:12 },
                     cornerRadius: 10,
@@ -710,7 +752,7 @@
                 },
                 y: {
                     beginAtZero: true,
-                    grid: { color:'rgba(168,85,247,.08)' },
+                    grid: { color:'rgba(143,186,126,.08)' },
                     ticks: { font:{ family:'DM Sans', size:11 }, color:'#7c6fa0' },
                     border: { display:false }
                 }

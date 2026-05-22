@@ -1,4 +1,4 @@
-<!-- ═══════════════════════════════════════════════════════════════
+﻿<!-- ═══════════════════════════════════════════════════════════════
      lateralderecha.php  —  Sidebar rediseñado  |  InventSoft
      Usa el mismo sistema de diseño que pedidos_final.php
      ════════════════════════════════════════════════════════════ -->
@@ -8,20 +8,20 @@
    Variables (alineadas con pedidos_final)
 ─────────────────────────────────────────────────────────────── */
 :root {
-  --v:         #5b2fc9;
-  --v2:        #3d1d8a;
-  --v3:        #7c55e0;
-  --v-glow:    rgba(91,47,201,.2);
-  --v-soft:    rgba(91,47,201,.08);
-  --v-mid:     rgba(91,47,201,.14);
+  --v:         #4a8a37;
+  --v2:        #2d6622;
+  --v3:        #7fac6e;
+  --v-glow:    rgba(74,138,55,.2);
+  --v-soft:    rgba(74,138,55,.08);
+  --v-mid:     rgba(74,138,55,.14);
   --green:     #0fa968;
-  --ink:       #1a1040;
-  --ink2:      #4a3d72;
-  --ink3:      #8b7db5;
-  --bg:        #f5f3fc;
+  --ink:       #0d2409;
+  --ink2:      #2d4a25;
+  --ink3:      #6b8f60;
+  --bg:        #f3f7f0;
   --surface:   #ffffff;
-  --border:    rgba(91,47,201,.12);
-  --border2:   rgba(91,47,201,.22);
+  --border:    rgba(74,138,55,.12);
+  --border2:   rgba(74,138,55,.22);
   --r:         12px;
   --r2:        8px;
 }
@@ -40,7 +40,7 @@
   position: relative;
   overflow: hidden;
   transition: width .3s cubic-bezier(.4,0,.2,1);
-  box-shadow: 2px 0 20px rgba(91,47,201,.06);
+  box-shadow: 2px 0 20px rgba(74,138,55,.06);
 }
 
 /* Gradiente sutil de fondo */
@@ -49,8 +49,8 @@
   position: absolute;
   inset: 0; z-index: 0; pointer-events: none;
   background:
-    radial-gradient(ellipse 80% 30% at 50% 0%,   rgba(91,47,201,.07) 0%, transparent 70%),
-    radial-gradient(ellipse 50% 20% at 50% 100%,  rgba(91,47,201,.04) 0%, transparent 70%);
+    radial-gradient(ellipse 80% 30% at 50% 0%,   rgba(74,138,55,.07) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 20% at 50% 100%,  rgba(74,138,55,.04) 0%, transparent 70%);
 }
 
 .sidebar .nav {
@@ -102,7 +102,7 @@
   gap: 11px;
   padding: 14px 16px;
   border-bottom: 1px solid var(--border);
-  background: rgba(91,47,201,.03);
+  background: rgba(74,138,55,.03);
   text-decoration: none;
   transition: background .2s;
 }
@@ -116,7 +116,7 @@
   transition: box-shadow .2s;
 }
 .sb-profile:hover .sb-avatar {
-  box-shadow: 0 0 0 3px rgba(91,47,201,.18);
+  box-shadow: 0 0 0 3px rgba(74,138,55,.18);
 }
 
 .sb-profile-info { min-width: 0; flex: 1; }
@@ -313,7 +313,7 @@
   border-top: 1px solid var(--border);
   padding: 12px 14px;
   display: flex; align-items: center; justify-content: space-between;
-  background: rgba(91,47,201,.02);
+  background: rgba(74,138,55,.02);
 }
 
 .sb-version {
@@ -363,8 +363,39 @@
 .sidebar::-webkit-scrollbar { width: 4px; }
 .sidebar::-webkit-scrollbar-track { background: transparent; }
 .sidebar::-webkit-scrollbar-thumb {
-  background: rgba(91,47,201,.15); border-radius: 99px;
+  background: rgba(74,138,55,.15); border-radius: 99px;
 }
+
+/* ──────────────────────────────────────────────────────────────
+   Mobile offcanvas
+─────────────────────────────────────────────────────────────── */
+@media (max-width: 991px) {
+  .sidebar {
+    position: fixed !important;
+    z-index: 9999 !important;
+    top: 0;
+    left: -260px !important;
+    bottom: 0;
+    height: 100vh !important;
+    overflow-y: auto;
+    transition: left .3s cubic-bezier(.4,0,.2,1), box-shadow .3s !important;
+    box-shadow: none !important;
+    width: 240px !important;
+  }
+  .sidebar.active {
+    left: 0 !important;
+    box-shadow: 6px 0 32px rgba(0,0,0,.28) !important;
+  }
+}
+
+/* Overlay backdrop */
+.sb-backdrop {
+  display: none;
+  position: fixed; inset: 0; z-index: 9998;
+  background: rgba(0,0,0,.38);
+  backdrop-filter: blur(2px);
+}
+.sb-backdrop.visible { display: block; }
 </style>
 
 

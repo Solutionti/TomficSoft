@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
@@ -8,8 +8,8 @@
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
-      --purple: #6b21b8;
-      --purple-light: #a855f7;
+      --purple: #4a8a37;
+      --purple-light: #8fba7e;
       --green: #059669;
       --green-bg: #d1fae5;
       --blue: #2563eb;
@@ -23,7 +23,7 @@
     html, body {
       height: 100%;
       overflow: hidden;
-      background: #0f0720;
+      background: #050f03;
       font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
     }
 
@@ -96,7 +96,7 @@
     .vf-corner {
       position: absolute;
       width: 32px; height: 32px;
-      border-color: rgba(168,85,247,.9);
+      border-color: rgba(143,186,126,.9);
       border-style: solid;
     }
     .vf-tl { top: calc(50% - 110px); left: calc(50% - 110px); border-width: 3px 0 0 3px; border-radius: 4px 0 0 0; }
@@ -110,7 +110,7 @@
       left: calc(50% - 108px);
       width: 216px;
       height: 2px;
-      background: linear-gradient(90deg, transparent, rgba(168,85,247,.8), transparent);
+      background: linear-gradient(90deg, transparent, rgba(143,186,126,.8), transparent);
       top: calc(50% - 108px);
       animation: scanLine 2s ease-in-out infinite;
     }
@@ -239,7 +239,7 @@
     .processing.show { opacity: 1; pointer-events: auto; }
     .proc-ring {
       width: 52px; height: 52px;
-      border: 4px solid rgba(168,85,247,.3);
+      border: 4px solid rgba(143,186,126,.3);
       border-top-color: var(--purple-light);
       border-radius: 50%;
       animation: spin .7s linear infinite;

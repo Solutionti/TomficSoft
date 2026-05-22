@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
@@ -13,7 +13,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      background: linear-gradient(160deg, #0f0720 0%, #1a0533 40%, #2d0a55 70%, #1a0533 100%);
+      background: linear-gradient(160deg, #050f03 0%, #0d2409 40%, #173a10 70%, #0d2409 100%);
       font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
       overflow: hidden;
       user-select: none;
@@ -25,7 +25,7 @@
       position: fixed;
       top: -200px; left: 50%; transform: translateX(-50%);
       width: 700px; height: 700px;
-      background: radial-gradient(circle, rgba(107,33,184,.25) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(74,138,55,.25) 0%, transparent 70%);
       pointer-events: none;
     }
 
@@ -75,7 +75,7 @@
     .qr-brand-icon {
       width: 42px; height: 42px;
       border-radius: 14px;
-      background: linear-gradient(135deg, #4a1282, #8b3fd4);
+      background: linear-gradient(135deg, #2d6622, #7fac6e);
       display: flex; align-items: center; justify-content: center;
       flex-shrink: 0;
     }
@@ -83,12 +83,12 @@
     .qr-brand-name {
       font-size: 1.05rem;
       font-weight: 800;
-      color: #1a0533;
+      color: #0d2409;
       line-height: 1.1;
     }
     .qr-brand-sub {
       font-size: .72rem;
-      color: #a855f7;
+      color: #8fba7e;
       letter-spacing: .04em;
       text-transform: uppercase;
       font-weight: 600;
@@ -125,8 +125,8 @@
     .qr-spinner.show { opacity: 1; }
     .spin-ring {
       width: 44px; height: 44px;
-      border: 4px solid #e9d5ff;
-      border-top-color: #8b3fd4;
+      border: 4px solid #d4eacc;
+      border-top-color: #7fac6e;
       border-radius: 50%;
       animation: spin .8s linear infinite;
     }
@@ -144,7 +144,7 @@
       height: 100%;
       width: 100%;
       border-radius: 99px;
-      background: linear-gradient(90deg, #4a1282, #a855f7);
+      background: linear-gradient(90deg, #2d6622, #8fba7e);
       transition: width .1s linear;
     }
 
@@ -156,7 +156,7 @@
       display: block;
       font-size: .95rem;
       font-weight: 600;
-      color: #1a0533;
+      color: #0d2409;
     }
     .qr-instruction small {
       font-size: .75rem;
@@ -170,7 +170,7 @@
       font-size: .72rem;
       font-weight: 700;
       letter-spacing: .06em;
-      color: #a855f7;
+      color: #8fba7e;
       text-transform: uppercase;
     }
 
@@ -254,7 +254,7 @@
     tick();
 
     /* ── QR rotation ── */
-    const INTERVAL = 10;
+    const INTERVAL = 30;
     let secsLeft   = INTERVAL;
     const spinner  = document.getElementById('qr-spinner');
     const progBar  = document.getElementById('qr-prog');
@@ -274,7 +274,7 @@
           element   : canvas,
           value     : text,
           size      : 256,
-          foreground: '#1a0533',
+          foreground: '#0d2409',
           background: '#ffffff',
           level     : 'H',
         });
@@ -323,7 +323,7 @@
         p.style.cssText = `
           width:${size}px; height:${size}px;
           left:${Math.random()*100}vw;
-          background:rgba(168,85,247,${Math.random()*.4+.1});
+          background:rgba(143,186,126,${Math.random()*.4+.1});
           animation-duration:${Math.random()*12+8}s;
           animation-delay:${Math.random()*10}s;
         `;

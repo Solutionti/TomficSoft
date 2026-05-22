@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 
 <head>
@@ -14,12 +14,12 @@
      ║  VARIABLES & BASE                                    ║
      ╚══════════════════════════════════════════════════════╝ */
     :root {
-      --v: #5b2fc9;
-      --v2: #3d1d8a;
-      --v3: #7c55e0;
-      --v-glow: rgba(91, 47, 201, .18);
-      --v-soft: rgba(91, 47, 201, .08);
-      --v-mid: rgba(91, 47, 201, .14);
+      --v: #4a8a37;
+      --v2: #2d6622;
+      --v3: #7fac6e;
+      --v-glow: rgba(74, 138, 55, .18);
+      --v-soft: rgba(74, 138, 55, .08);
+      --v-mid: rgba(74, 138, 55, .14);
       --green: #0fa968;
       --green-s: rgba(15, 169, 104, .12);
       --amber: #c97c0f;
@@ -30,15 +30,15 @@
       --red-s: rgba(208, 51, 80, .1);
       --teal: #0abfa3;
 
-      --bg: #f5f3fc;
+      --bg: #f3f7f0;
       --surface: #ffffff;
       --surface2: #faf8ff;
-      --border: rgba(91, 47, 201, .12);
-      --border2: rgba(91, 47, 201, .2);
+      --border: rgba(74, 138, 55, .12);
+      --border2: rgba(74, 138, 55, .2);
 
-      --ink: #1a1040;
-      --ink2: #4a3d72;
-      --ink3: #8b7db5;
+      --ink: #0d2409;
+      --ink2: #2d4a25;
+      --ink3: #6b8f60;
 
       --r: 12px;
       --r2: 8px;
@@ -69,9 +69,9 @@
       z-index: 0;
       pointer-events: none;
       background:
-        radial-gradient(ellipse 55% 45% at 5% 0%, rgba(91, 47, 201, .09) 0%, transparent 65%),
+        radial-gradient(ellipse 55% 45% at 5% 0%, rgba(74, 138, 55, .09) 0%, transparent 65%),
         radial-gradient(ellipse 35% 35% at 95% 100%, rgba(10, 191, 163, .06) 0%, transparent 60%),
-        radial-gradient(ellipse 40% 30% at 50% 50%, rgba(91, 47, 201, .03) 0%, transparent 80%);
+        radial-gradient(ellipse 40% 30% at 50% 50%, rgba(74, 138, 55, .03) 0%, transparent 80%);
     }
 
     /* ╔══════════════════════════════════════════════════════╗
@@ -121,15 +121,15 @@
 
     @keyframes pulse-ring {
       0% {
-        box-shadow: 0 0 0 0 rgba(91, 47, 201, .35);
+        box-shadow: 0 0 0 0 rgba(74, 138, 55, .35);
       }
 
       70% {
-        box-shadow: 0 0 0 8px rgba(91, 47, 201, 0);
+        box-shadow: 0 0 0 8px rgba(74, 138, 55, 0);
       }
 
       100% {
-        box-shadow: 0 0 0 0 rgba(91, 47, 201, 0);
+        box-shadow: 0 0 0 0 rgba(74, 138, 55, 0);
       }
     }
 
@@ -304,7 +304,7 @@
 
     .stat:hover {
       border-color: var(--stat-color, var(--v));
-      box-shadow: 0 0 0 3px rgba(91, 47, 201, .08), 0 4px 20px rgba(0, 0, 0, .05);
+      box-shadow: 0 0 0 3px rgba(74, 138, 55, .08), 0 4px 20px rgba(0, 0, 0, .05);
       transform: translateY(-2px);
     }
 
@@ -494,7 +494,7 @@
     }
 
     table.tbl tbody tr {
-      border-bottom: 1px solid rgba(91, 47, 201, .055);
+      border-bottom: 1px solid rgba(74, 138, 55, .055);
       transition: background .15s;
       animation: slide-right .3s ease both;
     }
@@ -541,7 +541,7 @@
     }
 
     table.tbl tbody tr:hover {
-      background: rgba(91, 47, 201, .035);
+      background: rgba(74, 138, 55, .035);
     }
 
     table.tbl tbody tr:last-child {
@@ -604,7 +604,7 @@
     .badge.v {
       background: var(--v-soft);
       color: var(--v);
-      border: 1px solid rgba(91, 47, 201, .2);
+      border: 1px solid rgba(74, 138, 55, .2);
     }
 
     .badge.g {
@@ -670,12 +670,12 @@
     }
 
     .act-btn.pdf {
-      background: rgba(91, 47, 201, .1);
+      background: rgba(74, 138, 55, .1);
       color: var(--v);
     }
 
     .act-btn.pdf:hover {
-      background: rgba(91, 47, 201, .18);
+      background: rgba(74, 138, 55, .18);
       box-shadow: 0 4px 12px var(--v-glow);
     }
 
@@ -754,7 +754,7 @@
       padding: 20px 20px 16px;
       position: relative;
       overflow: hidden;
-      box-shadow: 0 10px 36px rgba(91, 47, 201, .32), 0 2px 8px rgba(0, 0, 0, .08);
+      box-shadow: 0 10px 36px rgba(74, 138, 55, .32), 0 2px 8px rgba(0, 0, 0, .08);
     }
 
     /* decorative circles */
@@ -848,7 +848,7 @@
       border: 1px solid var(--border);
       border-radius: var(--r);
       overflow: hidden;
-      box-shadow: 0 2px 12px rgba(91, 47, 201, .05);
+      box-shadow: 0 2px 12px rgba(74, 138, 55, .05);
     }
 
     /* ── Header ── */
@@ -857,7 +857,7 @@
       align-items: center;
       justify-content: space-between;
       padding: 14px 16px 13px;
-      background: linear-gradient(105deg, rgba(91, 47, 201, .06) 0%, rgba(91, 47, 201, .02) 100%);
+      background: linear-gradient(105deg, rgba(74, 138, 55, .06) 0%, rgba(74, 138, 55, .02) 100%);
       border-bottom: 1px solid var(--border);
     }
 
@@ -945,7 +945,7 @@
     .feed-refresh:hover {
       color: var(--v);
       background: var(--v-soft);
-      border-color: rgba(91, 47, 201, .3);
+      border-color: rgba(74, 138, 55, .3);
     }
 
     .feed-refresh.spinning i {
@@ -969,8 +969,8 @@
       bottom: 0;
       width: 1px;
       background: repeating-linear-gradient(to bottom,
-          rgba(91, 47, 201, .14) 0px,
-          rgba(91, 47, 201, .14) 4px,
+          rgba(74, 138, 55, .14) 0px,
+          rgba(74, 138, 55, .14) 4px,
           transparent 4px,
           transparent 9px);
       pointer-events: none;
@@ -1020,7 +1020,7 @@
     }
 
     .fi:hover {
-      background: rgba(91, 47, 201, .03);
+      background: rgba(74, 138, 55, .03);
     }
 
     @keyframes fi-in {
@@ -1114,7 +1114,7 @@
       left: 52px;
       right: 0;
       height: 1px;
-      background: rgba(91, 47, 201, .05);
+      background: rgba(74, 138, 55, .05);
     }
 
     /* ── Status bars card ── */
@@ -1177,7 +1177,7 @@
 
     .sb-track {
       height: 5px;
-      background: rgba(91, 47, 201, .07);
+      background: rgba(74, 138, 55, .07);
       border-radius: 99px;
       overflow: hidden;
     }
@@ -1224,12 +1224,12 @@
     }
 
     ::-webkit-scrollbar-thumb {
-      background: rgba(91, 47, 201, .18);
+      background: rgba(74, 138, 55, .18);
       border-radius: 99px;
     }
 
     ::-webkit-scrollbar-thumb:hover {
-      background: rgba(91, 47, 201, .32);
+      background: rgba(74, 138, 55, .32);
     }
 
     /* ╔══════════════════════════════════════════════════════╗
@@ -1240,7 +1240,7 @@
       border: 1px solid var(--border) !important;
       border-radius: var(--r) !important;
       color: var(--ink) !important;
-      box-shadow: 0 32px 80px rgba(0, 0, 0, .14), 0 0 0 1px rgba(91, 47, 201, .08) !important;
+      box-shadow: 0 32px 80px rgba(0, 0, 0, .14), 0 0 0 1px rgba(74, 138, 55, .08) !important;
     }
 
     .modal-header {
@@ -1281,7 +1281,7 @@
       border-radius: var(--r2);
       padding: 14px;
       margin-bottom: 12px;
-      background: rgba(91, 47, 201, .025);
+      background: rgba(74, 138, 55, .025);
     }
 
     .msec-label {
@@ -1313,7 +1313,7 @@
     .modal .form-control,
     .modal select {
       background: #fff !important;
-      border: 1px solid rgba(91, 47, 201, .18) !important;
+      border: 1px solid rgba(74, 138, 55, .18) !important;
       border-radius: var(--r2) !important;
       color: var(--ink) !important;
       font-size: 13px !important;
@@ -1343,7 +1343,7 @@
 
     .modal .form-check-input {
       background: #fff !important;
-      border-color: rgba(91, 47, 201, .3) !important;
+      border-color: rgba(74, 138, 55, .3) !important;
       width: 15px;
       height: 15px;
     }
@@ -1361,7 +1361,7 @@
     }
 
     .modal-table thead th {
-      background: rgba(91, 47, 201, .07);
+      background: rgba(74, 138, 55, .07);
       color: var(--v);
       font-size: 10.5px;
       letter-spacing: .07em;
@@ -1378,7 +1378,7 @@
     }
 
     .modal-table tbody tr {
-      border-bottom: 1px solid rgba(91, 47, 201, .06);
+      border-bottom: 1px solid rgba(74, 138, 55, .06);
     }
 
     .btn-cancel {
@@ -1420,7 +1420,7 @@
     }
 
     .btn-save:hover {
-      box-shadow: 0 6px 24px rgba(91, 47, 201, .35);
+      box-shadow: 0 6px 24px rgba(74, 138, 55, .35);
       transform: translateY(-1px);
     }
 
@@ -1850,7 +1850,7 @@
       const total = SC.total || 1;
       const pedido = Math.max(total - SC.camino - SC.prep - SC.entregados, 0);
       const data = [
-        { label: 'Pedido', count: pedido, color: '#5b2fc9' },
+        { label: 'Pedido', count: pedido, color: '#4a8a37' },
         { label: 'Preparación', count: SC.prep, color: '#c97c0f' },
         { label: 'En camino', count: SC.camino, color: '#1a7fd4' },
         { label: 'Entregado', count: SC.entregados, color: '#0fa968' },

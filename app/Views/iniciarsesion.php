@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
@@ -9,14 +9,14 @@
   <link rel="stylesheet" href="<?= base_url('fontawesome/css/brands.css') ?>">
   <style>
     :root {
-      --p900: #1a0533; --p800: #2d0a55; --p700: #4a1282;
-      --p600: #6b21b8; --p500: #8b3fd4; --p400: #a855f7;
-      --p300: #c084fc; --p200: #e9d5ff; --p100: #f5f0ff;
+      --p900: #0d2409; --p800: #173a10; --p700: #2d6622;
+      --p600: #4a8a37; --p500: #7fac6e; --p400: #8fba7e;
+      --p300: #abd49b; --p200: #d4eacc; --p100: #f0f7ec;
       --green: #10b981;
       --border: #e8e0f5;
-      --text: #1a0533; --muted: #7c6fa0;
+      --text: #0d2409; --muted: #7c6fa0;
       --surface: #fff; --bg: #fafbff;
-      --shadow: 0 24px 64px rgba(26,5,51,.22);
+      --shadow: 0 24px 64px rgba(13,36,9,.22);
       --radius: 18px; --radius-sm: 10px;
       --tr: all .22s cubic-bezier(.4,0,.2,1);
     }
@@ -37,7 +37,7 @@
     .login-left {
       width: 42%;
       min-height: 100vh;
-      background: linear-gradient(160deg, #0f0720 0%, #1a0533 35%, #2d0a55 65%, #4a1282 100%);
+      background: linear-gradient(160deg, #050f03 0%, #0d2409 35%, #173a10 65%, #2d6622 100%);
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -53,7 +53,7 @@
       position: absolute;
       top: -120px; left: -80px;
       width: 420px; height: 420px;
-      background: radial-gradient(circle, rgba(107,33,184,.35) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(74,138,55,.35) 0%, transparent 70%);
       pointer-events: none;
     }
     .login-left::after {
@@ -61,7 +61,7 @@
       position: absolute;
       bottom: -80px; right: -60px;
       width: 320px; height: 320px;
-      background: radial-gradient(circle, rgba(168,85,247,.2) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(143,186,126,.2) 0%, transparent 70%);
       pointer-events: none;
     }
 
@@ -79,7 +79,7 @@
       background: linear-gradient(135deg, var(--p600), var(--p400));
       display: flex; align-items: center; justify-content: center;
       font-size: 20px; color: #fff;
-      box-shadow: 0 8px 24px rgba(107,33,184,.45);
+      box-shadow: 0 8px 24px rgba(74,138,55,.45);
     }
     .brand-name {
       font-size: 1.35rem; font-weight: 800;
@@ -115,8 +115,8 @@
     }
     .feature-dot {
       width: 32px; height: 32px; border-radius: 10px; flex-shrink: 0;
-      background: rgba(168,85,247,.15);
-      border: 1px solid rgba(168,85,247,.3);
+      background: rgba(143,186,126,.15);
+      border: 1px solid rgba(143,186,126,.3);
       display: flex; align-items: center; justify-content: center;
       font-size: 13px; color: var(--p300);
     }
@@ -219,7 +219,7 @@
     }
     .fc:focus {
       border-color: var(--p400);
-      box-shadow: 0 0 0 3px rgba(168,85,247,.15);
+      box-shadow: 0 0 0 3px rgba(143,186,126,.15);
     }
     .fc.is-invalid {
       border-color: #f87171;
@@ -250,7 +250,7 @@
       color: #fff; font-family: Arial, Helvetica;
       font-size: 14px; font-weight: 700;
       cursor: pointer; letter-spacing: .03em;
-      box-shadow: 0 6px 20px rgba(107,33,184,.4);
+      box-shadow: 0 6px 20px rgba(74,138,55,.4);
       transition: var(--tr);
       display: flex; align-items: center; justify-content: center; gap: 8px;
       margin-top: 8px;
@@ -258,7 +258,7 @@
     .btn-login:hover {
       background: linear-gradient(135deg, var(--p800), var(--p600));
       transform: translateY(-1px);
-      box-shadow: 0 10px 28px rgba(107,33,184,.5);
+      box-shadow: 0 10px 28px rgba(74,138,55,.5);
     }
     .btn-login:active { transform: translateY(0); }
 
@@ -285,7 +285,7 @@
     /* Mobile */
     @media (max-width: 768px) {
       .login-left { display: none; }
-      .login-right { background: linear-gradient(160deg, #0f0720, #2d0a55); }
+      .login-right { background: linear-gradient(160deg, #050f03, #173a10); }
       .login-card {
         box-shadow: 0 32px 80px rgba(0,0,0,.4);
         border-color: rgba(255,255,255,.08);

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -19,15 +19,15 @@
            DESIGN SYSTEM
         ══════════════════════════════════════ */
         :root {
-            --purple-900: #1a0533;
-            --purple-800: #2d0a55;
-            --purple-700: #4a1282;
-            --purple-600: #6b21b8;
-            --purple-500: #8b3fd4;
-            --purple-400: #a855f7;
-            --purple-300: #c084fc;
-            --purple-200: #e9d5ff;
-            --purple-100: #f5f0ff;
+            --purple-900: #0d2409;
+            --purple-800: #173a10;
+            --purple-700: #2d6622;
+            --purple-600: #4a8a37;
+            --purple-500: #7fac6e;
+            --purple-400: #8fba7e;
+            --purple-300: #abd49b;
+            --purple-200: #d4eacc;
+            --purple-100: #f0f7ec;
             --green:      #10b981;
             --green-light:#d1fae5;
             --green-dark: #065f46;
@@ -41,11 +41,11 @@
             --surface:    #ffffff;
             --surface-alt:#fafbff;
             --border:     #e8e0f5;
-            --text:       #1a0533;
+            --text:       #0d2409;
             --muted:      #7c6fa0;
-            --shadow-sm:  0 1px 3px rgba(74,18,130,.08);
-            --shadow-md:  0 4px 16px rgba(74,18,130,.12);
-            --shadow-lg:  0 12px 40px rgba(74,18,130,.18);
+            --shadow-sm:  0 1px 3px rgba(45,102,34,.08);
+            --shadow-md:  0 4px 16px rgba(45,102,34,.12);
+            --shadow-lg:  0 12px 40px rgba(45,102,34,.18);
             --radius:     14px;
             --radius-sm:  8px;
             --ease:       cubic-bezier(.4,0,.2,1);
@@ -55,7 +55,7 @@
         body { font-family:Arial, Helvetica; background:var(--surface-alt); color:var(--text); }
         h1,h2,h3,h4,h5,h6 { font-family:Arial, Helvetica; }
         ::-webkit-scrollbar { width:6px; height:6px; }
-        ::-webkit-scrollbar-track { background:#f5f0ff; }
+        ::-webkit-scrollbar-track { background:#f0f7ec; }
         ::-webkit-scrollbar-thumb { background:var(--purple-400); border-radius:99px; }
 
         /* ══════════════════════════════════════
@@ -131,7 +131,7 @@
         .pos-sale-num label { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.08em; color:rgba(255,255,255,.6); }
         .pos-sale-num .sale-id {
             font-family: Arial, Helvetica, sans-serif;
-            font-size:14px; font-weight:700; color:#e9d5ff;
+            font-size:14px; font-weight:700; color:#d4eacc;
         }
 
         /* Big total display */
@@ -212,7 +212,7 @@
             transition:all .25s var(--ease);
         }
         .pos-print-check:hover { background:rgba(255,255,255,.13); }
-        .pos-print-check input { width:15px; height:15px; accent-color:#a855f7; cursor:pointer; }
+        .pos-print-check input { width:15px; height:15px; accent-color:#8fba7e; cursor:pointer; }
         .pos-print-check span { font-size:12px; color:rgba(255,255,255,.8); font-weight:600; }
 
         /* Wave SVG */
@@ -284,14 +284,14 @@
             background:var(--surface); transition:all .25s var(--ease);
             outline:none; appearance:none;
         }
-        .fc:focus, .fsel:focus { border-color:var(--purple-400); box-shadow:0 0 0 3px rgba(168,85,247,.15); }
+        .fc:focus, .fsel:focus { border-color:var(--purple-400); box-shadow:0 0 0 3px rgba(143,186,126,.15); }
         .fc[readonly], .fsel[readonly] { background:var(--purple-100); color:var(--purple-700); cursor:default; }
 
         /* Product search bar */
         .search-bar {
             display:flex; border:1.5px solid var(--purple-400);
             border-radius:var(--radius-sm); overflow:hidden;
-            box-shadow:0 0 0 3px rgba(168,85,247,.12);
+            box-shadow:0 0 0 3px rgba(143,186,126,.12);
         }
         .search-bar input {
             flex:1; padding:9px 14px; border:none;
@@ -366,7 +366,7 @@
             transition:all .25s var(--ease);
         }
         .cart-table tbody tr:nth-child(even){background:#fdfaff;}
-        .cart-table tbody tr:hover{background:linear-gradient(90deg,#f5f0ff,#fdf8ff) !important;}
+        .cart-table tbody tr:hover{background:linear-gradient(90deg,#f0f7ec,#fdf8ff) !important;}
         .cart-table td { padding:11px 16px; vertical-align:middle; }
 
         .cart-empty {
@@ -393,7 +393,7 @@
             color:var(--purple-700); outline:none;
             transition:all .2s var(--ease);
         }
-        .qty-input:focus { border-color:var(--purple-400); box-shadow:0 0 0 3px rgba(168,85,247,.15); }
+        .qty-input:focus { border-color:var(--purple-400); box-shadow:0 0 0 3px rgba(143,186,126,.15); }
 
         .price-cell {
             font-family:Arial, Helvetica; font-size:13px;
