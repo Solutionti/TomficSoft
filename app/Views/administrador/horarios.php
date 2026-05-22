@@ -874,7 +874,7 @@
                 <h1 class="">Control de Horarios</h1>
               </div>
               <button class="btn-u btn-u-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                <i class="fas fa-user-plus"></i> Agregar Empleado
+                <i class="fas fa-user-plus"></i> Agregar Colaborador
               </button>
               
             </div>
