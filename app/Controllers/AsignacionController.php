@@ -196,20 +196,20 @@ class AsignacionController extends BaseController {
       $pdf->SetFont('Times','b',9);
       $pdf->Cell(25,5,'CODIGO', 'LTBR', 0,'L', false );
       $pdf->Cell(80,5,'NOMBRE', 'TBR', 0,'L', false );
-      $pdf->Cell(20,5,"CONTEO #1", 'TBR', 0,'L', false );
-      $pdf->Cell(22,5,"CONTEO #2", 'TBR', 0,'L', false );
+      $pdf->Cell(20,5,"STOCK", 'TBR', 0,'L', false );
+      $pdf->Cell(22,5,"CONTEO #1", 'TBR', 0,'L', false );
       $pdf->Cell(26,5,"DIFERENCIA", 'TBR', 0,'L', false );
-      $pdf->Cell(20,5,"CONTEO #3", 'TBR', 0,'L', false );
+      $pdf->Cell(20,5,"USUARIO", 'TBR', 0,'L', false );
 
       $pdf->SetFont('Times','',8);
       foreach($reportes->getResult() as $reporte) {
         $pdf->Ln(5);
         $pdf->Cell(25,5,$reporte->codigo_producto, 'LTBR', 0,'L', false );
         $pdf->Cell(80,5,utf8_decode($reporte->nombre), 'TBR', 0,'L', false );
-        $pdf->Cell(20,5,$reporte->conteo1, 'TBR', 0,'L', false );
-        $pdf->Cell(22,5,$reporte->conteo2, 'TBR', 0,'L', false );
+        $pdf->Cell(20,5,$reporte->saldo, 'TBR', 0,'L', false );
+        $pdf->Cell(22,5,$reporte->conteo1, 'TBR', 0,'L', false );
         $pdf->Cell(26,5,abs($reporte->conteo1 - $reporte->conteo2), 'TBR', 0,'L', false );
-        $pdf->Cell(20,5,'', 'TBR', 0,'L', false );
+        $pdf->Cell(20,5,$reporte->usuario, 'TBR', 0,'L', false );
       }
         
       // Salida del PDF al navegador
@@ -228,7 +228,7 @@ class AsignacionController extends BaseController {
         $sheet->setCellValue('B1', 'EAN13');
         $sheet->setCellValue('C1', 'NOMBRE');
         $sheet->setCellValue('D1', 'REFER');
-        $sheet->setCellValue('E1', 'CONTEO1');
+        $sheet->setCellValue('E1', 'STOCK');
         $sheet->setCellValue('F1', 'CONTE02');
         $sheet->setCellValue('G1', 'DIFERENCIA');
         $sheet->setCellValue('H1', 'CONTEO3');
@@ -236,7 +236,7 @@ class AsignacionController extends BaseController {
         $sheet->setCellValue('J1', 'UBICACION');
         $sheet->setCellValue('K1', 'LOCALIZACION');
         $sheet->setCellValue('L1', 'N° LOCALIZACION');
-        $sheet->setCellValue('M1', 'USUARIOS');
+        $sheet->setCellValue('M1', 'USUARIO');
 
         // // Datos de ejemplo
         $data = $this->asignacionModel->getExcelReportes($inventario);
@@ -248,15 +248,15 @@ class AsignacionController extends BaseController {
             $sheet->setCellValue('B' . $row, ' '.$item->codigo_producto);
             $sheet->setCellValue('C' . $row, $item->nombre);
             $sheet->setCellValue('D' . $row, $item->referencia);
-            $sheet->setCellValue('E' . $row, $item->conteo1);
-            $sheet->setCellValue('F' . $row, $item->conteo2);
+            $sheet->setCellValue('E' . $row, $item->saldo);
+            $sheet->setCellValue('F' . $row, $item->conteo1);
             $sheet->setCellValue('G' . $row, $item->diferencia);
             $sheet->setCellValue('H' . $row, $item->conteo3);
             $sheet->setCellValue('I' . $row, $item->estado);
             $sheet->setCellValue('J' . $row, $item->ubicacion);
             $sheet->setCellValue('K' . $row, $item->localizacion);
             $sheet->setCellValue('L' . $row, $item->num_localizacion);
-            $sheet->setCellValue('M' . $row, '');
+            $sheet->setCellValue('M' . $row, ' '.$item->usuario);
             $row++;
         }
 

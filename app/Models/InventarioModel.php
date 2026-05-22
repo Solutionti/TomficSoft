@@ -47,6 +47,7 @@ class InventarioModel extends Model
             'proveedor' => $data['proveedor'],
             'saldo' => $data['saldo'],
             'costo' => $data['costo'],
+            'medida' => $data['medida'],
             'estado' => 'Activo',
         ];
         // insertar en la base de datos
@@ -77,6 +78,7 @@ class InventarioModel extends Model
             'nit' => $data['nit'],
             'proveedor' => $data['proveedor'],
             'saldo' => $data['saldo'],
+            'medida' => $data['medida'],
             'costo' => $data['costo'],
         ];
         // actualizar en la base de datos
@@ -153,6 +155,10 @@ class InventarioModel extends Model
         $this->db->table('productos')
                   ->where('codigo_barras', $data["producto"])
                   ->update($productos);
+    }
+
+    public function ajustarInventario() {
+    
     }
 
 

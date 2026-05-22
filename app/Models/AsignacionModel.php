@@ -164,8 +164,9 @@ class AsignacionModel extends Model {
    public function getConteosTablaReportes() {
     $inventarios = $this->db->table('inventarios as inven')
                         ->select("inven.ubicacion, inven.localizacion, inven.numerolocalizacion, inven.usuarioconteo1,
-                        inven.usuarioconteo2,inven.observacion, SUM(cp.conteo1) as conte1, SUM(cp.conteo2) as conte2, SUM(cp.diferencia) as diferencia, inven.codigo_inventario")
+                        inven.usuarioconteo2,inven.observacion, SUM(cp.conteo1) as conte1, SUM(cp.conteo2) as conte2, SUM(cp.diferencia) as diferencia, inven.codigo_inventario, prod.saldo")
                         ->join("captura_conteos as cp", "inven.codigo_inventario = cp.codigo_inventario")
+                        ->join("productos as prod", "cp.codigo_producto = prod.codigo_barras")
                         ->groupBy([
                           "inven.ubicacion", 
                           "inven.localizacion", 

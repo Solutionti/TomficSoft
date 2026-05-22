@@ -911,8 +911,8 @@
                         <th>N.Local</th>
                         <th>Observación</th>
                         <th>Usuarios</th>
+                        <th>stock</th>
                         <th>Conteo #1</th>
-                        <th>Conteo #2</th>
                         <th>Diferencia</th>
                         <th>Validador</th>
                         <th>Imprimir reporte</th>
@@ -926,8 +926,8 @@
                         <td><?= $reporte->numerolocalizacion; ?></td>
                         <td class="text-uppercase"><?= $reporte->observacion; ?></td>
                         <td style="font-size:12px;"><?= $reporte->usuarioconteo1.' → '.$reporte->usuarioconteo2; ?></td>
+                        <td><span class="badge-inv badge-dark-inv"><?= $reporte->saldo; ?></span></td>
                         <td><span class="badge-inv badge-dark-inv"><?= $reporte->conte1; ?></span></td>
-                        <td><span class="badge-inv badge-dark-inv"><?= $reporte->conte2; ?></span></td>
                         <td>
                             <?php $diff = $reporte->conte1 - $reporte->conte2; ?>
                             <span class="badge-inv <?= $diff == 0 ? 'badge-success-inv' : 'badge-danger-inv' ?>">

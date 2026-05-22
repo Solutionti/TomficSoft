@@ -69,6 +69,7 @@ function eliminarProducto(id) {
     nit = $("#nit_inventario").val(),
     proveedor = $("#proveedor_inventario").val(),
     saldo = $("#saldo_inventario").val(),
+    medida = $("#medida_inventario").val(),
     costo = $("#costo_inventario").val();
 
     // creamos variable url
@@ -91,6 +92,7 @@ function eliminarProducto(id) {
         nit: nit,
         proveedor: proveedor,
         saldo: saldo,
+        medida: medida,
         costo: costo
       },
       success: function (response) {
@@ -133,6 +135,7 @@ function eliminarProducto(id) {
         $("#proveedor_editar").val(response[0].proveedor);
         $("#saldo_editar").val(response[0].saldo);
         $("#costo_editar").val(response[0].costo);
+        $("#medida_editar").val(response[0].medida);
       },
       error: function(response){
         $("body").overhang({
@@ -154,6 +157,7 @@ function eliminarProducto(id) {
     nit = $("#nit_editar").val(),
     proveedor = $("#proveedor_editar").val(),
     saldo = $("#saldo_editar").val(),
+    medida = $("#medida_editar").val(),
     costo = $("#costo_editar").val();
 
     let url = baseurl + "actualizarproductos";
@@ -173,6 +177,7 @@ function eliminarProducto(id) {
         nit: nit,
         proveedor: proveedor,
         saldo: saldo,
+        medida: medida,
         costo: costo
       },
       success: function (response){
@@ -337,7 +342,7 @@ function eliminarProducto(id) {
         overlay: true,
         callback: function (value) {
           if (value) {
-            //si
+            alert("Funcionalidad en desarrollo, pronto estará disponible.");
           }
           else {
             //no

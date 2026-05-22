@@ -48,9 +48,8 @@ class InventarioController extends BaseController
             $proveedor = $this->request->getPost('proveedor');
             $saldo = $this->request->getPost('saldo');
             $costo = $this->request->getPost('costo');
-            // echo "hola aca ";
-            // exit;
-            // crear un array con todos los campos que defini anteriormente
+              $medida = $this->request->getPost('medida');
+
             $data = [
                 'categoria' => $categoria,
                 'subcategoria' => $subcategoria,
@@ -63,6 +62,7 @@ class InventarioController extends BaseController
                 'nit' => $nit,
                 'proveedor' => $proveedor,
                 'saldo' => $saldo,
+                'medida' => $medida,
                 'costo' => $costo
             ];
     
@@ -104,6 +104,7 @@ class InventarioController extends BaseController
     $nit = $this->request->getPost('nit');
     $proveedor = $this->request->getPost('proveedor');
     $saldo = $this->request->getPost('saldo');
+    $medida = $this->request->getPost('medida');
     $costo = $this->request->getPost('costo');
 
     // crear un array con todos los campos que defini anteriormente
@@ -119,6 +120,7 @@ class InventarioController extends BaseController
       'nit' => $nit,
       'proveedor' => $proveedor,
       'saldo' => $saldo,
+      'medida' => $medida,
       'costo' => $costo
     ];
 
@@ -238,6 +240,10 @@ class InventarioController extends BaseController
         'consecutivo' => $this->ventasModel->getNumeroVenta()
       ];
       return view('administrador/solicitudinventarios', $data);
+   }
+
+   public function ajustarInventario() {
+    
    }
 
 }

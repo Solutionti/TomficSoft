@@ -529,7 +529,7 @@
             </div>
             <div class="col-md-2">
               <div class="fl"><label>Medida *</label>
-              <select class="fc" >
+              <select class="fc" id="medida_inventario" >
                 <option value="">Selecciona medida</option>
                 <option value="Peso">Peso (Kg)</option>
                 <option value="Unidades">Unidades (Uni)</option>
@@ -789,7 +789,7 @@
             <div class="col-md-2"><div class="fl"><label>Grupo *</label><input type="text" id="grupo_editar" class="fc" required></div></div>
             <div class="col-md-2"><div class="fl"><label>Subgrupo *</label><input type="text" id="subgrupo_editar" class="fc" required></div></div>
             <div class="col-md-2"><div class="fl"><label>Medida *</label>
-              <select class="fc" >
+              <select class="fc" id="medida_editar" >
                 <option value="">Selecciona medida</option>
                 <option value="Peso">Peso (Kg)</option>
                 <option value="Unidades">Unidades (Uni)</option>
