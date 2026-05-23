@@ -1493,7 +1493,8 @@
                 <input type="text" class="fc mh-dia-input" data-dia="${d}"
                   value="${valor}"
                   placeholder="ej: 8:00 AM - 5:00 PM"
-                  style="font-size:12px;padding:7px 10px;">
+                  style="font-size:12px;padding:7px 10px;"
+                >
               </div>
             </div>`;
         }).join('');

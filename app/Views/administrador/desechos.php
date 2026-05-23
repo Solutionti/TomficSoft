@@ -874,7 +874,7 @@
                 <h1 class="">Desechos Organicos</h1>
               </div>
               <button class="btn-u btn-u-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                <i class="fas fa-user-plus"></i> Agregar Producto
+                <i class="fas fa-user-plus"></i> Historial
               </button>
             </div>
 

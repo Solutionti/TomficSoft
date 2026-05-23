@@ -1834,10 +1834,12 @@
                                 <i class="fas fa-plus-circle"></i>
                                 <span class="label">Devoluciones</span>
                             </button>
+                            <!-- esta es para la persona que hace la solicitud -->
                             <button class="btn-inv btn-inv-success" data-bs-toggle="modal" data-bs-target="#modalasgignacionescrear">
                                 <i class="fas fa-map-marker-alt"></i>
-                                <span class="label">Historial</span>
+                                <span class="label">Solicitudes</span>
                             </button>
+                            <!-- este es para la persona que acepta el inventario -->
                             <button class="btn-inv btn-inv-outline-danger" data-bs-toggle="modal" data-bs-target="#modalProceso">
                                 <i class="fas fa-chart-bar"></i>
                                 <span class="label">Despachos</span>
