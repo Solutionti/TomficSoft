@@ -1835,12 +1835,12 @@
                                 <span class="label">Devoluciones</span>
                             </button>
                             <!-- esta es para la persona que hace la solicitud -->
-                            <button class="btn-inv btn-inv-success" data-bs-toggle="modal" data-bs-target="#modalasgignacionescrear">
+                            <button class="btn-inv btn-inv-success" data-bs-toggle="modal" data-bs-target="#modalsolicitudes">
                                 <i class="fas fa-map-marker-alt"></i>
                                 <span class="label">Solicitudes</span>
                             </button>
                             <!-- este es para la persona que acepta el inventario -->
-                            <button class="btn-inv btn-inv-outline-danger" data-bs-toggle="modal" data-bs-target="#modalProceso">
+                            <button class="btn-inv btn-inv-outline-danger" data-bs-toggle="modal" data-bs-target="#modaldespachos">
                                 <i class="fas fa-chart-bar"></i>
                                 <span class="label">Despachos</span>
                             </button>
@@ -1857,7 +1857,7 @@
                         <div class="form-section">
                   <div class="section-title"><i class="fas fa-barcode"></i>Búsqueda de producto</div>
                   <div class="row g-3 align-items-end">
-                      <div class="col-md-12">
+                      <div class="col-md-10">
                           <div class="fl" style="position:relative;">
                               <label class="req">Producto a solicitar</label>
                               <div class="search-bar">
@@ -1876,6 +1876,14 @@
                                   max-height:220px; overflow-y:auto;"></div>
                           </div>
                       </div>
+                      <div class="col-md-2">
+                          <button
+                            type="button"
+                            class="btn btn-success w-100 btn-rounded" 
+                            id="addToCartBtn">
+                             <span class="fas fa-save"></span> Guardar
+                          </button>
+                      </div>    
                   </div>
               </div>
               <div class="cart-card">
@@ -1929,14 +1937,83 @@
     </div>
   </div>
   <!-- ══════════════════════════════════════════════
-     MODAL: CREAR USUARIO
+     MODAL: DEVOLUCIONES
 ══════════════════════════════════════════════ -->
   <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
     aria-hidden="true">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog modal-fullscreen">
       <div class="modal-content">
         <div class="modal-header modal-header-inv">
-          <h1 class="modal-title"><i class="fas fa-user-plus me-2"></i>Productos organicos</h1>
+          <h1 class="modal-title"><i class="fas fa-user-plus me-2"></i>Devoluciones</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+
+          <!-- SECCIÓN: Datos personales -->
+          <div class="form-section">
+            <div class="form-section-title">
+              <i class="fas fa-id-card"></i> Productos a desechar
+            </div>
+            <div class="row g-3">
+              <div class="col-md-4">
+                <div class="fl">
+                  <label>Codigo *</label>
+                  <input type="number" id="codigo_producto" class="fc" required>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="fl">
+                  <label>Nombre del producto *</label>
+                  <input type="text" id="nombre_producto" class="fc" required>
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="fl">
+                  <label>Unidades *</label>
+                  <input type="text" id="unidades_producto" class="fc" required>
+                </div>
+              </div>
+              
+              <div class="col-md-2">
+                <div class="fl">
+                  <label>Estado *</label>
+                  <select class="fc fsel" id="estado_usuario" required>
+                    <option value="">Seleccione estado</option>
+                    <option value="Activo">Activo</option>
+                    <option value="Inactivo">Inactivo</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="fl">
+                  <label>Comentarios *</label>
+                  <input type="email" id="correo" class="fc">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn-u btn-u-danger-outline" data-bs-dismiss="modal">
+            <i class="fas fa-times"></i> Cerrar
+          </button>
+          <button type="button" class="btn-u btn-u-primary" onclick="crearUsuarios()">
+            <i class="fas fa-save"></i> Guardar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <!-- ══════════════════════════════════════════════
+     MODAL: SOLICITUDES
+══════════════════════════════════════════════ -->
+  <div class="modal fade" id="modalsolicitudes" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen">
+      <div class="modal-content">
+        <div class="modal-header modal-header-inv">
+          <h1 class="modal-title"><i class="fas fa-user-plus me-2"></i>Solicitudes</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -1998,14 +2075,14 @@
   </div>
 
   <!-- ══════════════════════════════════════════════
-     MODAL: ACTUALIZAR USUARIO
+     MODAL: DESPACHOS
 ══════════════════════════════════════════════ -->
-  <div class="modal fade" id="actualizarUsuario" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+  <div class="modal fade" id="modaldespachos" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
     aria-hidden="true">
     <div class="modal-dialog modal-fullscreen">
       <div class="modal-content">
         <div class="modal-header modal-header-inv">
-          <h1 class="modal-title"><i class="fas fa-user-edit me-2"></i>Actualizar Usuario y Permisos</h1>
+          <h1 class="modal-title"><i class="fas fa-user-plus me-2"></i>Despachos</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -2013,43 +2090,32 @@
           <!-- SECCIÓN: Datos personales -->
           <div class="form-section">
             <div class="form-section-title">
-              <i class="fas fa-id-card"></i> Datos personales
+              <i class="fas fa-id-card"></i> Productos a despachar
             </div>
             <div class="row g-3">
               <div class="col-md-4">
                 <div class="fl">
-                  <label>Documento *</label>
-                  <input type="number" id="documento_usuario_actualizar" class="fc" required>
+                  <label>Codigo *</label>
+                  <input type="number" id="codigo_producto" class="fc" required>
                 </div>
               </div>
               <div class="col-md-4">
                 <div class="fl">
-                  <label>Nombre *</label>
-                  <input type="text" id="nombre_usuario_actualizar" class="fc" required>
+                  <label>Nombre del producto *</label>
+                  <input type="text" id="nombre_producto" class="fc" required>
                 </div>
               </div>
-              <div class="col-md-4">
+              <div class="col-md-2">
                 <div class="fl">
-                  <label>Apellido *</label>
-                  <input type="text" id="apellido_usuario_actualizar" class="fc" required>
+                  <label>Unidades *</label>
+                  <input type="text" id="unidades_producto" class="fc" required>
                 </div>
               </div>
-              <div class="col-md-4">
-                <div class="fl">
-                  <label>Empresa *</label>
-                  
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="fl">
-                  <label>Teléfono *</label>
-                  <input type="number" id="telefono_usuario_actualizar" class="fc" required>
-                </div>
-              </div>
-              <div class="col-md-4">
+              
+              <div class="col-md-2">
                 <div class="fl">
                   <label>Estado *</label>
-                  <select class="fc fsel" id="estado_usuario_actualizar" required>
+                  <select class="fc fsel" id="estado_usuario" required>
                     <option value="">Seleccione estado</option>
                     <option value="Activo">Activo</option>
                     <option value="Inactivo">Inactivo</option>
@@ -2058,101 +2124,33 @@
               </div>
               <div class="col-md-12">
                 <div class="fl">
-                  <label>Correo electrónico *</label>
-                  <input type="email" id="correo_actualizar" class="fc">
+                  <label>Comentarios *</label>
+                  <input type="email" id="correo" class="fc">
                 </div>
               </div>
             </div>
           </div>
-
-          <!-- SECCIÓN: Acceso al sistema -->
-          <div class="form-section">
-            <div class="form-section-title">
-              <i class="fas fa-lock"></i> Acceso al sistema
-            </div>
-            <div class="row g-3">
-              <div class="col-md-4">
-                <div class="fl">
-                  <label>Rol *</label>
-                  <select class="fc fsel" id="rol_usuario_actualizar">
-                    <option value="">Seleccione el rol</option>
-                    <option value="Administrador">Administrador</option>
-                    <option value="Capturador">Auxiliar Capturador</option>
-                    <option value="Vendedor">Vendedor</option>
-                  </select>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="fl">
-                  <label>Fecha</label>
-                  <input type="date" id="fecha_usuario_actualizar" class="fc" value="<?php echo date('Y-m-d') ?>"
-                    readonly>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="fl">
-                  <label>Hora</label>
-                  <input type="time" id="hora_usuario_actualizar" class="fc" value="<?= date('H:i') ?>" readonly>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="fl">
-                  <label>Usuario *</label>
-                  <input type="text" id="usuario_usuario_actualizar" class="fc">
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="fl">
-                  <label>Contraseña *</label>
-                  <div class="pass-group">
-                    <input type="password" id="password_usuario_actualizar" placeholder="Nueva contraseña"
-                      class="js-toggle-password">
-                    <button type="button" class="pass-toggle"
-                      onclick="this.previousElementSibling.type = this.previousElementSibling.type === 'password' ? 'text' : 'password'; this.querySelector('i').classList.toggle('fa-eye'); this.querySelector('i').classList.toggle('fa-eye-slash');">
-                      <i class="fas fa-eye"></i>
-                    </button>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="fl">
-                  <label>Repetir contraseña *</label>
-                  <div class="pass-group">
-                    <input type="password" id="repetir_password_usuario_actualizar" placeholder="Confirmar contraseña"
-                      class="js-toggle-password">
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- SECCIÓN: Permisos -->
-          <div class="form-section">
-            <div class="form-section-title">
-              <i class="fas fa-shield-alt"></i> Permisos de usuario
-            </div>
-            <div class="perm-table-wrap">
-              <!--  -->
-            </div>
-          </div>
-
         </div>
         <div class="modal-footer">
           <button type="button" class="btn-u btn-u-danger-outline" data-bs-dismiss="modal">
             <i class="fas fa-times"></i> Cerrar
           </button>
-          <button type="button" class="btn-u btn-u-primary" onclick="actualizarUsuario()">
-            <i class="fas fa-sync-alt"></i> Actualizar usuario
+          <button type="button" class="btn-u btn-u-primary" onclick="crearUsuarios()">
+            <i class="fas fa-save"></i> Guardar
           </button>
         </div>
       </div>
     </div>
   </div>
 
+
+  
+
   <?php require_once("componentes/scripts.php") ?>
-  <script src="<?= base_url('js/usuarios.js') ?>"></script>
+  <script src="<?= base_url('js/solicitud_inventarios.js') ?>"></script>
 
   <script>
+    let carrito = [];
     document.addEventListener('DOMContentLoaded', () => {
       const tbody = document.querySelector('#table_usuarios tbody');
       if (!tbody) return;
@@ -2317,6 +2315,14 @@
           '<i class="fas fa-trash"></i></button></td>';
       tbody.appendChild(tr);
       actualizarContador();
+
+      // crear el array de productos para enviar al backend
+      carrito.push({
+        codigo: codigo,
+        nombre: nombre,
+        referencia: referencia,
+        cantidad: 1
+      });
     }
 
     window.actualizarContador = function () {

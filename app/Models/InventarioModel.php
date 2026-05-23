@@ -161,5 +161,34 @@ class InventarioModel extends Model
     
     }
 
+    //SOLICITUD DE INVENTARIOS
+
+    public function crearSolicitudInventarios($data) {
+        $solicitud = [
+            "usuario_id" => session()->get('documento'),
+            "fecha_solicitud" => date("Y-m-d"),
+            "estado" => "Pendiente",
+            "observacion" => $data["observacion"],
+            "aprobado_por" => null,
+            "fecha_aprobacion" => null,
+        ];
+        $this->db->table('solicitudes')
+                 ->insert($solicitud);
+    }
+
+    public function crearDetalleSolicitudInventarios($data) {
+        $detalle = [
+            "solicitud_id" => $data["solicitud_id"],
+            "producto_id" => $data["producto_id"],
+            "cantidad_solicitada" => $data["cantidad"],
+            "cantidad_aprobada" => null,
+            "usuario" => session()->get('documento'),
+            "sucursal" => session()->get('sede'),
+
+        ];
+        $this->db->table('detalle_solicitud')
+                 ->insert($detalle);
+    }
+
 
 }

@@ -242,6 +242,22 @@ class InventarioController extends BaseController
       return view('administrador/solicitudinventarios', $data);
    }
 
+   public function crearSolicitudInventarios() {
+     $observacion = $this->request->getPost('observacion');
+     $carrito = $this->request->getPost('carrito');
+
+     $data = [
+       'observacion' => $observacion,
+     ];
+
+     $this->inventarioModel->crearSolicitudInventarios($data);
+
+     foreach ($carrito as $item) {
+     
+     }
+
+   }
+
    public function ajustarInventario() {
     
    }
