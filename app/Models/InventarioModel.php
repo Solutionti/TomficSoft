@@ -165,15 +165,19 @@ class InventarioModel extends Model
 
     public function crearSolicitudInventarios($data) {
         $solicitud = [
-            "usuario_id" => session()->get('documento'),
-            "fecha_solicitud" => date("Y-m-d"),
-            "estado" => "Pendiente",
-            "observacion" => $data["observacion"],
-            "aprobado_por" => null,
-            "fecha_aprobacion" => null,
-        ];
-        $this->db->table('solicitudes')
-                 ->insert($solicitud);
+    "usuario_id"       => session()->get('documento'),
+    "fecha_solicitud"  => date("Y-m-d"),
+    "estado"           => "Pendiente",
+    "observacion"      => $data['observacion'],
+    "aprobado_por"     => null,
+    "fecha_aprobacion" => null,
+];
+
+$builder = $this->db->table('solicitudes');
+$builder->insert($solicitud);
+$codigo = $this->db->insertID();
+
+return $codigo;
     }
 
     public function crearDetalleSolicitudInventarios($data) {
@@ -183,12 +187,21 @@ class InventarioModel extends Model
             "cantidad_solicitada" => $data["cantidad"],
             "cantidad_aprobada" => null,
             "usuario" => session()->get('documento'),
-            "sucursal" => session()->get('sede'),
+            "sucursal" => 'Envigado',
 
         ];
         $this->db->table('detalle_solicitud')
                  ->insert($detalle);
     }
+
+    public function getSolicitudesInventarios() {
+        $solicitudes = $this->db->table('solicitudes')
+                ->select('solicitudes.*, usuarios.nombre, usuarios.apellido')
+                ->join('usuarios', 'usuarios.documento = solicitudes.usuario_id')
+                ->get();
+
+        return $solicitudes;
+   }
 
 
 }

@@ -24,6 +24,7 @@ class InventarioController extends BaseController
             'categorias' => $this->inventarioModel->getCategorias(),
             "permisoUsuario" => $this->listasModel->getPermisosMenu(),
             'empresas' => $this->inventarioModel->getEmpresas(),
+
           ];
   
           return view('administrador/inventarios', $data);
@@ -235,28 +236,34 @@ class InventarioController extends BaseController
   //SOLICITUD DE INVENTARIOS
    public function solicitudInventarios() {
       $data = [
-         'permisoUsuario' => $this->listasModel->getPermisosMenu(),
-         'caja' => $this->ventasModel->getCajaDisponible(),
-        'consecutivo' => $this->ventasModel->getNumeroVenta()
+        'permisoUsuario' => $this->listasModel->getPermisosMenu(),
+        'solicitudes' => $this->inventarioModel->getSolicitudesInventarios(),
       ];
       return view('administrador/solicitudinventarios', $data);
    }
 
    public function crearSolicitudInventarios() {
-     $observacion = $this->request->getPost('observacion');
+     $comentarios = $this->request->getPost('comentarios');
      $carrito = $this->request->getPost('carrito');
-
      $data = [
-       'observacion' => $observacion,
+       'observacion' => $comentarios,
      ];
 
-     $this->inventarioModel->crearSolicitudInventarios($data);
+     $codigo = $this->inventarioModel->crearSolicitudInventarios($data);
 
      foreach ($carrito as $item) {
-     
+       $detalle = [
+        "solicitud_id" => $codigo,
+        "producto_id" => $item['codigo'],
+        "cantidad" => $item['cantidad'],
+       ];
+
+       $this->inventarioModel->crearDetalleSolicitudInventarios($detalle);
      }
 
    }
+
+   
 
    public function ajustarInventario() {
     

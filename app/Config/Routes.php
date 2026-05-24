@@ -117,6 +117,8 @@ $routes->post('/desechos/guardar', 'DesechosController::guardar');
 
 //SOLICITUD DE INVENTARIOS
 $routes->get('/solicitudinventario', 'InventarioController::solicitudInventarios');
+$routes->post('/crearSolicitudInventarios', 'InventarioController::crearSolicitudInventarios');
+
 
 //FORMATOS
 $routes->get('/formatos', 'FormatosController::index');
