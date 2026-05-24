@@ -1842,17 +1842,17 @@
               </div>
               <div class="inv-topbar-actions">
                             <button class="btn-inv btn-inv-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                <i class="fas fa-plus-circle"></i>
+                                <i class="fas fa-minus-circle"></i>
                                 <span class="label">Devoluciones</span>
                             </button>
                             <!-- esta es para la persona que hace la solicitud -->
                             <button class="btn-inv btn-inv-success" data-bs-toggle="modal" data-bs-target="#modalsolicitudes">
-                                <i class="fas fa-map-marker-alt"></i>
+                                <i class="fas fa-truck"></i>
                                 <span class="label">Solicitudes</span>
                             </button>
                             <!-- este es para la persona que acepta el inventario -->
                             <button class="btn-inv btn-inv-outline-danger" data-bs-toggle="modal" data-bs-target="#modaldespachos">
-                                <i class="fas fa-chart-bar"></i>
+                                <i class="fas fa-store"></i>
                                 <span class="label">Despachos</span>
                             </button>
                             
@@ -1964,44 +1964,48 @@
           <!-- SECCIÓN: Datos personales -->
           <div class="form-section">
             <div class="form-section-title">
-              <i class="fas fa-id-card"></i> Productos a desechar
+              <i class="fas fa-id-card"></i> Devolución de productos
+              <button class="btn btn-primary btn-rounded btn-sm mx-2">Cargar solicitud</button>
             </div>
             <div class="row g-3">
-              <div class="col-md-4">
-                <div class="fl">
-                  <label>Codigo *</label>
-                  <input type="number" id="codigo_producto" class="fc" required>
-                </div>
+              <!--  -->
+            <div class="cart-card ">
+                  <div class="cart-header">
+                      <h5>
+                          <i class="fas fa-shopping-cart"></i>
+                          Listado de devoluciones
+                          <span class="cart-count" id="cartCount">0 Productos</span>
+                      </h5>
+                      <span style="font-size:11px;color:var(--muted);">
+                          <i class="fas fa-info-circle"></i>&nbsp;Los productos se agregan automáticamente
+                      </span>
+                  </div>
+                  <table class="cart-table">
+                      <thead>
+                          <tr>
+                              <th></th>
+                              <th>Código</th>
+                              <th>Producto</th>
+                              <th>Cantidad</th>
+                              <th>Devolución</th>
+                              <th>Usuario</th>
+                              <th>Acciones</th>
+                          </tr>
+                      </thead>
+                      <tbody class="tbody">
+                          <!-- JS populated -->
+                          <tr id="emptyCartRow">
+                              <td colspan="6" class="cart-empty">
+                                  <i class="fas fa-shopping-basket"></i>
+                                  Aún no hay productos a devolver.<br>
+                                  <span style="font-size:12px;color:var(--purple-300);">Agrega un producto para comenzar</span>
+                              </td>
+                          </tr>
+                      </tbody>
+                  </table>
               </div>
-              <div class="col-md-4">
-                <div class="fl">
-                  <label>Nombre del producto *</label>
-                  <input type="text" id="nombre_producto" class="fc" required>
                 </div>
-              </div>
-              <div class="col-md-2">
-                <div class="fl">
-                  <label>Unidades *</label>
-                  <input type="text" id="unidades_producto" class="fc" required>
-                </div>
-              </div>
-              
-              <div class="col-md-2">
-                <div class="fl">
-                  <label>Estado *</label>
-                  <select class="fc fsel" id="estado_usuario" required>
-                    <option value="">Seleccione estado</option>
-                    <option value="Activo">Activo</option>
-                    <option value="Inactivo">Inactivo</option>
-                  </select>
-                </div>
-              </div>
-              <div class="col-md-12">
-                <div class="fl">
-                  <label>Comentarios *</label>
-                  <input type="email" id="correo" class="fc">
-                </div>
-              </div>
+              <!--  -->
             </div>
           </div>
         </div>
@@ -2056,7 +2060,8 @@
                               <th>Fecha</th>
                               <th>Hora</th>
                               <th>Estado</th>
-                              <th>Usuario</th>
+                              <th>Usuario pidio</th>
+                              <th>Usuario Acepto</th>
                               <th></th>
                           </tr>
                       </thead>
@@ -2075,6 +2080,7 @@
                             <td><?= $solicitud->fecha_solicitud ?></td>
                             <td></td>
                             <td><?= $solicitud->estado ?></td>
+                            <td><?= $solicitud->nombre.' '.$solicitud->apellido ?></td>
                             <td><?= $solicitud->nombre.' '.$solicitud->apellido ?></td>
                             <td>
                           <div class="action-wrap">
@@ -2128,6 +2134,7 @@
           <div class="form-section">
             <div class="form-section-title">
               <i class="fas fa-id-card"></i> Productos a despachar
+              <button class="btn btn-primary btn-rounded btn-sm mx-2">Cargar solicitud</button>
             </div>
             <div class="row g-3">
               <div class="col-md-4">
@@ -2166,6 +2173,68 @@
                 </div>
               </div>
             </div>
+            <!--  -->
+            <div class="row g-3 mt-4">
+              <div class="col-md-12">
+                <div class="cart-card ">
+                  <div class="cart-header">
+                      <h5>
+                          <i class="fas fa-shopping-cart"></i>
+                          Listado de solicitudes
+                          <span class="cart-count" id="cartCount">0 Solicitudes</span>
+                      </h5>
+                      <span style="font-size:11px;color:var(--muted);">
+                          <i class="fas fa-info-circle"></i>&nbsp;Las solicitudes se agregan automáticamente
+                      </span>
+                  </div>
+                  <table class="cart-table">
+                      <thead>
+                          <tr>
+                            <th>Código</th>
+                            <th>Sucursal</th>
+                              <th>Fecha</th>
+                              <th>Hora</th>
+                              <th>Estado</th>
+                              <th>Usuario pidio</th>
+                              <th>Usuario Acepto</th>
+                              <th></th>
+                          </tr>
+                      </thead>
+                      <tbody class="tbody">
+                          <!-- <tr id="emptyCartRow">
+                            <td colspan="6" class="cart-empty">
+                              <i class="fas fa-shopping-basket"></i>
+                                Aún no hay solicitudes en el inventario.<br>
+                              <span style="font-size:12px;color:var(--purple-300);">Agrega una solicitud para comenzar</span>
+                            </td>
+                          </tr> -->
+                           <?php foreach ($solicitudes->getResult() as $solicitud) : ?>
+                          <tr class="text-uppercase">
+                            <td><?= $solicitud->codigo_solicitud ?></td>
+                            <td>Envigado</td>
+                            <td><?= $solicitud->fecha_solicitud ?></td>
+                            <td></td>
+                            <td><?= $solicitud->estado ?></td>
+                            <td><?= $solicitud->nombre.' '.$solicitud->apellido ?></td>
+                            <td><?= $solicitud->nombre.' '.$solicitud->apellido ?></td>
+                            <td>
+                          <div class="action-wrap">
+                            <button class="btn-action btn-action-edit"
+                              title="Ver solicitud">
+                              <i class="fas fa-file-pdf"></i>
+                            </button>
+                            <button class="btn-action btn-action-del"
+                              title="Imprimir solicitud">
+                              <i class="fas fa-trash"></i>
+                            </button>
+                          </div>
+                        </td>
+                          </tr>
+                         <?php endforeach; ?>
+                      </tbody>
+                  </table>
+              </div>
+                </div></script>
           </div>
         </div>
         <div class="modal-footer">
