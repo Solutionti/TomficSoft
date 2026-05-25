@@ -856,6 +856,78 @@
         display: none;
       }
     }
+    .mode-switcher-wrap{
+      display:flex;align-items:center;justify-content:center;
+      margin-bottom:24px;
+      animation:fadeUp .4s var(--ease) .22s both;
+    }
+    .mode-switcher{
+      display:inline-flex;align-items:center;gap:0;
+      background:var(--surface);
+      border:1.5px solid var(--border2);
+      border-radius:50px;
+      padding:5px;
+      box-shadow:var(--sh-sm);
+      position:relative;
+    }
+    /* sliding pill */
+    .mode-pill{
+      position:absolute;
+      top:5px; left:5px;
+      height:calc(100% - 10px);
+      background:linear-gradient(135deg,var(--g600),var(--g400));
+      border-radius:50px;
+      transition:all .35s var(--spring);
+      box-shadow:0 3px 12px rgba(61,150,33,.35);
+      z-index:0;
+    }
+    .mode-tab{
+      position:relative;z-index:1;
+      display:inline-flex;align-items:center;gap:8px;
+      padding:9px 22px;
+      border-radius:50px;
+      font-family:'Outfit',sans-serif;
+      font-size:13px;font-weight:700;
+      cursor:pointer;
+      border:none;background:transparent;
+      color:var(--muted);
+      transition:color .25s var(--ease);
+      white-space:nowrap;
+      user-select:none;
+    }
+    .mode-tab.active{color:#fff}
+    .mode-tab i{font-size:13px;transition:transform .25s var(--spring)}
+    .mode-tab:hover:not(.active){color:var(--g600)}
+    .mode-tab:hover:not(.active) i{transform:scale(1.15)}
+
+    
+        .cart-table {
+            width:100%; border-collapse:separate; border-spacing:0; font-size:13px;
+        }
+        .cart-table thead th {
+            background:linear-gradient(135deg,var(--purple-800),var(--purple-700));
+            color:#fff; padding:11px 16px;
+            font-family:Arial, Helvetica; font-size:10.5px;
+            font-weight:700; letter-spacing:.06em; text-transform:uppercase;
+            text-align:left; white-space:nowrap;
+        }
+        .cart-table tbody tr {
+            border-bottom:1px solid #f0ebfa;
+            transition:all .25s var(--ease);
+        }
+        .cart-table tbody tr:nth-child(even){background:#fdfaff;}
+        .cart-table tbody tr:hover{background:linear-gradient(90deg,#f0f7ec,#fdf8ff) !important;}
+        .cart-table td { padding:11px 16px; vertical-align:middle; }
+
+        .cart-header {
+            padding:12px 18px; border-bottom:1px solid var(--border);
+            background:linear-gradient(90deg,var(--purple-100),#fdf8ff);
+            display:flex; align-items:center; justify-content:space-between;
+        }
+        .cart-header h5 {
+            font-size:13px; font-weight:700; color:var(--purple-800);
+            display:flex; align-items:center; gap:8px; margin:0;
+        }
   </style>
 </head>
 <body>
@@ -909,9 +981,23 @@
                 </div>
               </div>
             </div>
+            <!--  -->
+            <div class="mode-switcher-wrap">
+    <div class="mode-switcher" id="mode-switcher">
+      <!-- sliding pill, width/left set by JS -->
+      <div class="mode-pill" id="mode-pill"></div>
+      <button class="mode-tab text-dark" id="tab-ai" data-mode="ai">
+        <i class="fas fa-brain"></i> Captura Inteligente
+      </button>
+      <button class="mode-tab" id="tab-man" data-mode="man">
+        <i class="fas fa-keyboard"></i> Captura Manual
+      </button>
+    </div>
+  </div>
+            <!--  -->
 
             <!-- ══════════ TABLE CARD ══════════ -->
-            <div class="usr-table-card anim-3">
+            <div class="usr-table-card anim-3 mode-pane pane-in" id="pane-ai">
               <div class="row">
                 <div class="col-md-6 mt-3">
                   <div class="col-md-12">
@@ -968,9 +1054,10 @@
                       </div>
 
                     <div class="card-body">
-                      <h5 class="card-title">Captura Inteligente</h5>
+                      <h5 class="card-title mb-4">Captura Inteligente</h5>
                       <div class="row">
                         <div class="col-md-12" style="position:relative;">
+                          <label class="mb-2">Producto</label>
                           <input type="text" id="ocr-nombre-input" class="form-control"
                             placeholder="Código o nombre del producto"
                             autocomplete="off">
@@ -983,18 +1070,20 @@
                       </div>
                       <div class="row mt-3">
                         <div class="col-md-7">
-                          <input type="text" id="ocr-peso-input" class="form-control" placeholder="Peso en kg">
+                          <label class="mb-2">Peso (KG)</label>
+                          <input type="text" id="ocr-peso-input" class="form-control" placeholder="0.000">
                         </div>
                         <div class="col-md-5">
-                          <input type="text" id="ocr-unidades-input" class="form-control" placeholder="Cantidad unidades">
+                          <label class="mb-2" >Unidades</label>
+                          <input type="text" id="ocr-unidades-input" class="form-control" placeholder="0">
                         </div>
                       </div>
                       <div class="mt-3 d-flex gap-2 flex-wrap">
-                        <button type="button" id="ocr-btn-guardar" class="btn btn-primary">Guardar</button>
-                        <button type="button" class="btn btn-danger" id="ocr-btn-camara">
+                        <button type="button" id="ocr-btn-guardar" class="btn btn-primary btn-rounded">Guardar</button>
+                        <button type="button" class="btn btn-danger btn-rounded" id="ocr-btn-camara">
                           <span class="fas fa-camera"></span> Cámara
                         </button>
-                        <button type="button" class="btn btn-success" id="ocr-btn-procesar" disabled>
+                        <button type="button" class="btn btn-success btn-rounded" id="ocr-btn-procesar" disabled>
                           <i class="fas fa-magnifying-glass"></i> Leer balanza
                         </button>
                       </div>
@@ -1016,13 +1105,14 @@
                         <canvas id="ocr-camera-canvas" style="display:none;"></canvas>
                       </div>
                       <div class="modal-footer" style="justify-content:center;">
-                        <button id="ocr-btn-capturar" class="btn btn-danger px-4">
+                        <button id="ocr-btn-capturar" class="btn btn-danger px-4 btn-rounded">
                           <i class="fas fa-circle-dot me-2"></i>Capturar
                         </button>
                       </div>
                     </div>
                   </div>
                 </div>
+
                 <!-- aca cierra  -->
                 <div class="col-md-6 mt-3">
                   <div class="col-md-12">
@@ -1040,9 +1130,10 @@
                         </p>
                       </div>
                     <div class="card-body">
-                      <h5 class="card-title">Captura Manual</h5>
+                      <h5 class="card-title mb-4">Captura Manual</h5>
                       <div class="row">
                         <div class="col-md-12" style="position:relative;">
+                          <label class="mb-2">Producto</label>
                           <input type="text" id="man-nombre-input" class="form-control"
                             placeholder="Código o nombre del producto"
                             autocomplete="off">
@@ -1055,23 +1146,25 @@
                       </div>
                       <div class="row mt-3">
                         <div class="col-md-7">
+                          <label class="mb-2">Peso (KG)</label>
                           <input
                             type="text"
                             id="man-peso-input"
                             class="form-control"
-                            placeholder="Peso en kg"
+                            placeholder="0.000"
                           >
                         </div>
                         <div class="col-md-5">
+                          <label class="mb-2">Unidades</label>  
                           <input
                             type="text"
                             id="man-unidades-input"
                             class="form-control"
-                            placeholder="Cantidad unidades"
+                            placeholder="0"
                           >
                         </div>
                       </div>
-                      <button type="button" id="man-btn-guardar" class="btn btn-primary mt-3">Guardar</button>
+                      <button type="button" id="man-btn-guardar" class="btn btn-primary mt-3 btn-rounded">Guardar</button>
                     </div>
                   </div>
                   </div>
@@ -1100,49 +1193,56 @@
           <!-- SECCIÓN: Datos personales -->
           <div class="form-section">
             <div class="form-section-title">
-              <i class="fas fa-id-card"></i> Productos a desechar
+              <i class="fas fa-id-card"></i> Historico mensual
             </div>
             <div class="row g-3">
-              <div class="col-md-4">
-                <div class="fl">
-                  <label>Codigo *</label>
-                  <input type="number" id="codigo_producto" class="fc" required>
-                </div>
+              <div class="cart-card ">
+                  <div class="cart-header">
+                      <h5>
+                          <i class="fas fa-shopping-cart"></i>
+                          Listado de solicitudes
+                          <span class="cart-count" id="cartCount">0 Solicitudes</span>
+                      </h5>
+                      <span style="font-size:11px;color:var(--muted);">
+                          <i class="fas fa-info-circle"></i>&nbsp;Las solicitudes se agregan automáticamente
+                      </span>
+                  </div>
+                  <table class="cart-table">
+                      <thead>
+                          <tr>
+                            <th>Nombre</th>
+                            <th>Unidades</th>
+                            <th>Peso</th>
+                            <th>Dia</th>
+                            <th>Fecha</th>
+                            <th>Hora</th>
+                          </tr>
+                      </thead>
+                      <tbody class="tbody">
+                           <tr>
+                            <td>
+                          <div class="user-cell">
+                            <div class="user-avatar-wrap">
+                              <img src="" class="user-avatar">
+                              <span
+                                class="user-status-dot"></span>
+                            </div>
+                              <div>
+                                <div class="user-name">Arroz paisa</div>
+                                <div class="user-sub">123456789</div>
+                               </div>
+                              </div>
+                             </td>
+                             <td></td>
+                             <td>3650.0</td>
+                             <td>Jueves</td>
+                             <td>24-05-2026</td>
+                             <td>2:30 PM</td>
+                           </tr>
+                      </tbody>
+                  </table>
               </div>
-              <div class="col-md-4">
-                <div class="fl">
-                  <label>Nombre del producto *</label>
-                  <input type="text" id="nombre_producto" class="fc" required>
                 </div>
-              </div>
-              <div class="col-md-2">
-                <div class="fl">
-                  <label>Unidades *</label>
-                  <label>Estado *</label>
-                  <select class="fc fsel" id="estado_usuario" required>
-                    <option value="">Seleccione la unidad</option>
-                    <option value="Peso">Peso</option>
-                    <option value="Unidades">Unidades</option>
-                  </select>
-                </div>
-              </div>
-              
-              <div class="col-md-2">
-                <div class="fl">
-                  <label>Estado *</label>
-                  <select class="fc fsel" id="estado_usuario" required>
-                    <option value="">Seleccione estado</option>
-                    <option value="Activo">Activo</option>
-                    <option value="Inactivo">Inactivo</option>
-                  </select>
-                </div>
-              </div>
-              <div class="col-md-12">
-                <div class="fl">
-                  <label>Comentarios *</label>
-                  <input type="email" id="correo" class="fc">
-                </div>
-              </div>
             </div>
           </div>
         </div>

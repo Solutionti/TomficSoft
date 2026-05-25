@@ -2234,7 +2234,7 @@
                       </tbody>
                   </table>
               </div>
-                </div></script>
+                </div>
           </div>
         </div>
         <div class="modal-footer">
@@ -2247,6 +2247,7 @@
         </div>
       </div>
     </div>
+  </div>
   </div>
 
 

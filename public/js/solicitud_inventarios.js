@@ -12,6 +12,13 @@ $("#addToCartBtn").on("click", function () {
         overlay: true,
         callback: function (value) {
           if (value) {
+            if (carrito.length === 0) {
+                $("body").overhang({
+                 type: "error",
+                 message: "El carrito está vacío. Agregue productos antes de realizar la solicitud.",
+                }, 4000);
+                return;
+            }
             $.ajax({
         url: baseurl + 'crearSolicitudInventarios',
         method: 'POST',
@@ -22,6 +29,11 @@ $("#addToCartBtn").on("click", function () {
             carrito = [];
             $('#table_usuarios tbody').empty();
             actualizarContador();
+
+             $("body").overhang({
+                 type: "success",
+                 message: "Solicitud de inventarios creada exitosamente. y en espera de autorizacion",
+                }, 4000);
         },
         error: function (xhr, status, error) {
             alert('Error al crear la solicitud de inventarios: ' + error);
