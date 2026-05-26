@@ -877,39 +877,6 @@
                 <i class="fas fa-user-plus"></i> Agregar formato
               </button>
             </div>
-
-            <!-- ══════════ STATS STRIP ══════════ -->
-            <div class="usr-stats anim-2">
-              <div class="stat-card">
-                <div class="stat-icon purple"><i class="fas fa-users"></i></div>
-                <div class="stat-info">
-                  <div class="stat-num" id="statTotal">0</div>
-                  <div class="stat-label">Total productos</div>
-                </div>
-              </div>
-              <div class="stat-card">
-                <div class="stat-icon green"><i class="fas fa-user-check"></i></div>
-                <div class="stat-info">
-                  <div class="stat-num" id="statActive">0</div>
-                  <div class="stat-label">KG</div>
-                </div>
-              </div>
-              <div class="stat-card">
-                <div class="stat-icon red"><i class="fas fa-user-times"></i></div>
-                <div class="stat-info">
-                  <div class="stat-num" id="statInactive">0</div>
-                  <div class="stat-label">Unidades</div>
-                </div>
-              </div>
-              <div class="stat-card">
-                <div class="stat-icon blue"><i class="fas fa-user-shield"></i></div>
-                <div class="stat-info">
-                  <div class="stat-num" id="statAdmin">0</div>
-                  <div class="stat-label">Total Mensual</div>
-                </div>
-              </div>
-            </div>
-
             <!-- ══════════ TABLE CARD ══════════ -->
             <div class="usr-table-card anim-3">
               <div class="row">
