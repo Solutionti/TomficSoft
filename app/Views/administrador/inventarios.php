@@ -432,7 +432,7 @@
                             </div>
                         </div>
                         <div style="overflow-x:auto;">
-                            <table class="inv-table" id="tabla_inventarios">
+                            <table class="inv-table" id="tabla_inventarios" data-paginate="10">
                                 <thead>
                                     <tr>
                                         <th>Opciones</th>
@@ -861,10 +861,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const si = document.getElementById('searchInput');
     if (si) {
         si.addEventListener('input', function () {
-            const q = this.value.toLowerCase();
-            rows.forEach(r => {
-                r.style.display = r.textContent.toLowerCase().includes(q) ? '' : 'none';
-            });
+            paginacion.filtrar('tabla_inventarios', this.value);
         });
     }
 });

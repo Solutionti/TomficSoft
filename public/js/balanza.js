@@ -497,6 +497,42 @@
     document.getElementById('man-nombre-dropdown')
   );
 
+  /* ── Imagen captura manual ── */
+  let manOriginalBase64 = null;
+  const manFileInput    = document.getElementById('man-file-input');
+  const manDropZone     = document.getElementById('captura_manual');
+  const manDropHint     = document.getElementById('man-drop-hint');
+  const manPreviewWrap  = document.getElementById('man-preview-wrap');
+  const manPreviewImg   = document.getElementById('man-preview-img');
+
+  function loadManImage(file) {
+    if (!file || !file.type.startsWith('image/')) return;
+    const reader = new FileReader();
+    reader.onload = e => {
+      manOriginalBase64 = e.target.result;
+      manPreviewImg.src = e.target.result;
+      manDropHint.style.display  = 'none';
+      manPreviewWrap.style.display = 'block';
+    };
+    reader.readAsDataURL(file);
+  }
+
+  if (manFileInput) {
+    manFileInput.addEventListener('change', () => {
+      if (manFileInput.files[0]) loadManImage(manFileInput.files[0]);
+    });
+  }
+  if (manDropZone) {
+    manDropZone.addEventListener('dragover', e => { e.preventDefault(); manDropZone.style.borderColor = '#4a8a37'; });
+    manDropZone.addEventListener('dragleave', () => { manDropZone.style.borderColor = '#d4eacc'; });
+    manDropZone.addEventListener('drop', e => {
+      e.preventDefault();
+      manDropZone.style.borderColor = '#d4eacc';
+      const f = e.dataTransfer.files[0];
+      if (f) loadManImage(f);
+    });
+  }
+
   /* ══════════════════════════════════════
      Guardar en base de datos
   ══════════════════════════════════════ */
@@ -578,7 +614,7 @@
         body.append('nombre',   nombre);
         body.append('unidades', unidades);
         body.append('peso',     peso);
-        body.append('imagen',   '');
+        body.append('imagen',   manOriginalBase64 || '');
 
         const res  = await fetch('/desechos/guardar', { method: 'POST', body });
         const json = await res.json();

@@ -924,7 +924,7 @@
                 </div>
               </div>
               <div style="overflow-x:auto;">
-                <table class="usr-table" id="table_usuarios">
+                <table class="usr-table" id="table_usuarios" data-paginate="10">
                   <thead>
                     <tr>
                       <th>Opciones</th>
@@ -1423,10 +1423,7 @@
       const searchInput = document.getElementById('searchInput');
       if (searchInput) {
         searchInput.addEventListener('input', function () {
-          const q = this.value.toLowerCase();
-          rows.forEach(row => {
-            row.style.display = row.textContent.toLowerCase().includes(q) ? '' : 'none';
-          });
+          paginacion.filtrar('table_usuarios', this.value);
         });
       }
 

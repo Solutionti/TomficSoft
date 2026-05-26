@@ -680,7 +680,7 @@
                             </div>
                         </div>
                         <div class="inv-table-scroll">
-                            <table class="inv-table" id="mainInventoryTable">
+                            <table class="inv-table" id="mainInventoryTable" data-paginate="10">
                                 <thead>
                                     <tr>
                                         <th></th>

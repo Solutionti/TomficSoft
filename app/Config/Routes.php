@@ -103,6 +103,8 @@ $routes->get('/asistencia/token',   'AsistenciaController::generarToken');
 //HORARIOS
 $routes->get('/horarios', 'HorariosController::index');
 $routes->post('/horarios/guardar', 'HorariosController::guardar');
+$routes->post('/horarios/eliminar', 'HorariosController::eliminarColaborador');
+$routes->post('/horarios/crear',   'HorariosController::crearColaborador');
 
 //PERDIDAS (desechos reports)
 $routes->get('/perdidasfechapdf/(:any)/(:any)',      'ReportesController::perdidasPorFechaPdf/$1/$2');
