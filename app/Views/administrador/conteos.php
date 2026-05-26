@@ -968,7 +968,7 @@
       </div>
       <div class="modal-body">
         <div style="overflow-x:auto; border-radius:var(--radius); border:1px solid var(--border);">
-          <table class="inv-table" id="table-productos">
+          <table class="inv-table" id="table-productos" data-paginate="10">
             <thead>
               <tr>
                 <th></th>

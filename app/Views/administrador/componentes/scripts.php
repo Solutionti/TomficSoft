@@ -3,6 +3,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.min.js" crossorigin="anonymous"></script>
 <script src="<?= base_url('js/scripts/overhang.min.js') ?>"></script>
 <script src="<?= base_url('js/scripts/datatable.js') ?>"></script>
+<script src="<?= base_url('js/paginacion.js') ?>"></script>
 <script>
     var baseurl = '<?= base_url() ?>';
 </script>

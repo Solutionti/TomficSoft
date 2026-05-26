@@ -894,7 +894,7 @@
               </div>
             </div>
             <div class="table-responsive">
-              <table class="usr-table" id="tabla-horarios">
+              <table class="usr-table" id="tabla-horarios" data-paginate="10">
                 <thead>
                   <tr>
                     <th>Nombre Colaborador</th>
@@ -973,37 +973,43 @@
                                 <span class="fas fa-plus mx-1 text-white" title="asistencia de empleados"></span>
                               </a>
                             </th>
-                            <th></th>
+                            <th class="text-white" style="width:90px;text-align:center">Acciones</th>
                           </thead>
                           <tbody>
                             <?php foreach ($colaboradores->getResult() as $colaborador) : ?>
-                            <tr>
+                            <tr class="colab-row"
+                              data-nombres="<?= esc($colaborador->nombres ?? '') ?>"
+                              data-apellidos="<?= esc($colaborador->apellidos ?? '') ?>"
+                              data-documento="<?= esc($colaborador->documento ?? '') ?>"
+                              data-cargo="<?= esc($colaborador->cargo ?? '') ?>"
+                              data-telefono="<?= esc($colaborador->telefono ?? '') ?>"
+                              data-sexo="<?= esc($colaborador->sexo ?? '') ?>"
+                              data-nacimiento="<?= esc($colaborador->fecha_nacimiento ?? '') ?>"
+                              data-correo="<?= esc($colaborador->correo ?? $colaborador->email ?? '') ?>"
+                              data-direccion="<?= esc($colaborador->direccion ?? '') ?>"
+                              data-barrio="<?= esc($colaborador->barrio ?? '') ?>">
                               <td>
                               <div class="user-cell">
                                 <div class="user-avatar-wrap">
                                   <img src="<?= base_url('img/team-41.jpg') ?>" class="user-avatar">
-                                  <span
-                                    class="user-status-dot"></span>
+                                  <span class="user-status-dot dot-active"></span>
                                 </div>
                                 <div>
-                                  <div class="user-name"><?= $colaborador->nombres . ' ' . $colaborador->apellidos ?></div>
-                                  <div class="user-sub"><?= $colaborador->documento ?> · <?= $colaborador->cargo ?></div>
+                                  <div class="user-name"><?= esc($colaborador->nombres . ' ' . $colaborador->apellidos) ?></div>
+                                  <div class="user-sub"><?= esc($colaborador->documento) ?> · <?= esc($colaborador->cargo) ?></div>
                                 </div>
                               </div>
                               </td>
-                              <td>
-                                <div class="text-center">
-                                  <div class="action-wrap">
-                                    <button class="btn-action btn-action-edit" title="Editar usuario">
-                                      <i class="fas fa-check"></i>
-                                    </button>
-                                    <button class="btn-action btn-action-del"  title="Eliminar usuario">
-                                      <i class="fas fa-trash"></i>
-                                    </button>
-                                    <button class="btn-action btn-action-view"  title="Ver usuario">
-                                      <i class="fas fa-eye"></i>
-                                    </button>
-                                  </div>
+                              <td style="text-align:center;vertical-align:middle">
+                                <div class="action-wrap" style="justify-content:center">
+                                  <button class="btn-action btn-action-view btn-ver-colab" title="Ver perfil">
+                                    <i class="fas fa-eye"></i>
+                                  </button>
+                                  <button class="btn-action btn-action-del btn-del-colab" title="Eliminar colaborador"
+                                    data-documento="<?= esc($colaborador->documento) ?>"
+                                    data-nombre="<?= esc($colaborador->nombres . ' ' . $colaborador->apellidos) ?>">
+                                    <i class="fas fa-trash"></i>
+                                  </button>
                                 </div>
                               </td>
                             </tr>
@@ -1125,96 +1131,61 @@
    </div>
   </div>
   <!-- ══════════════════════════════════════════════
-     MODAL: CREAR USUARIO
+     MODAL: CREAR COLABORADOR
 ══════════════════════════════════════════════ -->
-  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-    aria-hidden="true">
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header modal-header-inv">
-          <h1 class="modal-title"><i class="fas fa-user-plus me-2"></i>Colaboradores</h1>
+          <h1 class="modal-title"><i class="fas fa-user-plus me-2"></i>Agregar Colaborador</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
 
-          <!-- SECCIÓN: Datos personales -->
+          <!-- Alerta de error -->
+          <div id="nc-alerta" style="display:none;background:#fee2e2;border:1px solid #fecaca;color:#991b1b;border-radius:8px;padding:10px 14px;font-size:12.5px;margin-bottom:14px;display:flex;align-items:center;gap:8px;">
+            <i class="fas fa-exclamation-circle"></i>
+            <span id="nc-alerta-msg"></span>
+          </div>
+
           <div class="form-section">
-            <div class="form-section-title">
-              <i class="fas fa-id-card"></i> Datos del Colaborador
-            </div>
+            <div class="form-section-title"><i class="fas fa-id-card"></i> Datos personales</div>
             <div class="row g-3">
               <div class="col-md-3">
                 <div class="fl">
                   <label>Documento *</label>
-                  <input type="number" id="codigo_producto" class="fc" required>
+                  <input type="number" id="nc-documento" class="fc" placeholder="Ej: 1234567890">
                 </div>
               </div>
               <div class="col-md-3">
                 <div class="fl">
                   <label>Nombres *</label>
-                  <input type="text" id="nombre_producto" class="fc" required>
-                </div>
-              </div>
-              <div class="col-md-3">
-                  <div class="fl">
-                    <label>Apellidos *</label>
-                    <input type="text" id="unidades_producto" class="fc" required>
-                  </div>
-              </div>
-              
-              <div class="col-md-3">
-                <div class="fl">
-                  <label>Telefono *</label>
-                  <input type="text" id="unidades_producto" class="fc" required>
-                </div>
-              </div>
-            </div>
-            <div class="row g-3 mt-3">
-              <div class="col-md-3">
-                <div class="fl">
-                  <label>Direccion *</label>
-                  <select class="fc fsel text-uppercase" id="estado_usuario" required>
-                    <option value="Activo">Carrera</option>
-                    <option value="Inactivo">Calle</option>
-                  </select>
-                </div>
-              </div>
-              <div class="col-md-1">
-                <div class="fl">
-                  <label>*</label>
-                  <input type="text" id="nombre_producto" class="fc" required>
-                </div>
-              </div>
-              
-              <div class="col-md-1">
-                <div class="fl">
-                  <label>*</label>
-                  <input type="text" id="nombre_producto" class="fc" required>
-                </div>
-              </div>
-              <div class="col-md-1">
-                <div class="fl">
-                  <label>*</label>
-                  <input type="text" id="nombre_producto" class="fc" required>
-                </div>
-              </div>
-              <div class="col-md-2">
-                <div class="fl">
-                  <label>*</label>
-                  <input type="text" id="nombre_producto" class="fc" required>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="fl">
-                  <label>Barrio *</label>
-                  <input type="text" id="unidades_producto" class="fc" required>
+                  <input type="text" id="nc-nombres" class="fc" placeholder="Nombres">
                 </div>
               </div>
               <div class="col-md-3">
                 <div class="fl">
-                  <label>Sexo *</label>
-                  <select class="fc fsel" id="sexo_usuario" required>
-                    <option value="">Seleccione el sexo</option>
+                  <label>Apellidos *</label>
+                  <input type="text" id="nc-apellidos" class="fc" placeholder="Apellidos">
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="fl">
+                  <label>Cargo *</label>
+                  <input type="text" id="nc-cargo" class="fc" placeholder="Ej: Vendedor">
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="fl">
+                  <label>Teléfono</label>
+                  <input type="text" id="nc-telefono" class="fc" placeholder="Ej: 3001234567">
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="fl">
+                  <label>Sexo</label>
+                  <select id="nc-sexo" class="fc fsel">
+                    <option value="">Seleccione</option>
                     <option value="Masculino">Masculino</option>
                     <option value="Femenino">Femenino</option>
                   </select>
@@ -1222,36 +1193,37 @@
               </div>
               <div class="col-md-3">
                 <div class="fl">
-                  <label>Fecha de nacimiento *</label>
-                  <input type="date" id="fecha_nacimiento_usuario" class="fc" required>
-                </div>
-                </div>
-              <div class="col-md-6">
-                <div class="fl">
-                  <label>Cargo *</label>
-                  <select class="fc fsel" id="estado_usuario" required>
-                    <option value="">Seleccione el cargo</option>
-                    <option value="Activo">Activo</option>
-                    <option value="Inactivo">Inactivo</option>
-                  </select>
+                  <label>Fecha de nacimiento</label>
+                  <input type="date" id="nc-nacimiento" class="fc">
                 </div>
               </div>
-            </div>
-            <div class="row mt-3">
-              <div class="col-md-12">
+              <div class="col-md-3">
                 <div class="fl">
-                  <label>Comentarios *</label>
-                  <input type="email" id="correo" class="fc">
+                  <label>Correo</label>
+                  <input type="email" id="nc-correo" class="fc" placeholder="correo@ejemplo.com">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="fl">
+                  <label>Dirección</label>
+                  <input type="text" id="nc-direccion" class="fc" placeholder="Ej: Carrera 5 # 10-20">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="fl">
+                  <label>Barrio</label>
+                  <input type="text" id="nc-barrio" class="fc" placeholder="Ej: El Centro">
                 </div>
               </div>
             </div>
           </div>
+
         </div>
         <div class="modal-footer">
           <button type="button" class="btn-u btn-u-danger-outline" data-bs-dismiss="modal">
             <i class="fas fa-times"></i> Cerrar
           </button>
-          <button type="button" class="btn-u btn-u-primary" onclick="crearUsuarios()">
+          <button type="button" class="btn-u btn-u-primary" id="nc-btn-guardar" onclick="crearUsuarios()">
             <i class="fas fa-save"></i> Guardar
           </button>
         </div>
@@ -1462,10 +1434,259 @@
     </div>
   </div>
 
+  <!-- ══════════════════════════════════════════════
+     MODAL: VER COLABORADOR
+══════════════════════════════════════════════ -->
+  <div class="modal fade" id="modalVerColab" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" style="max-width:480px">
+      <div class="modal-content" style="border-radius:18px;overflow:hidden;border:none;box-shadow:0 24px 60px rgba(13,36,9,.22)">
+
+        <!-- Header con gradiente y avatar -->
+        <div style="background:linear-gradient(135deg,var(--purple-800),var(--purple-600));padding:28px 24px 20px;position:relative;">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" style="position:absolute;top:14px;right:16px;filter:invert(1);opacity:.8"></button>
+          <div style="display:flex;align-items:center;gap:18px;">
+            <div id="vc-avatar" style="width:64px;height:64px;border-radius:18px;background:rgba(255,255,255,.18);border:2px solid rgba(255,255,255,.35);display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:800;color:#fff;letter-spacing:-.02em;flex-shrink:0;"></div>
+            <div>
+              <div id="vc-nombre" style="font-size:17px;font-weight:800;color:#fff;line-height:1.2;"></div>
+              <div id="vc-cargo" style="font-size:12px;color:rgba(255,255,255,.75);margin-top:4px;display:flex;align-items:center;gap:6px;">
+                <i class="fas fa-briefcase" style="font-size:10px"></i>
+                <span></span>
+              </div>
+              <div id="vc-doc" style="font-size:11px;color:rgba(255,255,255,.55);margin-top:3px;display:flex;align-items:center;gap:6px;">
+                <i class="fas fa-id-card" style="font-size:10px"></i>
+                <span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Body con datos -->
+        <div style="padding:22px 24px;background:#fafbff;">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;" id="vc-grid">
+
+            <div class="vc-field">
+              <div class="vc-label"><i class="fas fa-phone"></i> Teléfono</div>
+              <div class="vc-value" id="vc-telefono">—</div>
+            </div>
+
+            <div class="vc-field">
+              <div class="vc-label"><i class="fas fa-venus-mars"></i> Sexo</div>
+              <div class="vc-value" id="vc-sexo">—</div>
+            </div>
+
+            <div class="vc-field">
+              <div class="vc-label"><i class="fas fa-calendar-alt"></i> Nacimiento</div>
+              <div class="vc-value" id="vc-nacimiento">—</div>
+            </div>
+
+            <div class="vc-field">
+              <div class="vc-label"><i class="fas fa-envelope"></i> Correo</div>
+              <div class="vc-value" id="vc-correo" style="word-break:break-all">—</div>
+            </div>
+
+            <div class="vc-field" style="grid-column:1/-1">
+              <div class="vc-label"><i class="fas fa-map-marker-alt"></i> Dirección</div>
+              <div class="vc-value" id="vc-direccion">—</div>
+            </div>
+
+          </div>
+        </div>
+
+        <div style="padding:14px 24px;background:#fff;border-top:1px solid #e8e0f5;display:flex;justify-content:flex-end;">
+          <button type="button" class="btn-u btn-u-danger-outline" data-bs-dismiss="modal" style="font-size:12px;padding:8px 18px;">
+            <i class="fas fa-times"></i> Cerrar
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <style>
+  .vc-field {
+    background: #fff;
+    border: 1px solid #e8e0f5;
+    border-radius: 10px;
+    padding: 11px 14px;
+  }
+  .vc-label {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .07em;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 5px;
+  }
+  .vc-label i { color: var(--purple-400); }
+  .vc-value {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+  /* Botón ver */
+  .btn-action-view {
+    background: #dbeafe;
+    color: #1e40af;
+    border: 1.5px solid #bfdbfe;
+  }
+  .btn-action-view:hover {
+    background: #1e40af;
+    color: #fff;
+    border-color: #1e40af;
+    transform: scale(1.12);
+    box-shadow: 0 4px 12px rgba(30,64,175,.35);
+  }
+  </style>
+
   <?php require_once("componentes/scripts.php") ?>
 
   <script>
   document.addEventListener('DOMContentLoaded', function () {
+
+  /* ── Crear colaborador ── */
+  window.crearUsuarios = async function () {
+    const btn   = document.getElementById('nc-btn-guardar');
+    const alerta = document.getElementById('nc-alerta');
+    const alertaMsg = document.getElementById('nc-alerta-msg');
+
+    const get = id => document.getElementById(id)?.value.trim() ?? '';
+
+    const payload = {
+      documento:  get('nc-documento'),
+      nombres:    get('nc-nombres'),
+      apellidos:  get('nc-apellidos'),
+      cargo:      get('nc-cargo'),
+      telefono:   get('nc-telefono'),
+      sexo:       get('nc-sexo'),
+      nacimiento: get('nc-nacimiento') || null,
+      correo:     get('nc-correo'),
+      direccion:  get('nc-direccion'),
+      barrio:     get('nc-barrio'),
+    };
+
+    // Validación frontend
+    const requeridos = { documento:'Documento', nombres:'Nombres', apellidos:'Apellidos', cargo:'Cargo' };
+    for (const [k, lbl] of Object.entries(requeridos)) {
+      if (!payload[k]) {
+        alerta.style.display = 'flex';
+        alertaMsg.textContent = `El campo "${lbl}" es obligatorio.`;
+        document.getElementById('nc-' + k)?.focus();
+        return;
+      }
+    }
+    alerta.style.display = 'none';
+
+    btn.disabled = true;
+    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Guardando…';
+
+    try {
+      const res  = await fetch('/horarios/crear', {
+        method:  'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body:    JSON.stringify(payload),
+      });
+      const data = await res.json();
+
+      if (data.status === 'success') {
+        // Limpiar formulario
+        ['nc-documento','nc-nombres','nc-apellidos','nc-cargo','nc-telefono',
+         'nc-sexo','nc-nacimiento','nc-correo','nc-direccion','nc-barrio']
+          .forEach(id => { const el = document.getElementById(id); if (el) el.value = ''; });
+
+        bootstrap.Modal.getInstance(document.getElementById('staticBackdrop'))?.hide();
+
+        // Recargar para mostrar la nueva fila
+        location.reload();
+      } else {
+        alerta.style.display = 'flex';
+        alertaMsg.textContent = data.message || 'Error al guardar.';
+      }
+    } catch (e) {
+      alerta.style.display = 'flex';
+      alertaMsg.textContent = 'Error de conexión. Intenta de nuevo.';
+    } finally {
+      btn.disabled = false;
+      btn.innerHTML = '<i class="fas fa-save"></i> Guardar';
+    }
+  };
+
+  /* ── Eliminar colaborador ── */
+  (function () {
+    document.querySelectorAll('.btn-del-colab').forEach(btn => {
+      btn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        const documento = this.dataset.documento;
+        const nombre    = this.dataset.nombre;
+        const fila      = this.closest('.colab-row');
+
+        if (!confirm(`¿Eliminar a ${nombre}?\nEsta acción no se puede deshacer.`)) return;
+
+        fetch('/horarios/eliminar', {
+          method:  'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body:    JSON.stringify({ documento }),
+        })
+        .then(r => r.json())
+        .then(data => {
+          if (data.status === 'success') {
+            fila.style.transition = 'opacity .35s, transform .35s';
+            fila.style.opacity    = '0';
+            fila.style.transform  = 'translateX(30px)';
+            setTimeout(() => fila.remove(), 360);
+          } else {
+            alert('Error al eliminar: ' + (data.message || 'desconocido'));
+          }
+        })
+        .catch(() => alert('Error de conexión.'));
+      });
+    });
+  })();
+
+  /* ── Modal ver colaborador ── */
+  (function () {
+    const modal = new bootstrap.Modal(document.getElementById('modalVerColab'));
+
+    document.querySelectorAll('.btn-ver-colab').forEach(btn => {
+      btn.addEventListener('click', function (e) {
+        e.stopPropagation(); // evita que dispare el click de la fila
+        const row = this.closest('.colab-row');
+        const d = row.dataset;
+
+        const nombres   = d.nombres   || '';
+        const apellidos = d.apellidos || '';
+        const fullName  = (nombres + ' ' + apellidos).trim();
+
+        // Iniciales para el avatar
+        const partes = fullName.split(' ').filter(Boolean);
+        const iniciales = (partes[0]?.[0] ?? '') + (partes[1]?.[0] ?? '');
+        document.getElementById('vc-avatar').textContent = iniciales.toUpperCase();
+
+        document.getElementById('vc-nombre').textContent = fullName || '—';
+        document.getElementById('vc-cargo').querySelector('span').textContent  = d.cargo || '—';
+        document.getElementById('vc-doc').querySelector('span').textContent    = d.documento || '—';
+        document.getElementById('vc-telefono').textContent  = d.telefono  || '—';
+        document.getElementById('vc-sexo').textContent      = d.sexo      || '—';
+        document.getElementById('vc-nacimiento').textContent = d.nacimiento ? formatFecha(d.nacimiento) : '—';
+        document.getElementById('vc-correo').textContent    = d.correo    || '—';
+
+        const dir = [d.direccion, d.barrio].filter(Boolean).join(', ');
+        document.getElementById('vc-direccion').textContent = dir || '—';
+
+        modal.show();
+      });
+    });
+
+    function formatFecha(f) {
+      if (!f) return '—';
+      const [y, m, d] = f.split('-');
+      const meses = ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];
+      return d + ' ' + (meses[parseInt(m) - 1] ?? m) + ' ' + y;
+    }
+  })();
+
   (function () {
     const dias = ['lunes','martes','miercoles','jueves','viernes','sabado','domingo'];
     const diasLabel = ['Lunes','Martes','Miércoles','Jueves','Viernes','Sábado','Domingo'];
@@ -1579,12 +1800,8 @@
     /* ── Búsqueda en tiempo real ── */
     const searchInput = document.getElementById('horario-search');
     if (searchInput) {
-      const rows = document.querySelectorAll('.horario-row');
       searchInput.addEventListener('input', function () {
-        const q = this.value.toLowerCase();
-        rows.forEach(r => {
-          r.style.display = r.dataset.nombre.toLowerCase().includes(q) ? '' : 'none';
-        });
+        paginacion.filtrar('tabla-horarios', this.value);
       });
     }
   })();

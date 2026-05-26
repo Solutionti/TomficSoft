@@ -273,7 +273,7 @@
               </div>
             </div>
             <div class="table-responsive">
-              <table class="usr-table" id="tabla-asistencia">
+              <table class="usr-table" id="tabla-asistencia" data-paginate="10">
                 <thead>
                   <tr>
                     <th>Colaborador</th>
@@ -380,11 +380,7 @@
   document.querySelector('.usr-table-header').appendChild(wrap);
 
   input.addEventListener('input', function () {
-    const q = this.value.toLowerCase();
-    document.querySelectorAll('#asist-tbody tr').forEach(tr => {
-      const text = tr.textContent.toLowerCase();
-      tr.style.display = (!q || text.includes(q)) ? '' : 'none';
-    });
+    paginacion.filtrar('tabla-asistencia', this.value);
   });
 
   /* Auto-refresh table every 30 seconds */

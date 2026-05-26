@@ -21,6 +21,65 @@ class HorariosController extends BaseController {
     return view('administrador/horarios', $data);
   }
 
+  public function crearColaborador() {
+    $j = $this->request->getJSON(true);
+
+    $requeridos = ['documento','nombres','apellidos','cargo'];
+    foreach ($requeridos as $campo) {
+        if (empty(trim($j[$campo] ?? ''))) {
+            return $this->response->setJSON(['status'=>'error','message'=>"El campo $campo es requerido"])
+                ->setStatusCode(400);
+        }
+    }
+
+    // Verificar que el documento no exista
+    $existe = $this->db->table('colaboradores')
+        ->where('documento', trim($j['documento']))->countAllResults();
+    if ($existe) {
+        return $this->response->setJSON(['status'=>'error','message'=>'Ya existe un colaborador con ese documento'])
+            ->setStatusCode(409);
+    }
+
+    $data = [
+        'documento'        => trim($j['documento']),
+        'nombres'          => trim($j['nombres']),
+        'apellidos'        => trim($j['apellidos']),
+        'telefono'         => trim($j['telefono']        ?? ''),
+        'cargo'            => trim($j['cargo']           ?? ''),
+        'sexo'             => trim($j['sexo']            ?? ''),
+        'fecha_nacimiento' => $j['nacimiento']            ?? null,
+        'correo'           => trim($j['correo']          ?? ''),
+        'direccion'        => trim($j['direccion']       ?? ''),
+        'barrio'           => trim($j['barrio']          ?? ''),
+    ];
+
+    try {
+        $this->horariosModel->crearColaborador($data);
+        return $this->response->setJSON(['status'=>'success']);
+    } catch (\Throwable $e) {
+        return $this->response->setJSON(['status'=>'error','message'=>$e->getMessage()])
+            ->setStatusCode(500);
+    }
+  }
+
+  public function eliminarColaborador() {
+    $json     = $this->request->getJSON(true);
+    $documento = trim($json['documento'] ?? '');
+
+    if (!$documento) {
+        return $this->response->setJSON(['status' => 'error', 'message' => 'Documento inválido'])
+            ->setStatusCode(400);
+    }
+
+    try {
+        $this->horariosModel->eliminarColaborador($documento);
+        return $this->response->setJSON(['status' => 'success']);
+    } catch (\Throwable $e) {
+        return $this->response->setJSON(['status' => 'error', 'message' => $e->getMessage()])
+            ->setStatusCode(500);
+    }
+  }
+
   public function guardar() {
     $json = $this->request->getJSON(true);
     $id   = (int)($json['id'] ?? 0);

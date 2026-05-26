@@ -1521,7 +1521,7 @@
               </div>
 
               <div class="tbl-wrap">
-                <table class="tbl" id="table-pedidos">
+                <table class="tbl" id="table-pedidos" data-paginate="10">
                   <thead>
                     <tr>
                       <th>Opciones</th>
@@ -1958,10 +1958,7 @@
        LIVE SEARCH
     ════════════════════════════════════════ */
     document.getElementById('buscar')?.addEventListener('input', function () {
-      const q = this.value.toLowerCase();
-      document.querySelectorAll('#table-pedidos tbody tr').forEach(r => {
-        r.style.display = r.textContent.toLowerCase().includes(q) ? '' : 'none';
-      });
+      paginacion.filtrar('table-pedidos', this.value);
     });
   </script>
 </body>

@@ -22,6 +22,14 @@ class HorariosModel extends Model {
             ->getResult();
     }
 
+    public function crearColaborador($data) {
+        return $this->db->table('colaboradores')->insert($data);
+    }
+
+    public function eliminarColaborador($documento) {
+        $this->db->table('colaboradores')->where('documento', $documento)->delete();
+    }
+
     public function guardarHorario($id, $data) {
         return $this->db->table('horarios_colaboradores')
             ->where('id', $id)

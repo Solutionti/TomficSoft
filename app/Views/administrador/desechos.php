@@ -1121,13 +1121,21 @@
                           border: 2px dashed #d4eacc; border-radius: 10px 10px 0 0;
                           padding: 22px; text-align: center; cursor: pointer;
                           position: relative; background: #fafbff; transition: background .2s;">
-                        <input type="file" id="ocr-file-input" accept="image/*"
+                        <input type="file" id="man-file-input" accept="image/*"
                           style="position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%">
-                        <i class="fas fa-cloud-arrow-up" style="font-size:28px;color:#abd49b;"></i>
-                        <p style="font-size:12px;color:#7c6fa0;margin-top:6px">
-                          <strong style="color:#4a8a37">Arrastra una imagen</strong> o haz clic<br>
-                          <span style="font-size:10px">JPG · PNG · WEBP</span>
-                        </p>
+                        <div id="man-drop-hint">
+                          <i class="fas fa-cloud-arrow-up" style="font-size:28px;color:#abd49b;"></i>
+                          <p style="font-size:12px;color:#7c6fa0;margin-top:6px">
+                            <strong style="color:#4a8a37">Arrastra una imagen</strong> o haz clic<br>
+                            <span style="font-size:10px">JPG · PNG · WEBP</span>
+                          </p>
+                        </div>
+                        <div id="man-preview-wrap" style="display:none;">
+                          <img id="man-preview-img" style="max-height:120px;border-radius:8px;object-fit:contain;margin-bottom:6px;" alt="">
+                          <p style="font-size:11px;color:#4a8a37;font-weight:600;margin:0;">
+                            <i class="fas fa-check-circle"></i> Imagen cargada — haz clic para cambiarla
+                          </p>
+                        </div>
                       </div>
                     <div class="card-body">
                       <h5 class="card-title mb-4">Captura Manual</h5>
@@ -1207,7 +1215,7 @@
                           <i class="fas fa-info-circle"></i>&nbsp;Los desechos se agregan automáticamente
                       </span>
                   </div>
-                  <table class="cart-table">
+                  <table class="cart-table" id="tabla-desechos" data-paginate="10">
                       <thead>
                           <tr>
                             <th>Nombre</th>
