@@ -2144,129 +2144,88 @@
     <div class="modal-dialog modal-fullscreen">
       <div class="modal-content">
         <div class="modal-header modal-header-inv">
-          <h1 class="modal-title"><i class="fas fa-user-plus me-2"></i>Despachos</h1>
+          <h1 class="modal-title"><i class="fas fa-store me-2"></i>Despachos</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
 
-          <!-- SECCIÓN: Datos personales -->
+          <!-- Alerta -->
+          <div id="des-alerta" style="display:none;margin-bottom:14px;" class="alert alert-danger py-2 px-3"></div>
+
+          <!-- Buscar solicitud -->
           <div class="form-section">
             <div class="form-section-title">
-              <i class="fas fa-id-card"></i> Productos a despachar
-              <button class="btn btn-primary btn-rounded btn-sm mx-2">Cargar solicitud</button>
+              <i class="fas fa-search"></i> Cargar solicitud a despachar
             </div>
-            <div class="row g-3">
+            <div class="row g-3 align-items-end">
               <div class="col-md-4">
                 <div class="fl">
-                  <label>Codigo *</label>
-                  <input type="number" id="codigo_producto" class="fc" required>
+                  <label>Código de solicitud *</label>
+                  <input type="number" id="des-cod-solicitud" class="fc" placeholder="Ej: 17" min="1">
                 </div>
               </div>
-              <div class="col-md-4">
-                <div class="fl">
-                  <label>Nombre del producto *</label>
-                  <input type="text" id="nombre_producto" class="fc" required>
-                </div>
+              <div class="col-md-3">
+                <button type="button" id="des-btn-cargar" class="btn btn-primary btn-rounded w-100">
+                  <i class="fas fa-download"></i> Cargar solicitud
+                </button>
               </div>
-              <div class="col-md-2">
-                <div class="fl">
-                  <label>Unidades *</label>
-                  <input type="text" id="unidades_producto" class="fc" required>
-                </div>
-              </div>
-              
-              <div class="col-md-2">
-                <div class="fl">
-                  <label>Estado *</label>
-                  <select class="fc fsel" id="estado_usuario" required>
-                    <option value="">Seleccione estado</option>
-                    <option value="Activo">Activo</option>
-                    <option value="Inactivo">Inactivo</option>
-                  </select>
-                </div>
-              </div>
-              <div class="col-md-12">
-                <div class="fl">
-                  <label>Comentarios *</label>
-                  <input type="email" id="correo" class="fc">
+              <div class="col-md-5">
+                <div id="des-solicitud-info" style="display:none;background:var(--purple-100);border:1.5px solid var(--purple-200);border-radius:8px;padding:8px 14px;font-size:12px;">
+                  <strong>Solicitud #<span id="des-info-codigo"></span></strong> &nbsp;·&nbsp;
+                  Estado: <span id="des-info-estado"></span> &nbsp;·&nbsp;
+                  Fecha: <span id="des-info-fecha"></span>
                 </div>
               </div>
             </div>
-            <!--  -->
-            <div class="row g-3 mt-4">
-              <div class="col-md-12">
-                <div class="cart-card ">
-                  <div class="cart-header">
-                      <h5>
-                          <i class="fas fa-shopping-cart"></i>
-                          Listado de solicitudes
-                          <span class="cart-count" id="cartCount">0 Solicitudes</span>
-                      </h5>
-                      <span style="font-size:11px;color:var(--muted);">
-                          <i class="fas fa-info-circle"></i>&nbsp;Las solicitudes se agregan automáticamente
-                      </span>
-                  </div>
-                  <table class="cart-table">
-                      <thead>
-                          <tr>
-                            <th>Código</th>
-                            <th>Sucursal</th>
-                              <th>Fecha</th>
-                              <th>Hora</th>
-                              <th>Estado</th>
-                              <th>Usuario pidio</th>
-                              <th>Usuario Acepto</th>
-                              <th></th>
-                          </tr>
-                      </thead>
-                      <tbody class="tbody">
-                          <!-- <tr id="emptyCartRow">
-                            <td colspan="6" class="cart-empty">
-                              <i class="fas fa-shopping-basket"></i>
-                                Aún no hay solicitudes en el inventario.<br>
-                              <span style="font-size:12px;color:var(--purple-300);">Agrega una solicitud para comenzar</span>
-                            </td>
-                          </tr> -->
-                           <?php foreach ($solicitudes->getResult() as $solicitud) : ?>
-                          <tr class="text-uppercase">
-                            <td><?= $solicitud->codigo_solicitud ?></td>
-                            <td>Envigado</td>
-                            <td><?= $solicitud->fecha_solicitud ?></td>
-                            <td></td>
-                            <td><?= $solicitud->estado ?></td>
-                            <td><?= $solicitud->nombre.' '.$solicitud->apellido ?></td>
-                            <td><?= $solicitud->nombre.' '.$solicitud->apellido ?></td>
-                            <td>
-                          <div class="action-wrap">
-                            <button class="btn-action btn-action-edit"
-                              title="Ver solicitud">
-                              <i class="fas fa-file-pdf"></i>
-                            </button>
-                            <button class="btn-action btn-action-del"
-                              title="Imprimir solicitud">
-                              <i class="fas fa-trash"></i>
-                            </button>
-                          </div>
-                        </td>
-                          </tr>
-                         <?php endforeach; ?>
-                      </tbody>
-                  </table>
-              </div>
-                </div>
           </div>
+
+          <!-- Tabla de ítems -->
+          <div class="cart-card">
+            <div class="cart-header">
+              <h5>
+                <i class="fas fa-store"></i>
+                Productos a despachar
+                <span class="cart-count" id="des-count">0 productos</span>
+              </h5>
+              <div class="fl" style="flex-direction:row;align-items:center;gap:8px;">
+                <label style="font-size:11px;color:var(--muted);margin:0;">Comentario general:</label>
+                <input type="text" id="des-comentario-global" placeholder="Ej: Despacho urgente"
+                  style="padding:5px 10px;border:1.5px solid var(--border);border-radius:6px;font-size:12px;width:220px;outline:none;">
+              </div>
+            </div>
+            <table class="cart-table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Código</th>
+                  <th>Producto</th>
+                  <th>Cant. solicitada</th>
+                  <th>Cant. a despachar</th>
+                  <th>Comentario</th>
+                </tr>
+              </thead>
+              <tbody id="des-tbody">
+                <tr id="des-empty-row">
+                  <td colspan="6" class="cart-empty">
+                    <i class="fas fa-box-open"></i>
+                    Carga una solicitud para ver sus productos.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
         </div>
         <div class="modal-footer">
           <button type="button" class="btn-u btn-u-danger-outline" data-bs-dismiss="modal">
             <i class="fas fa-times"></i> Cerrar
           </button>
-          <button type="button" class="btn-u btn-u-primary" onclick="crearUsuarios()">
-            <i class="fas fa-save"></i> Guardar
+          <button type="button" id="des-btn-guardar" class="btn-u btn-u-primary" disabled>
+            <i class="fas fa-save"></i> Registrar despacho
           </button>
         </div>
       </div>
     </div>
-  </div>
   </div>
 
 
@@ -2314,6 +2273,7 @@
   <?php require_once("componentes/scripts.php") ?>
   <script src="<?= base_url('js/solicitud_inventarios.js') ?>"></script>
   <script src="<?= base_url('js/devoluciones.js') ?>"></script>
+  <script src="<?= base_url('js/despachos.js') ?>"></script>
 
   <script>
     let carrito = [];
