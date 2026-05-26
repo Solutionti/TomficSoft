@@ -19,6 +19,15 @@ $("#addToCartBtn").on("click", function () {
                 }, 4000);
                 return;
             }
+            /* Leer cantidades actuales del DOM antes de enviar */
+            document.querySelectorAll('.tbody tr[data-sol-codigo]').forEach(function (tr) {
+              var codigo = tr.dataset.solCodigo;
+              var input  = tr.querySelector('input[type="number"]');
+              var qty    = input ? (parseInt(input.value, 10) || 1) : 1;
+              var item   = carrito.find(function (c) { return String(c.codigo) === String(codigo); });
+              if (item) item.cantidad = qty;
+            });
+
             $.ajax({
         url: baseurl + 'crearSolicitudInventarios',
         method: 'POST',
