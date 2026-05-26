@@ -881,6 +881,7 @@
             <div class="usr-table-card anim-3">
               <div class="row">
                 
+              
                 </div>
                 <!-- aca cierra  -->
                 <div class="col-md-6 mt-3">
