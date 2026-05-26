@@ -122,6 +122,11 @@ $routes->post('/desechos/guardar', 'DesechosController::guardar');
 $routes->get('/solicitudinventario', 'InventarioController::solicitudInventarios');
 $routes->post('/crearSolicitudInventarios', 'InventarioController::crearSolicitudInventarios');
 
+$routes->get('/pdfdevoluciones', 'InventarioController::pdfDevolucionInventarios');
+$routes->get('/pdfsolicitudes', 'InventarioController::pdfSolicitudInventarios');
+$routes->get('/pdfdespachos', 'InventarioController::pdfDespachoInventarios');
+
+
 //DEVOLUCIONES
 $routes->get('/devoluciones/solicitud/(:num)', 'DevolucionesController::getDetalleSolicitud/$1');
 $routes->post('/devoluciones/guardar', 'DevolucionesController::guardar');

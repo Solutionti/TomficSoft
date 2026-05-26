@@ -88,7 +88,7 @@
       .catch(function () { mostrarAlerta('Error de conexión al cargar la solicitud.'); })
       .finally(function () {
         btnCargar.disabled = false;
-        btnCargar.innerHTML = '<i class="fas fa-download"></i> Cargar solicitud';
+        btnCargar.innerHTML = '<i class="fas fa-download"></i> Buscar';
       });
   });
 

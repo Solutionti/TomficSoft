@@ -1845,15 +1845,15 @@
                                 <i class="fas fa-minus-circle"></i>
                                 <span class="label">Devoluciones</span>
                             </button>
-                            <!-- esta es para la persona que hace la solicitud -->
-                            <button class="btn-inv btn-inv-success" data-bs-toggle="modal" data-bs-target="#modalsolicitudes">
-                                <i class="fas fa-truck"></i>
-                                <span class="label">Solicitudes</span>
-                            </button>
                             <!-- este es para la persona que acepta el inventario -->
                             <button class="btn-inv btn-inv-outline-danger" data-bs-toggle="modal" data-bs-target="#modaldespachos">
                                 <i class="fas fa-store"></i>
                                 <span class="label">Despachos</span>
+                            </button>
+                            <!-- esta es para la persona que hace la solicitud -->
+                            <button class="btn-inv btn-inv-success" data-bs-toggle="modal" data-bs-target="#modalsolicitudes">
+                                <i class="fas fa-truck"></i>
+                                <span class="label">Solicitudes</span>
                             </button>
                             
                         </div>
@@ -1973,12 +1973,12 @@
               <div class="col-md-4">
                 <div class="fl">
                   <label>Código de solicitud *</label>
-                  <input type="number" id="dev-cod-solicitud" class="fc" placeholder="Ej: 17" min="1">
+                  <input type="number" id="dev-cod-solicitud" class="fc" placeholder="Ingrese el numero de la solicitud" min="1">
                 </div>
               </div>
               <div class="col-md-3">
-                <button type="button" id="dev-btn-cargar" class="btn btn-primary btn-rounded w-100">
-                  <i class="fas fa-download"></i> Cargar solicitud
+                <button type="button" id="dev-btn-cargar" class="btn btn-primary btn-sm btn-rounded">
+                  <span class="fas fa-download"></span> Buscar
                 </button>
               </div>
               <div class="col-md-5">
@@ -2081,6 +2081,9 @@
                               <th>Estado</th>
                               <th>Usuario pidio</th>
                               <th>Usuario Acepto</th>
+                              <th>S</th>
+                              <th>D</th>
+                              <th>V</th>
                               <th></th>
                           </tr>
                       </thead>
@@ -2100,13 +2103,23 @@
                             <td></td>
                             <td><?= $solicitud->estado ?></td>
                             <td><?= $solicitud->nombre.' '.$solicitud->apellido ?></td>
-                            <td><?= $solicitud->nombre.' '.$solicitud->apellido ?></td>
+                            <td>aprobado por</td>
                             <td>
-                          <div class="action-wrap">
-                            <button class="btn-action btn-action-edit"
+                              <button class="btn-action btn-action-edit"
                               title="Ver solicitud">
                               <i class="fas fa-file-pdf"></i>
-                            </button>
+                              </button>
+                            </td>
+                            <td><button class="btn-action btn-action-edit"
+                              title="Ver solicitud">
+                              <i class="fas fa-file-pdf"></i>
+                            </button></td>
+                            <td><button class="btn-action btn-action-edit"
+                              title="Ver solicitud">
+                              <i class="fas fa-file-pdf"></i>
+                            </button></td>
+                            <td>
+                          <div class="action-wrap">
                             <button class="btn-action btn-action-del"
                               title="Imprimir solicitud">
                               <i class="fas fa-trash"></i>
@@ -2161,12 +2174,12 @@
               <div class="col-md-4">
                 <div class="fl">
                   <label>Código de solicitud *</label>
-                  <input type="number" id="des-cod-solicitud" class="fc" placeholder="Ej: 17" min="1">
+                  <input type="number" id="des-cod-solicitud" class="fc" placeholder="Ingrese el numero de la solicitud" min="1">
                 </div>
               </div>
               <div class="col-md-3">
-                <button type="button" id="des-btn-cargar" class="btn btn-primary btn-rounded w-100">
-                  <i class="fas fa-download"></i> Cargar solicitud
+                <button type="button" id="des-btn-cargar" class="btn btn-primary btn-sm btn-rounded">
+                  <span class="fas fa-download"></span> Buscar
                 </button>
               </div>
               <div class="col-md-5">

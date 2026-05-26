@@ -8,6 +8,11 @@ use App\Models\InventarioModel;
 use App\Models\ListasModel;
 use App\Models\VentasModel;
 
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+use PhpOffice\PhpSpreadsheet\IOFactory;
+use FPDF;
+
 class InventarioController extends BaseController
 {
      public function __construct()
@@ -272,7 +277,39 @@ class InventarioController extends BaseController
 
    }
 
-   
+   public function pdfSolicitudInventarios() {
+      require APPPATH . 'Libraries/fpdf/fpdf.php';
+
+      $pdf = new \FPDF();
+      $pdf = new FPDF('L', 'mm', 'A4'); // L = Horizontal
+      $pdf->AddPage();
+
+      $this->response->setHeader('Content-Type', 'application/pdf');
+      $pdf->Output('I', 'productos_sinconteo.pdf');
+   }
+
+   public function pdfDevolucionInventarios() {
+        require APPPATH . 'Libraries/fpdf/fpdf.php';
+
+        $pdf = new \FPDF();
+        $pdf = new FPDF('L', 'mm', 'A4'); // L = Horizontal
+        $pdf->AddPage();
+
+        $this->response->setHeader('Content-Type', 'application/pdf');
+        $pdf->Output('I', 'productos_sinconteo.pdf');
+   }
+
+   public function pdfDespachoInventarios() {
+      require APPPATH . 'Libraries/fpdf/fpdf.php';
+
+      $pdf = new \FPDF();
+      $pdf = new FPDF('L', 'mm', 'A4'); // L = Horizontal
+      $pdf->AddPage();
+
+      $this->response->setHeader('Content-Type', 'application/pdf');
+      $pdf->Output('I', 'productos_sinconteo.pdf');
+   }
+    
 
    public function ajustarInventario() {
     
