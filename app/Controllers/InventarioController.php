@@ -170,6 +170,15 @@ class InventarioController extends BaseController
     return $this->response->setJSON($producto);
   }
 
+  public function buscarProductosPorNombre() {
+    $q = trim($this->request->getGet('q') ?? '');
+    if (strlen($q) < 2) {
+        return $this->response->setJSON([]);
+    }
+    $productos = $this->inventarioModel->buscarProductosPorNombre($q);
+    return $this->response->setJSON($productos);
+  }
+
   public function ingresarEntradaProductos() {
 
     try{

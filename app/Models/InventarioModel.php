@@ -102,7 +102,22 @@ class InventarioModel extends Model
                 ->get();
 
       return $producto->getResult();
-    
+
+    }
+
+    public function buscarProductosPorNombre($q)
+    {
+        return $this->db->table('productos')
+            ->select('codigo_barras, nombre, saldo, costo, nit, codigo_interno')
+            ->groupStart()
+                ->like('nombre', $q)
+                ->orLike('codigo_barras', $q)
+                ->orLike('codigo_interno', $q)
+            ->groupEnd()
+            ->orderBy('nombre', 'ASC')
+            ->limit(10)
+            ->get()
+            ->getResult();
     }
 
     public function ingresarEntradaProductos($data) {

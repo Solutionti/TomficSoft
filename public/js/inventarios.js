@@ -196,35 +196,99 @@ function eliminarProducto(id) {
     });
   }
 
-  //ENTRADA DE PRODUCTOS 
-    $("#producto_ingreso").on("blur", function(){
-      //definir lo que  necesitamos
-      var codigo = $("#producto_ingreso").val(); 
-      var url = baseurl + "obtenerstock/" + codigo;
-  
-      //llamamos al controlador
-      $.ajax({
-        url: url,
-        method: "GET",
-        success: function(response){
-          //obtener lo que me trae el conttrolador verificar 
-           // console.log(response); 
-          // respuesta de lo que necesitamos
-           $("#stock_ingreso").val(response[0].saldo);
-           $("#nombre_ingreso").val(response[0].nombre);
-           $("#precio_ingreso").val(response[0].costo);
-           $("#sede_ingreso").val(response[0].nit);
-          //  $("#valor_ingreso").val(response[0].costo);
-           
-        },
-        error: function(response){
-          $("body").overhang({
-            type: "error",
-            message: "Alerta ! Tenemos un problema al conectar con la base de datos verifica tu red.",
+  /* ── Autocomplete de productos (entrada y salida) ── */
+  function initProductoAC(inputId, fillFn) {
+    var $input = $(inputId);
+    if (!$input.length) return;
+
+    $input.attr('autocomplete', 'off');
+
+    // Dropdown container
+    var $drop = $('<ul class="producto-ac-list"></ul>');
+    $input.after($drop);
+
+    var timer = null;
+    var activeIdx = -1;
+
+    function cerrar() { $drop.hide().empty(); activeIdx = -1; }
+
+    function seleccionar(p) {
+      $input.val(p.codigo_barras);
+      cerrar();
+      fillFn(p);
+    }
+
+    $input.on('input', function () {
+      var q = $.trim($(this).val());
+      clearTimeout(timer);
+      activeIdx = -1;
+      if (q.length < 2) { cerrar(); return; }
+
+      timer = setTimeout(function () {
+        $.getJSON(baseurl + 'inventarios/buscar', { q: q })
+          .done(function (data) {
+            $drop.empty();
+            if (!data.length) { cerrar(); return; }
+            $.each(data, function (i, p) {
+              $('<li>')
+                .html(
+                  '<span class="ac-nombre">' + p.nombre + '</span>' +
+                  '<span class="ac-cod">' + p.codigo_barras + '</span>'
+                )
+                .data('p', p)
+                .on('mousedown', function (e) {
+                  e.preventDefault();
+                  seleccionar($(this).data('p'));
+                })
+                .appendTo($drop);
+            });
+            $drop.show();
           });
-        }
-      });
+      }, 260);
     });
+
+    $input.on('keydown', function (e) {
+      var $items = $drop.find('li');
+      if (!$items.length) return;
+      if (e.key === 'ArrowDown') {
+        activeIdx = Math.min(activeIdx + 1, $items.length - 1);
+        $items.removeClass('ac-active').eq(activeIdx).addClass('ac-active');
+        e.preventDefault();
+      } else if (e.key === 'ArrowUp') {
+        activeIdx = Math.max(activeIdx - 1, 0);
+        $items.removeClass('ac-active').eq(activeIdx).addClass('ac-active');
+        e.preventDefault();
+      } else if (e.key === 'Enter' && activeIdx >= 0) {
+        e.preventDefault();
+        seleccionar($items.eq(activeIdx).data('p'));
+      } else if (e.key === 'Escape') {
+        cerrar();
+      }
+    });
+
+    $input.on('blur', function () {
+      setTimeout(cerrar, 180);
+    });
+  }
+
+  /* Función de relleno para ENTRADA */
+  function rellenarIngreso(p) {
+    $("#stock_ingreso").val(p.saldo);
+    $("#nombre_ingreso").val(p.nombre);
+    $("#precio_ingreso").val(p.costo);
+    $("#sede_ingreso").val(p.nit);
+  }
+
+  /* Función de relleno para SALIDA */
+  function rellenarSalida(p) {
+    $("#stock_salida").val(p.saldo);
+    $("#nombre_salida").val(p.nombre);
+    $("#precio_salida").val(p.costo);
+    $("#sede_salida").val(p.nit);
+  }
+
+  initProductoAC('#producto_ingreso', rellenarIngreso);
+  initProductoAC('#producto_salida',  rellenarSalida);
 
     function ingresarEntradaProductos(){
       let url = baseurl + "ingresarentrada";
@@ -264,33 +328,7 @@ function eliminarProducto(id) {
       });
     }
 
-    //SALIDA DE PRODUCTOS
-    $("#producto_salida").on("blur", function(){
-      //definir lo que  necesitamos
-      var codigo = $("#producto_salida").val(); 
-      var url = baseurl + "obtenerstock/" + codigo;
-  
-      //llamamos al controlador
-      $.ajax({
-        url: url,
-        method: "GET",
-        success: function(response){
-          // respuesta de lo que necesitamos
-           $("#stock_salida").val(response[0].saldo);
-           $("#nombre_salida").val(response[0].nombre);
-           $("#precio_salida").val(response[0].costo);
-           $("#sede_salida").val(response[0].nit);
-          //  $("#valor_salida").val(response[0].costo);
-           
-        },
-        error: function(response){
-          $("body").overhang({
-            type: "error",
-            message: "Alerta ! Tenemos un problema al conectar con la base de datos verifica tu red.",
-          });
-        }
-      });
-    });
+    //SALIDA DE PRODUCTOS — relleno vía autocomplete (initProductoAC arriba)
 
     function ingresarSalidaProductos(){
       let url = baseurl + "ingresarsalida";

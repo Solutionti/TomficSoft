@@ -869,5 +869,55 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 </script>
+
+<style>
+/* ── Autocomplete dropdown ── */
+.producto-ac-list {
+  display: none;
+  position: absolute;
+  z-index: 9999;
+  background: #fff;
+  border: 1px solid #d4eacc;
+  border-radius: 10px;
+  box-shadow: 0 8px 28px rgba(45,102,34,.15);
+  list-style: none;
+  margin: 3px 0 0;
+  padding: 4px 0;
+  width: 100%;
+  max-height: 240px;
+  overflow-y: auto;
+}
+.producto-ac-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 9px 14px;
+  cursor: pointer;
+  gap: 10px;
+  transition: background .15s;
+}
+.producto-ac-list li:hover,
+.producto-ac-list li.ac-active {
+  background: #f0f7ec;
+}
+.producto-ac-list .ac-nombre {
+  font-size: 13px;
+  font-weight: 600;
+  color: #173a10;
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.producto-ac-list .ac-cod {
+  font-size: 11px;
+  color: #7c8f76;
+  flex-shrink: 0;
+  font-family: monospace;
+}
+
+/* El input wrapper debe ser position:relative para que el dropdown se posicione bien */
+.fl { position: relative; }
+</style>
 </body>
 </html>
