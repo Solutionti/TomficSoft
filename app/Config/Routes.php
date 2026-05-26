@@ -126,6 +126,10 @@ $routes->post('/crearSolicitudInventarios', 'InventarioController::crearSolicitu
 $routes->get('/devoluciones/solicitud/(:num)', 'DevolucionesController::getDetalleSolicitud/$1');
 $routes->post('/devoluciones/guardar', 'DevolucionesController::guardar');
 
+//DESPACHOS
+$routes->get('/despachos/solicitud/(:num)', 'DespachosController::getDetalleSolicitud/$1');
+$routes->post('/despachos/guardar', 'DespachosController::guardar');
+
 
 //FORMATOS
 $routes->get('/formatos', 'FormatosController::index');
