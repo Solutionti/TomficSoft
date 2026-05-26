@@ -1082,6 +1082,7 @@
                   <label>Rol *</label>
                   <select class="fc fsel" id="rol_usuario">
                     <option value="">Seleccione el rol</option>
+                    <option value="Super_Administrador">Super Administrador</option>
                     <option value="Administrador">Administrador</option>
                     <option value="Capturador">Auxiliar Capturador</option>
                     <option value="Vendedor">Vendedor</option>
@@ -1275,6 +1276,7 @@
                   <label>Rol *</label>
                   <select class="fc fsel" id="rol_usuario_actualizar">
                     <option value="">Seleccione el rol</option>
+                    <option value="Super_Administrador">Super Administrador</option>
                     <option value="Administrador">Administrador</option>
                     <option value="Capturador">Auxiliar Capturador</option>
                     <option value="Vendedor">Vendedor</option>
