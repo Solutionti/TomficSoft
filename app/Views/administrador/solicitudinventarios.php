@@ -1956,65 +1956,84 @@
     <div class="modal-dialog modal-fullscreen">
       <div class="modal-content">
         <div class="modal-header modal-header-inv">
-          <h1 class="modal-title"><i class="fas fa-user-plus me-2"></i>Devoluciones</h1>
+          <h1 class="modal-title"><i class="fas fa-undo me-2"></i>Devoluciones</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
 
-          <!-- SECCIÓN: Datos personales -->
+          <!-- Alerta -->
+          <div id="dev-alerta" style="display:none;margin-bottom:14px;" class="alert alert-danger py-2 px-3"></div>
+
+          <!-- Buscar solicitud -->
           <div class="form-section">
             <div class="form-section-title">
-              <i class="fas fa-id-card"></i> Devolución de productos
-              <button class="btn btn-primary btn-rounded btn-sm mx-2">Cargar solicitud</button>
+              <i class="fas fa-search"></i> Cargar solicitud a devolver
             </div>
-            <div class="row g-3">
-              <!--  -->
-            <div class="cart-card ">
-                  <div class="cart-header">
-                      <h5>
-                          <i class="fas fa-shopping-cart"></i>
-                          Listado de devoluciones
-                          <span class="cart-count" id="cartCount">0 Productos</span>
-                      </h5>
-                      <span style="font-size:11px;color:var(--muted);">
-                          <i class="fas fa-info-circle"></i>&nbsp;Los productos se agregan automáticamente
-                      </span>
-                  </div>
-                  <table class="cart-table">
-                      <thead>
-                          <tr>
-                              <th></th>
-                              <th>Código</th>
-                              <th>Producto</th>
-                              <th>Cantidad</th>
-                              <th>Devolución</th>
-                              <th>Usuario</th>
-                              <th>Acciones</th>
-                          </tr>
-                      </thead>
-                      <tbody class="tbody">
-                          <!-- JS populated -->
-                          <tr id="emptyCartRow">
-                              <td colspan="6" class="cart-empty">
-                                  <i class="fas fa-shopping-basket"></i>
-                                  Aún no hay productos a devolver.<br>
-                                  <span style="font-size:12px;color:var(--purple-300);">Agrega un producto para comenzar</span>
-                              </td>
-                          </tr>
-                      </tbody>
-                  </table>
-              </div>
+            <div class="row g-3 align-items-end">
+              <div class="col-md-4">
+                <div class="fl">
+                  <label>Código de solicitud *</label>
+                  <input type="number" id="dev-cod-solicitud" class="fc" placeholder="Ej: 17" min="1">
                 </div>
-              <!--  -->
+              </div>
+              <div class="col-md-3">
+                <button type="button" id="dev-btn-cargar" class="btn btn-primary btn-rounded w-100">
+                  <i class="fas fa-download"></i> Cargar solicitud
+                </button>
+              </div>
+              <div class="col-md-5">
+                <div id="dev-solicitud-info" style="display:none;background:var(--purple-100);border:1.5px solid var(--purple-200);border-radius:8px;padding:8px 14px;font-size:12px;">
+                  <strong>Solicitud #<span id="dev-info-codigo"></span></strong> &nbsp;·&nbsp;
+                  Estado: <span id="dev-info-estado"></span> &nbsp;·&nbsp;
+                  Fecha: <span id="dev-info-fecha"></span>
+                </div>
+              </div>
             </div>
           </div>
+
+          <!-- Tabla de ítems -->
+          <div class="cart-card">
+            <div class="cart-header">
+              <h5>
+                <i class="fas fa-undo"></i>
+                Productos a devolver
+                <span class="cart-count" id="dev-count">0 productos</span>
+              </h5>
+              <div class="fl" style="flex-direction:row;align-items:center;gap:8px;">
+                <label style="font-size:11px;color:var(--muted);margin:0;">Motivo general:</label>
+                <input type="text" id="dev-motivo-global" placeholder="Ej: Producto dañado"
+                  style="padding:5px 10px;border:1.5px solid var(--border);border-radius:6px;font-size:12px;width:220px;outline:none;">
+              </div>
+            </div>
+            <table class="cart-table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Código</th>
+                  <th>Producto</th>
+                  <th>Cant. solicitada</th>
+                  <th>Cant. a devolver</th>
+                  <th>Motivo específico</th>
+                </tr>
+              </thead>
+              <tbody id="dev-tbody">
+                <tr id="dev-empty-row">
+                  <td colspan="6" class="cart-empty">
+                    <i class="fas fa-box-open"></i>
+                    Carga una solicitud para ver sus productos.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
         </div>
         <div class="modal-footer">
           <button type="button" class="btn-u btn-u-danger-outline" data-bs-dismiss="modal">
             <i class="fas fa-times"></i> Cerrar
           </button>
-          <button type="button" class="btn-u btn-u-primary" onclick="crearUsuarios()">
-            <i class="fas fa-save"></i> Guardar
+          <button type="button" id="dev-btn-guardar" class="btn-u btn-u-primary" disabled>
+            <i class="fas fa-save"></i> Registrar devolución
           </button>
         </div>
       </div>
@@ -2294,6 +2313,7 @@
 
   <?php require_once("componentes/scripts.php") ?>
   <script src="<?= base_url('js/solicitud_inventarios.js') ?>"></script>
+  <script src="<?= base_url('js/devoluciones.js') ?>"></script>
 
   <script>
     let carrito = [];
