@@ -8,6 +8,7 @@ class HorariosController extends BaseController {
   public function __construct() {
      $this->listasModel = new \App\Models\ListasModel();
      $this->horariosModel = new \App\Models\HorariosModel();
+     $this->db = \Config\Database::connect();
   }
 
   public function index(){
