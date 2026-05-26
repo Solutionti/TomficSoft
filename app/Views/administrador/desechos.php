@@ -1200,11 +1200,11 @@
                   <div class="cart-header">
                       <h5>
                           <i class="fas fa-shopping-cart"></i>
-                          Listado de solicitudes
-                          <span class="cart-count" id="cartCount">0 Solicitudes</span>
+                          Listado de desechos organicos
+                          <span class="cart-count" id="cartCount">0 desechos</span>
                       </h5>
                       <span style="font-size:11px;color:var(--muted);">
-                          <i class="fas fa-info-circle"></i>&nbsp;Las solicitudes se agregan automáticamente
+                          <i class="fas fa-info-circle"></i>&nbsp;Los desechos se agregan automáticamente
                       </span>
                   </div>
                   <table class="cart-table">
@@ -1212,33 +1212,40 @@
                           <tr>
                             <th>Nombre</th>
                             <th>Unidades</th>
-                            <th>Peso</th>
+                            <th>Peso(kG)</th>
                             <th>Dia</th>
                             <th>Fecha</th>
                             <th>Hora</th>
                           </tr>
                       </thead>
                       <tbody class="tbody">
+                        <?php foreach ($desechosMensual->getResult() as $desecho): ?>
                            <tr>
                             <td>
                           <div class="user-cell">
                             <div class="user-avatar-wrap">
-                              <img src="" class="user-avatar">
+                              <img src="<?= $desecho->imagen ?>" class="user-avatar">
                               <span
                                 class="user-status-dot"></span>
                             </div>
                               <div>
-                                <div class="user-name">Arroz paisa</div>
-                                <div class="user-sub">123456789</div>
+                                <div class="user-name"><?= $desecho->nombre ?></div>
+                                <div class="user-sub">
+                                  <a href="javascript:void(0)" 
+   onclick="abrirImagen('<?= $desecho->imagen ?>')" >
+    Abrir imagen
+</a>
+                                </div>
                                </div>
                               </div>
                              </td>
-                             <td></td>
-                             <td>3650.0</td>
-                             <td>Jueves</td>
-                             <td>24-05-2026</td>
-                             <td>2:30 PM</td>
+                             <td><?= $desecho->unidades ?></td>
+                             <td><?= $desecho->peso ?></td>
+                             <td><?= $desecho->dia ?></td>
+                             <td><?= $desecho->fecha ?></td>
+                             <td><?= $desecho->hora ?></td>
                            </tr>
+                          <?php endforeach; ?>
                       </tbody>
                   </table>
               </div>
@@ -1465,6 +1472,25 @@
       });
     });
   </script>
+  <script>
+function abrirImagen(base64) {
+    // Extraer el tipo y los datos
+    const [meta, data] = base64.split(',');
+    const mimeType = meta.match(/:(.*?);/)[1];
+    
+    // Convertir base64 a Blob
+    const byteChars = atob(data);
+    const byteArray = new Uint8Array(byteChars.length);
+    for (let i = 0; i < byteChars.length; i++) {
+        byteArray[i] = byteChars.charCodeAt(i);
+    }
+    const blob = new Blob([byteArray], { type: mimeType });
+    
+    // Crear URL temporal y abrir
+    const url = URL.createObjectURL(blob);
+    window.open(url, '_blank');
+}
+</script>
 </body>
 
 </html>

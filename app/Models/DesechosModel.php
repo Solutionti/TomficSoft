@@ -36,4 +36,14 @@ class DesechosModel extends Model
             'mensual'  => (int) $mensual,
         ];
     }
+    
+    public function getDesechosMensual() {
+      $query = $this->db->table('desechos_organicos')
+                      ->select('*')
+                      ->where("fecha >=", date('Y-m-01'))
+                      ->where("fecha <=", date('Y-m-31'))
+                      ->get();
+
+       return $query;
+    }
 }

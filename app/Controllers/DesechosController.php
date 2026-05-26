@@ -81,6 +81,7 @@ class DesechosController extends BaseController {
       'statKg'         => $stats['kg'],
       'statUnidades'   => $stats['unidades'],
       'statMensual'    => $stats['mensual'],
+      'desechosMensual' => $this->desechosModel->getDesechosMensual(),
     ];
     return view('administrador/desechos', $data);
   }
