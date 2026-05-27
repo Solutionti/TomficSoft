@@ -2081,9 +2081,9 @@
                               <th>Estado</th>
                               <th>Usuario pidio</th>
                               <th>Usuario Acepto</th>
-                              <th>S</th>
-                              <th>D</th>
-                              <th>V</th>
+                              <th>Soli</th>
+                              <th>Desp</th>
+                              <th>Devol</th>
                               <th></th>
                           </tr>
                       </thead>
@@ -2107,7 +2107,7 @@
                             <td>
                               <button class="btn-action btn-action-edit"
                               title="Ver solicitud">
-                              <i class="fas fa-file-pdf"></i>
+                              <i class="fas fa-file-pdf text-primary"></i>
                               </button>
                             </td>
                             <td><button class="btn-action btn-action-edit"
@@ -2116,7 +2116,7 @@
                             </button></td>
                             <td><button class="btn-action btn-action-edit"
                               title="Ver solicitud">
-                              <i class="fas fa-file-pdf"></i>
+                              <i class="fas fa-file-pdf text-danger"></i>
                             </button></td>
                             <td>
                           <div class="action-wrap">
