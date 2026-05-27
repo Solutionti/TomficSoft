@@ -230,6 +230,17 @@ class AsignacionModel extends Model {
                 ->update($inventarios);
    }
 
+   public function getSolicitudesProductos(): array {
+      return $this->db->table('detalle_solicitud ds')
+          ->select('s.codigo_solicitud, s.estado AS estado_solicitud, s.fecha_solicitud,
+                    p.codigo_interno, p.nombre,
+                    ds.cantidad_solicitada, ds.cantidad_aprobada')
+          ->join('solicitudes s', 's.codigo_solicitud = ds.solicitud_id')
+          ->join('productos p', 'p.codigo_producto = ds.producto_id')
+          ->orderBy('s.codigo_solicitud', 'DESC')
+          ->get()->getResultArray();
+   }
+
    public function crearUbicaciones($descripcion) {
       $ubicacion = [
         "descripcion" => $descripcion,

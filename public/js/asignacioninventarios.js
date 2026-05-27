@@ -1,18 +1,26 @@
-$("#resultTable").DataTable({
+var resultDT = $("#resultTable").DataTable({
   "lengthMenu": [5, 50, 100, 200],
+  "columns": [
+    { "data": "codigo_solicitud" },
+    { "data": "codigo_interno" },
+    { "data": "nombre" },
+    { "data": "cantidad_solicitada" },
+    { "data": "cantidad_aprobada" },
+    { "data": "estado_solicitud" }
+  ],
   "language":{
-  "processing": "Procesando",
-  "search": "Buscar:",
-  "lengthMenu": "Ver _MENU_ Productos conteo",
-  "info": "Viendo _START_ a _END_ de _TOTAL_ Productos conteo",
-  "zeroRecords": "No se encontraron resultados",
-  "paginate": {
-    "first":      "Primera",
-    "last":       "Ultima",
-    "next":       "Siguiente",
-    "previous":   "Anterior"
+    "processing": "Procesando",
+    "search": "Buscar:",
+    "lengthMenu": "Ver _MENU_ productos",
+    "info": "Viendo _START_ a _END_ de _TOTAL_ productos",
+    "zeroRecords": "No se encontraron resultados",
+    "paginate": {
+      "first":    "Primera",
+      "last":     "Última",
+      "next":     "Siguiente",
+      "previous": "Anterior"
+    }
   }
- }
 });
 
 $("#btnObtener").on("click", function(e) {
@@ -114,7 +122,22 @@ function crearInventarios(){
 }
 
 function asociarDatosModalProductos(id){
-  var id = $("#id_inventario_modal").val(id);
+  $("#id_inventario_modal").val(id);
+
+  $.ajax({
+    url: baseurl + 'asignacion/solicitudesproductos',
+    method: 'GET',
+    success: function(response) {
+      resultDT.clear().rows.add(response.data).draw();
+    },
+    error: function() {
+      $("body").overhang({
+        type: "error",
+        message: "Error al cargar productos de solicitudes."
+      });
+    }
+  });
+
   $("#listaproductos").modal('show');
 }
 

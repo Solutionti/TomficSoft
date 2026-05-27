@@ -301,6 +301,11 @@ class AsignacionController extends BaseController {
       }
     }
 
+     public function getSolicitudesProductos() {
+      $data = $this->asignacionModel->getSolicitudesProductos();
+      return $this->response->setJSON(['status' => 'success', 'data' => $data]);
+     }
+
      public function crearUbicaciones() {
       $ubicacion = $this->request->getPost('ubicacion');
       

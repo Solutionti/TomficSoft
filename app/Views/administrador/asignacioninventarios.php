@@ -1166,11 +1166,11 @@
                   <table class="inv-table inv-table-sm" id="resultTable">
                     <thead>
                       <tr>
+                        <th>N° Solicitud</th>
                         <th>Código</th>
-                        <th>Inventario</th>
-                        <th>Fecha</th>
-                        <th>Hora</th>
-                        <th>Usuario</th>
+                        <th>Nombre Producto</th>
+                        <th>Cant. Solicitada</th>
+                        <th>Cant. Aprobada</th>
                         <th>Estado</th>
                       </tr>
                     </thead>
