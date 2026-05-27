@@ -976,7 +976,10 @@
                             <th class="text-white" style="width:90px;text-align:center">Acciones</th>
                           </thead>
                           <tbody>
-                            <?php foreach ($colaboradores->getResult() as $colaborador) : ?>
+                            <?php foreach ($colaboradores->getResult() as $colaborador):
+                              $nombreCompleto = trim($colaborador->nombres . ' ' . $colaborador->apellidos);
+                              $tieneHorario   = in_array($nombreCompleto, $horariosNombres);
+                            ?>
                             <tr class="colab-row"
                               data-nombres="<?= esc($colaborador->nombres ?? '') ?>"
                               data-apellidos="<?= esc($colaborador->apellidos ?? '') ?>"
@@ -995,19 +998,31 @@
                                   <span class="user-status-dot dot-active"></span>
                                 </div>
                                 <div>
-                                  <div class="user-name"><?= esc($colaborador->nombres . ' ' . $colaborador->apellidos) ?></div>
+                                  <div class="user-name"><?= esc($nombreCompleto) ?></div>
                                   <div class="user-sub"><?= esc($colaborador->documento) ?> · <?= esc($colaborador->cargo) ?></div>
                                 </div>
                               </div>
                               </td>
                               <td style="text-align:center;vertical-align:middle">
                                 <div class="action-wrap" style="justify-content:center">
+                                  <?php if (!$tieneHorario): ?>
+                                  <button class="btn-action btn-agregar-horario" title="Agregar a horarios semanales"
+                                    data-nombre="<?= esc($nombreCompleto) ?>"
+                                    data-cargo="<?= esc($colaborador->cargo ?? '') ?>">
+                                    <i class="far fa-square"></i>
+                                  </button>
+                                  <?php else: ?>
+                                  <button class="btn-action" title="Ya tiene horario" disabled
+                                    style="background:#d1fae5;color:#065f46;border-color:#6ee7b7;cursor:default;">
+                                    <i class="fas fa-check-square"></i>
+                                  </button>
+                                  <?php endif; ?>
                                   <button class="btn-action btn-action-view btn-ver-colab" title="Ver perfil">
                                     <i class="fas fa-eye"></i>
                                   </button>
                                   <button class="btn-action btn-action-del btn-del-colab" title="Eliminar colaborador"
                                     data-documento="<?= esc($colaborador->documento) ?>"
-                                    data-nombre="<?= esc($colaborador->nombres . ' ' . $colaborador->apellidos) ?>">
+                                    data-nombre="<?= esc($nombreCompleto) ?>">
                                     <i class="fas fa-trash"></i>
                                   </button>
                                 </div>
@@ -1621,6 +1636,46 @@
   reloadPage = function() {
     window.location.reload();
   };  
+
+  /* ── Agregar colaborador a horarios ── */
+  (function () {
+    document.querySelectorAll('.btn-agregar-horario').forEach(btn => {
+      btn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        const nombre = this.dataset.nombre;
+        const cargo  = this.dataset.cargo;
+        const self   = this;
+
+        self.disabled = true;
+        self.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+
+        fetch('/horarios/crearHorario', {
+          method:  'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body:    JSON.stringify({ nombre, cargo }),
+        })
+        .then(r => r.json())
+        .then(data => {
+          if (data.status === 'success') {
+            self.outerHTML =
+              '<button class="btn-action" title="Ya tiene horario" disabled' +
+              ' style="background:#d1fae5;color:#065f46;border-color:#6ee7b7;cursor:default;">' +
+              '<i class="fas fa-check-square"></i></button>';
+            if (typeof showToast === 'function') showToast(nombre + ' agregado a horarios semanales.', 'success');
+          } else {
+            alert(data.message || 'No se pudo agregar.');
+            self.disabled = false;
+            self.innerHTML = '<i class="far fa-square"></i>';
+          }
+        })
+        .catch(() => {
+          alert('Error de conexión.');
+          self.disabled = false;
+          self.innerHTML = '<i class="far fa-square"></i>';
+        });
+      });
+    });
+  })();
 
   /* ── Eliminar colaborador ── */
   (function () {

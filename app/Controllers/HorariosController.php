@@ -13,11 +13,12 @@ class HorariosController extends BaseController {
 
   public function index(){
     $data = [
-        'permisoUsuario' => $this->listasModel->getPermisosMenu(),
-        'colaboradores'  => $this->horariosModel->getColaboradores(),
-        'horarios'       => $this->horariosModel->getHorarios(),
-        'activosHoy'     => $this->horariosModel->getActivosHoy(),
-        'salidaHoy'      => $this->horariosModel->getSalidaHoy(),
+        'permisoUsuario'  => $this->listasModel->getPermisosMenu(),
+        'colaboradores'   => $this->horariosModel->getColaboradores(),
+        'horarios'        => $this->horariosModel->getHorarios(),
+        'horariosNombres' => $this->horariosModel->getHorariosNombres(),
+        'activosHoy'      => $this->horariosModel->getActivosHoy(),
+        'salidaHoy'       => $this->horariosModel->getSalidaHoy(),
     ];
     return view('administrador/horarios', $data);
   }
@@ -73,6 +74,44 @@ class HorariosController extends BaseController {
 
     try {
         $this->horariosModel->eliminarColaborador($documento);
+        return $this->response->setJSON(['status' => 'success']);
+    } catch (\Throwable $e) {
+        return $this->response->setJSON(['status' => 'error', 'message' => $e->getMessage()])
+            ->setStatusCode(500);
+    }
+  }
+
+  public function crearHorarioColaborador() {
+    $json   = $this->request->getJSON(true);
+    $nombre = trim($json['nombre'] ?? '');
+    $cargo  = trim($json['cargo']  ?? '');
+
+    if (!$nombre) {
+        return $this->response->setJSON(['status' => 'error', 'message' => 'Nombre requerido'])
+            ->setStatusCode(400);
+    }
+
+    $existe = $this->db->table('horarios_colaboradores')
+        ->where('nombre', $nombre)->where('estado', 'Activo')->countAllResults();
+    if ($existe) {
+        return $this->response->setJSON(['status' => 'error', 'message' => 'Este colaborador ya tiene horario registrado']);
+    }
+
+    $data = [
+        'nombre'    => $nombre,
+        'cargo'     => $cargo,
+        'lunes'     => 'Descanso',
+        'martes'    => 'Descanso',
+        'miercoles' => 'Descanso',
+        'jueves'    => 'Descanso',
+        'viernes'   => 'Descanso',
+        'sabado'    => 'Descanso',
+        'domingo'   => 'Descanso',
+        'estado'    => 'Activo',
+    ];
+
+    try {
+        $this->horariosModel->crearHorarioColaborador($data);
         return $this->response->setJSON(['status' => 'success']);
     } catch (\Throwable $e) {
         return $this->response->setJSON(['status' => 'error', 'message' => $e->getMessage()])

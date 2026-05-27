@@ -83,7 +83,17 @@
         });
 
         countBadge.textContent = data.detalle.length + ' producto' + (data.detalle.length !== 1 ? 's' : '');
-        btnGuardar.disabled = false;
+
+        if (data.solicitud.estado === 'Aprobada') {
+          tbody.querySelectorAll('.des-qty, .des-comentario-item').forEach(function (inp) {
+            inp.disabled = true;
+            inp.style.background = '#f3f4f6';
+            inp.style.cursor = 'not-allowed';
+          });
+          mostrarAlerta('Esta solicitud ya fue despachada (estado: Aprobada). No se puede modificar.');
+        } else {
+          btnGuardar.disabled = false;
+        }
       })
       .catch(function () { mostrarAlerta('Error de conexión al cargar la solicitud.'); })
       .finally(function () {

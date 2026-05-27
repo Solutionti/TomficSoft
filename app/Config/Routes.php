@@ -104,7 +104,17 @@ $routes->get('/asistencia/token',   'AsistenciaController::generarToken');
 $routes->get('/horarios', 'HorariosController::index');
 $routes->post('/horarios/guardar', 'HorariosController::guardar');
 $routes->post('/horarios/eliminar', 'HorariosController::eliminarColaborador');
-$routes->post('/horarios/crear',   'HorariosController::crearColaborador');
+$routes->post('/horarios/crear',        'HorariosController::crearColaborador');
+$routes->post('/horarios/crearHorario', 'HorariosController::crearHorarioColaborador');
+
+//COMPRAS
+$routes->get('/compras',                        'ComprasController::index');
+$routes->post('/compras/cotizacion/guardar',    'ComprasController::guardarCotizacion');
+$routes->get('/compras/cotizacion/(:num)',       'ComprasController::getCotizacion/$1');
+$routes->post('/compras/cotizacion/estado',     'ComprasController::cambiarEstadoCotizacion');
+$routes->post('/compras/remision/guardar',      'ComprasController::guardarRemision');
+$routes->get('/compras/remision/(:num)',         'ComprasController::getRemision/$1');
+$routes->post('/compras/compra/guardar',        'ComprasController::guardarCompra');
 
 //PERDIDAS (desechos reports)
 $routes->get('/perdidasfechapdf/(:any)/(:any)',      'ReportesController::perdidasPorFechaPdf/$1/$2');

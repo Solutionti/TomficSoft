@@ -280,34 +280,152 @@ class InventarioController extends BaseController
    public function pdfSolicitudInventarios() {
       require APPPATH . 'Libraries/fpdf/fpdf.php';
 
-      $pdf = new \FPDF();
-      $pdf = new FPDF('L', 'mm', 'A4'); // L = Horizontal
+      $db  = \Config\Database::connect();
+      $id  = (int) $this->request->getGet('id');
+
+      $builder = $db->table('solicitudes s')
+          ->select('s.*, u.nombre, u.apellido')
+          ->join('usuarios u', 'u.documento = s.usuario_id', 'left');
+      if ($id > 0) $builder->where('s.codigo_solicitud', $id);
+      $solicitudes = $builder->orderBy('s.codigo_solicitud', 'DESC')->get()->getResult();
+
+      $pdf = new FPDF('L', 'mm', 'A4');
+      $pdf->SetMargins(10, 10, 10);
       $pdf->AddPage();
 
+      $pdf->SetFont('Arial', 'B', 14);
+      $pdf->Cell(0, 8, utf8_decode('REPORTE DE SOLICITUDES DE INVENTARIO'), 0, 1, 'C');
+      $pdf->SetFont('Times', '', 9);
+      $pdf->Cell(0, 5, 'Sistema de inventarios Tomfic   |   Fecha: ' . date('d-m-Y H:i'), 0, 1, 'C');
+      $pdf->Cell(0, 5, utf8_decode('Generado por: ') . utf8_decode(session()->get('nombre') . ' ' . session()->get('apellido')), 0, 1, 'C');
+      $pdf->Ln(4);
+
+      foreach ($solicitudes as $sol) {
+          $pdf->SetFont('Times', 'B', 9);
+          $pdf->SetFillColor(230, 245, 225);
+          $pdf->Cell(40, 6, utf8_decode('Cód. Solicitud: ') . $sol->codigo_solicitud, 'LTBR', 0, 'L', true);
+          $pdf->Cell(50, 6, 'Fecha: ' . substr($sol->fecha_solicitud ?? '', 0, 10), 'TBR', 0, 'L', true);
+          $pdf->Cell(40, 6, 'Estado: ' . utf8_decode($sol->estado ?? ''), 'TBR', 0, 'L', true);
+          $pdf->Cell(147, 6, utf8_decode('Usuario: ') . utf8_decode($sol->nombre . ' ' . $sol->apellido), 'TBR', 1, 'L', true);
+
+          $detalle = $db->table('detalle_solicitud ds')
+              ->select('ds.cantidad_solicitada, p.nombre, p.codigo_interno')
+              ->join('productos p', 'p.codigo_barras = ds.producto_id', 'left')
+              ->where('ds.solicitud_id', $sol->codigo_solicitud)
+              ->get()->getResult();
+
+          if (!empty($detalle)) {
+              $pdf->SetFont('Times', 'B', 8);
+              $pdf->Cell(10,  5, '#',                      'LTBR', 0, 'C');
+              $pdf->Cell(40,  5, utf8_decode('Cód. Interno'), 'TBR', 0, 'L');
+              $pdf->Cell(197, 5, 'Producto',               'TBR', 0, 'L');
+              $pdf->Cell(30,  5, 'Cantidad',               'TBR', 1, 'C');
+
+              $pdf->SetFont('Times', '', 8);
+              foreach ($detalle as $i => $item) {
+                  $pdf->Cell(10,  5, $i + 1,                                  'LTBR', 0, 'C');
+                  $pdf->Cell(40,  5, utf8_decode($item->codigo_interno ?? '—'), 'TBR', 0, 'L');
+                  $pdf->Cell(197, 5, utf8_decode($item->nombre ?? '—'),        'TBR', 0, 'L');
+                  $pdf->Cell(30,  5, $item->cantidad_solicitada,              'TBR', 1, 'C');
+              }
+          }
+          $pdf->Ln(4);
+      }
+
       $this->response->setHeader('Content-Type', 'application/pdf');
-      $pdf->Output('I', 'productos_sinconteo.pdf');
+      $pdf->Output('I', 'solicitudes.pdf');
    }
 
    public function pdfDevolucionInventarios() {
-        require APPPATH . 'Libraries/fpdf/fpdf.php';
+      require APPPATH . 'Libraries/fpdf/fpdf.php';
 
-        $pdf = new \FPDF();
-        $pdf = new FPDF('L', 'mm', 'A4'); // L = Horizontal
-        $pdf->AddPage();
+      $db = \Config\Database::connect();
+      $id = (int) $this->request->getGet('id');
 
-        $this->response->setHeader('Content-Type', 'application/pdf');
-        $pdf->Output('I', 'productos_sinconteo.pdf');
+      $builder = $db->table('devoluciones');
+      if ($id > 0) $builder->where('solicitud_id', $id);
+      $rows = $builder->orderBy('solicitud_id', 'ASC')->get()->getResult();
+
+      $pdf = new FPDF('L', 'mm', 'A4');
+      $pdf->SetMargins(10, 10, 10);
+      $pdf->AddPage();
+
+      $pdf->SetFont('Arial', 'B', 14);
+      $pdf->Cell(0, 8, utf8_decode('REPORTE DE DEVOLUCIONES'), 0, 1, 'C');
+      $pdf->SetFont('Times', '', 9);
+      $pdf->Cell(0, 5, 'Sistema de inventarios Tomfic   |   Fecha: ' . date('d-m-Y H:i'), 0, 1, 'C');
+      $pdf->Cell(0, 5, utf8_decode('Generado por: ') . utf8_decode(session()->get('nombre') . ' ' . session()->get('apellido')), 0, 1, 'C');
+      $pdf->Ln(5);
+
+      $pdf->SetFont('Times', 'B', 9);
+      $pdf->SetFillColor(230, 245, 225);
+      $pdf->Cell(22,  6, utf8_decode('Cód.'),           'LTBR', 0, 'C', true);
+      $pdf->Cell(22,  6, 'Solicitud',                   'TBR',  0, 'C', true);
+      $pdf->Cell(90,  6, 'Producto',                    'TBR',  0, 'L', true);
+      $pdf->Cell(30,  6, utf8_decode('Cant. Devuelta'), 'TBR',  0, 'C', true);
+      $pdf->Cell(68,  6, 'Motivo',                      'TBR',  0, 'L', true);
+      $pdf->Cell(25,  6, 'Fecha',                       'TBR',  0, 'C', true);
+      $pdf->Cell(20,  6, 'Estado',                      'TBR',  1, 'C', true);
+
+      $pdf->SetFont('Times', '', 8);
+      foreach ($rows as $row) {
+          $pdf->Cell(22,  5, $row->codigo_devolucion,                    'LTBR', 0, 'C');
+          $pdf->Cell(22,  5, $row->solicitud_id,                         'TBR',  0, 'C');
+          $pdf->Cell(90,  5, utf8_decode($row->nombre_producto ?? '—'),  'TBR',  0, 'L');
+          $pdf->Cell(30,  5, $row->cantidad_devuelta,                    'TBR',  0, 'C');
+          $pdf->Cell(68,  5, utf8_decode($row->motivo ?? '—'),           'TBR',  0, 'L');
+          $pdf->Cell(25,  5, substr($row->fecha ?? '', 0, 10),           'TBR',  0, 'C');
+          $pdf->Cell(20,  5, utf8_decode($row->estado ?? ''),            'TBR',  1, 'C');
+      }
+
+      $this->response->setHeader('Content-Type', 'application/pdf');
+      $pdf->Output('I', 'devoluciones.pdf');
    }
 
    public function pdfDespachoInventarios() {
       require APPPATH . 'Libraries/fpdf/fpdf.php';
 
-      $pdf = new \FPDF();
-      $pdf = new FPDF('L', 'mm', 'A4'); // L = Horizontal
+      $db = \Config\Database::connect();
+      $id = (int) $this->request->getGet('id');
+
+      $builder = $db->table('despachos');
+      if ($id > 0) $builder->where('solicitud_id', $id);
+      $rows = $builder->orderBy('solicitud_id', 'ASC')->get()->getResult();
+
+      $pdf = new FPDF('L', 'mm', 'A4');
+      $pdf->SetMargins(10, 10, 10);
       $pdf->AddPage();
 
+      $pdf->SetFont('Arial', 'B', 14);
+      $pdf->Cell(0, 8, utf8_decode('REPORTE DE DESPACHOS'), 0, 1, 'C');
+      $pdf->SetFont('Times', '', 9);
+      $pdf->Cell(0, 5, 'Sistema de inventarios Tomfic   |   Fecha: ' . date('d-m-Y H:i'), 0, 1, 'C');
+      $pdf->Cell(0, 5, utf8_decode('Generado por: ') . utf8_decode(session()->get('nombre') . ' ' . session()->get('apellido')), 0, 1, 'C');
+      $pdf->Ln(5);
+
+      $pdf->SetFont('Times', 'B', 9);
+      $pdf->SetFillColor(230, 245, 225);
+      $pdf->Cell(22,  6, utf8_decode('Cód.'),              'LTBR', 0, 'C', true);
+      $pdf->Cell(22,  6, 'Solicitud',                      'TBR',  0, 'C', true);
+      $pdf->Cell(90,  6, 'Producto',                       'TBR',  0, 'L', true);
+      $pdf->Cell(30,  6, utf8_decode('Cant. Despachada'),  'TBR',  0, 'C', true);
+      $pdf->Cell(68,  6, 'Comentario',                     'TBR',  0, 'L', true);
+      $pdf->Cell(25,  6, 'Fecha',                          'TBR',  0, 'C', true);
+      $pdf->Cell(20,  6, 'Estado',                         'TBR',  1, 'C', true);
+
+      $pdf->SetFont('Times', '', 8);
+      foreach ($rows as $row) {
+          $pdf->Cell(22,  5, $row->codigo_despacho,                      'LTBR', 0, 'C');
+          $pdf->Cell(22,  5, $row->solicitud_id,                         'TBR',  0, 'C');
+          $pdf->Cell(90,  5, utf8_decode($row->nombre_producto ?? '—'),  'TBR',  0, 'L');
+          $pdf->Cell(30,  5, $row->cantidad_despachada,                  'TBR',  0, 'C');
+          $pdf->Cell(68,  5, utf8_decode($row->comentario ?? '—'),       'TBR',  0, 'L');
+          $pdf->Cell(25,  5, substr($row->fecha ?? '', 0, 10),           'TBR',  0, 'C');
+          $pdf->Cell(20,  5, utf8_decode($row->estado ?? ''),            'TBR',  1, 'C');
+      }
+
       $this->response->setHeader('Content-Type', 'application/pdf');
-      $pdf->Output('I', 'productos_sinconteo.pdf');
+      $pdf->Output('I', 'despachos.pdf');
    }
     
 

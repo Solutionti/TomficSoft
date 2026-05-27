@@ -36,6 +36,18 @@ class HorariosModel extends Model {
             ->update($data);
     }
 
+    public function getHorariosNombres(): array {
+        $rows = $this->db->table('horarios_colaboradores')
+            ->select('nombre')
+            ->where('estado', 'Activo')
+            ->get()->getResult();
+        return array_map(fn($h) => $h->nombre, $rows);
+    }
+
+    public function crearHorarioColaborador(array $data): void {
+        $this->db->table('horarios_colaboradores')->insert($data);
+    }
+
     public function getActivosHoy() {
         return $this->db->table('asistencia_real')
             ->where('fecha', date('Y-m-d'))

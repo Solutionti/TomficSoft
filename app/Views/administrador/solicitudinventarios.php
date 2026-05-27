@@ -2106,16 +2106,19 @@
                             <td>aprobado por</td>
                             <td>
                               <button class="btn-action btn-action-edit"
-                              title="Ver solicitud">
+                              title="PDF Solicitud"
+                              onclick="window.open('/pdfsolicitudes?id=<?= $solicitud->codigo_solicitud ?>', '_blank')">
                               <i class="fas fa-file-pdf text-primary"></i>
                               </button>
                             </td>
                             <td><button class="btn-action btn-action-edit"
-                              title="Ver solicitud">
+                              title="PDF Despacho"
+                              onclick="window.open('/pdfdespachos?id=<?= $solicitud->codigo_solicitud ?>', '_blank')">
                               <i class="fas fa-file-pdf"></i>
                             </button></td>
                             <td><button class="btn-action btn-action-edit"
-                              title="Ver solicitud">
+                              title="PDF Devolucion"
+                              onclick="window.open('/pdfdevoluciones?id=<?= $solicitud->codigo_solicitud ?>', '_blank')">
                               <i class="fas fa-file-pdf text-danger"></i>
                             </button></td>
                             <td>
