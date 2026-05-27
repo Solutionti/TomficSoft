@@ -240,7 +240,7 @@ class AsignacionModel extends Model {
    public function getSolicitudesProductos(int $id = 0): array {
       $builder = $this->db->table('detalle_solicitud ds')
           ->select('s.codigo_solicitud, s.estado AS estado_solicitud, s.fecha_solicitud,
-                    p.codigo_interno, p.nombre,
+                    p.codigo_interno, p.codigo_barras, p.nombre,
                     ds.cantidad_solicitada, ds.cantidad_aprobada')
           ->join('solicitudes s', 's.codigo_solicitud = ds.solicitud_id')
           ->join('productos p', 'p.codigo_producto = ds.producto_id');

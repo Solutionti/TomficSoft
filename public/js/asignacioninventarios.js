@@ -25,52 +25,76 @@ var resultDT = $("#resultTable").DataTable({
 
 $("#btnObtener").on("click", function(e) {
   e.preventDefault();
-  let codigo = $("#id_inventario_modal").val(),
-      fecha = $("#fecha_inventario_modal").val(),
-      hora = $("#hora_inventario_modal").val(),
-      usuario = $("#usuario_inventario_modal").val();
-  let url = baseurl + 'cargarexcelproductosinventarios';
-  let formData = new FormData();
-  formData.append("archivo", document.getElementById("fileInput").files[0]);
-  formData.append("codigo", codigo);
-  formData.append("fecha", fecha);
-  formData.append("hora", hora);
-  formData.append("usuario", usuario);
+
+  var codigo       = $("#id_inventario_modal").val();
+  var tableHasData = resultDT.data().count() > 0;
+  var fileSelected = document.getElementById("fileInput").files.length > 0;
+
+  if (!tableHasData && !fileSelected) {
+    $("body").overhang({ type: "error", message: "Carga una solicitud o selecciona un archivo Excel." });
+    return;
+  }
 
   $("body").overhang({
-  type: "confirm",
-  primary: "#9a3de0",
-  accent: "#c5b8da",
-  yesColor: "#0033c4",
-  yesMessage: "Sí",
-  noMessage: "No",
-  message: "¿Desea cargar los productos a la base de datos?",
-  overlay: true,
-    callback: function (value) {
-      if (value) {
+    type: "confirm",
+    primary: "#9a3de0",
+    accent: "#c5b8da",
+    yesColor: "#0033c4",
+    yesMessage: "Sí",
+    noMessage: "No",
+    message: "¿Desea asociar los productos al inventario?",
+    overlay: true,
+    callback: function(value) {
+      if (!value) return;
+
+      if (tableHasData) {
+        /* ── Guardar productos cargados desde solicitudes ── */
+        var productos = resultDT.rows().data().toArray().map(function(row) {
+          return row.codigo_barras;
+        });
+
         $.ajax({
-          url: url,
+          url: baseurl + 'asinarproductosinventario',
+          method: "POST",
+          data: {
+            codigoinventario: codigo,
+            codigoproducto: productos
+          },
+          success: function() {
+            $("body").overhang({ type: "success", message: "Productos asociados al inventario correctamente." });
+            setTimeout(reloadPage, 3000);
+          },
+          error: function() {
+            $("body").overhang({ type: "error", message: "Error al asociar los productos al inventario." });
+          }
+        });
+
+      } else {
+        /* ── Guardar desde archivo Excel (flujo original) ── */
+        var fecha    = $("#fecha_inventario_modal").val();
+        var hora     = $("#hora_inventario_modal").val();
+        var usuario  = $("#usuario_inventario_modal").val();
+        var formData = new FormData();
+        formData.append("archivo", document.getElementById("fileInput").files[0]);
+        formData.append("codigo",   codigo);
+        formData.append("fecha",    fecha);
+        formData.append("hora",     hora);
+        formData.append("usuario",  usuario);
+
+        $.ajax({
+          url: baseurl + 'cargarexcelproductosinventarios',
           method: "POST",
           data: formData,
           processData: false,
           contentType: false,
-          success: function(response) {
-            $("body").overhang({
-              type: "success",
-              message: "Los productos se han asociado al inventario correctamente." 
-            });
+          success: function() {
+            $("body").overhang({ type: "success", message: "Los productos se han asociado al inventario correctamente." });
             setTimeout(reloadPage, 3000);
           },
           error: function() {
-            $("body").overhang({
-              type: "error",
-              message: "Alerta ! Tenemos un problema al conectar con la base de datos verifica tu red.",
-            });
+            $("body").overhang({ type: "error", message: "Alerta! Tenemos un problema al conectar con la base de datos." });
           }
         });
-      }
-      else {
-
       }
     }
   });
