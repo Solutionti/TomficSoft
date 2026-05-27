@@ -28,4 +28,11 @@ class DespachosModel extends Model
     {
         $this->db->table('despachos')->insert($data);
     }
+
+    public function actualizarEstadoSolicitud(int $solicitudId, string $estado): void
+    {
+        $this->db->table('solicitudes')
+            ->where('codigo_solicitud', $solicitudId)
+            ->update(['estado' => $estado]);
+    }
 }

@@ -48,8 +48,7 @@ class HorariosController extends BaseController {
         'telefono'         => trim($j['telefono']        ?? ''),
         'cargo'            => trim($j['cargo']           ?? ''),
         'sexo'             => trim($j['sexo']            ?? ''),
-        'fecha_nacimiento' => $j['nacimiento']            ?? null,
-        'correo'           => trim($j['correo']          ?? ''),
+        'nacimiento' => $j['nacimiento']            ?? null,
         'direccion'        => trim($j['direccion']       ?? ''),
         'barrio'           => trim($j['barrio']          ?? ''),
     ];

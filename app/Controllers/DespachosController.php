@@ -63,6 +63,9 @@ class DespachosController extends BaseController
                 ]);
             }
 
+            // cambiar estado de la solicitud a 'despachada'
+            $this->despachosModel->actualizarEstadoSolicitud($solicitudId, 'Aprobada');
+
             return $this->response->setJSON(['status' => 'success']);
 
         } catch (\Throwable $e) {

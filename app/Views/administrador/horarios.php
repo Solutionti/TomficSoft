@@ -1597,9 +1597,14 @@
           .forEach(id => { const el = document.getElementById(id); if (el) el.value = ''; });
 
         bootstrap.Modal.getInstance(document.getElementById('staticBackdrop'))?.hide();
-
+        //mostrar el mensaje de success
+         $("body").overhang({
+           type: "success",
+           message: "El colaborador se ha creado correctamente."
+          });
         // Recargar para mostrar la nueva fila
-        location.reload();
+         setTimeout(reloadPage, 3000);
+         
       } else {
         alerta.style.display = 'flex';
         alertaMsg.textContent = data.message || 'Error al guardar.';
@@ -1612,6 +1617,10 @@
       btn.innerHTML = '<i class="fas fa-save"></i> Guardar';
     }
   };
+
+  reloadPage = function() {
+    window.location.reload();
+  };  
 
   /* ── Eliminar colaborador ── */
   (function () {
