@@ -1141,6 +1141,39 @@
           </div>
           <div class="row mt-4 g-3">
             <div class="col-md-4">
+
+              <!-- ── Solicitudes panel ── -->
+              <div class="mb-3">
+                <button id="btnVerSolicitudes" type="button"
+                    class="btn-inv btn-inv-outline" style="width:100%;justify-content:center;">
+                  <i class="fas fa-list-alt"></i>&nbsp; Ver solicitudes disponibles
+                </button>
+                <div id="solicitudesPanel" style="display:none;margin-top:12px;">
+                  <div class="inv-table-card">
+                    <div class="inv-table-card-header" style="padding:10px 14px;">
+                      <h5 style="font-size:12px;"><i class="fas fa-file-alt"></i>&nbsp;Solicitudes</h5>
+                    </div>
+                    <div class="inv-table-scroll" style="max-height:260px;overflow-y:auto;">
+                      <table class="inv-table inv-table-sm" style="font-size:12px;">
+                        <thead>
+                          <tr>
+                            <th>#</th>
+                            <th>Fecha</th>
+                            <th>Estado</th>
+                            <th></th>
+                          </tr>
+                        </thead>
+                        <tbody id="tbodySolicitudes">
+                          <tr><td colspan="4" style="text-align:center;color:var(--text-muted);padding:16px;">
+                            Cargando...
+                          </td></tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
               <label class="form-label-inv">Subir archivo</label>
               <div class="file-drop-zone" id="fileWrapper">
                 <input type="file" id="fileInput" accept=".xlsx,.xls,.xlsm,.xlsb,.xltx,.xltm">

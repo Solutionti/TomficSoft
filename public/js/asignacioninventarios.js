@@ -123,23 +123,80 @@ function crearInventarios(){
 
 function asociarDatosModalProductos(id){
   $("#id_inventario_modal").val(id);
+  resultDT.clear().draw();
+  $("#solicitudesPanel").hide();
+  $("#listaproductos").modal('show');
+}
+
+/* ── Panel de solicitudes ── */
+$(document).on("click", "#btnVerSolicitudes", function() {
+  var panel = $("#solicitudesPanel");
+  if (panel.is(":visible")) {
+    panel.hide();
+    return;
+  }
+  panel.show();
+  $("#tbodySolicitudes").html(
+    '<tr><td colspan="4" style="text-align:center;padding:14px;color:var(--text-muted);">Cargando...</td></tr>'
+  );
 
   $.ajax({
-    url: baseurl + 'asignacion/solicitudesproductos',
+    url: baseurl + 'asignacion/solicitudes',
+    method: 'GET',
+    success: function(response) {
+      var rows = '';
+      if (!response.data || response.data.length === 0) {
+        rows = '<tr><td colspan="4" style="text-align:center;padding:14px;color:var(--text-muted);">Sin solicitudes</td></tr>';
+      } else {
+        response.data.forEach(function(s) {
+          var badgeClass = s.estado === 'Aprobada' ? 'badge-success-inv'
+                        : s.estado === 'Rechazada' ? 'badge-danger-inv'
+                        : 'badge-dark-inv';
+          rows += '<tr>' +
+            '<td><strong>#' + s.codigo_solicitud + '</strong></td>' +
+            '<td>' + (s.fecha_solicitud ? s.fecha_solicitud.substring(0,10) : '') + '</td>' +
+            '<td><span class="badge-inv ' + badgeClass + '">' + s.estado + '</span></td>' +
+            '<td><button type="button" class="btn-panel btn-panel-blue btn-cargar-solicitud" ' +
+                'data-id="' + s.codigo_solicitud + '">' +
+                '<i class="fas fa-upload fa-xs"></i> Cargar</button></td>' +
+            '</tr>';
+        });
+      }
+      $("#tbodySolicitudes").html(rows);
+    },
+    error: function() {
+      $("#tbodySolicitudes").html(
+        '<tr><td colspan="4" style="text-align:center;padding:14px;color:var(--accent-red);">Error al cargar</td></tr>'
+      );
+    }
+  });
+});
+
+$(document).on("click", ".btn-cargar-solicitud", function() {
+  var solicitudId = $(this).data('id');
+  var btn = $(this);
+  btn.prop('disabled', true).html('<i class="fas fa-spinner fa-spin fa-xs"></i> Cargando');
+
+  $.ajax({
+    url: baseurl + 'asignacion/solicitudesproductos?id=' + solicitudId,
     method: 'GET',
     success: function(response) {
       resultDT.clear().rows.add(response.data).draw();
+      btn.prop('disabled', false).html('<i class="fas fa-check fa-xs"></i> Cargada');
+      $("body").overhang({
+        type: "success",
+        message: "Productos de solicitud #" + solicitudId + " cargados."
+      });
     },
     error: function() {
+      btn.prop('disabled', false).html('<i class="fas fa-upload fa-xs"></i> Cargar');
       $("body").overhang({
         type: "error",
-        message: "Error al cargar productos de solicitudes."
+        message: "Error al cargar productos de la solicitud."
       });
     }
   });
-
-  $("#listaproductos").modal('show');
-}
+});
 
 function asociarDatosModalConteos(id){
   var id = $("#id_conteo_modal").val(id);
