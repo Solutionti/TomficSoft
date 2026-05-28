@@ -369,7 +369,7 @@
                         <div class="inv-actions">
                             <a class="btn-i btn-i-success-outline" href="<?= base_url('inventarios/exportar-excel') ?>" title="Exportar Excel">
                                 <i class="fas fa-file-excel"></i>
-                                <span class="label">Exportar Excel</span>
+                                <!-- <span class="label">Exportar Excel</span> -->
                             </a>
                             <button class="btn-i btn-i-outline" onclick="ajustarInventario()">
                                 <i class="fas fa-balance-scale"></i>

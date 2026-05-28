@@ -97,7 +97,7 @@ class ComprasModel extends Model
             if (!empty($item['producto_id'])) {
                 $this->db->table('productos')
                     ->where('codigo_barras', $item['producto_id'])
-                    ->set('saldo', 'saldo + ' . (int)$item['cantidad'], false)
+                    ->set('bodega', 'bodega + ' . (int)$item['cantidad'], false)
                     ->update();
             }
         }
