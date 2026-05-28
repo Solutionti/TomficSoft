@@ -429,6 +429,70 @@ class InventarioController extends BaseController
    }
     
 
+   public function exportarExcel() {
+        $productos = $this->inventarioModel->getProductos()->getResult();
+
+        $spreadsheet = new Spreadsheet();
+        $sheet = $spreadsheet->getActiveSheet();
+        $sheet->setTitle('Inventario');
+
+        $headers = [
+            'A' => 'CODIGO INTERNO',
+            'B' => 'CODIGO DE BARRAS',
+            'C' => 'NOMBRE DEL PRODUCTO',
+            'D' => 'REFERENCIA',
+            'E' => 'EMPRESA NIT',
+            'F' => 'PROVEEDOR',
+            'G' => 'CATEGORIA',
+            'H' => 'SUBCATEGORIA',
+            'I' => 'GRUPO',
+            'J' => 'SUBGRUPO',
+            'K' => 'STOCK',
+            'L' => 'COSTO',
+        ];
+
+        foreach ($headers as $col => $label) {
+            $cell = $col . '1';
+            $sheet->setCellValue($cell, $label);
+            $sheet->getStyle($cell)->getFont()->setBold(true);
+            $sheet->getStyle($cell)->getFill()
+                ->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)
+                ->getStartColor()->setRGB('FFFF00');
+            $sheet->getStyle($cell)->getFont()->getColor()->setRGB('000000');
+            $sheet->getStyle($cell)->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
+        }
+
+        $row = 2;
+        foreach ($productos as $p) {
+            $sheet->setCellValue('A'.$row, $p->codigo_interno);
+            $sheet->setCellValue('B'.$row, $p->codigo_barras);
+            $sheet->setCellValue('C'.$row, $p->nombre);
+            $sheet->setCellValue('D'.$row, $p->referencia);
+            $sheet->setCellValue('E'.$row, $p->nit);
+            $sheet->setCellValue('F'.$row, $p->proveedor);
+            $sheet->setCellValue('G'.$row, $p->categoria_nombre);
+            $sheet->setCellValue('H'.$row, $p->subcategoria);
+            $sheet->setCellValue('I'.$row, $p->grupo);
+            $sheet->setCellValue('J'.$row, $p->subgrupo);
+            $sheet->setCellValue('K'.$row, $p->saldo);
+            $sheet->setCellValue('L'.$row, $p->costo);
+            $row++;
+        }
+
+        foreach (array_keys($headers) as $col) {
+            $sheet->getColumnDimension($col)->setAutoSize(true);
+        }
+
+        $filename = 'inventario_' . date('Ymd_His') . '.xlsx';
+        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        header('Content-Disposition: attachment; filename="' . $filename . '"');
+        header('Cache-Control: max-age=0');
+
+        $writer = new Xlsx($spreadsheet);
+        $writer->save('php://output');
+        exit;
+   }
+
    public function ajustarInventario() {
     $ultimoinventario = $this->inventarioModel->getUltimoInventario()->getRow();
      
