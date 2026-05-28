@@ -421,7 +421,7 @@ function eliminarProducto(id) {
               label.textContent = '¡Ajuste completado!';
               setTimeout(function () {
                 overlay.style.display = 'none';
-                $("body").overhang({ type: "success", message: response.message });
+                $("body").overhang({ type: "success", message: 'Se ha ajustado el inventario correctamente.' });
                 setTimeout(reloadPage, 3000);
               }, 700);
             },
