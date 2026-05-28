@@ -1684,27 +1684,36 @@
         e.stopPropagation();
         const documento = this.dataset.documento;
         const nombre    = this.dataset.nombre;
-        const fila      = this.closest('.colab-row');
 
-        if (!confirm(`¿Eliminar a ${nombre}?\nEsta acción no se puede deshacer.`)) return;
+        $("body").overhang({
+          type:       "confirm",
+          primary:    "#173a10",
+          accent:     "#4a8a37",
+          yesColor:   "#ef4444",
+          yesMessage: "Sí, eliminar",
+          noMessage:  "Cancelar",
+          message:    `¿Eliminar a ${nombre}? Esta acción no se puede deshacer.`,
+          overlay:    true,
+          callback: function (value) {
+            if (!value) return;
 
-        fetch('/horarios/eliminar', {
-          method:  'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body:    JSON.stringify({ documento }),
-        })
-        .then(r => r.json())
-        .then(data => {
-          if (data.status === 'success') {
-            fila.style.transition = 'opacity .35s, transform .35s';
-            fila.style.opacity    = '0';
-            fila.style.transform  = 'translateX(30px)';
-            setTimeout(() => fila.remove(), 360);
-          } else {
-            alert('Error al eliminar: ' + (data.message || 'desconocido'));
+            fetch('/horarios/eliminar', {
+              method:  'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body:    JSON.stringify({ documento }),
+            })
+            .then(r => r.json())
+            .then(data => {
+              if (data.status === 'success') {
+                $("body").overhang({ type: "success", message: `El colaborador ${nombre} fue eliminado correctamente.` });
+                setTimeout(() => location.reload(), 2000);
+              } else {
+                $("body").overhang({ type: "error", message: "Error al eliminar: " + (data.message || 'desconocido') });
+              }
+            })
+            .catch(() => $("body").overhang({ type: "error", message: "Error de conexión al intentar eliminar." }));
           }
-        })
-        .catch(() => alert('Error de conexión.'));
+        });
       });
     });
   })();
