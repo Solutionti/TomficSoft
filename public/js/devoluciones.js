@@ -18,9 +18,7 @@
   if (!btnCargar) return; // el módulo no está en esta página
 
   function mostrarAlerta(msg) {
-    alerta.textContent = msg;
-    alerta.style.display = 'block';
-    setTimeout(function () { alerta.style.display = 'none'; }, 4000);
+    $("body").overhang({ type: "error", message: msg });
   }
 
   function limpiarTabla() {
@@ -142,8 +140,7 @@
           limpiarTabla();
           inputCod.value = '';
           /* Toast reutilizable si existe */
-          if (typeof showToast === 'function') showToast('Devolución registrada correctamente.', 'success');
-          else alert('Devolución registrada correctamente.');
+          $("body").overhang({ type: "success", message: "Devolución registrada correctamente." });
         } else {
           mostrarAlerta(data.message || 'No se pudo guardar la devolución.');
         }

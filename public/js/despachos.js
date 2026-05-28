@@ -18,9 +18,7 @@
   if (!btnCargar) return;
 
   function mostrarAlerta(msg) {
-    alerta.textContent = msg;
-    alerta.style.display = 'block';
-    setTimeout(function () { alerta.style.display = 'none'; }, 4000);
+    $("body").overhang({ type: "error", message: msg });
   }
 
   function limpiarTabla() {
@@ -145,8 +143,7 @@
           if (modal) modal.hide();
           limpiarTabla();
           inputCod.value = '';
-          if (typeof showToast === 'function') showToast('Despacho registrado correctamente.', 'success');
-          else alert('Despacho registrado correctamente.');
+          $("body").overhang({ type: "success", message: "Despacho registrado correctamente." });
         } else {
           mostrarAlerta(data.message || 'No se pudo guardar el despacho.');
         }

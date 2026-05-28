@@ -6,8 +6,7 @@
   }
 
   function toast(msg, type) {
-    if (typeof showToast === 'function') showToast(msg, type || 'success');
-    else alert(msg);
+    $("body").overhang({ type: (type === 'success' ? 'success' : 'error'), message: msg });
   }
 
   /* ══════════════════════════════════════
@@ -45,9 +44,7 @@
     var searchTimeout = null;
 
     function mostrarAlerta(msg) {
-      alerta.textContent = msg;
-      alerta.style.display = 'block';
-      setTimeout(function () { alerta.style.display = 'none'; }, 4000);
+      $("body").overhang({ type: "error", message: msg });
     }
 
     function renderTabla() {
@@ -246,9 +243,7 @@
     var items = [];
 
     function mostrarAlerta(msg) {
-      alerta.textContent = msg;
-      alerta.style.display = 'block';
-      setTimeout(function () { alerta.style.display = 'none'; }, 4000);
+      $("body").overhang({ type: "error", message: msg });
     }
 
     function limpiarTabla() {
@@ -414,9 +409,7 @@
     var items = [];
 
     function mostrarAlerta(msg) {
-      alerta.textContent = msg;
-      alerta.style.display = 'block';
-      setTimeout(function () { alerta.style.display = 'none'; }, 4000);
+      $("body").overhang({ type: "error", message: msg });
     }
 
     function calcTotal() {
@@ -594,7 +587,7 @@
       .then(function (r) { return r.json(); })
       .then(function (data) {
         if (data.status === 'success') location.reload();
-        else alert(data.message || 'Error');
+        else $("body").overhang({ type: "error", message: data.message || 'No se pudo cambiar el estado.' });
       });
     });
   });

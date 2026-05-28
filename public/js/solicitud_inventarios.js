@@ -45,7 +45,7 @@ $("#addToCartBtn").on("click", function () {
                 }, 4000);
         },
         error: function (xhr, status, error) {
-            alert('Error al crear la solicitud de inventarios: ' + error);
+            $("body").overhang({ type: "error", message: "Error al crear la solicitud de inventarios." });
         }
     });
           }
