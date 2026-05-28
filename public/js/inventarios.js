@@ -376,33 +376,66 @@ function eliminarProducto(id) {
         yesColor: "#0033c4",
         yesMessage: "Sí",
         noMessage: "No",
-        message: "¿Desea ajustar el inventario con el ultimo conteo realizado?",
+        message: "¿Desea ajustar el inventario con el último conteo realizado?",
         overlay: true,
         callback: function (value) {
-          if (value) {
-            $.ajax({
-              url: baseurl + "ajustarinventario",
-              method: "POST",
-              success: function(response){
-                $("body").overhang({
-                  type: "success",
-                  message: response.message
-                });
-                setTimeout(reloadPage, 3000);
-              },
-              error: function(response){
-                $("body").overhang({
-                  type: "error",
-                  message: "Alerta ! Tenemos un problema al conectar con la base de datos verifica tu red.",
-                });
-              }
+          if (!value) return;
+
+          var overlay = document.getElementById('ajuste-overlay');
+          var bar     = document.getElementById('ajuste-bar');
+          var pct     = document.getElementById('ajuste-pct');
+          var label   = document.getElementById('ajuste-label');
+
+          /* Mostrar overlay */
+          overlay.style.display = 'flex';
+          bar.style.width = '0%';
+          pct.textContent = '0%';
+          label.textContent = 'Iniciando ajuste…';
+
+          /* Animación de progreso simulada hasta 85% */
+          var progress = 0;
+          var messages = [
+            [15, 'Leyendo conteos…'],
+            [35, 'Comparando diferencias…'],
+            [55, 'Actualizando saldos…'],
+            [75, 'Guardando cambios…'],
+          ];
+          var timer = setInterval(function () {
+            var inc = progress < 30 ? 7 : progress < 60 ? 4 : progress < 80 ? 1.5 : 0.3;
+            progress = Math.min(progress + inc, 85);
+            bar.style.width = progress + '%';
+            pct.textContent = Math.round(progress) + '%';
+            messages.forEach(function (m) {
+              if (progress >= m[0]) label.textContent = m[1];
             });
-          }
-          else {
-            //no
-          }
+          }, 180);
+
+          $.ajax({
+            url: baseurl + "ajustarinventario",
+            method: "POST",
+            success: function (response) {
+              clearInterval(timer);
+              bar.style.transition = 'width .4s ease';
+              bar.style.width = '100%';
+              pct.textContent = '100%';
+              label.textContent = '¡Ajuste completado!';
+              setTimeout(function () {
+                overlay.style.display = 'none';
+                $("body").overhang({ type: "success", message: response.message });
+                setTimeout(reloadPage, 3000);
+              }, 700);
+            },
+            error: function () {
+              clearInterval(timer);
+              overlay.style.display = 'none';
+              $("body").overhang({
+                type: "error",
+                message: "Alerta! Tenemos un problema al conectar con la base de datos.",
+              });
+            }
+          });
         }
-     });
+      });
     }
 
   function reloadPage() {
