@@ -376,11 +376,27 @@ function eliminarProducto(id) {
         yesColor: "#0033c4",
         yesMessage: "Sí",
         noMessage: "No",
-        message: "¿Desea ajustar el stock del inventario?",
+        message: "¿Desea ajustar el inventario con el ultimo conteo realizado?",
         overlay: true,
         callback: function (value) {
           if (value) {
-            alert("Funcionalidad en desarrollo, pronto estará disponible.");
+            $.ajax({
+              url: baseurl + "ajustarinventario",
+              method: "POST",
+              success: function(response){
+                $("body").overhang({
+                  type: "success",
+                  message: response.message
+                });
+                setTimeout(reloadPage, 3000);
+              },
+              error: function(response){
+                $("body").overhang({
+                  type: "error",
+                  message: "Alerta ! Tenemos un problema al conectar con la base de datos verifica tu red.",
+                });
+              }
+            });
           }
           else {
             //no

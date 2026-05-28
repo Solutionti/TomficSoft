@@ -436,7 +436,7 @@ class InventarioController extends BaseController
 
     foreach($productosconteo->getResult() as $producto) {
       $data = [
-        'stock' => $productosconteo->conteo1,
+        'stock' => $producto->conteo1,
         'producto' => $producto->codigo_producto,
       ];
       $this->inventarioModel->ajustarInventario($data);
