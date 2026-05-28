@@ -700,7 +700,7 @@
             datasets: [
                 {
                     label: 'Ventas',
-                    data: [12, 19, 3, 5, 10, 2, 13, 3, 8, 15, 7, 11],
+                    data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
                     backgroundColor: 'rgba(74,138,55,.18)',
                     borderColor: '#4a8a37',
                     borderWidth: 2,
@@ -709,7 +709,7 @@
                 },
                 {
                     label: 'Ganancia',
-                    data: [6, 10, 2, 3, 5, 1, 7, 2, 4, 8, 4, 6],
+                    data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
                     backgroundColor: 'rgba(16,185,129,.18)',
                     borderColor: '#10b981',
                     borderWidth: 2,

@@ -9,8 +9,9 @@ class InventarioModel extends Model
     
     public function getProductos()
     {
-        $query = $this->db->table('productos')
-                ->select('*')
+        $query = $this->db->table('productos p')
+                ->select('p.*, c.nombre as categoria_nombre')
+                ->join('categorias c', 'c.codigo_categoria = p.categoria')
                 ->get();
 
         return $query;
@@ -172,8 +173,32 @@ class InventarioModel extends Model
                   ->update($productos);
     }
 
-    public function ajustarInventario() {
-    
+    public function ajustarInventario($data) {
+      $productos = [
+        "saldo" => $data["stock"]
+      ];
+      $this->db->table('productos')
+                ->where('codigo_barras', $data["producto"])
+                ->update($productos);
+    }
+
+    public function getUltimoInventario() {
+        $ultimoInventario = $this->db->table('inventarios')
+                ->select('*')
+                ->orderBy('codigo_inventario', 'DESC')
+                ->limit(1)
+                ->get();
+
+        return $ultimoInventario;
+    }
+
+    public function getCapturaConteos($codigo) {
+      $conteos = $this->db->table('captura_conteos')
+                ->select('*')
+                ->where('codigo_inventario', $codigo)
+                ->get();
+
+        return $conteos;    
     }
 
     //SOLICITUD DE INVENTARIOS

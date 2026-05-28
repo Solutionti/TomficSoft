@@ -440,7 +440,6 @@
                                         <th>Nombre</th>
                                         <th>Proveedor</th>
                                         <th>Categoría</th>
-                                        <th>Subcategoría</th>
                                         <th>Stock</th>
                                         <th>Valor</th>
                                     </tr>
@@ -469,10 +468,9 @@
                                         <td style="font-size:12px;color:var(--muted);"><?= $producto->proveedor; ?></td>
                                         <td>
                                             <span style="font-size:12px;background:var(--purple-100);color:var(--purple-700);padding:3px 10px;border-radius:50px;font-weight:600;font-size:11px;">
-                                                <?= $producto->categoria; ?>
+                                                <?= $producto->categoria_nombre; ?>
                                             </span>
                                         </td>
-                                        <td style="font-size:12px;color:var(--muted);"><?= $producto->subcategoria; ?></td>
                                         <td>
                                             <?php
                                                 $s = (int)$producto->saldo;

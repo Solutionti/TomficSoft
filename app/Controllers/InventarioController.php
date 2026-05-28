@@ -430,7 +430,17 @@ class InventarioController extends BaseController
     
 
    public function ajustarInventario() {
-    
+    $ultimoinventario = $this->inventarioModel->getUltimoInventario()->getRow();
+     
+    $productosconteo = $this->inventarioModel->getCapturaConteos($ultimoinventario->codigo_inventario);
+
+    foreach($productosconteo->getResult() as $producto) {
+      $data = [
+        'stock' => $productosconteo->conteo1,
+        'producto' => $producto->codigo_producto,
+      ];
+      $this->inventarioModel->ajustarInventario($data);
+    }
    }
 
 }

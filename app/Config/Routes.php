@@ -64,6 +64,8 @@ $routes->post('actualizarproductos', 'InventarioController::actualizarProductos'
 $routes->post('eliminarproducto', 'InventarioController::eliminarProducto');
 $routes->get('obtenerstock/(:num)', 'InventarioController::obtenerstock/$1');
 $routes->get('/inventarios/buscar', 'InventarioController::buscarProductosPorNombre');
+$routes->get('/ajustarinventario', 'InventarioController::ajustarInventario');
+
 
 $routes->post('ingresarentrada', 'InventarioController::ingresarEntradaProductos');
 $routes->post('ingresarsalida', 'InventarioController::ingresarSalidaProductos');
