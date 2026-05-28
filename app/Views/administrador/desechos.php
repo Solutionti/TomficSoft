@@ -1083,9 +1083,7 @@
                         <button type="button" class="btn btn-danger btn-rounded" id="ocr-btn-camara">
                           <span class="fas fa-camera"></span> Cámara
                         </button>
-                        <button type="button" class="btn btn-success btn-rounded" id="ocr-btn-procesar" disabled>
-                          <i class="fas fa-magnifying-glass"></i> Leer balanza
-                        </button>
+                        <button type="button" id="ocr-btn-procesar" style="display:none;" disabled></button>
                       </div>
                     </div>
                   </div>
