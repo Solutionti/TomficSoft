@@ -113,7 +113,7 @@
       if (q.length < 2) { dropdown.style.display = 'none'; return; }
 
       searchTimeout = setTimeout(function () {
-        fetch('/buscarProductosPorNombre?q=' + encodeURIComponent(q))
+        fetch('/inventarios/buscar?q=' + encodeURIComponent(q))
           .then(function (r) { return r.json(); })
           .then(function (data) {
             dropdown.innerHTML = '';
