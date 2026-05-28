@@ -828,6 +828,19 @@
   </div>
 </div>
 
+<!-- ── Overlay progreso ajuste ── -->
+<div id="ajuste-overlay" style="display:none;position:fixed;inset:0;background:rgba(13,36,9,.6);z-index:9999;align-items:center;justify-content:center;">
+  <div style="background:#fff;border-radius:16px;padding:36px 44px;min-width:340px;box-shadow:0 20px 60px rgba(0,0,0,.3);text-align:center;">
+    <i class="fas fa-balance-scale" style="font-size:32px;color:#4a8a37;margin-bottom:14px;display:block;"></i>
+    <div style="font-size:15px;font-weight:800;color:#173a10;margin-bottom:5px;">Ajustando inventario</div>
+    <div id="ajuste-label" style="font-size:12px;color:#7c6fa0;margin-bottom:20px;">Iniciando…</div>
+    <div style="background:#e8e0f5;border-radius:99px;height:10px;overflow:hidden;">
+      <div id="ajuste-bar" style="height:100%;background:linear-gradient(90deg,#4a8a37,#10b981);border-radius:99px;width:0%;transition:width .25s ease;"></div>
+    </div>
+    <div id="ajuste-pct" style="font-size:11px;color:#7c6fa0;margin-top:8px;font-weight:600;">0%</div>
+  </div>
+</div>
+
 <?php require_once("componentes/scripts.php")?>
 <script src="<?= base_url('js/inventarios.js') ?>"></script>
 
