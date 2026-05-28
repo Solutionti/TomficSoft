@@ -327,11 +327,12 @@ h1,h2,h3,h4,h5,h6{font-family:Arial,Helvetica;}
                       <th>Fecha</th>
                       <th>Total</th>
                       <th>Estado</th>
+                      <th>PDF</th>
                     </tr>
                   </thead>
                   <tbody>
                     <?php if (empty($compras)): ?>
-                    <tr><td colspan="8" class="cart-empty"><i class="fas fa-shopping-bag"></i>No hay compras registradas.</td></tr>
+                    <tr><td colspan="9" class="cart-empty"><i class="fas fa-shopping-bag"></i>No hay compras registradas.</td></tr>
                     <?php else: foreach ($compras as $cp): ?>
                     <?php
                       $estadoCls = match($cp->estado) {
@@ -349,6 +350,13 @@ h1,h2,h3,h4,h5,h6{font-family:Arial,Helvetica;}
                       <td><?= substr($cp->fecha ?? '', 0, 10) ?></td>
                       <td style="font-weight:700;">$<?= number_format($cp->total, 0, ',', '.') ?></td>
                       <td><span class="badge-cmp <?= $estadoCls ?>"><?= esc($cp->estado) ?></span></td>
+                      <td>
+                        <a href="<?= base_url('compras/compra/pdf/' . $cp->id) ?>" target="_blank"
+                           class="btn-action btn-action-del" title="Descargar PDF"
+                           style="background:#fee2e2;color:#991b1b;border-color:#fecaca;width:30px;height:30px;display:inline-flex;align-items:center;justify-content:center;border-radius:8px;text-decoration:none;">
+                          <i class="fas fa-file-pdf" style="font-size:12px;"></i>
+                        </a>
+                      </td>
                     </tr>
                     <?php endforeach; endif; ?>
                   </tbody>

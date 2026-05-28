@@ -119,6 +119,7 @@ $routes->post('/compras/cotizacion/estado',     'ComprasController::cambiarEstad
 $routes->post('/compras/remision/guardar',      'ComprasController::guardarRemision');
 $routes->get('/compras/remision/(:num)',         'ComprasController::getRemision/$1');
 $routes->post('/compras/compra/guardar',        'ComprasController::guardarCompra');
+$routes->get('/compras/compra/pdf/(:num)',      'ComprasController::pdfCompra/$1');
 
 //PERDIDAS (desechos reports)
 $routes->get('/perdidasfechapdf/(:any)/(:any)',      'ReportesController::perdidasPorFechaPdf/$1/$2');

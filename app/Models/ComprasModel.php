@@ -78,6 +78,15 @@ class ComprasModel extends Model
             ->get()->getResult();
     }
 
+    public function getCompraConDetalle(int $id): array
+    {
+        $compra = $this->db->table('compras')->where('id', $id)->get()->getRow();
+        if (!$compra) return [];
+        $detalle = $this->db->table('detalle_compra')
+            ->where('compra_id', $id)->get()->getResult();
+        return ['compra' => $compra, 'detalle' => $detalle];
+    }
+
     public function guardarCompra(array $compra, array $items): int
     {
         $this->db->table('compras')->insert($compra);
