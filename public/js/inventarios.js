@@ -386,7 +386,7 @@ function eliminarProducto(id) {
               success: function(response){
                 $("body").overhang({
                   type: "success",
-                  message: response.message
+                  message: "el inventario se ha ajustado correctamente con el ultimo conteo realizado."
                 });
                 setTimeout(reloadPage, 3000);
               },
