@@ -164,8 +164,8 @@
     selection = normalizeRect(startX, startY, w, h);
     drawSelection(startX, startY, w, h);
     showCropPreview();
-    btnProcesar.disabled = false;
     cropHint.style.display = 'none';
+    procesarOCR();
   });
 
   /* Touch support (móvil) */
@@ -201,8 +201,8 @@
     selection = normalizeRect(startX, startY, w, h);
     drawSelection(startX, startY, w, h);
     showCropPreview();
-    btnProcesar.disabled = false;
     cropHint.style.display = 'none';
+    procesarOCR();
   }, { passive: false });
 
   /* Dibuja el rectángulo de selección con overlay oscuro */
@@ -298,19 +298,10 @@
   });
 
   /* ══════════════════════════════════════
-     Procesamiento OCR via OCR.space (backend)
+     Procesamiento OCR — se llama automáticamente al soltar el recuadro
   ══════════════════════════════════════ */
-  btnProcesar.addEventListener('click', async () => {
-    console.log('[OCR] click en Leer balanza. selection=', selection, 'image=', !!originalImage);
-
-    if (!selection) {
-      showToast('Primero arrastra sobre el display de la balanza para seleccionarlo.');
-      return;
-    }
-    if (!originalImage) {
-      showToast('Carga una imagen primero.');
-      return;
-    }
+  async function procesarOCR() {
+    if (!selection || !originalImage) return;
 
     /* Recortar desde la imagen original (coordenadas reales, sin escala de display) */
     const realX = selection.x / imgScale;
@@ -318,9 +309,7 @@
     const realW = selection.w / imgScale;
     const realH = selection.h / imgScale;
 
-    console.log('[OCR] recorte real:', { realX, realY, realW, realH });
-
-    /* Upscale 2x y preprocesar para display LED */
+    /* Upscale 3x y preprocesar para display LED */
     const UP = 3;
     const offscreen = document.createElement('canvas');
     offscreen.width  = Math.round(realW * UP);
@@ -330,32 +319,20 @@
     octx.imageSmoothingQuality = 'high';
     octx.drawImage(originalImage, realX, realY, realW, realH, 0, 0, offscreen.width, offscreen.height);
 
-    /* Preprocesar para display LED:
-       1. Extraer canal máximo (captura rojo/naranja independientemente del color del LED)
-       2. Contraste fuerte sin binarizar (preserva más información para Tesseract)
-       3. Invertir: dígito claro → negro sobre fondo blanco */
     const id = octx.getImageData(0, 0, offscreen.width, offscreen.height);
     const d  = id.data;
     for (let i = 0; i < d.length; i += 4) {
-      // Canal máximo amplifica cualquier color de LED (rojo, verde, naranja, azul)
-      const v = Math.max(d[i], d[i+1], d[i+2]);
-      // Curva de contraste: oscuro se hace más oscuro, claro más claro
-      const c = Math.min(255, Math.pow(v / 255, 0.4) * 255);
-      // Invertir: fondo oscuro → blanco, dígito brillante → negro
+      const v   = Math.max(d[i], d[i+1], d[i+2]);
+      const c   = Math.min(255, Math.pow(v / 255, 0.4) * 255);
       const inv = 255 - c;
       d[i] = d[i+1] = d[i+2] = inv;
     }
     octx.putImageData(id, 0, 0);
 
-    /* Guardar base64 del recorte procesado para enviarlo al guardar */
     lastCropBase64 = offscreen.toDataURL('image/png');
     cropPreview.src = lastCropBase64;
     cropPreviewWrap.style.display = 'block';
 
-    console.log('[OCR] base64 length:', offscreen.toDataURL('image/png').length);
-
-    btnProcesar.disabled = true;
-    btnProcesar.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Procesando…';
     progressWrap.style.display = 'block';
     progressFill.style.width = '20%';
     progressLabel.textContent = 'Iniciando OCR…';
@@ -367,13 +344,12 @@
       progressLabel.textContent = 'Reconociendo texto…';
 
       const result = await Tesseract.recognize(offscreen, 'eng', {
-        tessedit_pageseg_mode:   '7',           // línea de texto única
+        tessedit_pageseg_mode:   '7',
         tessedit_char_whitelist: '0123456789.',
       });
 
       progressFill.style.width = '100%';
       const rawText = result.data.text.trim();
-      console.log('[OCR] Tesseract raw:', rawText);
 
       resultText.textContent = rawText || '(sin texto)';
       resultWrap.style.display = 'block';
@@ -391,11 +367,9 @@
       resultWrap.style.display = 'block';
       showToast('Error: ' + err.message);
     } finally {
-      btnProcesar.disabled = false;
-      btnProcesar.innerHTML = '<i class="fas fa-magnifying-glass"></i> Leer balanza';
       progressWrap.style.display = 'none';
     }
-  });
+  }
 
   /* Extrae el valor numérico del texto OCR de una balanza */
   function extraerValor(texto) {
