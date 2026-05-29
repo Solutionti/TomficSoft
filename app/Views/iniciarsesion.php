@@ -313,7 +313,7 @@
         Inventarios, asistencias, horarios y más — todo en un solo lugar, en tiempo real.
       </p>
 
-      <div class="feature-list">
+      <!-- <div class="feature-list">
         <div class="feature-item">
           <div class="feature-dot"><i class="fas fa-truck"></i></div>
           <div class="feature-text"><strong>Control de inventario</strong><br>Seguimiento en tiempo real de entradas y salidas</div>
@@ -326,7 +326,7 @@
           <div class="feature-dot"><i class="fas fa-calendar-week"></i></div>
           <div class="feature-text"><strong>Horarios de equipo</strong><br>Administra turnos y permisos fácilmente</div>
         </div>
-      </div>
+      </div> -->
 
       <div class="left-quote">
         <p>"Hemos creado un espacio para tus inventarios para que puedas estar al día de cada movimiento."</p>
@@ -359,7 +359,7 @@
             type="text"
             class="fc"
             id="usuario"
-            placeholder="Usuario o email"
+            placeholder="Usuario o Email"
             autocomplete="username"
           >
         </div>
@@ -371,7 +371,7 @@
               type="password"
               class="fc js-toggle-password"
               id="password"
-              placeholder="••••••••"
+              placeholder="•••••••••••••••••"
               autocomplete="current-password"
             >
             <!-- mantiene selector JS: .input-group-append.input-group-text -->
