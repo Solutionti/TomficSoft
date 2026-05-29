@@ -207,11 +207,12 @@ h1,h2,h3,h4,h5,h6{font-family:Arial,Helvetica;}
                       <th>Estado</th>
                       <th>Total</th>
                       <th>Acciones</th>
+                      <th>PDF</th>
                     </tr>
                   </thead>
                   <tbody>
                     <?php if (empty($cotizaciones)): ?>
-                    <tr><td colspan="7" class="cart-empty"><i class="fas fa-file-alt"></i>No hay cotizaciones registradas.</td></tr>
+                    <tr><td colspan="8" class="cart-empty"><i class="fas fa-file-alt"></i>No hay cotizaciones registradas.</td></tr>
                     <?php else: foreach ($cotizaciones as $c): ?>
                     <?php
                       $estadoCls = match($c->estado) {
@@ -248,6 +249,13 @@ h1,h2,h3,h4,h5,h6{font-family:Arial,Helvetica;}
                           <?php endif; ?>
                         </div>
                       </td>
+                      <td>
+                        <a href="<?= base_url('compras/cotizacion/pdf/' . $c->id) ?>" target="_blank"
+                           class="btn-action btn-action-del" title="Descargar PDF"
+                           style="background:#fee2e2;color:#991b1b;border-color:#fecaca;width:30px;height:30px;display:inline-flex;align-items:center;justify-content:center;border-radius:8px;text-decoration:none;">
+                          <i class="fas fa-file-pdf" style="font-size:12px;"></i>
+                        </a>
+                      </td>
                     </tr>
                     <?php endforeach; endif; ?>
                   </tbody>
@@ -273,11 +281,12 @@ h1,h2,h3,h4,h5,h6{font-family:Arial,Helvetica;}
                       <th>Fecha</th>
                       <th>Estado</th>
                       <th>Acciones</th>
+                      <th>PDF</th>
                     </tr>
                   </thead>
                   <tbody>
                     <?php if (empty($remisiones)): ?>
-                    <tr><td colspan="7" class="cart-empty"><i class="fas fa-truck"></i>No hay remisiones registradas.</td></tr>
+                    <tr><td colspan="8" class="cart-empty"><i class="fas fa-truck"></i>No hay remisiones registradas.</td></tr>
                     <?php else: foreach ($remisiones as $r): ?>
                     <?php
                       $estadoCls = match($r->estado) {
@@ -300,6 +309,13 @@ h1,h2,h3,h4,h5,h6{font-family:Arial,Helvetica;}
                             <i class="fas fa-shopping-cart" style="font-size:11px;"></i>
                           </button>
                         </div>
+                      </td>
+                      <td>
+                        <a href="<?= base_url('compras/remision/pdf/' . $r->id) ?>" target="_blank"
+                           class="btn-action btn-action-del" title="Descargar PDF"
+                           style="background:#fee2e2;color:#991b1b;border-color:#fecaca;width:30px;height:30px;display:inline-flex;align-items:center;justify-content:center;border-radius:8px;text-decoration:none;">
+                          <i class="fas fa-file-pdf" style="font-size:12px;"></i>
+                        </a>
                       </td>
                     </tr>
                     <?php endforeach; endif; ?>
