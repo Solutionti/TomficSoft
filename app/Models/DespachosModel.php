@@ -29,6 +29,14 @@ class DespachosModel extends Model
         $this->db->table('despachos')->insert($data);
     }
 
+    public function descontarStock(int $productoId, int $cantidad): void
+    {
+        $this->db->table('productos')
+            ->where('codigo_barras', $productoId)
+            ->set('bodega', "bodega - {$cantidad}", false)
+            ->update();
+    }
+
     public function actualizarEstadoSolicitud(int $solicitudId, string $estado): void
     {
         $this->db->table('solicitudes')

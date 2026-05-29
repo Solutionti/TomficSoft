@@ -61,6 +61,8 @@ class DespachosController extends BaseController
                     'usuario_id'         => $usuarioId,
                     'fecha'              => $fecha,
                 ]);
+
+                $this->despachosModel->descontarStock($item['producto_id'], $cantidad);
             }
 
             // cambiar estado de la solicitud a 'despachada'
