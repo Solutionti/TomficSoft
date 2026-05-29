@@ -119,6 +119,8 @@ $routes->get('/compras/cotizacion/(:num)',       'ComprasController::getCotizaci
 $routes->post('/compras/cotizacion/estado',     'ComprasController::cambiarEstadoCotizacion');
 $routes->post('/compras/remision/guardar',      'ComprasController::guardarRemision');
 $routes->get('/compras/remision/(:num)',         'ComprasController::getRemision/$1');
+$routes->get('/compras/cotizacion/pdf/(:num)',  'ComprasController::pdfCotizacion/$1');
+$routes->get('/compras/remision/pdf/(:num)',    'ComprasController::pdfRemision/$1');
 $routes->post('/compras/compra/guardar',        'ComprasController::guardarCompra');
 $routes->get('/compras/compra/pdf/(:num)',      'ComprasController::pdfCompra/$1');
 
