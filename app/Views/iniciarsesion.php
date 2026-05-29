@@ -359,7 +359,7 @@
             type="text"
             class="fc"
             id="usuario"
-            placeholder="Usuario o email"
+            placeholder="Usuario o Email"
             autocomplete="username"
           >
         </div>
@@ -371,7 +371,7 @@
               type="password"
               class="fc js-toggle-password"
               id="password"
-              placeholder="••••••••"
+              placeholder="•••••••••••••••••"
               autocomplete="current-password"
             >
             <!-- mantiene selector JS: .input-group-append.input-group-text -->
