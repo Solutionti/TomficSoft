@@ -363,7 +363,7 @@
                     <!-- ══════════ TOP BAR ══════════ -->
                     <div class="inv-topbar anim-1">
                         <div>
-                            <p class="inv-breadcrumb">Administración &rsaquo; InventSoft</p>
+                            <p class="inv-breadcrumb">Administración &rsaquo; CristalBusiness</p>
                             <h1 class="">Gestión de Productos</h1>
                         </div>
                         <div class="inv-actions">

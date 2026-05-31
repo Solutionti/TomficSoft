@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Administración - Consumo</title>
+  <title>Administración - Preparaciones</title>
   <?php require_once("componentes/head.php") ?>
 <style>
 :root {
@@ -111,7 +111,7 @@ body{font-family:Arial,Helvetica;background:var(--surface-alt);color:var(--text)
 
           <div class="usr-topbar">
             <div>
-              <p class="usr-breadcrumb">Administración &rsaquo; Bufet</p>
+              <p class="usr-breadcrumb">Administración &rsaquo; CristalBusiness</p>
               <h1 class="usr-title">Registro de Consumo</h1>
             </div>
           </div>

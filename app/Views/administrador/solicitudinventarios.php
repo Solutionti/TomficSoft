@@ -1837,7 +1837,7 @@
             <!-- ══════════ TOP BAR ══════════ -->
             <div class="usr-topbar anim-1">
               <div>
-                <p class="usr-breadcrumb">Administración &rsaquo; InventSoft</p>
+                <p class="usr-breadcrumb">Administración &rsaquo; CristalBusiness</p>
                 <h1 class="">Solicitud de Inventarios</h1>
               </div>
               <div class="inv-topbar-actions">

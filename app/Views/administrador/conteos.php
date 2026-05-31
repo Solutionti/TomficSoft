@@ -665,7 +665,7 @@
                     <!-- ═══════════ TOP BAR ═══════════ -->
                     <div class="cnt-topbar anim-1">
                         <div class="cnt-title-block">
-                            <p class="cnt-breadcrumb">Administración &rsaquo; InventSoft</p>
+                            <p class="cnt-breadcrumb">Administración &rsaquo; CristalBusiness</p>
                             <h1>Conteo de Inventario</h1>
                         </div>
                         <div class="cnt-topbar-actions">

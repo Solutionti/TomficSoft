@@ -158,7 +158,7 @@ h1,h2,h3,h4,h5,h6{font-family:Arial,Helvetica;}
           <!-- ══ TOP BAR ══ -->
           <div class="usr-topbar">
             <div>
-              <p class="usr-breadcrumb">Administración &rsaquo; ComprasSoft</p>
+              <p class="usr-breadcrumb">Administración &rsaquo; CristalBusiness</p>
               <h1 class="usr-title">Módulo de Compras</h1>
             </div>
             <div style="display:flex;gap:10px;flex-wrap:wrap;">
