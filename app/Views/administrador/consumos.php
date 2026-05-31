@@ -98,6 +98,25 @@ body{font-family:Arial,Helvetica;background:var(--surface-alt);color:var(--text)
 .det-table thead tr{background:var(--purple-100);}
 .det-table thead th{padding:8px 12px;color:var(--purple-800);font-size:11px;font-weight:700;text-transform:uppercase;}
 .det-table tbody td{padding:8px 12px;border-bottom:1px solid var(--purple-100);}
+
+/* Modal categorías */
+.cat-item{padding:9px 12px;border-radius:8px;cursor:pointer;font-size:13px;font-weight:500;color:var(--text);transition:var(--transition);margin-bottom:3px;display:flex;align-items:center;gap:8px;}
+.cat-item:hover{background:var(--purple-200);}
+.cat-item.active{background:linear-gradient(135deg,var(--purple-600),var(--purple-500));color:#fff;}
+.cat-item .cat-dot{width:8px;height:8px;border-radius:50%;background:var(--purple-400);flex-shrink:0;}
+.cat-item.active .cat-dot{background:#fff;}
+.cat-prod-row{border-bottom:1px solid var(--purple-100);transition:background .15s;}
+.cat-prod-row:hover{background:var(--purple-100);}
+.cat-prod-row td{padding:10px 14px;vertical-align:middle;}
+.cat-prod-row.ya-agregado{opacity:.5;}
+.btn-cat-add{background:var(--purple-100);color:var(--purple-700);border:1.5px solid var(--purple-200);border-radius:7px;padding:4px 10px;font-size:12px;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;gap:5px;transition:var(--transition);}
+.btn-cat-add:hover:not(:disabled){background:var(--purple-600);color:#fff;border-color:var(--purple-600);}
+.btn-cat-add:disabled{opacity:.45;cursor:not-allowed;}
+.cat-check{width:16px;height:16px;accent-color:var(--purple-600);cursor:pointer;}
+.stock-badge{display:inline-block;padding:2px 8px;border-radius:99px;font-size:11px;font-weight:700;}
+.stock-ok{background:var(--green-light);color:var(--green-dark);}
+.stock-low{background:var(--amber-light);color:#92400e;}
+.stock-zero{background:var(--red-light);color:var(--red-dark);}
 </style>
 </head>
 <body>
@@ -140,8 +159,11 @@ body{font-family:Arial,Helvetica;background:var(--surface-alt);color:var(--text)
 
               <!-- Búsqueda de producto -->
               <div class="form-section">
-                <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--purple-700);margin-bottom:10px;">
-                  <i class="fas fa-search"></i> Buscar ingrediente / insumo
+                <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--purple-700);margin-bottom:10px;display:flex;align-items:center;justify-content:space-between;">
+                  <span><i class="fas fa-search"></i> Buscar ingrediente / insumo</span>
+                  <button type="button" id="btn-abrir-categorias" class="btn-inv btn-inv-primary" style="padding:6px 14px;font-size:12px;">
+                    <i class="fas fa-th-large"></i> Por categoría
+                  </button>
                 </div>
                 <div style="position:relative;">
                   <div class="search-bar">
@@ -256,6 +278,63 @@ body{font-family:Arial,Helvetica;background:var(--surface-alt);color:var(--text)
 
           </div><!-- /layout -->
         </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal categorías -->
+<div class="modal fade" id="modalCategorias" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content" style="border:none;border-radius:14px;overflow:hidden;">
+      <div class="modal-header" style="background:linear-gradient(135deg,var(--purple-800),var(--purple-700));color:#fff;padding:14px 20px;">
+        <h5 class="modal-title" style="color:#fff;font-weight:700;font-size:15px;"><i class="fas fa-th-large me-2"></i>Agregar por categoría</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" style="filter:invert(1);"></button>
+      </div>
+      <div class="modal-body" style="padding:0;display:grid;grid-template-columns:220px 1fr;min-height:440px;">
+
+        <!-- Lista de categorías -->
+        <div id="cat-lista" style="border-right:1.5px solid var(--border);background:var(--surface-alt);overflow-y:auto;max-height:540px;padding:10px 8px;">
+          <p style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);padding:4px 8px 8px;">Categorías</p>
+          <div id="cat-loading" style="padding:16px;text-align:center;color:var(--muted);font-size:13px;">
+            <i class="fas fa-spinner fa-spin"></i> Cargando…
+          </div>
+        </div>
+
+        <!-- Productos de la categoría -->
+        <div style="display:flex;flex-direction:column;">
+          <div id="cat-prod-header" style="padding:12px 18px;border-bottom:1.5px solid var(--border);background:var(--purple-100);font-size:13px;font-weight:700;color:var(--purple-800);display:flex;align-items:center;gap:8px;">
+            <i class="fas fa-boxes"></i>
+            <span id="cat-nombre-activo">Selecciona una categoría</span>
+          </div>
+          <div style="flex:1;overflow-y:auto;max-height:490px;">
+            <table style="width:100%;border-collapse:collapse;font-size:13px;" id="cat-prod-table">
+              <thead>
+                <tr style="background:var(--purple-100);position:sticky;top:0;">
+                  <th style="padding:9px 14px;text-align:left;font-size:11px;font-weight:700;text-transform:uppercase;color:var(--purple-800);">Producto</th>
+                  <th style="padding:9px 14px;text-align:left;font-size:11px;font-weight:700;text-transform:uppercase;color:var(--purple-800);">Cód. Interno</th>
+                  <th style="padding:9px 14px;text-align:center;font-size:11px;font-weight:700;text-transform:uppercase;color:var(--purple-800);">Stock</th>
+                  <th style="padding:9px 14px;"></th>
+                </tr>
+              </thead>
+              <tbody id="cat-prod-tbody">
+                <tr>
+                  <td colspan="4" style="text-align:center;padding:40px 20px;color:var(--muted);font-size:13px;">
+                    <i class="fas fa-hand-point-left" style="font-size:22px;opacity:.3;display:block;margin-bottom:8px;"></i>
+                    Elige una categoría
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer" style="border-top:1.5px solid var(--border);padding:10px 18px;">
+        <span id="cat-sel-count" style="font-size:12px;color:var(--muted);margin-right:auto;">0 productos seleccionados</span>
+        <button type="button" class="btn-inv" data-bs-dismiss="modal" style="background:var(--border);color:var(--text);border-radius:50px;padding:8px 18px;font-size:13px;border:none;cursor:pointer;">Cancelar</button>
+        <button type="button" id="btn-agregar-seleccion" class="btn-inv btn-inv-primary" disabled>
+          <i class="fas fa-plus"></i> Agregar seleccionados al consumo
+        </button>
       </div>
     </div>
   </div>
@@ -446,6 +525,145 @@ body{font-family:Arial,Helvetica;background:var(--surface-alt);color:var(--text)
     var visible = hist.style.display !== 'none';
     hist.style.display = visible ? 'none' : 'block';
     icon.className = visible ? 'fas fa-chevron-down' : 'fas fa-chevron-up';
+  });
+
+  /* ══════════════════════════════════════
+     MODAL CATEGORÍAS
+  ══════════════════════════════════════ */
+  var modalCat       = null;
+  var catActivo      = null;
+  var catSeleccionados = {}; // codigo_barras -> producto
+
+  document.getElementById('btn-abrir-categorias').addEventListener('click', function () {
+    catSeleccionados = {};
+    actualizarContadorSel();
+    if (!modalCat) modalCat = new bootstrap.Modal(document.getElementById('modalCategorias'));
+    modalCat.show();
+    cargarCategorias();
+  });
+
+  function cargarCategorias() {
+    var lista = document.getElementById('cat-lista');
+    var loading = document.getElementById('cat-loading');
+    loading.style.display = 'block';
+
+    fetch(baseurl + 'consumos/categorias')
+      .then(function (r) { return r.json(); })
+      .then(function (cats) {
+        loading.style.display = 'none';
+        cats.forEach(function (cat) {
+          var div = document.createElement('div');
+          div.className = 'cat-item';
+          div.dataset.codigo = cat.codigo_categoria;
+          div.dataset.nombre = cat.nombre;
+          div.innerHTML = '<span class="cat-dot"></span>' + cat.nombre;
+          div.addEventListener('click', function () {
+            lista.querySelectorAll('.cat-item').forEach(function (el) { el.classList.remove('active'); });
+            div.classList.add('active');
+            catActivo = cat.codigo_categoria;
+            document.getElementById('cat-nombre-activo').textContent = cat.nombre;
+            cargarProductosCategoria(cat.codigo_categoria);
+          });
+          lista.appendChild(div);
+        });
+      })
+      .catch(function () {
+        loading.innerHTML = '<span style="color:var(--red);">Error al cargar categorías.</span>';
+      });
+  }
+
+  function cargarProductosCategoria(codigo) {
+    var tbody = document.getElementById('cat-prod-tbody');
+    tbody.innerHTML = '<tr><td colspan="4" style="text-align:center;padding:30px;color:var(--muted);"><i class="fas fa-spinner fa-spin"></i> Cargando productos…</td></tr>';
+
+    fetch(baseurl + 'consumos/categoria/' + encodeURIComponent(codigo))
+      .then(function (r) { return r.json(); })
+      .then(function (prods) {
+        tbody.innerHTML = '';
+        if (!prods.length) {
+          tbody.innerHTML = '<tr><td colspan="4" style="text-align:center;padding:30px;color:var(--muted);font-size:13px;"><i class="fas fa-box-open" style="font-size:22px;opacity:.3;display:block;margin-bottom:8px;"></i>Sin productos en esta categoría.</td></tr>';
+          return;
+        }
+        prods.forEach(function (p) {
+          var estaEnCarrito = !!items.find(function (i) { return i.producto_id === p.codigo_barras; });
+          var seleccionado  = !!catSeleccionados[p.codigo_barras];
+
+          var saldoNum  = parseFloat(p.saldo) || 0;
+          var badgeCls  = saldoNum > 10 ? 'stock-ok' : saldoNum > 0 ? 'stock-low' : 'stock-zero';
+
+          var tr = document.createElement('tr');
+          tr.className = 'cat-prod-row' + (estaEnCarrito ? ' ya-agregado' : '');
+          tr.dataset.codigo = p.codigo_barras;
+
+          var checkDisabled = estaEnCarrito ? 'disabled' : '';
+          var checkChecked  = (seleccionado || estaEnCarrito) ? 'checked' : '';
+
+          tr.innerHTML =
+            '<td style="font-weight:600;">' + p.nombre + '</td>' +
+            '<td style="color:var(--muted);font-size:12px;">' + (p.codigo_interno || '—') + '</td>' +
+            '<td style="text-align:center;"><span class="stock-badge ' + badgeCls + '">' + saldoNum + '</span></td>' +
+            '<td style="text-align:center;">' +
+              (estaEnCarrito
+                ? '<span style="font-size:11px;color:var(--purple-500);font-weight:600;">Ya agregado</span>'
+                : '<input type="checkbox" class="cat-check" data-codigo="' + p.codigo_barras + '" data-nombre="' + p.nombre.replace(/"/g,'&quot;') + '" data-saldo="' + saldoNum + '" ' + checkChecked + '>'
+              ) +
+            '</td>';
+
+          var chk = tr.querySelector('.cat-check');
+          if (chk) {
+            chk.addEventListener('change', function () {
+              if (this.checked) {
+                catSeleccionados[this.dataset.codigo] = {
+                  producto_id:    this.dataset.codigo,
+                  nombre_producto: this.dataset.nombre,
+                  saldo:           parseFloat(this.dataset.saldo),
+                  cantidad:        1,
+                };
+              } else {
+                delete catSeleccionados[this.dataset.codigo];
+              }
+              actualizarContadorSel();
+            });
+            if (seleccionado) chk.checked = true;
+          }
+          tbody.appendChild(tr);
+        });
+      })
+      .catch(function () {
+        tbody.innerHTML = '<tr><td colspan="4" style="text-align:center;padding:20px;color:var(--red);">Error al cargar productos.</td></tr>';
+      });
+  }
+
+  function actualizarContadorSel() {
+    var n = Object.keys(catSeleccionados).length;
+    document.getElementById('cat-sel-count').textContent = n + (n === 1 ? ' producto seleccionado' : ' productos seleccionados');
+    document.getElementById('btn-agregar-seleccion').disabled = n === 0;
+  }
+
+  document.getElementById('btn-agregar-seleccion').addEventListener('click', function () {
+    var agregados = 0;
+    Object.values(catSeleccionados).forEach(function (p) {
+      var existe = items.find(function (i) { return i.producto_id === p.producto_id; });
+      if (!existe) { items.push(p); agregados++; }
+    });
+    renderTabla();
+    if (modalCat) modalCat.hide();
+    if (agregados > 0) {
+      $("body").overhang({ type: "success", message: agregados + (agregados === 1 ? ' producto agregado' : ' productos agregados') + ' al consumo.' });
+    }
+  });
+
+  /* Limpiar estado al cerrar el modal */
+  document.getElementById('modalCategorias').addEventListener('hidden.bs.modal', function () {
+    catActivo = null;
+    catSeleccionados = {};
+    actualizarContadorSel();
+    document.getElementById('cat-loading').style.display = 'block';
+    document.getElementById('cat-loading').innerHTML = '<i class="fas fa-spinner fa-spin"></i> Cargando…';
+    document.getElementById('cat-lista').querySelectorAll('.cat-item').forEach(function (el) { el.remove(); });
+    document.getElementById('cat-prod-tbody').innerHTML =
+      '<tr><td colspan="4" style="text-align:center;padding:40px 20px;color:var(--muted);font-size:13px;"><i class="fas fa-hand-point-left" style="font-size:22px;opacity:.3;display:block;margin-bottom:8px;"></i>Elige una categoría</td></tr>';
+    document.getElementById('cat-nombre-activo').textContent = 'Selecciona una categoría';
   });
 
 })();

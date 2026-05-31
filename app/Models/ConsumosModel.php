@@ -23,6 +23,24 @@ class ConsumosModel extends Model
         return ['consumo' => $consumo, 'detalle' => $detalle];
     }
 
+    public function getCategorias(): array
+    {
+        return $this->db->table('categorias')
+            ->select('codigo_categoria, nombre')
+            ->orderBy('nombre', 'ASC')
+            ->get()->getResult();
+    }
+
+    public function getProductosPorCategoria(string $codigo): array
+    {
+        return $this->db->table('productos')
+            ->select('codigo_barras, codigo_interno, nombre, saldo')
+            ->where('categoria', $codigo)
+            ->where('estado', 'Activo')
+            ->orderBy('nombre', 'ASC')
+            ->get()->getResult();
+    }
+
     public function guardarConsumo(array $consumo, array $items): int
     {
         $this->db->table('consumos')->insert($consumo);

@@ -48,6 +48,16 @@ class ConsumosController extends BaseController
         }
     }
 
+    public function getCategorias()
+    {
+        return $this->response->setJSON($this->model->getCategorias());
+    }
+
+    public function getProductosPorCategoria(string $codigo)
+    {
+        return $this->response->setJSON($this->model->getProductosPorCategoria($codigo));
+    }
+
     public function getDetalle(int $id)
     {
         $data = $this->model->getConsumoConDetalle($id);

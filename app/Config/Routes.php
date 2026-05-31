@@ -16,6 +16,7 @@ $routes->get('/cerrarsesion', 'LoginController::cerrarSesion');
 $routes->group('', ['filter' => 'auth'], function($routes) {
 // INICIO
 $routes->get('/inicio', 'InicioController::index');
+$routes->get('/documentacion/pdf', 'InicioController::documentacionPdf');
 
 // CONTEOS
 $routes->get('/conteos', 'ConteosController::index');
@@ -113,9 +114,11 @@ $routes->post('/horarios/crear',        'HorariosController::crearColaborador');
 $routes->post('/horarios/crearHorario', 'HorariosController::crearHorarioColaborador');
 
 //CONSUMOS
-$routes->get('/consumos',                'ConsumosController::index');
-$routes->post('/consumos/guardar',       'ConsumosController::guardar');
-$routes->get('/consumos/detalle/(:num)', 'ConsumosController::getDetalle/$1');
+$routes->get('/consumos',                        'ConsumosController::index');
+$routes->post('/consumos/guardar',               'ConsumosController::guardar');
+$routes->get('/consumos/detalle/(:num)',          'ConsumosController::getDetalle/$1');
+$routes->get('/consumos/categorias',             'ConsumosController::getCategorias');
+$routes->get('/consumos/categoria/(:any)',        'ConsumosController::getProductosPorCategoria/$1');
 
 //COMPRAS
 $routes->get('/compras',                        'ComprasController::index');
