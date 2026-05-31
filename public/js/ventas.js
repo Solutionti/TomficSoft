@@ -1,45 +1,71 @@
 const tbody = document.querySelector('.tbody');
 let carrito = [];
-$("#codigo_barras").focus();
 
-$("#codigo_barras").on("blur", function(){
-    var url1 = baseurl + "getproductoventa",
-        codigo_barras = $("#codigo_barras").val();
-    
-    $.ajax({
-      url: url1,
-      method: "POST",
-      data: {
-        codigo_barras: codigo_barras
-      },
-      success: function(data) {
-        data = JSON.parse(data);
-        
-        $("#producto").val(data.nombre);
-        $("#precio").val(data.costo);
-        $("#cantidad").val(data.saldo);
+/* ── Autocomplete ── */
+var searchInput = document.getElementById('codigo_barras');
+var drop        = document.getElementById('ventas-drop');
+var searchTimer = null;
 
-        const nombre = data.nombre;
-        const codigo = data.codigo_barras;
-        const precio = data.costo;
-        if(data.saldo <= 0){
-          $("body").overhang({
-            type: "error",
-            message: "Alerta! esta apunto de vender un producto sin stock en inventario. ",
-          });
-        }
-        const newItem = {
-            nombre: nombre,
-            codigo: codigo,
-            precio: precio,
-            cantidad: 1
-        }
-        addItemCarrito(newItem);
-        $("#codigo_barras").val("");
-        $("#codigo_barras").focus();
-      }
-    });  
+searchInput.addEventListener('input', function () {
+    var q = this.value.trim();
+    clearTimeout(searchTimer);
+    if (q.length < 2) { drop.style.display = 'none'; drop.innerHTML = ''; return; }
+
+    searchTimer = setTimeout(function () {
+        fetch(baseurl + 'inventarios/buscar?q=' + encodeURIComponent(q))
+            .then(function (r) { return r.json(); })
+            .then(function (data) {
+                drop.innerHTML = '';
+                if (!data.length) { drop.style.display = 'none'; return; }
+                data.forEach(function (p) {
+                    var li = document.createElement('li');
+                    var saldo  = parseFloat(p.saldo) || 0;
+                    var cls    = saldo > 10 ? 'vd-stock-ok' : saldo > 0 ? 'vd-stock-low' : 'vd-stock-zero';
+                    li.innerHTML =
+                        '<span class="vd-nombre">' + p.nombre + '</span>' +
+                        '<span class="vd-meta"><span class="' + cls + '">Stock: ' + saldo + '</span><br>$' + parseFloat(p.costo || 0).toLocaleString() + '</span>';
+                    li.addEventListener('mousedown', function (e) {
+                        e.preventDefault();
+                        seleccionarProducto(p);
+                    });
+                    drop.appendChild(li);
+                });
+                drop.style.display = 'block';
+            });
+    }, 250);
 });
+
+searchInput.addEventListener('blur', function () {
+    setTimeout(function () { drop.style.display = 'none'; }, 180);
+});
+
+searchInput.focus();
+
+document.getElementById('btn-limpiar-busqueda').addEventListener('click', function () {
+    searchInput.value = '';
+    drop.style.display = 'none';
+    drop.innerHTML = '';
+    $("#producto").val('');
+    $("#precio").val('');
+    $("#cantidad").val('');
+    searchInput.focus();
+});
+
+function seleccionarProducto(p) {
+    var saldo = parseFloat(p.saldo) || 0;
+    $("#producto").val(p.nombre);
+    $("#precio").val(p.costo);
+    $("#cantidad").val(saldo);
+    searchInput.value = '';
+    drop.style.display = 'none';
+    drop.innerHTML = '';
+
+    if (saldo <= 0) {
+        $("body").overhang({ type: "error", message: "Alerta: estás a punto de vender un producto sin stock en inventario." });
+    }
+    addItemCarrito({ nombre: p.nombre, codigo: p.codigo_barras, precio: p.costo, cantidad: 1 });
+    searchInput.focus();
+}
 
 $("#recibio").on("keyup", function () {
     var recibio = $("#recibio").val().replace(/\./g, "");

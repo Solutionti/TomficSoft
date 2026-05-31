@@ -418,6 +418,20 @@
 
         .color-morado{background:linear-gradient(135deg,var(--purple-800),var(--purple-700)) !important;}
 
+        /* Autocomplete ventas */
+        #ventas-drop li {
+            padding:10px 14px; cursor:pointer; font-size:13px;
+            display:flex; justify-content:space-between; align-items:center;
+            border-bottom:1px solid var(--purple-100);
+        }
+        #ventas-drop li:last-child { border-bottom:none; }
+        #ventas-drop li:hover { background:var(--purple-100); }
+        #ventas-drop .vd-nombre { font-weight:700; color:var(--text); }
+        #ventas-drop .vd-meta { font-size:11px; color:var(--muted); text-align:right; }
+        #ventas-drop .vd-stock-ok  { color:#065f46; }
+        #ventas-drop .vd-stock-low { color:#92400e; }
+        #ventas-drop .vd-stock-zero{ color:var(--red-dark); }
+
         @media (max-width:1024px) {
             .pos-left { position:relative; height:auto; min-height:220px; }
             .pos-right { padding:16px; }
@@ -520,12 +534,18 @@
             <div class="row g-3 align-items-end">
                 <div class="col-md-6">
                     <div class="fl">
-                        <label class="req">Código de producto</label>
-                        <div class="search-bar">
-                            <input type="text" id="codigo_barras" placeholder="Escanea o escribe el código…" autofocus>
-                            <button type="button" data-bs-toggle="modal" data-bs-target="#listaproductos" title="Buscar en lista">
-                                <i class="fas fa-store"></i>
-                            </button>
+                        <label class="req">Nombre o código de producto</label>
+                        <div style="position:relative;">
+                            <div class="search-bar">
+                                <input type="text" id="codigo_barras" placeholder="Escribe el nombre o código…" autofocus autocomplete="off">
+                                <button type="button" id="btn-limpiar-busqueda" title="Limpiar">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                            <ul id="ventas-drop" style="display:none;position:absolute;bottom:100%;left:0;right:0;z-index:1050;
+                                background:#fff;border:1.5px solid var(--purple-200);border-bottom:none;
+                                border-radius:10px 10px 0 0;box-shadow:0 -8px 24px rgba(45,102,34,.12);
+                                max-height:260px;overflow-y:auto;list-style:none;padding:0;margin:0;"></ul>
                         </div>
                     </div>
                 </div>
