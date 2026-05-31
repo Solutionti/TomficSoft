@@ -553,11 +553,11 @@
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
-                                    <i class="fas fa-star-half-alt"></i>
+                                    <i class="fas fa-star"></i>
                                 </div>
                                 <div class="premium-title">
-                                    Consigue tu cuenta<br>
-                                    <span>Premium</span> hoy
+                                    Bienvenido<br>
+                                    <span>Jerson</span> Galvez
                                 </div>
                                 <div class="premium-desc">
                                     Optimiza la gestión de tu inventario y ventas con herramientas avanzadas.

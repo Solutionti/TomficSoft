@@ -112,7 +112,7 @@ body{font-family:Arial,Helvetica;background:var(--surface-alt);color:var(--text)
           <div class="usr-topbar">
             <div>
               <p class="usr-breadcrumb">Administración &rsaquo; CristalBusiness</p>
-              <h1 class="usr-title">Registro de Consumo</h1>
+              <h1 class="usr-title">Registro de Preparaciones</h1>
             </div>
           </div>
 
