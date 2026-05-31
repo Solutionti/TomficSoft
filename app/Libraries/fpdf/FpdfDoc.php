@@ -8,7 +8,7 @@ class FPDF_Doc extends FPDF {
         $this->SetY(-12);
         $this->SetFont('Arial','I',7);
         $this->SetTextColor(150,150,150);
-        $this->Cell(0,5,'TomficSoft — Documentacion Funcional del Sistema   |   Pag. '.$this->PageNo().'/{nb}',0,0,'C');
+        $this->Cell(0,5,'CristalBusiness — Documentacion Funcional del Sistema   |   Pag. '.$this->PageNo().'/{nb}',0,0,'C');
     }
     function SeccionTitulo($texto) {
         $this->SetFillColor(45,102,34);

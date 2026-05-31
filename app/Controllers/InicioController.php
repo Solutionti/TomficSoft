@@ -30,7 +30,7 @@ class InicioController extends BaseController {
       $pdf->SetY(14);
       $pdf->SetFont('Arial','B',26);
       $pdf->SetTextColor(255,255,255);
-      $pdf->Cell(0,10,'TOMFICSOFT',0,1,'C');
+      $pdf->Cell(0,10,'CristalBusiness',0,1,'C');
       $pdf->SetFont('Arial','',13);
       $pdf->Cell(0,8,'Pimienta Express',0,1,'C');
       $pdf->SetY(58);
