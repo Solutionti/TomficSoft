@@ -473,8 +473,8 @@
                 </div>
                 <div class="pos-meta-row">
                     <span class="k"><i class="fas fa-desktop"></i>&nbsp; Caja</span>
-                    <?php $cajas = $caja->getResult()[0]; ?>
-                    <span class="v">Caja #<?= $cajas->codigo_caja ?></span>
+                    <?php $cajas = $caja->getResult(); $cajas = !empty($cajas) ? $cajas[0] : null; ?>
+                    <span class="v">Caja #<?= $cajas->codigo_caja ?? '—' ?></span>
                 </div>
             </div>
             <label class="pos-print-check">
