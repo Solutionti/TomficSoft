@@ -314,7 +314,11 @@ body{font-family:Arial,Helvetica;background:var(--surface-alt);color:var(--text)
                   <th style="padding:9px 14px;text-align:left;font-size:11px;font-weight:700;text-transform:uppercase;color:var(--purple-800);">Producto</th>
                   <th style="padding:9px 14px;text-align:left;font-size:11px;font-weight:700;text-transform:uppercase;color:var(--purple-800);">Cód. Interno</th>
                   <th style="padding:9px 14px;text-align:center;font-size:11px;font-weight:700;text-transform:uppercase;color:var(--purple-800);">Stock</th>
-                  <th style="padding:9px 14px;"></th>
+                  <th style="padding:9px 14px;text-align:center;">
+                    <label style="display:inline-flex;align-items:center;gap:5px;cursor:pointer;font-size:11px;font-weight:700;text-transform:uppercase;color:var(--purple-800);white-space:nowrap;">
+                      <input type="checkbox" id="cat-check-all" class="cat-check" title="Seleccionar todos"> Todo
+                    </label>
+                  </th>
                 </tr>
               </thead>
               <tbody id="cat-prod-tbody">
@@ -622,17 +626,53 @@ body{font-family:Arial,Helvetica;background:var(--surface-alt);color:var(--text)
               } else {
                 delete catSeleccionados[this.dataset.codigo];
               }
+              sincronizarCheckAll();
               actualizarContadorSel();
             });
             if (seleccionado) chk.checked = true;
           }
           tbody.appendChild(tr);
         });
+
+        /* Sincronizar estado inicial del check-all */
+        sincronizarCheckAll();
       })
       .catch(function () {
         tbody.innerHTML = '<tr><td colspan="4" style="text-align:center;padding:20px;color:var(--red);">Error al cargar productos.</td></tr>';
       });
   }
+
+  /* Marca/desmarca el check-all según el estado de las filas */
+  function sincronizarCheckAll() {
+    var checkAll = document.getElementById('cat-check-all');
+    if (!checkAll) return;
+    var checks = document.querySelectorAll('#cat-prod-tbody .cat-check');
+    if (!checks.length) { checkAll.checked = false; checkAll.indeterminate = false; return; }
+    var marcados = Array.from(checks).filter(function (c) { return c.checked; }).length;
+    if (marcados === 0) { checkAll.checked = false; checkAll.indeterminate = false; }
+    else if (marcados === checks.length) { checkAll.checked = true; checkAll.indeterminate = false; }
+    else { checkAll.checked = false; checkAll.indeterminate = true; }
+  }
+
+  /* Seleccionar / deseleccionar todos al hacer clic en el header */
+  document.getElementById('cat-check-all').addEventListener('change', function () {
+    var marcar = this.checked;
+    document.querySelectorAll('#cat-prod-tbody .cat-check').forEach(function (chk) {
+      if (chk.disabled) return;
+      chk.checked = marcar;
+      if (marcar) {
+        catSeleccionados[chk.dataset.codigo] = {
+          producto_id:     chk.dataset.codigo,
+          nombre_producto: chk.dataset.nombre,
+          saldo:           parseFloat(chk.dataset.saldo),
+          cantidad:        1,
+        };
+      } else {
+        delete catSeleccionados[chk.dataset.codigo];
+      }
+    });
+    actualizarContadorSel();
+  });
 
   function actualizarContadorSel() {
     var n = Object.keys(catSeleccionados).length;
