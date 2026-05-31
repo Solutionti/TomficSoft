@@ -457,9 +457,16 @@
                             <p class="dash-breadcrumb">Administración &rsaquo; CristalBusiness</p>
                             <h1 class="">Panel de Control</h1>
                         </div>
-                        <div class="dash-datebadge">
-                            <i class="fas fa-calendar-alt"></i>
-                            <span id="liveDateLabel">—</span>
+                        <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+                            <a href="<?= base_url('documentacion/pdf') ?>" target="_blank"
+                               style="display:inline-flex;align-items:center;gap:7px;padding:8px 16px;border-radius:50px;background:linear-gradient(135deg,#173a10,#2d6622);color:#fff;font-size:13px;font-weight:600;text-decoration:none;box-shadow:0 4px 12px rgba(45,102,34,.3);transition:all .2s;"
+                               onmouseover="this.style.transform='translateY(-1px)'" onmouseout="this.style.transform=''">
+                              <i class="fas fa-file-pdf"></i> Documentación PDF
+                            </a>
+                            <div class="dash-datebadge">
+                                <i class="fas fa-calendar-alt"></i>
+                                <span id="liveDateLabel">—</span>
+                            </div>
                         </div>
                     </div>
 
