@@ -604,7 +604,7 @@
                     <!-- ═══════════════════ TOP BAR ═══════════════════ -->
                     <div class="inv-topbar">
                         <div class="inv-topbar-left">
-                            <span class="inv-breadcrumb">Administracion &rsaquo; InventSoft</span>
+                            <span class="inv-breadcrumb">Administracion &rsaquo; CristalBusiness</span>
                             <h1 class="">Asignación de Inventarios</h1>
                         </div>
                         <div class="inv-topbar-actions">

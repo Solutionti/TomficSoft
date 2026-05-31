@@ -870,7 +870,7 @@
             <!-- ══════════ TOP BAR ══════════ -->
             <div class="usr-topbar anim-1">
               <div>
-                <p class="usr-breadcrumb">Administración &rsaquo; InventSoft</p>
+                <p class="usr-breadcrumb">Administración &rsaquo; CristalBusiness</p>
                 <h1 class="">Gestión de Usuarios</h1>
               </div>
               <button class="btn-u btn-u-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">

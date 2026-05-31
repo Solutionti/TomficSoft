@@ -329,7 +329,7 @@
                     <!-- ══════════ TOP BAR ══════════ -->
                     <div class="rpt-topbar anim-1">
                         <div>
-                            <p class="rpt-breadcrumb">Administración &rsaquo; InventSoft</p>
+                            <p class="rpt-breadcrumb">Administración &rsaquo; CristalBusiness</p>
                             <h1 class="">Centro de Reportes</h1>
                         </div>
                         <button class="btn-r btn-r-primary" data-bs-toggle="modal" data-bs-target="#diferenciaconteo">

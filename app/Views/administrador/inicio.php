@@ -454,7 +454,7 @@
                     <!-- ══════════ TOPBAR ══════════ -->
                     <div class="dash-topbar anim-1">
                         <div>
-                            <p class="dash-breadcrumb">Administración &rsaquo; InventSoft</p>
+                            <p class="dash-breadcrumb">Administración &rsaquo; CristalBusiness</p>
                             <h1 class="">Panel de Control</h1>
                         </div>
                         <div class="dash-datebadge">
