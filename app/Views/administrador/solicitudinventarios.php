@@ -1866,7 +1866,12 @@
                         <div class="col-md-12 mt-3">
                          <!--  -->
                         <div class="form-section">
-                  <div class="section-title"><i class="fas fa-barcode"></i>Búsqueda de producto</div>
+                  <div class="section-title" style="justify-content:space-between;">
+                    <span><i class="fas fa-barcode"></i>Búsqueda de producto</span>
+                    <button type="button" id="sol-btn-categorias" class="btn-inv btn-inv-primary" style="padding:6px 14px;font-size:12px;">
+                      <i class="fas fa-th-large"></i> Por categoría
+                    </button>
+                  </div>
                   <div class="row g-3 align-items-end">
                       <div class="col-md-10">
                           <div class="fl" style="position:relative;">
@@ -2286,6 +2291,71 @@
     </div>
   </div>
 
+<!-- ══ MODAL CATEGORÍAS SOLICITUD ══ -->
+<div class="modal fade" id="solModalCategorias" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content" style="border:none;border-radius:14px;overflow:hidden;">
+      <div class="modal-header modal-header-inv">
+        <h5 class="modal-title" style="color:#fff;font-weight:700;font-size:15px;"><i class="fas fa-th-large me-2"></i>Agregar por categoría</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" style="filter:invert(1);"></button>
+      </div>
+      <div class="modal-body" style="padding:0;display:grid;grid-template-columns:220px 1fr;min-height:440px;">
+
+        <!-- Categorías -->
+        <div id="sol-cat-lista" style="border-right:1.5px solid var(--border);background:var(--surface-alt);overflow-y:auto;max-height:540px;padding:10px 8px;">
+          <p style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);padding:4px 8px 8px;">Categorías</p>
+          <div id="sol-cat-loading" style="padding:16px;text-align:center;color:var(--muted);font-size:13px;">
+            <i class="fas fa-spinner fa-spin"></i> Cargando…
+          </div>
+        </div>
+
+        <!-- Productos -->
+        <div style="display:flex;flex-direction:column;">
+          <div style="padding:10px 14px;border-bottom:1.5px solid var(--border);background:var(--purple-100);display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+            <span style="font-size:13px;font-weight:700;color:var(--purple-800);display:flex;align-items:center;gap:6px;">
+              <i class="fas fa-boxes"></i>
+              <span id="sol-cat-nombre">Selecciona una categoría</span>
+            </span>
+            <div style="margin-left:auto;display:flex;align-items:center;gap:0;border:1.5px solid var(--border);border-radius:8px;overflow:hidden;background:#fff;min-width:200px;">
+              <input type="text" id="sol-cat-buscador" placeholder="Buscar producto…" autocomplete="off"
+                style="flex:1;padding:7px 11px;border:none;font-size:13px;font-family:Arial,Helvetica;outline:none;color:var(--text);">
+              <span style="padding:0 10px;color:var(--muted);font-size:13px;"><i class="fas fa-search"></i></span>
+            </div>
+          </div>
+          <div style="flex:1;overflow-y:auto;max-height:490px;">
+            <table style="width:100%;border-collapse:collapse;font-size:13px;">
+              <thead>
+                <tr style="background:var(--purple-100);position:sticky;top:0;">
+                  <th style="padding:9px 14px;text-align:left;font-size:11px;font-weight:700;text-transform:uppercase;color:var(--purple-800);">Producto</th>
+                  <th style="padding:9px 14px;text-align:left;font-size:11px;font-weight:700;text-transform:uppercase;color:var(--purple-800);">Cód. Interno</th>
+                  <th style="padding:9px 14px;text-align:center;font-size:11px;font-weight:700;text-transform:uppercase;color:var(--purple-800);">Stock</th>
+                  <th style="padding:9px 14px;text-align:center;">
+                    <label style="display:inline-flex;align-items:center;gap:5px;cursor:pointer;font-size:11px;font-weight:700;text-transform:uppercase;color:var(--purple-800);white-space:nowrap;">
+                      <input type="checkbox" id="sol-check-all" style="width:16px;height:16px;accent-color:var(--purple-600);cursor:pointer;"> Todo
+                    </label>
+                  </th>
+                </tr>
+              </thead>
+              <tbody id="sol-cat-tbody">
+                <tr><td colspan="4" style="text-align:center;padding:40px 20px;color:var(--muted);font-size:13px;">
+                  <i class="fas fa-hand-point-left" style="font-size:22px;opacity:.3;display:block;margin-bottom:8px;"></i>Elige una categoría
+                </td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <span id="sol-sel-count" style="font-size:12px;color:var(--muted);margin-right:auto;">0 productos seleccionados</span>
+        <button type="button" class="btn-u btn-u-danger-outline" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" id="sol-btn-agregar-sel" class="btn-u btn-u-primary" disabled>
+          <i class="fas fa-plus"></i> Agregar seleccionados
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
   <?php require_once("componentes/scripts.php") ?>
   <script src="<?= base_url('js/solicitud_inventarios.js') ?>"></script>
   <script src="<?= base_url('js/devoluciones.js') ?>"></script>
@@ -2474,6 +2544,182 @@
       if (badge)    badge.textContent = total + ' Producto' + (total !== 1 ? 's' : '');
       if (emptyRow) emptyRow.style.display = total === 0 ? '' : 'none';
     };
+  })();
+  </script>
+
+  <script>
+  /* ══════════════════════════════════════
+     MODAL CATEGORÍAS — SOLICITUD
+  ══════════════════════════════════════ */
+  (function () {
+    var modalEl   = document.getElementById('solModalCategorias');
+    var modal     = null;
+    var seleccionados = {}; // codigo_interno -> producto
+
+    document.getElementById('sol-btn-categorias').addEventListener('click', function () {
+      seleccionados = {};
+      actualizarSelCount();
+      if (!modal) modal = new bootstrap.Modal(modalEl);
+      modal.show();
+      cargarCategorias();
+    });
+
+    function cargarCategorias() {
+      var lista   = document.getElementById('sol-cat-lista');
+      var loading = document.getElementById('sol-cat-loading');
+      loading.style.display = 'block';
+
+      fetch(baseurl + 'consumos/categorias')
+        .then(function (r) { return r.json(); })
+        .then(function (cats) {
+          loading.style.display = 'none';
+          cats.forEach(function (cat) {
+            var div = document.createElement('div');
+            div.style.cssText = 'padding:9px 12px;border-radius:8px;cursor:pointer;font-size:13px;font-weight:500;color:var(--text);transition:all .2s;margin-bottom:3px;display:flex;align-items:center;gap:8px;';
+            div.innerHTML = '<span style="width:8px;height:8px;border-radius:50%;background:var(--purple-400);flex-shrink:0;display:inline-block;"></span>' + cat.nombre;
+            div.addEventListener('mouseenter', function () { if (!div.classList.contains('sol-cat-active')) div.style.background = 'var(--purple-200)'; });
+            div.addEventListener('mouseleave', function () { if (!div.classList.contains('sol-cat-active')) div.style.background = ''; });
+            div.addEventListener('click', function () {
+              lista.querySelectorAll('.sol-cat-active').forEach(function (el) {
+                el.classList.remove('sol-cat-active');
+                el.style.background = '';
+                el.style.color = 'var(--text)';
+              });
+              div.classList.add('sol-cat-active');
+              div.style.background = 'linear-gradient(135deg,var(--purple-600),var(--purple-500))';
+              div.style.color = '#fff';
+              document.getElementById('sol-cat-nombre').textContent = cat.nombre;
+              document.getElementById('sol-cat-buscador').value = '';
+              cargarProductos(cat.codigo_categoria);
+            });
+            lista.appendChild(div);
+          });
+        });
+    }
+
+    function cargarProductos(codigo) {
+      var tbody = document.getElementById('sol-cat-tbody');
+      tbody.innerHTML = '<tr><td colspan="4" style="text-align:center;padding:30px;color:var(--muted);"><i class="fas fa-spinner fa-spin"></i> Cargando…</td></tr>';
+      document.getElementById('sol-check-all').checked = false;
+      document.getElementById('sol-check-all').indeterminate = false;
+
+      fetch(baseurl + 'consumos/categoria/' + encodeURIComponent(codigo))
+        .then(function (r) { return r.json(); })
+        .then(function (prods) {
+          tbody.innerHTML = '';
+          if (!prods.length) {
+            tbody.innerHTML = '<tr><td colspan="4" style="text-align:center;padding:30px;color:var(--muted);">Sin productos en esta categoría.</td></tr>';
+            return;
+          }
+          prods.forEach(function (p) {
+            var yaEnCarrito = !!document.querySelector('.tbody [data-sol-codigo="' + p.codigo_interno + '"]');
+            var seleccionado = !!seleccionados[p.codigo_interno];
+            var saldo = parseFloat(p.saldo) || 0;
+            var badgeColor = saldo > 10 ? '#065f46' : saldo > 0 ? '#92400e' : '#991b1b';
+            var badgeBg    = saldo > 10 ? '#d1fae5' : saldo > 0 ? '#fef3c7' : '#fee2e2';
+
+            var tr = document.createElement('tr');
+            tr.style.borderBottom = '1px solid var(--purple-100)';
+            tr.dataset.nombre = p.nombre.toLowerCase();
+            tr.dataset.codigo = (p.codigo_interno || '').toLowerCase();
+
+            tr.innerHTML =
+              '<td style="padding:10px 14px;font-weight:600;">' + p.nombre + '</td>' +
+              '<td style="padding:10px 14px;color:var(--muted);font-size:12px;">' + (p.codigo_interno || '—') + '</td>' +
+              '<td style="padding:10px 14px;text-align:center;">' +
+                '<span style="display:inline-block;padding:2px 8px;border-radius:99px;font-size:11px;font-weight:700;background:' + badgeBg + ';color:' + badgeColor + ';">' + saldo + '</span>' +
+              '</td>' +
+              '<td style="padding:10px 14px;text-align:center;">' +
+                (yaEnCarrito
+                  ? '<span style="font-size:11px;color:var(--purple-500);font-weight:600;">Ya agregado</span>'
+                  : '<input type="checkbox" class="sol-cat-check" style="width:16px;height:16px;accent-color:var(--purple-600);cursor:pointer;"' +
+                    ' data-codigo="' + (p.codigo_interno || '') + '"' +
+                    ' data-nombre="' + p.nombre.replace(/"/g, '&quot;') + '"' +
+                    (seleccionado ? ' checked' : '') + '>'
+                ) +
+              '</td>';
+
+            var chk = tr.querySelector('.sol-cat-check');
+            if (chk) {
+              chk.addEventListener('change', function () {
+                if (this.checked) seleccionados[this.dataset.codigo] = { codigo: this.dataset.codigo, nombre: this.dataset.nombre };
+                else delete seleccionados[this.dataset.codigo];
+                sincronizarCheckAll();
+                actualizarSelCount();
+              });
+            }
+            tbody.appendChild(tr);
+          });
+          sincronizarCheckAll();
+        });
+    }
+
+    /* Buscador interno */
+    document.getElementById('sol-cat-buscador').addEventListener('input', function () {
+      var q = this.value.trim().toLowerCase();
+      document.querySelectorAll('#sol-cat-tbody tr').forEach(function (tr) {
+        var n = tr.dataset.nombre || '';
+        var c = tr.dataset.codigo || '';
+        tr.style.display = (n.includes(q) || c.includes(q)) ? '' : 'none';
+      });
+    });
+
+    /* Check-all */
+    document.getElementById('sol-check-all').addEventListener('change', function () {
+      var marcar = this.checked;
+      document.querySelectorAll('#sol-cat-tbody .sol-cat-check').forEach(function (chk) {
+        chk.checked = marcar;
+        if (marcar) seleccionados[chk.dataset.codigo] = { codigo: chk.dataset.codigo, nombre: chk.dataset.nombre };
+        else delete seleccionados[chk.dataset.codigo];
+      });
+      actualizarSelCount();
+    });
+
+    function sincronizarCheckAll() {
+      var all  = document.querySelectorAll('#sol-cat-tbody .sol-cat-check');
+      var marc = Array.from(all).filter(function (c) { return c.checked; }).length;
+      var ca   = document.getElementById('sol-check-all');
+      if (!all.length) { ca.checked = false; ca.indeterminate = false; return; }
+      if (marc === 0)           { ca.checked = false; ca.indeterminate = false; }
+      else if (marc === all.length) { ca.checked = true;  ca.indeterminate = false; }
+      else                      { ca.checked = false; ca.indeterminate = true; }
+    }
+
+    function actualizarSelCount() {
+      var n = Object.keys(seleccionados).length;
+      document.getElementById('sol-sel-count').textContent = n + (n === 1 ? ' producto seleccionado' : ' productos seleccionados');
+      document.getElementById('sol-btn-agregar-sel').disabled = n === 0;
+    }
+
+    /* Agregar al carrito */
+    document.getElementById('sol-btn-agregar-sel').addEventListener('click', function () {
+      var agregados = 0;
+      Object.values(seleccionados).forEach(function (p) {
+        if (!document.querySelector('.tbody [data-sol-codigo="' + p.codigo + '"]')) {
+          agregarAlCarrito(p.codigo, p.nombre, '');
+          agregados++;
+        }
+      });
+      if (modal) modal.hide();
+      if (agregados > 0) {
+        $("body").overhang({ type: "success", message: agregados + (agregados === 1 ? ' producto agregado' : ' productos agregados') + ' a la solicitud.' });
+      }
+    });
+
+    /* Limpiar al cerrar */
+    modalEl.addEventListener('hidden.bs.modal', function () {
+      seleccionados = {};
+      actualizarSelCount();
+      document.getElementById('sol-cat-loading').style.display = 'block';
+      document.getElementById('sol-cat-loading').innerHTML = '<i class="fas fa-spinner fa-spin"></i> Cargando…';
+      document.getElementById('sol-cat-lista').querySelectorAll('.sol-cat-active, div[style]').forEach(function (el) {
+        if (el.id !== 'sol-cat-loading') el.remove();
+      });
+      document.getElementById('sol-cat-tbody').innerHTML =
+        '<tr><td colspan="4" style="text-align:center;padding:40px 20px;color:var(--muted);">Elige una categoría</td></tr>';
+      document.getElementById('sol-cat-nombre').textContent = 'Selecciona una categoría';
+      document.getElementById('sol-cat-buscador').value = '';
+    });
   })();
   </script>
 </body>
