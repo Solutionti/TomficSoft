@@ -303,9 +303,16 @@ body{font-family:Arial,Helvetica;background:var(--surface-alt);color:var(--text)
 
         <!-- Productos de la categoría -->
         <div style="display:flex;flex-direction:column;">
-          <div id="cat-prod-header" style="padding:12px 18px;border-bottom:1.5px solid var(--border);background:var(--purple-100);font-size:13px;font-weight:700;color:var(--purple-800);display:flex;align-items:center;gap:8px;">
-            <i class="fas fa-boxes"></i>
-            <span id="cat-nombre-activo">Selecciona una categoría</span>
+          <div id="cat-prod-header" style="padding:10px 14px;border-bottom:1.5px solid var(--border);background:var(--purple-100);display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+            <span style="font-size:13px;font-weight:700;color:var(--purple-800);display:flex;align-items:center;gap:6px;">
+              <i class="fas fa-boxes"></i>
+              <span id="cat-nombre-activo">Selecciona una categoría</span>
+            </span>
+            <div style="margin-left:auto;display:flex;align-items:center;gap:0;border:1.5px solid var(--border);border-radius:8px;overflow:hidden;background:#fff;min-width:200px;">
+              <input type="text" id="cat-buscador" placeholder="Buscar producto…" autocomplete="off"
+                style="flex:1;padding:7px 11px;border:none;font-size:13px;font-family:Arial,Helvetica;outline:none;color:var(--text);">
+              <span style="padding:0 10px;color:var(--muted);font-size:13px;"><i class="fas fa-search"></i></span>
+            </div>
           </div>
           <div style="flex:1;overflow-y:auto;max-height:490px;">
             <table style="width:100%;border-collapse:collapse;font-size:13px;" id="cat-prod-table">
@@ -693,6 +700,16 @@ body{font-family:Arial,Helvetica;background:var(--surface-alt);color:var(--text)
     }
   });
 
+  /* ── Buscador dentro del modal ── */
+  document.getElementById('cat-buscador').addEventListener('input', function () {
+    var q = this.value.trim().toLowerCase();
+    document.querySelectorAll('#cat-prod-tbody .cat-prod-row').forEach(function (tr) {
+      var nombre = (tr.querySelector('td:first-child') || {}).textContent || '';
+      var codigo = (tr.querySelector('td:nth-child(2)') || {}).textContent || '';
+      tr.style.display = (nombre.toLowerCase().includes(q) || codigo.toLowerCase().includes(q)) ? '' : 'none';
+    });
+  });
+
   /* Limpiar estado al cerrar el modal */
   document.getElementById('modalCategorias').addEventListener('hidden.bs.modal', function () {
     catActivo = null;
@@ -704,6 +721,7 @@ body{font-family:Arial,Helvetica;background:var(--surface-alt);color:var(--text)
     document.getElementById('cat-prod-tbody').innerHTML =
       '<tr><td colspan="4" style="text-align:center;padding:40px 20px;color:var(--muted);font-size:13px;"><i class="fas fa-hand-point-left" style="font-size:22px;opacity:.3;display:block;margin-bottom:8px;"></i>Elige una categoría</td></tr>';
     document.getElementById('cat-nombre-activo').textContent = 'Selecciona una categoría';
+    document.getElementById('cat-buscador').value = '';
   });
 
 })();
