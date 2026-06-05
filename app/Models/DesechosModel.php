@@ -41,7 +41,7 @@ class DesechosModel extends Model
       $query = $this->db->table('desechos_organicos')
                       ->select('*')
                       ->where("fecha >=", date('Y-m-01'))
-                      ->where("fecha <=", date('Y-m-31'))
+                      ->where("fecha <=", date('Y-m-t'))
                       ->get();
 
        return $query;

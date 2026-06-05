@@ -996,10 +996,10 @@
   </div>
             <!--  -->
 
-            <!-- ══════════ TABLE CARD ══════════ -->
-            <div class="usr-table-card anim-3 mode-pane pane-in" id="pane-ai">
-              <div class="row">
-                <div class="col-md-6 mt-3">
+            <!-- ══════════ PANE: CAPTURA INTELIGENTE ══════════ -->
+            <div class="usr-table-card anim-3" id="pane-ai">
+              <div class="row justify-content-center">
+                <div class="col-md-8 mt-3">
                   <div class="col-md-12">
                     <div class="card">
 
@@ -1111,10 +1111,16 @@
                   </div>
                 </div>
 
-                <!-- aca cierra  -->
-                <div class="col-md-6 mt-3">
+                <!-- cierra pane-ai -->
+              </div>
+            </div>
+
+            <!-- ══════════ PANE: CAPTURA MANUAL ══════════ -->
+            <div class="usr-table-card anim-3" id="pane-man" style="display:none;">
+              <div class="row justify-content-center">
+                <div class="col-md-8 mt-3">
                   <div class="col-md-12">
-                    <div class="card" style="width: 30rem;">
+                    <div class="card">
                       <div id="captura_manual" style="
                           border: 2px dashed #d4eacc; border-radius: 10px 10px 0 0;
                           padding: 22px; text-align: center; cursor: pointer;
@@ -1172,7 +1178,6 @@
                       </div>
                       <button type="button" id="man-btn-guardar" class="btn btn-primary mt-3 btn-rounded">Guardar</button>
                     </div>
-                  </div>
                   </div>
                 </div>
               </div>
@@ -1428,6 +1433,35 @@
   <script src="<?= base_url('js/balanza.js') ?>"></script>
 
   <script>
+    /* ── Tab switcher ── */
+    (function () {
+      var tabAi  = document.getElementById('tab-ai');
+      var tabMan = document.getElementById('tab-man');
+      var paneAi = document.getElementById('pane-ai');
+      var paneMan= document.getElementById('pane-man');
+      var pill   = document.getElementById('mode-pill');
+
+      function activarTab(tab) {
+        var esAi = (tab === tabAi);
+        paneAi.style.display  = esAi ? '' : 'none';
+        paneMan.style.display = esAi ? 'none' : '';
+        tabAi.classList.toggle('active', esAi);
+        tabMan.classList.toggle('active', !esAi);
+        /* mover la píldora */
+        var ref = esAi ? tabAi : tabMan;
+        pill.style.width = ref.offsetWidth + 'px';
+        pill.style.left  = ref.offsetLeft + 'px';
+      }
+
+      tabAi.addEventListener('click',  function () { activarTab(tabAi); });
+      tabMan.addEventListener('click', function () { activarTab(tabMan); });
+
+      /* estado inicial */
+      tabAi.classList.add('active');
+      pill.style.width = tabAi.offsetWidth + 'px';
+      pill.style.left  = tabAi.offsetLeft  + 'px';
+    })();
+
     document.addEventListener('DOMContentLoaded', () => {
       const tbody = document.querySelector('#table_usuarios tbody');
       if (!tbody) return;

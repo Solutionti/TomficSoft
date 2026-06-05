@@ -33,8 +33,17 @@ class ConsumosController extends BaseController
                 ->setStatusCode(400);
         }
 
+        $fechaRaw = $j['fecha'] ?? '';
+        $fecha    = (strtotime($fechaRaw) !== false && checkdate(
+                        (int) date('m', strtotime($fechaRaw)),
+                        (int) date('d', strtotime($fechaRaw)),
+                        (int) date('Y', strtotime($fechaRaw))
+                    ))
+                    ? date('Y-m-d', strtotime($fechaRaw))
+                    : date('Y-m-d');
+
         $consumo = [
-            'fecha'       => $j['fecha'] ?? date('Y-m-d'),
+            'fecha'       => $fecha,
             'observacion' => trim($j['observacion'] ?? ''),
             'usuario_id'  => session()->get('documento'),
         ];
