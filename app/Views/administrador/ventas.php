@@ -524,7 +524,7 @@
             </div>
             <div class="pos-time-badge">
                 <i class="fas fa-clock"></i>
-                <span id="liveDateLabel">—</span>
+                <span id="contador">—</span>
             </div>
         </div>
 
@@ -633,17 +633,19 @@
 <!-- <?php require_once("componentes/footer.php")?> -->
 
 <?php require_once("componentes/scripts.php")?>
-<script src="<?= base_url('js/ventas.js') ?>"></script>
-
 <script>
     (function(){
-    const el = document.getElementById('liveDateLabel');
+    const el = document.getElementById('contador');
     if (!el) return;
     const days = ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'];
     const months = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
     const d = new Date();
     el.textContent = `${days[d.getDay()]}, ${d.getDate()} de ${months[d.getMonth()]} ${d.getFullYear()}`;
 })();
+</script>
+<script src="<?= base_url('js/ventas.js') ?>"></script>
+
+<script>
 /* ══ Live clock ══ */
 (function tick(){
     const el = document.getElementById('liveClock');

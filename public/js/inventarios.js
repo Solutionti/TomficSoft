@@ -438,6 +438,14 @@ function eliminarProducto(id) {
       });
     }
 
+    $("#codigo_inventario").on('input', function () {
+  $("#barras_inventario").val($(this).val());
+});
+
+$("#barras_inventario").on('input', function () {
+  $("#codigo_inventario").val($(this).val());
+});
+
   function reloadPage() {
   location.reload();
 }

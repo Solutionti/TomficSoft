@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Administracion - Horarios</title>
+  <title>Administracion - Calidad</title>
   <?php require_once("componentes/head.php") ?>
   <link
     href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap"
@@ -871,10 +871,10 @@
             <div class="usr-topbar anim-1">
               <div>
                 <p class="usr-breadcrumb">Administración &rsaquo; InventSoft</p>
-                <h1 class="">Formatos</h1>
+                <h1 class="">Calidad</h1>
               </div>
               <button class="btn-u btn-u-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                <i class="fas fa-user-plus"></i> Agregar formato
+                <i class="fas fa-camera"></i> Agregar Calidad
               </button>
             </div>
             <!-- ══════════ TABLE CARD ══════════ -->

@@ -531,7 +531,7 @@
             </div>
             <div class="col-md-2">
               <div class="fl"><label>Medida *</label>
-              <select class="fc" id="medida_inventario" >
+              <select class="fc text-uppercase" id="medida_inventario" >
                 <option value="">Selecciona medida</option>
                 <option value="Peso">Peso (Kg)</option>
                 <option value="Unidades">Unidades (Uni)</option>
@@ -568,7 +568,7 @@
               <div class="fl"><label>NIT *</label><input type="text" id="nit_inventario" class="fc" value="1110542802-1"></div>
             </div>
             <div class="col-md-3">
-              <div class="fl"><label>Proveedor *</label><input type="text" id="proveedor_inventario" class="fc" required value="Pimienta express"></div>
+              <div class="fl"><label>Proveedor *</label><input type="text" id="proveedor_inventario" class="fc" required value="Pimienta Express"></div>
             </div>
             <div class="col-md-3">
               <div class="fl"><label>Saldo</label><input type="number" id="saldo_inventario" class="fc" value="0"></div>
