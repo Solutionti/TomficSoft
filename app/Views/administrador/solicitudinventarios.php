@@ -2537,6 +2537,8 @@
       });
     }
 
+    window.agregarAlCarrito = agregarAlCarrito;
+
     window.actualizarContador = function () {
       var total    = document.querySelectorAll('.tbody tr:not(#emptyCartRow)').length;
       var badge    = document.getElementById('cartCount');
