@@ -162,8 +162,12 @@ $routes->get('/despachos/solicitud/(:num)', 'DespachosController::getDetalleSoli
 $routes->post('/despachos/guardar', 'DespachosController::guardar');
 
 
-//FORMATOS
-$routes->get('/formatos', 'FormatosController::index');
+//FORMATOS — Control de Temperaturas
+$routes->get('/formatos',                   'FormatosController::index');
+$routes->post('/neveras/crear',             'FormatosController::crearNevera');
+$routes->post('/neveras/eliminar',          'FormatosController::eliminarNevera');
+$routes->post('/temperatura/registrar',     'FormatosController::registrarTemperatura');
+$routes->get('/temperatura/reporte/pdf',    'FormatosController::reportePdf');
 
 
 

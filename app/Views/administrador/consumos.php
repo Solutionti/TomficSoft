@@ -185,6 +185,7 @@ body{font-family:Arial,Helvetica;background:var(--surface-alt);color:var(--text)
                     <thead>
                       <tr>
                         <th>Producto</th>
+                        <th style="text-align:center;">Unidad</th>
                         <th style="text-align:center;">Stock actual</th>
                         <th style="text-align:center;">Cantidad usada</th>
                         <th></th>
@@ -192,7 +193,7 @@ body{font-family:Arial,Helvetica;background:var(--surface-alt);color:var(--text)
                     </thead>
                     <tbody id="cons-tbody">
                       <tr id="cons-empty">
-                        <td colspan="4" class="cart-empty">
+                        <td colspan="5" class="cart-empty">
                           <i class="fas fa-utensils"></i>
                           Busca y agrega los ingredientes usados.
                         </td>
@@ -423,7 +424,7 @@ body{font-family:Arial,Helvetica;background:var(--surface-alt);color:var(--text)
       $("body").overhang({ type: "warning", message: "El producto ya está en la lista." });
       return;
     }
-    items.push({ producto_id: p.codigo_barras, nombre_producto: p.nombre, saldo: p.saldo, cantidad: 1 });
+    items.push({ producto_id: p.codigo_barras, nombre_producto: p.nombre, saldo: p.saldo, medida: p.medida || '', cantidad: 1 });
     renderTabla();
   }
 
@@ -445,6 +446,7 @@ body{font-family:Arial,Helvetica;background:var(--surface-alt);color:var(--text)
       var tr = document.createElement('tr');
       tr.innerHTML =
         '<td style="font-weight:600;">' + item.nombre_producto + '</td>' +
+        '<td style="text-align:center;"><span style="display:inline-block;padding:2px 9px;border-radius:99px;font-size:11px;font-weight:700;background:var(--purple-100);color:var(--purple-700);">' + (item.medida || '—') + '</span></td>' +
         '<td style="text-align:center;color:var(--muted);">' + item.saldo + '</td>' +
         '<td style="text-align:center;">' +
           '<input type="number" class="qty-input" min="0.01" step="0.01" value="' + item.cantidad + '" data-idx="' + idx + '">' +
@@ -616,7 +618,7 @@ body{font-family:Arial,Helvetica;background:var(--surface-alt);color:var(--text)
             '<td style="text-align:center;">' +
               (estaEnCarrito
                 ? '<span style="font-size:11px;color:var(--purple-500);font-weight:600;">Ya agregado</span>'
-                : '<input type="checkbox" class="cat-check" data-codigo="' + p.codigo_barras + '" data-nombre="' + p.nombre.replace(/"/g,'&quot;') + '" data-saldo="' + saldoNum + '" ' + checkChecked + '>'
+                : '<input type="checkbox" class="cat-check" data-codigo="' + p.codigo_barras + '" data-nombre="' + p.nombre.replace(/"/g,'&quot;') + '" data-saldo="' + saldoNum + '" data-medida="' + (p.medida || '') + '" ' + checkChecked + '>'
               ) +
             '</td>';
 
@@ -628,6 +630,7 @@ body{font-family:Arial,Helvetica;background:var(--surface-alt);color:var(--text)
                   producto_id:    this.dataset.codigo,
                   nombre_producto: this.dataset.nombre,
                   saldo:           parseFloat(this.dataset.saldo),
+                  medida:          this.dataset.medida || '',
                   cantidad:        1,
                 };
               } else {
@@ -672,6 +675,7 @@ body{font-family:Arial,Helvetica;background:var(--surface-alt);color:var(--text)
           producto_id:     chk.dataset.codigo,
           nombre_producto: chk.dataset.nombre,
           saldo:           parseFloat(chk.dataset.saldo),
+          medida:          chk.dataset.medida || '',
           cantidad:        1,
         };
       } else {

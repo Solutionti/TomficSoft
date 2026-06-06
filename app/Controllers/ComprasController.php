@@ -197,14 +197,15 @@ class ComprasController extends BaseController
         $pdf->Ln(4);
 
         // Tabla ítems
-        $cW = [10, 87, 20, 35, 30];
+        $cW = [8, 68, 18, 18, 34, 36]; // # | desc | unidad | cant | precio | subtotal
         $pdf->SetFillColor(45, 102, 34); $pdf->SetTextColor(255, 255, 255);
         $pdf->SetFont('Arial', 'B', 8);
-        $pdf->Cell($cW[0], 8, '#',                    1, 0, 'C', true);
+        $pdf->Cell($cW[0], 8, '#',                       1, 0, 'C', true);
         $pdf->Cell($cW[1], 8, utf8_decode('Descripción'), 1, 0, 'L', true);
-        $pdf->Cell($cW[2], 8, 'Cant.',                1, 0, 'C', true);
-        $pdf->Cell($cW[3], 8, 'Precio Unit.',         1, 0, 'C', true);
-        $pdf->Cell($cW[4], 8, 'Subtotal',             1, 1, 'C', true);
+        $pdf->Cell($cW[2], 8, 'Unidad',                  1, 0, 'C', true);
+        $pdf->Cell($cW[3], 8, 'Cant.',                   1, 0, 'C', true);
+        $pdf->Cell($cW[4], 8, 'Precio Unit.',             1, 0, 'C', true);
+        $pdf->Cell($cW[5], 8, 'Subtotal',                1, 1, 'C', true);
 
         $pdf->SetTextColor(13, 36, 9); $pdf->SetFont('Arial', '', 8);
         $subtotal = 0; $fila = 1;
@@ -216,9 +217,10 @@ class ComprasController extends BaseController
             $pdf->SetFillColor(...($fila % 2 !== 0 ? [255,255,255] : [240,247,236]));
             $pdf->Cell($cW[0], 7, $fila,          1, 0, 'C', true);
             $pdf->Cell($cW[1], 7, utf8_decode($item->nombre_producto ?? ''), 1, 0, 'L', true);
-            $pdf->Cell($cW[2], 7, $cant,           1, 0, 'C', true);
-            $pdf->Cell($cW[3], 7, '$' . number_format($precio, 0, ',', '.'), 1, 0, 'R', true);
-            $pdf->Cell($cW[4], 7, '$' . number_format($sub,    0, ',', '.'), 1, 1, 'R', true);
+            $pdf->Cell($cW[2], 7, utf8_decode($item->medida ?? '—'), 1, 0, 'C', true);
+            $pdf->Cell($cW[3], 7, $cant,           1, 0, 'C', true);
+            $pdf->Cell($cW[4], 7, '$' . number_format($precio, 0, ',', '.'), 1, 0, 'R', true);
+            $pdf->Cell($cW[5], 7, '$' . number_format($sub,    0, ',', '.'), 1, 1, 'R', true);
             $fila++;
         }
 
@@ -320,14 +322,15 @@ class ComprasController extends BaseController
         $pdf->Ln(4);
 
         // Tabla ítems
-        $cW = [10, 77, 25, 25, 45];  // # | desc | cant pedida | cant recibida | precio
+        $cW = [8, 60, 18, 22, 22, 52]; // # | desc | unidad | cant pedida | cant recibida | precio
         $pdf->SetFillColor(45, 102, 34); $pdf->SetTextColor(255, 255, 255);
         $pdf->SetFont('Arial', 'B', 8);
         $pdf->Cell($cW[0], 8, '#',                       1, 0, 'C', true);
         $pdf->Cell($cW[1], 8, utf8_decode('Descripción'), 1, 0, 'L', true);
-        $pdf->Cell($cW[2], 8, 'Cant. Pedida',            1, 0, 'C', true);
-        $pdf->Cell($cW[3], 8, 'Cant. Recibida',          1, 0, 'C', true);
-        $pdf->Cell($cW[4], 8, 'Precio Unit.',            1, 1, 'C', true);
+        $pdf->Cell($cW[2], 8, 'Unidad',                  1, 0, 'C', true);
+        $pdf->Cell($cW[3], 8, 'Cant. Pedida',            1, 0, 'C', true);
+        $pdf->Cell($cW[4], 8, 'Cant. Recibida',          1, 0, 'C', true);
+        $pdf->Cell($cW[5], 8, 'Precio Unit.',             1, 1, 'C', true);
 
         $pdf->SetTextColor(13, 36, 9); $pdf->SetFont('Arial', '', 8);
         $fila = 1;
@@ -335,9 +338,10 @@ class ComprasController extends BaseController
             $pdf->SetFillColor(...($fila % 2 !== 0 ? [255,255,255] : [240,247,236]));
             $pdf->Cell($cW[0], 7, $fila, 1, 0, 'C', true);
             $pdf->Cell($cW[1], 7, utf8_decode($item->nombre_producto ?? ''), 1, 0, 'L', true);
-            $pdf->Cell($cW[2], 7, $item->cantidad_pedida   ?? 0, 1, 0, 'C', true);
-            $pdf->Cell($cW[3], 7, $item->cantidad_recibida ?? 0, 1, 0, 'C', true);
-            $pdf->Cell($cW[4], 7, '$' . number_format($item->precio_unitario ?? 0, 0, ',', '.'), 1, 1, 'R', true);
+            $pdf->Cell($cW[2], 7, utf8_decode($item->medida ?? '—'), 1, 0, 'C', true);
+            $pdf->Cell($cW[3], 7, $item->cantidad_pedida   ?? 0, 1, 0, 'C', true);
+            $pdf->Cell($cW[4], 7, $item->cantidad_recibida ?? 0, 1, 0, 'C', true);
+            $pdf->Cell($cW[5], 7, '$' . number_format($item->precio_unitario ?? 0, 0, ',', '.'), 1, 1, 'R', true);
             $fila++;
         }
 
@@ -438,15 +442,16 @@ class ComprasController extends BaseController
         $pdf->Ln(4);
 
         // ── TABLA ÍTEMS ──
-        $cW = [10, 87, 20, 35, 30]; // # | desc | cant | precio | total
+        $cW = [8, 68, 18, 18, 34, 36]; // # | desc | unidad | cant | precio | total
         $pdf->SetFillColor(45, 102, 34);
         $pdf->SetTextColor(255, 255, 255);
         $pdf->SetFont('Arial', 'B', 8);
-        $pdf->Cell($cW[0], 8, '#',            1, 0, 'C', true);
+        $pdf->Cell($cW[0], 8, '#',                        1, 0, 'C', true);
         $pdf->Cell($cW[1], 8, utf8_decode('Descripción'), 1, 0, 'L', true);
-        $pdf->Cell($cW[2], 8, 'Cant.',         1, 0, 'C', true);
-        $pdf->Cell($cW[3], 8, 'Precio Unit.',  1, 0, 'C', true);
-        $pdf->Cell($cW[4], 8, 'Total',         1, 1, 'C', true);
+        $pdf->Cell($cW[2], 8, 'Unidad',                   1, 0, 'C', true);
+        $pdf->Cell($cW[3], 8, 'Cant.',                    1, 0, 'C', true);
+        $pdf->Cell($cW[4], 8, 'Precio Unit.',              1, 0, 'C', true);
+        $pdf->Cell($cW[5], 8, 'Total',                    1, 1, 'C', true);
 
         $pdf->SetTextColor(13, 36, 9);
         $pdf->SetFont('Arial', '', 8);
@@ -463,15 +468,16 @@ class ComprasController extends BaseController
             $pdf->SetFillColor(...($impar ? [255,255,255] : [240,247,236]));
             $pdf->Cell($cW[0], 7, $fila, 1, 0, 'C', true);
             $pdf->Cell($cW[1], 7, utf8_decode($item->nombre_producto ?? ''), 1, 0, 'L', true);
-            $pdf->Cell($cW[2], 7, $cant,  1, 0, 'C', true);
-            $pdf->Cell($cW[3], 7, '$' . number_format($precio, 0, ',', '.'), 1, 0, 'R', true);
-            $pdf->Cell($cW[4], 7, '$' . number_format($total,  0, ',', '.'), 1, 1, 'R', true);
+            $pdf->Cell($cW[2], 7, utf8_decode($item->medida ?? '—'),  1, 0, 'C', true);
+            $pdf->Cell($cW[3], 7, $cant,  1, 0, 'C', true);
+            $pdf->Cell($cW[4], 7, '$' . number_format($precio, 0, ',', '.'), 1, 0, 'R', true);
+            $pdf->Cell($cW[5], 7, '$' . number_format($total,  0, ',', '.'), 1, 1, 'R', true);
             $fila++;
         }
 
         // ── TOTALES ──
         $pdf->Ln(1);
-        $xRight = 14 + $cW[0] + $cW[1] + $cW[2];
+        $xRight = 14 + $cW[0] + $cW[1] + $cW[2] + $cW[3];
         $aL = $cW[3]; $aV = $cW[4];
 
         $pdf->SetFillColor(240, 247, 236);

@@ -19,7 +19,7 @@ class DesechosController extends BaseController {
 
     $db = \Config\Database::connect();
     $resultados = $db->table('productos')
-      ->select('codigo_producto, codigo_interno, nombre, referencia')
+      ->select('codigo_producto, codigo_interno, nombre, referencia, medida')
       ->like('nombre', $q)
       ->orLike('codigo_interno', $q)
       ->where('estado', 'Activo')

@@ -130,14 +130,15 @@ class VentasController extends BaseController {
       $pdf->Cell(4,5,session()->get('nombre').''. session()->get('apellido'), '', 0,'L', false );
       $pdf->Ln(7);
       $pdf->SetFont('Times','b',8);
-      $pdf->Cell(20,5,utf8_decode('Productos'), '', 0,'L', false );
-      $pdf->Cell(4,5,"Precio", '', 0,'L', false );
+      $pdf->Cell(14,5,utf8_decode('Productos'), '', 0,'L', false );
+      $pdf->Cell(8,5,'Und.', '', 0,'L', false );
+      $pdf->Cell(4,5,'Precio', '', 0,'L', false );
       $pdf->SetFont('Times','',7);
-      // ACA VA LOS PRODUCTOS
       foreach($detalleventa->getResult() as $detventa) {
         $pdf->Ln(5);
-        $pdf->Cell(20,5,$detventa->nombre, '', 0,'L', false );
-        $pdf->Cell(5,5,"$".$detventa->costo, '', 0,'L', false );
+        $pdf->Cell(14,5,$detventa->nombre, '', 0,'L', false );
+        $pdf->Cell(8,5,$detventa->medida ?? '—', '', 0,'L', false );
+        $pdf->Cell(5,5,'$'.$detventa->costo, '', 0,'L', false );
       }
       //FIN DEL PRODUCTO
       $pdf->Ln(7);

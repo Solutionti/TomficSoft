@@ -1921,6 +1921,7 @@
                               <th>Código</th>
                               <th>Sucursal</th>
                               <th>Nombre producto</th>
+                              <th>Unidad</th>
                               <th>Cantidad</th>
                               <th>Acciones</th>
                           </tr>
@@ -1928,7 +1929,7 @@
                       <tbody class="tbody">
                           <!-- JS populated -->
                           <tr id="emptyCartRow">
-                              <td colspan="6" class="cart-empty">
+                              <td colspan="7" class="cart-empty">
                                   <i class="fas fa-shopping-basket"></i>
                                   Aún no hay productos en el inventario.<br>
                                   <span style="font-size:12px;color:var(--purple-300);">Agrega un producto para comenzar</span>
@@ -2439,10 +2440,12 @@
                 ' data-codigo="' + (p.codigo_interno || '') + '"' +
                 ' data-nombre="' + p.nombre.replace(/"/g, '&quot;') + '"' +
                 ' data-ref="'   + (p.referencia || '') + '"' +
+                ' data-medida="' + (p.medida || '') + '"' +
                 ' style="padding:9px 14px;cursor:pointer;border-bottom:1px solid #f0f7ec;font-size:13px;">' +
                 '<div style="font-weight:600;color:#0d2409;">' + p.nombre + '</div>' +
                 '<div style="font-size:11px;color:#7c6fa0;">Cód: ' + (p.codigo_interno || '—') +
-                (p.referencia ? ' · ' + p.referencia : '') + '</div>' +
+                (p.referencia ? ' · ' + p.referencia : '') +
+                (p.medida ? ' · <strong>' + p.medida + '</strong>' : '') + '</div>' +
                 '</div>';
             }).join('');
 
@@ -2453,7 +2456,7 @@
               item.addEventListener('mouseleave', function () { item.style.background = ''; });
               item.addEventListener('mousedown', function (e) {
                 e.preventDefault();
-                agregarAlCarrito(item.dataset.codigo, item.dataset.nombre, item.dataset.ref);
+                agregarAlCarrito(item.dataset.codigo, item.dataset.nombre, item.dataset.ref, item.dataset.medida);
                 input.value = '';
                 dropdown.style.display = 'none';
                 input.focus();
@@ -2489,7 +2492,7 @@
         items[idx].classList.add('sol-ac-active'); items[idx].style.background = '#f0f7ec';
       } else if (e.key === 'Enter' && active) {
         e.preventDefault();
-        agregarAlCarrito(active.dataset.codigo, active.dataset.nombre, active.dataset.ref);
+        agregarAlCarrito(active.dataset.codigo, active.dataset.nombre, active.dataset.ref, active.dataset.medida);
         input.value = '';
         dropdown.style.display = 'none';
         input.focus();
@@ -2499,7 +2502,7 @@
     });
 
     /* ── Carrito ── */
-    function agregarAlCarrito(codigo, nombre, referencia) {
+    function agregarAlCarrito(codigo, nombre, referencia, medida) {
       var tbody    = document.querySelector('.tbody');
       var emptyRow = document.getElementById('emptyCartRow');
       if (!tbody) return;
@@ -2519,6 +2522,7 @@
         '<td><code style="font-size:12px;">' + (codigo || '—') + '</code></td>' +
         '<td style="font-size:12px;color:var(--muted);">ENVIGADO</td>' +
         '<td style="font-weight:600;">' + nombre + '</td>' +
+        '<td><span style="display:inline-block;padding:2px 9px;border-radius:99px;font-size:11px;font-weight:700;background:var(--purple-100);color:var(--purple-700);">' + (medida || '—') + '</span></td>' +
         '<td><input type="number" min="1" value="1" style="width:65px;padding:4px 8px;' +
           'border:1.5px solid #d4eacc;border-radius:6px;font-size:13px;text-align:center;"></td>' +
         '<td><button type="button" onclick="this.closest(\'tr\').remove();actualizarContador();"' +
@@ -2528,11 +2532,11 @@
       tbody.appendChild(tr);
       actualizarContador();
 
-      // crear el array de productos para enviar al backend
       carrito.push({
         codigo: codigo,
         nombre: nombre,
         referencia: referencia,
+        medida: medida || '',
         cantidad: 1
       });
     }
@@ -2637,6 +2641,7 @@
                   : '<input type="checkbox" class="sol-cat-check" style="width:16px;height:16px;accent-color:var(--purple-600);cursor:pointer;"' +
                     ' data-codigo="' + (p.codigo_interno || '') + '"' +
                     ' data-nombre="' + p.nombre.replace(/"/g, '&quot;') + '"' +
+                    ' data-medida="' + (p.medida || '') + '"' +
                     (seleccionado ? ' checked' : '') + '>'
                 ) +
               '</td>';
@@ -2644,7 +2649,7 @@
             var chk = tr.querySelector('.sol-cat-check');
             if (chk) {
               chk.addEventListener('change', function () {
-                if (this.checked) seleccionados[this.dataset.codigo] = { codigo: this.dataset.codigo, nombre: this.dataset.nombre };
+                if (this.checked) seleccionados[this.dataset.codigo] = { codigo: this.dataset.codigo, nombre: this.dataset.nombre, medida: this.dataset.medida || '' };
                 else delete seleccionados[this.dataset.codigo];
                 sincronizarCheckAll();
                 actualizarSelCount();
@@ -2671,7 +2676,7 @@
       var marcar = this.checked;
       document.querySelectorAll('#sol-cat-tbody .sol-cat-check').forEach(function (chk) {
         chk.checked = marcar;
-        if (marcar) seleccionados[chk.dataset.codigo] = { codigo: chk.dataset.codigo, nombre: chk.dataset.nombre };
+        if (marcar) seleccionados[chk.dataset.codigo] = { codigo: chk.dataset.codigo, nombre: chk.dataset.nombre, medida: chk.dataset.medida || '' };
         else delete seleccionados[chk.dataset.codigo];
       });
       actualizarSelCount();
@@ -2698,7 +2703,7 @@
       var agregados = 0;
       Object.values(seleccionados).forEach(function (p) {
         if (!document.querySelector('.tbody [data-sol-codigo="' + p.codigo + '"]')) {
-          agregarAlCarrito(p.codigo, p.nombre, '');
+          agregarAlCarrito(p.codigo, p.nombre, '', p.medida || '');
           agregados++;
         }
       });

@@ -109,7 +109,7 @@ class InventarioModel extends Model
     public function buscarProductosPorNombre($q)
     {
         return $this->db->table('productos')
-            ->select('codigo_barras, nombre, saldo, costo, nit, codigo_interno')
+            ->select('codigo_barras, nombre, saldo, costo, nit, codigo_interno, medida')
             ->groupStart()
                 ->like('nombre', $q)
                 ->orLike('codigo_barras', $q)

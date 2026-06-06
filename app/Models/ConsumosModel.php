@@ -34,7 +34,7 @@ class ConsumosModel extends Model
     public function getProductosPorCategoria(string $codigo): array
     {
         return $this->db->table('productos')
-            ->select('codigo_barras, codigo_interno, nombre, saldo')
+            ->select('codigo_barras, codigo_interno, nombre, saldo, medida')
             ->where('categoria', $codigo)
             ->where('estado', 'Activo')
             ->orderBy('nombre', 'ASC')

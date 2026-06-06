@@ -442,6 +442,7 @@
                                         <th>Opciones</th>
                                         <th>Código de barras</th>
                                         <th>Nombre</th>
+                                        <th>Unidad</th>
                                         <th>Proveedor</th>
                                         <th>Categoría</th>
                                         <th>Stock</th>
@@ -469,6 +470,7 @@
                                         <td>
                                             <span style="font-weight:600;color:var(--text);"><?= $producto->nombre; ?></span>
                                         </td>
+                                        <td><span style="background:var(--purple-100);color:var(--purple-700);padding:3px 10px;border-radius:50px;font-weight:600;font-size:11px;"><?= esc($producto->medida ?? '—') ?></span></td>
                                         <td style="font-size:12px;color:var(--muted);"><?= $producto->proveedor; ?></td>
                                         <td>
                                             <span style="font-size:12px;background:var(--purple-100);color:var(--purple-700);padding:3px 10px;border-radius:50px;font-weight:600;font-size:11px;">

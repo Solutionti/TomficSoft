@@ -449,6 +449,7 @@ class InventarioController extends BaseController
             'J' => 'SUBGRUPO',
             'K' => 'STOCK',
             'L' => 'COSTO',
+            'M' => 'UNIDAD',
         ];
 
         foreach ($headers as $col => $label) {
@@ -476,6 +477,7 @@ class InventarioController extends BaseController
             $sheet->setCellValue('J'.$row, $p->subgrupo);
             $sheet->setCellValue('K'.$row, $p->saldo);
             $sheet->setCellValue('L'.$row, $p->costo);
+            $sheet->setCellValue('M'.$row, $p->medida ?? '');
             $row++;
         }
 

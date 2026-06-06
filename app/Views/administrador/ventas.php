@@ -608,6 +608,7 @@
                         <th></th>
                         <th>Código</th>
                         <th>Nombre producto</th>
+                        <th>Unidad</th>
                         <th>Cantidad</th>
                         <th>Precio</th>
                         <th>Acciones</th>
@@ -616,7 +617,7 @@
                 <tbody class="tbody">
                     <!-- JS populated -->
                     <tr id="emptyCartRow">
-                        <td colspan="6" class="cart-empty">
+                        <td colspan="7" class="cart-empty">
                             <i class="fas fa-shopping-basket"></i>
                             Aún no hay productos en la venta.<br>
                             <span style="font-size:12px;color:var(--purple-300);">Escanea un código para comenzar</span>
