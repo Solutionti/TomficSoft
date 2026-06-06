@@ -107,14 +107,12 @@ class FormatosController extends BaseController
 
     private function enviarWhatsApp(?object $nevera, float $temp, ?string $imagen, string $obs): void
     {
-        // ══════════════════════════════════════════════════════════════
-        // EVOLUTION API — Configurar con tus credenciales
-        // ══════════════════════════════════════════════════════════════
-        $evolutionUrl  = 'https://TU_EVOLUTION_API_URL';   // ← cambiar
-        $apiKey        = 'TU_API_KEY';                      // ← cambiar
-        $instanceName  = 'TU_INSTANCIA';                    // ← cambiar
-        $destino       = '57XXXXXXXXXX@s.whatsapp.net';     // ← cambiar (número o grupo@g.us)
-        // ══════════════════════════════════════════════════════════════
+        $evolutionUrl  = env('EVOLUTION_URL');
+        $apiKey        = env('EVOLUTION_API_KEY');
+        $instanceName  = env('EVOLUTION_INSTANCE');
+        $destino       = env('EVOLUTION_DESTINO');
+
+        if (!$evolutionUrl || !$apiKey || !$instanceName || !$destino) return;
 
         if (!$nevera) return;
 
