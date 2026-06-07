@@ -114,6 +114,7 @@ body{font-family:Arial,Helvetica;background:var(--surface-alt);color:var(--text)
 .temp-big .val{font-size:48px;font-weight:800;color:var(--g800);line-height:1;}
 .temp-big .lbl{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-top:4px;}
 
+.color-morado{background:linear-gradient(135deg,var(--g800),var(--g700))!important;}
 .modal-header-inv{background:linear-gradient(135deg,var(--g800),var(--g600))!important;padding:17px 24px;border-bottom:none;}
 .modal-header-inv .modal-title{font-family:Arial,Helvetica;font-size:14.5px;font-weight:700;color:#fff;}
 .modal-header-inv .btn-close{filter:invert(1);opacity:.85;}

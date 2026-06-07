@@ -388,9 +388,11 @@ class InventarioController extends BaseController
       $db = \Config\Database::connect();
       $id = (int) $this->request->getGet('id');
 
-      $builder = $db->table('despachos');
-      if ($id > 0) $builder->where('solicitud_id', $id);
-      $rows = $builder->orderBy('solicitud_id', 'ASC')->get()->getResult();
+      $builder = $db->table('despachos d')
+          ->select('d.*, COALESCE(ds.cantidad_solicitada, "—") as cantidad_solicitada')
+          ->join('detalle_solicitud ds', 'ds.solicitud_id = d.solicitud_id AND ds.producto_id = d.producto_id', 'left');
+      if ($id > 0) $builder->where('d.solicitud_id', $id);
+      $rows = $builder->orderBy('d.solicitud_id', 'ASC')->get()->getResult();
 
       $pdf = new FPDF('L', 'mm', 'A4');
       $pdf->SetMargins(10, 10, 10);
@@ -405,23 +407,25 @@ class InventarioController extends BaseController
 
       $pdf->SetFont('Times', 'B', 9);
       $pdf->SetFillColor(230, 245, 225);
-      $pdf->Cell(22,  6, utf8_decode('Cód.'),              'LTBR', 0, 'C', true);
-      $pdf->Cell(22,  6, 'Solicitud',                      'TBR',  0, 'C', true);
-      $pdf->Cell(90,  6, 'Producto',                       'TBR',  0, 'L', true);
-      $pdf->Cell(30,  6, utf8_decode('Cant. Despachada'),  'TBR',  0, 'C', true);
-      $pdf->Cell(68,  6, 'Comentario',                     'TBR',  0, 'L', true);
+      $pdf->Cell(15,  6, utf8_decode('Cód.'),              'LTBR', 0, 'C', true);
+      $pdf->Cell(20,  6, 'Solicitud',                      'TBR',  0, 'C', true);
+      $pdf->Cell(80,  6, 'Producto',                       'TBR',  0, 'L', true);
+      $pdf->Cell(25,  6, 'Cant. Solicitada',               'TBR',  0, 'C', true);
+      $pdf->Cell(25,  6, utf8_decode('Cant. Despachada'),  'TBR',  0, 'C', true);
+      $pdf->Cell(60,  6, 'Comentario',                     'TBR',  0, 'L', true);
       $pdf->Cell(25,  6, 'Fecha',                          'TBR',  0, 'C', true);
-      $pdf->Cell(20,  6, 'Estado',                         'TBR',  1, 'C', true);
+      $pdf->Cell(27,  6, 'Estado',                         'TBR',  1, 'C', true);
 
       $pdf->SetFont('Times', '', 8);
       foreach ($rows as $row) {
-          $pdf->Cell(22,  5, $row->codigo_despacho,                      'LTBR', 0, 'C');
-          $pdf->Cell(22,  5, $row->solicitud_id,                         'TBR',  0, 'C');
-          $pdf->Cell(90,  5, utf8_decode($row->nombre_producto ?? '—'),  'TBR',  0, 'L');
-          $pdf->Cell(30,  5, $row->cantidad_despachada,                  'TBR',  0, 'C');
-          $pdf->Cell(68,  5, utf8_decode($row->comentario ?? '—'),       'TBR',  0, 'L');
+          $pdf->Cell(15,  5, $row->codigo_despacho,                      'LTBR', 0, 'C');
+          $pdf->Cell(20,  5, $row->solicitud_id,                         'TBR',  0, 'C');
+          $pdf->Cell(80,  5, utf8_decode($row->nombre_producto ?? '—'),  'TBR',  0, 'L');
+          $pdf->Cell(25,  5, $row->cantidad_solicitada,                  'TBR',  0, 'C');
+          $pdf->Cell(25,  5, $row->cantidad_despachada,                  'TBR',  0, 'C');
+          $pdf->Cell(60,  5, utf8_decode($row->comentario ?? '—'),       'TBR',  0, 'L');
           $pdf->Cell(25,  5, substr($row->fecha ?? '', 0, 10),           'TBR',  0, 'C');
-          $pdf->Cell(20,  5, utf8_decode($row->estado ?? ''),            'TBR',  1, 'C');
+          $pdf->Cell(27,  5, utf8_decode($row->estado ?? ''),            'TBR',  1, 'C');
       }
 
       $this->response->setHeader('Content-Type', 'application/pdf');

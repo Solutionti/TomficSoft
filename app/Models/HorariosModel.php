@@ -67,4 +67,16 @@ class HorariosModel extends Model {
             ->get()
             ->getResult();
     }
+
+    public function getAsistenciaPorRango(string $inicio, string $fin): array
+    {
+        return $this->db->table('asistencia_real')
+            ->select('documento, nombre, fecha, marcacion_ingreso, marcacion_salida')
+            ->where('fecha >=', $inicio)
+            ->where('fecha <=', $fin)
+            ->where('marcacion_ingreso IS NOT NULL', null, false)
+            ->where('marcacion_salida IS NOT NULL', null, false)
+            ->orderBy('nombre, fecha', 'ASC')
+            ->get()->getResult();
+    }
 }

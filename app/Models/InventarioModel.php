@@ -235,9 +235,11 @@ return $codigo;
     }
 
     public function getSolicitudesInventarios() {
-        $solicitudes = $this->db->table('solicitudes')
-                ->select('solicitudes.*, usuarios.nombre, usuarios.apellido')
-                ->join('usuarios', 'usuarios.documento = solicitudes.usuario_id')
+        $solicitudes = $this->db->table('solicitudes s')
+                ->select('s.*, u.nombre, u.apellido,
+                    (SELECT COUNT(*) FROM despachos d WHERE d.solicitud_id = s.codigo_solicitud) as tiene_despacho,
+                    (SELECT COUNT(*) FROM devoluciones dv WHERE dv.solicitud_id = s.codigo_solicitud) as tiene_devolucion')
+                ->join('usuarios u', 'u.documento = s.usuario_id')
                 ->get();
 
         return $solicitudes;

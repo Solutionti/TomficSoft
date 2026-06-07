@@ -17,7 +17,8 @@ class DespachosModel extends Model
     public function getDetalleSolicitud(int $id): array
     {
         return $this->db->table('detalle_solicitud ds')
-            ->select('ds.*, p.nombre, p.codigo_interno')
+            ->select('ds.*, p.nombre, p.codigo_interno,
+                COALESCE((SELECT SUM(d.cantidad_despachada) FROM despachos d WHERE d.solicitud_id = ds.solicitud_id AND d.producto_id = ds.producto_id), 0) as cantidad_despachada')
             ->join('productos p', 'p.codigo_barras = ds.producto_id', 'left')
             ->where('ds.solicitud_id', $id)
             ->get()
