@@ -21,6 +21,7 @@
   --radius:14px; --radius-sm:8px;
   --transition:all .25s cubic-bezier(.4,0,.2,1);
 }
+.color-morado{background:linear-gradient(135deg,var(--purple-800),var(--purple-700))!important;}
 *{box-sizing:border-box;margin:0;padding:0;}
 body{font-family:Arial,Helvetica;background:var(--surface-alt);color:var(--text);}
 h1,h2,h3,h4,h5,h6{font-family:Arial,Helvetica;}

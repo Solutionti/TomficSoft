@@ -873,11 +873,79 @@
                 <p class="usr-breadcrumb">Administración &rsaquo; CristalBusiness</p>
                 <h1 class="">Control de Horarios</h1>
               </div>
-              <button class="btn-u btn-u-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                <i class="fas fa-user-plus"></i> Agregar Colaborador
-              </button>
-              
+              <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
+                <button class="btn-u btn-u-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                  <i class="fas fa-user-plus"></i> Agregar Colaborador
+                </button>
+                <button class="btn-u" onclick="abrirReporte()"
+                  style="background:linear-gradient(135deg,#dc2626,#ef4444);color:#fff;border:none;padding:9px 16px;border-radius:50px;font-size:13px;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;gap:7px;">
+                  <i class="fas fa-file-pdf"></i> Reporte de Horas
+                </button>
+              </div>
             </div>
+
+            <!-- Modal reporte horas -->
+            <div class="modal fade" id="modalReporteHoras" tabindex="-1" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content" style="border-radius:14px;overflow:hidden;">
+                  <div class="modal-header" style="background:linear-gradient(135deg,#173a10,#2d6622);padding:16px 22px;border-bottom:none;">
+                    <h5 class="modal-title" style="color:#fff;font-weight:700;font-size:14px;">
+                      <i class="fas fa-file-pdf me-2"></i> Reporte de Horas Trabajadas
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" style="filter:invert(1);opacity:.8;"></button>
+                  </div>
+                  <div class="modal-body" style="padding:22px;background:#fafbff;">
+                    <div style="display:flex;flex-direction:column;gap:14px;">
+                      <div style="display:flex;flex-direction:column;gap:4px;">
+                        <label style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#7c6fa0;">Tipo de período</label>
+                        <select id="rpt-tipo" style="padding:9px 13px;border:1.5px solid #e8e0f5;border-radius:8px;font-size:13px;outline:none;background:#fff;">
+                          <option value="mensual">Mensual</option>
+                          <option value="quincenal">Quincenal</option>
+                        </select>
+                      </div>
+                      <div id="rpt-quincena-wrap" style="display:none;flex-direction:column;gap:4px;">
+                        <label style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#7c6fa0;">Quincena</label>
+                        <select id="rpt-q" style="padding:9px 13px;border:1.5px solid #e8e0f5;border-radius:8px;font-size:13px;outline:none;background:#fff;">
+                          <option value="1">1ª quincena (días 1–15)</option>
+                          <option value="2">2ª quincena (días 16–fin de mes)</option>
+                        </select>
+                      </div>
+                      <div style="display:flex;flex-direction:column;gap:4px;">
+                        <label style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#7c6fa0;">Mes</label>
+                        <input type="month" id="rpt-mes" value="<?= date('Y-m') ?>"
+                          style="padding:9px 13px;border:1.5px solid #e8e0f5;border-radius:8px;font-size:13px;outline:none;background:#fff;">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="modal-footer" style="background:#fff;border-top:1px solid #e8e0f5;padding:13px 22px;">
+                    <button type="button" class="btn-u" data-bs-dismiss="modal"
+                      style="border:1.5px solid #e8e0f5;background:transparent;color:#7c6fa0;padding:8px 18px;border-radius:50px;font-size:13px;font-weight:600;cursor:pointer;">
+                      Cancelar
+                    </button>
+                    <button type="button" onclick="generarReportePdf()"
+                      style="background:linear-gradient(135deg,#173a10,#2d6622);color:#fff;border:none;padding:9px 20px;border-radius:50px;font-size:13px;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;gap:6px;">
+                      <i class="fas fa-file-pdf"></i> Generar PDF
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <script>
+            function abrirReporte() {
+              new bootstrap.Modal(document.getElementById('modalReporteHoras')).show();
+            }
+            document.getElementById('rpt-tipo')?.addEventListener('change', function() {
+              document.getElementById('rpt-quincena-wrap').style.display = this.value === 'quincenal' ? 'flex' : 'none';
+            });
+            function generarReportePdf() {
+              var tipo = document.getElementById('rpt-tipo').value;
+              var mes  = document.getElementById('rpt-mes').value;
+              var q    = document.getElementById('rpt-q').value;
+              var url  = '/horarios/reporte/pdf?tipo=' + tipo + '&mes=' + mes;
+              if (tipo === 'quincenal') url += '&q=' + q;
+              window.open(url, '_blank');
+            }
+            </script>
 
             <!-- ══════════ STATS STRIP ══════════ -->
             <!--  -->

@@ -112,6 +112,7 @@ $routes->post('/horarios/guardar', 'HorariosController::guardar');
 $routes->post('/horarios/eliminar', 'HorariosController::eliminarColaborador');
 $routes->post('/horarios/crear',        'HorariosController::crearColaborador');
 $routes->post('/horarios/crearHorario', 'HorariosController::crearHorarioColaborador');
+$routes->get('/horarios/reporte/pdf',   'HorariosController::reportePdf');
 
 //CONSUMOS
 $routes->get('/consumos',                        'ConsumosController::index');

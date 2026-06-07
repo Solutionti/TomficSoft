@@ -2018,13 +2018,14 @@
                   <th>Código</th>
                   <th>Producto</th>
                   <th>Cant. solicitada</th>
+                  <th>Cant. despachada</th>
                   <th>Cant. a devolver</th>
                   <th>Motivo específico</th>
                 </tr>
               </thead>
               <tbody id="dev-tbody">
                 <tr id="dev-empty-row">
-                  <td colspan="6" class="cart-empty">
+                  <td colspan="7" class="cart-empty">
                     <i class="fas fa-box-open"></i>
                     Carga una solicitud para ver sus productos.
                   </td>
@@ -2117,16 +2118,28 @@
                               <i class="fas fa-file-pdf text-primary"></i>
                               </button>
                             </td>
-                            <td><button class="btn-action btn-action-edit"
-                              title="PDF Despacho"
-                              onclick="window.open('/pdfdespachos?id=<?= $solicitud->codigo_solicitud ?>', '_blank')">
-                              <i class="fas fa-file-pdf"></i>
-                            </button></td>
-                            <td><button class="btn-action btn-action-edit"
-                              title="PDF Devolucion"
-                              onclick="window.open('/pdfdevoluciones?id=<?= $solicitud->codigo_solicitud ?>', '_blank')">
-                              <i class="fas fa-file-pdf text-danger"></i>
-                            </button></td>
+                            <td>
+                              <?php if ($solicitud->tiene_despacho > 0) : ?>
+                              <button class="btn-action btn-action-edit"
+                                title="PDF Despacho"
+                                onclick="window.open('/pdfdespachos?id=<?= $solicitud->codigo_solicitud ?>', '_blank')">
+                                <i class="fas fa-file-pdf"></i>
+                              </button>
+                              <?php else : ?>
+                              <span style="color:var(--muted);font-size:11px;">—</span>
+                              <?php endif; ?>
+                            </td>
+                            <td>
+                              <?php if ($solicitud->tiene_devolucion > 0) : ?>
+                              <button class="btn-action btn-action-edit"
+                                title="PDF Devolucion"
+                                onclick="window.open('/pdfdevoluciones?id=<?= $solicitud->codigo_solicitud ?>', '_blank')">
+                                <i class="fas fa-file-pdf text-danger"></i>
+                              </button>
+                              <?php else : ?>
+                              <span style="color:var(--muted);font-size:11px;">—</span>
+                              <?php endif; ?>
+                            </td>
                             <td>
                           <div class="action-wrap">
                             <button class="btn-action btn-action-del"
