@@ -144,6 +144,7 @@
           limpiarTabla();
           inputCod.value = '';
           $("body").overhang({ type: "success", message: "Despacho registrado correctamente." });
+          setTimeout(actualizarPagina, 3000);
         } else {
           mostrarAlerta(data.message || 'No se pudo guardar el despacho.');
         }
@@ -165,3 +166,9 @@
     });
   }
 })();
+
+
+
+function actualizarPagina() {
+    location.reload();
+}

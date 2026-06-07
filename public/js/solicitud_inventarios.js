@@ -43,6 +43,7 @@ $("#addToCartBtn").on("click", function () {
                  type: "success",
                  message: "Solicitud de inventarios creada exitosamente. y en espera de autorizacion",
                 }, 4000);
+              setTimeout(actualizarPagina, 3000);
         },
         error: function (xhr, status, error) {
             $("body").overhang({ type: "error", message: "Error al crear la solicitud de inventarios." });
@@ -54,6 +55,8 @@ $("#addToCartBtn").on("click", function () {
           }
         }
      });
-
-    
 });
+
+function actualizarPagina() {
+    location.reload();
+}
