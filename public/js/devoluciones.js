@@ -74,8 +74,9 @@
             '<td style="text-align:center;font-weight:700;color:var(--purple-700);">' + item.cantidad_solicitada + '</td>' +
             '<td style="text-align:center;font-weight:700;color:var(--green-700, #15803d);">' + (item.cantidad_despachada || 0) + '</td>' +
             '<td style="text-align:center;">' +
-              '<input type="number" class="qty-input dev-qty" min="0" max="' + item.cantidad_solicitada + '" value="' + (item.cantidad_devuelta || 0) + '"' +
+              '<input type="number" class="qty-input dev-qty" min="0" max="' + item.cantidad_solicitada + '" value="0"' +
               ' style="width:70px;padding:5px 8px;text-align:center;border:1.5px solid var(--border);border-radius:6px;font-size:13px;font-weight:700;color:var(--purple-700);outline:none;">' +
+              (item.cantidad_devuelta > 0 ? '<div style="font-size:10px;color:#b45309;margin-top:3px;">Ya devuelto: ' + item.cantidad_devuelta + '</div>' : '') +
             '</td>' +
             '<td>' +
               '<input type="text" class="dev-motivo-item" placeholder="Opcional"' +
