@@ -2711,6 +2711,8 @@
       document.getElementById('sol-btn-agregar-sel').disabled = n === 0;
     }
 
+    
+
     /* Agregar al carrito */
     document.getElementById('sol-btn-agregar-sel').addEventListener('click', function () {
       var agregados = 0;
