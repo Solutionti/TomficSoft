@@ -98,15 +98,20 @@ function renderCarrito(){
     carrito.map(item => {
       const tr = document.createElement('tr');
       tr.classList.add('ItemCarrito');
-      const medidaBadge = `<span style="background:var(--purple-100,#f0f7ec);color:var(--purple-700,#2d6622);padding:2px 8px;border-radius:50px;font-size:11px;font-weight:700;">${item.medida || '—'}</span>`;
-      const Content = `<td></td><td>${item.codigo}</td><td class="title">${item.nombre}</td><td style="text-align:center;">${medidaBadge}</td><td><input type="text" value=${item.cantidad} class="form-control form-control-sm cantidad_products" style="width:100px"></td><td>$${item.precio.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}</td><td><button type="button" class="btn btn-sm btn-danger mt-1 mx-3 delete" title="Eliminar"><i class="fas fa-trash"></i></button></td>`;
-      tr.innerHTML = Content;
+      const medidaBadge = item.medida
+        ? `<span style="background:#f0f7ec;color:#2d6622;padding:2px 7px;border-radius:50px;font-size:10px;font-weight:700;">${item.medida}</span>`
+        : '—';
+      tr.innerHTML =
+        `<td class="title" style="font-weight:600;font-size:12px;">${item.nombre}</td>` +
+        `<td style="text-align:center;">${medidaBadge}</td>` +
+        `<td><input type="text" value="${item.cantidad}" class="qty-input cantidad_products"></td>` +
+        `<td class="price-cell">$${item.precio.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}</td>` +
+        `<td><button type="button" class="btn-row-del delete" title="Eliminar"><i class="fas fa-trash"></i></button></td>`;
       tbody.append(tr);
       tr.querySelector(".delete").addEventListener('click', removeItemCarrito);
       tr.querySelector(".cantidad_products").addEventListener('keyup', sumaCantidad);
-  
-    })
-    carritoTotal()
+    });
+    carritoTotal();
 }
 
 function sumaCantidad(e){
@@ -158,9 +163,7 @@ function formatearMiles(input) {
   input.value = valor;
 }
 
-document.addEventListener("keydown", function(event) {
-  
-  if(event.ctrlKey && event.keyCode === 32){
+function crearVenta() {
     var url = baseurl + "crearventa",
       consecutivo = $("#consecutivo").val(),
       documento = 'FACTURA',
@@ -232,7 +235,10 @@ document.addEventListener("keydown", function(event) {
           }
         });
       }
-  }
+}
+
+document.addEventListener("keydown", function(event) {
+  if(event.ctrlKey && event.keyCode === 32){ crearVenta(); }
 });
 
 function facturaVenta(consecutivo) {
