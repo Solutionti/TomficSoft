@@ -143,6 +143,7 @@
           inputCod.value = '';
           /* Toast reutilizable si existe */
           $("body").overhang({ type: "success", message: "Devolución registrada correctamente." });
+          setTimeout(actualizarPagina, 3000);
         } else {
           mostrarAlerta(data.message || 'No se pudo guardar la devolución.');
         }
@@ -164,3 +165,7 @@
     });
   }
 })();
+
+function actualizarPagina() {
+    location.reload();
+}
