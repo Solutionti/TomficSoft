@@ -25,18 +25,27 @@ class ConsumosModel extends Model
 
     public function getCategorias(): array
     {
-        return $this->db->table('categorias')
-            ->select('codigo_categoria, nombre')
-            ->orderBy('nombre', 'ASC')
+        $rows = $this->db->table('productos')
+            ->select('categoria')
+            ->where('categoria IS NOT NULL', null, false)
+            ->where("categoria != ''", null, false)
+            ->groupBy('categoria')
+            ->orderBy('categoria', 'ASC')
             ->get()->getResult();
+
+        return array_map(function ($r) {
+            return (object)[
+                'codigo_categoria' => $r->categoria,
+                'nombre'           => $r->categoria,
+            ];
+        }, $rows);
     }
 
     public function getProductosPorCategoria(string $codigo): array
     {
         return $this->db->table('productos')
-            ->select('codigo_barras, codigo_interno, nombre, saldo, medida')
+            ->select('codigo_barras, codigo_interno, nombre, costo, saldo')
             ->where('categoria', $codigo)
-            ->where('estado', 'Activo')
             ->orderBy('nombre', 'ASC')
             ->get()->getResult();
     }
