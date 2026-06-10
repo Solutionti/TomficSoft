@@ -360,37 +360,7 @@
 ══════════════════════════════════ -->
 <div class="pos-right">
 
-    <!-- CART -->
-    <div class="cart-section">
-        <div class="cart-header">
-            <h5>
-                <i class="fas fa-shopping-cart"></i>
-                Carrito
-                <span class="cart-count" id="cartCount">0 ítems</span>
-            </h5>
-            <span style="font-size:10px;color:rgba(255,255,255,.6);">Se agrega al seleccionar</span>
-        </div>
-        <table class="cart-table">
-            <thead>
-                <tr>
-                    <th>Producto</th>
-                    <th>Und.</th>
-                    <th>Cant.</th>
-                    <th>Precio</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody class="tbody">
-                <tr id="emptyCartRow">
-                    <td colspan="5" class="cart-empty">
-                        <i class="fas fa-shopping-basket"></i>
-                        Sin productos aún.<br>
-                        <span style="font-size:11px;">Selecciona una tarjeta o busca</span>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+    
 
     <!-- PAYMENT PANEL -->
     <div class="pos-payment">
@@ -398,7 +368,7 @@
             <div class="pp-brand">
                 <div class="pp-brand-icon"><i class="fas fa-cash-register"></i></div>
                 <div>
-                    <div class="pp-brand-name">InventSoft</div>
+                    <div class="pp-brand-name">Cristal Business</div>
                     <div class="pp-brand-sub">Punto de venta</div>
                 </div>
             </div>
@@ -433,15 +403,15 @@
                     <span class="k"><i class="fas fa-user"></i>&nbsp; Vendedor</span>
                     <span class="v"><?= session()->get('nombre').' '.session()->get('apellido') ?></span>
                 </div>
-                <div class="pp-meta-row">
+                <!-- <div class="pp-meta-row">
                     <span class="k"><i class="fas fa-calendar-day"></i>&nbsp; Fecha</span>
                     <span class="v"><?= date('d/m/Y') ?></span>
-                </div>
-                <div class="pp-meta-row">
+                </div> -->
+                <!-- <div class="pp-meta-row">
                     <span class="k"><i class="fas fa-desktop"></i>&nbsp; Caja</span>
                     <?php $cajas = $caja->getResult(); $cajas = !empty($cajas) ? $cajas[0] : null; ?>
                     <span class="v">Caja #<?= $cajas->codigo_caja ?? '—' ?></span>
-                </div>
+                </div> -->
             </div>
 
             <label class="pp-print">
@@ -470,6 +440,38 @@
         <input type="text" id="precio"   hidden>
         <input type="text" id="cantidad" hidden>
     </div><!-- /pos-payment -->
+
+    <!-- CART -->
+    <div class="cart-section">
+        <div class="cart-header">
+            <h5>
+                <i class="fas fa-shopping-cart"></i>
+                Carrito
+                <span class="cart-count" id="cartCount">0 ítems</span>
+            </h5>
+            <span style="font-size:10px;color:rgba(255,255,255,.6);">Se agrega al seleccionar</span>
+        </div>
+        <table class="cart-table">
+            <thead>
+                <tr>
+                    <th>Producto</th>
+                    <th>Und.</th>
+                    <th>Cant.</th>
+                    <th>Precio</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody class="tbody">
+                <tr id="emptyCartRow">
+                    <td colspan="5" class="cart-empty">
+                        <i class="fas fa-shopping-basket"></i>
+                        Sin productos aún.<br>
+                        <span style="font-size:11px;">Selecciona una tarjeta o busca</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 
 </div><!-- /pos-right -->
 
