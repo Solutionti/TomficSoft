@@ -168,20 +168,20 @@
            RIGHT PANEL — CART + PAYMENT
         ══════════════════════════════════ */
         .pos-right{
-            display:flex;flex-direction:column;
-            height:100vh;border-left:1px solid var(--border);
+            height:100vh;overflow-y:auto;
+            border-left:1px solid var(--border);
         }
 
         /* Cart section */
         .cart-section{
-            flex:1;overflow-y:auto;
             background:#fff;
         }
+        .cart-table-scroll{}
         .cart-header{
             padding:12px 16px;border-bottom:1px solid var(--border);
             background:linear-gradient(135deg,var(--g800),var(--g700));
             display:flex;align-items:center;justify-content:space-between;
-            flex-shrink:0;position:sticky;top:0;z-index:10;
+            position:sticky;top:0;z-index:10;
         }
         .cart-header h5{
             font-size:13px;font-weight:700;color:#fff;
@@ -228,7 +228,6 @@
            PAYMENT PANEL (second image)
         ══════════════════════════════════ */
         .pos-payment{
-            flex-shrink:0;
             background:linear-gradient(165deg,var(--g900),var(--g700),#7c3aed);
             padding:18px 18px 14px;
             position:relative;overflow:hidden;
@@ -369,6 +368,7 @@
             </h5>
             <span style="font-size:10px;color:rgba(255,255,255,.6);">Se agrega al seleccionar</span>
         </div>
+        <div class="cart-table-scroll">
         <table class="cart-table">
             <thead>
                 <tr>
@@ -389,6 +389,7 @@
                 </tr>
             </tbody>
         </table>
+        </div>
     </div>
 
     <!-- PAYMENT PANEL -->
@@ -554,15 +555,18 @@ function addFromCard(b64){
     if (isSearchMode) {
         searchInput.value = '';
         isSearchMode = false;
-        var cat = p.categoria || null;
-        var pill = cat ? document.querySelector('.cat-pill[data-cat="' + cat + '"]') : null;
+        var catId = resolveCatId(p.categoria || null);
+        var pill  = catId ? document.querySelector('.cat-pill[data-cat="' + catId + '"]') : null;
         if (pill) {
-            selectCat(cat, pill);
+            selectCat(catId, pill);
         } else {
             loadCat(currentCat);
         }
     }
 }
+
+/* name → ID map for pill highlighting from search results */
+var catNameToId = {};
 
 /* Load categories then load all products */
 fetch(baseurl + 'consumos/categorias')
@@ -570,6 +574,7 @@ fetch(baseurl + 'consumos/categorias')
     .then(function(cats){
         var strip = document.getElementById('cat-strip');
         cats.forEach(function(c){
+            catNameToId[c.nombre.toLowerCase()] = c.codigo_categoria;
             var pill = document.createElement('div');
             pill.className = 'cat-pill';
             pill.dataset.cat = c.codigo_categoria;
@@ -580,9 +585,18 @@ fetch(baseurl + 'consumos/categorias')
         loadCat('todos');
     });
 
+function resolveCatId(cat){
+    if (!cat) return null;
+    // Direct match (already an ID)
+    if (document.querySelector('.cat-pill[data-cat="' + cat + '"]')) return cat;
+    // Resolve text name → ID via map
+    return catNameToId[cat.toLowerCase()] || null;
+}
+
 function highlightPill(cat){
     document.querySelectorAll('.cat-pill').forEach(function(p){ p.classList.remove('active'); });
-    var pill = cat ? document.querySelector('.cat-pill[data-cat="' + cat + '"]') : null;
+    var id = resolveCatId(cat);
+    var pill = id ? document.querySelector('.cat-pill[data-cat="' + id + '"]') : null;
     if (pill) pill.classList.add('active');
 }
 
