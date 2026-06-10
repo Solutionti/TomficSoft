@@ -74,8 +74,7 @@
         }
         .browser-search-bar button:hover{background:var(--g700);}
         #ventas-drop{
-            display:none;position:absolute;top:100%;left:0;right:0;z-index:1050;
-            background:#fff;border:1.5px solid var(--g300);border-top:none;
+            display:none!important;
             border-radius:0 0 10px 10px;
             box-shadow:0 8px 24px rgba(45,102,34,.15);
             max-height:260px;overflow-y:auto;list-style:none;padding:0;margin:0;
@@ -349,7 +348,7 @@
     <!-- Product grid -->
     <div class="prod-grid-wrap">
         <div class="prod-grid" id="prod-grid">
-            <div class="prod-empty"><i class="fas fa-box-open"></i>Cargando productos…</div>
+            <div class="prod-empty"><i class="fas fa-spinner fa-spin"></i> Cargando…</div>
         </div>
     </div>
 
@@ -550,9 +549,22 @@ function addFromCard(b64){
         codigo_barras: p.codigo_barras || p.codigo || '',
         medida:        p.medida  || '',
     });
+
+    /* If coming from search, jump to the product's category */
+    if (isSearchMode) {
+        searchInput.value = '';
+        isSearchMode = false;
+        var cat = p.categoria || null;
+        var pill = cat ? document.querySelector('.cat-pill[data-cat="' + cat + '"]') : null;
+        if (pill) {
+            selectCat(cat, pill);
+        } else {
+            loadCat(currentCat);
+        }
+    }
 }
 
-/* Load categories */
+/* Load categories then load all products */
 fetch(baseurl + 'consumos/categorias')
     .then(function(r){ return r.json(); })
     .then(function(cats){
@@ -565,7 +577,14 @@ fetch(baseurl + 'consumos/categorias')
             pill.addEventListener('click', function(){ selectCat(c.codigo_categoria, pill); });
             strip.appendChild(pill);
         });
+        loadCat('todos');
     });
+
+function highlightPill(cat){
+    document.querySelectorAll('.cat-pill').forEach(function(p){ p.classList.remove('active'); });
+    var pill = cat ? document.querySelector('.cat-pill[data-cat="' + cat + '"]') : null;
+    if (pill) pill.classList.add('active');
+}
 
 function selectCat(cat, el){
     document.querySelectorAll('.cat-pill').forEach(function(p){ p.classList.remove('active'); });
@@ -580,10 +599,6 @@ document.querySelector('.cat-pill[data-cat="todos"]').addEventListener('click', 
 
 function loadCat(cat){
     var grid = document.getElementById('prod-grid');
-    if (cat === 'todos'){
-        grid.innerHTML = '<div class="prod-empty"><i class="fas fa-hand-pointer"></i> Selecciona una categoría para ver sus productos.</div>';
-        return;
-    }
     grid.innerHTML = '<div class="prod-empty"><i class="fas fa-spinner fa-spin"></i> Cargando…</div>';
     fetch(baseurl + 'consumos/categoria/' + encodeURIComponent(cat))
         .then(function(r){ return r.json(); })

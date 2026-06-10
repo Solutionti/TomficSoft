@@ -43,11 +43,15 @@ class ConsumosModel extends Model
 
     public function getProductosPorCategoria(string $codigo): array
     {
-        return $this->db->table('productos')
-            ->select('codigo_barras, codigo_interno, nombre, costo, saldo')
-            ->where('categoria', $codigo)
-            ->orderBy('nombre', 'ASC')
-            ->get()->getResult();
+        $builder = $this->db->table('productos')
+            ->select('codigo_barras, codigo_interno, nombre, costo, saldo, categoria')
+            ->orderBy('nombre', 'ASC');
+
+        if ($codigo !== 'todos') {
+            $builder->where('categoria', $codigo);
+        }
+
+        return $builder->get()->getResult();
     }
 
     public function guardarConsumo(array $consumo, array $items): int

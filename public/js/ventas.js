@@ -1,50 +1,56 @@
 const tbody = document.querySelector('.tbody');
 let carrito = [];
 
-/* ── Autocomplete ── */
-var searchInput = document.getElementById('codigo_barras');
-var drop        = document.getElementById('ventas-drop');
-var searchTimer = null;
+/* ── Search → prod-grid ── */
+var searchInput  = document.getElementById('codigo_barras');
+var drop         = document.getElementById('ventas-drop');
+var searchTimer  = null;
+var isSearchMode = false;
 
 searchInput.addEventListener('input', function () {
     var q = this.value.trim();
     clearTimeout(searchTimer);
-    if (q.length < 2) { drop.style.display = 'none'; drop.innerHTML = ''; return; }
+    if (q.length < 2) {
+        if (isSearchMode) {
+            isSearchMode = false;
+            /* Restore the active pill and category grid */
+            var prevCat = typeof currentCat !== 'undefined' ? currentCat : 'todos';
+            if (typeof highlightPill === 'function') highlightPill(prevCat === 'todos' ? null : prevCat);
+            if (prevCat === 'todos') document.querySelector('.cat-pill[data-cat="todos"]').classList.add('active');
+            if (typeof loadCat === 'function') loadCat(prevCat);
+        }
+        return;
+    }
 
     searchTimer = setTimeout(function () {
+        var grid = document.getElementById('prod-grid');
+        grid.innerHTML = '<div class="prod-empty"><i class="fas fa-spinner fa-spin"></i> Buscando…</div>';
+        isSearchMode = true;
+
         fetch(baseurl + 'inventarios/buscar?q=' + encodeURIComponent(q))
             .then(function (r) { return r.json(); })
             .then(function (data) {
-                drop.innerHTML = '';
-                if (!data.length) { drop.style.display = 'none'; return; }
-                data.forEach(function (p) {
-                    var li = document.createElement('li');
-                    var saldo  = parseFloat(p.saldo) || 0;
-                    var cls    = saldo > 10 ? 'vd-stock-ok' : saldo > 0 ? 'vd-stock-low' : 'vd-stock-zero';
-                    li.innerHTML =
-                        '<span class="vd-nombre">' + p.nombre + '</span>' +
-                        '<span class="vd-meta"><span class="' + cls + '">Stock: ' + saldo + '</span><br>$' + parseFloat(p.costo || 0).toLocaleString() + '</span>';
-                    li.addEventListener('mousedown', function (e) {
-                        e.preventDefault();
-                        seleccionarProducto(p);
-                    });
-                    drop.appendChild(li);
-                });
-                drop.style.display = 'block';
+                if (!data.length) {
+                    grid.innerHTML = '<div class="prod-empty"><i class="fas fa-search"></i> Sin resultados para "' + q + '".</div>';
+                    if (typeof highlightPill === 'function') highlightPill(null);
+                    return;
+                }
+                renderGrid(data);
+                /* Highlight the category of the first result */
+                if (typeof highlightPill === 'function') highlightPill(data[0].categoria || null);
             });
     }, 250);
-});
-
-searchInput.addEventListener('blur', function () {
-    setTimeout(function () { drop.style.display = 'none'; }, 180);
 });
 
 searchInput.focus();
 
 document.getElementById('btn-limpiar-busqueda').addEventListener('click', function () {
     searchInput.value = '';
-    drop.style.display = 'none';
-    drop.innerHTML = '';
+    isSearchMode = false;
+    var prevCat = typeof currentCat !== 'undefined' ? currentCat : 'todos';
+    if (typeof highlightPill === 'function') highlightPill(prevCat === 'todos' ? null : prevCat);
+    if (prevCat === 'todos') document.querySelector('.cat-pill[data-cat="todos"]').classList.add('active');
+    if (typeof loadCat === 'function') loadCat(prevCat);
     $("#producto").val('');
     $("#precio").val('');
     $("#cantidad").val('');
@@ -56,9 +62,6 @@ function seleccionarProducto(p) {
     $("#producto").val(p.nombre);
     $("#precio").val(p.costo);
     $("#cantidad").val(saldo);
-    searchInput.value = '';
-    drop.style.display = 'none';
-    drop.innerHTML = '';
 
     if (saldo <= 0) {
         $("body").overhang({ type: "error", message: "Alerta: estás a punto de vender un producto sin stock en inventario." });
