@@ -665,11 +665,11 @@
                         <th></th>
                     </tr>
                 </thead>
-                <tbody class="tbody">
-                    <tr id="emptyCartRow">
+                <tbody class="tbody ">
+                    <tr id="emptyCartRow" class="mt-5">
                         <td colspan="5" class="cart-empty">
                             <i class="fas fa-shopping-basket"></i>
-                            Carrito vacío — selecciona un producto
+                            Venta vacía — selecciona un producto a vender
                         </td>
                     </tr>
                 </tbody>
@@ -693,22 +693,22 @@
                 <div class="pp-brand-icon"><i class="fas fa-leaf"></i></div>
                 <div>
                     <div class="pp-brand-name">Cristal Business</div>
-                    <div class="pp-brand-sub">Punto de venta</div>
+                    <div class="pp-brand-sub text-white">Punto de venta</div>
                 </div>
             </div>
 
             <div class="pp-sale-chip">
-                <label><i class="fas fa-hashtag" style="margin-right:4px;opacity:.5;"></i>N° de venta</label>
+                <label class="text-white"><i class="fas fa-hashtag" style="margin-right:4px;opacity:.5;"></i>N° de venta</label>
                 <span class="pp-sale-chip-num" id="consecutivo">VNT00<?= $consecutivo->getRow()->consecutivo + 1 ?></span>
             </div>
 
             <div class="pp-total-section">
-                <div class="pp-total-label">
+                <div class="pp-total-label text-white">
                     <i class="fas fa-receipt" style="font-size:9px;"></i>
                     Total de venta
                 </div>
                 <div class="pp-total-amount zero" id="ventaa">
-                    <small id="compracero">$0</small>
+                    <small id="compracero" class="text-white">$0</small>
                     <small class="total-compra" id="total-compra" hidden></small>
                 </div>
             </div>
@@ -717,37 +717,37 @@
 
             <div class="pp-return-row" id="volver">
                 <div>
-                    <div class="pp-return-label"><i class="fas fa-undo-alt" style="margin-right:4px;"></i>A devolver</div>
+                    <div class="pp-return-label text-white"><i class="fas fa-undo-alt" style="margin-right:4px;"></i>A devolver</div>
                 </div>
-                <div class="pp-return-amount" id="devolver">$0</div>
+                <div class="pp-return-amount text-white" id="devolver">$0</div>
             </div>
 
-            <div class="pp-cash-label">
+            <div class="pp-cash-label text-white">
                 <i class="fas fa-money-bill-wave"></i>Recibo de efectivo
             </div>
-            <input type="text" class="pp-cash-input" id="recibio" placeholder="$0" oninput="formatearMiles(this)">
+            <input type="text" class="pp-cash-input text-white" id="recibio" placeholder="$0" oninput="formatearMiles(this)">
 
             <!-- Quick amounts -->
             <div class="pp-quick-amounts" id="pp-quick-amounts">
-                <button class="pp-qa-btn" onclick="setQuickAmount(5000)">$5K</button>
-                <button class="pp-qa-btn" onclick="setQuickAmount(10000)">$10K</button>
-                <button class="pp-qa-btn" onclick="setQuickAmount(20000)">$20K</button>
-                <button class="pp-qa-btn" id="pp-qa-exact" onclick="setExactAmount()">Exacto</button>
+                <button class="pp-qa-btn text-white" onclick="setQuickAmount(5000)">$5K</button>
+                <button class="pp-qa-btn text-white" onclick="setQuickAmount(10000)">$10K</button>
+                <button class="pp-qa-btn text-white" onclick="setQuickAmount(20000)">$20K</button>
+                <button class="pp-qa-btn text-white" id="pp-qa-exact" onclick="setExactAmount()">Exacto</button>
             </div>
 
             <div class="pp-meta">
                 <div class="pp-meta-row">
-                    <span class="k"><i class="fas fa-user"></i>Vendedor</span>
-                    <span class="v"><?= session()->get('nombre').' '.session()->get('apellido') ?></span>
+                    <span class="k text-white"><i class="fas fa-user"></i>Vendedor</span>
+                    <span class="v text-white"><?= session()->get('nombre').' '.session()->get('apellido') ?></span>
                 </div>
                 <div class="pp-meta-row">
-                    <span class="k"><i class="fas fa-calendar-day"></i>Fecha</span>
-                    <span class="v"><?= date('d/m/Y') ?></span>
+                    <span class="k text-white"><i class="fas fa-calendar-day"></i>Fecha</span>
+                    <span class="v text-white"><?= date('d/m/Y') ?></span>
                 </div>
                 <div class="pp-meta-row">
-                    <span class="k"><i class="fas fa-desktop"></i>Caja</span>
+                    <span class="k text-white"><i class="fas fa-desktop"></i>Caja</span>
                     <?php $cajas = $caja->getResult(); $cajas = !empty($cajas) ? $cajas[0] : null; ?>
-                    <span class="v">Caja #<?= $cajas->codigo_caja ?? '—' ?></span>
+                    <span class="v text-white">Caja #<?= $cajas->codigo_caja ?? '—' ?></span>
                 </div>
             </div>
 
