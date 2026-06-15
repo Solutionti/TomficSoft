@@ -759,7 +759,7 @@
 
             <button class="btn-pay" id="btn-pagar" onclick="crearVenta()">
                 <div class="btn-pay-shimmer"></div>
-                <i class="fas fa-check-circle"></i> Cobrar ahora
+                <i class="fas fa-check-circle"></i> VENDER
             </button>
 
         </div>
