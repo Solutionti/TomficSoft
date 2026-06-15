@@ -173,3 +173,5 @@ $routes->get('/temperatura/reporte/pdf',    'FormatosController::reportePdf');
 
 
 
+
+

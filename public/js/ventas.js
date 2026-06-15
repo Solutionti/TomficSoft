@@ -168,7 +168,7 @@ function formatearMiles(input) {
 
 function crearVenta() {
     var url = baseurl + "crearventa",
-      consecutivo = $("#consecutivo").val(),
+      consecutivo = $("#consecutivo").text(),
       documento = 'FACTURA',
       recibio = $("#recibio").val(),
       total = $("#total").val(),
