@@ -611,20 +611,20 @@
 
     <!-- Top bar -->
     <div class="browser-topbar">
-        <div class="browser-title">
-            <div class="browser-title-icon"><i class="fas fa-cash-register"></i></div>
+        <div class="browser-title text-uppercase">
+            <div class="browser-title-icon "><i class="fas fa-cash-register"></i></div>
             Punto de Venta
         </div>
         <div class="browser-search">
             <div class="browser-search-bar">
-                <input type="text" id="codigo_barras" placeholder="Buscar producto o escanear código…" autofocus autocomplete="off">
+                <input type="text" id="codigo_barras" placeholder="Buscar producto…" autofocus autocomplete="off">
                 <button type="button" id="btn-limpiar-busqueda" title="Limpiar"><i class="fas fa-times"></i></button>
             </div>
             <ul id="ventas-drop"></ul>
         </div>
         <div class="topbar-clock">
             <i class="fas fa-circle" style="font-size:7px;color:#4ade80;animation:pulse-green 2s infinite;"></i>
-            <span id="contador">—</span>
+            <span id="contador" class="text-uppercase">—</span>
         </div>
     </div>
 
@@ -648,7 +648,7 @@
         <div class="cart-header">
             <div class="cart-header-left">
                 <div class="cart-header-icon"><i class="fas fa-shopping-cart"></i></div>
-                <h5>Carrito</h5>
+                <h5>CARRITO</h5>
                 <span class="cart-count" id="cartCount">0 ítems</span>
             </div>
             
@@ -729,10 +729,10 @@
 
             <!-- Quick amounts -->
             <div class="pp-quick-amounts" id="pp-quick-amounts">
-                <button class="pp-qa-btn text-white" onclick="setQuickAmount(5000)">$5K</button>
-                <button class="pp-qa-btn text-white" onclick="setQuickAmount(10000)">$10K</button>
-                <button class="pp-qa-btn text-white" onclick="setQuickAmount(20000)">$20K</button>
-                <button class="pp-qa-btn text-white" id="pp-qa-exact" onclick="setExactAmount()">Exacto</button>
+                <button class="pp-qa-btn text-white" onclick="setQuickAmount(5000)">EFECTIVO</button>
+                <button class="pp-qa-btn text-white" onclick="setQuickAmount(10000)">TRANSFERENCIA</button>
+                <button class="pp-qa-btn text-white" id="pp-qa-exact" onclick="setExactAmount()">DEBITO</button>
+                <button class="pp-qa-btn text-white" onclick="setQuickAmount(20000)">CREDITO</button>
             </div>
 
             <div class="pp-meta">
