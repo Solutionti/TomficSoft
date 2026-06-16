@@ -114,7 +114,7 @@ class VentasController extends BaseController {
       $pdf->SetY(3);
       $pdf->SetFont('Arial','B',11);
       $pdf->SetTextColor(255,255,255);
-      $pdf->Cell($W, 6, 'VENTAS TOMFIC', 0, 1, 'C');
+      $pdf->Cell($W, 6, 'CRISTAL BUSINESS', 0, 1, 'C');
       $pdf->SetFont('Arial','',7);
       $pdf->SetTextColor(180,220,160);
       $pdf->Cell($W, 5, utf8_decode($venta->sede ?? 'Sede Principal'), 0, 1, 'C');
