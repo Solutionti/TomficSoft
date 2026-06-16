@@ -131,18 +131,33 @@ function sumaCantidad(e){
 }
 
 function carritoTotal(){
-    let total = 0;
-    const itemCartTotal  = document.querySelector('.total-compra');
+    let subtotal = 0;
+    const itemCartTotal = document.querySelector('.total-compra');
     carrito.forEach((item) => {
-      const precio = Number(item.precio.replace("$", ''));
-      total = total + precio*item.cantidad
+        const precio = Number(item.precio.replace("$", ''));
+        subtotal = subtotal + precio * item.cantidad;
     });
+
+    const pct          = Math.min(100, Math.max(0, parseFloat(document.getElementById('descuento-pct')?.value || 0)));
+    const descuentoAmt = Math.round(subtotal * pct / 100);
+    const total        = subtotal - descuentoAmt;
+
+    // Mostrar subtotal tachado solo si hay descuento
+    const subtotalRow = document.getElementById('subtotal-row');
+    const subtotalEl  = document.getElementById('subtotal-display');
+    const descuentoEl = document.getElementById('descuento-amount');
+    if (subtotalRow) subtotalRow.style.display = pct > 0 ? 'flex' : 'none';
+    if (subtotalEl)  subtotalEl.textContent  = '$' + subtotal.toLocaleString(undefined, {minimumFractionDigits:0, maximumFractionDigits:0});
+    if (descuentoEl) descuentoEl.textContent = pct > 0 ? '-$' + descuentoAmt.toLocaleString(undefined, {minimumFractionDigits:0, maximumFractionDigits:0}) : '-$0';
+
     $("#compracero").attr("hidden", true);
     $("#total-compra").attr("hidden", false);
     itemCartTotal.innerHTML = '$' + total.toLocaleString(undefined, {minimumFractionDigits: 0, maximumFractionDigits: 0});
     totalPedido = total;
     $("#total").val(totalPedido);
 }
+
+function aplicarDescuento(){ carritoTotal(); }
 
 function removeItemCarrito(e){
     const buttonDelete = e.target;
@@ -176,7 +191,7 @@ function crearVenta() {
       referencia = '101010',
       sede = "MERCACENTRO N1",
       id_caja = 1,
-      descuento = 0,
+      descuento = parseFloat(document.getElementById('descuento-pct')?.value || 0),
       transaccion = 0;
 
       let ventas = [];

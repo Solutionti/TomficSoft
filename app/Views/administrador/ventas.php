@@ -466,6 +466,43 @@
             background:linear-gradient(90deg,var(--g400),transparent);
         }
 
+        /* Descuento */
+        .pp-discount-row{
+            display:flex;align-items:center;gap:8px;
+            background:rgba(251,191,36,.07);
+            border:1px solid rgba(251,191,36,.18);
+            border-radius:10px;padding:8px 12px;margin-bottom:10px;
+        }
+        .pp-discount-label{
+            font-size:9px;font-weight:700;text-transform:uppercase;
+            letter-spacing:.09em;color:rgba(255,255,255,.5);
+            display:flex;align-items:center;gap:5px;flex:1;
+        }
+        .pp-discount-wrap{
+            display:flex;align-items:center;
+            background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);
+            border-radius:7px;overflow:hidden;
+        }
+        .pp-discount-input{
+            width:46px;padding:5px 8px;border:none;background:transparent;
+            font-family:inherit;font-size:13px;font-weight:700;color:#fbbf24;
+            outline:none;text-align:center;
+        }
+        .pp-discount-input::-webkit-inner-spin-button{display:none;}
+        .pp-discount-pct{
+            padding:0 7px 0 2px;font-size:12px;font-weight:700;color:rgba(255,255,255,.4);
+        }
+        .pp-discount-amount{
+            font-size:13px;font-weight:700;color:#fbbf24;
+            min-width:60px;text-align:right;font-variant-numeric:tabular-nums;
+        }
+        .pp-subtotal-row{
+            display:flex;align-items:center;justify-content:space-between;
+            padding:0 2px;margin-bottom:4px;
+        }
+        .pp-subtotal-label{font-size:9px;color:rgba(255,255,255,.35);font-weight:600;text-transform:uppercase;letter-spacing:.08em;}
+        .pp-subtotal-amount{font-size:11px;color:rgba(255,255,255,.35);font-weight:600;text-decoration:line-through;}
+
         /* Devolver */
         .pp-return-row{
             display:flex;align-items:center;justify-content:space-between;
@@ -711,6 +748,22 @@
                     <small id="compracero" class="text-white">$0</small>
                     <small class="total-compra" id="total-compra" hidden></small>
                 </div>
+            </div>
+
+            <!-- Subtotal (visible solo con descuento) -->
+            <div class="pp-subtotal-row" id="subtotal-row" style="display:none;">
+                <span class="pp-subtotal-label">Subtotal</span>
+                <span class="pp-subtotal-amount" id="subtotal-display">$0</span>
+            </div>
+
+            <!-- Descuento % -->
+            <div class="pp-discount-row">
+                <div class="pp-discount-label"><i class="fas fa-tag"></i>Descuento</div>
+                <div class="pp-discount-wrap">
+                    <input type="number" class="pp-discount-input" id="descuento-pct" min="0" max="100" value="0" placeholder="0" oninput="aplicarDescuento()">
+                    <span class="pp-discount-pct">%</span>
+                </div>
+                <div class="pp-discount-amount" id="descuento-amount">-$0</div>
             </div>
 
             <div class="pp-divider"></div>

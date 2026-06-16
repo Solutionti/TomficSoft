@@ -73,13 +73,13 @@ class InicioController extends BaseController {
       $pdf->SeccionTitulo('DESCRIPCION DE MODULOS');
 
       // 1. INICIO
-      $pdf->ModuloTitulo('1','INICIO — Dashboard');
+      $pdf->ModuloTitulo('1','INICIO - Dashboard');
       $pdf->SubTitulo('Acceso: Todos los usuarios autenticados');
       $pdf->Parrafo('Pantalla principal que muestra metricas generales del sistema: total de productos, inventarios activos, desechos registrados y estado de solicitudes. Sirve como punto de partida para navegar a los demas modulos.');
       $pdf->Separador();
 
       // 2. INVENTARIOS
-      $pdf->ModuloTitulo('2','INVENTARIOS — Gestion de Productos');
+      $pdf->ModuloTitulo('2','INVENTARIOS - Gestion de Productos');
       $pdf->SubTitulo('Acceso: Administrador, Capturador');
       $pdf->Parrafo('Gestiona el catalogo completo de productos e ingredientes con control de stock en tiempo real.');
       $pdf->SubTitulo('Flujo de trabajo:');
@@ -94,7 +94,7 @@ class InicioController extends BaseController {
       $pdf->Separador();
 
       // 3. CONTEOS
-      $pdf->ModuloTitulo('3','CONTEOS — Conteo Fisico de Inventario');
+      $pdf->ModuloTitulo('3','CONTEOS - Conteo Fisico de Inventario');
       $pdf->SubTitulo('Acceso: Capturador, Administrador');
       $pdf->Parrafo('Permite registrar el conteo fisico real de los productos para compararlo contra el sistema y detectar diferencias.');
       $pdf->SubTitulo('Flujo de trabajo:');
@@ -106,23 +106,28 @@ class InicioController extends BaseController {
       $pdf->Separador();
 
       // 4. VENTAS
-      $pdf->ModuloTitulo('4','VENTAS — Punto de Venta');
+      $pdf->ModuloTitulo('4','VENTAS - Punto de Venta (POS)');
       $pdf->SubTitulo('Acceso: Vendedor, Administrador');
-      $pdf->Parrafo('Registra ventas al cliente con gestion de carrito, descuento, metodo de pago y genera recibo PDF numerado.');
+      $pdf->Parrafo('POS moderno de dos paneles: browser de productos (izquierda) y carrito + pago (derecha). Permite agregar productos por busqueda o navegando categorias, con panel de pago siempre visible.');
       $pdf->SubTitulo('Flujo de trabajo:');
-      $pdf->Item('Buscar producto por nombre o codigo (autocompletado en tiempo real).');
-      $pdf->Item('Agregar al carrito con cantidad deseada.');
-      $pdf->Item('Aplicar descuento si aplica.');
-      $pdf->Item('Seleccionar metodo de pago y confirmar venta.');
-      $pdf->Item('Descargar recibo PDF con numero consecutivo.');
+      $pdf->Item('Buscar producto por nombre o codigo - resultados aparecen como tarjetas en el grid, igual que las categorias.');
+      $pdf->Item('Al buscar, el pill de la categoria del producto se activa automaticamente.');
+      $pdf->Item('Navegar por categorias con los pills horizontales (venidas de la tabla categorias).');
+      $pdf->Item('"Todos" muestra el catalogo completo de productos.');
+      $pdf->Item('Clic en tarjeta o resultado agrega el producto al carrito y regresa a la categoria.');
+      $pdf->Item('El carrito soporta varios items con cantidad editable y boton de eliminar.');
+      $pdf->Item('Ingresar monto recibido - calcula devuelta automaticamente.');
+      $pdf->Item('Confirmar venta con Pagar o Ctrl+Espacio.');
+      $pdf->Item('Opcion de imprimir recibo PDF con numero consecutivo.');
       $pdf->SubTitulo('Acciones automaticas:');
       $pdf->Item('El stock se descuenta automaticamente al guardar la venta.');
+      $pdf->Item('El pill de categoria del producto buscado se resalta en tiempo real.');
       $pdf->Separador();
 
       $pdf->AddPage();
 
       // 5. COMPRAS
-      $pdf->ModuloTitulo('5','COMPRAS — Gestion de Compras a Proveedores');
+      $pdf->ModuloTitulo('5','COMPRAS - Gestion de Compras a Proveedores');
       $pdf->SubTitulo('Acceso: Administrador');
       $pdf->Parrafo('Gestiona el proceso completo de compra en 3 etapas: Cotizacion → Remision → Compra. Cada etapa genera su propio PDF estilo factura colombiana.');
       $pdf->SubTitulo('Etapas del proceso:');
@@ -151,23 +156,26 @@ class InicioController extends BaseController {
       $pdf->Separador();
 
       // 6. CONSUMOS
-      $pdf->ModuloTitulo('6','CONSUMOS — Registro de Consumo (Bufet)');
+      $pdf->ModuloTitulo('6','CONSUMOS - Registro de Consumo (Bufet)');
       $pdf->SubTitulo('Acceso: Capturador, Administrador');
-      $pdf->Parrafo('Modulo disenado para el bufet. Permite registrar multiples veces al dia los ingredientes e insumos utilizados en la preparacion, descontando automaticamente del stock.');
+      $pdf->Parrafo('Modulo disenado para el bufet. Permite registrar multiples veces al dia los ingredientes e insumos utilizados en la preparacion, descontando automaticamente del stock. Las categorias de productos se gestionan desde la tabla categorias.');
       $pdf->SubTitulo('Flujo de trabajo:');
       $pdf->Item('Seleccionar fecha y observacion (ej: Almuerzo mediodia).');
-      $pdf->Item('Buscar ingrediente por nombre — muestra el stock disponible en tiempo real.');
+      $pdf->Item('Buscar ingrediente por nombre - muestra el stock disponible en tiempo real.');
       $pdf->Item('Agregar al listado y ajustar la cantidad utilizada.');
       $pdf->Item('Repetir para todos los ingredientes del turno.');
       $pdf->Item('Presionar Registrar consumo: descuenta del stock inmediatamente.');
       $pdf->Item('El historial del dia aparece en el panel derecho con boton de detalle.');
+      $pdf->SubTitulo('Categorias:');
+      $pdf->Item('Gestionadas en tabla categorias (codigo_categoria, nombre).');
+      $pdf->Item('El campo productos.categoria almacena el ID numerico (FK a categorias).');
       $pdf->SubTitulo('Acciones automaticas:');
       $pdf->Item('El campo saldo de productos se reduce al guardar cada registro.');
       $pdf->Item('Se puede registrar multiples consumos en el mismo dia.');
       $pdf->Separador();
 
       // 7. DESECHOS
-      $pdf->ModuloTitulo('7','DESECHOS — Control de Merma y Desperdicio');
+      $pdf->ModuloTitulo('7','DESECHOS - Control de Merma y Desperdicio');
       $pdf->SubTitulo('Acceso: Capturador, Administrador');
       $pdf->Parrafo('Registra perdidas de productos por dano, vencimiento o desperdicio. Incluye procesamiento OCR automatico de imagenes de balanza para capturar el peso sin digitarlo.');
       $pdf->SubTitulo('Flujo de trabajo:');
@@ -185,7 +193,7 @@ class InicioController extends BaseController {
       $pdf->AddPage();
 
       // 8. USUARIOS
-      $pdf->ModuloTitulo('8','USUARIOS — Gestion de Usuarios y Permisos');
+      $pdf->ModuloTitulo('8','USUARIOS - Gestion de Usuarios y Permisos');
       $pdf->SubTitulo('Acceso: Solo Administrador');
       $pdf->Parrafo('Administra las cuentas de usuario y controla que modulos puede ver cada uno segun su rol.');
       $pdf->SubTitulo('Flujo de trabajo:');
@@ -199,20 +207,25 @@ class InicioController extends BaseController {
       $pdf->Separador();
 
       // 9. HORARIOS
-      $pdf->ModuloTitulo('9','HORARIOS — Gestion de Turnos del Personal');
+      $pdf->ModuloTitulo('9','HORARIOS - Gestion de Turnos del Personal');
       $pdf->SubTitulo('Acceso: Administrador');
-      $pdf->Parrafo('Administra los horarios semanales del personal mostrando los turnos asignados por dia de la semana (Lunes a Domingo).');
+      $pdf->Parrafo('Administra los horarios semanales del personal mostrando los turnos asignados por dia de la semana (Lunes a Domingo). Incluye reporte PDF de horas trabajadas quincenal o mensual.');
       $pdf->SubTitulo('Flujo de trabajo:');
       $pdf->Item('Ver tabla semanal de colaboradores.');
       $pdf->Item('Agregar colaborador con nombre y rol.');
       $pdf->Item('Asignar turno por dia (hora inicio y hora fin).');
       $pdf->Item('Editar o eliminar turnos existentes.');
       $pdf->Item('Eliminar colaborador con confirmacion de seguridad.');
+      $pdf->SubTitulo('Reporte de Horas PDF:');
+      $pdf->Item('Boton "Reporte de Horas" genera PDF del periodo seleccionado.');
+      $pdf->Item('Tipo de periodo: Mensual (dia 1 al ultimo) o Quincenal (1-15 o 16-fin).');
+      $pdf->Item('Calcula horas trabajadas por colaborador desde la tabla asistencia_real.');
+      $pdf->Item('Compara contra horas esperadas (dias habiles x 8h) y marca Cumple o Pendiente.');
       $pdf->Separador();
 
       // 10. ASISTENCIA
-      $pdf->ModuloTitulo('10','ASISTENCIA — Control de Asistencia por QR');
-      $pdf->SubTitulo('Acceso: Administrador (gestion), Empleados (escaneo — sin login)');
+      $pdf->ModuloTitulo('10','ASISTENCIA - Control de Asistencia por QR');
+      $pdf->SubTitulo('Acceso: Administrador (gestion), Empleados (escaneo - sin login)');
       $pdf->Parrafo('Sistema de fichaje con codigo QR rotativo. El empleado escanea el QR desde su celular para registrar su entrada o salida sin necesidad de contraseña.');
       $pdf->SubTitulo('Flujo de trabajo:');
       $pdf->Item('/asistencia/monitor: pantalla publica con QR que se renueva cada 30 segundos.');
@@ -224,7 +237,7 @@ class InicioController extends BaseController {
       $pdf->Separador();
 
       // 11. SOLICITUD
-      $pdf->ModuloTitulo('11','SOLICITUD DE INVENTARIOS — Pedido Interno de Productos');
+      $pdf->ModuloTitulo('11','SOLICITUD DE INVENTARIOS - Pedido Interno de Productos');
       $pdf->SubTitulo('Acceso: Capturador, Administrador');
       $pdf->Parrafo('Permite solicitar formalmente productos del almacen para un area o ubicacion especifica.');
       $pdf->SubTitulo('Flujo de trabajo:');
@@ -232,13 +245,15 @@ class InicioController extends BaseController {
       $pdf->Item('Ingresar observacion y enviar solicitud: queda en estado Pendiente.');
       $pdf->Item('El administrador la aprueba desde Asignacion de Inventarios.');
       $pdf->Item('Se procesa Despacho (envio de productos) o Devolucion (retorno).');
-      $pdf->Item('Generar PDFs de solicitudes, despachos y devoluciones.');
+      $pdf->Item('PDF de despacho disponible solo si la solicitud tiene al menos un despacho registrado.');
+      $pdf->Item('PDF de devolucion disponible solo si la solicitud tiene al menos una devolucion registrada.');
+      $pdf->Item('El PDF de despachos incluye la columna Cant. Solicitada ademas de Cant. Despachada.');
       $pdf->Separador();
 
       $pdf->AddPage();
 
       // 12. ASIGNACION
-      $pdf->ModuloTitulo('12','ASIGNACION DE INVENTARIOS — Inventarios Fisicos');
+      $pdf->ModuloTitulo('12','ASIGNACION DE INVENTARIOS - Inventarios Fisicos');
       $pdf->SubTitulo('Acceso: Administrador');
       $pdf->Parrafo('Gestiona inventarios fisicos asignados a ubicaciones y usuarios responsables. Permite asociar productos de solicitudes aprobadas a un inventario especifico.');
       $pdf->SubTitulo('Flujo de trabajo:');
@@ -249,23 +264,26 @@ class InicioController extends BaseController {
       $pdf->Separador();
 
       // 13. DEVOLUCIONES
-      $pdf->ModuloTitulo('13','DEVOLUCIONES — Retorno de Productos');
+      $pdf->ModuloTitulo('13','DEVOLUCIONES - Retorno de Productos');
       $pdf->SubTitulo('Acceso: Capturador, Administrador');
       $pdf->Parrafo('Procesa la devolucion de productos asociados a una solicitud. Se registra la cantidad devuelta y el motivo (dano, calidad, error de despacho).');
       $pdf->SubTitulo('Flujo de trabajo:');
-      $pdf->Item('Seleccionar solicitud de referencia.');
-      $pdf->Item('Ver productos originales y cantidades solicitadas.');
-      $pdf->Item('Ingresar cantidad devuelta y motivo por cada item.');
-      $pdf->Item('Guardar registro de devolucion.');
+      $pdf->Item('Ingresar el codigo de la solicitud de referencia y buscar.');
+      $pdf->Item('La tabla muestra: Codigo, Producto, Cant. Solicitada, Cant. Despachada y Cant. a Devolver.');
+      $pdf->Item('El input de devolucion inicia en 0. Si ya hay devoluciones previas muestra "Ya devuelto: X".');
+      $pdf->Item('Ingresar cantidad a devolver (solo el nuevo incremento) y motivo por cada item.');
+      $pdf->Item('Guardar registro de devolucion - no duplica cantidades ya registradas.');
       $pdf->Separador();
 
       // 14. DESPACHOS
-      $pdf->ModuloTitulo('14','DESPACHOS — Envio de Productos');
+      $pdf->ModuloTitulo('14','DESPACHOS - Envio de Productos');
       $pdf->SubTitulo('Acceso: Capturador, Administrador');
       $pdf->Parrafo('Procesa el despacho de productos de una solicitud aprobada hacia su destino.');
       $pdf->SubTitulo('Flujo de trabajo:');
-      $pdf->Item('Seleccionar solicitud aprobada.');
-      $pdf->Item('Ingresar cantidad despachada y comentario por cada item.');
+      $pdf->Item('Ingresar el codigo de la solicitud y buscar.');
+      $pdf->Item('La tabla muestra: Codigo, Producto, Cant. Solicitada y Cant. a Despachar.');
+      $pdf->Item('El campo Cant. a Despachar se pre-rellena con la cantidad ya despachada anteriormente.');
+      $pdf->Item('Ajustar cantidad y agregar comentario por cada item si aplica.');
       $pdf->Item('Guardar despacho.');
       $pdf->SubTitulo('Acciones automaticas:');
       $pdf->Item('Stock del almacen descontado automaticamente al guardar.');
@@ -273,7 +291,7 @@ class InicioController extends BaseController {
       $pdf->Separador();
 
       // 15. REPORTES
-      $pdf->ModuloTitulo('15','REPORTES — Informes PDF y Excel');
+      $pdf->ModuloTitulo('15','REPORTES - Informes PDF y Excel');
       $pdf->SubTitulo('Acceso: Administrador, Capturador');
       $pdf->Parrafo('Genera informes en PDF o Excel para analisis y toma de decisiones gerenciales.');
       $pdf->SubTitulo('Tipos de reportes disponibles:');
@@ -309,7 +327,7 @@ class InicioController extends BaseController {
       $auto = [
           ['Descuenta stock','Ventas, Consumos, Desechos, Despachos'],
           ['Aumenta stock','Compras (al registrar compra definitiva)'],
-          ['Genera PDF','Compras, Ventas, Inventarios, Reportes'],
+          ['Genera PDF','Compras, Ventas, Inventarios, Reportes, Horarios (reporte horas)'],
           ['Genera Excel','Inventarios, Reportes, Asignacion'],
           ['OCR automatico','Desechos (al soltar el area de seleccion)'],
           ['QR rotativo (30s)','Asistencia (pantalla monitor)'],

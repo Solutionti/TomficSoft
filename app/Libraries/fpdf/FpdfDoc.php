@@ -8,7 +8,7 @@ class FPDF_Doc extends FPDF {
         $this->SetY(-12);
         $this->SetFont('Arial','I',7);
         $this->SetTextColor(150,150,150);
-        $this->Cell(0,5,'CristalBusiness — Documentacion Funcional del Sistema   |   Pag. '.$this->PageNo().'/{nb}',0,0,'C');
+        $this->Cell(0,5,'CristalBusiness - Documentacion Funcional del Sistema   |   Pag. '.$this->PageNo().'/{nb}',0,0,'C');
     }
     function SeccionTitulo($texto) {
         $this->SetFillColor(45,102,34);
@@ -22,13 +22,13 @@ class FPDF_Doc extends FPDF {
         $this->SetFillColor(240,247,236);
         $this->SetTextColor(45,102,34);
         $this->SetFont('Arial','B',10);
-        $this->Cell(0,8,$num.'. '.$titulo,0,1,'L',true);
+        $this->Cell(0,8,utf8_decode($num.'. '.$titulo),0,1,'L',true);
         $this->SetTextColor(13,36,9);
     }
     function SubTitulo($texto) {
         $this->SetFont('Arial','B',8);
         $this->SetTextColor(74,138,55);
-        $this->Cell(0,6,$texto,0,1,'L');
+        $this->Cell(0,6,utf8_decode($texto),0,1,'L');
         $this->SetTextColor(13,36,9);
     }
     function Parrafo($texto) {

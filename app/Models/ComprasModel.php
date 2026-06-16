@@ -20,7 +20,7 @@ class ComprasModel extends Model
         $cot = $this->db->table('cotizaciones')->where('id', $id)->get()->getRow();
         if (!$cot) return [];
         $detalle = $this->db->table('detalle_cotizacion dc')
-            ->select('dc.*, COALESCE(p.medida, "") as medida')
+            ->select('dc.*')
             ->join('productos p', 'p.codigo_barras = dc.producto_id', 'left')
             ->where('dc.cotizacion_id', $id)->get()->getResult();
         return ['cotizacion' => $cot, 'detalle' => $detalle];
@@ -56,7 +56,7 @@ class ComprasModel extends Model
         $rem = $this->db->table('remisiones')->where('id', $id)->get()->getRow();
         if (!$rem) return [];
         $detalle = $this->db->table('detalle_remision dr')
-            ->select('dr.*, COALESCE(p.medida, "") as medida')
+            ->select('dr.*')
             ->join('productos p', 'p.codigo_barras = dr.producto_id', 'left')
             ->where('dr.remision_id', $id)->get()->getResult();
         return ['remision' => $rem, 'detalle' => $detalle];
@@ -87,7 +87,7 @@ class ComprasModel extends Model
         $compra = $this->db->table('compras')->where('id', $id)->get()->getRow();
         if (!$compra) return [];
         $detalle = $this->db->table('detalle_compra dc')
-            ->select('dc.*, COALESCE(p.medida, "") as medida')
+            ->select('dc.*')
             ->join('productos p', 'p.codigo_barras = dc.producto_id', 'left')
             ->where('dc.compra_id', $id)->get()->getResult();
         return ['compra' => $compra, 'detalle' => $detalle];

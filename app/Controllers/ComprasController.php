@@ -217,7 +217,7 @@ class ComprasController extends BaseController
             $pdf->SetFillColor(...($fila % 2 !== 0 ? [255,255,255] : [240,247,236]));
             $pdf->Cell($cW[0], 7, $fila,          1, 0, 'C', true);
             $pdf->Cell($cW[1], 7, utf8_decode($item->nombre_producto ?? ''), 1, 0, 'L', true);
-            $pdf->Cell($cW[2], 7, utf8_decode($item->medida ?? '—'), 1, 0, 'C', true);
+            $pdf->Cell($cW[2], 7, '—', 1, 0, 'C', true);
             $pdf->Cell($cW[3], 7, $cant,           1, 0, 'C', true);
             $pdf->Cell($cW[4], 7, '$' . number_format($precio, 0, ',', '.'), 1, 0, 'R', true);
             $pdf->Cell($cW[5], 7, '$' . number_format($sub,    0, ',', '.'), 1, 1, 'R', true);
@@ -338,7 +338,7 @@ class ComprasController extends BaseController
             $pdf->SetFillColor(...($fila % 2 !== 0 ? [255,255,255] : [240,247,236]));
             $pdf->Cell($cW[0], 7, $fila, 1, 0, 'C', true);
             $pdf->Cell($cW[1], 7, utf8_decode($item->nombre_producto ?? ''), 1, 0, 'L', true);
-            $pdf->Cell($cW[2], 7, utf8_decode($item->medida ?? '—'), 1, 0, 'C', true);
+            $pdf->Cell($cW[2], 7, '—', 1, 0, 'C', true);
             $pdf->Cell($cW[3], 7, $item->cantidad_pedida   ?? 0, 1, 0, 'C', true);
             $pdf->Cell($cW[4], 7, $item->cantidad_recibida ?? 0, 1, 0, 'C', true);
             $pdf->Cell($cW[5], 7, '$' . number_format($item->precio_unitario ?? 0, 0, ',', '.'), 1, 1, 'R', true);
@@ -468,7 +468,7 @@ class ComprasController extends BaseController
             $pdf->SetFillColor(...($impar ? [255,255,255] : [240,247,236]));
             $pdf->Cell($cW[0], 7, $fila, 1, 0, 'C', true);
             $pdf->Cell($cW[1], 7, utf8_decode($item->nombre_producto ?? ''), 1, 0, 'L', true);
-            $pdf->Cell($cW[2], 7, utf8_decode($item->medida ?? '—'),  1, 0, 'C', true);
+            $pdf->Cell($cW[2], 7, '—',  1, 0, 'C', true);
             $pdf->Cell($cW[3], 7, $cant,  1, 0, 'C', true);
             $pdf->Cell($cW[4], 7, '$' . number_format($precio, 0, ',', '.'), 1, 0, 'R', true);
             $pdf->Cell($cW[5], 7, '$' . number_format($total,  0, ',', '.'), 1, 1, 'R', true);

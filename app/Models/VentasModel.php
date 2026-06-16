@@ -123,7 +123,7 @@ class VentasModel extends Model  {
 
     public function getDetalleVenta($consecutivo) {
       $detalle = $this->db->table('detalle_venta v')
-               ->select('v.*, p.nombre, p.costo, p.medida')
+               ->select('v.*, p.nombre, p.costo')
                 ->join('productos p', 'p.codigo_barras = v.codigo_producto OR p.codigo_interno = v.codigo_producto')
                ->where('v.codigo_venta', $consecutivo)
                ->get();
