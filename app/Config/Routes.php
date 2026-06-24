@@ -170,6 +170,9 @@ $routes->post('/neveras/eliminar',          'FormatosController::eliminarNevera'
 $routes->post('/temperatura/registrar',     'FormatosController::registrarTemperatura');
 $routes->get('/temperatura/reporte/pdf',    'FormatosController::reportePdf');
 
+//PAGINA WEB
+$routes->get('/pimientaexpress', 'WebController::index');
+
 
 
 
