@@ -493,6 +493,102 @@
 </style>
 </head>
 <body>
+  <!-- ===== BOTÓN FLOTANTE VOLVER ARRIBA ===== -->
+<style>
+  #backToTop {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    z-index: 999;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: linear-gradient(180deg, var(--green-bright), var(--green));
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px) scale(0.8);
+    transition:
+      opacity 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+      transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+      visibility 0.4s,
+      box-shadow 0.2s;
+    box-shadow: 0 8px 24px rgba(12, 107, 65, 0.4);
+  }
+  #backToTop.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+  }
+  #backToTop:hover {
+    transform: translateY(-4px) scale(1.08);
+    box-shadow: 0 16px 36px rgba(12, 107, 65, 0.55);
+  }
+  #backToTop:active { transform: scale(0.93); }
+  #backToTop:hover svg { transform: translateY(-2px); }
+  #backToTop svg { pointer-events: none; transition: transform 0.2s; }
+  #bttTooltip {
+    position: fixed;
+    bottom: 94px;
+    right: 32px;
+    z-index: 999;
+    background: var(--ink);
+    color: var(--white);
+    font-size: 11px;
+    font-weight: 700;
+    padding: 6px 10px;
+    border-radius: 8px;
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: 0;
+    transform: translateY(4px);
+    transition: opacity 0.2s, transform 0.2s;
+  }
+  #bttTooltip::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    right: 18px;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid var(--ink);
+  }
+  #backToTop:hover + #bttTooltip { opacity: 1; transform: translateY(0); }
+  @media (max-width: 640px) {
+    #backToTop { bottom: 20px; right: 20px; width: 46px; height: 46px; }
+    #bttTooltip { display: none; }
+  }
+</style>
+
+<button id="backToTop" aria-label="Volver al inicio de la página">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none"
+       stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 19V5M5 12l7-7 7 7"/>
+  </svg>
+</button>
+<div id="bttTooltip" aria-hidden="true">Volver al inicio</div>
+
+<script>
+  (function() {
+    const btn = document.getElementById('backToTop');
+    const SHOW_AT = 300;
+    let ticking = false;
+    function updateBtn() {
+      window.scrollY > SHOW_AT
+        ? btn.classList.add('visible')
+        : btn.classList.remove('visible');
+      ticking = false;
+    }
+    window.addEventListener('scroll', () => {
+      if (!ticking) { requestAnimationFrame(updateBtn); ticking = true; }
+    }, { passive: true });
+    btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  })();
+</script>
 <!-- ===== MOBILE NAV ===== -->
 <nav class="mobile-nav" id="mobileNav" aria-label="Menú móvil">
   <button class="mobile-nav-close" id="mobileNavClose" aria-label="Cerrar menú">
